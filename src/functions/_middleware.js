@@ -7,79 +7,52 @@ export async function onRequest(context) {
   const hostname = url.hostname;
 
   // Log the request for debugging
-  console.log('Request hostname:', hostname);
-  console.log('Request pathname:', url.pathname);
+  console.log('Subdomain routing - hostname:', hostname, 'pathname:', url.pathname);
+
+  // Helper function to fetch and return content
+  const fetchRoute = async (routePath) => {
+    const newUrl = new URL(url);
+    newUrl.pathname = routePath;
+    const response = await context.env.ASSETS.fetch(newUrl.toString());
+    return response;
+  };
 
   // Route based on subdomain
   if (hostname.startsWith('drivers.')) {
-    // Redirect to drivers directory
-    if (url.pathname === '/') {
-      return new Response(null, {
-        status: 302,
-        headers: {
-          'Location': '/drivers/'
-        }
-      });
+    if (url.pathname === '/' || url.pathname === '') {
+      url.pathname = '/drivers/';
+      return fetch(url.toString());
     }
-    // For other paths, let them pass through with the prefix
     if (!url.pathname.startsWith('/drivers/')) {
-      return new Response(null, {
-        status: 302,
-        headers: {
-          'Location': `/drivers${url.pathname}`
-        }
-      });
+      url.pathname = `/drivers${url.pathname}`;
+      return fetch(url.toString());
     }
   } else if (hostname.startsWith('user.')) {
-    if (url.pathname === '/') {
-      return new Response(null, {
-        status: 302,
-        headers: {
-          'Location': '/user/'
-        }
-      });
+    if (url.pathname === '/' || url.pathname === '') {
+      url.pathname = '/user/';
+      return fetch(url.toString());
     }
     if (!url.pathname.startsWith('/user/')) {
-      return new Response(null, {
-        status: 302,
-        headers: {
-          'Location': `/user${url.pathname}`
-        }
-      });
+      url.pathname = `/user${url.pathname}`;
+      return fetch(url.toString());
     }
   } else if (hostname.startsWith('vendor.')) {
-    if (url.pathname === '/') {
-      return new Response(null, {
-        status: 302,
-        headers: {
-          'Location': '/vendor/'
-        }
-      });
+    if (url.pathname === '/' || url.pathname === '') {
+      url.pathname = '/vendor/';
+      return fetch(url.toString());
     }
     if (!url.pathname.startsWith('/vendor/')) {
-      return new Response(null, {
-        status: 302,
-        headers: {
-          'Location': `/vendor${url.pathname}`
-        }
-      });
+      url.pathname = `/vendor${url.pathname}`;
+      return fetch(url.toString());
     }
   } else if (hostname.startsWith('promo.')) {
-    if (url.pathname === '/') {
-      return new Response(null, {
-        status: 302,
-        headers: {
-          'Location': '/promo/'
-        }
-      });
+    if (url.pathname === '/' || url.pathname === '') {
+      url.pathname = '/promo/';
+      return fetch(url.toString());
     }
     if (!url.pathname.startsWith('/promo/')) {
-      return new Response(null, {
-        status: 302,
-        headers: {
-          'Location': `/promo${url.pathname}`
-        }
-      });
+      url.pathname = `/promo${url.pathname}`;
+      return fetch(url.toString());
     }
   }
 
