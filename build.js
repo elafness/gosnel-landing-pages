@@ -41,6 +41,15 @@ const buildPages = () => {
     }
   });
 
+  // Copy root index.html for routing
+  const rootIndexPath = path.join(srcDir, "index.html");
+  const distRootIndexPath = path.join(distDir, "index.html");
+
+  if (fs.existsSync(rootIndexPath)) {
+    fs.copyFileSync(rootIndexPath, distRootIndexPath);
+    console.log("✅ Copied root index.html for routing");
+  }
+
   // Copy assets if they exist
   const assetsDir = path.join(srcDir, "assets");
   const distAssetsDir = path.join(distDir, "assets");
@@ -68,6 +77,37 @@ const buildPages = () => {
   if (fs.existsSync(redirectsPath)) {
     fs.copyFileSync(redirectsPath, distRedirectsPath);
     console.log("✅ Copied _redirects file");
+  }
+
+  // Copy functions directory for Cloudflare Pages Functions
+  const functionsDir = path.join(srcDir, "functions");
+  const distFunctionsDir = path.join(distDir, "functions");
+
+  if (fs.existsSync(functionsDir)) {
+    if (!fs.existsSync(distFunctionsDir)) {
+      fs.mkdirSync(distFunctionsDir, { recursive: true });
+    }
+
+    // Copy all files from functions directory
+    const copyDirectory = (src, dest) => {
+      const entries = fs.readdirSync(src, { withFileTypes: true });
+      entries.forEach((entry) => {
+        const srcPath = path.join(src, entry.name);
+        const destPath = path.join(dest, entry.name);
+        
+        if (entry.isDirectory()) {
+          if (!fs.existsSync(destPath)) {
+            fs.mkdirSync(destPath, { recursive: true });
+          }
+          copyDirectory(srcPath, destPath);
+        } else {
+          fs.copyFileSync(srcPath, destPath);
+        }
+      });
+    };
+
+    copyDirectory(functionsDir, distFunctionsDir);
+    console.log("✅ Copied functions directory");
   }
 
   console.log("🎉 Build complete!");
