@@ -41,24 +41,3 @@ jobs:
           projectName: gosnel-landing-pages
           directory: dist
           wranglerVersion: '3'
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-
-      - name: Deploy Drivers Landing
-        uses: cloudflare/pages-action@v1
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: gosnel-drivers
-          directory: dist/drivers
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Deploy Promo Landing
-        uses: cloudflare/pages-action@v1
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: gosnel-promo
-          directory: dist/promo
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
