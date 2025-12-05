@@ -3,20 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GoSnel - Redirecting...</title>
+    <title>GoSnel - Loading...</title>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        .loading-container {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            margin: 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-        .loading {
-            text-align: center;
+            flex-direction: column;
         }
         .spinner {
             border: 3px solid rgba(255,255,255,0.3);
@@ -25,56 +27,99 @@
             width: 30px;
             height: 30px;
             animation: spin 1s linear infinite;
-            margin: 0 auto 20px;
+            margin-bottom: 20px;
         }
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+        .debug {
+            background: rgba(0,0,0,0.2);
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 20px;
+            font-family: monospace;
+            font-size: 12px;
+        }
+        #content {
+            display: none;
+        }
     </style>
 </head>
 <body>
-    <div class="loading">
+    <div class="loading-container" id="loading">
         <div class="spinner"></div>
         <h2>GoSnel</h2>
-        <p>Redirecting you to the right place...</p>
+        <p>Loading your page...</p>
+        <div class="debug">
+            <div>Hostname: <span id="hostname"></span></div>
+            <div>Path: <span id="path"></span></div>
+            <div>Target: <span id="target"></span></div>
+            <div>Status: <span id="status"></span></div>
+        </div>
+    </div>
+
+    <div id="content">
+        <!-- Content will be loaded here -->
     </div>
 
     <script>
+        // Debug info
+        document.getElementById('hostname').textContent = window.location.hostname;
+        document.getElementById('path').textContent = window.location.pathname;
+        
         // Client-side routing based on hostname
         (function() {
             const hostname = window.location.hostname;
             const pathname = window.location.pathname;
             
-            console.log('Current hostname:', hostname);
-            console.log('Current pathname:', pathname);
-            
-            // Determine which subdirectory to redirect to based on subdomain
-            let targetPath = '/user/'; // default
+            // Determine which subdirectory to load based on subdomain
+            let targetPath = 'user'; // default
             
             if (hostname.includes('drivers.')) {
-                targetPath = '/drivers/';
+                targetPath = 'drivers';
             } else if (hostname.includes('vendor.')) {
-                targetPath = '/vendor/';
+                targetPath = 'vendor';
             } else if (hostname.includes('promo.')) {
-                targetPath = '/promo/';
+                targetPath = 'promo';
             } else if (hostname.includes('user.')) {
-                targetPath = '/user/';
+                targetPath = 'user';
             }
             
-            // If we're already in the correct directory, don't redirect
-            if (pathname.startsWith(targetPath)) {
-                // We're already where we should be, but this page shouldn't be showing
-                // This means the subdirectory doesn't have an index.html
-                console.log('Already in correct path but no content found');
-                return;
-            }
+            document.getElementById('target').textContent = targetPath;
+            document.getElementById('status').textContent = 'Loading content...';
             
-            // If we're at the root or wrong path, redirect to the correct subdirectory
-            if (pathname === '/' || !pathname.startsWith(targetPath)) {
-                console.log('Redirecting to:', targetPath);
-                window.location.href = targetPath;
-            }
+            // Load the content from the appropriate subdirectory
+            fetch(`./${targetPath}/index.html`)
+                .then(response => {
+                    if (response.ok) {
+                        return response.text();
+                    } else {
+                        throw new Error(`Failed to load ${targetPath} page: ${response.status}`);
+                    }
+                })
+                .then(html => {
+                    // Hide loading and show content
+                    document.getElementById('loading').style.display = 'none';
+                    document.getElementById('content').style.display = 'block';
+                    document.getElementById('content').innerHTML = html;
+                    
+                    // Update title
+                    const titleMatch = html.match(/<title>(.*?)<\/title>/i);
+                    if (titleMatch) {
+                        document.title = titleMatch[1];
+                    }
+                })
+                .catch(error => {
+                    console.error('Error loading page:', error);
+                    document.getElementById('status').textContent = `Error: ${error.message}`;
+                    document.getElementById('status').style.color = '#ff6b6b';
+                    
+                    // Fallback: try to redirect to the subdirectory
+                    setTimeout(() => {
+                        window.location.href = `./${targetPath}/`;
+                    }, 3000);
+                });
         })();
     </script>
 </body>
