@@ -41,6 +41,9 @@ jobs:
           projectName: gosnel-landing-pages
           directory: dist
           wranglerVersion: '3'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
       - name: Deploy Drivers Landing
         uses: cloudflare/pages-action@v1
