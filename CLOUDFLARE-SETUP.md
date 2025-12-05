@@ -25,7 +25,7 @@ You'll get a URL like: `https://gosnel-landing-pages.pages.dev`
    - Type: `CNAME`
    - Name: `user`
    - Target: `gosnel-landing-pages.pages.dev`
-   - **Proxy Status**: 🟠 **Gray (DNS Only)** - Not proxied through Cloudflare
+   - **Proxy Status**: 🟠 **Orange (Proxied)** - Required for redirects to work!
 
 ### 2.2 vendor.gosnel.com
 1. **Add custom domain**: `vendor.gosnel.com`
@@ -33,7 +33,7 @@ You'll get a URL like: `https://gosnel-landing-pages.pages.dev`
    - Type: `CNAME`
    - Name: `vendor`
    - Target: `gosnel-landing-pages.pages.dev`
-   - **Proxy Status**: 🟠 **Gray (DNS Only)** - Not proxied through Cloudflare
+   - **Proxy Status**: 🟠 **Orange (Proxied)** - Required for redirects to work!
 
 ### 2.3 drivers.gosnel.com
 1. **Add custom domain**: `drivers.gosnel.com`
@@ -41,7 +41,7 @@ You'll get a URL like: `https://gosnel-landing-pages.pages.dev`
    - Type: `CNAME`
    - Name: `drivers`
    - Target: `gosnel-landing-pages.pages.dev`
-   - **Proxy Status**: 🟠 **Gray (DNS Only)** - Not proxied through Cloudflare
+   - **Proxy Status**: 🟠 **Orange (Proxied)** - Required for redirects to work!
 
 ### 2.4 promo.gosnel.com
 1. **Add custom domain**: `promo.gosnel.com`
@@ -49,14 +49,39 @@ You'll get a URL like: `https://gosnel-landing-pages.pages.dev`
    - Type: `CNAME`
    - Name: `promo`
    - Target: `gosnel-landing-pages.pages.dev`
-   - **Proxy Status**: 🟠 **Gray (DNS Only)** - Not proxied through Cloudflare
+   - **Proxy Status**: 🟠 **Orange (Proxied)** - Required for redirects to work!
 
-## 🎯 Step 3: Configure Routing (Advanced)
+## 🎯 Step 3: Configure Routing (Required for Subdomains)
 
-Since all subdomains point to the same deployment, you might want to add routing logic to serve different pages based on the domain. This would require:
+**IMPORTANT**: For subdomain routing to work properly, you need a `_redirects` file:
 
-1. **Add a `_redirects` file** to handle subdomain routing, or
-2. **Use Cloudflare Workers** for more advanced routing
+### 3.1 The `_redirects` File
+This project includes a `_redirects` file that tells Cloudflare Pages how to route subdomain requests:
+
+```
+# Route subdomain requests to their respective directories
+https://drivers.gosnel.com/* https://gosnel-landing-pages.pages.dev/drivers/:splat 301!
+https://user.gosnel.com/* https://gosnel-landing-pages.pages.dev/user/:splat 301!
+https://vendor.gosnel.com/* https://gosnel-landing-pages.pages.dev/vendor/:splat 301!
+https://promo.gosnel.com/* https://gosnel-landing-pages.pages.dev/promo/:splat 301!
+```
+
+### 3.2 DNS Configuration (UPDATED)
+For each subdomain, make sure your DNS records are set up correctly in your Cloudflare dashboard:
+
+- **Type**: `CNAME`
+- **Name**: `drivers` (or user, vendor, promo)
+- **Target**: `gosnel-landing-pages.pages.dev` (your Cloudflare Pages project URL)
+- **Proxy Status**: 🟠 **Orange (Proxied)** - This is important for redirects to work!
+
+### 3.3 Verify Custom Domain Setup in Cloudflare Pages
+1. Go to **Cloudflare Dashboard** → **Pages** → **Your Project** → **Custom domains**
+2. Make sure all 4 subdomains are added:
+   - `drivers.gosnel.com`
+   - `user.gosnel.com` 
+   - `vendor.gosnel.com`
+   - `promo.gosnel.com`
+3. Each should show "Active" status
 
 ## ✅ Final Result
 
@@ -89,3 +114,35 @@ git push  # Auto-deploys via GitHub Actions
 2. **SSL certificates** are automatically handled by Cloudflare
 3. **Each subdomain needs separate DNS CNAME records**
 4. **All subdomains point to the same deployment** (same GitHub repo)
+5. **Proxy Status must be Orange (Proxied)** for redirects to work properly
+
+## 🔧 Troubleshooting
+
+### Problem: Getting 404 errors on subdomains
+**Solution**: 
+1. Make sure `_redirects` file exists in your deployment (check `dist/_redirects`)
+2. Verify DNS records are **Orange (Proxied)**, not Gray (DNS Only)
+3. Wait 5-10 minutes after deployment for changes to propagate
+
+### Problem: Subdomain shows Cloudflare Pages default page
+**Solution**:
+1. Check that custom domains are added in Cloudflare Pages dashboard
+2. Verify each subdomain shows "Active" status
+3. Make sure DNS CNAME records point to your correct Pages project URL
+
+### Problem: SSL certificate issues
+**Solution**:
+1. SSL certificates are automatic with Cloudflare
+2. If you see "Your connection is not secure", wait up to 24 hours for SSL provisioning
+3. Make sure Proxy Status is Orange (Proxied)
+
+### Testing Your Setup
+```bash
+# Test each subdomain
+curl -I https://drivers.gosnel.com/
+curl -I https://user.gosnel.com/
+curl -I https://vendor.gosnel.com/
+curl -I https://promo.gosnel.com/
+```
+
+You should see `HTTP/2 200` responses, not `HTTP/2 404`.
