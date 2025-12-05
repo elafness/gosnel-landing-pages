@@ -41,7 +41,7 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           projectName: gosnel-landing-pages
           directory: dist
-          # Removed gitHubToken to avoid permission issues
+          wranglerVersion: '3'
 
       - name: Deploy Drivers Landing
         uses: cloudflare/pages-action@v1
