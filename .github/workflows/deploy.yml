@@ -1,4 +1,4 @@
-name: Deploy to Cloudflare Pages
+name: Build and Deploy to Cloudflare Pages
 
 on:
   push:
@@ -27,6 +27,13 @@ jobs:
       - name: Build landing pages
         run: npm run build
 
+      - name: Verify build output
+        run: |
+          echo "✅ Build completed successfully"
+          ls -la dist/
+          echo "Files in dist directory:"
+          find dist/ -type f -name "*.html" | head -10
+
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/pages-action@v1
         with:
@@ -34,24 +41,6 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           projectName: gosnel-landing-pages
           directory: dist
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Deploy User Landing
-        uses: cloudflare/pages-action@v1
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: gosnel-user
-          directory: dist/user
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Deploy Vendor Landing
-        uses: cloudflare/pages-action@v1
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: gosnel-vendor
-          directory: dist/vendor
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Deploy Drivers Landing
