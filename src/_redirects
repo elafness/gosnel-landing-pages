@@ -1,20 +1,20 @@
-# Subdomain routing for GoSnel landing pages
-# This file tells Cloudflare Pages how to route subdomain requests
+# Cloudflare Pages redirects for subdomain routing
+# Simple format that works reliably with Cloudflare Pages
 
-# Route subdomain requests to their respective directories
-https://drivers.gosnel.com/* https://gosnel-landing-pages.pages.dev/drivers/:splat 301!
-https://user.gosnel.com/* https://gosnel-landing-pages.pages.dev/user/:splat 301!
-https://vendor.gosnel.com/* https://gosnel-landing-pages.pages.dev/vendor/:splat 301!
-https://promo.gosnel.com/* https://gosnel-landing-pages.pages.dev/promo/:splat 301!
+# Redirect subdomain root requests to their respective directories
+https://drivers.gosnel.com/  /drivers/  200
+https://user.gosnel.com/     /user/     200  
+https://vendor.gosnel.com/   /vendor/   200
+https://promo.gosnel.com/    /promo/    200
 
-# Fallback for main domain
-https://gosnel.com/* https://gosnel-landing-pages.pages.dev/user/:splat 301!
+# Handle subdirectory requests
+https://drivers.gosnel.com/* /drivers/:splat 200
+https://user.gosnel.com/*    /user/:splat    200
+https://vendor.gosnel.com/*  /vendor/:splat  200  
+https://promo.gosnel.com/*   /promo/:splat   200
 
-# Default routes (if someone accesses the main pages.dev domain directly)
-/drivers/* /drivers/:splat 200
-/user/* /user/:splat 200
-/vendor/* /vendor/:splat 200
-/promo/* /promo/:splat 200
+# Fallback for main domain if needed
+https://gosnel.com/*         /user/:splat    200
 
-# Root redirect to user page by default
-/ /user/ 302
+# Default route for direct access to pages.dev domain
+/  /user/  302
