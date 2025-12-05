@@ -5,10 +5,6 @@
   ],
   "exclude": [
     "/output.css",
-    "/assets/*",
-    "/drivers/index.html",
-    "/user/index.html",
-    "/vendor/index.html",
-    "/promo/index.html"
+    "/assets/*"
   ]
 }
