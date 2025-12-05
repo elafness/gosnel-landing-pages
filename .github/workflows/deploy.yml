@@ -41,7 +41,7 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           projectName: gosnel-landing-pages
           directory: dist
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          # Removed gitHubToken to avoid permission issues
 
       - name: Deploy Drivers Landing
         uses: cloudflare/pages-action@v1
