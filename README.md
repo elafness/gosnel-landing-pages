@@ -12,6 +12,7 @@ Professional landing pages for GoSnel's subdomains built with Tailwind CSS templ
 ## ✅ Deployment Status
 - GitHub Secrets: Configured ✅
 - Cloudflare API: Connected ✅
+- Branch Fix: Applied 🔄 (Changed from master to main)
 - Testing: In Progress 🔄
 
 ## 🚀 Quick Start
