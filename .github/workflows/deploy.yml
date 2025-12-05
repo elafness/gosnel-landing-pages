@@ -3,8 +3,7 @@ name: Build and Deploy to Cloudflare Pages
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
+  # Removed pull_request trigger - only deploy on main branch pushes
 
 jobs:
   deploy:
