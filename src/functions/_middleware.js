@@ -1,60 +1,45 @@
 // Cloudflare Pages Functions for subdomain routing
-// This function handles routing for different subdomains
-
 export async function onRequest(context) {
   const { request } = context;
   const url = new URL(request.url);
   const hostname = url.hostname;
+  const pathname = url.pathname;
 
-  console.log('Subdomain routing - hostname:', hostname, 'pathname:', url.pathname);
+  console.log('[Middleware] Processing:', hostname + pathname);
 
-  // Route based on subdomain
+  // Determine target directory based on subdomain
+  let targetDir = 'user'; // default
+  
   if (hostname.includes('drivers.')) {
-    if (url.pathname === '/' || url.pathname === '') {
-      const driversUrl = new URL(url);
-      driversUrl.pathname = '/drivers/';
-      return fetch(driversUrl.toString());
-    }
-    if (!url.pathname.startsWith('/drivers/')) {
-      const driversUrl = new URL(url);
-      driversUrl.pathname = `/drivers${url.pathname}`;
-      return fetch(driversUrl.toString());
-    }
+    targetDir = 'drivers';
   } else if (hostname.includes('vendor.')) {
-    if (url.pathname === '/' || url.pathname === '') {
-      const vendorUrl = new URL(url);
-      vendorUrl.pathname = '/vendor/';
-      return fetch(vendorUrl.toString());
-    }
-    if (!url.pathname.startsWith('/vendor/')) {
-      const vendorUrl = new URL(url);
-      vendorUrl.pathname = `/vendor${url.pathname}`;
-      return fetch(vendorUrl.toString());
-    }
+    targetDir = 'vendor';
   } else if (hostname.includes('promo.')) {
-    if (url.pathname === '/' || url.pathname === '') {
-      const promoUrl = new URL(url);
-      promoUrl.pathname = '/promo/';
-      return fetch(promoUrl.toString());
-    }
-    if (!url.pathname.startsWith('/promo/')) {
-      const promoUrl = new URL(url);
-      promoUrl.pathname = `/promo${url.pathname}`;
-      return fetch(promoUrl.toString());
-    }
+    targetDir = 'promo';
   } else if (hostname.includes('user.')) {
-    if (url.pathname === '/' || url.pathname === '') {
-      const userUrl = new URL(url);
-      userUrl.pathname = '/user/';
-      return fetch(userUrl.toString());
-    }
-    if (!url.pathname.startsWith('/user/')) {
-      const userUrl = new URL(url);
-      userUrl.pathname = `/user${url.pathname}`;
-      return fetch(userUrl.toString());
-    }
+    targetDir = 'user';
+  } else {
+    // For pages.dev or unknown, use default
+    targetDir = 'user';
   }
 
-  // For all other cases, continue with the original request
-  return context.next();
+  console.log('[Middleware] Target directory:', targetDir);
+
+  // Build the new URL with rewritten path
+  let newPath = pathname;
+  
+  if (pathname === '/' || pathname === '') {
+    newPath = `/${targetDir}/`;
+  } else if (!pathname.startsWith(`/${targetDir}/`)) {
+    newPath = `/${targetDir}${pathname}`;
+  }
+
+  console.log('[Middleware] Rewriting:', pathname, '->', newPath);
+
+  // Create a new request with the rewritten path
+  const rewriteUrl = new URL(url);
+  rewriteUrl.pathname = newPath;
+
+  // Fetch the rewritten URL
+  return fetch(rewriteUrl.toString(), request);
 }

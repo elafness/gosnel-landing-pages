@@ -1,0 +1,11 @@
+# Cloudflare Pages Redirects - Subdomain based routing fallback
+# Note: _redirects alone cannot route based on hostname in Cloudflare Pages
+# This file serves as a fallback for direct path requests
+
+# Main domain - serve user page by default
+https://gosnel.com/ /user/ 200
+https://gosnel.com/* /user/:splat 200
+
+# pages.dev domain - serve user page by default  
+/  /user/  200
+/*  /user/:splat 200
