@@ -79,6 +79,15 @@ const buildPages = () => {
     console.log("✅ Copied _redirects file");
   }
 
+  // Copy _routes.json file for Cloudflare Pages Functions routing
+  const routesPath = path.join(srcDir, "_routes.json");
+  const distRoutesPath = path.join(distDir, "_routes.json");
+
+  if (fs.existsSync(routesPath)) {
+    fs.copyFileSync(routesPath, distRoutesPath);
+    console.log("✅ Copied _routes.json file");
+  }
+
   // Copy functions directory for Cloudflare Pages Functions
   const functionsDir = path.join(srcDir, "functions");
   const distFunctionsDir = path.join(distDir, "functions");

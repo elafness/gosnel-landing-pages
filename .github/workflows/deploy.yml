@@ -1,0 +1,64 @@
+name: Build and Deploy to Cloudflare Pages
+
+on:
+  push:
+    branches: [ main ]
+  # Removed pull_request trigger - only deploy on main branch pushes
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    name: Deploy Landing Pages
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build landing pages
+        run: npm run build
+
+      - name: Verify build output
+        run: |
+          echo "✅ Build completed successfully"
+          ls -la dist/
+          echo "Files in dist directory:"
+          find dist/ -type f -name "*.html" | head -10
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: gosnel-landing-pages
+          directory: dist
+          wranglerVersion: '3'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+      - name: Deploy Drivers Landing
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: gosnel-drivers
+          directory: dist/drivers
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Deploy Promo Landing
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: gosnel-promo
+          directory: dist/promo
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
