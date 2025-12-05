@@ -3,618 +3,177 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GoSnel Drivers - Earn More Delivering | AI-Powered Delivery Network UAE</title>
-    <meta name="description" content="Join GoSnel's driver network in UAE. Earn competitive rates with AI route optimization. Flexible hours, 24/7 support, and instant payouts.">
-    <link rel="icon" type="image/png" href="https://gosnel.com/favicon.png">
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://drivers.gosnel.com/">
-    <meta property="og:title" content="GoSnel Drivers - Earn More Delivering">
-    <meta property="og:description" content="Join GoSnel's AI-powered delivery network and earn competitive rates.">
-    <meta property="og:image" content="https://gosnel.com/og-image.png">
-
-    <!-- Tailwind CSS -->
-    <link href="../../dist/output.css" rel="stylesheet">
+    <title>GoSnel Drivers - Earn Money Delivering Food in Ajman</title>
+    <meta name="description" content="Join GoSnel's driver network in Ajman, UAE. Earn 5-8 AED per delivery plus tips. Flexible hours, instant payouts, start within 24 hours.">
+    <link href="/output.css" rel="stylesheet">
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        .gradient-teal { background: linear-gradient(135deg, #4ecdc4 0%, #1a9a93 100%); }
+        .gradient-teal-text { background: linear-gradient(135deg, #4ecdc4 0%, #1a9a93 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .step-number { background: linear-gradient(135deg, #4ecdc4 0%, #1a9a93 100%); }
+    </style>
 </head>
-<body class="bg-white dark:bg-dark-900">
-    <!-- ====== Navbar Section Start -->
-    <header x-data="{ navbarOpen: false }" class="absolute left-0 top-0 z-50 w-full">
-        <div class="container mx-auto">
-            <div class="relative -mx-4 flex items-center justify-between">
-                <div class="w-60 max-w-full px-4">
-                    <a href="https://gosnel.com" class="flex items-center space-x-3 py-5">
-                        <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center text-xl font-bold text-white shadow-lg">
-                            GS
-                        </div>
-                        <span class="text-xl font-bold text-dark dark:text-white">GoSnel</span>
-                    </a>
-                </div>
-                <div class="flex w-full items-center justify-between px-4">
-                    <div>
-                        <button @click="navbarOpen = !navbarOpen" :class="navbarOpen && 'navbarTogglerActive'"
-                                class="absolute right-4 top-1/2 block -translate-y-1/2 rounded-lg px-3 py-[6px] ring-orange-500 focus:ring-2 lg:hidden">
-                            <span class="relative my-[6px] block h-[2px] w-[30px] bg-dark dark:bg-white"></span>
-                            <span class="relative my-[6px] block h-[2px] w-[30px] bg-dark dark:bg-white"></span>
-                            <span class="relative my-[6px] block h-[2px] w-[30px] bg-dark dark:bg-white"></span>
-                        </button>
-                        <nav :class="!navbarOpen && 'hidden'" x-cloak
-                             class="absolute right-4 top-full w-full max-w-[250px] rounded-lg bg-white px-6 py-5 shadow lg:static lg:block lg:w-full lg:max-w-full lg:shadow-none dark:bg-dark-2 lg:dark:bg-transparent">
-                            <ul class="block lg:flex">
-                                <li><a href="#why-gosnel" class="flex py-2 text-base font-medium text-dark hover:text-orange-500 lg:ml-12 lg:inline-flex dark:text-white">Why GoSnel</a></li>
-                                <li><a href="#how-it-works" class="flex py-2 text-base font-medium text-dark hover:text-orange-500 lg:ml-12 lg:inline-flex dark:text-white">How It Works</a></li>
-                                <li><a href="#earnings" class="flex py-2 text-base font-medium text-dark hover:text-orange-500 lg:ml-12 lg:inline-flex dark:text-white">Earnings</a></li>
-                                <li><a href="https://gosnel.com/driver/login" class="flex py-2 text-base font-medium text-dark hover:text-orange-500 lg:ml-12 lg:inline-flex dark:text-white">Login</a></li>
-                            </ul>
-                        </nav>
-                    </div>
-                    <div class="hidden justify-end pr-16 sm:flex lg:pr-0">
-                        <a href="https://gosnel.com/driver/login" class="px-7 py-3 text-base font-medium text-dark hover:text-orange-500 dark:text-white">Login</a>
-                        <a href="https://gosnel.com/driver/signup" class="rounded-md bg-orange-500 px-7 py-3 text-base font-medium text-white hover:bg-orange-600 transition-colors">Apply Now</a>
-                    </div>
-                </div>
+<body class="bg-gray-50 min-h-screen">
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50 border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <a href="https://gosnel.com" class="flex items-center space-x-3">
+                    <div class="w-10 h-10 gradient-teal rounded-full flex items-center justify-center text-white font-bold text-sm">GS</div>
+                    <span class="text-xl font-bold text-teal-600">GoSnel</span>
+                </a>
+                <a href="https://gosnel.com/driver/login" class="px-5 py-2 border-2 border-teal-500 text-teal-600 rounded-lg font-semibold hover:bg-teal-50 transition">Driver Login</a>
             </div>
         </div>
     </header>
-    <!-- ====== Navbar Section End -->
 
-    <!-- ====== Hero Section Start -->
-    <div class="relative bg-gradient-to-b from-orange-50 to-white pb-[110px] pt-[120px] lg:pt-[150px] dark:from-dark-800 dark:to-dark-900">
-        <div class="container mx-auto">
-            <div class="-mx-4 flex flex-wrap items-center">
-                <div class="w-full px-4 lg:w-5/12">
-                    <div class="hero-content">
-                        <h1 class="mb-5 text-4xl font-bold leading-[1.2] text-dark sm:text-[42px] lg:text-[40px] xl:text-5xl dark:text-white">
-                            Deliver with <br />
-                            <span class="text-orange-500">Purpose</span> <br />
-                            Earn More
-                        </h1>
-                        <p class="mb-8 max-w-[480px] text-base text-gray-600 dark:text-gray-300">
-                            Join GoSnel's AI-powered delivery network in UAE. Earn competitive rates, flexible hours, and be part of the future of food delivery.
-                        </p>
-                        <ul class="flex flex-wrap items-center">
-                            <li>
-                                <a href="https://gosnel.com/driver/signup" class="inline-flex items-center justify-center rounded-md bg-orange-500 px-6 py-3 text-center text-base font-medium text-white hover:bg-orange-600 lg:px-7 transition-colors">
-                                    🚗 Start Driving Now
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#how-it-works" class="inline-flex items-center justify-center px-5 py-3 text-center text-base font-medium text-gray-600 hover:text-orange-500 dark:text-white">
-                                    <span class="mr-2">
-                                        <div class="w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center">
-                                            <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                                <path d="M10.5 1.5L19 6v8.5l-8.5 4.5-8.5-4.5V6l8.5-4.5z"/>
-                                            </svg>
-                                        </div>
-                                    </span>
-                                    Learn More
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="clients pt-16">
-                            <h6 class="mb-6 flex items-center text-xs font-normal text-gray-500 dark:text-gray-400">
-                                Trusted by thousands of drivers in UAE
-                                <span class="ml-3 inline-block h-px w-8 bg-gray-300 dark:bg-gray-600"></span>
-                            </h6>
-                            <div class="flex items-center gap-4 xl:gap-[50px]">
-                                <div class="flex items-center space-x-2 py-3">
-                                    <span class="text-2xl">💰</span>
-                                    <span class="text-sm text-gray-600 dark:text-gray-300">Higher Earnings</span>
-                                </div>
-                                <div class="flex items-center space-x-2 py-3">
-                                    <span class="text-2xl">⏰</span>
-                                    <span class="text-sm text-gray-600 dark:text-gray-300">Flexible Hours</span>
-                                </div>
-                                <div class="flex items-center space-x-2 py-3">
-                                    <span class="text-2xl">🤖</span>
-                                    <span class="text-sm text-gray-600 dark:text-gray-300">AI Optimized</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="w-full px-4 lg:w-7/12">
-                    <div class="lg:ml-auto lg:text-right">
-                        <div class="relative z-10 inline-block pt-11 lg:pt-0">
-                            <div class="bg-gradient-to-br from-orange-100 to-yellow-100 rounded-2xl p-8 lg:p-12 shadow-xl overflow-hidden">
-                                <svg class="absolute top-0 left-0 w-full h-full opacity-10" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="100" cy="100" r="80" stroke="currentColor" stroke-width="2"/>
-                                    <circle cx="300" cy="100" r="80" stroke="currentColor" stroke-width="2"/>
-                                    <circle cx="100" cy="300" r="80" stroke="currentColor" stroke-width="2"/>
-                                    <circle cx="300" cy="300" r="80" stroke="currentColor" stroke-width="2"/>
-                                </svg>
-                                <div class="relative z-10 text-center space-y-6">
-                                    <div class="text-7xl animate-bounce">🚗</div>
-                                    <h3 class="text-3xl font-bold text-gray-800">Ready to Deliver?</h3>
-                                    <p class="text-gray-700 max-w-sm mx-auto text-lg">
-                                        Join thousands of drivers earning with GoSnel
-                                    </p>
-                                    <div class="inline-flex space-x-3 pt-4">
-                                        <div class="bg-white rounded-lg px-4 py-2 shadow-md">
-                                            <span class="text-sm font-semibold text-orange-600">4.9★ Rating</span>
-                                        </div>
-                                        <div class="bg-white rounded-lg px-4 py-2 shadow-md">
-                                            <span class="text-sm font-semibold text-orange-600">10K+ Drivers</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- ====== Hero Section End -->
-
-    <!-- ====== Why GoSnel Section Start -->
-    <section id="why-gosnel" class="pb-12 pt-20 lg:pb-[90px] lg:pt-[120px] dark:bg-dark-800">
-        <div class="container mx-auto">
-            <div class="-mx-4 flex flex-wrap">
-                <div class="w-full px-4">
-                    <div class="mx-auto mb-12 max-w-[510px] text-center lg:mb-20">
-                        <span class="mb-2 block text-lg font-semibold text-orange-500">
-                            Why Choose GoSnel Drivers
-                        </span>
-                        <h2 class="mb-3 text-3xl font-bold leading-[1.2] text-dark sm:text-4xl md:text-[40px] dark:text-white">
-                            Earn More, Work Less
-                        </h2>
-                        <p class="text-base text-gray-600 dark:text-gray-300">
-                            Our AI-powered platform ensures you get the best delivery opportunities with optimized routes and fair compensation.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="-mx-4 flex flex-wrap">
-                <div class="w-full px-4 md:w-1/2 lg:w-1/3">
-                    <div class="mb-9 rounded-[20px] bg-white p-10 shadow-2 hover:shadow-lg md:px-7 xl:px-10 dark:bg-dark-700 transition-shadow">
-                        <div class="mb-8 flex h-[70px] w-[70px] items-center justify-center rounded-2xl bg-orange-500">
-                            <span class="text-2xl">💰</span>
-                        </div>
-                        <h4 class="mb-[14px] text-2xl font-semibold text-dark dark:text-white">
-                            Competitive Rates
-                        </h4>
-                        <p class="text-gray-600 dark:text-gray-300">
-                            Get the highest delivery rates in UAE with bonus incentives for high-performing drivers.
-                        </p>
-                    </div>
-                </div>
-                <div class="w-full px-4 md:w-1/2 lg:w-1/3">
-                    <div class="mb-9 rounded-[20px] bg-white p-10 shadow-2 hover:shadow-lg md:px-7 xl:px-10 dark:bg-dark-700 transition-shadow">
-                        <div class="mb-8 flex h-[70px] w-[70px] items-center justify-center rounded-2xl bg-yellow-500">
-                            <span class="text-2xl">🎯</span>
-                        </div>
-                        <h4 class="mb-[14px] text-2xl font-semibold text-dark dark:text-white">
-                            Smart Route Planning
-                        </h4>
-                        <p class="text-gray-600 dark:text-gray-300">
-                            AI algorithms optimize your routes to save time and fuel, maximizing your earnings per hour.
-                        </p>
-                    </div>
-                </div>
-                <div class="w-full px-4 md:w-1/2 lg:w-1/3">
-                    <div class="mb-9 rounded-[20px] bg-white p-10 shadow-2 hover:shadow-lg md:px-7 xl:px-10 dark:bg-dark-700 transition-shadow">
-                        <div class="mb-8 flex h-[70px] w-[70px] items-center justify-center rounded-2xl bg-orange-500">
-                            <span class="text-2xl">⏰</span>
-                        </div>
-                        <h4 class="mb-[14px] text-2xl font-semibold text-dark dark:text-white">
-                            Flexible Schedule
-                        </h4>
-                        <p class="text-gray-600 dark:text-gray-300">
-                            Work whenever you want. Morning, evening, or full-time - you control your schedule.
-                        </p>
-                    </div>
-                </div>
-                <div class="w-full px-4 md:w-1/2 lg:w-1/3">
-                    <div class="mb-9 rounded-[20px] bg-white p-10 shadow-2 hover:shadow-lg md:px-7 xl:px-10 dark:bg-dark-700 transition-shadow">
-                        <div class="mb-8 flex h-[70px] w-[70px] items-center justify-center rounded-2xl bg-yellow-500">
-                            <span class="text-2xl">💳</span>
-                        </div>
-                        <h4 class="mb-[14px] text-2xl font-semibold text-dark dark:text-white">
-                            Instant Payouts
-                        </h4>
-                        <p class="text-gray-600 dark:text-gray-300">
-                            Get paid daily to your bank account with transparent pricing and no hidden fees.
-                        </p>
-                    </div>
-                </div>
-                <div class="w-full px-4 md:w-1/2 lg:w-1/3">
-                    <div class="mb-9 rounded-[20px] bg-white p-10 shadow-2 hover:shadow-lg md:px-7 xl:px-10 dark:bg-dark-700 transition-shadow">
-                        <div class="mb-8 flex h-[70px] w-[70px] items-center justify-center rounded-2xl bg-orange-500">
-                            <span class="text-2xl">🛡️</span>
-                        </div>
-                        <h4 class="mb-[14px] text-2xl font-semibold text-dark dark:text-white">
-                            Full Insurance
-                        </h4>
-                        <p class="text-gray-600 dark:text-gray-300">
-                            Comprehensive insurance coverage for you and your vehicle while on duty.
-                        </p>
-                    </div>
-                </div>
-                <div class="w-full px-4 md:w-1/2 lg:w-1/3">
-                    <div class="mb-9 rounded-[20px] bg-white p-10 shadow-2 hover:shadow-lg md:px-7 xl:px-10 dark:bg-dark-700 transition-shadow">
-                        <div class="mb-8 flex h-[70px] w-[70px] items-center justify-center rounded-2xl bg-yellow-500">
-                            <span class="text-2xl">🤝</span>
-                        </div>
-                        <h4 class="mb-[14px] text-2xl font-semibold text-dark dark:text-white">
-                            24/7 Support
-                        </h4>
-                        <p class="text-gray-600 dark:text-gray-300">
-                            Our team is always available to help with any questions or issues you face.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- ====== Why GoSnel Section End -->
-
-    <!-- ====== How It Works Section Start -->
-    <section id="how-it-works" class="bg-gray-50 pb-12 pt-20 lg:pb-[90px] lg:pt-[120px] dark:bg-dark-700">
-        <div class="container mx-auto">
-            <div class="-mx-4 flex flex-wrap">
-                <div class="w-full px-4">
-                    <div class="mx-auto mb-12 max-w-[510px] text-center lg:mb-20">
-                        <span class="mb-2 block text-lg font-semibold text-orange-500">
-                            Simple Process
-                        </span>
-                        <h2 class="mb-3 text-3xl font-bold leading-[1.2] text-dark sm:text-4xl md:text-[40px] dark:text-white">
-                            How It Works
-                        </h2>
-                    </div>
-                </div>
-            </div>
-            <div class="-mx-4 flex flex-wrap">
-                <div class="w-full px-4 md:w-1/2 lg:w-1/4">
-                    <div class="mb-9">
-                        <div class="relative mb-8">
-                            <div class="flex h-20 w-20 items-center justify-center rounded-full bg-orange-500 text-white text-3xl mx-auto">
-                                📝
-                            </div>
-                            <span class="absolute -bottom-2 -right-2 flex h-8 w-8 items-center justify-center rounded-full bg-white text-dark font-bold text-lg">1</span>
-                        </div>
-                        <h3 class="mb-4 text-center text-2xl font-semibold text-dark dark:text-white">
-                            Apply
-                        </h3>
-                        <p class="text-center text-gray-600 dark:text-gray-300">
-                            Fill out our simple application with your basic information and vehicle details.
-                        </p>
-                    </div>
-                </div>
-                <div class="w-full px-4 md:w-1/2 lg:w-1/4">
-                    <div class="mb-9">
-                        <div class="relative mb-8">
-                            <div class="flex h-20 w-20 items-center justify-center rounded-full bg-yellow-500 text-white text-3xl mx-auto">
-                                ✅
-                            </div>
-                            <span class="absolute -bottom-2 -right-2 flex h-8 w-8 items-center justify-center rounded-full bg-white text-dark font-bold text-lg">2</span>
-                        </div>
-                        <h3 class="mb-4 text-center text-2xl font-semibold text-dark dark:text-white">
-                            Verification
-                        </h3>
-                        <p class="text-center text-gray-600 dark:text-gray-300">
-                            We verify your documents and conduct a quick background check for safety.
-                        </p>
-                    </div>
-                </div>
-                <div class="w-full px-4 md:w-1/2 lg:w-1/4">
-                    <div class="mb-9">
-                        <div class="relative mb-8">
-                            <div class="flex h-20 w-20 items-center justify-center rounded-full bg-orange-500 text-white text-3xl mx-auto">
-                                🎓
-                            </div>
-                            <span class="absolute -bottom-2 -right-2 flex h-8 w-8 items-center justify-center rounded-full bg-white text-dark font-bold text-lg">3</span>
-                        </div>
-                        <h3 class="mb-4 text-center text-2xl font-semibold text-dark dark:text-white">
-                            Training
-                        </h3>
-                        <p class="text-center text-gray-600 dark:text-gray-300">
-                            Get trained on our platform and learn how to maximize your earnings.
-                        </p>
-                    </div>
-                </div>
-                <div class="w-full px-4 md:w-1/2 lg:w-1/4">
-                    <div class="mb-9">
-                        <div class="relative mb-8">
-                            <div class="flex h-20 w-20 items-center justify-center rounded-full bg-yellow-500 text-white text-3xl mx-auto">
-                                🚀
-                            </div>
-                            <span class="absolute -bottom-2 -right-2 flex h-8 w-8 items-center justify-center rounded-full bg-white text-dark font-bold text-lg">4</span>
-                        </div>
-                        <h3 class="mb-4 text-center text-2xl font-semibold text-dark dark:text-white">
-                            Start Earning
-                        </h3>
-                        <p class="text-center text-gray-600 dark:text-gray-300">
-                            Receive deliveries and start earning from day one with our app.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- ====== How It Works Section End -->
-
-    <!-- ====== Earnings Section Start -->
-    <section id="earnings" class="pb-12 pt-20 lg:pb-[90px] lg:pt-[120px] dark:bg-dark-800">
-        <div class="container mx-auto">
-            <div class="-mx-4 flex flex-wrap items-center">
-                <div class="w-full px-4 lg:w-6/12">
-                    <div class="mb-12 max-w-[540px] lg:mb-0">
-                        <span class="mb-2 block text-lg font-semibold text-orange-500">
-                            Earning Potential
-                        </span>
-                        <h2 class="mb-5 text-3xl font-bold leading-[1.208] text-dark sm:text-4xl md:text-[40px] dark:text-white">
-                            Make More Money, Your Way
-                        </h2>
-                        <p class="mb-8 text-base text-gray-600 dark:text-gray-300">
-                            Our drivers in UAE earn an average of AED 1,500-3,000 per week. Your earnings depend on your effort, schedule, and the routes you choose.
-                        </p>
-                        <div class="space-y-6">
-                            <div class="flex items-start">
-                                <div class="mr-5 flex h-12 w-12 items-center justify-center rounded-full bg-orange-500">
-                                    <span class="text-white text-xl">📊</span>
-                                </div>
-                                <div>
-                                    <h4 class="mb-2 text-lg font-semibold text-dark dark:text-white">Transparent Pricing</h4>
-                                    <p class="text-gray-600 dark:text-gray-300">See exactly how much you'll earn before accepting each delivery.</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start">
-                                <div class="mr-5 flex h-12 w-12 items-center justify-center rounded-full bg-yellow-500">
-                                    <span class="text-white text-xl">🎁</span>
-                                </div>
-                                <div>
-                                    <h4 class="mb-2 text-lg font-semibold text-dark dark:text-white">Bonus Incentives</h4>
-                                    <p class="text-gray-600 dark:text-gray-300">Earn extra bonuses for completing delivery targets and maintaining excellent ratings.</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start">
-                                <div class="mr-5 flex h-12 w-12 items-center justify-center rounded-full bg-orange-500">
-                                    <span class="text-white text-xl">💸</span>
-                                </div>
-                                <div>
-                                    <h4 class="mb-2 text-lg font-semibold text-dark dark:text-white">Instant Withdrawal</h4>
-                                    <p class="text-gray-600 dark:text-gray-300">Transfer your earnings to your bank account instantly with zero fees.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="w-full px-4 lg:w-6/12">
-                    <div class="relative mx-auto aspect-square max-w-[500px] lg:mr-0">
-                        <div class="absolute inset-0 bg-gradient-to-br from-orange-200 to-yellow-200 rounded-3xl opacity-20"></div>
-                        <div class="relative z-10 flex items-center justify-center h-full">
-                            <div class="text-center space-y-8">
-                                <div class="text-7xl">💵</div>
-                                <div class="space-y-4">
-                                    <h3 class="text-4xl font-bold text-gray-800">1,500-3,000<br><span class="text-2xl text-gray-600">AED per week</span></h3>
-                                    <p class="text-gray-600 text-lg">Average driver earnings in UAE</p>
-                                </div>
-                                <div class="pt-8 space-y-3">
-                                    <div class="bg-white rounded-lg p-4 shadow-md">
-                                        <p class="text-sm text-gray-600"><span class="font-bold text-orange-600">20+ AED</span> per delivery</p>
-                                    </div>
-                                    <div class="bg-white rounded-lg p-4 shadow-md">
-                                        <p class="text-sm text-gray-600"><span class="font-bold text-yellow-600">5% Bonus</span> incentive</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- ====== Earnings Section End -->
-
-    <!-- ====== CTA Section Start -->
-    <section class="bg-gradient-to-r from-orange-500 to-yellow-500 py-20 lg:py-[120px]">
-        <div class="container mx-auto">
-            <div class="relative z-10 overflow-hidden rounded-sm bg-white/10 backdrop-blur-sm px-8 py-12 md:p-[70px]">
-                <div class="-mx-4 flex flex-wrap items-center">
-                    <div class="w-full px-4 lg:w-1/2">
-                        <span class="mb-4 block text-base font-medium text-white">
-                            Ready to Join GoSnel Drivers?
-                        </span>
-                        <h2 class="mb-6 text-3xl font-bold leading-tight text-white sm:mb-8 sm:text-[40px]/[48px] lg:mb-0">
-                            <span class="xs:block">Apply Now and</span>
-                            <span>Start Earning Today</span>
-                        </h2>
-                    </div>
-                    <div class="w-full px-4 lg:w-1/2">
-                        <div class="flex flex-wrap lg:justify-end">
-                            <a href="https://gosnel.com/driver/signup" class="my-1 mr-4 inline-flex rounded-md bg-white px-7 py-3 text-base font-medium text-orange-500 transition hover:bg-gray-100 hover:shadow-lg">
-                                Apply Now
-                            </a>
-                            <a href="https://gosnel.com/driver/login" class="my-1 inline-flex rounded-md bg-orange-600 px-7 py-3 text-base font-medium text-white transition hover:bg-orange-700">
-                                Driver Dashboard
-                            </a>
-                        </div>
-                    </div>
-                </div>
+    <!-- Hero Section -->
+    <section class="gradient-teal text-white py-16 md:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div>
-                    <span class="absolute left-0 top-0 z-[-1]">
-                        <svg width="189" height="162" viewBox="0 0 189 162" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <ellipse cx="16" cy="-16.5" rx="173" ry="178.5" transform="rotate(180 16 -16.5)" fill="url(#paint0_linear)" />
-                            <defs>
-                                <linearGradient id="paint0_linear" x1="-157" y1="-107.754" x2="98.5011" y2="-106.425" gradientUnits="userSpaceOnUse">
-                                    <stop stop-color="white" stop-opacity="0.07" />
-                                    <stop offset="1" stop-color="white" stop-opacity="0" />
-                                </linearGradient>
-                            </defs>
-                        </svg>
-                    </span>
-                    <span class="absolute bottom-0 right-0 z-[-1]">
-                        <svg width="191" height="208" viewBox="0 0 191 208" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <ellipse cx="173" cy="178.5" rx="173" ry="178.5" fill="url(#paint1_linear)" />
-                            <defs>
-                                <linearGradient id="paint1_linear" x1="17.9179" y1="69.2484" x2="247.857" y2="70.5743" gradientUnits="userSpaceOnUse">
-                                    <stop stop-color="white" stop-opacity="0.07" />
-                                    <stop offset="1" stop-color="white" stop-opacity="0" />
-                                </linearGradient>
-                            </defs>
-                        </svg>
-                    </span>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">Deliver Food with GoSnel</h1>
+                    <div class="bg-yellow-100 text-gray-800 px-5 py-3 rounded-lg inline-block mb-6 border-2 border-teal-300 shadow">
+                        <p class="font-semibold text-lg">Work when you want. Get paid fast. No commitments.</p>
+                    </div>
+                    <p class="text-lg text-teal-50 mb-8">Join drivers earning <strong>5-8 AED per delivery</strong> plus tips in Ajman. Start within 24 hours!</p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="https://gosnel.com/driver/register" class="bg-white text-teal-600 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition shadow-lg">🚀 Start Earning</a>
+                        <a href="#how-it-works" class="border-2 border-white text-white px-8 py-3 rounded-lg font-bold hover:bg-white/10 transition">Learn More</a>
+                    </div>
+                </div>
+                <div class="text-center hidden md:block">
+                    <div class="text-9xl">🏍️</div>
+                    <p class="text-teal-100 mt-4 text-lg">Your bike, your schedule, your earnings</p>
                 </div>
             </div>
         </div>
     </section>
-    <!-- ====== CTA Section End -->
 
-    <!-- ====== FAQ Section Start -->
-    <section class="pb-12 pt-20 lg:pb-[90px] lg:pt-[120px] dark:bg-dark-800">
-        <div class="container mx-auto">
-            <div class="-mx-4 flex flex-wrap">
-                <div class="w-full px-4">
-                    <div class="mx-auto mb-12 max-w-[510px] text-center lg:mb-20">
-                        <span class="mb-2 block text-lg font-semibold text-orange-500">
-                            Questions?
-                        </span>
-                        <h2 class="mb-3 text-3xl font-bold leading-[1.2] text-dark sm:text-4xl md:text-[40px] dark:text-white">
-                            Frequently Asked Questions
-                        </h2>
-                    </div>
+    <!-- Why GoSnel Section -->
+    <section id="benefits" class="py-16 md:py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-4">Why Deliver with GoSnel?</h2>
+            <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Join the fastest-growing delivery network in Ajman</p>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition border-l-4 border-teal-500">
+                    <div class="text-5xl mb-4">💰</div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Competitive Earnings</h3>
+                    <p class="text-gray-600">Earn <strong>5-8 AED per delivery</strong> plus tips. Average drivers earn 200-400 AED per day with flexible scheduling.</p>
                 </div>
-            </div>
-            <div class="-mx-4 flex flex-wrap">
-                <div class="w-full px-4 md:w-1/2">
-                    <div class="mb-9 rounded-lg border border-gray-200 bg-white p-8 dark:border-dark-700 dark:bg-dark-700">
-                        <h3 class="mb-4 text-lg font-semibold text-dark dark:text-white">What are the requirements?</h3>
-                        <p class="text-gray-600 dark:text-gray-300">
-                            You must be 21+ years old, have a valid UAE driving license, and own or have access to a reliable vehicle (motorcycle, car, or van).
-                        </p>
-                    </div>
+                
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition border-l-4 border-orange-500">
+                    <div class="text-5xl mb-4">⏰</div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Flexible Schedule</h3>
+                    <p class="text-gray-600">Work when you want. Turn on availability anytime and start earning immediately. <strong>No shifts, no commitments.</strong></p>
                 </div>
-                <div class="w-full px-4 md:w-1/2">
-                    <div class="mb-9 rounded-lg border border-gray-200 bg-white p-8 dark:border-dark-700 dark:bg-dark-700">
-                        <h3 class="mb-4 text-lg font-semibold text-dark dark:text-white">How much can I earn?</h3>
-                        <p class="text-gray-600 dark:text-gray-300">
-                            Most drivers earn AED 1,500-3,000 per week depending on hours worked and delivery volume. Top performers earn even more.
-                        </p>
-                    </div>
-                </div>
-                <div class="w-full px-4 md:w-1/2">
-                    <div class="mb-9 rounded-lg border border-gray-200 bg-white p-8 dark:border-dark-700 dark:bg-dark-700">
-                        <h3 class="mb-4 text-lg font-semibold text-dark dark:text-white">When do I get paid?</h3>
-                        <p class="text-gray-600 dark:text-gray-300">
-                            Earnings are transferred daily to your bank account. You can also request instant withdrawal anytime with zero fees.
-                        </p>
-                    </div>
-                </div>
-                <div class="w-full px-4 md:w-1/2">
-                    <div class="mb-9 rounded-lg border border-gray-200 bg-white p-8 dark:border-dark-700 dark:bg-dark-700">
-                        <h3 class="mb-4 text-lg font-semibold text-dark dark:text-white">Do I need my own vehicle?</h3>
-                        <p class="text-gray-600 dark:text-gray-300">
-                            Yes, you'll need your own vehicle. We provide insurance coverage while you're delivering.
-                        </p>
-                    </div>
+                
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition border-l-4 border-teal-500">
+                    <div class="text-5xl mb-4">⚡</div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Instant Activation</h3>
+                    <p class="text-gray-600">Start delivering <strong>within 24 hours</strong> after completing your registration. No interviews, no complicated steps.</p>
                 </div>
             </div>
         </div>
     </section>
-    <!-- ====== FAQ Section End -->
 
-    <!-- ====== Footer Section Start -->
-    <footer class="bg-white pt-20 pb-10 lg:pt-[120px] lg:pb-20 dark:bg-dark-900">
-        <div class="container mx-auto">
-            <div class="-mx-4 flex flex-wrap">
-                <div class="w-full px-4 md:w-1/2 lg:w-4/12 xl:w-5/12">
-                    <div class="mb-12 max-w-[360px] lg:mb-16">
-                        <a href="https://gosnel.com" class="mb-8 inline-block">
-                            <div class="flex items-center space-x-3">
-                                <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center text-xl font-bold text-white shadow-lg">
-                                    GS
-                                </div>
-                                <span class="text-2xl font-bold text-dark dark:text-white">GoSnel</span>
-                            </div>
-                        </a>
-                        <p class="text-base text-gray-600 dark:text-gray-300">
-                            Join thousands of drivers earning with GoSnel's AI-powered delivery network in UAE.
-                        </p>
-                        <div class="flex items-center mt-6 space-x-4">
-                            <span class="text-sm text-gray-500 dark:text-gray-400">Made with ❤️ in UAE</span>
-                        </div>
-                    </div>
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-16 md:py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-4">How It Works</h2>
+            <p class="text-center text-gray-600 mb-12 italic">No interviews. No complicated steps. Just register, verify, and start earning.</p>
+            
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="step-number text-white text-2xl font-bold w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">1</div>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">📝 Register</h3>
+                    <p class="text-gray-600 text-sm">Fill your basic information and upload required documents</p>
                 </div>
-                <div class="w-full px-4 sm:w-1/2 md:w-1/2 lg:w-2/12 xl:w-2/12">
-                    <div class="mb-12 lg:mb-16">
-                        <h2 class="mb-10 text-xl font-bold text-dark dark:text-white">
-                            Quick Links
-                        </h2>
-                        <ul>
-                            <li><a href="https://gosnel.com/driver/signup" class="mb-4 inline-block text-base text-gray-600 hover:text-orange-500 dark:text-gray-300">Apply Now</a></li>
-                            <li><a href="https://gosnel.com/driver/login" class="mb-4 inline-block text-base text-gray-600 hover:text-orange-500 dark:text-gray-300">Driver Login</a></li>
-                            <li><a href="https://gosnel.com/driver/help" class="mb-4 inline-block text-base text-gray-600 hover:text-orange-500 dark:text-gray-300">Help & Support</a></li>
-                            <li><a href="https://gosnel.com/" class="mb-4 inline-block text-base text-gray-600 hover:text-orange-500 dark:text-gray-300">Order Food</a></li>
-                        </ul>
-                    </div>
+                
+                <div class="text-center">
+                    <div class="step-number text-white text-2xl font-bold w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">2</div>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">✅ Get Verified</h3>
+                    <p class="text-gray-600 text-sm">Our team verifies your documents within 24 hours</p>
                 </div>
-                <div class="w-full px-4 sm:w-1/2 md:w-1/2 lg:w-3/12 xl:w-2/12">
-                    <div class="mb-12 lg:mb-16">
-                        <h2 class="mb-10 text-xl font-bold text-dark dark:text-white">
-                            Other Roles
-                        </h2>
-                        <ul>
-                            <li><a href="https://user.gosnel.com" class="mb-4 inline-block text-base text-gray-600 hover:text-orange-500 dark:text-gray-300">For Users</a></li>
-                            <li><a href="https://vendor.gosnel.com" class="mb-4 inline-block text-base text-gray-600 hover:text-orange-500 dark:text-gray-300">For Vendors</a></li>
-                            <li><a href="https://promo.gosnel.com" class="mb-4 inline-block text-base text-gray-600 hover:text-orange-500 dark:text-gray-300">Promotions</a></li>
-                        </ul>
-                    </div>
+                
+                <div class="text-center">
+                    <div class="step-number text-white text-2xl font-bold w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">3</div>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">📱 Download App</h3>
+                    <p class="text-gray-600 text-sm">Get the GoSnel Driver app and set up your profile</p>
                 </div>
-                <div class="w-full px-4 md:w-1/2 lg:w-3/12 xl:w-3/12">
-                    <div class="mb-12 lg:mb-16">
-                        <h2 class="mb-10 text-xl font-bold text-dark dark:text-white">
-                            Download App
-                        </h2>
-                        <p class="text-base text-gray-600 dark:text-gray-300 mb-6">
-                            Get the GoSnel driver app on your mobile device.
-                        </p>
-                        <div class="space-y-3">
-                            <div class="flex items-center space-x-3 p-3 bg-gray-100 dark:bg-dark-700 rounded-lg">
-                                <span class="text-2xl">📱</span>
-                                <div>
-                                    <div class="text-sm font-semibold text-dark dark:text-white">iOS App</div>
-                                    <div class="text-xs text-gray-500">Coming Soon</div>
-                                </div>
-                            </div>
-                            <div class="flex items-center space-x-3 p-3 bg-gray-100 dark:bg-dark-700 rounded-lg">
-                                <span class="text-2xl">🤖</span>
-                                <div>
-                                    <div class="text-sm font-semibold text-dark dark:text-white">Android App</div>
-                                    <div class="text-xs text-gray-500">Coming Soon</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="border-t border-gray-200 dark:border-dark-700 pt-8">
-                <div class="-mx-4 flex flex-wrap items-center justify-between">
-                    <div class="w-full px-4 md:w-1/2">
-                        <p class="text-sm text-gray-600 dark:text-gray-300">
-                            © 2025 GoSnel Drivers. All rights reserved.
-                        </p>
-                    </div>
-                    <div class="w-full px-4 md:w-1/2">
-                        <div class="flex items-center justify-center md:justify-end space-x-6">
-                            <a href="https://gosnel.com/legal/privacy" class="text-sm text-gray-600 hover:text-orange-500 dark:text-gray-300">Privacy Policy</a>
-                            <a href="https://gosnel.com/legal/terms" class="text-sm text-gray-600 hover:text-orange-500 dark:text-gray-300">Terms of Service</a>
-                        </div>
-                    </div>
+                
+                <div class="text-center">
+                    <div class="step-number text-white text-2xl font-bold w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">4</div>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">🚀 Start Earning</h3>
+                    <p class="text-gray-600 text-sm">Accept orders and start earning immediately!</p>
                 </div>
             </div>
         </div>
-    </footer>
-    <!-- ====== Footer Section End -->
-</body>
-</html>
-            <div class="flex items-center justify-center space-x-3 mb-4">
-                <div class="logo-circle">GS</div>
-                <span class="text-xl font-bold">GoSnel</span>
+    </section>
+
+    <!-- Requirements Section -->
+    <section class="py-16 md:py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">Requirements to Get Started</h2>
+            
+            <div class="max-w-2xl mx-auto bg-white p-8 rounded-xl shadow-lg">
+                <ul class="space-y-5">
+                    <li class="flex items-center gap-4 p-3 rounded-lg hover:bg-teal-50 transition">
+                        <span class="text-teal-500 text-2xl">✓</span>
+                        <span class="text-lg text-gray-700">Valid UAE driving license</span>
+                    </li>
+                    <li class="flex items-center gap-4 p-3 rounded-lg hover:bg-teal-50 transition">
+                        <span class="text-teal-500 text-2xl">✓</span>
+                        <span class="text-lg text-gray-700">Must own a motorcycle or car</span>
+                    </li>
+                    <li class="flex items-center gap-4 p-3 rounded-lg hover:bg-teal-50 transition">
+                        <span class="text-teal-500 text-2xl">✓</span>
+                        <span class="text-lg text-gray-700">Must live in Ajman</span>
+                    </li>
+                    <li class="flex items-center gap-4 p-3 rounded-lg hover:bg-teal-50 transition">
+                        <span class="text-teal-500 text-2xl">✓</span>
+                        <span class="text-lg text-gray-700">Smartphone with GPS</span>
+                    </li>
+                    <li class="flex items-center gap-4 p-3 rounded-lg hover:bg-teal-50 transition">
+                        <span class="text-teal-500 text-2xl">✓</span>
+                        <span class="text-lg text-gray-700">Age 18 or above</span>
+                    </li>
+                </ul>
             </div>
-            <p class="text-gray-400 text-sm">© 2025 GoSnel. Driving the future in UAE</p>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="gradient-teal text-white py-16 md:py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Start Earning?</h2>
+            <p class="text-xl text-teal-100 mb-8 max-w-2xl mx-auto">Join thousands of drivers already making money with GoSnel. No interviews, no commitments – just start earning!</p>
+            <a href="https://gosnel.com/driver/register" class="bg-white text-teal-600 px-10 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition shadow-xl inline-block">🚀 Register Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-3 mb-4 md:mb-0">
+                    <div class="w-10 h-10 gradient-teal rounded-full flex items-center justify-center text-white font-bold text-sm">GS</div>
+                    <span class="text-xl font-bold">GoSnel</span>
+                </div>
+                <div class="text-center md:text-right">
+                    <p class="text-gray-400 mb-2">© 2025 GoSnel. All rights reserved.</p>
+                    <p class="text-gray-500 text-sm">Made with ❤️ in UAE</p>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-6 pt-6 text-center">
+                <a href="https://gosnel.com/privacy" class="text-gray-400 hover:text-white mx-3">Privacy Policy</a>
+                <a href="https://gosnel.com/terms" class="text-gray-400 hover:text-white mx-3">Terms of Service</a>
+                <a href="https://gosnel.com" class="text-gray-400 hover:text-white mx-3">Order Food</a>
+            </div>
         </div>
     </footer>
+
 </body>
 </html>
