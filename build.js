@@ -61,6 +61,15 @@ const buildPages = () => {
     console.log("✅ Copied assets");
   }
 
+  // Copy _redirects file for Cloudflare Pages routing
+  const redirectsPath = path.join(srcDir, "_redirects");
+  const distRedirectsPath = path.join(distDir, "_redirects");
+
+  if (fs.existsSync(redirectsPath)) {
+    fs.copyFileSync(redirectsPath, distRedirectsPath);
+    console.log("✅ Copied _redirects file");
+  }
+
   console.log("🎉 Build complete!");
 };
 
