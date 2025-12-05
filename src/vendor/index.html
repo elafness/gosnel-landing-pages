@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en" x-data="{ darkMode: false }" :class="{ 'dark': darkMode }">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoSnel Vendor - Partner with UAE's Leading Food AI</title>
+    <meta name="description" content="Join GoSnel's vendor network and grow your restaurant business with AI-powered food delivery in UAE. Start earning more today.">
+    <link rel="stylesheet" href="../output.css">
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+</head>
+<body class="bg-white dark:bg-dark-900 font-inter">
+    <!-- ====== Navbar Section Start -->
+    <div
+        class="absolute left-0 top-0 z-50 w-full bg-white/95 backdrop-blur-sm dark:bg-dark-800/95 shadow-sm"
+        :class="{ 'bg-white dark:bg-dark-800': scrolled }"
+        x-data="{ open: false, scrolled: false }"
+        @scroll.window="scrolled = window.scrollY > 10"
+    >
+        <div class="container mx-auto px-4">
+            <div class="relative flex items-center justify-between">
+                <div class="w-60 max-w-full px-4">
+                    <a href="https://vendor.gosnel.com" class="block w-full py-5">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-gradient-to-br from-primary-500 to-primary-600 rounded-full flex items-center justify-center text-lg font-bold text-white shadow-lg">
+                                GS
+                            </div>
+                            <span class="text-xl font-bold text-dark dark:text-white">GoSnel Vendor</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="flex w-full items-center justify-between px-4">
+                    <nav class="hidden lg:flex lg:space-x-8">
+                        <a href="#features" class="text-base font-medium text-gray-700 hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-400 transition">Benefits</a>
+                        <a href="#pricing" class="text-base font-medium text-gray-700 hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-400 transition">Pricing</a>
+                        <a href="#support" class="text-base font-medium text-gray-700 hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-400 transition">Support</a>
+                        <a href="https://gosnel.com" class="text-base font-medium text-gray-700 hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-400 transition">Main App</a>
+                    </nav>
+                    <div class="flex items-center space-x-4">
+                        <a href="https://gosnel.com/vendor/login" class="hidden lg:inline-block px-6 py-2 text-base font-medium text-primary-500 hover:text-primary-600 transition">
+                            Login
+                        </a>
+                        <a href="https://gosnel.com/vendor/signup" class="btn-primary">
+                            Join Now
+                        </a>
+                        <button
+                            @click="open = !open"
+                            class="lg:hidden flex flex-col justify-center items-center w-6 h-6 space-y-1"
+                        >
+                            <span class="w-5 h-0.5 bg-gray-600 dark:bg-gray-300 transition-all" :class="{ 'rotate-45 translate-y-1.5': open }"></span>
+                            <span class="w-5 h-0.5 bg-gray-600 dark:bg-gray-300 transition-all" :class="{ 'opacity-0': open }"></span>
+                            <span class="w-5 h-0.5 bg-gray-600 dark:bg-gray-300 transition-all" :class="{ '-rotate-45 -translate-y-1.5': open }"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div x-show="open" x-transition class="lg:hidden bg-white dark:bg-dark-800 border-t dark:border-dark-700">
+            <div class="container mx-auto px-4 py-4 space-y-4">
+                <a href="#features" class="block text-base font-medium text-gray-700 hover:text-primary-500 dark:text-gray-300" @click="open = false">Benefits</a>
+                <a href="#pricing" class="block text-base font-medium text-gray-700 hover:text-primary-500 dark:text-gray-300" @click="open = false">Pricing</a>
+                <a href="#support" class="block text-base font-medium text-gray-700 hover:text-primary-500 dark:text-gray-300" @click="open = false">Support</a>
+                <a href="https://gosnel.com" class="block text-base font-medium text-gray-700 hover:text-primary-500 dark:text-gray-300" @click="open = false">Main App</a>
+                <div class="pt-4 border-t dark:border-dark-700 space-y-2">
+                    <a href="https://gosnel.com/vendor/login" class="block w-full text-center px-4 py-2 border border-primary-500 text-primary-500 rounded-lg hover:bg-primary-50 dark:hover:bg-dark-700 transition">Login</a>
+                    <a href="https://gosnel.com/vendor/signup" class="block w-full text-center px-4 py-2 bg-primary-500 text-white rounded-lg hover:bg-primary-600 transition">Join Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ====== Navbar Section End -->
+
+    <!-- ====== Hero Section Start -->
+    <section id="home" class="relative overflow-hidden bg-primary-50/50 dark:bg-dark-900 pt-32 pb-20 lg:pt-40 lg:pb-28">
+        <div class="container mx-auto">
+            <div class="-mx-4 flex flex-wrap items-center">
+                <div class="w-full px-4 lg:w-5/12">
+                    <div class="hero-content">
+                        <h1 class="mb-5 text-4xl font-bold leading-[1.2] text-dark sm:text-5xl md:text-6xl dark:text-white">
+                            Grow Your Restaurant with
+                            <span class="text-primary-500">AI-Powered</span>
+                            Food Delivery
+                        </h1>
+                        <p class="mb-8 max-w-[480px] text-lg text-gray-600 dark:text-gray-300">
+                            Join hundreds of successful restaurants in UAE. Increase orders by 300% with our intelligent platform that connects you to hungry customers.
+                        </p>
+                        <div class="flex flex-wrap items-center space-x-4">
+                            <a href="https://gosnel.com/vendor/signup" class="btn-primary mb-4">
+                                Start Selling Today
+                            </a>
+                            <a href="#pricing" class="mb-4 inline-flex items-center justify-center px-8 py-4 text-base font-medium text-dark hover:text-primary-500 dark:text-white dark:hover:text-primary-400 transition">
+                                View Pricing
+                                <span class="ml-2">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </span>
+                            </a>
+                        </div>
+
+                        <!-- Stats -->
+                        <div class="pt-12 flex items-center space-x-8">
+                            <div>
+                                <h3 class="text-3xl font-bold text-dark dark:text-white">300%</h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-300">Order Increase</p>
+                            </div>
+                            <div>
+                                <h3 class="text-3xl font-bold text-dark dark:text-white">500+</h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-300">Partner Restaurants</p>
+                            </div>
+                            <div>
+                                <h3 class="text-3xl font-bold text-dark dark:text-white">24/7</h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-300">Support</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full px-4 lg:w-7/12">
+                    <div class="lg:ml-auto lg:text-right">
+                        <div class="relative z-10 inline-block pt-11 lg:pt-0">
+                            <div class="bg-gradient-to-br from-primary-500/10 to-secondary-500/10 rounded-3xl p-8 backdrop-blur-sm">
+                                <!-- Restaurant Dashboard Preview -->
+                                <div class="bg-white dark:bg-dark-800 rounded-2xl shadow-2xl p-6 max-w-lg">
+                                    <div class="flex items-center justify-between mb-6">
+                                        <h3 class="text-lg font-semibold text-dark dark:text-white">Restaurant Dashboard</h3>
+                                        <div class="flex space-x-2">
+                                            <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                                            <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                                            <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="space-y-4">
+                                        <div class="flex items-center justify-between p-3 bg-green-50 dark:bg-green-900/20 rounded-lg">
+                                            <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Today's Revenue</span>
+                                            <span class="text-lg font-bold text-green-600">AED 2,450</span>
+                                        </div>
+                                        <div class="flex items-center justify-between p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
+                                            <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Orders Today</span>
+                                            <span class="text-lg font-bold text-blue-600">47</span>
+                                        </div>
+                                        <div class="flex items-center justify-between p-3 bg-orange-50 dark:bg-orange-900/20 rounded-lg">
+                                            <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Avg Rating</span>
+                                            <span class="text-lg font-bold text-orange-600">4.8⭐</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <span class="absolute -left-8 -bottom-8 z-[-1]">
+                                <svg width="93" height="93" viewBox="0 0 93 93" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="46.5" cy="46.5" r="46.5" fill="url(#paint0_linear)"/>
+                                    <defs>
+                                        <linearGradient id="paint0_linear" x1="46.5" y1="0" x2="46.5" y2="93" gradientUnits="userSpaceOnUse">
+                                            <stop stop-color="#4ECDC4" stop-opacity="0.3"/>
+                                            <stop offset="1" stop-color="#4ECDC4" stop-opacity="0"/>
+                                        </linearGradient>
+                                    </defs>
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <span class="absolute left-0 top-0 z-[-1]">
+            <svg width="495" height="470" viewBox="0 0 495 470" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="55" cy="442" r="138" stroke="url(#paint0_linear_25:217)" stroke-opacity="0.04" stroke-width="50"/>
+                <circle cx="446" r="39" stroke="url(#paint1_linear_25:217)" stroke-opacity="0.04" stroke-width="20"/>
+                <path d="M245.406 137.609L233.985 94.9852L276.609 106.406L245.406 137.609Z" stroke="url(#paint2_linear_25:217)" stroke-opacity="0.08" stroke-width="12"/>
+                <defs>
+                    <linearGradient id="paint0_linear_25:217" x1="63.5" y1="152.5" x2="140.5" y2="179.5" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#4ECDC4"/>
+                        <stop offset="1" stop-color="#4ECDC4" stop-opacity="0"/>
+                    </linearGradient>
+                    <linearGradient id="paint1_linear_25:217" x1="446" y1="-6.5" x2="446" y2="84" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#4ECDC4"/>
+                        <stop offset="1" stop-color="#4ECDC4" stop-opacity="0"/>
+                    </linearGradient>
+                    <linearGradient id="paint2_linear_25:217" x1="245.406" y1="137.609" x2="276.609" y2="106.406" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#4ECDC4"/>
+                        <stop offset="1" stop-color="#4ECDC4" stop-opacity="0"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+        </span>
+    </section>
+    <!-- ====== Hero Section End -->
+
+    <!-- ====== Benefits Section Start -->
+    <section id="features" class="pb-12 pt-20 lg:pb-[90px] lg:pt-[120px] dark:bg-dark-800">
+        <div class="container mx-auto">
+            <div class="-mx-4 flex flex-wrap">
+                <div class="w-full px-4">
+                    <div class="mx-auto mb-12 max-w-[510px] text-center lg:mb-20">
+                        <span class="mb-2 block text-lg font-semibold text-primary-500">
+                            Partner Benefits
+                        </span>
+                        <h2 class="mb-3 text-3xl font-bold leading-[1.2] text-dark sm:text-4xl md:text-[40px] dark:text-white">
+                            Why Choose GoSnel as Your Partner
+                        </h2>
+                        <p class="text-base text-gray-600 dark:text-gray-300">
+                            Join the fastest-growing food delivery platform in UAE and transform your restaurant business with cutting-edge AI technology.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="-mx-4 flex flex-wrap">
+                <div class="w-full px-4 md:w-1/2 lg:w-1/3">
+                    <div class="mb-9 rounded-[20px] bg-white p-10 shadow-2 hover:shadow-lg md:px-7 xl:px-10 dark:bg-dark-700 transition-shadow">
+                        <div class="mb-8 flex h-[70px] w-[70px] items-center justify-center rounded-2xl bg-green-500">
+                            <span class="text-2xl">💰</span>
+                        </div>
+                        <h4 class="mb-[14px] text-2xl font-semibold text-dark dark:text-white">
+                            Increase Revenue by 300%
+                        </h4>
+                        <p class="text-gray-600 dark:text-gray-300">
+                            AI-powered recommendations drive more orders to your restaurant. Our partners see average revenue increase of 300%.
+                        </p>
+                    </div>
+                </div>
+                <div class="w-full px-4 md:w-1/2 lg:w-1/3">
+                    <div class="mb-9 rounded-[20px] bg-white p-10 shadow-2 hover:shadow-lg md:px-7 xl:px-10 dark:bg-dark-700 transition-shadow">
+                        <div class="mb-8 flex h-[70px] w-[70px] items-center justify-center rounded-2xl bg-blue-500">
+                            <span class="text-2xl">📊</span>
+                        </div>
+                        <h4 class="mb-[14px] text-2xl font-semibold text-dark dark:text-white">
+                            Smart Analytics Dashboard
+                        </h4>
+                        <p class="text-gray-600 dark:text-gray-300">
+                            Get detailed insights about your customers, peak hours, popular dishes, and revenue trends to optimize your business.
+                        </p>
+                    </div>
+                </div>
+                <div class="w-full px-4 md:w-1/2 lg:w-1/3">
+                    <div class="mb-9 rounded-[20px] bg-white p-10 shadow-2 hover:shadow-lg md:px-7 xl:px-10 dark:bg-dark-700 transition-shadow">
+                        <div class="mb-8 flex h-[70px] w-[70px] items-center justify-center rounded-2xl bg-primary-500">
+                            <span class="text-2xl">🚀</span>
+                        </div>
+                        <h4 class="mb-[14px] text-2xl font-semibold text-dark dark:text-white">
+                            Zero Setup Cost
+                        </h4>
+                        <p class="text-gray-600 dark:text-gray-300">
+                            Start selling immediately with no upfront costs. We provide everything you need to get your restaurant online.
+                        </p>
+                    </div>
+                </div>
+                <div class="w-full px-4 md:w-1/2 lg:w-1/3">
+                    <div class="mb-9 rounded-[20px] bg-white p-10 shadow-2 hover:shadow-lg md:px-7 xl:px-10 dark:bg-dark-700 transition-shadow">
+                        <div class="mb-8 flex h-[70px] w-[70px] items-center justify-center rounded-2xl bg-purple-500">
+                            <span class="text-2xl">🤖</span>
+                        </div>
+                        <h4 class="mb-[14px] text-2xl font-semibold text-dark dark:text-white">
+                            AI Customer Matching
+                        </h4>
+                        <p class="text-gray-600 dark:text-gray-300">
+                            Our AI connects your dishes with customers who will love them, increasing order frequency and customer satisfaction.
+                        </p>
+                    </div>
+                </div>
+                <div class="w-full px-4 md:w-1/2 lg:w-1/3">
+                    <div class="mb-9 rounded-[20px] bg-white p-10 shadow-2 hover:shadow-lg md:px-7 xl:px-10 dark:bg-dark-700 transition-shadow">
+                        <div class="mb-8 flex h-[70px] w-[70px] items-center justify-center rounded-2xl bg-secondary-500">
+                            <span class="text-2xl">📱</span>
+                        </div>
+                        <h4 class="mb-[14px] text-2xl font-semibold text-dark dark:text-white">
+                            Easy Order Management
+                        </h4>
+                        <p class="text-gray-600 dark:text-gray-300">
+                            Streamlined dashboard to manage orders, update menus, track deliveries, and communicate with customers.
+                        </p>
+                    </div>
+                </div>
+                <div class="w-full px-4 md:w-1/2 lg:w-1/3">
+                    <div class="mb-9 rounded-[20px] bg-white p-10 shadow-2 hover:shadow-lg md:px-7 xl:px-10 dark:bg-dark-700 transition-shadow">
+                        <div class="mb-8 flex h-[70px] w-[70px] items-center justify-center rounded-2xl bg-yellow-500">
+                            <span class="text-2xl">⭐</span>
+                        </div>
+                        <h4 class="mb-[14px] text-2xl font-semibold text-dark dark:text-white">
+                            24/7 Partner Support
+                        </h4>
+                        <p class="text-gray-600 dark:text-gray-300">
+                            Dedicated support team available round the clock to help you maximize your success on the platform.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ====== Benefits Section End -->
+
+    <!-- ====== Pricing Section Start -->
+    <section id="pricing" class="bg-gray-50 dark:bg-dark-900 py-20 lg:py-[120px]">
+        <div class="container mx-auto">
+            <div class="-mx-4 flex flex-wrap">
+                <div class="w-full px-4">
+                    <div class="mx-auto mb-12 max-w-[510px] text-center lg:mb-20">
+                        <span class="mb-2 block text-lg font-semibold text-primary-500">
+                            Transparent Pricing
+                        </span>
+                        <h2 class="mb-3 text-3xl font-bold leading-[1.2] text-dark sm:text-4xl md:text-[40px] dark:text-white">
+                            Simple, Fair Commission Structure
+                        </h2>
+                        <p class="text-base text-gray-600 dark:text-gray-300">
+                            No hidden fees, no setup costs. Just a simple commission on successful orders.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="-mx-4 flex flex-wrap justify-center">
+                <div class="w-full px-4 md:w-1/2 lg:w-1/3">
+                    <div class="relative z-10 mb-10 overflow-hidden rounded-[10px] border-2 border-stroke bg-white py-10 px-8 shadow-pricing sm:p-12 lg:py-10 lg:px-6 xl:p-[50px] dark:bg-dark-800 dark:border-dark-700">
+                        <span class="mb-3 block text-lg font-semibold text-primary-500">
+                            Standard Plan
+                        </span>
+                        <h2 class="mb-5 text-[42px] font-bold text-dark dark:text-white">
+                            <span>15%</span>
+                            <span class="text-base font-medium text-gray-600 dark:text-gray-300">
+                                / commission per order
+                            </span>
+                        </h2>
+                        <p class="mb-8 border-b border-stroke pb-8 text-base text-gray-600 dark:border-dark-700 dark:text-gray-300">
+                            Perfect for new restaurants getting started with food delivery.
+                        </p>
+                        <div class="mb-9">
+                            <h3 class="mb-4 text-xl font-semibold text-dark dark:text-white">
+                                Features Included:
+                            </h3>
+                            <ul class="space-y-3">
+                                <li class="flex items-center">
+                                    <span class="mr-2 text-primary-500">✓</span>
+                                    <span class="text-gray-600 dark:text-gray-300">AI-powered recommendations</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="mr-2 text-primary-500">✓</span>
+                                    <span class="text-gray-600 dark:text-gray-300">Basic analytics dashboard</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="mr-2 text-primary-500">✓</span>
+                                    <span class="text-gray-600 dark:text-gray-300">Order management system</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="mr-2 text-primary-500">✓</span>
+                                    <span class="text-gray-600 dark:text-gray-300">Customer support</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <a href="https://gosnel.com/vendor/signup" class="block w-full rounded-md border border-primary-500 bg-transparent py-4 px-6 text-center text-base font-semibold text-primary-500 transition hover:bg-primary-500 hover:text-white">
+                            Start Now
+                        </a>
+                    </div>
+                </div>
+                <div class="w-full px-4 md:w-1/2 lg:w-1/3">
+                    <div class="relative z-10 mb-10 overflow-hidden rounded-[10px] border-2 border-primary-500 bg-white py-10 px-8 shadow-pricing sm:p-12 lg:py-10 lg:px-6 xl:p-[50px] dark:bg-dark-800">
+                        <div class="absolute -top-7 right-6">
+                            <span class="rounded-full bg-primary-500 px-4 py-2 text-sm font-medium text-white">
+                                Most Popular
+                            </span>
+                        </div>
+                        <span class="mb-3 block text-lg font-semibold text-primary-500">
+                            Premium Plan
+                        </span>
+                        <h2 class="mb-5 text-[42px] font-bold text-dark dark:text-white">
+                            <span>12%</span>
+                            <span class="text-base font-medium text-gray-600 dark:text-gray-300">
+                                / commission per order
+                            </span>
+                        </h2>
+                        <p class="mb-8 border-b border-stroke pb-8 text-base text-gray-600 dark:border-dark-700 dark:text-gray-300">
+                            Best value for established restaurants looking to maximize growth.
+                        </p>
+                        <div class="mb-9">
+                            <h3 class="mb-4 text-xl font-semibold text-dark dark:text-white">
+                                Everything in Standard, plus:
+                            </h3>
+                            <ul class="space-y-3">
+                                <li class="flex items-center">
+                                    <span class="mr-2 text-primary-500">✓</span>
+                                    <span class="text-gray-600 dark:text-gray-300">Advanced analytics & insights</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="mr-2 text-primary-500">✓</span>
+                                    <span class="text-gray-600 dark:text-gray-300">Priority AI recommendations</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="mr-2 text-primary-500">✓</span>
+                                    <span class="text-gray-600 dark:text-gray-300">Marketing campaign tools</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="mr-2 text-primary-500">✓</span>
+                                    <span class="text-gray-600 dark:text-gray-300">Priority customer support</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <a href="https://gosnel.com/vendor/signup" class="block w-full rounded-md border border-primary-500 bg-primary-500 py-4 px-6 text-center text-base font-semibold text-white transition hover:bg-primary-600">
+                            Get Started
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ====== Pricing Section End -->
+
+    <!-- ====== Call To Action Section Start -->
+    <section id="support" class="bg-gradient-to-r from-secondary-500 to-secondary-600 py-20 lg:py-[120px]">
+        <div class="container mx-auto">
+            <div class="relative z-10 overflow-hidden rounded-sm bg-white/10 backdrop-blur-sm px-8 py-12 md:p-[70px]">
+                <div class="-mx-4 flex flex-wrap items-center">
+                    <div class="w-full px-4 lg:w-1/2">
+                        <span class="mb-4 block text-base font-medium text-white">
+                            Ready to Partner with GoSnel?
+                        </span>
+                        <h2 class="mb-6 text-3xl font-bold leading-tight text-white sm:mb-8 sm:text-[40px]/[48px] lg:mb-0">
+                            <span class="xs:block">Start growing your</span>
+                            <span>restaurant business today</span>
+                        </h2>
+                    </div>
+                    <div class="w-full px-4 lg:w-1/2">
+                        <div class="flex flex-wrap lg:justify-end">
+                            <a href="https://gosnel.com/vendor/signup" class="my-1 mr-4 inline-flex rounded-md bg-white px-7 py-3 text-base font-medium text-secondary-500 transition hover:bg-gray-100 hover:shadow-lg">
+                                Become a Partner
+                            </a>
+                            <a href="https://gosnel.com/vendor/login" class="my-1 inline-flex rounded-md bg-primary-500 px-7 py-3 text-base font-medium text-white transition hover:bg-primary-600">
+                                Vendor Dashboard
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <span class="absolute left-0 top-0 z-[-1]">
+                        <svg width="189" height="162" viewBox="0 0 189 162" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <ellipse cx="16" cy="-16.5" rx="173" ry="178.5" transform="rotate(180 16 -16.5)" fill="url(#paint0_linear)" />
+                            <defs>
+                                <linearGradient id="paint0_linear" x1="-157" y1="-107.754" x2="98.5011" y2="-106.425" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="white" stop-opacity="0.07" />
+                                    <stop offset="1" stop-color="white" stop-opacity="0" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </span>
+                    <span class="absolute bottom-0 right-0 z-[-1]">
+                        <svg width="191" height="208" viewBox="0 0 191 208" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <ellipse cx="173" cy="178.5" rx="173" ry="178.5" fill="url(#paint1_linear)" />
+                            <defs>
+                                <linearGradient id="paint1_linear" x1="17.9179" y1="69.2484" x2="247.857" y2="70.5743" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="white" stop-opacity="0.07" />
+                                    <stop offset="1" stop-color="white" stop-opacity="0" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ====== Call To Action Section End -->
+
+    <!-- ====== Footer Section Start -->
+    <footer class="bg-white pt-20 pb-10 lg:pt-[120px] lg:pb-20 dark:bg-dark-900">
+        <div class="container mx-auto">
+            <div class="-mx-4 flex flex-wrap">
+                <div class="w-full px-4 md:w-1/2 lg:w-4/12 xl:w-5/12">
+                    <div class="mb-12 max-w-[360px] lg:mb-16">
+                        <a href="https://vendor.gosnel.com" class="mb-8 inline-block">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-12 h-12 bg-gradient-to-br from-primary-500 to-primary-600 rounded-full flex items-center justify-center text-xl font-bold text-white shadow-lg">
+                                    GS
+                                </div>
+                                <span class="text-2xl font-bold text-dark dark:text-white">GoSnel for Vendors</span>
+                            </div>
+                        </a>
+                        <p class="text-base text-gray-600 dark:text-gray-300">
+                            Partner with UAE's fastest-growing food delivery platform. Increase your restaurant revenue with AI-powered customer connections and smart order management.
+                        </p>
+                        <div class="flex items-center mt-6 space-x-4">
+                            <span class="text-sm text-gray-500 dark:text-gray-400">Made with ❤️ in UAE</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full px-4 sm:w-1/2 md:w-1/2 lg:w-2/12 xl:w-2/12">
+                    <div class="mb-12 lg:mb-16">
+                        <h2 class="mb-10 text-xl font-bold text-dark dark:text-white">
+                            Vendor Portal
+                        </h2>
+                        <ul>
+                            <li><a href="https://gosnel.com/vendor/signup" class="mb-4 inline-block text-base text-gray-600 hover:text-primary-500 dark:text-gray-300">Join Now</a></li>
+                            <li><a href="https://gosnel.com/vendor/login" class="mb-4 inline-block text-base text-gray-600 hover:text-primary-500 dark:text-gray-300">Login</a></li>
+                            <li><a href="#pricing" class="mb-4 inline-block text-base text-gray-600 hover:text-primary-500 dark:text-gray-300">Pricing</a></li>
+                            <li><a href="#support" class="mb-4 inline-block text-base text-gray-600 hover:text-primary-500 dark:text-gray-300">Support</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="w-full px-4 sm:w-1/2 md:w-1/2 lg:w-3/12 xl:w-2/12">
+                    <div class="mb-12 lg:mb-16">
+                        <h2 class="mb-10 text-xl font-bold text-dark dark:text-white">
+                            Other Platforms
+                        </h2>
+                        <ul>
+                            <li><a href="https://gosnel.com" class="mb-4 inline-block text-base text-gray-600 hover:text-primary-500 dark:text-gray-300">Order Food</a></li>
+                            <li><a href="https://user.gosnel.com" class="mb-4 inline-block text-base text-gray-600 hover:text-primary-500 dark:text-gray-300">Customer App</a></li>
+                            <li><a href="https://drivers.gosnel.com" class="mb-4 inline-block text-base text-gray-600 hover:text-primary-500 dark:text-gray-300">Delivery Drivers</a></li>
+                            <li><a href="https://promo.gosnel.com" class="mb-4 inline-block text-base text-gray-600 hover:text-primary-500 dark:text-gray-300">Promotions</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="w-full px-4 md:w-1/2 lg:w-3/12 xl:w-3/12">
+                    <div class="mb-12 lg:mb-16">
+                        <h2 class="mb-10 text-xl font-bold text-dark dark:text-white">
+                            Restaurant Success
+                        </h2>
+                        <p class="text-base text-gray-600 dark:text-gray-300 mb-6">
+                            Join 500+ successful restaurant partners already growing their business with GoSnel.
+                        </p>
+                        <div class="space-y-3">
+                            <div class="flex items-center space-x-3 p-3 bg-gray-100 dark:bg-dark-700 rounded-lg">
+                                <span class="text-2xl">📈</span>
+                                <div>
+                                    <div class="text-sm font-semibold text-dark dark:text-white">300% Average Growth</div>
+                                    <div class="text-xs text-gray-500">Revenue increase for partners</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-3 p-3 bg-gray-100 dark:bg-dark-700 rounded-lg">
+                                <span class="text-2xl">⭐</span>
+                                <div>
+                                    <div class="text-sm font-semibold text-dark dark:text-white">4.8/5 Rating</div>
+                                    <div class="text-xs text-gray-500">Partner satisfaction score</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-200 dark:border-dark-700 pt-8">
+                <div class="-mx-4 flex flex-wrap items-center justify-between">
+                    <div class="w-full px-4 md:w-1/2">
+                        <p class="text-sm text-gray-600 dark:text-gray-300">
+                            © 2025 GoSnel. All rights reserved.
+                        </p>
+                    </div>
+                    <div class="w-full px-4 md:w-1/2">
+                        <div class="flex items-center justify-center md:justify-end space-x-6">
+                            <a href="https://gosnel.com/vendor/legal/privacy" class="text-sm text-gray-600 hover:text-primary-500 dark:text-gray-300">Privacy Policy</a>
+                            <a href="https://gosnel.com/vendor/legal/terms" class="text-sm text-gray-600 hover:text-primary-500 dark:text-gray-300">Terms of Service</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- ====== Footer Section End -->
+
+    <!-- JavaScript for smooth scrolling -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
