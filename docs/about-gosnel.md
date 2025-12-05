@@ -10,7 +10,8 @@ Unlike traditional food delivery apps, GoSnel uses advanced artificial intellige
 
 - **Understand your preferences**: Learn from your past orders, dietary restrictions, and taste preferences
 - **Smart meal suggestions**: Recommend dishes you'll love based on mood, time of day, and weather
-- **Personalized conversations**: Chat with our AI assistant in English or Arabic to discover new flavors
+- **Personalized conversations**: Chat with our AI assistant in 100+ language styles to find the perfect meal
+- **Optimize delivery routes**: Ensure your food arrives hot and fresh with AI-driven logistics
 - **Dynamic menu curation**: Show you the most relevant dishes from thousands of options
 
 ## 🌟 Key Features
