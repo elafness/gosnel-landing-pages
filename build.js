@@ -50,23 +50,29 @@ const buildPages = () => {
     console.log("✅ Copied root index.html for routing");
   }
 
-  // Copy assets if they exist
+  // Copy assets if they exist (recursively)
   const assetsDir = path.join(srcDir, "assets");
   const distAssetsDir = path.join(distDir, "assets");
 
   if (fs.existsSync(assetsDir)) {
-    if (!fs.existsSync(distAssetsDir)) {
-      fs.mkdirSync(distAssetsDir, { recursive: true });
-    }
+    // Recursive copy function
+    const copyDirectoryRecursive = (src, dest) => {
+      if (!fs.existsSync(dest)) {
+        fs.mkdirSync(dest, { recursive: true });
+      }
+      const entries = fs.readdirSync(src, { withFileTypes: true });
+      entries.forEach((entry) => {
+        const srcPath = path.join(src, entry.name);
+        const destPath = path.join(dest, entry.name);
+        if (entry.isDirectory()) {
+          copyDirectoryRecursive(srcPath, destPath);
+        } else {
+          fs.copyFileSync(srcPath, destPath);
+        }
+      });
+    };
 
-    // Copy all files from assets
-    const files = fs.readdirSync(assetsDir);
-    files.forEach((file) => {
-      const srcFile = path.join(assetsDir, file);
-      const distFile = path.join(distAssetsDir, file);
-      fs.copyFileSync(srcFile, distFile);
-    });
-
+    copyDirectoryRecursive(assetsDir, distAssetsDir);
     console.log("✅ Copied assets");
   }
 
