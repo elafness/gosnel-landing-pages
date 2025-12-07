@@ -5,13 +5,13 @@ export async function onRequest(context) {
   // Map subdomain to the correct index file
   let targetFile = null;
   
-  if (hostname === 'drivers.gosnel.com') {
+  if (hostname.startsWith('drivers.') || hostname.includes('drivers')) {
     targetFile = '/index-drivers.html';
-  } else if (hostname === 'vendor.gosnel.com') {
+  } else if (hostname.startsWith('vendor.') || hostname.includes('vendor')) {
     targetFile = '/index-vendor.html';
-  } else if (hostname === 'user.gosnel.com') {
+  } else if (hostname.startsWith('user.') || hostname.includes('user')) {
     targetFile = '/index-user.html';
-  } else if (hostname === 'promo.gosnel.com') {
+  } else if (hostname.startsWith('promo.') || hostname.includes('promo')) {
     targetFile = '/index-promo.html';
   }
   
@@ -19,6 +19,13 @@ export async function onRequest(context) {
   if (targetFile && url.pathname === '/') {
     return context.env.ASSETS.fetch(
       new Request(new URL(targetFile, url.origin).toString(), context.request)
+    );
+  }
+  
+  // Default to user landing page for root of pages.dev
+  if (url.pathname === '/') {
+    return context.env.ASSETS.fetch(
+      new Request(new URL('/index-user.html', url.origin).toString(), context.request)
     );
   }
   
