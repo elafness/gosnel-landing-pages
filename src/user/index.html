@@ -140,12 +140,6 @@
                         Get personalized meal recommendations, and place your order — all in one simple conversation.
                     </p>
                     
-                    <!-- Learn More Button -->
-                    <a id="about_button" href="https://gosnel.com/user/about-us" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold text-teal-400 bg-teal-500/10 border border-teal-500/30 hover:bg-teal-500/20 transition mb-8">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                        Learn More
-                    </a>
-                    
                     <!-- What I Can Do -->
                     <div class="mb-10">
                         <h3 id="what_i_can_do" class="text-lg font-bold text-teal-400 mb-4">What I can do for you:</h3>
@@ -179,12 +173,10 @@
                     
                     <!-- CTA Buttons -->
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <a id="get_started" href="https://gosnel.com/user/signup" class="btn-primary gradient-teal text-gray-900 px-8 py-4 rounded-xl font-bold text-lg text-center flex items-center justify-center gap-2">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                        <a id="get_started" href="https://gosnel.com/user/signup" class="btn-primary gradient-teal text-gray-900 px-8 py-4 rounded-xl font-bold text-lg text-center">
                             Start now, it's free!
                         </a>
-                        <a id="try_demo" href="https://gosnel.com/user/demo" class="px-8 py-4 rounded-xl font-bold text-lg text-center text-teal-400 border-2 border-teal-500 bg-white/5 hover:bg-teal-500/10 transition flex items-center justify-center gap-2">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+                        <a id="try_demo" href="https://gosnel.com/user/demo" class="px-8 py-4 rounded-xl font-bold text-lg text-center text-teal-400 border-2 border-teal-500 bg-white/5 hover:bg-teal-500/10 transition">
                             Try a demo chat
                         </a>
                     </div>
@@ -311,8 +303,7 @@
                 No subscription. No hidden fees. No language barriers.<br>
                 Order anytime, cancel anytime — and try our demo chat free, no signup needed!
             </p>
-            <a id="create_account" href="https://gosnel.com/user/signup" class="btn-primary inline-flex items-center justify-center gap-3 gradient-teal text-gray-900 px-10 py-5 rounded-xl font-bold text-xl">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/></svg>
+            <a id="create_account" href="https://gosnel.com/user/signup" class="btn-primary inline-block gradient-teal text-gray-900 px-10 py-5 rounded-xl font-bold text-xl">
                 Create Your Account
             </a>
         </div>
@@ -448,7 +439,6 @@
                 en: {
                     hero_title: 'Not sure what to eat today? \nOrder now and get your meal delivered! ',
                     hero_desc: 'Sit back and relax — GoSnel connects you with real local restaurants through smart AI chat.\nGet personalized meal recommendations, and place your order — all in one simple conversation.',
-                    about_button: '👉 Learn More',
                     what_i_can_do: 'What I can do for you:',
                     suggest_meals: 'Suggest meals based on your budget and taste',
                     find_restaurants: 'Find restaurants that match your preferences',
@@ -492,7 +482,6 @@
                 ar: {
                     hero_title: 'محتار شو تاكل اليوم؟ \nاطلب والوجبة توصلك لبيتك! ',
                     hero_desc: 'خلًك مرتاح، وخذ اقتراحات وجبات تناسب ذوقك وميزانيتك، واطلب أكلك بكل سهولة—كل هذا من خلال محادثة وحدة ويا جوسنِل الذكي.',
-                    about_button: '🔸 اعرف أكثر عن جوسنل',
                     what_i_can_do: 'شو أقدر أسوي لك ؟ 👇',
                     suggest_meals: 'أقترح عليك وجبات حسب ميزانيتك وذوقك',
                     find_restaurants: 'أساعدك تلقى المطاعم اللي تناسبك',
@@ -561,7 +550,6 @@
             const ids = {
                 hero_title: document.getElementById('hero_title'),
                 hero_desc: document.getElementById('hero_desc'),
-                about_button: document.getElementById('about_button'),
                 what_i_can_do: document.getElementById('what_i_can_do'),
                 suggest_meals: document.getElementById('suggest_meals'),
                 find_restaurants: document.getElementById('find_restaurants'),
@@ -645,14 +633,13 @@
                 if(!current) return;
                 if(ids.hero_title) ids.hero_title.innerHTML = nl2br(current.hero_title);
                 if(ids.hero_desc) ids.hero_desc.textContent = current.hero_desc;
-                if(ids.about_button) ids.about_button.childNodes && ids.about_button.childNodes[1] && (ids.about_button.childNodes[1].textContent = current.about_button);
                 if(ids.what_i_can_do) ids.what_i_can_do.textContent = current.what_i_can_do;
                 if(ids.suggest_meals) ids.suggest_meals.textContent = current.suggest_meals;
                 if(ids.find_restaurants) ids.find_restaurants.textContent = current.find_restaurants;
                 if(ids.translate_menus) ids.translate_menus.textContent = current.translate_menus;
                 if(ids.remember_favorites) ids.remember_favorites.textContent = current.remember_favorites;
-                if(ids.get_started) ids.get_started.innerHTML = '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>' + ' ' + current.get_started;
-                if(ids.try_demo) ids.try_demo.innerHTML = '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>' + ' ' + current.try_demo;
+                if(ids.get_started) ids.get_started.textContent = current.get_started;
+                if(ids.try_demo) ids.try_demo.textContent = current.try_demo;
                 if(ids.login) ids.login.textContent = current.login;
                 if(ids.live_preview) ids.live_preview.textContent = current.live_preview;
                 if(ids.why_love) ids.why_love.textContent = current.why_love;
@@ -671,7 +658,7 @@
                 if(ids.dietary_desc2) ids.dietary_desc2.textContent = current.dietary_desc2;
                 if(ids.start_ordering) ids.start_ordering.textContent = current.start_ordering;
                 if(ids.trust_desc_2) ids.trust_desc_2.innerHTML = nl2br(current.trust_desc);
-                if(ids.create_account) ids.create_account.innerHTML = '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/></svg>' + ' ' + current.create_account;
+                if(ids.create_account) ids.create_account.textContent = current.create_account;
                 if(ids.subscribe_title) ids.subscribe_title.textContent = current.subscribe_title;
                 if(ids.subscribe_desc) ids.subscribe_desc.textContent = current.subscribe_desc;
                 if(ids.notification_type) ids.notification_type.textContent = current.notification_type;
