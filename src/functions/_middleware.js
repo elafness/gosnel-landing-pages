@@ -9,8 +9,14 @@ export async function onRequest(context) {
   const { request, env } = context;
   const url = new URL(request.url);
   const hostname = url.hostname.toLowerCase();
+  const pathname = url.pathname;
   
-  // Route based on exact subdomain match
+  // Only handle root path requests - let other paths pass through normally
+  if (pathname !== '/' && pathname !== '') {
+    return env.ASSETS.fetch(request);
+  }
+  
+  // Route root requests based on exact subdomain match
   if (hostname === 'drivers.gosnel.com') {
     const newUrl = new URL('/drivers/index.html', url.origin);
     return env.ASSETS.fetch(new Request(newUrl.toString(), request));
