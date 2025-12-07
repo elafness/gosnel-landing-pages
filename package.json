@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "GoSnel Landing Pages with Tailwind CSS Templates",
   "scripts": {
-    "dev": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
+    "dev": "npm run build && node dev-server.js",
+    "dev:watch": "concurrently \"tailwindcss -i ./src/input.css -o ./dist/output.css --watch\" \"npm run build:pages -- --watch\"",
     "build": "npm run build:css && npm run build:pages",
     "build:css": "tailwindcss -i ./src/input.css -o ./dist/output.css --minify",
     "build:pages": "node build.js",
