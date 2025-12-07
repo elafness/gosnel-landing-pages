@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoSnel - Smart Food Ordering with AI Chat</title>
+    <meta name="description" content="Order food through natural AI conversation. Get personalized meal recommendations based on your taste and budget. 100+ languages supported.">
+    <link rel="stylesheet" href="/output.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Inter', system-ui, sans-serif; }
+        
+        /* Custom Gradient Classes */
+        .gradient-teal { background: linear-gradient(135deg, #4ECDC4, #1A9A93); }
+        .gradient-dark { background: linear-gradient(180deg, #222b38 0%, #1a2129 100%); }
+        
+        /* Text Gradient */
+        .text-gradient {
+            background: linear-gradient(90deg, #ffffff, #4ECDC4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .text-gradient-teal {
+            background: linear-gradient(90deg, #4ECDC4, #1A9A93);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Card Hover Effects */
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(78, 205, 196, 0.2);
+        }
+        
+        /* Button Hover */
+        .btn-primary {
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 24px rgba(78, 205, 196, 0.3);
+        }
+        .btn-primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(78, 205, 196, 0.5);
+        }
+        
+        /* Chat Bubble Animation */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .chat-bubble {
+            animation: fadeInUp 0.3s ease forwards;
+        }
+        
+        /* Glow Effect */
+        .glow-teal {
+            box-shadow: 0 0 30px rgba(78, 205, 196, 0.3);
+        }
+        
+        /* Scrollbar */
+        .chat-container::-webkit-scrollbar {
+            width: 6px;
+        }
+        .chat-container::-webkit-scrollbar-track {
+            background: rgba(255,255,255,0.05);
+            border-radius: 3px;
+        }
+        .chat-container::-webkit-scrollbar-thumb {
+            background: rgba(78, 205, 196, 0.3);
+            border-radius: 3px;
+        }
+        
+        /* Feature Icon */
+        .feature-icon {
+            width: 64px;
+            height: 64px;
+        }
+        
+        /* Language Flags */
+        .lang-pill {
+            transition: all 0.2s ease;
+        }
+        .lang-pill:hover {
+            background: rgba(78, 205, 196, 0.2);
+        }
+    </style>
+</head>
+<body class="gradient-dark min-h-screen text-gray-100">
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-[#222b38]/95 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <a href="https://gosnel.com" class="flex items-center gap-3">
+                    <div class="w-10 h-10 gradient-teal rounded-full flex items-center justify-center text-white font-bold text-sm">GS</div>
+                    <span class="text-2xl font-bold text-gradient-teal">GoSnel</span>
+                </a>
+                
+                <!-- Right Actions -->
+                <div class="flex items-center gap-4">
+                    <!-- Language Switcher -->
+                    <div class="hidden sm:flex items-center gap-1 bg-white/5 rounded-lg p-1 border border-teal-500/30">
+                        <button class="px-3 py-1.5 rounded-md text-sm font-semibold bg-teal-500 text-gray-900">English</button>
+                        <button class="px-3 py-1.5 rounded-md text-sm font-semibold text-gray-400 hover:text-teal-400 transition">عربي</button>
+                    </div>
+                    
+                    <!-- Login Button -->
+                    <a href="https://gosnel.com/login" class="px-4 py-2 rounded-lg text-sm font-semibold text-white border border-teal-500 hover:bg-teal-500 hover:text-gray-900 transition">
+                        Log In
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="py-12 md:py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                <!-- Left Content -->
+                <div>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6">
+                        <span class="text-gradient">Not sure what to eat today?</span>
+                        <br>
+                        <span class="text-white">Order now and get your meal delivered!</span>
+                    </h1>
+                    
+                    <p class="text-lg md:text-xl text-gray-400 mb-8 leading-relaxed">
+                        Sit back and relax — GoSnel connects you with real local restaurants through smart AI chat.
+                        Get personalized meal recommendations, and place your order — all in one simple conversation.
+                    </p>
+                    
+                    <!-- Learn More Button -->
+                    <a href="https://gosnel.com/about" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold text-teal-400 bg-teal-500/10 border border-teal-500/30 hover:bg-teal-500/20 transition mb-8">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        Learn More
+                    </a>
+                    
+                    <!-- What I Can Do -->
+                    <div class="mb-10">
+                        <h3 class="text-lg font-bold text-teal-400 mb-4">What I can do for you:</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center gap-3">
+                                <div class="w-6 h-6 rounded-full gradient-teal flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                                </div>
+                                <span class="text-gray-300">Suggest meals based on your budget and taste</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-6 h-6 rounded-full gradient-teal flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                                </div>
+                                <span class="text-gray-300">Find restaurants that match your preferences</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-6 h-6 rounded-full gradient-teal flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                                </div>
+                                <span class="text-gray-300">Remember your favorite dishes next time you chat</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-6 h-6 rounded-full gradient-teal flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                                </div>
+                                <span class="text-gray-300">Deliver your meal hot to your door</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="https://gosnel.com/signup" class="btn-primary gradient-teal text-gray-900 px-8 py-4 rounded-xl font-bold text-lg text-center flex items-center justify-center gap-2">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                            Start now, it's free!
+                        </a>
+                        <a href="https://gosnel.com/demo" class="px-8 py-4 rounded-xl font-bold text-lg text-center text-teal-400 border-2 border-teal-500 bg-white/5 hover:bg-teal-500/10 transition flex items-center justify-center gap-2">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+                            Try a demo chat
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Right - Chat Preview -->
+                <div class="bg-gradient-to-br from-teal-500/10 to-teal-600/5 border border-teal-500/30 rounded-2xl p-6 glow-teal">
+                    <div class="flex items-center gap-2 mb-6">
+                        <svg class="w-5 h-5 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+                        <span class="text-lg font-bold text-teal-400">Demo Chat</span>
+                    </div>
+                    
+                    <div class="chat-container h-[400px] overflow-y-auto space-y-4 pr-2">
+                        <!-- User Message -->
+                        <div class="flex justify-end chat-bubble">
+                            <div class="flex items-end gap-2 flex-row-reverse">
+                                <div class="w-8 h-8 rounded-full bg-teal-500 flex items-center justify-center text-gray-900 font-bold text-sm flex-shrink-0">U</div>
+                                <div class="bg-teal-500 text-gray-900 px-4 py-3 rounded-2xl rounded-br-sm max-w-[75%]">
+                                    <p class="text-sm">Hey</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Bot Message -->
+                        <div class="flex justify-start chat-bubble">
+                            <div class="flex items-end gap-2">
+                                <div class="w-8 h-8 rounded-full bg-teal-500 flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-5 h-5 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                                </div>
+                                <div class="bg-white/10 text-gray-100 px-4 py-3 rounded-2xl rounded-bl-sm max-w-[75%]">
+                                    <p class="text-sm">Yo, foodie! 😋 Hope you're hungry today! How was that [Grilled Chicken Wrap] last time?</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- User Message -->
+                        <div class="flex justify-end chat-bubble">
+                            <div class="flex items-end gap-2 flex-row-reverse">
+                                <div class="w-8 h-8 rounded-full bg-teal-500 flex items-center justify-center text-gray-900 font-bold text-sm flex-shrink-0">U</div>
+                                <div class="bg-teal-500 text-gray-900 px-4 py-3 rounded-2xl rounded-br-sm max-w-[75%]">
+                                    <p class="text-sm">Not bad</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Bot Message -->
+                        <div class="flex justify-start chat-bubble">
+                            <div class="flex items-end gap-2">
+                                <div class="w-8 h-8 rounded-full bg-teal-500 flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-5 h-5 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                                </div>
+                                <div class="bg-white/10 text-gray-100 px-4 py-3 rounded-2xl rounded-bl-sm max-w-[75%]">
+                                    <p class="text-sm">Umm...🤔 Let's make your next bite even better — but first, what's your budget for today's meal?</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- User Message -->
+                        <div class="flex justify-end chat-bubble">
+                            <div class="flex items-end gap-2 flex-row-reverse">
+                                <div class="w-8 h-8 rounded-full bg-teal-500 flex items-center justify-center text-gray-900 font-bold text-sm flex-shrink-0">U</div>
+                                <div class="bg-teal-500 text-gray-900 px-4 py-3 rounded-2xl rounded-br-sm max-w-[75%]">
+                                    <p class="text-sm">40</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Bot Message - Recommendations -->
+                        <div class="flex justify-start chat-bubble">
+                            <div class="flex items-end gap-2">
+                                <div class="w-8 h-8 rounded-full bg-teal-500 flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-5 h-5 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                                </div>
+                                <div class="bg-white/10 text-gray-100 px-4 py-3 rounded-2xl rounded-bl-sm max-w-[80%]">
+                                    <p class="text-sm leading-relaxed">Perfect! With a 40 AED budget, here are two options:<br><br>
+                                    <strong class="text-teal-400">1️⃣ Chicken Alfredo Pasta – 35 AED</strong> 🍝<br>
+                                    Creamy, rich Alfredo sauce with tender chicken!<br><br>
+                                    <strong class="text-teal-400">2️⃣ Signature Burger – 39 AED</strong> 🍔<br>
+                                    Juicy beef with melted cheese & crispy fries!<br><br>
+                                    Which one tempts you more? 😄</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Users Love GoSnel -->
+    <section class="py-20 bg-white/[0.02] border-y border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-center text-white mb-4">
+                Why users love GoSnel
+            </h2>
+            <p class="text-center text-gray-400 mb-16 text-lg">Smart, simple, and speaks your language</p>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Feature 1 -->
+                <div class="card-hover bg-white/[0.03] border border-teal-500/20 rounded-xl p-8 text-center">
+                    <div class="feature-icon mx-auto mb-6 rounded-xl gradient-teal flex items-center justify-center">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-teal-400 mb-3">Smart Suggestions</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Get meal ideas personalized to your taste and budget in seconds.</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="card-hover bg-white/[0.03] border border-teal-500/20 rounded-xl p-8 text-center">
+                    <div class="feature-icon mx-auto mb-6 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-teal-400 mb-3">100+ Languages</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Speak your language, and I'll understand perfectly.</p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="card-hover bg-white/[0.03] border border-teal-500/20 rounded-xl p-8 text-center">
+                    <div class="feature-icon mx-auto mb-6 rounded-xl bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-teal-400 mb-3">Real Restaurants</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Browse local vendors with authentic menus and real food.</p>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="card-hover bg-white/[0.03] border border-teal-500/20 rounded-xl p-8 text-center">
+                    <div class="feature-icon mx-auto mb-6 rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-teal-400 mb-3">Natural Conversations</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Chat with me like you're texting a friend — no confusing menus.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dietary Preferences Section -->
+    <section class="py-20 bg-gradient-to-br from-teal-500/5 to-teal-600/[0.02] border-y border-teal-500/20">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-center text-white mb-4">
+                <svg class="w-10 h-10 inline mr-3 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                Dietary Preferences & Diet Goals
+            </h2>
+            <p class="text-center text-gray-400 mb-12 text-lg">Your health goals, our priority</p>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Card 1 -->
+                <div class="card-hover bg-white/[0.03] border border-teal-500/30 rounded-xl p-8">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-lg bg-green-500/20 flex items-center justify-center">
+                            <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-teal-400">Weight-loss Goals</h3>
+                    </div>
+                    <p class="text-gray-300 leading-relaxed">
+                        No matter your dietary goal, GoSnel has you covered! 🌿 Whether you're vegetarian, vegan, gluten-free, keto/low-carb, or following a weight-loss diet, we select healthy, balanced meals tailored to your taste and budget.
+                    </p>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="card-hover bg-white/[0.03] border border-teal-500/30 rounded-xl p-8">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-lg bg-yellow-500/20 flex items-center justify-center">
+                            <svg class="w-6 h-6 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-teal-400">Diet Goals</h3>
+                    </div>
+                    <p class="text-gray-300 leading-relaxed">
+                        With GoSnel, you don't have to worry about calories or ingredients — our AI suggests meals that fit your diet, helping you reach your health goals without feeling deprived, all from real restaurants near you. 😋
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Supported Languages -->
+    <section class="py-20 bg-teal-500/5 border-y border-teal-500/20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-4">
+                <svg class="w-10 h-10 inline mr-3 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                Supported Languages
+            </h2>
+            <p class="text-gray-400 text-lg leading-relaxed mt-6">
+                English, Arabic (العربية), Hindi (हिन्दी), Spanish (Español), French (Français), Chinese (中文), Japanese (日本語), Korean (한국어), Turkish (Türkçe), Portuguese (Português), Russian (Русский), Italian (Italiano), German (Deutsch), Greek (Ελληνικά), Thai, Vietnamese, Filipino, Indonesian, Malay, Swedish, Norwegian, Danish, Finnish, Polish, Dutch, Czech, Hungarian, Romanian, Bulgarian, Croatian, Serbian, Slovak, Slovenian, Hebrew, Farsi, Urdu, Bengali, Tamil, Telugu, Kannada, Marathi, Gujarati, <strong class="text-teal-400">and 50+ more languages.</strong>
+            </p>
+        </div>
+    </section>
+
+    <!-- Start Ordering CTA -->
+    <section class="py-20">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-6">Start ordering in your language</h2>
+            <p class="text-gray-400 text-lg leading-relaxed mb-10">
+                No subscription. No hidden fees. No language barriers.<br>
+                Order anytime, cancel anytime — and try our demo chat free, no signup needed!
+            </p>
+            <a href="https://gosnel.com/signup" class="btn-primary inline-flex items-center justify-center gap-3 gradient-teal text-gray-900 px-10 py-5 rounded-xl font-bold text-xl">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/></svg>
+                Create Your Account
+            </a>
+        </div>
+    </section>
+
+    <!-- Newsletter Subscription -->
+    <section class="pb-20">
+        <div class="max-w-xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white/5 border border-teal-500/20 rounded-2xl p-8 md:p-12 text-center">
+                <!-- Icon -->
+                <div class="w-16 h-16 rounded-full bg-teal-500/10 flex items-center justify-center mx-auto mb-6">
+                    <svg class="w-8 h-8 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                    </svg>
+                </div>
+                
+                <h3 class="text-2xl md:text-3xl font-bold text-white mb-3">Be the First to Know</h3>
+                <p class="text-gray-400 mb-8">Get notified when we launch new features and special offers</p>
+                
+                <!-- Subscription Type -->
+                <div class="mb-6 text-left">
+                    <p class="text-sm font-semibold text-white mb-4">How would you like to be notified?</p>
+                    <div class="space-y-3">
+                        <label class="flex items-center gap-3 cursor-pointer">
+                            <input type="radio" name="notify" value="email" checked class="w-4 h-4 accent-teal-500">
+                            <svg class="w-5 h-5 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                            <span class="text-white text-sm">Email Notifications</span>
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer">
+                            <input type="radio" name="notify" value="whatsapp" class="w-4 h-4 accent-green-500">
+                            <svg class="w-5 h-5 text-green-500" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.097"/></svg>
+                            <span class="text-white text-sm">WhatsApp Messages</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <!-- Email Input -->
+                <div class="mb-4">
+                    <input type="email" placeholder="your@email.com" class="w-full px-5 py-4 rounded-lg bg-white/5 border border-teal-500/30 text-white placeholder-gray-500 focus:outline-none focus:border-teal-500 transition">
+                </div>
+                
+                <!-- Submit Button -->
+                <button class="w-full py-4 rounded-lg font-semibold text-gray-900 bg-teal-500 hover:bg-teal-400 transition">
+                    Notify Me
+                </button>
+                
+                <p class="text-xs text-gray-500 mt-4">We respect your privacy. Unsubscribe at any time.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black/30 border-t border-white/10 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <!-- Brand -->
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 gradient-teal rounded-full flex items-center justify-center text-white font-bold text-sm">GS</div>
+                        <span class="text-xl font-bold text-white">GoSnel</span>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">Smart Meal Assistant — Order food through natural AI conversation.</p>
+                </div>
+                
+                <!-- For Users -->
+                <div>
+                    <h4 class="text-sm font-bold text-white uppercase tracking-wide mb-4">For Users</h4>
+                    <nav class="space-y-3">
+                        <a href="https://gosnel.com" class="block text-sm text-gray-400 hover:text-teal-400 transition">Home</a>
+                        <a href="https://gosnel.com/how-it-works" class="block text-sm text-gray-400 hover:text-teal-400 transition">How it works</a>
+                        <span class="block text-sm text-gray-600 italic">Download App (Coming Soon)</span>
+                        <a href="https://gosnel.com/faq" class="block text-sm text-gray-400 hover:text-teal-400 transition">FAQ</a>
+                        <a href="https://gosnel.com/help" class="block text-sm text-gray-400 hover:text-teal-400 transition">Help & Support</a>
+                        <a href="https://gosnel.com/about" class="block text-sm text-gray-400 hover:text-teal-400 transition">About Us</a>
+                    </nav>
+                </div>
+                
+                <!-- Legal -->
+                <div>
+                    <h4 class="text-sm font-bold text-white uppercase tracking-wide mb-4">Legal</h4>
+                    <nav class="space-y-3">
+                        <a href="https://gosnel.com/privacy" class="block text-sm text-gray-400 hover:text-teal-400 transition">Privacy Policy</a>
+                        <a href="https://gosnel.com/terms" class="block text-sm text-gray-400 hover:text-teal-400 transition">Terms & Conditions</a>
+                        <a href="https://gosnel.com/cookies" class="block text-sm text-gray-400 hover:text-teal-400 transition">Cookie Policy</a>
+                    </nav>
+                </div>
+                
+                <!-- For Restaurants -->
+                <div>
+                    <h4 class="text-sm font-bold text-white uppercase tracking-wide mb-4">For Restaurants</h4>
+                    <nav class="space-y-3">
+                        <a href="https://vendor.gosnel.com" class="block text-sm text-teal-400 font-semibold hover:text-teal-300 transition">Partner with GoSnel</a>
+                        <a href="https://vendor.gosnel.com/demo" class="block text-sm text-gray-400 hover:text-teal-400 transition">Request a Demo</a>
+                        <a href="https://vendor.gosnel.com/login" class="block text-sm text-gray-400 hover:text-teal-400 transition">Vendor Login</a>
+                        <a href="https://vendor.gosnel.com/contact" class="block text-sm text-gray-400 hover:text-teal-400 transition">Contact Business Team</a>
+                    </nav>
+                    <p class="text-xs text-gray-600 italic mt-4 pt-4 border-t border-white/5">Grow your restaurant with GoSnel AI.</p>
+                </div>
+            </div>
+            
+            <!-- Social Media -->
+            <div class="flex justify-center items-center gap-4 py-6 border-b border-white/10">
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/gosnelai" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-teal-500/10 border border-teal-500/30 flex items-center justify-center hover:bg-teal-500/30 hover:border-teal-500 transition">
+                    <svg class="w-5 h-5 text-teal-400" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </a>
+                
+                <!-- Facebook -->
+                <a href="https://www.facebook.com/share/1AGMEkChEX/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-teal-500/10 border border-teal-500/30 flex items-center justify-center hover:bg-teal-500/30 hover:border-teal-500 transition">
+                    <svg class="w-5 h-5 text-teal-400" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                </a>
+                
+                <!-- Twitter/X (Coming Soon) -->
+                <div class="w-10 h-10 rounded-full bg-gray-500/10 border border-gray-500/30 flex items-center justify-center opacity-50 cursor-not-allowed" title="Twitter (Coming Soon)">
+                    <svg class="w-5 h-5 text-gray-500" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.514l-5.106-6.694-5.834 6.694H2.561l7.746-8.835L2.25 2.25h6.734l4.61 6.095L17.45 2.25zM16.369 18.713h1.836L5.305 3.975H3.34z"/></svg>
+                </div>
+                
+                <!-- YouTube -->
+                <a href="https://www.youtube.com/channel/UCKOG_phzLcbsNj0MVXCEAfA" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-teal-500/10 border border-teal-500/30 flex items-center justify-center hover:bg-teal-500/30 hover:border-teal-500 transition">
+                    <svg class="w-5 h-5 text-teal-400" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                </a>
+            </div>
+            
+            <!-- Copyright -->
+            <div class="text-center pt-6">
+                <p class="text-xs text-gray-600">© 2025 GoSnel. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
