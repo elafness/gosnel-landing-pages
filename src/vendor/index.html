@@ -533,8 +533,6 @@
                 multilingual: document.getElementById('multilingual'),
                 zero_setup: document.getElementById('zero_setup'),
                 get_started: document.getElementById('get_started'),
-                info_title: document.getElementById('info_title'),
-                hero_desc_box: document.getElementById('hero_desc_box'),
                 why_partner_title: document.getElementById('why_partner_title'),
                 reach_customers_title: document.getElementById('reach_customers_title'),
                 reach_customers_desc: document.getElementById('reach_customers_desc'),
@@ -584,8 +582,6 @@
                 if(ids.multilingual) ids.multilingual.textContent = current.multilingual;
                 if(ids.zero_setup) ids.zero_setup.textContent = current.zero_setup;
                 if(ids.get_started) ids.get_started.innerHTML = '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>' + ' ' + current.get_started;
-                if(ids.info_title) ids.info_title.textContent = language==='ar' ? 'انضم إلى أكثر من 1000 زبون ينتظرون' : 'Join 1,000+ Customers Waiting';
-                if(ids.hero_desc_box) ids.hero_desc_box.textContent = language==='ar' ? 'مستخدمو جوسنِل في عجمان يبحثون عن مطاعم جديدة. وجباتك ممكن نوصي فيها اليوم.' : 'GoSnel users in Ajman are actively looking for new restaurants. Your dishes could be recommended to them today.';
                 if(ids.why_partner_title) ids.why_partner_title.textContent = current.why_partner_title;
                 if(ids.reach_customers_title) ids.reach_customers_title.textContent = current.reach_customers_title;
                 if(ids.reach_customers_desc) ids.reach_customers_desc.textContent = current.reach_customers_desc;
