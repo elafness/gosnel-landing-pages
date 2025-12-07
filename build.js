@@ -82,6 +82,32 @@ const buildPages = () => {
     console.log("✅ Copied sitemap.xml");
   }
 
+  // Copy pages if they exist (recursively)
+  const pagesDir = path.join(srcDir, "pages");
+  const distPagesDir = path.join(distDir, "pages");
+
+  if (fs.existsSync(pagesDir)) {
+    // Recursive copy function
+    const copyDirectoryRecursive = (src, dest) => {
+      if (!fs.existsSync(dest)) {
+        fs.mkdirSync(dest, { recursive: true });
+      }
+      const entries = fs.readdirSync(src, { withFileTypes: true });
+      entries.forEach((entry) => {
+        const srcPath = path.join(src, entry.name);
+        const destPath = path.join(dest, entry.name);
+        if (entry.isDirectory()) {
+          copyDirectoryRecursive(srcPath, destPath);
+        } else {
+          fs.copyFileSync(srcPath, destPath);
+        }
+      });
+    };
+
+    copyDirectoryRecursive(pagesDir, distPagesDir);
+    console.log("✅ Copied pages");
+  }
+
   // Copy assets if they exist (recursively)
   const assetsDir = path.join(srcDir, "assets");
   const distAssetsDir = path.join(distDir, "assets");

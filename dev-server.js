@@ -11,7 +11,14 @@ const routeMap = {
   '/vendor': '/index-vendor.html',
   '/drivers': '/index-drivers.html',
   '/promo': '/index-promo.html',
-  '/': '/index.html'
+  '/': '/index.html',
+  // User pages
+  '/user/privacy-policy': '/pages/user/privacy-policy.html',
+  '/user/terms-conditions': '/pages/user/terms-conditions.html',
+  '/user/cookie-policy': '/pages/user/cookie-policy.html',
+  '/user/about-us': '/pages/user/about-us.html',
+  '/user/faq': '/pages/user/faq.html',
+  '/user/how-it-works': '/pages/user/how-it-works.html'
 };
 
 const server = http.createServer((req, res) => {
