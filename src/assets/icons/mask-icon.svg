@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
+  <!-- Monochrome mask icon for Safari pinned tabs: use a single shape fill -->
+  <g fill="#000">
+    <circle cx="250" cy="250" r="230"/>
+    <!-- Optional inner motif (slight cut) to give brand silhouette; keep monochrome -->
+    <circle cx="250" cy="250" r="150" fill="#fff"/>
+    <circle cx="250" cy="250" r="120"/>
+  </g>
+</svg>

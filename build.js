@@ -50,6 +50,24 @@ const buildPages = () => {
     console.log("✅ Copied root index.html for routing");
   }
 
+  // Copy robots.txt if it exists
+  const robotsPath = path.join(srcDir, "robots.txt");
+  const distRobotsPath = path.join(distDir, "robots.txt");
+
+  if (fs.existsSync(robotsPath)) {
+    fs.copyFileSync(robotsPath, distRobotsPath);
+    console.log("✅ Copied robots.txt");
+  }
+
+  // Copy sitemap.xml if it exists
+  const sitemapPath = path.join(srcDir, "sitemap.xml");
+  const distSitemapPath = path.join(distDir, "sitemap.xml");
+
+  if (fs.existsSync(sitemapPath)) {
+    fs.copyFileSync(sitemapPath, distSitemapPath);
+    console.log("✅ Copied sitemap.xml");
+  }
+
   // Copy assets if they exist (recursively)
   const assetsDir = path.join(srcDir, "assets");
   const distAssetsDir = path.join(distDir, "assets");
