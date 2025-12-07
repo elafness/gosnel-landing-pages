@@ -1,5 +1,28 @@
 <!DOCTYPE html>
-<html>
-<head><title>GoSnel</title></head>
-<body>Loading...</body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GoSnel - Redirecting...</title>
+    <script>
+        (function() {
+            var host = window.location.hostname;
+            var target = '/index-user.html'; // default
+            
+            if (host.indexOf('drivers') !== -1) {
+                target = '/index-drivers.html';
+            } else if (host.indexOf('vendor') !== -1) {
+                target = '/index-vendor.html';
+            } else if (host.indexOf('promo') !== -1) {
+                target = '/index-promo.html';
+            } else if (host.indexOf('user') !== -1) {
+                target = '/index-user.html';
+            }
+            
+            window.location.replace(target);
+        })();
+    </script>
+</head>
+<body>
+    <p>Redirecting...</p>
+</body>
 </html>
