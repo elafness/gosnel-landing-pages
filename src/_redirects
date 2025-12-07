@@ -1,8 +1,16 @@
-# Cloudflare Pages Redirects for Landing Pages
-# Note: Subdomain routing is handled by _middleware.js Functions
+# Cloudflare Pages Redirects - Host-based routing for subdomains
 
 # ============================================
-# STATIC ASSETS - Serve directly (no redirect)
+# SUBDOMAIN ROOT ROUTING
+# ============================================
+# Route each subdomain's root to its specific landing page
+https://drivers.gosnel.com/ /index-drivers.html 200
+https://vendor.gosnel.com/ /index-vendor.html 200
+https://user.gosnel.com/ /index-user.html 200
+https://promo.gosnel.com/ /index-promo.html 200
+
+# ============================================
+# STATIC ASSETS - Serve directly
 # ============================================
 /assets/* /assets/:splat 200
 /output.css /output.css 200
@@ -10,16 +18,14 @@
 # ============================================
 # LANDING PAGE DIRECTORY ROUTES
 # ============================================
-# Pass through all subdirectory assets
 /drivers/* /drivers/:splat 200
 /vendor/* /vendor/:splat 200
 /user/* /user/:splat 200
 /promo/* /promo/:splat 200
 
 # ============================================
-# CANONICAL DOMAIN REDIRECTS
+# CANONICAL DOMAIN REDIRECTS  
 # ============================================
-# Redirect www to non-www (prod)
 http://www.gosnel.com/* https://gosnel.com/:splat 301
 https://www.gosnel.com/* https://gosnel.com/:splat 301
 

@@ -36,6 +36,20 @@ const buildPages = () => {
 
       fs.writeFileSync(distPath, htmlContent);
       console.log(`✅ Built ${subdomain}.gosnel.com`);
+      
+      // Also copy to root level as index-{subdomain}.html for redirects
+      const rootIndexPath = path.join(distDir, `index-${subdomain}.html`);
+      // For root level, CSS path needs to be /output.css
+      let rootHtmlContent = fs.readFileSync(srcPath, "utf8");
+      rootHtmlContent = rootHtmlContent.replace(
+        /\.\.\/\.\.\/dist\/output\.css/g,
+        "/output.css"
+      );
+      rootHtmlContent = rootHtmlContent.replace(
+        /href="\/output\.css"/g,
+        'href="/output.css"'
+      );
+      fs.writeFileSync(rootIndexPath, rootHtmlContent);
     } else {
       console.log(`⚠️  No index.html found for ${subdomain}`);
     }
@@ -110,37 +124,6 @@ const buildPages = () => {
   if (fs.existsSync(routesPath)) {
     fs.copyFileSync(routesPath, distRoutesPath);
     console.log("✅ Copied _routes.json file");
-  }
-
-  // Copy functions directory for Cloudflare Pages Functions
-  const functionsDir = path.join(srcDir, "functions");
-  const distFunctionsDir = path.join(distDir, "functions");
-
-  if (fs.existsSync(functionsDir)) {
-    if (!fs.existsSync(distFunctionsDir)) {
-      fs.mkdirSync(distFunctionsDir, { recursive: true });
-    }
-
-    // Copy all files from functions directory
-    const copyDirectory = (src, dest) => {
-      const entries = fs.readdirSync(src, { withFileTypes: true });
-      entries.forEach((entry) => {
-        const srcPath = path.join(src, entry.name);
-        const destPath = path.join(dest, entry.name);
-        
-        if (entry.isDirectory()) {
-          if (!fs.existsSync(destPath)) {
-            fs.mkdirSync(destPath, { recursive: true });
-          }
-          copyDirectory(srcPath, destPath);
-        } else {
-          fs.copyFileSync(srcPath, destPath);
-        }
-      });
-    };
-
-    copyDirectory(functionsDir, distFunctionsDir);
-    console.log("✅ Copied functions directory");
   }
 
   console.log("🎉 Build complete!");
