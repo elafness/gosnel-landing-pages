@@ -2,15 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>GoSnel - Redirecting...</title>
+    <title>GoSnel</title>
+    <meta name="description" content="GoSnel - Food Delivery Service">
     <script>
+        // Check if this is being accessed directly at a subdomain root
+        // Only redirect from root paths, not sub-paths
         (function() {
             var host = window.location.hostname;
             var pathname = window.location.pathname;
             
-            // Only redirect if we're at the root path (/) or empty path
-            // Let specific paths like /how-it-works be handled by _redirects
-            if (pathname === '/' || pathname === '' || pathname === '/index.html') {
+            console.log('Current path:', pathname);
+            console.log('Current host:', host);
+            
+            // Only redirect if we're at the exact root path
+            if (pathname === '/' || pathname === '/index.html') {
                 var target = '/index-user.html'; // default
                 
                 if (host.indexOf('drivers') !== -1) {
@@ -23,13 +28,17 @@
                     target = '/index-user.html';
                 }
                 
+                console.log('Redirecting to:', target);
                 window.location.replace(target);
+            } else {
+                console.log('Not redirecting - path is:', pathname);
+                // For non-root paths, show a 404 message instead of redirecting
+                document.body.innerHTML = '<h1>404 - Page Not Found</h1><p>The page ' + pathname + ' was not found.</p>';
             }
-            // If we're at a specific path, let Cloudflare _redirects handle it
         })();
     </script>
 </head>
 <body>
-    <p>Redirecting...</p>
+    <p>Loading...</p>
 </body>
 </html>
