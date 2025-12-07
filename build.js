@@ -28,10 +28,10 @@ const buildPages = () => {
 
   // Landing page files configuration
   const landingPages = [
-    { subdomain: "user", filename: "user/index.html" },
-    { subdomain: "vendor", filename: "vendor/index.html" },
-    { subdomain: "drivers", filename: "drivers/index.html" },
-    { subdomain: "promo", filename: "promo/index.html" }
+    { subdomain: "user", filename: "user/user-landing.html" },
+    { subdomain: "vendor", filename: "vendor/vendor-landing.html" },
+    { subdomain: "drivers", filename: "drivers/drivers-landing.html" },
+    { subdomain: "promo", filename: "promo/promo-landing.html" }
   ];
 
   landingPages.forEach(({ subdomain, filename }) => {
@@ -108,36 +108,41 @@ const buildPages = () => {
     console.log("✅ Copied sitemap.xml");
   }
 
-  // Copy pages if they exist (recursively) with include processing
-  const pagesDir = path.join(srcDir, "pages");
-  const distPagesDir = path.join(distDir, "pages");
+    // Copy subdirectory static pages (user, vendor, etc.) with include processing
+  const subdomains = ['user', 'vendor', 'drivers', 'promo'];
+  
+  subdomains.forEach(subdomain => {
+    const srcSubdomainDir = path.join(srcDir, subdomain);
+    const distSubdomainDir = path.join(distDir, subdomain);
 
-  if (fs.existsSync(pagesDir)) {
-    // Recursive copy function with HTML processing
-    const copyDirectoryRecursive = (src, dest) => {
-      if (!fs.existsSync(dest)) {
-        fs.mkdirSync(dest, { recursive: true });
-      }
-      const entries = fs.readdirSync(src, { withFileTypes: true });
-      entries.forEach((entry) => {
-        const srcPath = path.join(src, entry.name);
-        const destPath = path.join(dest, entry.name);
-        if (entry.isDirectory()) {
-          copyDirectoryRecursive(srcPath, destPath);
-        } else if (entry.name.endsWith('.html')) {
-          // Process HTML files with includes
-          let htmlContent = fs.readFileSync(srcPath, "utf8");
-          htmlContent = processIncludes(htmlContent);
-          fs.writeFileSync(destPath, htmlContent);
-        } else {
-          fs.copyFileSync(srcPath, destPath);
+    if (fs.existsSync(srcSubdomainDir)) {
+      // Recursive copy function with HTML processing
+      const copyDirectoryRecursive = (src, dest) => {
+        if (!fs.existsSync(dest)) {
+          fs.mkdirSync(dest, { recursive: true });
         }
-      });
-    };
+        const entries = fs.readdirSync(src, { withFileTypes: true });
+        entries.forEach((entry) => {
+          const srcPath = path.join(src, entry.name);
+          const destPath = path.join(dest, entry.name);
+          if (entry.isDirectory()) {
+            copyDirectoryRecursive(srcPath, destPath);
+          } else if (entry.name.endsWith('.html')) {
+            // Process HTML files with includes
+            let htmlContent = fs.readFileSync(srcPath, "utf8");
+            htmlContent = processIncludes(htmlContent);
+            fs.writeFileSync(destPath, htmlContent);
+          } else {
+            fs.copyFileSync(srcPath, destPath);
+          }
+        });
+      };
 
-    copyDirectoryRecursive(pagesDir, distPagesDir);
-    console.log("✅ Copied pages");
-  }
+      copyDirectoryRecursive(srcSubdomainDir, distSubdomainDir);
+    }
+  });
+  
+  console.log("✅ Copied subdirectory pages");
 
   // Copy assets if they exist (recursively)
   const assetsDir = path.join(srcDir, "assets");
