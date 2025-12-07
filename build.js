@@ -126,6 +126,24 @@ const buildPages = () => {
     console.log("✅ Copied _routes.json file");
   }
 
+  // Copy functions directory for Cloudflare Pages Functions
+  const functionsDir = path.join(srcDir, "functions");
+  const distFunctionsDir = path.join(distDir, "functions");
+
+  if (fs.existsSync(functionsDir)) {
+    if (!fs.existsSync(distFunctionsDir)) {
+      fs.mkdirSync(distFunctionsDir, { recursive: true });
+    }
+
+    const entries = fs.readdirSync(functionsDir);
+    entries.forEach((entry) => {
+      const srcPath = path.join(functionsDir, entry);
+      const destPath = path.join(distFunctionsDir, entry);
+      fs.copyFileSync(srcPath, destPath);
+    });
+    console.log("✅ Copied functions directory");
+  }
+
   console.log("🎉 Build complete!");
 };
 
