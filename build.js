@@ -36,13 +36,8 @@ const buildPages = () => {
 
   landingPages.forEach(({ subdomain, filename }) => {
     const srcPath = path.join(srcDir, filename);
-    const distSubdirPath = path.join(distDir, subdomain);
-    const distPath = path.join(distSubdirPath, "index.html");
-
-    // Create subdomain directory in dist
-    if (!fs.existsSync(distSubdirPath)) {
-      fs.mkdirSync(distSubdirPath, { recursive: true });
-    }
+    // Build landing pages at root level with subdomain-specific names
+    const distPath = path.join(distDir, `index-${subdomain}.html`);
 
     // Copy HTML file if it exists
     if (fs.existsSync(srcPath)) {
@@ -125,6 +120,12 @@ const buildPages = () => {
         entries.forEach((entry) => {
           const srcPath = path.join(src, entry.name);
           const destPath = path.join(dest, entry.name);
+          
+          // Skip landing page files since they're handled separately
+          if (entry.name.includes('-landing.html')) {
+            return;
+          }
+          
           if (entry.isDirectory()) {
             copyDirectoryRecursive(srcPath, destPath);
           } else if (entry.name.endsWith('.html')) {
