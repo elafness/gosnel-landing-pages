@@ -145,6 +145,21 @@ const buildPages = () => {
   
   console.log("✅ Copied subdirectory pages");
 
+  // Create root-level vendor static pages for direct access
+  const vendorPages = ['how-it-works', 'why-partner', 'guidelines', 'insights', 'faq'];
+  vendorPages.forEach(pageName => {
+    const srcPath = path.join(srcDir, 'vendor', `${pageName}.html`);
+    const distPath = path.join(distDir, `${pageName}.html`);
+    
+    if (fs.existsSync(srcPath)) {
+      let htmlContent = fs.readFileSync(srcPath, "utf8");
+      htmlContent = processIncludes(htmlContent);
+      fs.writeFileSync(distPath, htmlContent);
+    }
+  });
+  
+  console.log("✅ Created root-level vendor pages");
+
   // Copy assets if they exist (recursively)
   const assetsDir = path.join(srcDir, "assets");
   const distAssetsDir = path.join(distDir, "assets");
@@ -192,5 +207,4 @@ const buildPages = () => {
   console.log("🎉 Build complete!");
 };
 
-buildPages();
 buildPages();
