@@ -6,19 +6,26 @@
     <script>
         (function() {
             var host = window.location.hostname;
-            var target = '/index-user.html'; // default
+            var pathname = window.location.pathname;
             
-            if (host.indexOf('drivers') !== -1) {
-                target = '/index-drivers.html';
-            } else if (host.indexOf('vendor') !== -1) {
-                target = '/index-vendor.html';
-            } else if (host.indexOf('promo') !== -1) {
-                target = '/index-promo.html';
-            } else if (host.indexOf('user') !== -1) {
-                target = '/index-user.html';
+            // Only redirect if we're at the root path (/) or empty path
+            // Let specific paths like /how-it-works be handled by _redirects
+            if (pathname === '/' || pathname === '' || pathname === '/index.html') {
+                var target = '/index-user.html'; // default
+                
+                if (host.indexOf('drivers') !== -1) {
+                    target = '/index-drivers.html';
+                } else if (host.indexOf('vendor') !== -1) {
+                    target = '/index-vendor.html';
+                } else if (host.indexOf('promo') !== -1) {
+                    target = '/index-promo.html';
+                } else if (host.indexOf('user') !== -1) {
+                    target = '/index-user.html';
+                }
+                
+                window.location.replace(target);
             }
-            
-            window.location.replace(target);
+            // If we're at a specific path, let Cloudflare _redirects handle it
         })();
     </script>
 </head>

@@ -1,16 +1,7 @@
 # Cloudflare Pages Redirects - Host-based routing for subdomains
 
 # ============================================
-# SUBDOMAIN ROOT ROUTING
-# ============================================
-# Route each subdomain's root to its specific landing page
-https://drivers.gosnel.com/ /index-drivers.html 200
-https://vendor.gosnel.com/ /index-vendor.html 200
-https://user.gosnel.com/ /index-user.html 200
-https://promo.gosnel.com/ /index-promo.html 200
-
-# ============================================
-# SUBDOMAIN STATIC PAGES - Specific Routes
+# SUBDOMAIN STATIC PAGES - Specific Routes (MUST BE FIRST)
 # ============================================
 # Vendor subdomain pages
 https://vendor.gosnel.com/how-it-works /vendor/how-it-works.html 200
@@ -26,6 +17,15 @@ https://user.gosnel.com/cookie-policy /user/cookie-policy.html 200
 https://user.gosnel.com/about-us /user/about-us.html 200
 https://user.gosnel.com/faq /user/faq.html 200
 https://user.gosnel.com/how-it-works /user/how-it-works.html 200
+
+# ============================================
+# SUBDOMAIN ROOT ROUTING (ONLY FOR ROOT PATH)
+# ============================================
+# Route each subdomain's root to its specific landing page
+https://drivers.gosnel.com/ /index-drivers.html 200
+https://vendor.gosnel.com/ /index-vendor.html 200
+https://user.gosnel.com/ /index-user.html 200
+https://promo.gosnel.com/ /index-promo.html 200
 
 # ============================================
 # STATIC ASSETS - Serve directly
