@@ -11,11 +11,31 @@ const buildPages = () => {
     fs.mkdirSync(distDir, { recursive: true });
   }
 
-  // Copy HTML files from each subdomain folder
-  const subdomains = ["user", "vendor", "drivers", "promo"];
+  // Function to process HTML includes
+  const processIncludes = (htmlContent) => {
+    // Replace <!--#include file="path" --> with actual file content
+    const includeRegex = /<!--\s*#include\s+file="([^"]+)"\s*-->/g;
+    return htmlContent.replace(includeRegex, (match, filePath) => {
+      const includePath = path.join(srcDir, filePath);
+      if (fs.existsSync(includePath)) {
+        return fs.readFileSync(includePath, "utf8");
+      } else {
+        console.warn(`⚠️  Include file not found: ${filePath}`);
+        return `<!-- Include not found: ${filePath} -->`;
+      }
+    });
+  };
 
-  subdomains.forEach((subdomain) => {
-    const srcPath = path.join(srcDir, subdomain, "index.html");
+  // Landing page files configuration
+  const landingPages = [
+    { subdomain: "user", filename: "user-landing.html" },
+    { subdomain: "vendor", filename: "vendor-landing.html" },
+    { subdomain: "drivers", filename: "drivers-landing.html" },
+    { subdomain: "promo", filename: "promo-landing.html" }
+  ];
+
+  landingPages.forEach(({ subdomain, filename }) => {
+    const srcPath = path.join(srcDir, filename);
     const distSubdirPath = path.join(distDir, subdomain);
     const distPath = path.join(distSubdirPath, "index.html");
 
@@ -27,6 +47,9 @@ const buildPages = () => {
     // Copy HTML file if it exists
     if (fs.existsSync(srcPath)) {
       let htmlContent = fs.readFileSync(srcPath, "utf8");
+
+      // Process includes first
+      htmlContent = processIncludes(htmlContent);
 
       // Replace CSS path to point to the compiled Tailwind CSS
       htmlContent = htmlContent.replace(
@@ -41,6 +64,9 @@ const buildPages = () => {
       const rootIndexPath = path.join(distDir, `index-${subdomain}.html`);
       // For root level, CSS path needs to be /output.css
       let rootHtmlContent = fs.readFileSync(srcPath, "utf8");
+      
+      // Process includes for root version too
+      rootHtmlContent = processIncludes(rootHtmlContent);
       rootHtmlContent = rootHtmlContent.replace(
         /\.\.\/\.\.\/dist\/output\.css/g,
         "/output.css"
@@ -82,12 +108,12 @@ const buildPages = () => {
     console.log("✅ Copied sitemap.xml");
   }
 
-  // Copy pages if they exist (recursively)
+  // Copy pages if they exist (recursively) with include processing
   const pagesDir = path.join(srcDir, "pages");
   const distPagesDir = path.join(distDir, "pages");
 
   if (fs.existsSync(pagesDir)) {
-    // Recursive copy function
+    // Recursive copy function with HTML processing
     const copyDirectoryRecursive = (src, dest) => {
       if (!fs.existsSync(dest)) {
         fs.mkdirSync(dest, { recursive: true });
@@ -98,6 +124,11 @@ const buildPages = () => {
         const destPath = path.join(dest, entry.name);
         if (entry.isDirectory()) {
           copyDirectoryRecursive(srcPath, destPath);
+        } else if (entry.name.endsWith('.html')) {
+          // Process HTML files with includes
+          let htmlContent = fs.readFileSync(srcPath, "utf8");
+          htmlContent = processIncludes(htmlContent);
+          fs.writeFileSync(destPath, htmlContent);
         } else {
           fs.copyFileSync(srcPath, destPath);
         }

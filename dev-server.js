@@ -18,7 +18,17 @@ const routeMap = {
   '/user/cookie-policy': '/pages/user/cookie-policy.html',
   '/user/about-us': '/pages/user/about-us.html',
   '/user/faq': '/pages/user/faq.html',
-  '/user/how-it-works': '/pages/user/how-it-works.html'
+  '/user/how-it-works': '/pages/user/how-it-works.html',
+  // Vendor pages
+  '/vendor/why-partner': '/pages/vendor/why-partner.html',
+  '/vendor/how-it-works': '/pages/vendor/how-it-works.html',
+  '/vendor/guidelines': '/pages/vendor/guidelines.html',
+  '/vendor/insights': '/pages/vendor/insights.html',
+  '/vendor/faq': '/pages/vendor/faq.html',
+  // Driver pages
+  '/driver/how-it-works': '/pages/driver/how-it-works.html',
+  '/driver/requirements': '/pages/driver/requirements.html',
+  '/driver/earnings': '/pages/driver/earnings.html'
 };
 
 const server = http.createServer((req, res) => {
