@@ -5,6 +5,9 @@
   ],
   "exclude": [
     "/assets/*",
-    "/output.css"
+    "/output.css",
+    "/robots.txt",
+    "/sitemap.xml",
+    "/favicon.ico"
   ]
 }

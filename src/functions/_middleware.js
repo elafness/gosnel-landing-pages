@@ -1,14 +1,18 @@
 // Cloudflare Pages Functions for subdomain routing
+// Maps subdomains to local directories:
+// - drivers.gosnel.com → /drivers/
+// - vendor.gosnel.com → /vendor/
+// - user.gosnel.com → /user/
+// - promo.gosnel.com → /promo/
+
 export async function onRequest(context) {
   const { request } = context;
   const url = new URL(request.url);
   const hostname = url.hostname;
   const pathname = url.pathname;
 
-  console.log('[Middleware] Processing:', hostname + pathname);
-
   // Determine target directory based on subdomain
-  let targetDir = 'user'; // default
+  let targetDir = null;
   
   if (hostname.includes('drivers.')) {
     targetDir = 'drivers';
@@ -18,14 +22,14 @@ export async function onRequest(context) {
     targetDir = 'promo';
   } else if (hostname.includes('user.')) {
     targetDir = 'user';
-  } else {
-    // For pages.dev or unknown, use default
-    targetDir = 'user';
   }
 
-  console.log('[Middleware] Target directory:', targetDir);
+  // If no subdomain matched, pass through unchanged
+  if (!targetDir) {
+    return fetch(request);
+  }
 
-  // Build the new URL with rewritten path
+  // Build rewritten path
   let newPath = pathname;
   
   if (pathname === '/' || pathname === '') {
@@ -34,12 +38,10 @@ export async function onRequest(context) {
     newPath = `/${targetDir}${pathname}`;
   }
 
-  console.log('[Middleware] Rewriting:', pathname, '->', newPath);
-
-  // Create a new request with the rewritten path
+  // Rewrite URL
   const rewriteUrl = new URL(url);
   rewriteUrl.pathname = newPath;
 
-  // Fetch the rewritten URL
+  // Fetch the rewritten path
   return fetch(rewriteUrl.toString(), request);
 }
