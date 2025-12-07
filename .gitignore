@@ -47,6 +47,9 @@ Thumbs.db
 # Build logs
 build.log
 
+# Reference files (for development only, not part of deployment)
+References/
+
 # Third-party components (should reference from docs/ in main repo)
 tailwind-ui-components-main/
 **/tailwind-ui-components*
