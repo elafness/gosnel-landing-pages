@@ -2,5 +2,13 @@
   "version": 1,
   "include": [
     "/*"
+  ],
+  "exclude": [
+    "/assets/*",
+    "/output.css",
+    "/drivers/*",
+    "/vendor/*",
+    "/user/*",
+    "/promo/*"
   ]
 }

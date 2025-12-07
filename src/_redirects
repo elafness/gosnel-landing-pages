@@ -1,11 +1,13 @@
-# Cloudflare Pages Redirects - Subdomain based routing fallback
-# Note: _redirects alone cannot route based on hostname in Cloudflare Pages
-# This file serves as a fallback for direct path requests
+# Cloudflare Pages Redirects
+# Note: Subdomain routing is handled by _middleware.js Functions
+# This file only provides fallbacks for static asset paths
 
-# Main domain - serve user page by default
-https://gosnel.com/ /user/ 200
-https://gosnel.com/* /user/:splat 200
+# Static assets - no redirect needed (served directly)
+/assets/* /assets/:splat 200
+/output.css /output.css 200
 
-# pages.dev domain - serve user page by default  
-/  /user/  200
-/*  /user/:splat 200
+# Subdirectory access (when middleware rewrites to these paths)
+/drivers/* /drivers/:splat 200
+/vendor/* /vendor/:splat 200
+/user/* /user/:splat 200
+/promo/* /promo/:splat 200
