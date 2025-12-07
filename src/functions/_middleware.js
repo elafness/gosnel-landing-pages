@@ -6,7 +6,7 @@
 // - promo.gosnel.com → /promo/
 
 export async function onRequest(context) {
-  const { request } = context;
+  const { request, env } = context;
   const url = new URL(request.url);
   const hostname = url.hostname;
   const pathname = url.pathname;
@@ -26,22 +26,24 @@ export async function onRequest(context) {
 
   // If no subdomain matched, pass through unchanged
   if (!targetDir) {
-    return fetch(request);
+    return env.ASSETS.fetch(request);
   }
 
   // Build rewritten path
   let newPath = pathname;
   
   if (pathname === '/' || pathname === '') {
-    newPath = `/${targetDir}/`;
+    newPath = `/${targetDir}/index.html`;
   } else if (!pathname.startsWith(`/${targetDir}/`)) {
     newPath = `/${targetDir}${pathname}`;
   }
 
-  // Rewrite URL
+  // Create new request with rewritten URL
   const rewriteUrl = new URL(url);
   rewriteUrl.pathname = newPath;
+  
+  const rewriteRequest = new Request(rewriteUrl.toString(), request);
 
-  // Fetch the rewritten path
-  return fetch(rewriteUrl.toString(), request);
+  // Fetch from assets
+  return env.ASSETS.fetch(rewriteRequest);
 }
