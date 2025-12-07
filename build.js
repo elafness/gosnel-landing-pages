@@ -28,10 +28,10 @@ const buildPages = () => {
 
   // Landing page files configuration
   const landingPages = [
-    { subdomain: "user", filename: "user-landing.html" },
-    { subdomain: "vendor", filename: "vendor-landing.html" },
-    { subdomain: "drivers", filename: "drivers-landing.html" },
-    { subdomain: "promo", filename: "promo-landing.html" }
+    { subdomain: "user", filename: "user/index.html" },
+    { subdomain: "vendor", filename: "vendor/index.html" },
+    { subdomain: "drivers", filename: "drivers/index.html" },
+    { subdomain: "promo", filename: "promo/index.html" }
   ];
 
   landingPages.forEach(({ subdomain, filename }) => {
