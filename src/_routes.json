@@ -1,5 +1,5 @@
 {
   "version": 1,
-  "include": ["/"],
-  "exclude": []
+  "include": ["/*"],
+  "exclude": ["/assets/*", "/output.css", "/robots.txt", "/sitemap.xml", "/index-*.html", "/drivers/*", "/vendor/*", "/user/*", "/promo/*"]
 }
