@@ -8,42 +8,29 @@
 export async function onRequest(context) {
   const { request, env } = context;
   const url = new URL(request.url);
-  const hostname = url.hostname;
-  const pathname = url.pathname;
-
-  // Determine target directory based on subdomain
-  let targetDir = null;
+  const hostname = url.hostname.toLowerCase();
   
-  if (hostname.includes('drivers.')) {
-    targetDir = 'drivers';
-  } else if (hostname.includes('vendor.')) {
-    targetDir = 'vendor';
-  } else if (hostname.includes('promo.')) {
-    targetDir = 'promo';
-  } else if (hostname.includes('user.')) {
-    targetDir = 'user';
+  // Route based on exact subdomain match
+  if (hostname === 'drivers.gosnel.com') {
+    const newUrl = new URL('/drivers/index.html', url.origin);
+    return env.ASSETS.fetch(new Request(newUrl.toString(), request));
+  }
+  
+  if (hostname === 'vendor.gosnel.com') {
+    const newUrl = new URL('/vendor/index.html', url.origin);
+    return env.ASSETS.fetch(new Request(newUrl.toString(), request));
+  }
+  
+  if (hostname === 'user.gosnel.com') {
+    const newUrl = new URL('/user/index.html', url.origin);
+    return env.ASSETS.fetch(new Request(newUrl.toString(), request));
+  }
+  
+  if (hostname === 'promo.gosnel.com') {
+    const newUrl = new URL('/promo/index.html', url.origin);
+    return env.ASSETS.fetch(new Request(newUrl.toString(), request));
   }
 
-  // If no subdomain matched, pass through unchanged
-  if (!targetDir) {
-    return env.ASSETS.fetch(request);
-  }
-
-  // Build rewritten path
-  let newPath = pathname;
-  
-  if (pathname === '/' || pathname === '') {
-    newPath = `/${targetDir}/index.html`;
-  } else if (!pathname.startsWith(`/${targetDir}/`)) {
-    newPath = `/${targetDir}${pathname}`;
-  }
-
-  // Create new request with rewritten URL
-  const rewriteUrl = new URL(url);
-  rewriteUrl.pathname = newPath;
-  
-  const rewriteRequest = new Request(rewriteUrl.toString(), request);
-
-  // Fetch from assets
-  return env.ASSETS.fetch(rewriteRequest);
+  // Default: pass through to normal asset handling
+  return env.ASSETS.fetch(request);
 }
