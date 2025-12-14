@@ -141,7 +141,7 @@
                         <a id="get_started" href="https://gosnel.com/vendor/signup" class="btn-primary inline-flex items-center justify-center gap-3 bg-teal-500 text-white px-8 py-4 rounded-xl font-bold text-lg min-w-[160px]">
                             Register Now
                         </a>
-                        <a href="/vendor/pricing" class="inline-flex items-center justify-center gap-3 border-2 border-teal-500 text-teal-500 bg-transparent px-8 py-4 rounded-xl font-bold text-lg hover:bg-teal-50 transition min-w-[160px]">
+                        <a id="pricing_button" href="/vendor/pricing" class="inline-flex items-center justify-center gap-3 border-2 border-teal-500 text-teal-500 bg-transparent px-8 py-4 rounded-xl font-bold text-lg hover:bg-teal-50 transition min-w-[160px]">
                             Pricing
                         </a>
                     </div>
@@ -322,6 +322,7 @@
                     hero_title: '<span class="text-white block">More orders</span><span class="text-white block">More sales</span><span class="text-white block">With GoSnel</span>',
                     hero_desc: "GoSnel's smart AI connects your restaurant with customers actively looking for meals like yours.<br/><br/>Start free, boost visibility, and grow your business with zero upfront costs.",
                     get_started: 'Register Now',
+                    pricing_button: 'Pricing',
                     try_demo: 'Request a Demo',
                     login: 'Log In',
                     what_we_offer: 'Why restaurants choose GoSnel:',
@@ -375,6 +376,7 @@
                     hero_title: '<span class="text-white block">طلبات أكثر</span><span class="text-white block">مبيعات أكثر</span><span class="text-white block">مع جوسنِل</span>',
                     hero_desc: 'الذكاء الاصطناعي في جوسنِل يربط مطعمك بالزبائن اللي يدورون على وجبات مثل اللي تقدمها.<br/><br/>ابدأ مجاناً، زيد ظهورك، وكبر شغلك بدون أي تكاليف مسبقة.',
                     get_started: '👉 ابدأ الآن مجاناً',
+                    pricing_button: 'الأسعار',
                     try_demo: '📊 شوف الديمو',
                     login: 'تسجيل الدخول',
                     what_we_offer: 'ليش المطاعم تختار جوسنِل:',
@@ -434,6 +436,7 @@
                 multilingual: document.getElementById('multilingual'),
                 zero_setup: document.getElementById('zero_setup'),
                 get_started: document.getElementById('get_started'),
+                pricing_button: document.getElementById('pricing_button'),
                 why_partner_title: document.getElementById('why_partner_title'),
                 reach_customers_title: document.getElementById('reach_customers_title'),
                 reach_customers_desc: document.getElementById('reach_customers_desc'),
@@ -485,6 +488,7 @@
                 if(ids.multilingual) ids.multilingual.textContent = current.multilingual;
                 if(ids.zero_setup) ids.zero_setup.textContent = current.zero_setup;
                 if(ids.get_started) ids.get_started.textContent = current.get_started;
+                if(ids.pricing_button) ids.pricing_button.textContent = current.pricing_button;
                 if(ids.why_partner_title) ids.why_partner_title.textContent = current.why_partner_title;
                 if(ids.reach_customers_title) ids.reach_customers_title.textContent = current.reach_customers_title;
                 if(ids.reach_customers_desc) ids.reach_customers_desc.textContent = current.reach_customers_desc;
