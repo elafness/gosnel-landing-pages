@@ -138,10 +138,10 @@
                     
                     <!-- CTA Buttons -->
                     <div class="flex flex-col sm:flex-row gap-4 items-center lg:items-start lg:justify-start justify-center">
-                        <a id="get_started" href="https://gosnel.com/vendor/signup" class="btn-primary inline-flex items-center justify-center gap-3 bg-teal-500 text-white px-8 py-4 rounded-xl font-bold text-lg min-w-[160px]">
+                        <a id="get_started" href="https://gosnel.com/vendor/signup" class="btn-primary inline-flex items-center justify-center gap-3 bg-teal-500 text-white px-8 py-4 rounded-xl font-bold text-lg w-full sm:w-auto sm:min-w-[180px]">
                             Register Now
                         </a>
-                        <a id="pricing_button" href="/vendor/pricing" class="inline-flex items-center justify-center gap-3 border-2 border-teal-500 text-teal-500 bg-transparent px-8 py-4 rounded-xl font-bold text-lg hover:bg-teal-50 transition min-w-[160px]">
+                        <a id="pricing_button" href="/vendor/pricing" class="inline-flex items-center justify-center gap-3 border-2 border-teal-500 text-teal-500 bg-transparent px-8 py-4 rounded-xl font-bold text-lg hover:bg-teal-50 transition w-full sm:w-auto sm:min-w-[180px]">
                             Pricing
                         </a>
                     </div>
@@ -204,14 +204,14 @@
                 How GoSnel Works
             </h2>
             
-            <div class="grid md:grid-cols-4 gap-8">
+            <div class="grid md:grid-cols-3 gap-8">
                 <!-- Step 1 -->
                 <div class="text-center">
                     <div class="w-14 h-14 mx-auto mb-4 rounded-full bg-white border-2 border-teal-500 flex items-center justify-center text-teal-600 font-bold text-xl">
                         1
                     </div>
-                    <h3 id="step1_title" class="text-lg font-semibold text-black mb-2">Customers submit ready-to-order requests</h3>
-                    <p id="step1_desc" class="text-gray-800 text-sm">Customers find your restaurant and submit orders through the app.</p>
+                    <h3 id="step1_title" class="text-lg font-semibold text-black mb-2">Customer submits order and chooses delivery method</h3>
+                    <p id="step1_desc" class="text-gray-800 text-sm">Customers order via WhatsApp, pickup, or your existing apps like Talabat and Noon Food.</p>
                 </div>
                 
                 <!-- Step 2 -->
@@ -228,17 +228,8 @@
                     <div class="w-14 h-14 mx-auto mb-4 rounded-full bg-white border-2 border-teal-500 flex items-center justify-center text-teal-600 font-bold text-xl">
                         3
                     </div>
-                    <h3 id="step3_title" class="text-lg font-semibold text-black mb-2">You deliver to the customer</h3>
-                    <p id="step3_desc" class="text-gray-800 text-sm">Your driver picks up and delivers the order to the customer.</p>
-                </div>
-                
-                <!-- Step 4 -->
-                <div class="text-center">
-                    <div class="w-14 h-14 mx-auto mb-4 rounded-full bg-white border-2 border-teal-500 flex items-center justify-center text-teal-600 font-bold text-xl">
-                        4
-                    </div>
-                    <h3 id="step4_title" class="text-lg font-semibold text-black mb-2">You track your earnings</h3>
-                    <p id="step4_desc" class="text-gray-800 text-sm">See your daily orders and earnings in your simple dashboard.</p>
+                    <h3 id="step3_title" class="text-lg font-semibold text-black mb-2">Track your earnings</h3>
+                    <p id="step3_desc" class="text-gray-800 text-sm">See your daily orders and earnings in your simple dashboard.</p>
                 </div>
             </div>
         </div>
@@ -332,14 +323,6 @@
                     real_time: '',
                     real_time_desc: '',
                     why_love: 'How GoSnel Works',
-                    increase_orders: '1️⃣ Customers submit ready-to-order requests',
-                    increase_orders_desc: 'Customers find your restaurant and submit orders through the app.',
-                    reduce_calls: '2️⃣ You prepare the food',
-                    reduce_calls_desc: 'You receive instant notifications and start preparing orders.',
-                    global_reach: '3️⃣ You deliver to the customer',
-                    global_reach_desc: 'Your driver picks up and delivers the order to the customer.',
-                    easy_integration: '4️⃣ You track your earnings',
-                    easy_integration_desc: 'See your daily orders and earnings in your simple dashboard.',
                     features_title: 'Common Questions',
                     menu_translations: 'Do I need technical experience?',
                     menu_translations_desc: 'No — just send your menu and we set everything up for you.',
@@ -354,14 +337,12 @@
                     grow_business_title: 'Grow Your Business',
                     grow_business_desc: 'Access marketing tools, analytics, and insights to increase sales and reach customers. We succeed when you succeed.',
                     how_it_works_title: 'How GoSnel Works',
-                    step1_title: 'Customers submit ready-to-order requests',
-                    step1_desc: 'Customers find your restaurant and submit orders through the app.',
+                    step1_title: 'Customer submits order and chooses delivery method',
+                    step1_desc: 'Customers order via WhatsApp, pickup, or your existing apps like Talabat and Noon Food.',
                     step2_title: 'You prepare the food',
                     step2_desc: 'You receive instant notifications and start preparing orders.',
-                    step3_title: 'You deliver to the customer',
-                    step3_desc: 'Your driver picks up and delivers the order to the customer.',
-                    step4_title: 'You track your earnings',
-                    step4_desc: 'See your daily orders and earnings in your simple dashboard.',
+                    step3_title: 'Track your earnings',
+                    step3_desc: 'See your daily orders and earnings in your simple dashboard.',
                     faq_title: 'Common Questions',
                     faq1_question: 'Do I need technical experience?',
                     faq1_answer: 'No — just send your menu and we set everything up for you.',
@@ -375,36 +356,28 @@
                 ar: {
                     hero_title: '<span class="text-white block">طلبات أكثر</span><span class="text-white block">مبيعات أكثر</span><span class="text-white block">مع جوسنِل</span>',
                     hero_desc: 'الذكاء الاصطناعي في جوسنِل يربط مطعمك بالزبائن اللي يدورون على وجبات مثل اللي تقدمها.<br/><br/>ابدأ مجاناً، زيد ظهورك، وكبر شغلك بدون أي تكاليف مسبقة.',
-                    get_started: '👉 ابدأ الآن مجاناً',
+                    get_started: ' ابدأ الآن مجاناً',
                     pricing_button: 'الأسعار',
-                    try_demo: '📊 شوف الديمو',
+                    try_demo: ' شوف الديمو',
                     login: 'تسجيل الدخول',
                     what_we_offer: 'ليش المطاعم تختار جوسنِل:',
-                    smart_menu: 'الذكاء الاصطناعي يربط وجباتك بالزبائن الجيعانين تلقائياً',
+                    smart_menu: 'الذكاء الاصطناعي يربط وجباتك بالزبائن تلقائياً',
                     multilingual: 'تظهر في التوصيات الذكية، مو ضايعة في قوائم ما لها نهاية',
                     zero_setup: 'بدون أي رسوم إعداد أو عقود',
                     real_time: '',
                     real_time_desc: '',
                     why_love: 'كيف تشتغل جوسنِل',
-                    increase_orders: '1️⃣ الزبائن يقدمون طلبات جاهزة',
-                    increase_orders_desc: 'الزبائن يلاقون مطعمك ويقدمون طلبات من التطبيق.',
-                    reduce_calls: '2️⃣ انت تحضر الأكل',
-                    reduce_calls_desc: 'بتستقبل إشعارات فورية وتبدأ تحضر الطلبات.',
-                    global_reach: '3️⃣ انت توصل للزبون',
-                    global_reach_desc: 'سائق مطعمك يأخذ الطلب ويوصله للعميل.',
-                    easy_integration: '4️⃣ تتابع أرباحك',
-                    easy_integration_desc: 'شوف الطلبات اليومية والأرباح في لوحة تحكم بسيطة.',
                     features_title: 'أسئلة شائعة',
                     menu_translations: 'هل أحتاج خبرة تقنية؟',
                     menu_translations_desc: 'لا — كل شيء جاهز. بس أرسل قائمة الوجبات وإحنا نرتب لك الباقي.',
                     cta_section: 'جاهز تبدأ؟',
                     cta_desc: 'ابدأ بإضافة وجباتك اليوم وتواصل مع الزبائن اللي ينتظرون مطاعم جديدة في عجمان.',
-                    create_account: 'سجّل حسابك الآن — مجاناً خلال الفترة التجريبية',
+                    create_account: 'ابدأ الان    ',
                     faq_title: 'أسئلة شائعة',
                     faq1_question: 'هل أحتاج خبرة تقنية؟',
                     faq1_answer: 'لا — كل شيء جاهز. بس أرسل قائمة الوجبات وإحنا نرتب لك الباقي.',
                     faq2_question: 'هل توجد رسوم إعداد؟',
-                    faq2_answer: 'لا، التسجيل مجاني خلال الفترة التجريبية.',
+                    faq2_answer: 'لا، التسجيل مجاني ويمكنك إلغاءه في أي وقت والاستفادة من الميزات المدفوعة.',
                     faq3_question: 'أقدر أوقف الطلبات إذا المطبخ مزدحم؟',
                     faq3_answer: 'نعم، تقدر توقف وتكمل الطلبات بأي وقت.',
                     faq4_question: 'كيف راح أستقبل الطلبات؟',
@@ -417,14 +390,12 @@
                     grow_business_title: 'كبر شغلك',
                     grow_business_desc: 'احصل على أدوات تسويق وتحليلات ورؤى لزيادة المبيعات والوصول للزبائن. نجاحنا من نجاحك.',
                     how_it_works_title: 'كيف تشتغل جوسنِل',
-                    step1_title: 'الزبائن يقدمون طلبات جاهزة',
-                    step1_desc: 'الزبائن يلاقون مطعمك ويقدمون طلبات من التطبيق.',
+                    step1_title: 'الزبون يقدم طلب ويختار طريقة التوصيل',
+                    step1_desc: 'الزبائن يطلبون عبر الواتساب، أو استلام، أو تطبيقاتك الحالية مثل طلبات ونون فود.',
                     step2_title: 'انت تحضر الأكل',
                     step2_desc: 'بتستقبل إشعارات فورية وتبدأ تحضر الطلبات.',
-                    step3_title: 'توصل الطلب للزبون',
-                    step3_desc: 'سائق مطعمك يأخذ الطلب ويوصله للعميل.',
-                    step4_title: 'تتابع أرباحك',
-                    step4_desc: 'شوف الطلبات اليومية والأرباح في لوحة تحكم بسيطة.',
+                    step3_title: 'تتابع أرباحك',
+                    step3_desc: 'شوف الطلبات اليومية والأرباح في لوحة تحكم بسيطة.',
                 },
             };
 
@@ -451,8 +422,6 @@
                 step2_desc: document.getElementById('step2_desc'),
                 step3_title: document.getElementById('step3_title'),
                 step3_desc: document.getElementById('step3_desc'),
-                step4_title: document.getElementById('step4_title'),
-                step4_desc: document.getElementById('step4_desc'),
                 faq_title: document.getElementById('faq_title'),
                 faq1_question: document.getElementById('faq1_question'),
                 faq1_answer: document.getElementById('faq1_answer'),
@@ -503,8 +472,6 @@
                 if(ids.step2_desc) ids.step2_desc.textContent = current.step2_desc;
                 if(ids.step3_title) ids.step3_title.textContent = current.step3_title;
                 if(ids.step3_desc) ids.step3_desc.textContent = current.step3_desc;
-                if(ids.step4_title) ids.step4_title.textContent = current.step4_title;
-                if(ids.step4_desc) ids.step4_desc.textContent = current.step4_desc;
                 if(ids.faq_title) ids.faq_title.textContent = current.faq_title;
                 if(ids.faq1_question) ids.faq1_question.textContent = current.faq1_question;
                 if(ids.faq1_answer) ids.faq1_answer.textContent = current.faq1_answer;
