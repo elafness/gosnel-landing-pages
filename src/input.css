@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Production-safe strikethrough styling */
+.line-through {
+  text-decoration: line-through !important;
+}
+
 /* Google Workspace Style - Clean & Professional */
 @layer components {
   /* Clean Button System - No animations */

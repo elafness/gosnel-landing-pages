@@ -83,6 +83,23 @@
             line-height: 1;
         }
         
+        /* Strikethrough pricing */
+        .line-through {
+            text-decoration: line-through !important;
+        }
+        
+        .text-gray-400 {
+            color: #9CA3AF !important;
+        }
+        
+        .text-green-600 {
+            color: #16A34A !important;
+        }
+        
+        .text-teal-600 {
+            color: #0D9488 !important;
+        }
+        
         .badge {
             background-color: #f59e0b;
             color: white;
@@ -201,6 +218,27 @@
         .faq-icon.rotate {
             transform: rotate(180deg);
         }
+        
+        /* Billing Toggle Styles */
+        .toggle-bg {
+            background-color: #14b8a6;
+        }
+        
+        #billingToggle:checked + label .toggle-dot {
+            transform: translateX(0px);
+        }
+        
+        #billingToggle:not(:checked) + label .toggle-dot {
+            transform: translateX(-24px);
+        }
+        
+        #billingToggle:checked + label .toggle-bg {
+            background-color: #14b8a6;
+        }
+        
+        #billingToggle:not(:checked) + label .toggle-bg {
+            background-color: #d1d5db;
+        }
     </style>
 </head>
 <body class="bg-gray-50 min-h-screen">
@@ -213,9 +251,27 @@
             <h1 class="text-4xl sm:text-5xl font-bold mb-6 text-gray-900">
                 Simple Pricing
             </h1>
-            <p class="text-xl text-gray-600 mb-12 max-w-2xl mx-auto">
+            <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
                 Choose the perfect plan for your restaurant. Start free, no hidden fees, cancel anytime.
             </p>
+            
+            <!-- Billing Toggle -->
+            <div class="flex items-center justify-center space-x-4 mb-8">
+                <span class="text-gray-600 font-medium">Monthly</span>
+                <div class="relative">
+                    <input type="checkbox" id="billingToggle" class="sr-only" checked onchange="toggleBilling()">
+                    <label for="billingToggle" class="flex items-center cursor-pointer">
+                        <div class="relative">
+                            <div class="toggle-bg block w-14 h-8 rounded-full bg-teal-600 transition-colors duration-300"></div>
+                            <div class="toggle-dot absolute right-1 top-1 bg-white w-6 h-6 rounded-full transition-transform duration-300 shadow-sm"></div>
+                        </div>
+                    </label>
+                </div>
+                <span class="text-gray-600 font-medium">
+                    Annual 
+                    <span class="text-green-600 font-bold ml-1">(Save 20%)</span>
+                </span>
+            </div>
         </div>
     </section>
     
@@ -233,10 +289,11 @@
                     
                     <div class="mb-8">
                         <div class="flex items-baseline mb-2">
-                            <span class="text-lg text-gray-400 line-through mr-3">49 AED</span>
-                            <span class="price text-green-600">Free</span>
+                            <span class="text-3xl text-gray-400 line-through mr-3 starter-original-price">49</span>
+                            <span class="price text-gray-900 starter-price">0</span>
+                            <span class="text-gray-600 ml-2 starter-period">AED/month</span>
                         </div>
-                        <p class="text-gray-600">Limited time offer</p>
+                        <p class="text-gray-600 starter-offer-text">Limited time offer - Annual billing</p>
                     </div>
                     
                     <a href="https://gosnel.com/vendor/signup" class="btn-secondary w-full mb-8">Get Started</a>
@@ -278,11 +335,11 @@
                     
                     <div class="mb-8">
                         <div class="flex items-baseline mb-2">
-                            <span class="text-lg text-gray-400 line-through mr-3">199 AED</span>
-                            <span class="price text-teal-600">99</span>
-                            <span class="text-gray-600 ml-2">AED/month</span>
+                            <span class="text-3xl text-gray-400 line-through mr-3 growth-original-price">199</span>
+                            <span class="price text-gray-900 growth-price">79</span>
+                            <span class="text-gray-900 ml-2 growth-period">AED/month</span>
                         </div>
-                        <p class="text-gray-600">50% off launch offer</p>
+                        <p class="text-gray-600 growth-offer-text">Billed annually (950 AED/year) - Save 20%</p>
                     </div>
                     
                     <a href="https://gosnel.com/vendor/signup" class="btn-primary w-full mb-8">Start Growing</a>
@@ -327,7 +384,7 @@
                     </div>
                     
                     <div class="mb-8">
-                        <div class="price mb-2">Custom</div>
+                        <div class="price mb-2 text-gray-900">Custom</div>
                         <p class="text-gray-600">Contact us for pricing</p>
                     </div>
                     
@@ -385,8 +442,8 @@
                     <thead>
                         <tr>
                             <th class="w-1/4">Features</th>
-                            <th class="w-1/4 tier-starter text-center">Starter<br><span class="text-sm font-normal"><span class="line-through text-gray-400">AED 49</span> <span class="text-green-600 font-bold">Free</span></span></th>
-                            <th class="w-1/4 tier-growth text-center">Growth<br><span class="text-sm font-normal"><span class="line-through text-gray-400">AED 199</span> <span class="text-teal-600 font-bold">AED 99</span>/month</span></th>
+                            <th class="w-1/4 tier-starter text-center">Starter<br><span class="text-sm font-normal comparison-starter-price"><span class="line-through text-gray-400 text-lg">49</span> <span class="text-gray-900 font-bold">0 AED</span>/month</span></th>
+                            <th class="w-1/4 tier-growth text-center">Growth<br><span class="text-sm font-normal comparison-growth-price"><span class="line-through text-gray-400 text-lg">199</span> <span class="text-gray-900 font-bold">79 AED</span>/month</span></th>
                             <th class="w-1/4 tier-enterprise text-center">Enterprise<br><span class="text-sm font-normal">Custom</span></th>
                         </tr>
                     </thead>
@@ -497,6 +554,20 @@
                 
                 <div class="faq-item">
                     <div class="faq-header" onclick="toggleFAQ(1)">
+                        <h3 class="text-lg font-semibold text-gray-900">What's the difference between monthly and annual billing?</h3>
+                        <svg class="w-5 h-5 faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </div>
+                    <div class="faq-content">
+                        <div class="faq-answer">
+                            <p class="text-gray-600">Annual billing offers a 20% discount. For the Growth plan, you pay 950 AED annually (equivalent to 79 AED/month) instead of 1,188 AED yearly when paying monthly. You save 238 AED per year!</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-header" onclick="toggleFAQ(2)">
                         <h3 class="text-lg font-semibold text-gray-900">What's included in the Growth plan?</h3>
                         <svg class="w-5 h-5 faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
@@ -504,13 +575,13 @@
                     </div>
                     <div class="faq-content">
                         <div class="faq-answer">
-                            <p class="text-gray-600">Growth plan (AED 99/month) includes unlimited meal boosts, delivery platform links (Talabat, Deliveroo), advanced analytics, finance tracking, and priority WhatsApp support.</p>
+                            <p class="text-gray-600">Growth plan includes unlimited meal boosts, delivery platform links (Talabat, Deliveroo), advanced analytics, finance tracking, and priority WhatsApp support. Choose monthly (99 AED/month) or annual billing (79 AED/month) to save 20%.</p>
                         </div>
                     </div>
                 </div>
                 
                 <div class="faq-item">
-                    <div class="faq-header" onclick="toggleFAQ(2)">
+                    <div class="faq-header" onclick="toggleFAQ(3)">
                         <h3 class="text-lg font-semibold text-gray-900">Can I cancel anytime?</h3>
                         <svg class="w-5 h-5 faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
@@ -518,13 +589,13 @@
                     </div>
                     <div class="faq-content">
                         <div class="faq-answer">
-                            <p class="text-gray-600">Yes, you can cancel your subscription at any time. There are no long-term contracts or cancellation fees.</p>
+                            <p class="text-gray-600">Yes, you can cancel your subscription at any time. There are no long-term contracts or cancellation fees. Annual subscriptions are refunded on a pro-rata basis.</p>
                         </div>
                     </div>
                 </div>
                 
                 <div class="faq-item">
-                    <div class="faq-header" onclick="toggleFAQ(3)">
+                    <div class="faq-header" onclick="toggleFAQ(4)">
                         <h3 class="text-lg font-semibold text-gray-900">How do I get started?</h3>
                         <svg class="w-5 h-5 faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
@@ -532,7 +603,7 @@
                     </div>
                     <div class="faq-content">
                         <div class="faq-answer">
-                            <p class="text-gray-600">Simply sign up for free, add your menu items, and start receiving orders. Upgrading to Growth is optional and can be done anytime.</p>
+                            <p class="text-gray-600">Simply sign up for free, add your menu items, and start receiving orders. Upgrading to Growth is optional and can be done anytime with your choice of monthly or annual billing.</p>
                         </div>
                     </div>
                 </div>
@@ -553,6 +624,54 @@
     <!--#include file="components/footer.html" -->
     
     <script>
+        let isAnnual = true; // Default to annual
+        
+        function toggleBilling() {
+            isAnnual = !isAnnual;
+            updatePricing();
+        }
+        
+        function updatePricing() {
+            if (isAnnual) {
+                // Annual pricing (20% discount)
+                
+                // Starter Plan - Annual
+                document.querySelector('.starter-original-price').textContent = '49';
+                document.querySelector('.starter-price').textContent = '0';
+                document.querySelector('.starter-period').textContent = 'AED/month';
+                document.querySelector('.starter-offer-text').textContent = 'Limited time offer - Annual billing';
+                
+                // Growth Plan - Annual (20% discount: 99 * 12 * 0.8 = 950.4 ≈ 950)
+                document.querySelector('.growth-original-price').textContent = '199';
+                document.querySelector('.growth-price').textContent = '79';
+                document.querySelector('.growth-period').textContent = 'AED/month';
+                document.querySelector('.growth-offer-text').textContent = 'Billed annually (950 AED/year) - Save 20%';
+                
+                // Update comparison table
+                document.querySelector('.comparison-starter-price').innerHTML = '<span class="line-through text-gray-400 text-lg">49</span> <span class="text-gray-900 font-bold">0 AED</span>/month';
+                document.querySelector('.comparison-growth-price').innerHTML = '<span class="line-through text-gray-400 text-lg">199</span> <span class="text-gray-900 font-bold">79 AED</span>/month';
+                
+            } else {
+                // Monthly pricing
+                
+                // Starter Plan - Monthly
+                document.querySelector('.starter-original-price').textContent = '49';
+                document.querySelector('.starter-price').textContent = '0';
+                document.querySelector('.starter-period').textContent = 'AED/month';
+                document.querySelector('.starter-offer-text').textContent = 'Limited time offer';
+                
+                // Growth Plan - Monthly
+                document.querySelector('.growth-original-price').textContent = '199';
+                document.querySelector('.growth-price').textContent = '99';
+                document.querySelector('.growth-period').textContent = 'AED/month';
+                document.querySelector('.growth-offer-text').textContent = '50% off launch offer';
+                
+                // Update comparison table
+                document.querySelector('.comparison-starter-price').innerHTML = '<span class="line-through text-gray-400 text-lg">49</span> <span class="text-gray-900 font-bold">0 AED</span>/month';
+                document.querySelector('.comparison-growth-price').innerHTML = '<span class="line-through text-gray-400 text-lg">199</span> <span class="text-gray-900 font-bold">99 AED</span>/month';
+            }
+        }
+        
         function toggleFAQ(index) {
             const faqItems = document.querySelectorAll('.faq-item');
             const currentItem = faqItems[index];
