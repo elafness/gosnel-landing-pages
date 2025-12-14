@@ -297,11 +297,9 @@
                     
                     <div class="mb-8">
                         <div class="flex items-baseline mb-2">
-                            <span class="text-3xl text-gray-400 line-through mr-3 starter-original-price">39</span>
-                            <span class="price text-gray-900 starter-price">0</span>
-                            <span class="text-gray-600 ml-2 starter-period">AED/month</span>
+                            <span class="price text-gray-900">Free</span>
                         </div>
-                        <p class="text-gray-600 starter-offer-text">Billed annually (0 AED/year) - Free offer</p>
+                        <p class="text-gray-600">Forever</p>
                     </div>
                     
                     <a href="https://gosnel.com/vendor/signup" class="btn-secondary w-full mb-8">Get Started</a>
@@ -450,7 +448,7 @@
                     <thead>
                         <tr>
                             <th class="w-1/4">Features</th>
-                            <th class="w-1/4 tier-starter text-center">Starter<br><span class="text-sm font-normal comparison-starter-price"><span class="line-through text-gray-400 text-lg">39</span> <span class="text-gray-900 font-bold">0 AED</span>/month</span></th>
+                            <th class="w-1/4 tier-starter text-center">Starter<br><span class="text-sm font-normal"><span class="text-gray-900 font-bold">Free</span></span></th>
                             <th class="w-1/4 tier-growth text-center">Growth<br><span class="text-sm font-normal comparison-growth-price"><span class="line-through text-gray-400 text-lg">159</span> <span class="text-gray-900 font-bold">79 AED</span>/month</span></th>
                             <th class="w-1/4 tier-enterprise text-center">Enterprise<br><span class="text-sm font-normal">Custom</span></th>
                         </tr>
@@ -555,7 +553,7 @@
                     </div>
                     <div class="faq-content">
                         <div class="faq-answer">
-                            <p class="text-gray-600">The free plan includes everything you need to get started: unlimited menu items, basic dashboard, WhatsApp contact, and pickup orders. You can boost individual meals for AED 49 each when you want extra visibility.</p>
+                            <p class="text-gray-600">The Starter plan is completely free forever - unlimited menu items, basic dashboard, WhatsApp contact, and pickup orders. No hidden fees, no time limits, just free forever.</p>
                         </div>
                     </div>
                 </div>
@@ -569,7 +567,7 @@
                     </div>
                     <div class="faq-content">
                         <div class="faq-answer">
-                            <p class="text-gray-600">Annual billing offers the same 50% discount as monthly, but with annual commitment convenience. For the Growth plan, you pay 948 AED annually (equivalent to 79 AED/month) instead of 1,188 AED yearly when paying monthly (99 AED × 12). Same great 50% savings, paid once per year!</p>
+                            <p class="text-gray-600">The Starter plan is completely free forever with all basic features. The Growth plan pricing varies: monthly billing at 99 AED/month (50% off) or annual billing at 79 AED/month (50% off the annual rate). Annual billing offers the same great discount with the convenience of paying once per year.</p>
                         </div>
                     </div>
                 </div>
@@ -643,11 +641,7 @@
             if (isAnnual) {
                 // Annual pricing 
                 
-                // Starter Plan - Annual
-                document.querySelector('.starter-original-price').textContent = '39';
-                document.querySelector('.starter-price').textContent = '0';
-                document.querySelector('.starter-period').textContent = 'AED/month';
-                document.querySelector('.starter-offer-text').textContent = 'Billed annually (0 AED/year) - Free offer';
+                // Starter Plan - Always Free (no changes needed)
                 
                 // Growth Plan - Annual (79 AED/month when billed annually - 50% off annual rate)
                 document.querySelector('.growth-original-price').textContent = '159';
@@ -656,17 +650,12 @@
                 document.querySelector('.growth-offer-text').textContent = 'Billed annually (948 AED/year) - 50% off';
                 
                 // Update comparison table
-                document.querySelector('.comparison-starter-price').innerHTML = '<span class="line-through text-gray-400 text-lg">39</span> <span class="text-gray-900 font-bold">0 AED</span>/month';
                 document.querySelector('.comparison-growth-price').innerHTML = '<span class="line-through text-gray-400 text-lg">159</span> <span class="text-gray-900 font-bold">79 AED</span>/month';
                 
             } else {
                 // Monthly pricing
                 
-                // Starter Plan - Monthly
-                document.querySelector('.starter-original-price').textContent = '49';
-                document.querySelector('.starter-price').textContent = '0';
-                document.querySelector('.starter-period').textContent = 'AED/month';
-                document.querySelector('.starter-offer-text').textContent = 'Limited time offer - Free';
+                // Starter Plan - Always Free (no changes needed)
                 
                 // Growth Plan - Monthly (99 AED/month with 50% off from 199)
                 document.querySelector('.growth-original-price').textContent = '199';
@@ -675,7 +664,6 @@
                 document.querySelector('.growth-offer-text').textContent = '50% off launch offer';
                 
                 // Update comparison table
-                document.querySelector('.comparison-starter-price').innerHTML = '<span class="line-through text-gray-400 text-lg">49</span> <span class="text-gray-900 font-bold">0 AED</span>/month';
                 document.querySelector('.comparison-growth-price').innerHTML = '<span class="line-through text-gray-400 text-lg">199</span> <span class="text-gray-900 font-bold">99 AED</span>/month';
             }
         }
