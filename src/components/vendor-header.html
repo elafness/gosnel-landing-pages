@@ -1,0 +1,132 @@
+<!-- Vendor Header Component -->
+<nav class="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+            <!-- Logo with Slogan -->
+            <a href="/vendor" class="flex items-center gap-4">
+                <div class="flex items-center gap-3">
+                    <img src="/assets/images/gosnelLogoTransparate.png" alt="GoSnel Logo" class="w-10 h-10 object-contain">
+                    <div class="flex flex-col">
+                        <span class="text-xl font-bold text-gray-900">GoSnel</span>
+                        <span class="text-xs text-gray-600 hidden sm:block">Partner with us</span>
+                    </div>
+                </div>
+            </a>
+            
+            <!-- Desktop Navigation Links -->
+            <div class="hidden md:flex items-center gap-8">
+                <a href="/vendor" class="text-gray-900 hover:text-teal-600 font-medium transition">Home</a>
+                <a href="/vendor/how-it-works" class="text-gray-900 hover:text-teal-600 font-medium transition">How It Works</a>
+                <a href="/vendor/pricing" class="text-gray-900 hover:text-teal-600 font-medium transition">Pricing</a>
+                <a href="/vendor/why-partner" class="text-gray-900 hover:text-teal-600 font-medium transition">Why Partner</a>
+                <a href="/vendor/faq" class="text-gray-900 hover:text-teal-600 font-medium transition">FAQ</a>
+            </div>
+            
+            <!-- Desktop Right Actions -->
+            <div class="hidden md:flex items-center gap-3">
+                <!-- Language Switcher -->
+                <div class="flex items-center gap-1 bg-gray-100 rounded-lg p-1 border border-gray-200">
+                    <button id="vendor-lang-en" class="px-3 py-1.5 rounded-md text-xs font-semibold bg-teal-500 text-white">English</button>
+                    <button id="vendor-lang-ar" class="px-3 py-1.5 rounded-md text-xs font-semibold text-gray-600 hover:text-teal-500 transition">عربي</button>
+                </div>
+                
+                <!-- Vendor Actions -->
+                <a href="https://gosnel.com/vendor/login" class="text-gray-900 hover:text-teal-600 font-medium transition">Login</a>
+                <a href="https://gosnel.com/vendor/signup" class="bg-teal-500 text-white px-4 py-2 rounded-lg font-medium hover:bg-teal-600 transition">Get Started</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden flex items-center justify-center w-10 h-10 rounded-lg hover:bg-gray-100 transition">
+                <svg class="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Drawer -->
+        <div id="mobile-menu" class="md:hidden fixed inset-y-0 left-0 top-16 bottom-0 w-80 max-w-sm z-40 bg-white transform -translate-x-full transition-transform duration-300 shadow-xl">
+            <div class="p-6 space-y-6">
+                <!-- Mobile Navigation Links -->
+                <div class="space-y-4">
+                    <a href="/vendor" class="block text-lg font-medium text-gray-900 hover:text-teal-600 transition">Home</a>
+                    <a href="/vendor/how-it-works" class="block text-lg font-medium text-gray-900 hover:text-teal-600 transition">How It Works</a>
+                    <a href="/vendor/pricing" class="block text-lg font-medium text-gray-900 hover:text-teal-600 transition">Pricing</a>
+                    <a href="/vendor/why-partner" class="block text-lg font-medium text-gray-900 hover:text-teal-600 transition">Why Partner</a>
+                    <a href="/vendor/faq" class="block text-lg font-medium text-gray-900 hover:text-teal-600 transition">FAQ</a>
+                </div>
+
+                <!-- Mobile Language Switcher -->
+                <div class="pt-4 border-t border-gray-200">
+                    <p class="text-sm font-medium text-gray-700 mb-3">Language</p>
+                    <div class="flex items-center gap-1 bg-gray-100 rounded-lg p-1 border border-gray-200 w-fit">
+                        <button id="vendor-lang-en-mobile" class="px-3 py-1.5 rounded-md text-xs font-semibold bg-teal-500 text-white">English</button>
+                        <button id="vendor-lang-ar-mobile" class="px-3 py-1.5 rounded-md text-xs font-semibold text-gray-600 hover:text-teal-500 transition">عربي</button>
+                    </div>
+                </div>
+
+                <!-- Mobile Actions -->
+                <div class="pt-4 border-t border-gray-200 space-y-4">
+                    <a href="https://gosnel.com/vendor/login" class="block text-center py-3 text-gray-900 hover:text-teal-600 font-medium border border-gray-300 rounded-lg transition">Login</a>
+                    <a href="https://gosnel.com/vendor/signup" class="block text-center py-3 bg-teal-500 text-white rounded-lg font-medium hover:bg-teal-600 transition">Get Started</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu-overlay" class="md:hidden fixed inset-0 bg-black bg-opacity-50 z-30 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+    </div>
+</nav>
+
+<style>
+.text-gradient-teal {
+    background: linear-gradient(90deg, #14b8a6, #0d9488);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Mobile menu functionality
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+
+    function toggleMobileMenu() {
+        const isOpen = !mobileMenu.classList.contains('-translate-x-full');
+        
+        if (isOpen) {
+            // Close menu
+            mobileMenu.classList.add('-translate-x-full');
+            mobileMenuOverlay.classList.add('opacity-0', 'pointer-events-none');
+            document.body.style.overflow = '';
+        } else {
+            // Open menu
+            mobileMenu.classList.remove('-translate-x-full');
+            mobileMenuOverlay.classList.remove('opacity-0', 'pointer-events-none');
+            document.body.style.overflow = 'hidden';
+        }
+    }
+
+    if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+    }
+
+    if (mobileMenuOverlay) {
+        mobileMenuOverlay.addEventListener('click', toggleMobileMenu);
+    }
+
+    // Close menu when clicking on navigation links
+    const mobileNavLinks = mobileMenu?.querySelectorAll('a');
+    if (mobileNavLinks) {
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('-translate-x-full');
+                mobileMenuOverlay.classList.add('opacity-0', 'pointer-events-none');
+                document.body.style.overflow = '';
+            });
+        });
+    }
+});
+</script>

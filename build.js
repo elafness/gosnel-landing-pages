@@ -76,6 +76,37 @@ const buildPages = () => {
     }
   });
 
+  // Create index.html files in subdirectories that redirect to the main landing pages
+  landingPages.forEach(({ subdomain, filename }) => {
+    const srcPath = path.join(srcDir, filename);
+    const distSubdomainDir = path.join(distDir, subdomain);
+    const distIndexPath = path.join(distSubdomainDir, 'index.html');
+
+    if (fs.existsSync(srcPath)) {
+      // Ensure subdomain directory exists
+      if (!fs.existsSync(distSubdomainDir)) {
+        fs.mkdirSync(distSubdomainDir, { recursive: true });
+      }
+
+      // Copy landing page content as index.html in subdirectory
+      let htmlContent = fs.readFileSync(srcPath, "utf8");
+      htmlContent = processIncludes(htmlContent);
+      
+      // Fix CSS paths for subdirectory access
+      htmlContent = htmlContent.replace(
+        /\.\.\/\.\.\/dist\/output\.css/g,
+        "/output.css"
+      );
+      htmlContent = htmlContent.replace(
+        /href="\/output\.css"/g,
+        'href="/output.css"'
+      );
+      
+      fs.writeFileSync(distIndexPath, htmlContent);
+      console.log(`✅ Created ${subdomain}/index.html`);
+    }
+  });
+
   // Copy root index.html for routing
   const rootIndexPath = path.join(srcDir, "index.html");
   const distRootIndexPath = path.join(distDir, "index.html");

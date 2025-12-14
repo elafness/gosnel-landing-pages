@@ -25,34 +25,22 @@
         .gradient-teal { background: linear-gradient(135deg, #4ECDC4, #1A9A93); }
     </style>
 </head>
-<body class="gradient-dark min-h-screen text-gray-100">
-    <!-- Navigation -->
-    <nav class="sticky top-0 z-50 bg-[#222b38]/95 backdrop-blur-md border-b border-white/10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <a href="/" class="flex items-center gap-3">
-                    <div class="w-10 h-10 bg-gradient-to-r from-teal-400 to-teal-600 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-lg">GS</div>
-                    <span class="text-xl md:text-2xl font-bold text-gradient-teal">GoSnel</span>
-                </a>
-                <a href="/user" class="px-4 py-2 rounded-lg text-sm font-semibold text-white border border-teal-500 hover:bg-teal-500 hover:text-gray-900 transition">
-                    ← Back to Home
-                </a>
-            </div>
-        </div>
-    </nav>
+<body class="bg-white text-black min-h-screen">
+    <!-- Header -->
+    <!--#include file="components/user-header.html" -->
 
     <!-- Content -->
     <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div class="bg-white/5 rounded-2xl p-8 md:p-12">
+        <div class="bg-white rounded-2xl p-8 md:p-12">
             <div class="text-center mb-12">
-                <h1 class="text-4xl font-bold text-gradient-teal mb-4">About GoSnel</h1>
-                <p class="text-xl text-gray-300 max-w-3xl mx-auto">Your AI-powered food assistant that makes ordering meals simple, personalized, and delightful.</p>
+                <h1 class="text-4xl font-bold text-teal-600 mb-4">About GoSnel</h1>
+                <p class="text-xl text-gray-900 max-w-3xl mx-auto">Your AI-powered food assistant that makes ordering meals simple, personalized, and delightful.</p>
             </div>
 
             <!-- Mission -->
             <section class="mb-12">
-                <h2 class="text-2xl font-semibold text-teal-400 mb-6">Our Mission</h2>
-                <p class="text-gray-300 text-lg leading-relaxed">
+                <h2 class="text-2xl font-semibold text-teal-600 mb-6">Our Mission</h2>
+                <p class="text-gray-900 text-lg leading-relaxed">
                     GoSnel revolutionizes food ordering by combining artificial intelligence with local restaurant partnerships. 
                     We believe everyone deserves access to great food recommendations tailored to their taste, budget, and dietary needs.
                     Our AI assistant understands your preferences and coordinates complete meal solutions from suggestion to delivery.
@@ -61,46 +49,46 @@
 
             <!-- Features Grid -->
             <section class="mb-12">
-                <h2 class="text-2xl font-semibold text-teal-400 mb-8">What We Do</h2>
+                <h2 class="text-2xl font-semibold text-teal-600 mb-8">What We Do</h2>
                 <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="bg-white/5 rounded-xl p-6 text-center">
+                    <div class="bg-white rounded-xl p-6 text-center border border-gray-200">
                         <div class="w-16 h-16 mx-auto mb-4 rounded-xl gradient-teal flex items-center justify-center">
-                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg class="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
                             </svg>
                         </div>
-                        <h3 class="text-lg font-semibold text-white mb-2">AI Food Agent</h3>
-                        <p class="text-gray-400 text-sm">Smart recommendations based on your preferences, mood, and budget</p>
+                        <h3 class="text-lg font-semibold text-black mb-2">AI Food Agent</h3>
+                        <p class="text-gray-800 text-sm">Smart recommendations based on your preferences, mood, and budget</p>
                     </div>
                     
-                    <div class="bg-white/5 rounded-xl p-6 text-center">
+                    <div class="bg-white rounded-xl p-6 text-center">
                         <div class="w-16 h-16 mx-auto mb-4 rounded-xl gradient-teal flex items-center justify-center">
-                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg class="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
                             </svg>
                         </div>
-                        <h3 class="text-lg font-semibold text-white mb-2">Restaurant Partners</h3>
-                        <p class="text-gray-400 text-sm">Connected with trusted local restaurants and vendors</p>
+                        <h3 class="text-lg font-semibold text-black mb-2">Restaurant Partners</h3>
+                        <p class="text-gray-800 text-sm">Connected with trusted local restaurants and vendors</p>
                     </div>
                     
-                    <div class="bg-white/5 rounded-xl p-6 text-center">
+                    <div class="bg-white rounded-xl p-6 text-center">
                         <div class="w-16 h-16 mx-auto mb-4 rounded-xl gradient-teal flex items-center justify-center">
-                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg class="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
                             </svg>
                         </div>
-                        <h3 class="text-lg font-semibold text-white mb-2">Natural Chat</h3>
-                        <p class="text-gray-400 text-sm">Chat naturally like texting a friend in 100+ languages</p>
+                        <h3 class="text-lg font-semibold text-black mb-2">Natural Chat</h3>
+                        <p class="text-gray-800 text-sm">Chat naturally like texting a friend in 100+ languages</p>
                     </div>
                     
-                    <div class="bg-white/5 rounded-xl p-6 text-center">
+                    <div class="bg-white rounded-xl p-6 text-center">
                         <div class="w-16 h-16 mx-auto mb-4 rounded-xl gradient-teal flex items-center justify-center">
-                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg class="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
                             </svg>
                         </div>
-                        <h3 class="text-lg font-semibold text-white mb-2">Complete Service</h3>
-                        <p class="text-gray-400 text-sm">From recommendation to delivery tracking - we handle everything</p>
+                        <h3 class="text-lg font-semibold text-black mb-2">Complete Service</h3>
+                        <p class="text-gray-800 text-sm">From recommendation to delivery tracking - we handle everything</p>
                     </div>
                 </div>
             </section>
@@ -110,20 +98,20 @@
                 <div class="bg-gradient-to-r from-teal-500/20 to-teal-600/10 rounded-xl p-8">
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
                         <div>
-                            <div class="text-3xl font-bold text-teal-400 mb-2">5,000+</div>
-                            <div class="text-gray-300 text-sm">Meals Coordinated</div>
+                            <div class="text-3xl font-bold text-teal-600 mb-2">5,000+</div>
+                            <div class="text-gray-900 text-sm">Meals Coordinated</div>
                         </div>
                         <div>
-                            <div class="text-3xl font-bold text-teal-400 mb-2">200+</div>
-                            <div class="text-gray-300 text-sm">Partner Vendors</div>
+                            <div class="text-3xl font-bold text-teal-600 mb-2">200+</div>
+                            <div class="text-gray-900 text-sm">Partner Vendors</div>
                         </div>
                         <div>
-                            <div class="text-3xl font-bold text-teal-400 mb-2">1,500+</div>
-                            <div class="text-gray-300 text-sm">Happy Customers</div>
+                            <div class="text-3xl font-bold text-teal-600 mb-2">1,500+</div>
+                            <div class="text-gray-900 text-sm">Happy Customers</div>
                         </div>
                         <div>
-                            <div class="text-3xl font-bold text-teal-400 mb-2">10+</div>
-                            <div class="text-gray-300 text-sm">Cities Served</div>
+                            <div class="text-3xl font-bold text-teal-600 mb-2">10+</div>
+                            <div class="text-gray-900 text-sm">Cities Served</div>
                         </div>
                     </div>
                 </div>
@@ -131,13 +119,13 @@
 
             <!-- Contact -->
             <section class="text-center">
-                <h2 class="text-2xl font-semibold text-teal-400 mb-6">Get In Touch</h2>
-                <p class="text-gray-300 mb-6">Have questions or want to partner with us? We'd love to hear from you.</p>
+                <h2 class="text-2xl font-semibold text-teal-600 mb-6">Get In Touch</h2>
+                <p class="text-gray-900 mb-6">Have questions or want to partner with us? We'd love to hear from you.</p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="mailto:hello@gosnel.com" class="px-6 py-3 rounded-lg bg-teal-600 text-white font-semibold hover:bg-teal-700 transition">
+                    <a href="mailto:hello@gosnel.com" class="px-6 py-3 rounded-lg bg-teal-600 text-black font-semibold hover:bg-teal-700 transition">
                         Email Us
                     </a>
-                    <a href="/user" class="px-6 py-3 rounded-lg border border-teal-500 text-teal-400 font-semibold hover:bg-teal-500 hover:text-gray-900 transition">
+                    <a href="/user" class="px-6 py-3 rounded-lg border border-teal-600 text-teal-600 font-semibold hover:bg-teal-500 hover:text-gray-900 transition">
                         Try GoSnel
                     </a>
                 </div>

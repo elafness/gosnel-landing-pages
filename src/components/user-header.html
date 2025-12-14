@@ -1,0 +1,46 @@
+<!-- Unified Header Component -->
+<nav class="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+            <!-- Logo with Slogan -->
+            <a href="/" class="flex items-center gap-4">
+                <div class="flex items-center gap-3">
+                    <img src="/assets/images/gosnelLogoTransparate.png" alt="GoSnel Logo" class="w-10 h-10 object-contain">
+                    <div class="flex flex-col">
+                        <span class="text-xl font-bold text-gray-900">GoSnel</span>
+                        <span class="text-xs text-gray-600 hidden sm:block">Smart meal assistant</span>
+                    </div>
+                </div>
+            </a>
+            
+            <!-- Navigation Links -->
+            <div class="hidden md:flex items-center gap-8">
+                <a href="/" class="text-gray-900 hover:text-teal-600 font-medium transition">Home</a>
+                <a href="/user/about-us" class="text-gray-900 hover:text-teal-600 font-medium transition">About Us</a>
+                <a href="/user/pricing" class="text-gray-900 hover:text-teal-600 font-medium transition">Pricing</a>
+                <a href="/user/faq" class="text-gray-900 hover:text-teal-600 font-medium transition">FAQ</a>
+            </div>
+            
+            <!-- Right Actions -->
+            <div class="flex items-center gap-3">
+                <!-- Language Switcher -->
+                <div class="hidden sm:flex items-center gap-1 bg-gray-100 rounded-lg p-1 border border-gray-200">
+                    <button class="px-3 py-1.5 rounded-md text-xs font-semibold bg-teal-500 text-white">English</button>
+                    <button class="px-3 py-1.5 rounded-md text-xs font-semibold text-gray-600 hover:text-teal-500 transition">عربي</button>
+                </div>
+                
+                <!-- Login Button -->
+                <a href="/user/login" class="text-gray-900 hover:text-teal-600 font-medium transition">Sign In</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<style>
+.text-gradient-teal {
+    background: linear-gradient(90deg, #14b8a6, #0d9488);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+</style>

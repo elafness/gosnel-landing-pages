@@ -24,31 +24,19 @@
         }
     </style>
 </head>
-<body class="gradient-dark min-h-screen text-gray-100">
-    <!-- Navigation -->
-    <nav class="sticky top-0 z-50 bg-[#222b38]/95 backdrop-blur-md border-b border-white/10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <a href="/" class="flex items-center gap-3">
-                    <div class="w-10 h-10 bg-gradient-to-r from-teal-400 to-teal-600 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-lg">GS</div>
-                    <span class="text-xl md:text-2xl font-bold text-gradient-teal">GoSnel</span>
-                </a>
-                <a href="/user" class="px-4 py-2 rounded-lg text-sm font-semibold text-white border border-teal-500 hover:bg-teal-500 hover:text-gray-900 transition">
-                    ← Back to Home
-                </a>
-            </div>
-        </div>
-    </nav>
+<body class="bg-white text-black min-h-screen">
+    <!-- Header -->
+    <!--#include file="components/user-header.html" -->
 
     <!-- Content -->
     <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div class="bg-white/5 rounded-2xl p-8 md:p-12">
-            <h1 class="text-4xl font-bold text-gradient-teal mb-4">Terms & Conditions</h1>
-            <p class="text-gray-400 text-sm mb-8">Last updated: December 8, 2025</p>
+        <div class="bg-white rounded-2xl p-8 md:p-12">
+            <h1 class="text-4xl font-bold text-teal-600 mb-4">Terms & Conditions</h1>
+            <p class="text-gray-600 text-sm mb-8">Last updated: December 8, 2025</p>
 
-            <div class="bg-teal-500/10 border border-teal-500/30 rounded-xl p-6 mb-8">
-                <h3 class="text-lg font-semibold text-teal-300 mb-2">📋 Unified Legal Documents</h3>
-                <p class="text-gray-300 mb-4">Our Privacy Policy and Terms & Conditions have been combined into a single comprehensive document for your convenience.</p>
+            <div class="bg-teal-50 border border-teal-200 rounded-xl p-6 mb-8">
+                <h3 class="text-lg font-semibold text-teal-600 mb-2">📋 Unified Legal Documents</h3>
+                <p class="text-gray-900 mb-4">Our Privacy Policy and Terms & Conditions have been combined into a single comprehensive document for your convenience.</p>
                 <a href="/privacy-policy" class="inline-flex items-center px-4 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors">
                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
@@ -57,19 +45,19 @@
                 </a>
             </div>
 
-            <div class="space-y-8 text-gray-300 leading-relaxed">
+            <div class="space-y-8 text-gray-900 leading-relaxed">
                 <section>
-                    <h2 class="text-2xl font-semibold text-teal-400 mb-4">Terms of Service Summary</h2>
-                    <p>Below is a quick overview of our key terms. For the complete legal document, please visit our <a href="/privacy-policy" class="text-teal-400 hover:text-teal-300 underline">Privacy Policy & Terms page</a>.</p>
+                    <h2 class="text-2xl font-semibold text-teal-600 mb-4">Terms of Service Summary</h2>
+                    <p>Below is a quick overview of our key terms. For the complete legal document, please visit our <a href="/privacy-policy" class="text-teal-600 hover:text-teal-700 underline">Privacy Policy & Terms page</a>.</p>
                 </section>
 
                 <section>
-                    <h2 class="text-2xl font-semibold text-teal-400 mb-4">1. Account Registration</h2>
+                    <h2 class="text-2xl font-semibold text-teal-600 mb-4">1. Account Registration</h2>
                     <p>You must be at least 18 years old to use GoSnel. You agree to provide accurate information and maintain the security of your account credentials. You are responsible for all activity under your account.</p>
                 </section>
 
                 <section>
-                    <h2 class="text-2xl font-semibold text-teal-400 mb-4">2. Orders, Payments & Refunds</h2>
+                    <h2 class="text-2xl font-semibold text-teal-600 mb-4">2. Orders, Payments & Refunds</h2>
                     <ul class="list-disc list-inside space-y-2 ml-4">
                         <li><strong>Pricing:</strong> All prices are in UAE Dirhams (AED) and include VAT where applicable.</li>
                         <li><strong>Cancellations:</strong> You may cancel an order before the restaurant confirms it. Once confirmed, cancellation fees may apply.</li>
@@ -84,7 +72,7 @@
                 </section>
 
                 <section>
-                    <h2 class="text-2xl font-semibold text-teal-400 mb-4">3. User Conduct</h2>
+                    <h2 class="text-2xl font-semibold text-teal-600 mb-4">3. User Conduct</h2>
                     <p class="mb-4">You agree NOT to:</p>
                     <ul class="list-disc list-inside space-y-2 ml-4">
                         <li>Use the platform for illegal activities or fraud.</li>
@@ -95,7 +83,7 @@
                 </section>
 
                 <section>
-                    <h2 class="text-2xl font-semibold text-teal-400 mb-4">4. Disclaimers & Limitation of Liability</h2>
+                    <h2 class="text-2xl font-semibold text-teal-600 mb-4">4. Disclaimers & Limitation of Liability</h2>
                     <p class="mb-4">GoSnel connects you with vendors; we do not prepare the food.</p>
                     <ul class="list-disc list-inside space-y-2 ml-4">
                         <li><strong>Liability:</strong> We are not liable for food quality, safety, or allergic reactions (please inform vendors of allergies).</li>
@@ -104,41 +92,41 @@
                 </section>
 
                 <section>
-                    <h2 class="text-2xl font-semibold text-teal-400 mb-4">5. Governing Law</h2>
+                    <h2 class="text-2xl font-semibold text-teal-600 mb-4">5. Governing Law</h2>
                     <p>These terms are governed by the laws of the United Arab Emirates. Disputes should first be addressed via customer support, followed by mediation via the Dubai International Arbitration Centre (DIAC) if necessary.</p>
                 </section>
 
-                <section class="bg-gray-800/50 border-l-4 border-teal-500 p-6 rounded-r-lg">
-                    <h3 class="text-lg font-semibold text-gray-200 mb-3">📞 Contact Us</h3>
-                    <p class="text-gray-400 text-sm mb-3">For questions about these terms or our services:</p>
-                    <ul class="text-sm text-gray-300 space-y-1">
-                        <li><strong>General Support:</strong> <a href="mailto:support@gosnel.com" class="text-teal-400 hover:text-teal-300">support@gosnel.com</a></li>
-                        <li><strong>Privacy & Data Deletion:</strong> <a href="mailto:privacy@gosnel.com" class="text-teal-400 hover:text-teal-300">privacy@gosnel.com</a></li>
-                        <li><strong>Legal Questions:</strong> <a href="mailto:legal@gosnel.com" class="text-teal-400 hover:text-teal-300">legal@gosnel.com</a></li>
+                <section class="bg-teal-50 border-l-4 border-teal-600 p-6 rounded-r-lg">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">📞 Contact Us</h3>
+                    <p class="text-gray-800 text-sm mb-3">For questions about these terms or our services:</p>
+                    <ul class="text-sm text-gray-900 space-y-1">
+                        <li><strong>General Support:</strong> <a href="mailto:support@gosnel.com" class="text-teal-600 hover:text-teal-700">support@gosnel.com</a></li>
+                        <li><strong>Privacy & Data Deletion:</strong> <a href="mailto:privacy@gosnel.com" class="text-teal-600 hover:text-teal-700">privacy@gosnel.com</a></li>
+                        <li><strong>Legal Questions:</strong> <a href="mailto:legal@gosnel.com" class="text-teal-600 hover:text-teal-700">legal@gosnel.com</a></li>
                     </ul>
                 </section>
             </div>
 
                 <section>
-                    <h2 class="text-2xl font-semibold text-teal-400 mb-4">6. Ratings & Feedback</h2>
+                    <h2 class="text-2xl font-semibold text-teal-600 mb-4">6. Ratings & Feedback</h2>
                     <p>Submitted ratings and feedback must be honest and based on real interactions. We may moderate or remove content that violates these Terms or applicable law.</p>
                 </section>
 
                 <section>
-                    <h2 class="text-2xl font-semibold text-teal-400 mb-4">7. Data & Privacy</h2>
+                    <h2 class="text-2xl font-semibold text-teal-600 mb-4">7. Data & Privacy</h2>
                     <p>Your use is also governed by our Privacy Policy. By using the Service you consent to data handling practices described there. Do not provide personal data of others unless you are authorized.</p>
                 </section>
 
                 <section>
-                    <h2 class="text-2xl font-semibold text-teal-400 mb-4">8. Limitation of Liability</h2>
+                    <h2 class="text-2xl font-semibold text-teal-600 mb-4">8. Limitation of Liability</h2>
                     <p>To the maximum extent permitted by law, GoSnel shall not be liable for any indirect, incidental, special, or consequential damages arising from your use of the service.</p>
                 </section>
 
                 <section>
-                    <h2 class="text-2xl font-semibold text-teal-400 mb-4">9. Contact Us</h2>
+                    <h2 class="text-2xl font-semibold text-teal-600 mb-4">9. Contact Us</h2>
                     <p>If you have questions about these Terms, please contact us at:</p>
                     <p class="mt-4">
-                        Email: <a href="mailto:legal@gosnel.com" class="text-teal-400 hover:text-teal-300">legal@gosnel.com</a><br>
+                        Email: <a href="mailto:legal@gosnel.com" class="text-teal-600 hover:text-teal-700">legal@gosnel.com</a><br>
                         Address: UAE, Ajman
                     </p>
                 </section>

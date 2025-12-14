@@ -57,3 +57,7 @@ tailwind-ui-components-main/
 # Temporary files
 *.tmp
 *.temp
+
+
+docs/
+

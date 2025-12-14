@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Plans - GoSnel</title>
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    <meta name="description" content="GoSnel User Plans. Unlock personalized food recommendations, exclusive deals, and more with our Premium plan.">
+    <link rel="stylesheet" href="/output.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Inter', system-ui, sans-serif; }
+        
+        /* Gradient Backgrounds */
+        .gradient-dark { background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 50%, #f8fafc 100%); }
+        .gradient-teal { background: linear-gradient(135deg, #4ECDC4, #1A9A93); }
+        
+        /* Text Gradients */
+        .text-gradient-teal {
+            background: linear-gradient(90deg, #4ECDC4, #1A9A93);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Pricing Cards */
+        .pricing-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(78, 205, 196, 0.3);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(241, 245, 249, 0.95));
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(78, 205, 196, 0.8);
+            box-shadow: 0 20px 50px rgba(78, 205, 196, 0.15);
+        }
+        
+        .pricing-card.featured {
+            border: 2px solid #4ECDC4;
+            box-shadow: 0 0 40px rgba(78, 205, 196, 0.25), inset 0 0 40px rgba(78, 205, 196, 0.05);
+            transform: scale(1.05);
+        }
+        
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-12px);
+            box-shadow: 0 30px 60px rgba(78, 205, 196, 0.3), inset 0 0 40px rgba(78, 205, 196, 0.08);
+        }
+        
+        /* Badge Styles */
+        .badge-popular {
+            position: relative;
+            top: -12px;
+            display: inline-block;
+            background: linear-gradient(90deg, #FF6B35, #FF8C42);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3);
+        }
+        
+        /* Feature List */
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.75rem 0;
+        }
+        
+        .feature-icon {
+            flex-shrink: 0;
+            width: 1.5rem;
+            height: 1.5rem;
+            background: rgba(78, 205, 196, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 0.125rem;
+        }
+        
+        .feature-icon::before {
+            content: "✓";
+            color: #4ECDC4;
+            font-weight: bold;
+        }
+        
+        /* CTA Buttons */
+        .btn-cta {
+            transition: all 0.3s ease;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+        
+        .btn-cta-primary {
+            background: linear-gradient(135deg, #4ECDC4, #2ba29d);
+            color: #0f1419;
+            padding: 0.875rem 2rem;
+            border-radius: 8px;
+            box-shadow: 0 8px 24px rgba(78, 205, 196, 0.3);
+        }
+        
+        .btn-cta-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(78, 205, 196, 0.5);
+        }
+        
+        .btn-cta-secondary {
+            background: rgba(78, 205, 196, 0.1);
+            color: #4ECDC4;
+            padding: 0.875rem 2rem;
+            border-radius: 8px;
+            border: 1px solid rgba(78, 205, 196, 0.3);
+        }
+        
+        .btn-cta-secondary:hover {
+            background: rgba(78, 205, 196, 0.2);
+            border-color: #4ECDC4;
+            transform: translateY(-2px);
+        }
+        
+        /* Price Display */
+        .price-amount {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, #ffffff, #4ECDC4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .price-currency {
+            font-size: 1.5rem;
+        }
+        
+        /* Toggle Switch */
+        .toggle-switch {
+            display: flex;
+            gap: 1rem;
+            background: rgba(78, 205, 196, 0.1);
+            padding: 0.5rem;
+            border-radius: 8px;
+            border: 1px solid rgba(78, 205, 196, 0.2);
+            width: fit-content;
+        }
+        
+        .toggle-btn {
+            padding: 0.5rem 1.5rem;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            color: #64748b;
+        }
+        
+        .toggle-btn.active {
+            background: #4ECDC4;
+            color: #0f1419;
+        }
+        
+        /* Savings Badge */
+        .savings-badge {
+            display: inline-block;
+            background: linear-gradient(90deg, #FF6B35, #FF8C42);
+            color: white;
+            padding: 0.375rem 0.875rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+        
+        /* FAQ Accordion */
+        .faq-item {
+            border: 1px solid rgba(78, 205, 196, 0.2);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            border-color: rgba(78, 205, 196, 0.4);
+            box-shadow: 0 8px 20px rgba(78, 205, 196, 0.1);
+        }
+        
+        .faq-header {
+            padding: 1.25rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+            background: rgba(78, 205, 196, 0.05);
+        }
+        
+        .faq-header:hover {
+            background: rgba(78, 205, 196, 0.1);
+        }
+        
+        .faq-header.open {
+            background: rgba(78, 205, 196, 0.1);
+            border-bottom: 1px solid rgba(78, 205, 196, 0.2);
+        }
+        
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding: 0 1.25rem;
+        }
+        
+        .faq-content.open {
+            max-height: 400px;
+            padding: 0 1.25rem 1.25rem;
+        }
+        
+        .toggle-icon {
+            transition: transform 0.3s ease;
+            color: #4ECDC4;
+        }
+        
+        .toggle-icon.open {
+            transform: rotate(180deg);
+        }
+        
+        /* Trust Badges */
+        .trust-badge {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            text-align: center;
+        }
+        
+        .trust-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            background: rgba(78, 205, 196, 0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+        
+        /* Section Spacing */
+        .section-padding {
+            padding: 5rem 0;
+        }
+        
+        /* Benefits Grid */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+        
+        .benefit-card {
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(78, 205, 196, 0.2);
+            background: linear-gradient(135deg, rgba(26, 35, 50, 0.5), rgba(15, 20, 25, 0.5));
+            transition: all 0.3s ease;
+        }
+        
+        .benefit-card:hover {
+            border-color: rgba(78, 205, 196, 0.5);
+            box-shadow: 0 12px 30px rgba(78, 205, 196, 0.15);
+            transform: translateY(-4px);
+        }
+        
+        .benefit-icon {
+            width: 3rem;
+            height: 3rem;
+            background: rgba(78, 205, 196, 0.2);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+            
+            .pricing-card.featured:hover {
+                transform: translateY(-8px);
+            }
+            
+            .section-padding {
+                padding: 3rem 0;
+            }
+            
+            .price-amount {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-white text-black min-h-screen">
+    <!-- Header -->
+    <!--#include file="components/user-header.html" -->
+    
+    <!-- Hero Section -->
+    <section class="relative pt-20 pb-20 sm:pt-32 sm:pb-32 overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div class="absolute w-96 h-96 bg-teal-500/10 rounded-full blur-3xl -top-40 -left-40"></div>
+            <div class="absolute w-96 h-96 bg-purple-500/5 rounded-full blur-3xl bottom-0 -right-40"></div>
+        </div>
+        
+        <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                Choose Your <span class="text-black">Foodie Level</span>
+            </h1>
+            <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+                All plans include unlimited AI food recommendations. Upgrade to Premium for personalized suggestions, exclusive deals, and more features.
+            </p>
+            
+            <!-- Billing Toggle -->
+            <div class="flex items-center justify-center gap-4 mb-12">
+                <div class="toggle-switch">
+                    <button class="toggle-btn active" onclick="toggleBilling('monthly')">Monthly</button>
+                    <button class="toggle-btn" onclick="toggleBilling('annual')">Annual</button>
+                </div>
+                <span class="text-sm text-gray-900" id="savingsText"></span>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Pricing Cards Section -->
+    <section id="pricing" class="section-padding relative">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Cards Grid -->
+            <div class="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto mb-16">
+                <!-- Free Tier -->
+                <div class="pricing-card rounded-xl p-8 flex flex-col h-full">
+                    <div class="text-left mb-6">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Foodie</h3>
+                        <p class="text-gray-600 text-sm">Perfect for trying us out</p>
+                    </div>
+                    
+                    <div class="mb-8">
+                        <div class="flex items-baseline mb-2">
+                            <span class="price-amount">0</span>
+                            <span class="text-gray-600 ml-2">/month</span>
+                        </div>
+                        <p class="text-gray-600 text-sm">Always free</p>
+                    </div>
+                    
+                    <button class="btn-cta btn-cta-secondary w-full mb-8">Get Started Free</button>
+                    
+                    <div class="space-y-4 flex-grow mb-8">
+                        <div class="feature-item">
+                            <div class="feature-icon"></div>
+                            <span class="text-gray-800">Unlimited AI chat suggestions</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"></div>
+                            <span class="text-gray-800">Browse all restaurants</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"></div>
+                            <span class="text-gray-800">Create shopping cart</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"></div>
+                            <span class="text-gray-800">WhatsApp & pickup options</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"></div>
+                            <span class="text-gray-800">Multi-language support</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"></div>
+                            <span class="text-gray-800">Basic profile</span>
+                        </div>
+                    </div>
+                    
+                    <div class="pt-6 border-t border-gray-200">
+                        <p class="text-xs text-gray-900 text-center">No features limited • Email support</p>
+                    </div>
+                </div>
+                
+                <!-- Premium Tier (Featured) -->
+                <div class="pricing-card featured rounded-xl p-8 flex flex-col h-full">
+                    <div class="text-center mb-2">
+                        <span class="badge-popular">MOST POPULAR</span>
+                    </div>
+                    
+                    <div class="text-left mb-6">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Premium</h3>
+                        <p class="text-gray-600 text-sm">For food enthusiasts</p>
+                    </div>
+                    
+                    <div class="mb-8">
+                        <div class="flex items-baseline mb-2">
+                            <span class="price-currency">AED</span>
+                            <span class="price-amount ml-1" id="premiumPrice">19</span>
+                            <span class="text-gray-600 ml-2 monthly">/month</span>
+                            <span class="text-gray-600 ml-2 annual hidden">/year</span>
+                        </div>
+                        <p id="premiumSavings" class="text-gray-600 text-sm"></p>
+                    </div>
+                    
+                    <button class="btn-cta btn-cta-primary w-full mb-8">Start 14-Day Trial</button>
+                    
+                    <div class="space-y-4 flex-grow mb-8">
+                        <p class="text-xs text-gray-600 font-semibold mb-4">EVERYTHING IN FOODIE, PLUS:</p>
+                        <div class="feature-item">
+                            <div class="feature-icon"></div>
+                            <span class="text-gray-800"><strong>Diet preferences</strong> - Halal, vegan, keto, etc.</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"></div>
+                            <span class="text-gray-800"><strong>Allergy alerts</strong> - Exclude specific ingredients</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"></div>
+                            <span class="text-gray-800"><strong>Save favorites</strong> - Bookmark meals & restaurants</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"></div>
+                            <span class="text-gray-800"><strong>Order history</strong> - Quick reorder from past orders</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"></div>
+                            <span class="text-gray-800"><strong>Exclusive deals</strong> - Get restaurant promos first</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"></div>
+                            <span class="text-gray-800"><strong>5% cashback</strong> - Earn rewards on orders</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"></div>
+                            <span class="text-gray-800"><strong>Birthday offer</strong> - Special discount on your birthday</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"></div>
+                            <span class="text-gray-800"><strong>Priority support</strong> - WhatsApp support within 4 hours</span>
+                        </div>
+                    </div>
+                    
+                    <div class="pt-6 border-t border-gray-200">
+                        <p class="text-xs text-gray-800 text-center">Most valuable • Cancel anytime</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Trust Badges -->
+            <div class="grid md:grid-cols-4 gap-8 mt-20 pt-20 border-t border-gray-200">
+                <div class="trust-badge">
+                    <div class="trust-icon">💳</div>
+                    <p class="text-sm font-semibold">Secure Payment</p>
+                    <p class="text-xs text-gray-600">Stripe encryption</p>
+                </div>
+                <div class="trust-badge">
+                    <div class="trust-icon">🔒</div>
+                    <p class="text-sm font-semibold">Your Data Safe</p>
+                    <p class="text-xs text-gray-600">Bank-level security</p>
+                </div>
+                <div class="trust-badge">
+                    <div class="trust-icon">↩️</div>
+                    <p class="text-sm font-semibold">Money-Back</p>
+                    <p class="text-xs text-gray-600">30-day guarantee</p>
+                </div>
+                <div class="trust-badge">
+                    <div class="trust-icon">📧</div>
+                    <p class="text-sm font-semibold">Easy Cancellation</p>
+                    <p class="text-xs text-gray-600">Cancel anytime</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Premium Benefits Section -->
+    <section class="section-padding bg-gradient-dark relative overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute inset-0 pointer-events-none">
+            <div class="absolute w-96 h-96 bg-teal-500/10 rounded-full blur-3xl -top-40 -right-40"></div>
+        </div>
+        
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4">
+                    Why Upgrade to <span class="text-black">Premium?</span>
+                </h2>
+                <p class="text-gray-600 text-lg">Get a personalized food experience tailored just for you</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎯</div>
+                    <h3 class="text-lg font-bold text-black mb-2">Personalized AI</h3>
+                    <p class="text-gray-900">Your AI assistant learns your taste and gets better at suggesting meals you'll love.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">🏥</div>
+                    <h3 class="text-lg font-bold text-black mb-2">Health-Conscious</h3>
+                    <p class="text-gray-900">Set dietary restrictions and allergies. Never worry about hidden ingredients again.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">❤️</div>
+                    <h3 class="text-lg font-bold text-black mb-2">Save Favorites</h3>
+                    <p class="text-gray-900">Save your favorite meals and restaurants for instant access whenever you're hungry.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎁</div>
+                    <h3 class="text-lg font-bold text-black mb-2">Exclusive Deals</h3>
+                    <p class="text-gray-900">Get notified about special restaurant promotions before public launch.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">💰</div>
+                    <h3 class="text-lg font-bold text-black mb-2">Earn Cashback</h3>
+                    <p class="text-gray-900">Get 5% cashback on all direct orders. Your rewards add up fast!</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">🚀</div>
+                    <h3 class="text-lg font-bold text-black mb-2">Early Access</h3>
+                    <p class="text-gray-900">Try new restaurants and features before everyone else.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FAQ Section -->
+    <section id="faq" class="section-padding relative">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4">
+                    Frequently Asked <span class="text-black">Questions</span>
+                </h2>
+                <p class="text-gray-600 text-lg">Everything you need to know</p>
+            </div>
+            
+            <div class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <div class="faq-item">
+                    <div class="faq-header" onclick="toggleFaq(this)">
+                        <h3 class="font-semibold text-black">What if I want to cancel my subscription?</h3>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="faq-content">
+                        <p class="text-gray-800 leading-relaxed">You can cancel anytime with no penalties. Your access continues until the end of your billing period. After that, you'll automatically downgrade to our free Foodie plan with access to all free features.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 2 -->
+                <div class="faq-item">
+                    <div class="faq-header" onclick="toggleFaq(this)">
+                        <h3 class="font-semibold text-black">Do I get a refund if I cancel?</h3>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="faq-content">
+                        <p class="text-gray-800 leading-relaxed">Yes! We offer a 30-day money-back guarantee on all paid plans. If you're not happy for any reason, just contact us within 30 days of your first charge and we'll refund you completely with no questions asked.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 3 -->
+                <div class="faq-item">
+                    <div class="faq-header" onclick="toggleFaq(this)">
+                        <h3 class="font-semibold text-black">How does the 14-day free trial work?</h3>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="faq-content">
+                        <p class="text-gray-800 leading-relaxed">When you sign up for Premium, you get 14 days of full access to all features completely free. You can provide payment info to verify your identity, but you won't be charged during the trial. On day 15, we'll automatically start your subscription and charge AED 19/month. You can cancel anytime during the trial.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 4 -->
+                <div class="faq-item">
+                    <div class="faq-header" onclick="toggleFaq(this)">
+                        <h3 class="font-semibold text-black">What payment methods do you accept?</h3>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="faq-content">
+                        <p class="text-gray-800 leading-relaxed">We accept all major credit and debit cards (Visa, Mastercard, American Express) through our secure Stripe payment processor. Apple Pay is also available on supported devices for quick and easy checkout.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 5 -->
+                <div class="faq-item">
+                    <div class="faq-header" onclick="toggleFaq(this)">
+                        <h3 class="font-semibold text-black">Can I upgrade to annual billing?</h3>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="faq-content">
+                        <p class="text-gray-800 leading-relaxed">Absolutely! You can switch to annual billing anytime. When you choose annual billing, you get 2 months free! That means you pay AED 190 for the entire year instead of AED 228 (monthly charges). That's a 17% savings!</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 6 -->
+                <div class="faq-item">
+                    <div class="faq-header" onclick="toggleFaq(this)">
+                        <h3 class="font-semibold text-black">How does the 5% cashback work?</h3>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="faq-content">
+                        <p class="text-gray-800 leading-relaxed">When you place a direct order through GoSnel (not through Talabat or other platforms), you earn 5% cashback on your purchase. This is currently in Phase 2 and coming soon. The cashback will be credited to your account and can be used for future orders.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 7 -->
+                <div class="faq-item">
+                    <div class="faq-header" onclick="toggleFaq(this)">
+                        <h3 class="font-semibold text-black">Can I change my diet preferences anytime?</h3>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="faq-content">
+                        <p class="text-gray-800 leading-relaxed">Yes! You can update your diet preferences, allergies, and cuisine preferences anytime from your account settings. Your AI assistant will immediately start using your updated preferences for new suggestions.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 8 -->
+                <div class="faq-item">
+                    <div class="faq-header" onclick="toggleFaq(this)">
+                        <h3 class="font-semibold text-black">What about my free trial usage?</h3>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="faq-content">
+                        <p class="text-gray-800 leading-relaxed">During the 14-day free trial, you have unlimited access to all Premium features. You can save favorites, set preferences, browse exclusive deals, and more. There's no limit to what you can try!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="section-padding relative overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute inset-0 pointer-events-none">
+            <div class="absolute w-96 h-96 bg-teal-500/10 rounded-full blur-3xl -bottom-40 -left-40"></div>
+            <div class="absolute w-96 h-96 bg-purple-500/5 rounded-full blur-3xl top-0 -right-40"></div>
+        </div>
+        
+        <div class="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-6">Ready to Find Your Next Favorite Meal?</h2>
+            <p class="text-xl text-gray-600 mb-8">Join 10,000+ foodies who use GoSnel to discover amazing food. No credit card required for the free plan.</p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#" class="btn-cta btn-cta-primary">Start Free Trial</a>
+                <a href="#pricing" class="btn-cta btn-cta-secondary">View Plans</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <!-- Footer -->
+    <!--#include file="components/footer.html" -->
+    
+    <script>
+        // Toggle Billing Period
+        function toggleBilling(period) {
+            // Update buttons
+            document.querySelectorAll('.toggle-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Update pricing display
+            const premiumPrice = document.getElementById('premiumPrice');
+            const premiumSavings = document.getElementById('premiumSavings');
+            const savingsText = document.getElementById('savingsText');
+            
+            const monthlyElements = document.querySelectorAll('.monthly');
+            const annualElements = document.querySelectorAll('.annual');
+            
+            if (period === 'annual') {
+                premiumPrice.textContent = '190';
+                premiumSavings.innerHTML = '<span class="savings-badge">SAVE AED 38/YEAR</span>';
+                savingsText.textContent = '💰 Save 2 months!';
+                
+                monthlyElements.forEach(el => el.classList.add('hidden'));
+                annualElements.forEach(el => el.classList.remove('hidden'));
+            } else {
+                premiumPrice.textContent = '19';
+                premiumSavings.textContent = 'First month free after trial';
+                savingsText.textContent = '';
+                
+                monthlyElements.forEach(el => el.classList.remove('hidden'));
+                annualElements.forEach(el => el.classList.add('hidden'));
+            }
+        }
+        
+        // Toggle FAQ Items
+        function toggleFaq(element) {
+            const header = element;
+            const content = header.nextElementSibling;
+            const icon = header.querySelector('.toggle-icon');
+            
+            // Close other items
+            document.querySelectorAll('.faq-header.open').forEach(h => {
+                if (h !== header) {
+                    h.classList.remove('open');
+                    h.nextElementSibling.classList.remove('open');
+                    h.querySelector('.toggle-icon').classList.remove('open');
+                }
+            });
+            
+            // Toggle current item
+            header.classList.toggle('open');
+            content.classList.toggle('open');
+            icon.classList.toggle('open');
+        }
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href === '#' || href === '') return;
+                
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

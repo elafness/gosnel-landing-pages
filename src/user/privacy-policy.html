@@ -24,42 +24,30 @@
         }
     </style>
 </head>
-<body class="gradient-dark min-h-screen text-gray-100">
-    <!-- Navigation -->
-    <nav class="sticky top-0 z-50 bg-[#222b38]/95 backdrop-blur-md border-b border-white/10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <a href="/" class="flex items-center gap-3">
-                    <div class="w-10 h-10 bg-gradient-to-r from-teal-400 to-teal-600 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-lg">GS</div>
-                    <span class="text-xl md:text-2xl font-bold text-gradient-teal">GoSnel</span>
-                </a>
-                <a href="/user" class="px-4 py-2 rounded-lg text-sm font-semibold text-white border border-teal-500 hover:bg-teal-500 hover:text-gray-900 transition">
-                    ← Back to Home
-                </a>
-            </div>
-        </div>
-    </nav>
+<body class="bg-white text-black min-h-screen">
+    <!-- Header -->
+    <!--#include file="components/user-header.html" -->
 
     <!-- Content -->
     <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div class="bg-white/5 rounded-2xl p-8 md:p-12">
-            <h1 class="text-4xl font-bold text-gradient-teal mb-4">Privacy Policy & Terms of Service</h1>
-            <p class="text-gray-400 text-sm mb-8">Last updated: December 8, 2025</p>
+        <div class="bg-white rounded-2xl p-8 md:p-12">
+            <h1 class="text-4xl font-bold text-teal-600 mb-4">Privacy Policy & Terms of Service</h1>
+            <p class="text-gray-600 text-sm mb-8">Last updated: December 8, 2025</p>
 
-            <div class="space-y-8 text-gray-300 leading-relaxed">
+            <div class="space-y-8 text-gray-900 leading-relaxed">
                 <section>
-                    <h2 class="text-2xl font-semibold text-teal-400 mb-4">1. Introduction</h2>
+                    <h2 class="text-2xl font-semibold text-teal-600 mb-4">1. Introduction</h2>
                     <p class="mb-4">Welcome to GoSnel ("we," "our," or "us"). We are a food delivery platform dedicated to connecting users with the best local restaurants and vendors across the United Arab Emirates, including Abu Dhabi, Dubai, Sharjah, Ajman, Umm Al Quwain, Ras Al Khaimah, and Fujairah.</p>
                     <p>We value your trust. This document outlines how we handle your data and the terms that govern your use of our app and services. By using GoSnel, you agree to these terms.</p>
                 </section>
 
                 <section>
-                    <h2 class="text-2xl font-semibold text-teal-400 mb-4">2. Privacy Policy</h2>
+                    <h2 class="text-2xl font-semibold text-teal-600 mb-4">2. Privacy Policy</h2>
                     
-                    <h3 class="text-xl font-semibold text-teal-300 mb-3 mt-6">2.1 Information We Collect</h3>
+                    <h3 class="text-xl font-semibold text-teal-600 mb-3 mt-6">2.1 Information We Collect</h3>
                     <p class="mb-4">To provide you with seamless delivery, we collect the following types of data:</p>
                     
-                    <h4 class="text-lg font-medium text-gray-200 mb-2 mt-4">A. Information You Provide to Us</h4>
+                    <h4 class="text-lg font-medium text-black mb-2 mt-4">A. Information You Provide to Us</h4>
                     <ul class="list-disc list-inside space-y-2 ml-4">
                         <li><strong>Account Data:</strong> Your Full Name, Email Address, and Phone Number (for OTP verification and account security).</li>
                         <li><strong>Delivery Details:</strong> Your Delivery Address and optional instructions (e.g., apartment number, gate codes) to ensure your food arrives at the right place.</li>
@@ -67,17 +55,17 @@
                         <li><strong>Communications:</strong> Chat history with our support team or AI assistant.</li>
                     </ul>
                     
-                    <h4 class="text-lg font-medium text-gray-200 mb-2 mt-4">B. Information We Collect Automatically</h4>
+                    <h4 class="text-lg font-medium text-black mb-2 mt-4">B. Information We Collect Automatically</h4>
                     <ul class="list-disc list-inside space-y-2 ml-4">
                         <li><strong>Location Data:</strong> We collect GPS data to show you nearby restaurants and track deliveries. You can control this via your device settings.</li>
                         <li><strong>Device Information:</strong> IP address, device type, and operating system for security and optimization.</li>
                         <li><strong>Usage Data:</strong> Order history, favorite restaurants, and app interaction logs.</li>
                     </ul>
                     
-                    <h4 class="text-lg font-medium text-gray-200 mb-2 mt-4">C. Financial Information</h4>
+                    <h4 class="text-lg font-medium text-black mb-2 mt-4">C. Financial Information</h4>
                     <p class="mb-4">We take payment security seriously. GoSnel does NOT store your full credit card numbers, CVV codes, or expiration dates. All payments are processed securely by Stripe, a globally recognized payment processor.</p>
                     
-                    <h3 class="text-xl font-semibold text-teal-300 mb-3 mt-6">2.2 App Permissions</h3>
+                    <h3 class="text-xl font-semibold text-teal-600 mb-3 mt-6">2.2 App Permissions</h3>
                     <p class="mb-4">To function correctly, the GoSnel app may request the following permissions on your device:</p>
                     <ul class="list-disc list-inside space-y-2 ml-4">
                         <li><strong>Location:</strong> Used to identify your delivery address and show nearby vendors.</li>
@@ -85,7 +73,7 @@
                         <li><strong>Notifications:</strong> Used to send real-time updates about your order status and delivery arrival.</li>
                     </ul>
                     
-                    <h3 class="text-xl font-semibold text-teal-300 mb-3 mt-6">2.3 How We Use Your Data</h3>
+                    <h3 class="text-xl font-semibold text-teal-600 mb-3 mt-6">2.3 How We Use Your Data</h3>
                     <p class="mb-4">We use your data strictly to:</p>
                     <ol class="list-decimal list-inside space-y-2 ml-4">
                         <li><strong>Fulfill Service:</strong> Process orders, manage payments, and coordinate deliveries.</li>
@@ -94,7 +82,7 @@
                         <li><strong>Improvement:</strong> Enhance our AI recommendations and app performance.</li>
                     </ol>
                     
-                    <h3 class="text-xl font-semibold text-teal-300 mb-3 mt-6">2.4 Data Sharing & Third Parties</h3>
+                    <h3 class="text-xl font-semibold text-teal-600 mb-3 mt-6">2.4 Data Sharing & Third Parties</h3>
                     <p class="mb-4">We do not sell your personal data. We share data only with partners necessary to fulfill our service:</p>
                     <ul class="list-disc list-inside space-y-2 ml-4">
                         <li><strong>Service Providers:</strong> Stripe (Payments), Supabase (Database), OpenAI (AI Chat), Google (Maps), and Cloudflare (Security).</li>
@@ -102,7 +90,7 @@
                         <li><strong>Legal:</strong> Law enforcement agencies if legally required.</li>
                     </ul>
                     
-                    <h3 class="text-xl font-semibold text-teal-300 mb-3 mt-6">2.5 Data Retention & Deletion (Your Rights)</h3>
+                    <h3 class="text-xl font-semibold text-teal-600 mb-3 mt-6">2.5 Data Retention & Deletion (Your Rights)</h3>
                     <p class="mb-4"><strong>Retention:</strong> We keep order and payment records for 7 years to comply with tax and legal regulations. Chat logs are retained for 90 days.</p>
                     <p class="mb-4"><strong>Account Deletion (Right to Erasure):</strong> You have the right to delete your account at any time.</p>
                     <ul class="list-disc list-inside space-y-2 ml-4">
@@ -111,17 +99,17 @@
                         <li><strong>Effect:</strong> Upon deletion request, your account info is removed within 30 days, though legal/financial records may be retained as required by law.</li>
                     </ul>
                     
-                    <h3 class="text-xl font-semibold text-teal-300 mb-3 mt-6">2.6 Children's Privacy</h3>
+                    <h3 class="text-xl font-semibold text-teal-600 mb-3 mt-6">2.6 Children's Privacy</h3>
                     <p>GoSnel is not intended for users under the age of 18. We do not knowingly collect data from children.</p>
                 </section>
 
                 <section>
-                    <h2 class="text-2xl font-semibold text-teal-400 mb-4">3. Terms of Service</h2>
+                    <h2 class="text-2xl font-semibold text-teal-600 mb-4">3. Terms of Service</h2>
                     
-                    <h3 class="text-xl font-semibold text-teal-300 mb-3 mt-6">3.1 Account Registration</h3>
+                    <h3 class="text-xl font-semibold text-teal-600 mb-3 mt-6">3.1 Account Registration</h3>
                     <p>You must be at least 18 years old to use GoSnel. You agree to provide accurate information and maintain the security of your account credentials. You are responsible for all activity under your account.</p>
                     
-                    <h3 class="text-xl font-semibold text-teal-300 mb-3 mt-6">3.2 Orders, Payments & Refunds</h3>
+                    <h3 class="text-xl font-semibold text-teal-600 mb-3 mt-6">3.2 Orders, Payments & Refunds</h3>
                     <ul class="list-disc list-inside space-y-2 ml-4">
                         <li><strong>Pricing:</strong> All prices are in UAE Dirhams (AED) and include VAT where applicable.</li>
                         <li><strong>Cancellations:</strong> You may cancel an order before the restaurant confirms it. Once confirmed, cancellation fees may apply.</li>
@@ -134,7 +122,7 @@
                         </li>
                     </ul>
                     
-                    <h3 class="text-xl font-semibold text-teal-300 mb-3 mt-6">3.3 User Conduct</h3>
+                    <h3 class="text-xl font-semibold text-teal-600 mb-3 mt-6">3.3 User Conduct</h3>
                     <p class="mb-4">You agree NOT to:</p>
                     <ul class="list-disc list-inside space-y-2 ml-4">
                         <li>Use the platform for illegal activities or fraud.</li>
@@ -143,30 +131,30 @@
                         <li>Misuse our intellectual property, including our logo, app design, or code.</li>
                     </ul>
                     
-                    <h3 class="text-xl font-semibold text-teal-300 mb-3 mt-6">3.4 Disclaimers & Limitation of Liability</h3>
+                    <h3 class="text-xl font-semibold text-teal-600 mb-3 mt-6">3.4 Disclaimers & Limitation of Liability</h3>
                     <p class="mb-4">GoSnel connects you with vendors; we do not prepare the food.</p>
                     <ul class="list-disc list-inside space-y-2 ml-4">
                         <li><strong>Liability:</strong> We are not liable for food quality, safety, or allergic reactions (please inform vendors of allergies).</li>
                         <li><strong>Cap:</strong> Our total liability is limited to the amount paid for the specific order in question.</li>
                     </ul>
                     
-                    <h3 class="text-xl font-semibold text-teal-300 mb-3 mt-6">3.5 Governing Law</h3>
+                    <h3 class="text-xl font-semibold text-teal-600 mb-3 mt-6">3.5 Governing Law</h3>
                     <p>These terms are governed by the laws of the United Arab Emirates. Disputes should first be addressed via customer support, followed by mediation via the Dubai International Arbitration Centre (DIAC) if necessary.</p>
                 </section>
 
                 <section>
-                    <h2 class="text-2xl font-semibold text-teal-400 mb-4">4. Contact Us</h2>
+                    <h2 class="text-2xl font-semibold text-teal-600 mb-4">4. Contact Us</h2>
                     <p class="mb-4">If you have questions regarding this policy or our services, please contact us:</p>
                     <ul class="list-disc list-inside space-y-2 ml-4">
-                        <li><strong>General Support:</strong> <a href="mailto:support@gosnel.com" class="text-teal-400 hover:text-teal-300">support@gosnel.com</a></li>
-                        <li><strong>Privacy & Data Deletion:</strong> <a href="mailto:privacy@gosnel.com" class="text-teal-400 hover:text-teal-300">privacy@gosnel.com</a></li>
-                        <li><strong>Vendor Inquiries:</strong> <a href="mailto:vendors@gosnel.com" class="text-teal-400 hover:text-teal-300">vendors@gosnel.com</a></li>
-                        <li><strong>Driver Support:</strong> <a href="mailto:drivers@gosnel.com" class="text-teal-400 hover:text-teal-300">drivers@gosnel.com</a></li>
+                        <li><strong>General Support:</strong> <a href="mailto:support@gosnel.com" class="text-teal-600 hover:text-teal-700">support@gosnel.com</a></li>
+                        <li><strong>Privacy & Data Deletion:</strong> <a href="mailto:privacy@gosnel.com" class="text-teal-600 hover:text-teal-700">privacy@gosnel.com</a></li>
+                        <li><strong>Vendor Inquiries:</strong> <a href="mailto:vendors@gosnel.com" class="text-teal-600 hover:text-teal-700">vendors@gosnel.com</a></li>
+                        <li><strong>Driver Support:</strong> <a href="mailto:drivers@gosnel.com" class="text-teal-600 hover:text-teal-700">drivers@gosnel.com</a></li>
                     </ul>
                     <p class="mt-4">
                         <strong>GoSnel Technologies</strong><br>
                         Dubai, United Arab Emirates<br>
-                        Website: <a href="https://gosnel.com" class="text-teal-400 hover:text-teal-300">https://gosnel.com</a>
+                        Website: <a href="https://gosnel.com" class="text-teal-600 hover:text-teal-700">https://gosnel.com</a>
                     </p>
                 </section>
             </div>

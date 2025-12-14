@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoSnel - Enhanced Landing Page Example</title>
+    <link href="../../dist/output.css" rel="stylesheet">
+    <style>
+        /* Enhanced animations and interactions */
+        .observe-animation {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        
+        .observe-animation.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .morphing-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .morphing-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(78, 205, 196, 0.15);
+            border-color: rgba(78, 205, 196, 0.3);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #4ECDC4, #FF6B35);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .floating-element {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(2deg); }
+        }
+        
+        .typing-effect {
+            overflow: hidden;
+            border-right: 3px solid #4ECDC4;
+            white-space: nowrap;
+            margin: 0 auto;
+            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #4ECDC4; }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-primary-500 via-primary-600 to-secondary-500 min-h-screen">
+    <!-- Enhanced Header with Glass Effect -->
+    <header class="fixed top-0 w-full z-50 bg-white/10 backdrop-blur-lg border-b border-white/20">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="logo-circle">GS</div>
+                    <span class="text-xl font-bold text-white">GoSnel</span>
+                </div>
+                <div class="hidden md:flex space-x-6">
+                    <a href="#features" class="text-white/80 hover:text-white transition-colors duration-300">Features</a>
+                    <a href="#testimonials" class="text-white/80 hover:text-white transition-colors duration-300">Reviews</a>
+                    <a href="#pricing" class="text-white/80 hover:text-white transition-colors duration-300">Pricing</a>
+                </div>
+                <a href="https://gosnel.com/" class="btn-primary bg-white text-primary-600 hover:bg-gray-100">
+                    Order Now
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Enhanced Hero Section -->
+    <section class="pt-32 pb-20 min-h-screen flex items-center relative overflow-hidden">
+        <!-- Floating Background Elements -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="floating-element absolute top-20 left-10 w-32 h-32 bg-white/10 rounded-full"></div>
+            <div class="floating-element absolute top-40 right-20 w-24 h-24 bg-white/5 rounded-full" style="animation-delay: -2s;"></div>
+            <div class="floating-element absolute bottom-32 left-1/4 w-16 h-16 bg-white/10 rounded-full" style="animation-delay: -4s;"></div>
+        </div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center">
+                <!-- Animated Badge -->
+                <div class="observe-animation inline-flex items-center px-6 py-2 bg-white/20 border border-white/30 rounded-full text-white text-sm font-medium mb-8">
+                    🚀 <span class="ml-2 typing-effect">AI-Powered Food Delivery</span>
+                </div>
+
+                <!-- Enhanced Headline -->
+                <h1 class="observe-animation text-6xl md:text-7xl font-bold leading-tight mb-8 text-white">
+                    <span class="block">Order Food with</span>
+                    <span class="gradient-text">Artificial Intelligence</span>
+                </h1>
+
+                <p class="observe-animation text-xl md:text-2xl text-white/90 mb-12 max-w-4xl mx-auto leading-relaxed">
+                    Experience the future of food delivery with personalized AI recommendations, 
+                    lightning-fast ordering, and seamless delivery tracking in the UAE.
+                </p>
+
+                <!-- Enhanced CTA Buttons -->
+                <div class="observe-animation flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
+                    <a href="https://gosnel.com/" 
+                       class="group relative bg-white text-primary-600 px-8 py-4 rounded-full font-bold text-lg transform hover:scale-110 transition-all duration-500 shadow-2xl hover:shadow-white/30 overflow-hidden">
+                        <span class="relative z-10">🍕 Start Ordering</span>
+                        <div class="absolute inset-0 bg-gradient-to-r from-white via-gray-50 to-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center"></div>
+                    </a>
+                    <a href="#features" 
+                       class="group border-2 border-white/50 text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-primary-600 transition-all duration-300 backdrop-blur-sm">
+                        Learn More
+                        <span class="ml-2 group-hover:translate-x-1 transition-transform duration-300 inline-block">→</span>
+                    </a>
+                </div>
+
+                <!-- Enhanced App Preview -->
+                <div class="observe-animation max-w-4xl mx-auto">
+                    <div class="morphing-card p-8 rounded-3xl">
+                        <div class="bg-gradient-to-br from-primary-500/20 to-secondary-500/20 rounded-xl h-96 flex items-center justify-center relative overflow-hidden">
+                            <div class="text-center z-10">
+                                <div class="text-8xl mb-4 floating-element">📱</div>
+                                <p class="text-2xl text-white font-semibold">AI Food Expert</p>
+                                <p class="text-white/70 mt-2">Preview Coming Soon</p>
+                            </div>
+                            <!-- Animated background pattern -->
+                            <div class="absolute inset-0 opacity-20">
+                                <div class="absolute top-10 left-10 w-4 h-4 bg-white rounded-full animate-pulse"></div>
+                                <div class="absolute top-20 right-16 w-3 h-3 bg-white rounded-full animate-pulse" style="animation-delay: 1s;"></div>
+                                <div class="absolute bottom-16 left-1/4 w-2 h-2 bg-white rounded-full animate-pulse" style="animation-delay: 2s;"></div>
+                                <div class="absolute bottom-10 right-10 w-5 h-5 bg-white rounded-full animate-pulse" style="animation-delay: 0.5s;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Features Section -->
+    <section id="features" class="py-20 bg-black/20 relative">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="observe-animation text-5xl font-bold mb-6 text-white">
+                    Why Choose <span class="gradient-text">GoSnel</span>?
+                </h2>
+                <p class="observe-animation text-xl text-white/80 max-w-2xl mx-auto">
+                    Experience the next generation of food delivery with cutting-edge technology
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Enhanced Feature Cards -->
+                <div class="observe-animation morphing-card p-8 text-center group">
+                    <div class="text-6xl mb-6 floating-element">🤖</div>
+                    <h3 class="text-2xl font-bold mb-4 text-white group-hover:text-primary-300 transition-colors duration-300">
+                        AI Food Expert
+                    </h3>
+                    <p class="text-white/80 leading-relaxed">
+                        Personalized recommendations based on your preferences, dietary restrictions, and mood
+                    </p>
+                    <div class="mt-6 w-full bg-white/20 rounded-full h-1">
+                        <div class="bg-gradient-to-r from-primary-400 to-secondary-400 h-1 rounded-full w-0 group-hover:w-full transition-all duration-1000"></div>
+                    </div>
+                </div>
+
+                <div class="observe-animation morphing-card p-8 text-center group" style="animation-delay: 0.2s;">
+                    <div class="text-6xl mb-6 floating-element" style="animation-delay: -2s;">⚡</div>
+                    <h3 class="text-2xl font-bold mb-4 text-white group-hover:text-primary-300 transition-colors duration-300">
+                        Lightning Fast
+                    </h3>
+                    <p class="text-white/80 leading-relaxed">
+                        Optimized delivery routes and real-time tracking for the fastest food delivery experience
+                    </p>
+                    <div class="mt-6 w-full bg-white/20 rounded-full h-1">
+                        <div class="bg-gradient-to-r from-primary-400 to-secondary-400 h-1 rounded-full w-0 group-hover:w-full transition-all duration-1000"></div>
+                    </div>
+                </div>
+
+                <div class="observe-animation morphing-card p-8 text-center group" style="animation-delay: 0.4s;">
+                    <div class="text-6xl mb-6 floating-element" style="animation-delay: -4s;">🔒</div>
+                    <h3 class="text-2xl font-bold mb-4 text-white group-hover:text-primary-300 transition-colors duration-300">
+                        Secure & Safe
+                    </h3>
+                    <p class="text-white/80 leading-relaxed">
+                        Bank-grade security with multiple payment options and contactless delivery
+                    </p>
+                    <div class="mt-6 w-full bg-white/20 rounded-full h-1">
+                        <div class="bg-gradient-to-r from-primary-400 to-secondary-400 h-1 rounded-full w-0 group-hover:w-full transition-all duration-1000"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Stats Section -->
+    <section class="py-20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-white/5 to-white/10"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="grid md:grid-cols-4 gap-8 text-center">
+                <div class="observe-animation">
+                    <div class="text-5xl font-bold gradient-text mb-2">50K+</div>
+                    <p class="text-white/80 font-medium">Happy Customers</p>
+                </div>
+                <div class="observe-animation" style="animation-delay: 0.1s;">
+                    <div class="text-5xl font-bold gradient-text mb-2">1000+</div>
+                    <p class="text-white/80 font-medium">Partner Restaurants</p>
+                </div>
+                <div class="observe-animation" style="animation-delay: 0.2s;">
+                    <div class="text-5xl font-bold gradient-text mb-2">15min</div>
+                    <p class="text-white/80 font-medium">Average Delivery</p>
+                </div>
+                <div class="observe-animation" style="animation-delay: 0.3s;">
+                    <div class="text-5xl font-bold gradient-text mb-2">24/7</div>
+                    <p class="text-white/80 font-medium">Customer Support</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced CTA Section -->
+    <section class="py-20 relative">
+        <div class="container mx-auto px-6">
+            <div class="morphing-card p-12 text-center relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-br from-primary-500/20 to-secondary-500/20"></div>
+                <div class="relative z-10">
+                    <h2 class="observe-animation text-4xl md:text-5xl font-bold mb-6 text-white">
+                        Ready to Experience the Future?
+                    </h2>
+                    <p class="observe-animation text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+                        Join thousands of satisfied customers who trust GoSnel for their food delivery needs
+                    </p>
+                    <a href="https://gosnel.com/" 
+                       class="observe-animation inline-block group relative bg-white text-primary-600 px-10 py-5 rounded-full font-bold text-xl transform hover:scale-110 transition-all duration-500 shadow-2xl hover:shadow-white/30 overflow-hidden">
+                        <span class="relative z-10">🍕 Start Your Journey</span>
+                        <div class="absolute inset-0 bg-gradient-to-r from-gray-50 via-white to-gray-50 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center"></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Footer -->
+    <footer class="bg-black/30 py-12 backdrop-blur-sm">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-3 mb-4 md:mb-0">
+                    <div class="logo-circle">GS</div>
+                    <span class="text-xl font-bold text-white">GoSnel</span>
+                </div>
+                <div class="text-white/70 text-sm">
+                    © 2025 GoSnel. Made with ❤️ in UAE | Powered by AI
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Enhanced JavaScript -->
+    <script>
+        // Intersection Observer for scroll animations
+        const observeElements = () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                    }
+                });
+            }, { 
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            document.querySelectorAll('.observe-animation').forEach(el => {
+                observer.observe(el);
+            });
+        };
+
+        // Smooth scrolling for anchor links
+        const initSmoothScrolling = () => {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        };
+
+        // Parallax effect for floating elements
+        const initParallax = () => {
+            const floatingElements = document.querySelectorAll('.floating-element');
+            
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const parallax = scrolled * 0.5;
+                
+                floatingElements.forEach((element, index) => {
+                    const speed = 0.2 + (index * 0.1);
+                    element.style.transform = `translateY(${parallax * speed}px) rotate(${parallax * 0.05}deg)`;
+                });
+            });
+        };
+
+        // Enhanced typing effect
+        const initTypingEffect = () => {
+            const typingElement = document.querySelector('.typing-effect');
+            if (typingElement) {
+                const texts = [
+                    'AI-Powered Food Delivery',
+                    'Smart Restaurant Recommendations',
+                    'Lightning Fast Service',
+                    'Personalized Experience'
+                ];
+                let currentIndex = 0;
+                let charIndex = 0;
+                let currentText = '';
+                
+                const typeText = () => {
+                    if (charIndex < texts[currentIndex].length) {
+                        currentText += texts[currentIndex].charAt(charIndex);
+                        typingElement.textContent = currentText;
+                        charIndex++;
+                        setTimeout(typeText, 100);
+                    } else {
+                        setTimeout(() => {
+                            currentText = '';
+                            charIndex = 0;
+                            currentIndex = (currentIndex + 1) % texts.length;
+                            setTimeout(typeText, 500);
+                        }, 2000);
+                    }
+                };
+                
+                setTimeout(typeText, 1000);
+            }
+        };
+
+        // Initialize all enhancements
+        document.addEventListener('DOMContentLoaded', () => {
+            observeElements();
+            initSmoothScrolling();
+            initParallax();
+            initTypingEffect();
+        });
+
+        // Preload optimization
+        const preloadImages = () => {
+            const imageUrls = [
+                // Add your image URLs here
+            ];
+            
+            imageUrls.forEach(url => {
+                const img = new Image();
+                img.src = url;
+            });
+        };
+
+        // Performance monitoring
+        const logPerformanceMetrics = () => {
+            if (window.performance) {
+                window.addEventListener('load', () => {
+                    setTimeout(() => {
+                        const perfData = window.performance.timing;
+                        const loadTime = perfData.loadEventEnd - perfData.navigationStart;
+                        console.log(`Page load time: ${loadTime}ms`);
+                    }, 0);
+                });
+            }
+        };
+
+        preloadImages();
+        logPerformanceMetrics();
+    </script>
+</body>
+</html>

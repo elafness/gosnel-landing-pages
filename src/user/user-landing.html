@@ -34,19 +34,14 @@
             background-clip: text;
         }
         
-        /* Card Hover Effects */
+        /* Card Hover Effects - Removed animations */
         .card-hover {
-            transition: all 0.3s ease;
-        }
-        .card-hover:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(78, 205, 196, 0.2);
+            transition: none;
         }
         
-        /* Button Hover */
+        /* Button Hover - Removed animations */
         .btn-primary {
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 24px rgba(78, 205, 196, 0.3);
+            transition: none;
         }
         .btn-primary:hover {
             transform: translateY(-4px);
@@ -95,7 +90,7 @@
         }
     </style>
 </head>
-<body class="gradient-dark min-h-screen text-gray-100">
+<body class="bg-gray-50 min-h-screen text-gray-900">
     <!-- Navigation -->
     <nav class="sticky top-0 z-50 bg-[#222b38]/95 backdrop-blur-md border-b border-white/10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -111,7 +106,7 @@
                     <!-- Language Switcher -->
                     <div class="hidden sm:flex items-center gap-1 bg-white/5 rounded-lg p-1 border border-teal-500/30" id="langSwitcher">
                         <button id="lang-en" class="px-3 py-1.5 rounded-md text-sm font-semibold bg-teal-500 text-gray-900">EN</button>
-                        <button id="lang-ar" class="px-3 py-1.5 rounded-md text-sm font-semibold text-gray-400 hover:text-teal-400 transition">AR</button>
+                        <button id="lang-ar" class="px-3 py-1.5 rounded-md text-sm font-semibold text-gray-700 hover:text-teal-600 transition">AR</button>
                     </div>
                     
                     <!-- Login Button -->
@@ -132,10 +127,10 @@
                     <h1 id="hero_title" class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6">
                         <span class="text-gradient">Not sure what to eat today?</span>
                         <br>
-                        <span class="text-white">Order now and get your meal delivered!</span>
+                        <span class="text-gray-900">Order now and get your meal delivered!</span>
                     </h1>
                     
-                    <p id="hero_desc" class="text-lg md:text-xl text-gray-400 mb-8 leading-relaxed">
+                    <p id="hero_desc" class="text-lg md:text-xl text-gray-700 mb-8 leading-relaxed">
                         Sit back and relax — GoSnel connects you with real local restaurants through smart AI chat.
                         Get personalized meal recommendations, and place your order — all in one simple conversation.
                     </p>
@@ -148,25 +143,25 @@
                                 <div class="w-6 h-6 rounded-full gradient-teal flex items-center justify-center flex-shrink-0">
                                     <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
                                 </div>
-                                <span id="suggest_meals" class="text-gray-300">Suggest meals based on your budget and taste</span>
+                                <span id="suggest_meals" class="text-gray-700">Suggest meals based on your budget and taste</span>
                             </div>
                             <div class="flex items-center gap-3">
                                 <div class="w-6 h-6 rounded-full gradient-teal flex items-center justify-center flex-shrink-0">
                                     <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
                                 </div>
-                                <span id="find_restaurants" class="text-gray-300">Find restaurants that match your preferences</span>
+                                <span id="find_restaurants" class="text-gray-700">Find restaurants that match your preferences</span>
                             </div>
                             <div class="flex items-center gap-3">
                                 <div class="w-6 h-6 rounded-full gradient-teal flex items-center justify-center flex-shrink-0">
                                     <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
                                 </div>
-                                <span id="translate_menus" class="text-gray-300">Remember your favorite dishes next time you chat</span>
+                                <span id="translate_menus" class="text-gray-700">Remember your favorite dishes next time you chat</span>
                             </div>
                             <div class="flex items-center gap-3">
                                 <div class="w-6 h-6 rounded-full gradient-teal flex items-center justify-center flex-shrink-0">
                                     <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
                                 </div>
-                                <span id="remember_favorites" class="text-gray-300">Deliver your meal hot to your door</span>
+                                <span id="remember_favorites" class="text-gray-700">Deliver your meal hot to your door</span>
                             </div>
                         </div>
                     </div>
@@ -198,10 +193,10 @@
     <!-- Why Users Love GoSnel -->
     <section class="py-20 bg-white/[0.02] border-y border-white/10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 id="why_love" class="text-3xl md:text-4xl font-extrabold text-center text-white mb-4">
+            <h2 id="why_love" class="text-3xl md:text-4xl font-extrabold text-center text-gray-900 mb-4">
                 Why users love GoSnel
             </h2>
-            <p class="text-center text-gray-400 mb-16 text-lg">Smart, simple, and speaks your language</p>
+            <p class="text-center text-gray-700 mb-16 text-lg">Smart, simple, and speaks your language</p>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <!-- Feature 1 -->
@@ -210,7 +205,7 @@
                         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
                     </div>
                     <h3 id="smart_suggestions" class="text-xl font-bold text-teal-400 mb-3">Smart Suggestions</h3>
-                    <p id="smart_desc" class="text-gray-400 text-sm leading-relaxed">Get meal ideas personalized to your taste and budget in seconds.</p>
+                    <p id="smart_desc" class="text-gray-700 text-sm leading-relaxed">Get meal ideas personalized to your taste and budget in seconds.</p>
                 </div>
                 
                 <!-- Feature 2 -->
@@ -219,7 +214,7 @@
                         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                     </div>
                     <h3 id="languages" class="text-xl font-bold text-teal-400 mb-3">100+ Languages</h3>
-                    <p id="languages_desc" class="text-gray-400 text-sm leading-relaxed">Speak your language, and I'll understand perfectly.</p>
+                    <p id="languages_desc" class="text-gray-700 text-sm leading-relaxed">Speak your language, and I'll understand perfectly.</p>
                 </div>
                 
                 <!-- Feature 3 -->
@@ -228,7 +223,7 @@
                         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
                     </div>
                     <h3 id="real_restaurants" class="text-xl font-bold text-teal-400 mb-3">Real Restaurants</h3>
-                    <p id="real_desc" class="text-gray-400 text-sm leading-relaxed">Browse local vendors with authentic menus and real food.</p>
+                    <p id="real_desc" class="text-gray-700 text-sm leading-relaxed">Browse local vendors with authentic menus and real food.</p>
                 </div>
                 
                 <!-- Feature 4 -->
@@ -237,7 +232,7 @@
                         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
                     </div>
                     <h3 id="natural_chat" class="text-xl font-bold text-teal-400 mb-3">Natural Conversations</h3>
-                    <p id="natural_desc" class="text-gray-400 text-sm leading-relaxed">Chat with me like you're texting a friend — no confusing menus.</p>
+                    <p id="natural_desc" class="text-gray-700 text-sm leading-relaxed">Chat with me like you're texting a friend — no confusing menus.</p>
                 </div>
             </div>
         </div>
@@ -246,11 +241,11 @@
     <!-- Dietary Preferences Section -->
     <section class="py-20 bg-gradient-to-br from-teal-500/5 to-teal-600/[0.02] border-y border-teal-500/20">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 id="dietary_title" class="text-3xl md:text-4xl font-extrabold text-center text-white mb-4">
+            <h2 id="dietary_title" class="text-3xl md:text-4xl font-extrabold text-center text-gray-900 mb-4">
                 <svg class="w-10 h-10 inline mr-3 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
                 Dietary Preferences & Diet Goals
             </h2>
-            <p class="text-center text-gray-400 mb-12 text-lg">Your health goals, our priority</p>
+            <p class="text-center text-gray-700 mb-12 text-lg">Your health goals, our priority</p>
             
             <div class="grid md:grid-cols-2 gap-8">
                 <!-- Card 1 -->
@@ -261,7 +256,7 @@
                         </div>
                         <h3 id="diet_goals_1" class="text-xl font-bold text-teal-400">Weight-loss Goals</h3>
                     </div>
-                    <p id="dietary_desc1" class="text-gray-300 leading-relaxed">
+                    <p id="dietary_desc1" class="text-gray-700 leading-relaxed">
                         No matter your dietary goal, GoSnel has you covered! 🌿 Whether you're vegetarian, vegan, gluten-free, keto/low-carb, or following a weight-loss diet, we select healthy, balanced meals tailored to your taste and budget.
                     </p>
                 </div>
@@ -274,7 +269,7 @@
                         </div>
                         <h3 id="diet_goals_2" class="text-xl font-bold text-teal-400">Diet Goals</h3>
                     </div>
-                    <p id="dietary_desc2" class="text-gray-300 leading-relaxed">
+                    <p id="dietary_desc2" class="text-gray-700 leading-relaxed">
                         With GoSnel, you don't have to worry about calories or ingredients — our AI suggests meals that fit your diet, helping you reach your health goals without feeling deprived, all from real restaurants near you. 😋
                     </p>
                 </div>
@@ -285,11 +280,11 @@
     <!-- Supported Languages -->
     <section class="py-20 bg-teal-500/5 border-y border-teal-500/20">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-4">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">
                 <svg class="w-10 h-10 inline mr-3 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                 Supported Languages
             </h2>
-            <p class="text-gray-400 text-lg leading-relaxed mt-6">
+            <p class="text-gray-700 text-lg leading-relaxed mt-6">
                 English, Arabic (العربية), Hindi (हिन्दी), Spanish (Español), French (Français), Chinese (中文), Japanese (日本語), Korean (한국어), Turkish (Türkçe), Portuguese (Português), Russian (Русский), Italian (Italiano), German (Deutsch), Greek (Ελληνικά), Thai, Vietnamese, Filipino, Indonesian, Malay, Swedish, Norwegian, Danish, Finnish, Polish, Dutch, Czech, Hungarian, Romanian, Bulgarian, Croatian, Serbian, Slovak, Slovenian, Hebrew, Farsi, Urdu, Bengali, Tamil, Telugu, Kannada, Marathi, Gujarati, <strong class="text-teal-400">and 50+ more languages.</strong>
             </p>
         </div>
@@ -298,8 +293,8 @@
     <!-- Start Ordering CTA -->
     <section class="py-20">
         <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 id="start_ordering" class="text-3xl md:text-4xl font-extrabold text-white mb-6">Start ordering in your language</h2>
-            <p id="trust_desc_2" class="text-gray-400 text-lg leading-relaxed mb-10">
+            <h2 id="start_ordering" class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-6">Start ordering in your language</h2>
+            <p id="trust_desc_2" class="text-gray-700 text-lg leading-relaxed mb-10">
                 No subscription. No hidden fees. No language barriers.<br>
                 Order anytime, cancel anytime — and try our demo chat free, no signup needed!
             </p>
@@ -320,32 +315,32 @@
                     </svg>
                 </div>
                 
-                <h3 id="subscribe_title" class="text-2xl md:text-3xl font-bold text-white mb-3">Be the First to Know</h3>
-                <p id="subscribe_desc" class="text-gray-400 mb-8">Get notified when we launch new features and special offers</p>
+                <h3 id="subscribe_title" class="text-2xl md:text-3xl font-bold text-gray-900 mb-3">Be the First to Know</h3>
+                <p id="subscribe_desc" class="text-gray-700 mb-8">Get notified when we launch new features and special offers</p>
                 
                 <!-- Subscription Type -->
                 <div class="mb-6 text-left">
-                    <p id="notification_type" class="text-sm font-semibold text-white mb-4">How would you like to be notified?</p>
+                    <p id="notification_type" class="text-sm font-semibold text-gray-900 mb-4">How would you like to be notified?</p>
                     <div class="space-y-3">
                         <label class="flex items-center gap-3 cursor-pointer">
                             <input id="notify_email" type="radio" name="notify" value="email" checked class="w-4 h-4 accent-teal-500">
                             <svg class="w-5 h-5 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                            <span id="email_option" class="text-white text-sm">Email Notifications</span>
+                            <span id="email_option" class="text-gray-900 text-sm">Email Notifications</span>
                         </label>
                         <label class="flex items-center gap-3 cursor-pointer">
                             <input id="notify_whatsapp" type="radio" name="notify" value="whatsapp" class="w-4 h-4 accent-green-500">
                             <svg class="w-5 h-5 text-green-500" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.097"/></svg>
-                            <span id="whatsapp_option" class="text-white text-sm">WhatsApp Messages</span>
+                            <span id="whatsapp_option" class="text-gray-900 text-sm">WhatsApp Messages</span>
                         </label>
                     </div>
                 </div>
                 
                 <!-- Email Input -->
                 <div id="email_group" class="mb-4">
-                    <input id="email_input" type="email" placeholder="your@email.com" class="w-full px-5 py-4 rounded-lg bg-white/5 border border-teal-500/30 text-white placeholder-gray-500 focus:outline-none focus:border-teal-500 transition">
+                    <input id="email_input" type="email" placeholder="your@email.com" class="w-full px-5 py-4 rounded-lg bg-white/5 border border-teal-500/30 text-gray-900 placeholder-gray-500 focus:outline-none focus:border-teal-500 transition">
                 </div>
                 <div id="phone_group" class="mb-4 hidden">
-                    <input id="phone_input" type="tel" placeholder="051234567" class="w-full px-5 py-4 rounded-lg bg-white/5 border border-teal-500/30 text-white placeholder-gray-500 focus:outline-none focus:border-teal-500 transition">
+                    <input id="phone_input" type="tel" placeholder="051234567" class="w-full px-5 py-4 rounded-lg bg-white/5 border border-teal-500/30 text-gray-900 placeholder-gray-500 focus:outline-none focus:border-teal-500 transition">
                 </div>
                 
                 <!-- Submit Button -->
@@ -545,7 +540,7 @@
                         avatar.innerHTML = '<svg class="w-5 h-5 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>';
                     }
                     const bubble = document.createElement('div');
-                    bubble.className = (isUser ? 'bg-teal-500 text-gray-900 rounded-br-sm' : 'bg-white/10 text-gray-100 rounded-bl-sm') + ' px-4 py-3 rounded-2xl max-w-[80%]';
+                    bubble.className = (isUser ? 'bg-teal-500 text-gray-900 rounded-br-sm' : 'bg-white/10 text-gray-900 rounded-bl-sm') + ' px-4 py-3 rounded-2xl max-w-[80%]';
                     bubble.innerHTML = '<p class="text-sm leading-relaxed">' + nl2br(m.message) + '</p>';
                     inner.appendChild(avatar);
                     inner.appendChild(bubble);
@@ -608,8 +603,16 @@
                 renderChat(lang);
             }
 
-            document.getElementById('lang-en').addEventListener('click', function(){ setLang('en'); });
-            document.getElementById('lang-ar').addEventListener('click', function(){ setLang('ar'); });
+            // Safe event listeners with null checks
+            const langEn = document.getElementById('lang-en');
+            const langAr = document.getElementById('lang-ar');
+            
+            if (langEn) {
+                langEn.addEventListener('click', function(){ setLang('en'); });
+            }
+            if (langAr) {
+                langAr.addEventListener('click', function(){ setLang('ar'); });
+            }
 
             function updateNotifyUI(){
                 const current = t[language];
@@ -625,15 +628,24 @@
                 }
             }
 
-            notifyEmail.addEventListener('change', updateNotifyUI);
-            notifyWhatsapp.addEventListener('change', updateNotifyUI);
-
-            notifyBtn.addEventListener('click', function(){
-                const current = t[language];
-                subscribeSuccess.classList.remove('hidden');
-                subscribeSuccess.classList.add('block');
-                subscribeSuccess.textContent = current.subscribe_success + ' ' + (notifyWhatsapp.checked ? current.subscribe_success_whatsapp : current.subscribe_success_email);
-            });
+            // Safe event listeners with null checks
+            if (notifyEmail) {
+                notifyEmail.addEventListener('change', updateNotifyUI);
+            }
+            if (notifyWhatsapp) {
+                notifyWhatsapp.addEventListener('change', updateNotifyUI);
+            }
+            
+            if (notifyBtn) {
+                notifyBtn.addEventListener('click', function(){
+                    const current = t[language];
+                    if (subscribeSuccess) {
+                        subscribeSuccess.classList.remove('hidden');
+                        subscribeSuccess.classList.add('block');
+                        subscribeSuccess.textContent = current.subscribe_success + ' ' + (notifyWhatsapp && notifyWhatsapp.checked ? current.subscribe_success_whatsapp : current.subscribe_success_email);
+                    }
+                });
+            }
 
             setLang(localStorage.getItem('gosnel_lang') || 'en');
             updateNotifyUI();

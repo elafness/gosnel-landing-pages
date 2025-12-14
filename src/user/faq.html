@@ -28,119 +28,107 @@
         .faq-content.open { max-height: 200px; }
     </style>
 </head>
-<body class="gradient-dark min-h-screen text-gray-100">
-    <!-- Navigation -->
-    <nav class="sticky top-0 z-50 bg-[#222b38]/95 backdrop-blur-md border-b border-white/10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <a href="/" class="flex items-center gap-3">
-                    <div class="w-10 h-10 bg-gradient-to-r from-teal-400 to-teal-600 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-lg">GS</div>
-                    <span class="text-xl md:text-2xl font-bold text-gradient-teal">GoSnel</span>
-                </a>
-                <a href="/user" class="px-4 py-2 rounded-lg text-sm font-semibold text-white border border-teal-500 hover:bg-teal-500 hover:text-gray-900 transition">
-                    ← Back to Home
-                </a>
-            </div>
-        </div>
-    </nav>
+<body class="bg-white text-black min-h-screen">
+    <!-- Header -->
+    <!--#include file="components/user-header.html" -->
 
     <!-- Content -->
     <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div class="bg-white/5 rounded-2xl p-8 md:p-12">
+        <div class="bg-white rounded-2xl p-8 md:p-12">
             <h1 class="text-4xl font-bold text-gradient-teal mb-4">Frequently Asked Questions</h1>
-            <p class="text-gray-400 mb-8">Find answers to common questions about GoSnel</p>
+            <p class="text-gray-800 mb-8">Find answers to common questions about GoSnel</p>
 
             <div class="space-y-4">
-                <div class="faq-item bg-white/5 rounded-lg border border-white/10" onclick="toggleFaq(this)">
+                <div class="faq-item bg-white rounded-lg border border-gray-200" onclick="toggleFaq(this)">
                     <div class="flex justify-between items-center p-6">
-                        <h3 class="text-lg font-semibold text-white">How do I order a meal?</h3>
-                        <svg class="w-5 h-5 text-teal-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <h3 class="text-lg font-semibold text-black">How do I order a meal?</h3>
+                        <svg class="w-5 h-5 text-teal-600 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </div>
                     <div class="faq-content px-6 pb-6">
-                        <p class="text-gray-300">Simply chat with our AI assistant and describe what you're craving or your mood. The AI will suggest perfect meals for you and help you place an order with local restaurants.</p>
+                        <p class="text-gray-900">Simply chat with our AI assistant and describe what you're craving or your mood. The AI will suggest perfect meals for you and help you place an order with local restaurants.</p>
                     </div>
                 </div>
 
-                <div class="faq-item bg-white/5 rounded-lg border border-white/10" onclick="toggleFaq(this)">
+                <div class="faq-item bg-white rounded-lg border border-gray-200" onclick="toggleFaq(this)">
                     <div class="flex justify-between items-center p-6">
-                        <h3 class="text-lg font-semibold text-white">Is GoSnel free to use?</h3>
-                        <svg class="w-5 h-5 text-teal-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <h3 class="text-lg font-semibold text-black">Is GoSnel free to use?</h3>
+                        <svg class="w-5 h-5 text-teal-600 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </div>
                     <div class="faq-content px-6 pb-6">
-                        <p class="text-gray-300">Yes! GoSnel is completely free for customers. You only pay for the food you order. There are no subscription fees, hidden charges, or delivery fees from our side.</p>
+                        <p class="text-gray-900">Yes! GoSnel is completely free for customers. You only pay for the food you order. There are no subscription fees, hidden charges, or delivery fees from our side.</p>
                     </div>
                 </div>
 
-                <div class="faq-item bg-white/5 rounded-lg border border-white/10" onclick="toggleFaq(this)">
+                <div class="faq-item bg-white rounded-lg border border-gray-200" onclick="toggleFaq(this)">
                     <div class="flex justify-between items-center p-6">
-                        <h3 class="text-lg font-semibold text-white">How does GoSnel know my preferences?</h3>
-                        <svg class="w-5 h-5 text-teal-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <h3 class="text-lg font-semibold text-black">How does GoSnel know my preferences?</h3>
+                        <svg class="w-5 h-5 text-teal-600 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </div>
                     <div class="faq-content px-6 pb-6">
-                        <p class="text-gray-300">Our AI learns from your conversations, order history, and feedback. The more you chat with GoSnel, the better it becomes at understanding your taste, dietary restrictions, and budget preferences.</p>
+                        <p class="text-gray-900">Our AI learns from your conversations, order history, and feedback. The more you chat with GoSnel, the better it becomes at understanding your taste, dietary restrictions, and budget preferences.</p>
                     </div>
                 </div>
 
-                <div class="faq-item bg-white/5 rounded-lg border border-white/10" onclick="toggleFaq(this)">
+                <div class="faq-item bg-white rounded-lg border border-gray-200" onclick="toggleFaq(this)">
                     <div class="flex justify-between items-center p-6">
-                        <h3 class="text-lg font-semibold text-white">Which areas do you serve?</h3>
-                        <svg class="w-5 h-5 text-teal-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <h3 class="text-lg font-semibold text-black">Which areas do you serve?</h3>
+                        <svg class="w-5 h-5 text-teal-600 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </div>
                     <div class="faq-content px-6 pb-6">
-                        <p class="text-gray-300">We currently serve Ajman, UAE, with plans to expand to other emirates soon. Sign up to be notified when we launch in your area.</p>
+                        <p class="text-gray-900">We currently serve Ajman, UAE, with plans to expand to other emirates soon. Sign up to be notified when we launch in your area.</p>
                     </div>
                 </div>
 
-                <div class="faq-item bg-white/5 rounded-lg border border-white/10" onclick="toggleFaq(this)">
+                <div class="faq-item bg-white rounded-lg border border-gray-200" onclick="toggleFaq(this)">
                     <div class="flex justify-between items-center p-6">
-                        <h3 class="text-lg font-semibold text-white">Can I cancel or modify my order?</h3>
-                        <svg class="w-5 h-5 text-teal-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <h3 class="text-lg font-semibold text-black">Can I cancel or modify my order?</h3>
+                        <svg class="w-5 h-5 text-teal-600 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </div>
                     <div class="faq-content px-6 pb-6">
-                        <p class="text-gray-300">Yes, you can cancel or modify your order through the chat interface within a reasonable time frame before the restaurant starts preparing your meal.</p>
+                        <p class="text-gray-900">Yes, you can cancel or modify your order through the chat interface within a reasonable time frame before the restaurant starts preparing your meal.</p>
                     </div>
                 </div>
 
-                <div class="faq-item bg-white/5 rounded-lg border border-white/10" onclick="toggleFaq(this)">
+                <div class="faq-item bg-white rounded-lg border border-gray-200" onclick="toggleFaq(this)">
                     <div class="flex justify-between items-center p-6">
-                        <h3 class="text-lg font-semibold text-white">Do you support dietary restrictions?</h3>
-                        <svg class="w-5 h-5 text-teal-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <h3 class="text-lg font-semibold text-black">Do you support dietary restrictions?</h3>
+                        <svg class="w-5 h-5 text-teal-600 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </div>
                     <div class="faq-content px-6 pb-6">
-                        <p class="text-gray-300">Absolutely! GoSnel supports vegetarian, vegan, gluten-free, keto, halal, and other dietary preferences. Just tell our AI about your dietary needs and it will filter recommendations accordingly.</p>
+                        <p class="text-gray-900">Absolutely! GoSnel supports vegetarian, vegan, gluten-free, keto, halal, and other dietary preferences. Just tell our AI about your dietary needs and it will filter recommendations accordingly.</p>
                     </div>
                 </div>
 
-                <div class="faq-item bg-white/5 rounded-lg border border-white/10" onclick="toggleFaq(this)">
+                <div class="faq-item bg-white rounded-lg border border-gray-200" onclick="toggleFaq(this)">
                     <div class="flex justify-between items-center p-6">
-                        <h3 class="text-lg font-semibold text-white">Is there a mobile app?</h3>
-                        <svg class="w-5 h-5 text-teal-400 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <h3 class="text-lg font-semibold text-black">Is there a mobile app?</h3>
+                        <svg class="w-5 h-5 text-teal-600 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </div>
                     <div class="faq-content px-6 pb-6">
-                        <p class="text-gray-300">A mobile app is coming soon! For now, you can use GoSnel through your web browser on any device. The experience is fully optimized for mobile.</p>
+                        <p class="text-gray-900">A mobile app is coming soon! For now, you can use GoSnel through your web browser on any device. The experience is fully optimized for mobile.</p>
                     </div>
                 </div>
             </div>
 
             <!-- Contact Section -->
             <div class="mt-12 p-6 bg-gradient-to-r from-teal-500/20 to-teal-600/10 rounded-xl text-center">
-                <h2 class="text-xl font-semibold text-white mb-2">Still have questions?</h2>
-                <p class="text-gray-300 mb-4">Our support team is here to help!</p>
-                <a href="mailto:support@gosnel.com" class="inline-block px-6 py-3 bg-teal-600 text-white font-semibold rounded-lg hover:bg-teal-700 transition">
+                <h2 class="text-xl font-semibold text-black mb-2">Still have questions?</h2>
+                <p class="text-gray-900 mb-4">Our support team is here to help!</p>
+                <a href="mailto:support@gosnel.com" class="inline-block px-6 py-3 bg-teal-600 text-black font-semibold rounded-lg hover:bg-teal-700 transition">
                     Contact Support
                 </a>
             </div>
