@@ -88,6 +88,14 @@
             <div class="absolute inset-0 bg-gradient-to-r from-black/50 via-black/40 to-black/35"></div>
         </div>
 
+        <!-- Language Toggle - Visible on Hero -->
+        <div class="absolute top-4 right-4 z-20">
+            <div class="flex bg-white/20 backdrop-blur-sm rounded-lg p-1">
+                <button id="hero-lang-en" class="px-3 py-1.5 text-sm font-medium rounded-md transition-all bg-white text-teal-600">English</button>
+                <button id="hero-lang-ar" class="px-3 py-1.5 text-sm font-medium rounded-md transition-all text-white">العربية</button>
+            </div>
+        </div>
+
         <!-- Content -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
             <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -110,7 +118,7 @@
                     <!-- CTA Buttons -->
                     <div class="flex flex-col sm:flex-row gap-4 items-center lg:items-start lg:justify-start justify-center">
                         <a id="primary_cta" href="https://gosnel.com/vendor/signup" class="btn-primary inline-flex items-center justify-center gap-3 bg-teal-500 text-white px-8 py-4 rounded-xl font-bold text-lg w-full sm:w-auto sm:min-w-[280px]">
-                            Get discovered by new customers
+                            Start free
                         </a>
                         <a id="secondary_cta" href="/vendor/pricing" class="btn-secondary inline-flex items-center justify-center gap-3 border-2 border-yellow-300 text-yellow-300 bg-transparent px-6 py-4 rounded-xl font-semibold text-base hover:bg-yellow-50 hover:text-yellow-600 transition w-full sm:w-auto">
                             Pricing
@@ -138,29 +146,29 @@
             
             <div class="grid md:grid-cols-2 gap-8 mb-12">
                 <div class="problem-card p-8 rounded-2xl">
-                    <h3 class="text-xl font-bold text-red-600 mb-4">The Customer Fear Cycle</h3>
+                    <h3 id="fear_cycle_title" class="text-xl font-bold text-red-600 mb-4">The Customer Fear Cycle</h3>
                     <ul class="space-y-3 text-gray-700">
                         <li class="flex items-start gap-3">
                             <span class="text-red-500 font-bold">•</span>
-                            <span>Customers keep ordering from the same places to avoid wasting money</span>
+                            <span id="fear_cycle_1">Customers keep ordering from the same places to avoid wasting money</span>
                         </li>
                         <li class="flex items-start gap-3">
                             <span class="text-red-500 font-bold">•</span>
-                            <span>New restaurants feel like a gamble to first-time customers</span>
+                            <span id="fear_cycle_2">New restaurants feel like a gamble to first-time customers</span>
                         </li>
                     </ul>
                 </div>
                 
                 <div class="problem-card p-8 rounded-2xl">
-                    <h3 class="text-xl font-bold text-red-600 mb-4">The Visibility Problem</h3>
+                    <h3 id="visibility_title" class="text-xl font-bold text-red-600 mb-4">The Visibility Problem</h3>
                     <ul class="space-y-3 text-gray-700">
                         <li class="flex items-start gap-3">
                             <span class="text-red-500 font-bold">•</span>
-                            <span>Big brands dominate visibility, not better dishes</span>
+                            <span id="visibility_1">Big brands dominate visibility, not better dishes</span>
                         </li>
                         <li class="flex items-start gap-3">
                             <span class="text-red-500 font-bold">•</span>
-                            <span>You see the same customers every week while growth stays flat</span>
+                            <span id="visibility_2">You see the same customers every week while growth stays flat</span>
                         </li>
                     </ul>
                 </div>
@@ -169,7 +177,7 @@
             <div class="text-center">
                 <p id="problem_conclusion" class="text-2xl font-bold text-red-600">
                     The problem isn't your food.<br>
-                    <span class="text-red-700">It's customer fear.</span>
+                    <span id="problem_conclusion_2" class="text-red-700">It's customer fear.</span>
                 </p>
             </div>
         </div>
@@ -188,29 +196,29 @@
             
             <div class="grid md:grid-cols-2 gap-8 mb-8">
                 <div class="solution-card p-8 rounded-2xl">
-                    <h3 class="text-xl font-bold text-green-600 mb-4">Discovery, Not Search</h3>
+                    <h3 id="discovery_title" class="text-xl font-bold text-green-600 mb-4">Discovery, Not Search</h3>
                     <ul class="space-y-3 text-gray-700">
                         <li class="flex items-start gap-3">
                             <span class="text-green-500 font-bold">✓</span>
-                            <span>Customers browse meals, not restaurant lists</span>
+                            <span id="discovery_1">Customers browse meals, not restaurant lists</span>
                         </li>
                         <li class="flex items-start gap-3">
                             <span class="text-green-500 font-bold">✓</span>
-                            <span>Your dishes appear when customers are in the right mood and budget</span>
+                            <span id="discovery_2">Your dishes appear when customers are in the right mood and budget</span>
                         </li>
                     </ul>
                 </div>
                 
                 <div class="solution-card p-8 rounded-2xl">
-                    <h3 class="text-xl font-bold text-green-600 mb-4">Confidence Building</h3>
+                    <h3 id="confidence_title" class="text-xl font-bold text-green-600 mb-4">Confidence Building</h3>
                     <ul class="space-y-3 text-gray-700">
                         <li class="flex items-start gap-3">
                             <span class="text-green-500 font-bold">✓</span>
-                            <span>Visual discovery builds confidence before ordering</span>
+                            <span id="confidence_1">Visual discovery builds confidence before ordering</span>
                         </li>
                         <li class="flex items-start gap-3">
                             <span class="text-green-500 font-bold">✓</span>
-                            <span>Customers feel safe trying something new for the first time</span>
+                            <span id="confidence_2">Customers feel safe trying something new for the first time</span>
                         </li>
                     </ul>
                 </div>
@@ -219,7 +227,7 @@
             <div class="text-center">
                 <p id="solution_conclusion" class="text-2xl font-bold text-green-600">
                     We don't push your restaurant.<br>
-                    <span class="text-green-700">We let your food do the convincing.</span>
+                    <span id="solution_conclusion_2" class="text-green-700">We let your food do the convincing.</span>
                 </p>
             </div>
         </div>
@@ -233,30 +241,30 @@
             </h2>
             
             <div class="text-center mb-12">
-                <p class="text-2xl text-gray-600 mb-8">
+                <p id="dish_first_desc1" class="text-2xl text-gray-600 mb-8">
                     On traditional apps, customers search for restaurants they already know.
                 </p>
-                <p class="text-3xl font-bold text-blue-600">
+                <p id="dish_first_desc2" class="text-3xl font-bold text-blue-600">
                     On GoSnel, customers discover food.
                 </p>
             </div>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
                 <div class="bg-white p-6 rounded-xl border border-blue-200 text-center">
-                    <div class="text-blue-600 font-bold text-lg mb-2">Fair Competition</div>
-                    <p class="text-gray-600 text-sm">Your burger competes with the best burger — not the biggest brand</p>
+                    <div id="fair_competition_title" class="text-blue-600 font-bold text-lg mb-2">Fair Competition</div>
+                    <p id="fair_competition_desc" class="text-gray-600 text-sm">Your burger competes with the best burger — not the biggest brand</p>
                 </div>
                 <div class="bg-white p-6 rounded-xl border border-blue-200 text-center">
-                    <div class="text-blue-600 font-bold text-lg mb-2">Equal Visibility</div>
-                    <p class="text-gray-600 text-sm">Independent restaurants get equal visibility</p>
+                    <div id="equal_visibility_title" class="text-blue-600 font-bold text-lg mb-2">Equal Visibility</div>
+                    <p id="equal_visibility_desc" class="text-gray-600 text-sm">Independent restaurants get equal visibility</p>
                 </div>
                 <div class="bg-white p-6 rounded-xl border border-blue-200 text-center">
-                    <div class="text-blue-600 font-bold text-lg mb-2">Quality Wins</div>
-                    <p class="text-gray-600 text-sm">Quality dishes win, not advertising budgets</p>
+                    <div id="quality_wins_title" class="text-blue-600 font-bold text-lg mb-2">Quality Wins</div>
+                    <p id="quality_wins_desc" class="text-gray-600 text-sm">Quality dishes win, not advertising budgets</p>
                 </div>
                 <div class="bg-white p-6 rounded-xl border border-blue-200 text-center">
-                    <div class="text-blue-600 font-bold text-lg mb-2">Fair Chance</div>
-                    <p class="text-gray-600 text-sm">Small kitchens finally get a fair chance</p>
+                    <div id="fair_chance_title" class="text-blue-600 font-bold text-lg mb-2">Fair Chance</div>
+                    <p id="fair_chance_desc" class="text-gray-600 text-sm">Small kitchens finally get a fair chance</p>
                 </div>
             </div>
             
@@ -281,8 +289,8 @@
                     <div class="w-20 h-20 mx-auto mb-4 flex items-center justify-center">
                         <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/How_GoSnel_Works1.png" alt="Customer discovers meals" class="w-full h-full object-contain">
                     </div>
-                    <h3 class="text-lg font-semibold text-black mb-2">Customer discovers meals</h3>
-                    <p class="text-gray-600 text-sm">Based on what they want to eat</p>
+                    <h3 id="step1_title" class="text-lg font-semibold text-black mb-2">Customer discovers meals</h3>
+                    <p id="step1_desc" class="text-gray-600 text-sm">Based on what they want to eat</p>
                 </div>
                 
                 <!-- Step 2 -->
@@ -290,8 +298,8 @@
                     <div class="w-20 h-20 mx-auto mb-4 flex items-center justify-center">
                         <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/How_GoSnel_Works2.png" alt="Dish appears to customer" class="w-full h-full object-contain">
                     </div>
-                    <h3 class="text-lg font-semibold text-black mb-2">Your dish appears</h3>
-                    <p class="text-gray-600 text-sm">When it matches their preferences</p>
+                    <h3 id="step2_title" class="text-lg font-semibold text-black mb-2">Your dish appears</h3>
+                    <p id="step2_desc" class="text-gray-600 text-sm">When it matches their preferences</p>
                 </div>
                 
                 <!-- Step 3 -->
@@ -299,8 +307,8 @@
                     <div class="w-20 h-20 mx-auto mb-4 flex items-center justify-center">
                         <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/How_GoSnel_Works3.png" alt="Customer sent to restaurant" class="w-full h-full object-contain">
                     </div>
-                    <h3 class="text-lg font-semibold text-black mb-2">GoSnel sends customer to you</h3>
-                    <p class="text-gray-600 text-sm">Direct connection established</p>
+                    <h3 id="step3_title" class="text-lg font-semibold text-black mb-2">GoSnel sends customer to you</h3>
+                    <p id="step3_desc" class="text-gray-600 text-sm">Direct connection established</p>
                 </div>
                 
                 <!-- Step 4 -->
@@ -310,15 +318,15 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
                         </svg>
                     </div>
-                    <h3 class="text-lg font-semibold text-black mb-2">You receive order</h3>
-                    <p class="text-gray-600 text-sm">Pickup, WhatsApp, or delivery apps</p>
+                    <h3 id="step4_title" class="text-lg font-semibold text-black mb-2">You receive order</h3>
+                    <p id="step4_desc" class="text-gray-600 text-sm">Pickup, WhatsApp, or delivery apps</p>
                 </div>
             </div>
             
             <div class="text-center">
                 <p id="how_works_conclusion" class="text-2xl font-bold text-teal-600">
                     You stay in control.<br>
-                    <span class="text-teal-700">We just bring the customer.</span>
+                    <span id="how_works_conclusion_2" class="text-teal-700">We just bring the customer.</span>
                 </p>
             </div>
         </div>
@@ -334,42 +342,42 @@
             <div class="grid md:grid-cols-2 gap-12">
                 <!-- What we're NOT -->
                 <div class="bg-red-50 p-8 rounded-2xl border border-red-200">
-                    <h3 class="text-2xl font-bold text-red-600 mb-6">What GoSnel is NOT</h3>
+                    <h3 id="what_not_left_title" class="text-2xl font-bold text-red-600 mb-6">What GoSnel is NOT</h3>
                     <ul class="space-y-4">
                         <li class="flex items-center gap-3">
                             <span class="text-red-500 font-bold text-xl">❌</span>
-                            <span class="text-gray-700 font-medium">Not a delivery company</span>
+                            <span id="not_1" class="text-gray-700 font-medium">Not a delivery company</span>
                         </li>
                         <li class="flex items-center gap-3">
                             <span class="text-red-500 font-bold text-xl">❌</span>
-                            <span class="text-gray-700 font-medium">No delivery commissions</span>
+                            <span id="not_2" class="text-gray-700 font-medium">No delivery commissions</span>
                         </li>
                         <li class="flex items-center gap-3">
                             <span class="text-red-500 font-bold text-xl">❌</span>
-                            <span class="text-gray-700 font-medium">No hidden customer data</span>
+                            <span id="not_3" class="text-gray-700 font-medium">No hidden customer data</span>
                         </li>
                         <li class="flex items-center gap-3">
                             <span class="text-red-500 font-bold text-xl">❌</span>
-                            <span class="text-gray-700 font-medium">No competition with your existing delivery apps</span>
+                            <span id="not_4" class="text-gray-700 font-medium">No competition with your existing delivery apps</span>
                         </li>
                     </ul>
                 </div>
                 
                 <!-- What we ARE -->
                 <div class="bg-green-50 p-8 rounded-2xl border border-green-200">
-                    <h3 class="text-2xl font-bold text-green-600 mb-6">What GoSnel IS</h3>
+                    <h3 id="what_is_title" class="text-2xl font-bold text-green-600 mb-6">What GoSnel IS</h3>
                     <ul class="space-y-4">
                         <li class="flex items-center gap-3">
                             <span class="text-green-500 font-bold text-xl">✅</span>
-                            <span class="text-gray-700 font-medium">A food discovery and growth channel</span>
+                            <span id="is_1" class="text-gray-700 font-medium">A food discovery and growth channel</span>
                         </li>
                         <li class="flex items-center gap-3">
                             <span class="text-green-500 font-bold text-xl">✅</span>
-                            <span class="text-gray-700 font-medium">A way to attract customers who don't know you yet</span>
+                            <span id="is_2" class="text-gray-700 font-medium">A way to attract customers who don't know you yet</span>
                         </li>
                         <li class="flex items-center gap-3">
                             <span class="text-green-500 font-bold text-xl">✅</span>
-                            <span class="text-gray-700 font-medium">A platform that helps customers try you for the first time</span>
+                            <span id="is_3" class="text-gray-700 font-medium">A platform that helps customers try you for the first time</span>
                         </li>
                     </ul>
                 </div>
@@ -391,8 +399,8 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold text-teal-600 mb-3">New Customer Circle</h3>
-                    <p class="text-gray-700">Attract customers outside your usual circle</p>
+                    <h3 id="partner_1_title" class="text-xl font-bold text-teal-600 mb-3">New Customer Circle</h3>
+                    <p id="partner_1_desc" class="text-gray-700">Attract customers outside your usual circle</p>
                 </div>
                 
                 <div class="text-center p-8 bg-teal-50 rounded-2xl border border-teal-200">
@@ -401,8 +409,8 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold text-teal-600 mb-3">Consistent Growth</h3>
-                    <p class="text-gray-700">Increase order frequency beyond weekends</p>
+                    <h3 id="partner_2_title" class="text-xl font-bold text-teal-600 mb-3">Consistent Growth</h3>
+                    <p id="partner_2_desc" class="text-gray-700">Increase order frequency beyond weekends</p>
                 </div>
                 
                 <div class="text-center p-8 bg-teal-50 rounded-2xl border border-teal-200">
@@ -411,8 +419,8 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold text-teal-600 mb-3">Full Control</h3>
-                    <p class="text-gray-700">Keep control of pricing, delivery, and customer relationships</p>
+                    <h3 id="partner_3_title" class="text-xl font-bold text-teal-600 mb-3">Full Control</h3>
+                    <p id="partner_3_desc" class="text-gray-700">Keep control of pricing, delivery, and customer relationships</p>
                 </div>
             </div>
             
@@ -503,17 +511,87 @@
         (function(){
             const t = {
                 en: {
+                    // Hero
                     hero_title: '<span class="text-white block">Your food is great.</span><span class="text-white block">New customers are just</span><span class="text-white block">afraid to try it.</span>',
                     hero_subtitle: 'GoSnel helps customers discover your dishes — not just your restaurant name — so they try you for the first time with confidence.',
                     hero_tagline: 'We are a food discovery platform, not a delivery company.',
-                    primary_cta: 'Get discovered by new customers',
+                    primary_cta: 'Start free',
                     secondary_cta: 'Pricing',
+                    
+                    // Problem Section
                     problem_title: 'Why most restaurants stop growing',
+                    problem_intro: 'Most restaurants don\'t fail because of bad food.<br>They stop growing because customers are afraid to take risks.',
+                    fear_cycle_title: 'The Customer Fear Cycle',
+                    fear_cycle_1: 'Customers keep ordering from the same places to avoid wasting money',
+                    fear_cycle_2: 'New restaurants feel like a gamble to first-time customers',
+                    visibility_title: 'The Visibility Problem',
+                    visibility_1: 'Big brands dominate visibility, not better dishes',
+                    visibility_2: 'You see the same customers every week while growth stays flat',
+                    problem_conclusion: 'The problem isn\'t your food.',
+                    problem_conclusion_2: 'It\'s customer fear.',
+                    
+                    // Solution Section
                     solution_title: 'How GoSnel brings you new customers',
+                    solution_intro: 'GoSnel is built to remove fear from food discovery.',
+                    discovery_title: 'Discovery, Not Search',
+                    discovery_1: 'Customers browse meals, not restaurant lists',
+                    discovery_2: 'Your dishes appear when customers are in the right mood and budget',
+                    confidence_title: 'Confidence Building',
+                    confidence_1: 'Visual discovery builds confidence before ordering',
+                    confidence_2: 'Customers feel safe trying something new for the first time',
+                    solution_conclusion: 'We don\'t push your restaurant.',
+                    solution_conclusion_2: 'We let your food do the convincing.',
+                    
+                    // Dish First Section
                     dish_first_title: 'Dish-first, not brand-first',
+                    dish_first_desc1: 'On traditional apps, customers search for restaurants they already know.',
+                    dish_first_desc2: 'On GoSnel, customers discover food.',
+                    fair_competition_title: 'Fair Competition',
+                    fair_competition_desc: 'Your burger competes with the best burger — not the biggest brand',
+                    equal_visibility_title: 'Equal Visibility',
+                    equal_visibility_desc: 'Independent restaurants get equal visibility',
+                    quality_wins_title: 'Quality Wins',
+                    quality_wins_desc: 'Quality dishes win, not advertising budgets',
+                    fair_chance_title: 'Fair Chance',
+                    fair_chance_desc: 'Small kitchens finally get a fair chance',
+                    dish_first_conclusion: 'If your food is good, it gets seen.',
+                    
+                    // How It Works Section
                     how_works_title: 'How GoSnel works',
+                    step1_title: 'Customer discovers meals',
+                    step1_desc: 'Based on what they want to eat',
+                    step2_title: 'Your dish appears',
+                    step2_desc: 'When it matches their preferences',
+                    step3_title: 'GoSnel sends customer to you',
+                    step3_desc: 'Direct connection established',
+                    step4_title: 'You receive order',
+                    step4_desc: 'Pickup, WhatsApp, or delivery apps',
+                    how_works_conclusion: 'You stay in control.',
+                    how_works_conclusion_2: 'We just bring the customer.',
+                    
+                    // What GoSnel Is NOT Section
                     what_not_title: 'What GoSnel is not',
+                    what_not_left_title: 'What GoSnel is NOT',
+                    not_1: 'Not a delivery company',
+                    not_2: 'No delivery commissions',
+                    not_3: 'No hidden customer data',
+                    not_4: 'No competition with your existing delivery apps',
+                    what_is_title: 'What GoSnel IS',
+                    is_1: 'A food discovery and growth channel',
+                    is_2: 'A way to attract customers who don\'t know you yet',
+                    is_3: 'A platform that helps customers try you for the first time',
+                    
+                    // Why Partner Section
                     why_partner_title: 'Why restaurants partner with GoSnel',
+                    partner_1_title: 'New Customer Circle',
+                    partner_1_desc: 'Attract customers outside your usual circle',
+                    partner_2_title: 'Consistent Growth',
+                    partner_2_desc: 'Increase order frequency beyond weekends',
+                    partner_3_title: 'Full Control',
+                    partner_3_desc: 'Keep control of pricing, delivery, and customer relationships',
+                    why_partner_conclusion: 'We succeed when your food gets discovered.',
+                    
+                    // FAQ Section
                     faq_title: 'Common questions',
                     faq1_question: 'Do I need to change how my restaurant operates?',
                     faq1_answer: 'No. You keep your current workflow. GoSnel only brings discovery.',
@@ -523,22 +601,94 @@
                     faq3_answer: 'You do. We don\'t hide customer data.',
                     faq4_question: 'Is there any upfront cost?',
                     faq4_answer: 'No. You can start for free.',
+                    
+                    // Final CTA
                     final_cta_title: 'Let new customers discover your food',
                     final_cta_desc: 'No setup fees.<br>No delivery commissions.<br>Just more people trying your dishes.',
                     final_cta: 'Add your dishes and start free'
                 },
                 ar: {
+                    // Hero
                     hero_title: '<span class="text-white block">أكلك ممتاز...</span><span class="text-white block">بس الزباين الجدد</span><span class="text-white block">خايفين يجربونه</span>',
                     hero_subtitle: 'جوسنِل تساعد الزبائن يكتشفون وجباتك, مو بس اسم مطعمك, عشان يجربونك لأول مرة بثقة.',
                     hero_tagline: 'إحنا منصة اكتشاف طعام، مو شركة توصيل.',
-                    primary_cta: 'خلي زبائن جدد يكتشفونك',
+                    primary_cta: 'ابدأ مجاناً',
                     secondary_cta: 'الأسعار',
+                    
+                    // Problem Section
                     problem_title: 'ليش أغلب المطاعم تتوقف عن النمو',
+                    problem_intro: 'أغلب المطاعم ما تفشل بسبب الأكل السيء.<br>تتوقف عن النمو لأن الزبائن خايفين يجازفون.',
+                    fear_cycle_title: 'دورة خوف الزبون',
+                    fear_cycle_1: 'الزبائن يطلبون من نفس الأماكن عشان ما يضيعون فلوسهم',
+                    fear_cycle_2: 'المطاعم الجديدة تحس مثل مقامرة للزبائن الجدد',
+                    visibility_title: 'مشكلة الظهور',
+                    visibility_1: 'العلامات التجارية الكبيرة تسيطر على الظهور، مو الأطباق الأفضل',
+                    visibility_2: 'تشوف نفس الزبائن كل أسبوع والنمو واقف',
+                    problem_conclusion: 'المشكلة مو أكلك.',
+                    problem_conclusion_2: 'المشكلة خوف الزبون.',
+                    
+                    // Solution Section
                     solution_title: 'كيف جوسنِل تجيب لك زبائن جدد',
+                    solution_intro: 'جوسنِل مبنية تشيل الخوف من اكتشاف الأكل.',
+                    discovery_title: 'اكتشاف، مو بحث',
+                    discovery_1: 'الزبائن يتصفحون الوجبات، مو قوائم المطاعم',
+                    discovery_2: 'أطباقك تظهر لما الزبون في المود والميزانية المناسبة',
+                    confidence_title: 'بناء الثقة',
+                    confidence_1: 'الاكتشاف البصري يبني الثقة قبل الطلب',
+                    confidence_2: 'الزبائن يحسون بالأمان يجربون شي جديد لأول مرة',
+                    solution_conclusion: 'إحنا ما ندفع مطعمك.',
+                    solution_conclusion_2: 'نخلي أكلك يقنع.',
+                    
+                    // Dish First Section
                     dish_first_title: 'الوجبة أولاً، مو العلامة التجارية',
+                    dish_first_desc1: 'في التطبيقات التقليدية، الزبائن يبحثون عن مطاعم يعرفونها.',
+                    dish_first_desc2: 'في جوسنِل، الزبائن يكتشفون الأكل.',
+                    fair_competition_title: 'منافسة عادلة',
+                    fair_competition_desc: 'برجرك ينافس أحسن برجر — مو أكبر علامة تجارية',
+                    equal_visibility_title: 'ظهور متساوي',
+                    equal_visibility_desc: 'المطاعم المستقلة تاخذ ظهور متساوي',
+                    quality_wins_title: 'الجودة تفوز',
+                    quality_wins_desc: 'الأطباق الجيدة تفوز، مو ميزانيات الإعلانات',
+                    fair_chance_title: 'فرصة عادلة',
+                    fair_chance_desc: 'المطابخ الصغيرة أخيراً تاخذ فرصة عادلة',
+                    dish_first_conclusion: 'إذا أكلك زين، يتشاف.',
+                    
+                    // How It Works Section
                     how_works_title: 'كيف تشتغل جوسنِل',
+                    step1_title: 'الزبون يكتشف الوجبات',
+                    step1_desc: 'بناءً على اللي يبي ياكله',
+                    step2_title: 'طبقك يظهر',
+                    step2_desc: 'لما يطابق تفضيلاته',
+                    step3_title: 'جوسنِل ترسل الزبون لك',
+                    step3_desc: 'اتصال مباشر',
+                    step4_title: 'تستقبل الطلب',
+                    step4_desc: 'استلام، واتساب، أو تطبيقات التوصيل',
+                    how_works_conclusion: 'إنت تتحكم.',
+                    how_works_conclusion_2: 'إحنا بس نجيب الزبون.',
+                    
+                    // What GoSnel Is NOT Section
                     what_not_title: 'إيش جوسنِل مو',
+                    what_not_left_title: 'جوسنِل مو',
+                    not_1: 'مو شركة توصيل',
+                    not_2: 'بدون عمولات توصيل',
+                    not_3: 'بدون بيانات زبائن مخفية',
+                    not_4: 'بدون منافسة مع تطبيقات التوصيل الحالية',
+                    what_is_title: 'جوسنِل هي',
+                    is_1: 'قناة اكتشاف طعام ونمو',
+                    is_2: 'طريقة تجذب زبائن ما يعرفونك بعد',
+                    is_3: 'منصة تساعد الزبائن يجربونك لأول مرة',
+                    
+                    // Why Partner Section
                     why_partner_title: 'ليش المطاعم تتعاون مع جوسنِل',
+                    partner_1_title: 'دائرة زبائن جديدة',
+                    partner_1_desc: 'اجذب زبائن من خارج دائرتك المعتادة',
+                    partner_2_title: 'نمو مستمر',
+                    partner_2_desc: 'زيد تكرار الطلبات مو بس نهاية الأسبوع',
+                    partner_3_title: 'تحكم كامل',
+                    partner_3_desc: 'حافظ على تحكمك بالأسعار والتوصيل وعلاقات الزبائن',
+                    why_partner_conclusion: 'ننجح لما أكلك يُكتشف.',
+                    
+                    // FAQ Section
                     faq_title: 'أسئلة شائعة',
                     faq1_question: 'هل أحتاج أغير طريقة عمل مطعمي؟',
                     faq1_answer: 'لا. تخلي نظام شغلك زي ما هو. جوسنِل بس تجيب الاكتشاف.',
@@ -548,80 +698,50 @@
                     faq3_answer: 'إنت. إحنا ما نخبي بيانات الزبائن.',
                     faq4_question: 'في أي تكلفة مسبقة؟',
                     faq4_answer: 'لا. تقدر تبدأ مجاناً.',
+                    
+                    // Final CTA
                     final_cta_title: 'خلي زبائن جدد يكتشفون أكلك',
                     final_cta_desc: 'بلا رسوم إعداد.<br>بلا عمولات توصيل.<br>بس ناس أكثر تجرب وجباتك.',
                     final_cta: 'أضف وجباتك وابدأ مجاناً'
                 }
             };
 
-            const ids = {
-                hero_title: document.getElementById('hero_title'),
-                hero_subtitle: document.getElementById('hero_subtitle'),
-                hero_tagline: document.getElementById('hero_tagline'),
-                primary_cta: document.getElementById('primary_cta'),
-                secondary_cta: document.getElementById('secondary_cta'),
-                problem_title: document.getElementById('problem_title'),
-                solution_title: document.getElementById('solution_title'),
-                dish_first_title: document.getElementById('dish_first_title'),
-                how_works_title: document.getElementById('how_works_title'),
-                what_not_title: document.getElementById('what_not_title'),
-                why_partner_title: document.getElementById('why_partner_title'),
-                faq_title: document.getElementById('faq_title'),
-                faq1_question: document.getElementById('faq1_question'),
-                faq1_answer: document.getElementById('faq1_answer'),
-                faq2_question: document.getElementById('faq2_question'),
-                faq2_answer: document.getElementById('faq2_answer'),
-                faq3_question: document.getElementById('faq3_question'),
-                faq3_answer: document.getElementById('faq3_answer'),
-                faq4_question: document.getElementById('faq4_question'),
-                faq4_answer: document.getElementById('faq4_answer'),
-                final_cta_title: document.getElementById('final_cta_title'),
-                final_cta_desc: document.getElementById('final_cta_desc'),
-                final_cta: document.getElementById('final_cta')
-            };
+            // Get all element references
+            function getElement(id) {
+                return document.getElementById(id);
+            }
 
-            const langEnBtn = document.getElementById('vendor-lang-en');
-            const langArBtn = document.getElementById('vendor-lang-ar');
-            const langEnBtnMobile = document.getElementById('vendor-lang-en-mobile');
-            const langArBtnMobile = document.getElementById('vendor-lang-ar-mobile');
+            const langEnBtn = getElement('vendor-lang-en');
+            const langArBtn = getElement('vendor-lang-ar');
+            const langEnBtnMobile = getElement('vendor-lang-en-mobile');
+            const langArBtnMobile = getElement('vendor-lang-ar-mobile');
+            const heroLangEn = getElement('hero-lang-en');
+            const heroLangAr = getElement('hero-lang-ar');
+            
             let language = localStorage.getItem('gosnel_vendor_lang') || 'en';
 
             function applyTexts(){
                 const current = t[language];
                 if(!current) return;
                 
-                if(ids.hero_title) ids.hero_title.innerHTML = current.hero_title;
-                if(ids.hero_subtitle) ids.hero_subtitle.textContent = current.hero_subtitle;
-                if(ids.hero_tagline) ids.hero_tagline.textContent = current.hero_tagline;
-                if(ids.primary_cta) ids.primary_cta.textContent = current.primary_cta;
-                if(ids.secondary_cta) ids.secondary_cta.textContent = current.secondary_cta;
-                if(ids.problem_title) ids.problem_title.textContent = current.problem_title;
-                if(ids.solution_title) ids.solution_title.textContent = current.solution_title;
-                if(ids.dish_first_title) ids.dish_first_title.textContent = current.dish_first_title;
-                if(ids.how_works_title) ids.how_works_title.textContent = current.how_works_title;
-                if(ids.what_not_title) ids.what_not_title.textContent = current.what_not_title;
-                if(ids.why_partner_title) ids.why_partner_title.textContent = current.why_partner_title;
-                if(ids.faq_title) ids.faq_title.textContent = current.faq_title;
-                if(ids.faq1_question) ids.faq1_question.textContent = current.faq1_question;
-                if(ids.faq1_answer) ids.faq1_answer.textContent = current.faq1_answer;
-                if(ids.faq2_question) ids.faq2_question.textContent = current.faq2_question;
-                if(ids.faq2_answer) ids.faq2_answer.textContent = current.faq2_answer;
-                if(ids.faq3_question) ids.faq3_question.textContent = current.faq3_question;
-                if(ids.faq3_answer) ids.faq3_answer.textContent = current.faq3_answer;
-                if(ids.faq4_question) ids.faq4_question.textContent = current.faq4_question;
-                if(ids.faq4_answer) ids.faq4_answer.textContent = current.faq4_answer;
-                if(ids.final_cta_title) ids.final_cta_title.textContent = current.final_cta_title;
-                if(ids.final_cta_desc) ids.final_cta_desc.innerHTML = current.final_cta_desc;
-                if(ids.final_cta) ids.final_cta.textContent = current.final_cta;
+                // Apply all translations
+                Object.keys(current).forEach(function(key) {
+                    const el = getElement(key);
+                    if(el) {
+                        if(key === 'hero_title' || key === 'problem_intro' || key === 'final_cta_desc') {
+                            el.innerHTML = current[key];
+                        } else {
+                            el.textContent = current[key];
+                        }
+                    }
+                });
 
+                // Set RTL direction for Arabic
                 document.documentElement.setAttribute('dir', language==='ar' ? 'rtl' : 'ltr');
             }
 
-            function setLang(lang){
-                language = lang;
-                localStorage.setItem('gosnel_vendor_lang', lang);
-                
-                // Update desktop buttons
+            function updateButtonStyles(lang) {
+                // Update header desktop buttons
                 if(langEnBtn && langArBtn) {
                     langEnBtn.classList.toggle('bg-teal-500', lang==='en');
                     langEnBtn.classList.toggle('text-white', lang==='en');
@@ -631,7 +751,7 @@
                     langArBtn.classList.toggle('text-gray-600', lang!=='ar');
                 }
                 
-                // Update mobile buttons
+                // Update header mobile buttons
                 if(langEnBtnMobile && langArBtnMobile) {
                     langEnBtnMobile.classList.toggle('bg-teal-500', lang==='en');
                     langEnBtnMobile.classList.toggle('text-white', lang==='en');
@@ -641,16 +761,33 @@
                     langArBtnMobile.classList.toggle('text-gray-600', lang!=='ar');
                 }
                 
+                // Update hero language toggle
+                if(heroLangEn && heroLangAr) {
+                    heroLangEn.classList.toggle('bg-white', lang==='en');
+                    heroLangEn.classList.toggle('text-teal-600', lang==='en');
+                    heroLangEn.classList.toggle('text-white', lang!=='en');
+                    heroLangAr.classList.toggle('bg-white', lang==='ar');
+                    heroLangAr.classList.toggle('text-teal-600', lang==='ar');
+                    heroLangAr.classList.toggle('text-white', lang!=='ar');
+                }
+            }
+
+            function setLang(lang){
+                language = lang;
+                localStorage.setItem('gosnel_vendor_lang', lang);
+                updateButtonStyles(lang);
                 applyTexts();
             }
 
-            // Desktop language buttons
+            // Header language buttons
             if(langEnBtn) langEnBtn.addEventListener('click', function(){ setLang('en'); });
             if(langArBtn) langArBtn.addEventListener('click', function(){ setLang('ar'); });
-            
-            // Mobile language buttons
             if(langEnBtnMobile) langEnBtnMobile.addEventListener('click', function(){ setLang('en'); });
             if(langArBtnMobile) langArBtnMobile.addEventListener('click', function(){ setLang('ar'); });
+            
+            // Hero language toggle
+            if(heroLangEn) heroLangEn.addEventListener('click', function(){ setLang('en'); });
+            if(heroLangAr) heroLangAr.addEventListener('click', function(){ setLang('ar'); });
 
             setLang(language);
         })();
