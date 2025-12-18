@@ -1,6 +1,22 @@
 # Cloudflare Pages Redirects - Path-based routing
 
 # ============================================
+# BLOCK OLD PATHS - Redirect /vendor/* and /user/* to clean URLs
+# ============================================
+/vendor/pricing /pricing 301
+/vendor/how-it-works /how-it-works 301
+/vendor/why-partner /why-partner 301
+/vendor/guidelines /guidelines 301
+/vendor/insights /insights 301
+/vendor/faq /faq 301
+/vendor/terms-conditions /terms-conditions 301
+/vendor/cookie-policy /cookie-policy 301
+/user/privacy-policy /privacy-policy 301
+/user/about-us /about-us 301
+/user/terms-conditions /terms-conditions 301
+/user/cookie-policy /cookie-policy 301
+
+# ============================================
 # VENDOR SUBDOMAIN STATIC PAGES (vendor.gosnel.com)
 # These serve root-level HTML files for clean URLs
 # ============================================
