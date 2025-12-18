@@ -134,8 +134,8 @@ const buildPages = () => {
     console.log("✅ Copied sitemap.xml");
   }
 
-    // Copy subdirectory static pages (user, vendor, etc.) with include processing
-  const subdomains = ['user', 'vendor', 'drivers', 'promo'];
+    // Copy subdirectory static pages (user, vendor, footer, etc.) with include processing
+  const subdomains = ['user', 'vendor', 'drivers', 'promo', 'footer'];
   
   subdomains.forEach(subdomain => {
     const srcSubdomainDir = path.join(srcDir, subdomain);
@@ -176,8 +176,8 @@ const buildPages = () => {
   
   console.log("✅ Copied subdirectory pages");
 
-  // Create root-level vendor static pages for direct access (for vendor.gosnel.com/page-name)
-  const vendorPages = ['how-it-works', 'why-partner', 'guidelines', 'insights', 'faq', 'pricing', 'terms-conditions', 'cookie-policy'];
+  // Create root-level vendor static pages with vendor- prefix ONLY
+  const vendorPages = ['vendor-how-it-works', 'vendor-why-partner', 'vendor-guidelines', 'vendor-insights', 'vendor-faq', 'vendor-pricing'];
   vendorPages.forEach(pageName => {
     const srcPath = path.join(srcDir, 'vendor', `${pageName}.html`);
     const distPath = path.join(distDir, `${pageName}.html`);
@@ -189,8 +189,8 @@ const buildPages = () => {
     }
   });
 
-  // Create root-level user static pages for direct access (for user.gosnel.com/page-name)
-  const userPages = ['privacy-policy', 'terms-conditions', 'cookie-policy', 'about-us'];
+  // Create root-level user static pages with user- prefix ONLY
+  const userPages = ['user-pricing', 'user-faq', 'user-how-it-works'];
   userPages.forEach(pageName => {
     const srcPath = path.join(srcDir, 'user', `${pageName}.html`);
     const distPath = path.join(distDir, `${pageName}.html`);
@@ -201,8 +201,21 @@ const buildPages = () => {
       fs.writeFileSync(distPath, htmlContent);
     }
   });
+
+  // Create root-level footer pages (universal pages)
+  const footerPages = ['about-us', 'legal'];
+  footerPages.forEach(pageName => {
+    const srcPath = path.join(srcDir, 'footer', `${pageName}.html`);
+    const distPath = path.join(distDir, `${pageName}.html`);
+    
+    if (fs.existsSync(srcPath)) {
+      let htmlContent = fs.readFileSync(srcPath, "utf8");
+      htmlContent = processIncludes(htmlContent);
+      fs.writeFileSync(distPath, htmlContent);
+    }
+  });
   
-  console.log("✅ Created root-level subdomain pages");
+  console.log("✅ Created prefixed subdomain pages");
 
   // Copy assets if they exist (recursively)
   const assetsDir = path.join(srcDir, "assets");

@@ -1,4 +1,4 @@
-<!-- Unified Header Component -->
+<!-- User Header Component -->
 <nav class="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-16">
@@ -13,27 +13,50 @@
                 </div>
             </a>
             
-            <!-- Navigation Links -->
+            <!-- Desktop Navigation Links -->
             <div class="hidden md:flex items-center gap-8">
                 <a href="/" class="text-gray-900 hover:text-teal-600 font-medium transition">Home</a>
                 <a href="/about-us" class="text-gray-900 hover:text-teal-600 font-medium transition">About Us</a>
                 <a href="/privacy-policy" class="text-gray-900 hover:text-teal-600 font-medium transition">Privacy</a>
-                <a href="https://gosnel.com/help" class="text-gray-900 hover:text-teal-600 font-medium transition">Help</a>
+                <a href="/terms-conditions" class="text-gray-900 hover:text-teal-600 font-medium transition">Terms</a>
             </div>
             
-            <!-- Right Actions -->
-            <div class="flex items-center gap-3">
-                <!-- Language Switcher -->
-                <div class="hidden sm:flex items-center gap-1 bg-gray-100 rounded-lg p-1 border border-gray-200">
-                    <button class="px-3 py-1.5 rounded-md text-xs font-semibold bg-teal-500 text-white">English</button>
-                    <button class="px-3 py-1.5 rounded-md text-xs font-semibold text-gray-600 hover:text-teal-500 transition">عربي</button>
-                </div>
-                
-                <!-- Login Button -->
+            <!-- Desktop Right Actions -->
+            <div class="hidden md:flex items-center gap-3">
+                <!-- User Actions -->
                 <a href="/login" class="text-gray-900 hover:text-teal-600 font-medium transition">Sign In</a>
                 <a href="/signup" class="bg-teal-500 text-white px-4 py-2 rounded-lg font-medium hover:bg-teal-600 transition">Get Started</a>
             </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn-user" class="md:hidden flex items-center justify-center w-10 h-10 rounded-lg hover:bg-gray-100 transition">
+                <svg class="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
         </div>
+
+        <!-- Mobile Menu Drawer -->
+        <div id="mobile-menu-user" class="md:hidden fixed inset-y-0 left-0 top-16 bottom-0 w-80 max-w-sm z-40 bg-white transform -translate-x-full transition-transform duration-300 shadow-xl">
+            <div class="p-6 space-y-6">
+                <!-- Mobile Navigation Links -->
+                <div class="space-y-4">
+                    <a href="/" class="block text-lg font-medium text-gray-900 hover:text-teal-600 transition">Home</a>
+                    <a href="/about-us" class="block text-lg font-medium text-gray-900 hover:text-teal-600 transition">About Us</a>
+                    <a href="/privacy-policy" class="block text-lg font-medium text-gray-900 hover:text-teal-600 transition">Privacy</a>
+                    <a href="/terms-conditions" class="block text-lg font-medium text-gray-900 hover:text-teal-600 transition">Terms</a>
+                </div>
+
+                <!-- Mobile Actions -->
+                <div class="pt-4 border-t border-gray-200 space-y-4">
+                    <a href="/login" class="block text-center py-3 text-gray-900 hover:text-teal-600 font-medium border border-gray-300 rounded-lg transition">Sign In</a>
+                    <a href="/signup" class="block text-center py-3 bg-teal-500 text-white rounded-lg font-medium hover:bg-teal-600 transition">Get Started</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu-overlay-user" class="md:hidden fixed inset-0 bg-black bg-opacity-50 z-30 opacity-0 pointer-events-none transition-opacity duration-300"></div>
     </div>
 </nav>
 
@@ -45,3 +68,48 @@
     background-clip: text;
 }
 </style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Mobile menu functionality
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn-user');
+    const mobileMenu = document.getElementById('mobile-menu-user');
+    const mobileMenuOverlay = document.getElementById('mobile-menu-overlay-user');
+
+    function toggleMobileMenu() {
+        const isOpen = !mobileMenu.classList.contains('-translate-x-full');
+        
+        if (isOpen) {
+            // Close menu
+            mobileMenu.classList.add('-translate-x-full');
+            mobileMenuOverlay.classList.add('opacity-0', 'pointer-events-none');
+            document.body.style.overflow = '';
+        } else {
+            // Open menu
+            mobileMenu.classList.remove('-translate-x-full');
+            mobileMenuOverlay.classList.remove('opacity-0', 'pointer-events-none');
+            document.body.style.overflow = 'hidden';
+        }
+    }
+
+    if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+    }
+
+    if (mobileMenuOverlay) {
+        mobileMenuOverlay.addEventListener('click', toggleMobileMenu);
+    }
+
+    // Close menu when clicking on navigation links
+    const mobileNavLinks = mobileMenu?.querySelectorAll('a');
+    if (mobileNavLinks) {
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('-translate-x-full');
+                mobileMenuOverlay.classList.add('opacity-0', 'pointer-events-none');
+                document.body.style.overflow = '';
+            });
+        });
+    }
+});
+</script>

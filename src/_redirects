@@ -1,20 +1,44 @@
-# Cloudflare Pages Redirects - Path-based routing
+# Cloudflare Pages Redirects - Domain-based routing
 
 # ============================================
-# BLOCK OLD PATHS - Redirect /vendor/* and /user/* to clean URLs
+# VENDOR SUBDOMAIN ROUTING (vendor.gosnel.com ONLY)
 # ============================================
-/vendor/pricing /pricing 301
-/vendor/how-it-works /how-it-works 301
-/vendor/why-partner /why-partner 301
-/vendor/guidelines /guidelines 301
-/vendor/insights /insights 301
-/vendor/faq /faq 301
-/vendor/terms-conditions /terms-conditions 301
-/vendor/cookie-policy /cookie-policy 301
-/user/privacy-policy /privacy-policy 301
-/user/about-us /about-us 301
-/user/terms-conditions /terms-conditions 301
-/user/cookie-policy /cookie-policy 301
+https://vendor.gosnel.com/how-it-works https://vendor.gosnel.com/vendor-how-it-works.html 200
+https://vendor.gosnel.com/why-partner https://vendor.gosnel.com/vendor-why-partner.html 200
+https://vendor.gosnel.com/guidelines https://vendor.gosnel.com/vendor-guidelines.html 200
+https://vendor.gosnel.com/insights https://vendor.gosnel.com/vendor-insights.html 200
+https://vendor.gosnel.com/faq https://vendor.gosnel.com/vendor-faq.html 200
+https://vendor.gosnel.com/pricing https://vendor.gosnel.com/vendor-pricing.html 200
+https://vendor.gosnel.com/terms-conditions https://vendor.gosnel.com/legal.html 200
+https://vendor.gosnel.com/privacy-policy https://vendor.gosnel.com/legal.html 200
+https://vendor.gosnel.com/cookie-policy https://vendor.gosnel.com/legal.html 200
+https://vendor.gosnel.com/footer/about-us https://vendor.gosnel.com/about-us.html 200
+https://vendor.gosnel.com/footer/legal https://vendor.gosnel.com/legal.html 200
+
+# ============================================
+# USER SUBDOMAIN ROUTING (user.gosnel.com ONLY)
+# ============================================
+https://user.gosnel.com/pricing https://user.gosnel.com/user-pricing.html 200
+https://user.gosnel.com/faq https://user.gosnel.com/user-faq.html 200
+https://user.gosnel.com/how-it-works https://user.gosnel.com/user-how-it-works.html 200
+https://user.gosnel.com/privacy-policy https://user.gosnel.com/legal.html 200
+https://user.gosnel.com/terms-conditions https://user.gosnel.com/legal.html 200
+https://user.gosnel.com/cookie-policy https://user.gosnel.com/legal.html 200
+https://user.gosnel.com/about-us https://user.gosnel.com/about-us.html 200
+https://user.gosnel.com/footer/about-us https://user.gosnel.com/about-us.html 200
+https://user.gosnel.com/footer/legal https://user.gosnel.com/legal.html 200
+
+# ============================================
+# PROMO SUBDOMAIN ROUTING (promo.gosnel.com ONLY)
+# ============================================
+https://promo.gosnel.com/footer/about-us https://promo.gosnel.com/about-us.html 200
+https://promo.gosnel.com/footer/legal https://promo.gosnel.com/legal.html 200
+
+# ============================================
+# DRIVERS SUBDOMAIN ROUTING (drivers.gosnel.com ONLY)
+# ============================================
+https://drivers.gosnel.com/footer/about-us https://drivers.gosnel.com/about-us.html 200
+https://drivers.gosnel.com/footer/legal https://drivers.gosnel.com/legal.html 200
 
 # ============================================
 # STATIC ASSETS - Serve directly
