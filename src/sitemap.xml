@@ -8,6 +8,68 @@
     <priority>1.0</priority>
   </url>
 
+  <!-- User Authentication - Main App -->
+  <url>
+    <loc>https://gosnel.com/user/login</loc>
+    <lastmod>2025-12-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://gosnel.com/user/signup</loc>
+    <lastmod>2025-12-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Vendor Authentication - Main App -->
+  <url>
+    <loc>https://gosnel.com/vendor/login</loc>
+    <lastmod>2025-12-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://gosnel.com/vendor/signup</loc>
+    <lastmod>2025-12-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+    <url>
+    <loc>https://gosnel.com/vendor/register</loc>
+    <lastmod>2025-12-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://gosnel.com/vendor/contact</loc>
+    <lastmod>2025-12-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Driver Authentication - Main App -->
+  <url>
+    <loc>https://gosnel.com/driver/login</loc>
+    <lastmod>2025-12-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://gosnel.com/driver/signup</loc>
+    <lastmod>2025-12-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Main App Support & Info Pages -->
+  <url>
+    <loc>https://gosnel.com/user/help</loc>
+    <lastmod>2025-12-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
   <!-- User Subdomain - Meal Discovery for Customers -->
   <url>
     <loc>https://user.gosnel.com/</loc>
