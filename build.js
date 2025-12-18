@@ -261,6 +261,25 @@ const buildPages = () => {
     console.log("✅ Copied _routes.json file");
   }
 
+  // Create localhost development files for 404-free routing
+  const localhostFiles = [
+    { src: "user-how-it-works.html", dest: "how-it-works.html" },
+    { src: "user-faq.html", dest: "faq.html" },
+    { src: "user-pricing.html", dest: "pricing.html" },
+    { src: "vendor-why-partner.html", dest: "why-partner.html" },
+    { src: "vendor-guidelines.html", dest: "guidelines.html" },
+    { src: "vendor-insights.html", dest: "insights.html" }
+  ];
+
+  localhostFiles.forEach(({ src, dest }) => {
+    const srcPath = path.join(distDir, src);
+    const destPath = path.join(distDir, dest);
+    if (fs.existsSync(srcPath)) {
+      fs.copyFileSync(srcPath, destPath);
+    }
+  });
+  console.log("✅ Created localhost development files");
+
   console.log("🎉 Build complete!");
 };
 
