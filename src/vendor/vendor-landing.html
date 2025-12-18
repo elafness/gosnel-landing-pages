@@ -789,6 +789,41 @@
 
             setLang(language);
         })();
+
+        // Meta Pixel Events
+        // Track ViewContent for vendor landing page
+        if (typeof fbq !== 'undefined') {
+            fbq('track', 'ViewContent', {
+                content_category: 'vendor_landing'
+            });
+        }
+
+        // Track CTA button clicks
+        document.addEventListener('DOMContentLoaded', function() {
+            // Track "Start free" button clicks
+            const signupButtons = document.querySelectorAll('a[href*="vendor/signup"]');
+            signupButtons.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    if (typeof fbq !== 'undefined') {
+                        fbq('track', 'Lead', {
+                            content_category: 'vendor_signup_intent'
+                        });
+                    }
+                });
+            });
+
+            // Track "Pricing" button clicks
+            const pricingButtons = document.querySelectorAll('a[href*="pricing"]');
+            pricingButtons.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    if (typeof fbq !== 'undefined') {
+                        fbq('track', 'ViewContent', {
+                            content_category: 'pricing_page_intent'
+                        });
+                    }
+                });
+            });
+        });
     </script>
 </body>
 </html>

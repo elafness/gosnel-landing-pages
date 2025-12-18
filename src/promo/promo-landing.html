@@ -766,5 +766,29 @@
     <!-- ====== Footer Section Start -->
     <!--#include file="components/footer.html" -->
     <!-- ====== Footer Section End -->
+
+    <script>
+        // Meta Pixel Events for Promo Landing Page
+        if (typeof fbq !== 'undefined') {
+            // Track promo landing page view
+            fbq('track', 'ViewContent', {
+                content_category: 'promo_landing'
+            });
+        }
+
+        // Track promo CTA button clicks
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctaButtons = document.querySelectorAll('a[href*="signup"], .cta-button');
+            ctaButtons.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    if (typeof fbq !== 'undefined') {
+                        fbq('track', 'Lead', {
+                            content_category: 'promo_signup_intent'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>

@@ -772,6 +772,28 @@
                 icon.classList.add('rotate');
             }
         }
+
+        // Meta Pixel Events for Pricing Page
+        if (typeof fbq !== 'undefined') {
+            // Track pricing page view
+            fbq('track', 'ViewContent', {
+                content_category: 'pricing'
+            });
+        }
+
+        // Track signup button clicks on pricing page
+        document.addEventListener('DOMContentLoaded', function() {
+            const signupButtons = document.querySelectorAll('a[href*="signup"], .cta-button');
+            signupButtons.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    if (typeof fbq !== 'undefined') {
+                        fbq('track', 'InitiateCheckout', {
+                            content_category: 'vendor_subscription'
+                        });
+                    }
+                });
+            });
+        });
     </script>
 </body>
 </html>

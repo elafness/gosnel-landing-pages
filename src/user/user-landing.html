@@ -644,11 +644,25 @@
                         subscribeSuccess.classList.add('block');
                         subscribeSuccess.textContent = current.subscribe_success + ' ' + (notifyWhatsapp && notifyWhatsapp.checked ? current.subscribe_success_whatsapp : current.subscribe_success_email);
                     }
+                    
+                    // Track subscription as CompleteRegistration
+                    if (typeof fbq !== 'undefined') {
+                        fbq('track', 'CompleteRegistration', {
+                            content_category: 'user_waitlist'
+                        });
+                    }
                 });
             }
 
             setLang(localStorage.getItem('gosnel_lang') || 'en');
             updateNotifyUI();
+
+            // Track user landing page view
+            if (typeof fbq !== 'undefined') {
+                fbq('track', 'ViewContent', {
+                    content_category: 'user_landing'
+                });
+            }
         })();
         </script>
 </body>

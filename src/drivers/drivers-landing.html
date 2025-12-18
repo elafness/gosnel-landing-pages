@@ -248,5 +248,28 @@
     <!-- Footer -->
     <!--#include file="components/footer.html" -->
 
+    <script>
+        // Meta Pixel Events for Drivers Landing Page
+        if (typeof fbq !== 'undefined') {
+            // Track drivers landing page view
+            fbq('track', 'ViewContent', {
+                content_category: 'drivers_landing'
+            });
+        }
+
+        // Track driver signup button clicks
+        document.addEventListener('DOMContentLoaded', function() {
+            const signupButtons = document.querySelectorAll('a[href*="driver/signup"]');
+            signupButtons.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    if (typeof fbq !== 'undefined') {
+                        fbq('track', 'Lead', {
+                            content_category: 'driver_signup_intent'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
