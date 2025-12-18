@@ -1,26 +1,38 @@
 # Cloudflare Pages headers - NOT YAML format
 # See: https://developers.cloudflare.com/pages/platform/headers/
 
+/sitemap.xml
+  Content-Type: application/xml
+  X-Robots-Tag: noindex
+
 /vendor/sitemap.xml
   Content-Type: application/xml
+  X-Robots-Tag: noindex
 
 /user/sitemap.xml
   Content-Type: application/xml
+  X-Robots-Tag: noindex
 
 /drivers/sitemap.xml
   Content-Type: application/xml
+  X-Robots-Tag: noindex
 
 /promo/sitemap.xml
   Content-Type: application/xml
+  X-Robots-Tag: noindex
 
 /vendor-sitemap.xml
   Content-Type: application/xml
+  X-Robots-Tag: noindex
 
 /user-sitemap.xml
   Content-Type: application/xml
+  X-Robots-Tag: noindex
 
 /drivers-sitemap.xml
   Content-Type: application/xml
+  X-Robots-Tag: noindex
 
 /promo-sitemap.xml
   Content-Type: application/xml
+  X-Robots-Tag: noindex
