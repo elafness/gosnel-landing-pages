@@ -1,22 +1,6 @@
 # Cloudflare Pages Redirects - Domain-based routing
 
 # ============================================
-# LOCALHOST DEVELOPMENT ROUTING
-# ============================================
-/how-it-works /user-how-it-works.html 200
-/faq /user-faq.html 200
-/pricing /user-pricing.html 200
-/why-partner /vendor-why-partner.html 200
-/guidelines /vendor-guidelines.html 200
-/insights /vendor-insights.html 200
-/privacy-policy /legal.html 200
-/terms-conditions /legal.html 200
-/cookie-policy /legal.html 200
-/about-us /about-us.html 200
-/footer/about-us /about-us.html 200
-/footer/legal /legal.html 200
-
-# ============================================
 # VENDOR SUBDOMAIN ROUTING (vendor.gosnel.com ONLY)
 # ============================================
 # Block user pages from vendor subdomain
@@ -80,3 +64,20 @@ http://drivers.gosnel.com/* https://drivers.gosnel.com/:splat 301
 http://vendor.gosnel.com/* https://vendor.gosnel.com/:splat 301
 http://user.gosnel.com/* https://user.gosnel.com/:splat 301
 http://promo.gosnel.com/* https://promo.gosnel.com/:splat 301
+
+# ============================================
+# LOCALHOST DEVELOPMENT ROUTING (applies when no subdomain match)
+# ============================================
+/how-it-works /user-how-it-works.html 200
+/faq /user-faq.html 200
+/pricing /user-pricing.html 200
+/why-partner /vendor-why-partner.html 200
+/guidelines /vendor-guidelines.html 200
+/insights /vendor-insights.html 200
+/privacy-policy /legal.html 200
+/terms-conditions /legal.html 200
+/cookie-policy /legal.html 200
+/about-us /about-us.html 200
+/footer/about-us /about-us.html 200
+/footer/legal /legal.html 200
+
