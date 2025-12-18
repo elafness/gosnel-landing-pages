@@ -125,13 +125,30 @@ const buildPages = () => {
     console.log("✅ Copied robots.txt");
   }
 
-  // Copy sitemap.xml if it exists
+  // Copy sitemap.xml if it exists (main/fallback)
   const sitemapPath = path.join(srcDir, "sitemap.xml");
   const distSitemapPath = path.join(distDir, "sitemap.xml");
 
   if (fs.existsSync(sitemapPath)) {
     fs.copyFileSync(sitemapPath, distSitemapPath);
     console.log("✅ Copied sitemap.xml");
+  }
+
+  // Copy subdomain-specific sitemaps
+  const vendorSitemapPath = path.join(srcDir, "vendor-sitemap.xml");
+  const distVendorSitemapPath = path.join(distDir, "vendor-sitemap.xml");
+
+  if (fs.existsSync(vendorSitemapPath)) {
+    fs.copyFileSync(vendorSitemapPath, distVendorSitemapPath);
+    console.log("✅ Copied vendor-sitemap.xml");
+  }
+
+  const userSitemapPath = path.join(srcDir, "user-sitemap.xml");
+  const distUserSitemapPath = path.join(distDir, "user-sitemap.xml");
+
+  if (fs.existsSync(userSitemapPath)) {
+    fs.copyFileSync(userSitemapPath, distUserSitemapPath);
+    console.log("✅ Copied user-sitemap.xml");
   }
 
     // Copy subdirectory static pages (user, vendor, footer, etc.) with include processing
