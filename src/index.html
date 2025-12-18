@@ -54,9 +54,13 @@
                 
                 console.log('Redirecting to:', target);
                 window.location.replace(target);
+            } else if (pathname === '/sitemap.xml' || pathname === '/robots.txt' || pathname.startsWith('/assets/')) {
+                // Allow static files to be served normally
+                console.log('Serving static file:', pathname);
+                // Don't interfere with static files
             } else {
                 console.log('Not redirecting - path is:', pathname);
-                // For non-root paths, show a 404 message instead of redirecting
+                // For non-root paths that aren't static files, show a 404 message
                 document.body.innerHTML = '<h1>404 - Page Not Found</h1><p>The page ' + pathname + ' was not found.</p>';
             }
         })();

@@ -1,6 +1,12 @@
 # Cloudflare Pages Redirects - Domain-based routing
 
 # ============================================
+# STATIC ASSETS AND SITEMAPS (serve directly)
+# ============================================
+/sitemap.xml /sitemap.xml 200
+/robots.txt /robots.txt 200
+
+# ============================================
 # VENDOR SUBDOMAIN ROUTING (vendor.gosnel.com ONLY)
 # ============================================
 # Block user pages from vendor subdomain
