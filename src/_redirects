@@ -43,9 +43,9 @@ https://vendor.gosnel.com/guidelines /vendor-guidelines.html 200
 https://vendor.gosnel.com/insights /vendor-insights.html 200
 https://vendor.gosnel.com/insight /vendor-insights.html 200
 https://vendor.gosnel.com/faq /vendor-faq.html 200
-# Vendor pricing - use extensionless path since Cloudflare auto-redirects .html
-https://vendor.gosnel.com/pricing /vendor/vendor-pricing 200
-https://vendor.gosnel.com/vendor/pricing /vendor/vendor-pricing 200
+# Vendor pricing - DISABLED redirects, now handled by Pages Function /functions/pricing.js
+# https://vendor.gosnel.com/pricing /vendor/vendor-pricing 200
+# https://vendor.gosnel.com/vendor/pricing /vendor/vendor-pricing 200
 https://vendor.gosnel.com/terms-conditions /legal.html 200
 https://vendor.gosnel.com/privacy-policy /legal.html 200
 https://vendor.gosnel.com/cookie-policy /legal.html 200

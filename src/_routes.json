@@ -1,8 +1,8 @@
 {
   "version": 1,
-  "include": ["/*"],
+  "include": ["/pricing"],
   "exclude": [
-  "/sitemap.xml",
+    "/sitemap.xml",
     "/vendor-sitemap.xml",
     "/user-sitemap.xml",
     "/drivers-sitemap.xml",
