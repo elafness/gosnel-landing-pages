@@ -125,14 +125,7 @@ const buildPages = () => {
     console.log("✅ Copied robots.txt");
   }
 
-  // Copy sitemap.xml from moved file (main/fallback) - TEMPORARY for testing
-  const sitemapPath = path.join(srcDir, "sitemap-moved-to-main-app.xml");
-  const distSitemapPath = path.join(distDir, "sitemap.xml");
-
-  if (fs.existsSync(sitemapPath)) {
-    fs.copyFileSync(sitemapPath, distSitemapPath);
-    console.log("✅ Copied sitemap.xml from moved file");
-  }
+  // Note: Main sitemap.xml is handled by the main app, not landing pages
 
   // Copy subdomain-specific sitemaps
   const vendorSitemapPath = path.join(srcDir, "vendor-sitemap.xml");
