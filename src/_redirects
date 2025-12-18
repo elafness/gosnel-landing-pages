@@ -40,7 +40,8 @@ https://vendor.gosnel.com/insights /vendor-insights.html 200
 https://vendor.gosnel.com/insight /vendor-insights.html 200
 https://vendor.gosnel.com/faq /vendor-faq.html 200
 https://vendor.gosnel.com/pricing /vendor-pricing.html 200
-https://vendor.gosnel.com/vendor/pricing /vendor/vendor-pricing.html 200
+# Canonical vendor pricing URL is /pricing. Keep /vendor/pricing as a redirect for old links.
+https://vendor.gosnel.com/vendor/pricing https://vendor.gosnel.com/pricing 301
 https://vendor.gosnel.com/terms-conditions /legal.html 200
 https://vendor.gosnel.com/privacy-policy /legal.html 200
 https://vendor.gosnel.com/cookie-policy /legal.html 200
