@@ -91,32 +91,8 @@
     </style>
 </head>
 <body class="bg-gray-50 min-h-screen text-gray-900">
-    <!-- Navigation -->
-    <nav class="sticky top-0 z-50 bg-[#222b38]/95 backdrop-blur-md border-b border-white/10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <!-- Logo -->
-                <a href="https://gosnel.com" class="flex items-center gap-3">
-                    <div class="w-10 h-10 gradient-teal rounded-full flex items-center justify-center text-white font-bold text-sm">GS</div>
-                    <span class="text-2xl font-bold text-gradient-teal">GoSnel</span>
-                </a>
-                
-                <!-- Right Actions -->
-                <div class="flex items-center gap-4">
-                    <!-- Language Switcher -->
-                    <div class="hidden sm:flex items-center gap-1 bg-white/5 rounded-lg p-1 border border-teal-500/30" id="langSwitcher">
-                        <button id="lang-en" class="px-3 py-1.5 rounded-md text-sm font-semibold bg-teal-500 text-gray-900">EN</button>
-                        <button id="lang-ar" class="px-3 py-1.5 rounded-md text-sm font-semibold text-gray-700 hover:text-teal-600 transition">AR</button>
-                    </div>
-                    
-                    <!-- Login Button -->
-                    <a href="https://gosnel.com/user/login" class="px-4 py-2 rounded-lg text-sm font-semibold text-white border border-teal-500 hover:bg-teal-500 hover:text-gray-900 transition" id="login">
-                        Log In
-                    </a>
-                </div>
-            </div>
-        </div>
-    </nav>
+    <!-- Include User Header -->
+    <!--#include file="components/user-header.html" -->
 
     <!-- Hero Section -->
     <section class="py-12 md:py-20">
