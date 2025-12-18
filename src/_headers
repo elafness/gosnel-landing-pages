@@ -9,3 +9,9 @@
 
 /user-sitemap.xml
   Content-Type: application/xml
+
+/drivers-sitemap.xml
+  Content-Type: application/xml
+
+/promo-sitemap.xml
+  Content-Type: application/xml

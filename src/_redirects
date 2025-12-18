@@ -8,8 +8,8 @@
 # Subdomain-specific sitemaps
 https://vendor.gosnel.com/sitemap.xml /vendor-sitemap.xml 200
 https://user.gosnel.com/sitemap.xml /user-sitemap.xml 200
-https://drivers.gosnel.com/sitemap.xml /sitemap.xml 200
-https://promo.gosnel.com/sitemap.xml /sitemap.xml 200
+https://drivers.gosnel.com/sitemap.xml /drivers-sitemap.xml 200
+https://promo.gosnel.com/sitemap.xml /promo-sitemap.xml 200
 
 # ============================================
 # VENDOR SUBDOMAIN ROUTING (vendor.gosnel.com ONLY)

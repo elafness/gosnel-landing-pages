@@ -151,6 +151,24 @@ const buildPages = () => {
     console.log("✅ Copied user-sitemap.xml");
   }
 
+  // Copy drivers sitemap
+  const driversSitemapPath = path.join(srcDir, "drivers-sitemap.xml");
+  const distDriversSitemapPath = path.join(distDir, "drivers-sitemap.xml");
+
+  if (fs.existsSync(driversSitemapPath)) {
+    fs.copyFileSync(driversSitemapPath, distDriversSitemapPath);
+    console.log("✅ Copied drivers-sitemap.xml");
+  }
+
+  // Copy promo sitemap
+  const promoSitemapPath = path.join(srcDir, "promo-sitemap.xml");
+  const distPromoSitemapPath = path.join(distDir, "promo-sitemap.xml");
+
+  if (fs.existsSync(promoSitemapPath)) {
+    fs.copyFileSync(promoSitemapPath, distPromoSitemapPath);
+    console.log("✅ Copied promo-sitemap.xml");
+  }
+
     // Copy subdirectory static pages (user, vendor, footer, etc.) with include processing
   const subdomains = ['user', 'vendor', 'drivers', 'promo', 'footer'];
   

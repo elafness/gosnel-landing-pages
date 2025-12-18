@@ -5,6 +5,8 @@
     "/sitemap.xml",
     "/vendor-sitemap.xml",
     "/user-sitemap.xml",
+    "/drivers-sitemap.xml",
+    "/promo-sitemap.xml",
     "/robots.txt",
     "/assets/*"
   ]
