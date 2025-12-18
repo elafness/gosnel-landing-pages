@@ -189,18 +189,8 @@ const buildPages = () => {
     }
   });
 
-  // Create root-level user static pages with user- prefix ONLY
-  const userPages = ['user-pricing', 'user-faq', 'user-how-it-works'];
-  userPages.forEach(pageName => {
-    const srcPath = path.join(srcDir, 'user', `${pageName}.html`);
-    const distPath = path.join(distDir, `${pageName}.html`);
-    
-    if (fs.existsSync(srcPath)) {
-      let htmlContent = fs.readFileSync(srcPath, "utf8");
-      htmlContent = processIncludes(htmlContent);
-      fs.writeFileSync(distPath, htmlContent);
-    }
-  });
+  // NOTE: User pages are NOT created at root level to prevent cross-subdomain access
+  // User pages should only be accessible through user.gosnel.com subdomain
 
   // Create root-level footer pages (universal pages)
   const footerPages = ['about-us', 'legal'];
@@ -263,9 +253,6 @@ const buildPages = () => {
 
   // Create localhost development files for 404-free routing
   const localhostFiles = [
-    { src: "user-how-it-works.html", dest: "how-it-works.html" },
-    { src: "user-faq.html", dest: "faq.html" },
-    { src: "user-pricing.html", dest: "pricing.html" },
     { src: "vendor-why-partner.html", dest: "why-partner.html" },
     { src: "vendor-guidelines.html", dest: "guidelines.html" },
     { src: "vendor-insights.html", dest: "insights.html" }
