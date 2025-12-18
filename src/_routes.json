@@ -2,6 +2,7 @@
   "version": 1,
   "include": ["/*"],
   "exclude": [
+  "/sitemap.xml",
     "/vendor-sitemap.xml",
     "/user-sitemap.xml",
     "/drivers-sitemap.xml",

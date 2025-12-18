@@ -8,6 +8,10 @@ https://user.gosnel.com/sitemap.xml /user-sitemap.xml 200
 https://drivers.gosnel.com/sitemap.xml /drivers-sitemap.xml 200
 https://promo.gosnel.com/sitemap.xml /promo-sitemap.xml 200
 
+# Also map the root project domain variants (Cloudflare Pages sometimes serves a single project across multiple custom domains)
+gosnel-landing-pages.pages.dev/sitemap.xml /user-sitemap.xml 200
+https://gosnel-landing-pages.pages.dev/sitemap.xml /user-sitemap.xml 200
+
 # Extra safety: some edge cases may request /sitemap.xml without the host rule matching.
 # Keep these after the host-specific rules.
 /vendor/sitemap.xml /vendor-sitemap.xml 200
