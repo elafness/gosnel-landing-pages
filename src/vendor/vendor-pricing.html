@@ -701,14 +701,19 @@
     <!--#include file="components/footer.html" -->
     
     <script>
-        let isAnnual = true; // Default to annual
-        
-        function toggleBilling() {
-            isAnnual = !isAnnual;
-            updatePricing();
-        }
-        
-        function updatePricing() {
+        // Wrap everything in DOMContentLoaded to ensure elements exist
+        document.addEventListener('DOMContentLoaded', function() {
+            let isAnnual = true; // Default to annual
+            
+            function toggleBilling() {
+                isAnnual = !isAnnual;
+                updatePricing();
+            }
+            
+            // Make toggleBilling globally accessible for button onclick
+            window.toggleBilling = toggleBilling;
+            
+            function updatePricing() {
             // Check if elements exist before updating them
             const growthOriginalPrice = document.querySelector('.growth-original-price');
             const growthPrice = document.querySelector('.growth-price');
@@ -785,19 +790,18 @@
             }
         }
 
-        // Meta Pixel Events for Pricing Page
-        if (typeof fbq !== 'undefined') {
-            // Track pricing page view
-            fbq('track', 'ViewContent', {
-                content_category: 'pricing'
-            });
-        }
+            // Meta Pixel Events for Pricing Page
+            if (typeof fbq !== 'undefined') {
+                // Track pricing page view
+                fbq('track', 'ViewContent', {
+                    content_category: 'pricing'
+                });
+            }
 
-        // Track signup button clicks on pricing page
-        document.addEventListener('DOMContentLoaded', function() {
             // Initialize pricing on page load
             updatePricing();
             
+            // Track signup button clicks on pricing page
             const signupButtons = document.querySelectorAll('a[href*="signup"], .cta-button');
             signupButtons.forEach(function(button) {
                 button.addEventListener('click', function() {
@@ -808,7 +812,7 @@
                     }
                 });
             });
-        });
+        }); // Close DOMContentLoaded
     </script>
 </body>
 </html>
