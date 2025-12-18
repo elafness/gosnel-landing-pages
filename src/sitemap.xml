@@ -3,70 +3,106 @@
   <!-- Main Domain Pages -->
   <url>
     <loc>https://gosnel.com/</loc>
-    <lastmod>2025-01-09</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2025-12-18</lastmod>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
-  <url>
-    <loc>https://gosnel.com/user</loc>
-    <lastmod>2025-01-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://gosnel.com/vendor</loc>
-    <lastmod>2025-01-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
 
-  <!-- User Subdomain -->
+  <!-- User Subdomain - Meal Discovery for Customers -->
   <url>
     <loc>https://user.gosnel.com/</loc>
-    <lastmod>2025-01-09</lastmod>
+    <lastmod>2025-12-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://user.gosnel.com/user/how-it-works</loc>
+    <lastmod>2025-12-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://user.gosnel.com/legal</loc>
-    <lastmod>2025-01-09</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-
-  <!-- Vendor Subdomain -->
-  <url>
-    <loc>https://vendor.gosnel.com/</loc>
-    <lastmod>2025-01-09</lastmod>
+    <loc>https://user.gosnel.com/user/pricing</loc>
+    <lastmod>2025-12-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vendor.gosnel.com/pricing</loc>
-    <lastmod>2025-01-09</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://user.gosnel.com/user/faq</loc>
+    <lastmod>2025-12-18</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://vendor.gosnel.com/legal</loc>
-    <lastmod>2025-01-09</lastmod>
+    <loc>https://user.gosnel.com/legal</loc>
+    <lastmod>2025-12-18</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://user.gosnel.com/about-us</loc>
+    <lastmod>2025-12-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Vendor Subdomain - Restaurant Growth Platform -->
+  <url>
+    <loc>https://vendor.gosnel.com/</loc>
+    <lastmod>2025-12-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://vendor.gosnel.com/vendor/how-it-works</loc>
+    <lastmod>2025-12-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://vendor.gosnel.com/vendor/pricing</loc>
+    <lastmod>2025-12-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://vendor.gosnel.com/vendor/faq</loc>
+    <lastmod>2025-12-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://vendor.gosnel.com/why-partner</loc>
+    <lastmod>2025-12-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://vendor.gosnel.com/legal</loc>
+    <lastmod>2025-12-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://vendor.gosnel.com/about-us</loc>
+    <lastmod>2025-12-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
 
   <!-- Drivers Subdomain -->
   <url>
     <loc>https://drivers.gosnel.com/</loc>
-    <lastmod>2025-01-09</lastmod>
+    <lastmod>2025-12-18</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
 
   <!-- Promo Subdomain -->
   <url>
     <loc>https://promo.gosnel.com/</loc>
-    <lastmod>2025-01-09</lastmod>
+    <lastmod>2025-12-18</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
 </urlset>
