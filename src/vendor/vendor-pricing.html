@@ -750,8 +750,10 @@
                     return;
                 }
                 
-                console.log('✅ All pricing elements found, updating...');            if (isAnnual) {
-                // Annual pricing 
+                console.log('✅ All pricing elements found, updating...');
+
+                if (isAnnual) {
+                // Annual pricing
                 
                 // Starter Plan - Always Free (no changes needed)
                 
@@ -762,7 +764,9 @@
                 growthOfferText.textContent = 'Billed annually (948 AED/year) - 50% off';
                 
                 // Update comparison table
-                comparisonGrowthPrice.innerHTML = '<span class="line-through text-gray-400 text-lg">159</span> <span class="text-gray-900 font-bold">79 AED</span>/month';
+                if (comparisonGrowthPrice) {
+                    comparisonGrowthPrice.innerHTML = '<span class="line-through text-gray-400 text-lg">159</span> <span class="text-gray-900 font-bold">79 AED</span>/month';
+                }
                 
             } else {
                 // Monthly pricing
@@ -776,7 +780,9 @@
                 growthOfferText.textContent = '50% off launch offer';
                 
                 // Update comparison table
-                comparisonGrowthPrice.innerHTML = '<span class="line-through text-gray-400 text-lg">199</span> <span class="text-gray-900 font-bold">99 AED</span>/month';
+                if (comparisonGrowthPrice) {
+                    comparisonGrowthPrice.innerHTML = '<span class="line-through text-gray-400 text-lg">199</span> <span class="text-gray-900 font-bold">99 AED</span>/month';
+                }
             }
         }
         
