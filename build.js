@@ -125,13 +125,13 @@ const buildPages = () => {
     console.log("✅ Copied robots.txt");
   }
 
-  // Copy sitemap.xml if it exists (main/fallback)
-  const sitemapPath = path.join(srcDir, "sitemap.xml");
+  // Copy sitemap.xml from moved file (main/fallback) - TEMPORARY for testing
+  const sitemapPath = path.join(srcDir, "sitemap-moved-to-main-app.xml");
   const distSitemapPath = path.join(distDir, "sitemap.xml");
 
   if (fs.existsSync(sitemapPath)) {
     fs.copyFileSync(sitemapPath, distSitemapPath);
-    console.log("✅ Copied sitemap.xml");
+    console.log("✅ Copied sitemap.xml from moved file");
   }
 
   // Copy subdomain-specific sitemaps
