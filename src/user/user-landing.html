@@ -500,29 +500,38 @@
             }
 
             function renderChat(lang){
-                const msgs = chatExamples[lang] || [];
-                ids.chat_container.innerHTML = '';
-                msgs.forEach(m => {
-                    const isUser = m.role === 'user';
-                    const wrapper = document.createElement('div');
-                    wrapper.className = 'flex ' + (isUser ? 'justify-end' : 'justify-start') + ' chat-bubble';
-                    const inner = document.createElement('div');
-                    inner.className = 'flex items-end gap-2 ' + (isUser ? 'flex-row-reverse' : '');
-                    const avatar = document.createElement('div');
-                    avatar.className = 'w-8 h-8 rounded-full bg-teal-500 flex items-center justify-center ' + (isUser ? 'text-gray-900 font-bold text-sm' : '');
-                    if(isUser){
-                        avatar.textContent = 'U';
-                    } else {
-                        avatar.innerHTML = '<svg class="w-5 h-5 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>';
+                try {
+                    const msgs = chatExamples[lang] || [];
+                    if (!ids.chat_container) {
+                        console.error('Chat container not found');
+                        return;
                     }
-                    const bubble = document.createElement('div');
-                    bubble.className = (isUser ? 'bg-teal-500 text-gray-900 rounded-br-sm' : 'bg-white/10 text-gray-900 rounded-bl-sm') + ' px-4 py-3 rounded-2xl max-w-[80%]';
-                    bubble.innerHTML = '<p class="text-sm leading-relaxed">' + nl2br(m.message) + '</p>';
-                    inner.appendChild(avatar);
-                    inner.appendChild(bubble);
-                    wrapper.appendChild(inner);
-                    ids.chat_container.appendChild(wrapper);
-                });
+                    ids.chat_container.innerHTML = '';
+                    msgs.forEach(m => {
+                        const isUser = m.role === 'user';
+                        const wrapper = document.createElement('div');
+                        wrapper.className = 'flex ' + (isUser ? 'justify-end' : 'justify-start') + ' chat-bubble';
+                        const inner = document.createElement('div');
+                        inner.className = 'flex items-end gap-2 ' + (isUser ? 'flex-row-reverse' : '');
+                        const avatar = document.createElement('div');
+                        avatar.className = 'w-8 h-8 rounded-full bg-teal-500 flex items-center justify-center ' + (isUser ? 'text-gray-900 font-bold text-sm' : '');
+                        if(isUser){
+                            avatar.textContent = 'U';
+                        } else {
+                            avatar.innerHTML = '<svg class="w-5 h-5 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>';
+                        }
+                        const bubble = document.createElement('div');
+                        bubble.className = (isUser ? 'bg-teal-500 text-gray-900 rounded-br-sm' : 'bg-white/10 text-gray-900 rounded-bl-sm') + ' px-4 py-3 rounded-2xl max-w-[80%]';
+                        bubble.innerHTML = '<p class="text-sm leading-relaxed">' + nl2br(m.message) + '</p>';
+                        inner.appendChild(avatar);
+                        inner.appendChild(bubble);
+                        wrapper.appendChild(inner);
+                        ids.chat_container.appendChild(wrapper);
+                    });
+                    console.log('Chat rendered with', msgs.length, 'messages');
+                } catch (error) {
+                    console.error('Error rendering chat:', error);
+                }
             }
 
             function applyTexts(){
@@ -569,14 +578,26 @@
             }
 
             function setLang(lang){
-                language = lang;
-                localStorage.setItem('gosnel_lang', lang);
-                document.getElementById('lang-en').classList.toggle('bg-teal-500', lang==='en');
-                document.getElementById('lang-en').classList.toggle('text-gray-900', lang==='en');
-                document.getElementById('lang-ar').classList.toggle('bg-teal-500', lang==='ar');
-                document.getElementById('lang-ar').classList.toggle('text-gray-900', lang==='ar');
-                applyTexts();
-                renderChat(lang);
+                try {
+                    language = lang;
+                    localStorage.setItem('gosnel_lang', lang);
+                    const langEn = document.getElementById('lang-en');
+                    const langAr = document.getElementById('lang-ar');
+                    if (langEn) {
+                        langEn.classList.toggle('bg-teal-500', lang==='en');
+                        langEn.classList.toggle('text-gray-900', lang==='en');
+                    }
+                    if (langAr) {
+                        langAr.classList.toggle('bg-teal-500', lang==='ar');
+                        langAr.classList.toggle('text-gray-900', lang==='ar');
+                    }
+                    applyTexts();
+                    renderChat(lang);
+                } catch (error) {
+                    console.error('Error setting language:', error);
+                    // Fallback: try to render chat anyway
+                    renderChat(lang);
+                }
             }
 
             // Safe event listeners with null checks
@@ -632,6 +653,14 @@
 
             setLang(localStorage.getItem('gosnel_lang') || 'en');
             updateNotifyUI();
+
+            // Fallback: ensure chat is rendered after page load
+            setTimeout(function() {
+                if (ids.chat_container && ids.chat_container.innerHTML.trim() === '') {
+                    console.log('Chat empty, forcing render...');
+                    renderChat(language || 'en');
+                }
+            }, 1000);
 
             // Track user landing page view
             if (typeof fbq !== 'undefined') {
