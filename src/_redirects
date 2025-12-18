@@ -30,14 +30,6 @@
 /output.css /output.css 200
 
 # ============================================
-# LANDING PAGE DIRECTORY ROUTES
-# ============================================
-/drivers/* /drivers/:splat 200
-/vendor/* /vendor/:splat 200
-/user/* /user/:splat 200
-/promo/* /promo/:splat 200
-
-# ============================================
 # CANONICAL DOMAIN REDIRECTS  
 # ============================================
 http://www.gosnel.com/* https://gosnel.com/:splat 301
