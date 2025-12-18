@@ -709,19 +709,31 @@
         }
         
         function updatePricing() {
+            // Check if elements exist before updating them
+            const growthOriginalPrice = document.querySelector('.growth-original-price');
+            const growthPrice = document.querySelector('.growth-price');
+            const growthPeriod = document.querySelector('.growth-period');
+            const growthOfferText = document.querySelector('.growth-offer-text');
+            const comparisonGrowthPrice = document.querySelector('.comparison-growth-price');
+            
+            if (!growthOriginalPrice || !growthPrice || !growthPeriod || !growthOfferText || !comparisonGrowthPrice) {
+                console.warn('Pricing elements not found');
+                return;
+            }
+            
             if (isAnnual) {
                 // Annual pricing 
                 
                 // Starter Plan - Always Free (no changes needed)
                 
                 // Growth Plan - Annual (79 AED/month when billed annually - 50% off annual rate)
-                document.querySelector('.growth-original-price').textContent = '159';
-                document.querySelector('.growth-price').textContent = '79';
-                document.querySelector('.growth-period').textContent = 'AED/month';
-                document.querySelector('.growth-offer-text').textContent = 'Billed annually (948 AED/year) - 50% off';
+                growthOriginalPrice.textContent = '159';
+                growthPrice.textContent = '79';
+                growthPeriod.textContent = 'AED/month';
+                growthOfferText.textContent = 'Billed annually (948 AED/year) - 50% off';
                 
                 // Update comparison table
-                document.querySelector('.comparison-growth-price').innerHTML = '<span class="line-through text-gray-400 text-lg">159</span> <span class="text-gray-900 font-bold">79 AED</span>/month';
+                comparisonGrowthPrice.innerHTML = '<span class="line-through text-gray-400 text-lg">159</span> <span class="text-gray-900 font-bold">79 AED</span>/month';
                 
             } else {
                 // Monthly pricing
@@ -729,13 +741,13 @@
                 // Starter Plan - Always Free (no changes needed)
                 
                 // Growth Plan - Monthly (99 AED/month with 50% off from 199)
-                document.querySelector('.growth-original-price').textContent = '199';
-                document.querySelector('.growth-price').textContent = '99';
-                document.querySelector('.growth-period').textContent = 'AED/month';
-                document.querySelector('.growth-offer-text').textContent = '50% off launch offer';
+                growthOriginalPrice.textContent = '199';
+                growthPrice.textContent = '99';
+                growthPeriod.textContent = 'AED/month';
+                growthOfferText.textContent = '50% off launch offer';
                 
                 // Update comparison table
-                document.querySelector('.comparison-growth-price').innerHTML = '<span class="line-through text-gray-400 text-lg">199</span> <span class="text-gray-900 font-bold">99 AED</span>/month';
+                comparisonGrowthPrice.innerHTML = '<span class="line-through text-gray-400 text-lg">199</span> <span class="text-gray-900 font-bold">99 AED</span>/month';
             }
         }
         
@@ -783,6 +795,9 @@
 
         // Track signup button clicks on pricing page
         document.addEventListener('DOMContentLoaded', function() {
+            // Initialize pricing on page load
+            updatePricing();
+            
             const signupButtons = document.querySelectorAll('a[href*="signup"], .cta-button');
             signupButtons.forEach(function(button) {
                 button.addEventListener('click', function() {
