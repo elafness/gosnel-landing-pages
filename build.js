@@ -176,8 +176,8 @@ const buildPages = () => {
   
   console.log("✅ Copied subdirectory pages");
 
-  // Create root-level vendor static pages for direct access
-  const vendorPages = ['how-it-works', 'why-partner', 'guidelines', 'insights', 'faq'];
+  // Create root-level vendor static pages for direct access (for vendor.gosnel.com/page-name)
+  const vendorPages = ['how-it-works', 'why-partner', 'guidelines', 'insights', 'faq', 'pricing', 'terms-conditions', 'cookie-policy'];
   vendorPages.forEach(pageName => {
     const srcPath = path.join(srcDir, 'vendor', `${pageName}.html`);
     const distPath = path.join(distDir, `${pageName}.html`);
@@ -188,8 +188,21 @@ const buildPages = () => {
       fs.writeFileSync(distPath, htmlContent);
     }
   });
+
+  // Create root-level user static pages for direct access (for user.gosnel.com/page-name)
+  const userPages = ['privacy-policy', 'terms-conditions', 'cookie-policy', 'about-us'];
+  userPages.forEach(pageName => {
+    const srcPath = path.join(srcDir, 'user', `${pageName}.html`);
+    const distPath = path.join(distDir, `${pageName}.html`);
+    
+    if (fs.existsSync(srcPath)) {
+      let htmlContent = fs.readFileSync(srcPath, "utf8");
+      htmlContent = processIncludes(htmlContent);
+      fs.writeFileSync(distPath, htmlContent);
+    }
+  });
   
-  console.log("✅ Created root-level vendor pages");
+  console.log("✅ Created root-level subdomain pages");
 
   // Copy assets if they exist (recursively)
   const assetsDir = path.join(srcDir, "assets");

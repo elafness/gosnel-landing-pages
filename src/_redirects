@@ -2,23 +2,22 @@
 
 # ============================================
 # VENDOR SUBDOMAIN STATIC PAGES (vendor.gosnel.com)
+# These serve root-level HTML files for clean URLs
 # ============================================
-/how-it-works /vendor/how-it-works.html 200
-/why-partner /vendor/why-partner.html 200
-/guidelines /vendor/guidelines.html 200
-/insights /vendor/insights.html 200
-/faq /vendor/faq.html 200
-/pricing /vendor/pricing.html 200
-/terms-conditions /vendor/terms-conditions.html 200
-/cookie-policy /vendor/cookie-policy.html 200
+/how-it-works /how-it-works.html 200
+/why-partner /why-partner.html 200
+/guidelines /guidelines.html 200
+/insights /insights.html 200
+/faq /faq.html 200
+/pricing /pricing.html 200
+/terms-conditions /terms-conditions.html 200
+/cookie-policy /cookie-policy.html 200
 
 # ============================================
 # USER SUBDOMAIN STATIC PAGES (user.gosnel.com)
 # ============================================
-/privacy-policy /user/privacy-policy.html 200
-/terms-conditions /user/terms-conditions.html 200
-/cookie-policy /user/cookie-policy.html 200
-/about-us /user/about-us.html 200
+/privacy-policy /privacy-policy.html 200
+/about-us /about-us.html 200
 
 # ============================================
 # SUBDOMAIN ROOT ROUTING - Must be at the end
