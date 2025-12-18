@@ -701,32 +701,56 @@
     <!--#include file="components/footer.html" -->
     
     <script>
+        console.log('=== VENDOR PRICING DEBUG ===');
+        console.log('Script loaded at:', new Date().toISOString());
+        console.log('Current URL:', window.location.href);
+        console.log('Current pathname:', window.location.pathname);
+        console.log('Current hostname:', window.location.hostname);
+        console.log('Document readyState:', document.readyState);
+        
         // Wrap everything in DOMContentLoaded to ensure elements exist
         document.addEventListener('DOMContentLoaded', function() {
+            console.log('=== DOM CONTENT LOADED ===');
+            console.log('DOM ready at:', new Date().toISOString());
+            
             let isAnnual = true; // Default to annual
             
             function toggleBilling() {
+                console.log('toggleBilling called, isAnnual will be:', !isAnnual);
                 isAnnual = !isAnnual;
                 updatePricing();
             }
             
             // Make toggleBilling globally accessible for button onclick
             window.toggleBilling = toggleBilling;
+            console.log('toggleBilling exposed to window');
             
             function updatePricing() {
-            // Check if elements exist before updating them
-            const growthOriginalPrice = document.querySelector('.growth-original-price');
-            const growthPrice = document.querySelector('.growth-price');
-            const growthPeriod = document.querySelector('.growth-period');
-            const growthOfferText = document.querySelector('.growth-offer-text');
-            const comparisonGrowthPrice = document.querySelector('.comparison-growth-price');
-            
-            if (!growthOriginalPrice || !growthPrice || !growthPeriod || !growthOfferText || !comparisonGrowthPrice) {
-                console.warn('Pricing elements not found');
-                return;
-            }
-            
-            if (isAnnual) {
+                console.log('=== UPDATE PRICING CALLED ===');
+                console.log('isAnnual:', isAnnual);
+                
+                // Check if elements exist before updating them
+                const growthOriginalPrice = document.querySelector('.growth-original-price');
+                const growthPrice = document.querySelector('.growth-price');
+                const growthPeriod = document.querySelector('.growth-period');
+                const growthOfferText = document.querySelector('.growth-offer-text');
+                const comparisonGrowthPrice = document.querySelector('.comparison-growth-price');
+                
+                console.log('Elements found:', {
+                    growthOriginalPrice: !!growthOriginalPrice,
+                    growthPrice: !!growthPrice,
+                    growthPeriod: !!growthPeriod,
+                    growthOfferText: !!growthOfferText,
+                    comparisonGrowthPrice: !!comparisonGrowthPrice
+                });
+                
+                if (!growthOriginalPrice || !growthPrice || !growthPeriod || !growthOfferText || !comparisonGrowthPrice) {
+                    console.error('❌ Pricing elements not found - cannot update pricing');
+                    console.log('Available pricing elements in DOM:', document.querySelectorAll('[class*="growth"]'));
+                    return;
+                }
+                
+                console.log('✅ All pricing elements found, updating...');            if (isAnnual) {
                 // Annual pricing 
                 
                 // Starter Plan - Always Free (no changes needed)
