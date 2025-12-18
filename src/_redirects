@@ -3,8 +3,9 @@
 # ============================================
 # CRITICAL: SITEMAPS FIRST (Must be before any other routing!)
 # ============================================
-# Deterministic sitemap rewrites (relative paths are more reliable than host-specific rules)
-/sitemap.xml /vendor-sitemap.xml 200
+# Deterministic sitemap rewrites
+# IMPORTANT: do NOT use a single relative /sitemap.xml rewrite here, because the same build
+# is served on multiple custom domains and that would make every subdomain return the same sitemap.
 
 https://vendor.gosnel.com/sitemap.xml /vendor-sitemap.xml 200
 https://user.gosnel.com/sitemap.xml /user-sitemap.xml 200
