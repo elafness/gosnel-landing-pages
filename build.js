@@ -162,6 +162,25 @@ const buildPages = () => {
     console.log("✅ Copied promo-sitemap.xml");
   }
 
+  // Copy sitemaps to subdomain directories for direct access
+  const sitemapMappings = [
+    { src: distVendorSitemapPath, dest: path.join(distDir, "vendor", "sitemap.xml") },
+    { src: distUserSitemapPath, dest: path.join(distDir, "user", "sitemap.xml") },
+    { src: distDriversSitemapPath, dest: path.join(distDir, "drivers", "sitemap.xml") },
+    { src: distPromoSitemapPath, dest: path.join(distDir, "promo", "sitemap.xml") }
+  ];
+
+  sitemapMappings.forEach(({ src, dest }) => {
+    if (fs.existsSync(src)) {
+      const destDir = path.dirname(dest);
+      if (!fs.existsSync(destDir)) {
+        fs.mkdirSync(destDir, { recursive: true });
+      }
+      fs.copyFileSync(src, dest);
+    }
+  });
+  console.log("✅ Copied sitemaps to subdomain directories");
+
     // Copy subdirectory static pages (user, vendor, footer, etc.) with include processing
   const subdomains = ['user', 'vendor', 'drivers', 'promo', 'footer'];
   

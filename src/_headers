@@ -1,6 +1,18 @@
 # Cloudflare Pages headers - NOT YAML format
 # See: https://developers.cloudflare.com/pages/platform/headers/
 
+/vendor/sitemap.xml
+  Content-Type: application/xml
+
+/user/sitemap.xml
+  Content-Type: application/xml
+
+/drivers/sitemap.xml
+  Content-Type: application/xml
+
+/promo/sitemap.xml
+  Content-Type: application/xml
+
 /vendor-sitemap.xml
   Content-Type: application/xml
 
