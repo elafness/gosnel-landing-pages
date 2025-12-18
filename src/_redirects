@@ -1,16 +1,19 @@
 # Cloudflare Pages Redirects - Path-based routing
 
 # ============================================
-# VENDOR SUBDOMAIN STATIC PAGES
+# VENDOR SUBDOMAIN STATIC PAGES (vendor.gosnel.com)
 # ============================================
 /how-it-works /vendor/how-it-works.html 200
 /why-partner /vendor/why-partner.html 200
 /guidelines /vendor/guidelines.html 200
 /insights /vendor/insights.html 200
 /faq /vendor/faq.html 200
+/pricing /vendor/pricing.html 200
+/terms-conditions /vendor/terms-conditions.html 200
+/cookie-policy /vendor/cookie-policy.html 200
 
 # ============================================
-# USER SUBDOMAIN STATIC PAGES  
+# USER SUBDOMAIN STATIC PAGES (user.gosnel.com)
 # ============================================
 /privacy-policy /user/privacy-policy.html 200
 /terms-conditions /user/terms-conditions.html 200
