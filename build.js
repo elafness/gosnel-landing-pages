@@ -268,6 +268,15 @@ const buildPages = () => {
     console.log("✅ Copied _routes.json file");
   }
 
+  // Copy _headers file for Cloudflare Pages headers
+  const headersPath = path.join(srcDir, "_headers");
+  const distHeadersPath = path.join(distDir, "_headers");
+
+  if (fs.existsSync(headersPath)) {
+    fs.copyFileSync(headersPath, distHeadersPath);
+    console.log("✅ Copied _headers file");
+  }
+
   // Create localhost development files for 404-free routing
   const localhostFiles = [
     { src: "vendor-why-partner.html", dest: "why-partner.html" },

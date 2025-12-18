@@ -1,5 +1,11 @@
 {
   "version": 1,
-  "include": [],
-  "exclude": []
+  "include": ["/*"],
+  "exclude": [
+    "/sitemap.xml",
+    "/vendor-sitemap.xml",
+    "/user-sitemap.xml",
+    "/robots.txt",
+    "/assets/*"
+  ]
 }
