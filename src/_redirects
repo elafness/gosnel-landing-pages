@@ -58,6 +58,12 @@ https://vendor.gosnel.com/footer/legal /legal.html 200
 https://user.gosnel.com/pricing /user/user-pricing.html 200
 https://user.gosnel.com/faq /user/user-faq.html 200
 https://user.gosnel.com/how-it-works /user/user-how-it-works.html 200
+
+# User subpath routing (/user/*)
+https://user.gosnel.com/user/pricing /user/user-pricing.html 200
+https://user.gosnel.com/user/faq /user/user-faq.html 200
+https://user.gosnel.com/user/how-it-works /user/user-how-it-works.html 200
+
 https://user.gosnel.com/privacy-policy /legal.html 200
 https://user.gosnel.com/terms-conditions /legal.html 200
 https://user.gosnel.com/cookie-policy /legal.html 200
