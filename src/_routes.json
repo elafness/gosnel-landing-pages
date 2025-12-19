@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "include": ["/pricing", "/sitemap.xml"],
+  "include": ["/pricing", "/sitemap.xml", "/user/pricing", "/user/how-it-works"],
   "exclude": [
     "/vendor-sitemap.xml",
     "/user-sitemap.xml", 
