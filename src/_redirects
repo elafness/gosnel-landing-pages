@@ -55,21 +55,21 @@ https://vendor.gosnel.com/footer/legal /legal.html 200
 # ============================================
 # USER SUBDOMAIN ROUTING (user.gosnel.com ONLY)
 # ============================================
-https://user.gosnel.com/pricing /user/user-pricing.html 200
-https://user.gosnel.com/faq /user/user-faq.html 200
-https://user.gosnel.com/how-it-works /user/user-how-it-works.html 200
+https://user.gosnel.com/pricing /user/user-pricing 200
+https://user.gosnel.com/faq /user/user-faq 200
+https://user.gosnel.com/how-it-works /user/user-how-it-works 200
 
 # User subpath routing (/user/*)
-https://user.gosnel.com/user/pricing /user/user-pricing.html 200
-https://user.gosnel.com/user/faq /user/user-faq.html 200
-https://user.gosnel.com/user/how-it-works /user/user-how-it-works.html 200
+https://user.gosnel.com/user/pricing /user/user-pricing 200
+https://user.gosnel.com/user/faq /user/user-faq 200
+https://user.gosnel.com/user/how-it-works /user/user-how-it-works 200
 
-https://user.gosnel.com/privacy-policy /legal.html 200
-https://user.gosnel.com/terms-conditions /legal.html 200
-https://user.gosnel.com/cookie-policy /legal.html 200
-https://user.gosnel.com/about-us /about-us.html 200
-https://user.gosnel.com/footer/about-us /about-us.html 200
-https://user.gosnel.com/footer/legal /legal.html 200
+https://user.gosnel.com/privacy-policy /legal 200
+https://user.gosnel.com/terms-conditions /legal 200
+https://user.gosnel.com/cookie-policy /legal 200
+https://user.gosnel.com/about-us /about-us 200
+https://user.gosnel.com/footer/about-us /about-us 200
+https://user.gosnel.com/footer/legal /legal 200
 
 # ============================================
 # PROMO SUBDOMAIN ROUTING (promo.gosnel.com ONLY)
