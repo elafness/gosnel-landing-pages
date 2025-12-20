@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GoSnel for Restaurants - Meal Discovery Platform | Get New Customers</title>
+    <title>GoSnel for Restaurants - Bring New Customers Without High Commissions</title>
     <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
     <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
-    <meta name="description" content="GoSnel meal discovery platform helps customers discover your dishes, not just your restaurant name. Bring new customers who've never tried your food before. No delivery fees.">
-    <meta name="keywords" content="restaurant growth, meal discovery platform, food discovery, restaurant marketing, get new customers, dish visibility, GoSnel for restaurants">
+    <meta name="description" content="Stop losing 30% in commissions. GoSnel brings you new customers directly for just 99 AED/month. No delivery fees. Orders go straight to your WhatsApp or pickup.">
     <link rel="stylesheet" href="/output.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,11 +16,7 @@
     <style>
         * { font-family: 'Inter', system-ui, sans-serif; }
         
-        /* Custom Gradient Classes */
         .gradient-teal { background: linear-gradient(135deg, #4ECDC4, #1A9A93); }
-        .gradient-dark { background: linear-gradient(180deg, #222b38 0%, #1a2129 100%); }
-        
-        /* Text Gradient */
         .text-gradient-teal {
             background: linear-gradient(90deg, #4ECDC4, #1A9A93);
             -webkit-background-clip: text;
@@ -29,15 +24,6 @@
             background-clip: text;
         }
         
-        /* Card Hover Effects */
-        .card-hover {
-            transition: all 0.3s ease;
-        }
-        .card-hover:hover {
-            transform: translateY(-8px);
-        }
-        
-        /* Button Hover */
         .btn-primary {
             transition: all 0.3s ease;
             box-shadow: 0 8px 24px rgba(78, 205, 196, 0.3);
@@ -46,459 +32,217 @@
             transform: translateY(-4px);
             box-shadow: 0 12px 32px rgba(78, 205, 196, 0.5);
         }
-        
-        .btn-secondary {
-            transition: all 0.3s ease;
-        }
-        .btn-secondary:hover {
-            background-color: #f0fdfa;
-            transform: translateY(-2px);
-        }
-        
-        /* Problem/Solution Cards */
-        .problem-card {
-            border-left: 4px solid #ef4444;
-            background: linear-gradient(135deg, #fef2f2, #ffffff);
-        }
-        
-        .solution-card {
-            border-left: 4px solid #22c55e;
-            background: linear-gradient(135deg, #f0fdf4, #ffffff);
-        }
-        
-        /* FAQ Accordion */
-        .faq-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
-        .faq-content.open {
-            max-height: 200px;
-        }
     </style>
 </head>
 <body class="bg-white text-black min-h-screen">
     <!-- Header -->
     <!--#include file="components/vendor-header.html" -->
 
-    <!-- Hero Section - Full Screen -->
-    <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <!-- Background Image -->
+    <!-- HERO SECTION: Financial Pain Hook -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-20">
+        <!-- Background -->
         <div class="absolute inset-0 -z-10">
-            <img src="/assets/images/signupImageWeb1.webp" alt="Restaurant food discovery" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-r from-black/50 via-black/40 to-black/35"></div>
-        </div>
-
-        <!-- Language Toggle - Visible on Hero -->
-        <div class="absolute top-4 right-4 z-20">
-            <div class="flex bg-white/20 backdrop-blur-sm rounded-lg p-1">
-                <button id="hero-lang-en" class="px-3 py-1.5 text-sm font-medium rounded-md transition-all bg-white text-teal-600">English</button>
-                <button id="hero-lang-ar" class="px-3 py-1.5 text-sm font-medium rounded-md transition-all text-white">العربية</button>
-            </div>
+            <img src="/assets/images/signupImageWeb.webp" alt="Restaurant owner building business" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/50 to-black/40"></div>
         </div>
 
         <!-- Content -->
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-            <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-                <!-- Left Content -->
-                <div class="text-white z-10">
-                    <h2 id="hero_title" class="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-8 text-center lg:text-left">
-                        <span class="text-green-400 block">Your food is great.</span>
-                        <span class="text-green-400 block">New customers are just</span>
-                        <span class="text-green-400 block">afraid to try it.</span>
-                    </h2>
-                    
-                    <h3 id="hero_subtitle" class="text-lg md:text-xl font-semibold text-gray-100 mb-6 leading-relaxed text-center lg:text-left">
-                        GoSnel helps customers discover your dishes — not just your restaurant name — so they try you for the first time with confidence.
-                    </h3>
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="max-w-3xl text-white z-10">
+                <!-- Main Headline: Financial Pain -->
+                <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-6">
+                    <span class="text-red-400">Stop losing 30%</span> to delivery commissions
+                </h1>
 
-                    <p id="hero_tagline" class="text-lg text-yellow-200 mb-10 text-center lg:text-left font-medium">
-                        We are a food discovery platform.
-                    </p>
-                    
-                    <!-- CTA Buttons -->
-                    <div class="flex flex-col sm:flex-row gap-4 items-center lg:items-start lg:justify-start justify-center">
-                        <a id="primary_cta" href="https://gosnel.com/vendor/signup" class="btn-primary inline-flex items-center justify-center gap-3 bg-teal-500 text-white px-8 py-4 rounded-xl font-bold text-lg w-full sm:w-auto sm:min-w-[280px]">
-                            Start free
-                        </a>
-                        <a id="secondary_cta" href="/pricing" class="btn-secondary inline-flex items-center justify-center gap-3 border-2 border-yellow-300 text-yellow-300 bg-transparent px-6 py-4 rounded-xl font-semibold text-base hover:bg-yellow-50 hover:text-yellow-600 transition w-full sm:w-auto">
-                            Pricing
-                        </a>
+                <!-- Subheadline: What GoSnel Is -->
+                <h2 class="text-2xl md:text-3xl font-semibold text-gray-100 mb-8 leading-relaxed">
+                    GoSnel is an AI food discovery engine. Not a delivery app. Your customers order directly to you.
+                </h2>
+
+                <!-- Single CTA Button -->
+                <div class="mb-12">
+                    <a href="https://gosnel.com/vendor/signup" class="btn-primary inline-block bg-teal-500 hover:bg-teal-600 text-white px-10 py-4 rounded-xl font-bold text-xl w-full sm:w-auto text-center">
+                        Start Free • No Setup Fee
+                    </a>
+                </div>
+
+                <!-- Three Aggressive Bullets -->
+                <div class="space-y-4 text-lg">
+                    <div class="flex items-start gap-4">
+                        <span class="text-2xl font-bold text-teal-400 flex-shrink-0">✓</span>
+                        <p><strong>No commission.</strong> Customers order directly via WhatsApp or pickup. You keep 100%.</p>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <span class="text-2xl font-bold text-teal-400 flex-shrink-0">✓</span>
+                        <p><strong>99 AED/month only.</strong> Fixed cost, predictable. No surprise fees.</p>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <span class="text-2xl font-bold text-teal-400 flex-shrink-0">✓</span>
+                        <p><strong>New customers.</strong> AI finds people who want exactly what you cook—not people looking for big brands.</p>
                     </div>
                 </div>
-                
-                <!-- Right - Empty space for image to show -->
-                <div class="hidden lg:block"></div>
             </div>
         </div>
     </section>
 
-    <!-- Why Most Restaurants Stop Growing -->
-    <section class="py-20 bg-red-50 border-y border-red-100">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 id="problem_title" class="text-4xl md:text-5xl font-extrabold text-center text-red-600 mb-8">
-                Why most restaurants stop growing
-            </h2>
-            
-            <p id="problem_intro" class="text-xl text-gray-700 text-center mb-12 max-w-4xl mx-auto leading-relaxed">
-                Most restaurants don't fail because of bad food.<br>
-                They stop growing because customers are afraid to take risks.
-            </p>
-            
-            <div class="grid md:grid-cols-2 gap-8 mb-12">
-                <div class="problem-card p-8 rounded-2xl">
-                    <h3 id="fear_cycle_title" class="text-xl font-bold text-red-600 mb-4">The Customer Fear Cycle</h3>
-                    <ul class="space-y-3 text-gray-700">
-                        <li class="flex items-start gap-3">
-                            <span class="text-red-500 font-bold">•</span>
-                            <span id="fear_cycle_1">Customers keep ordering from the same places to avoid wasting money</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <span class="text-red-500 font-bold">•</span>
-                            <span id="fear_cycle_2">New restaurants feel like a gamble to first-time customers</span>
-                        </li>
-                    </ul>
-                </div>
-                
-                <div class="problem-card p-8 rounded-2xl">
-                    <h3 id="visibility_title" class="text-xl font-bold text-red-600 mb-4">The Visibility Problem</h3>
-                    <ul class="space-y-3 text-gray-700">
-                        <li class="flex items-start gap-3">
-                            <span class="text-red-500 font-bold">•</span>
-                            <span id="visibility_1">Big brands dominate visibility, not better dishes</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <span class="text-red-500 font-bold">•</span>
-                            <span id="visibility_2">You see the same customers every week while growth stays flat</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="text-center">
-                <p id="problem_conclusion" class="text-2xl font-bold text-red-600">
-                    The problem isn't your food.<br>
-                    <span id="problem_conclusion_2" class="text-red-700">It's customer fear.</span>
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- How GoSnel Brings New Customers -->
-    <section class="py-20 bg-green-50 border-b border-green-100">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 id="solution_title" class="text-4xl md:text-5xl font-extrabold text-center text-green-600 mb-8">
-                How GoSnel brings you new customers
-            </h2>
-            
-            <p id="solution_intro" class="text-xl text-gray-700 text-center mb-12 max-w-4xl mx-auto leading-relaxed">
-                GoSnel is built to remove fear from food discovery.
-            </p>
-            
-            <div class="grid md:grid-cols-2 gap-8 mb-8">
-                <div class="solution-card p-8 rounded-2xl">
-                    <h3 id="discovery_title" class="text-xl font-bold text-green-600 mb-4">Discovery, Not Search</h3>
-                    <ul class="space-y-3 text-gray-700">
-                        <li class="flex items-start gap-3">
-                            <span class="text-green-500 font-bold">✓</span>
-                            <span id="discovery_1">Customers browse meals, not restaurant lists</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <span class="text-green-500 font-bold">✓</span>
-                            <span id="discovery_2">Your dishes appear when customers are in the right mood and budget</span>
-                        </li>
-                    </ul>
-                </div>
-                
-                <div class="solution-card p-8 rounded-2xl">
-                    <h3 id="confidence_title" class="text-xl font-bold text-green-600 mb-4">Confidence Building</h3>
-                    <ul class="space-y-3 text-gray-700">
-                        <li class="flex items-start gap-3">
-                            <span class="text-green-500 font-bold">✓</span>
-                            <span id="confidence_1">Visual discovery builds confidence before ordering</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <span class="text-green-500 font-bold">✓</span>
-                            <span id="confidence_2">Customers feel safe trying something new for the first time</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="text-center">
-                <p id="solution_conclusion" class="text-2xl font-bold text-green-600">
-                    We don't push your restaurant.<br>
-                    <span id="solution_conclusion_2" class="text-green-700">We let your food do the convincing.</span>
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Dish-First, Not Brand-First -->
-    <section class="py-20 bg-blue-50 border-b border-blue-100">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 id="dish_first_title" class="text-4xl md:text-5xl font-extrabold text-center text-blue-600 mb-8">
-                Dish-first, not brand-first
-            </h2>
-            
+    <!-- OWNERSHIP & CONTROL Section -->
+    <section class="py-16 bg-gray-50 border-y border-gray-200">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
-                <p id="dish_first_desc1" class="text-2xl text-gray-600 mb-8">
-                    On traditional apps, customers search for restaurants they already know.
-                </p>
-                <p id="dish_first_desc2" class="text-3xl font-bold text-blue-600">
-                    On GoSnel, customers discover food.
+                <h2 class="text-4xl font-bold mb-4">You own the customer</h2>
+                <p class="text-xl text-gray-600">
+                    Orders go directly to you. You control the relationship.
                 </p>
             </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-                <div class="bg-white p-6 rounded-xl border border-blue-200 text-center">
-                    <div id="fair_competition_title" class="text-blue-600 font-bold text-lg mb-2">Fair Competition</div>
-                    <p id="fair_competition_desc" class="text-gray-600 text-sm">Your burger competes with the best burger — not the biggest brand</p>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Customer owns relationship -->
+                <div class="bg-white p-8 rounded-xl border border-gray-200">
+                    <div class="text-4xl mb-4">👤</div>
+                    <h3 class="font-bold text-lg mb-2">You Get Their Info</h3>
+                    <p class="text-gray-600">You see their name, phone, address. No middleman between you.</p>
                 </div>
-                <div class="bg-white p-6 rounded-xl border border-blue-200 text-center">
-                    <div id="equal_visibility_title" class="text-blue-600 font-bold text-lg mb-2">Equal Visibility</div>
-                    <p id="equal_visibility_desc" class="text-gray-600 text-sm">Independent restaurants get equal visibility</p>
+
+                <!-- Direct ordering -->
+                <div class="bg-white p-8 rounded-xl border border-gray-200">
+                    <div class="text-4xl mb-4">💬</div>
+                    <h3 class="font-bold text-lg mb-2">Orders Via WhatsApp</h3>
+                    <p class="text-gray-600">Customers order to your number. You confirm. Direct relationship built.</p>
                 </div>
-                <div class="bg-white p-6 rounded-xl border border-blue-200 text-center">
-                    <div id="quality_wins_title" class="text-blue-600 font-bold text-lg mb-2">Quality Wins</div>
-                    <p id="quality_wins_desc" class="text-gray-600 text-sm">Quality dishes win, not advertising budgets</p>
-                </div>
-                <div class="bg-white p-6 rounded-xl border border-blue-200 text-center">
-                    <div id="fair_chance_title" class="text-blue-600 font-bold text-lg mb-2">Fair Chance</div>
-                    <p id="fair_chance_desc" class="text-gray-600 text-sm">Small kitchens finally get a fair chance</p>
+
+                <!-- Full payment control -->
+                <div class="bg-white p-8 rounded-xl border border-gray-200">
+                    <div class="text-4xl mb-4">💳</div>
+                    <h3 class="font-bold text-lg mb-2">100% of Payment</h3>
+                    <p class="text-gray-600">No app fees. No delivery cuts. Money goes straight to you.</p>
                 </div>
             </div>
-            
-            <div class="text-center">
-                <p id="dish_first_conclusion" class="text-2xl font-bold text-blue-600">
-                    If your food is good, it gets seen.
+
+            <!-- Key differentiator -->
+            <div class="mt-12 bg-teal-50 border-l-4 border-teal-500 p-8 rounded">
+                <p class="text-lg font-semibold text-gray-900">
+                    Unlike Talabat or Uber: They own the customer. You can't contact them again. <br>
+                    <span class="text-teal-600">With GoSnel: You own the customer. Build repeat business.</span>
                 </p>
             </div>
         </div>
     </section>
 
-    <!-- How GoSnel Works -->
-    <section class="py-20 bg-white border-b border-gray-200">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 id="how_works_title" class="text-4xl md:text-5xl font-extrabold text-center text-teal-600 mb-16">
-                How GoSnel works
-            </h2>
-            
-            <div class="grid md:grid-cols-4 gap-8 mb-12">
+    <!-- HOW IT WORKS: Ultra Short 3 Steps -->
+    <section class="py-16">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center mb-12">How it works (3 simple steps)</h2>
+
+            <div class="grid md:grid-cols-3 gap-8">
                 <!-- Step 1 -->
                 <div class="text-center">
-                    <div class="w-20 h-20 mx-auto mb-4 rounded-full bg-gray-100 flex items-center justify-center overflow-hidden">
-                        <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/How%20GoSnel%20works/Customer%20discovers%20meals.png" alt="Customer discovers meals" class="w-full h-full object-cover">
+                    <div class="w-16 h-16 bg-teal-500 text-white rounded-full flex items-center justify-center text-3xl font-bold mx-auto mb-6">
+                        1
                     </div>
-                    <h3 id="step1_title" class="text-lg font-semibold text-black mb-2">Customer discovers meals</h3>
-                    <p id="step1_desc" class="text-gray-600 text-sm">Based on what they want to eat</p>
+                    <h3 class="font-bold text-xl mb-3">Customer Discovers Your Meals</h3>
+                    <p class="text-gray-600">AI finds people who want exactly what you cook. Not searching for brands—discovering flavors.</p>
                 </div>
-                
+
                 <!-- Step 2 -->
                 <div class="text-center">
-                    <div class="w-20 h-20 mx-auto mb-4 rounded-full bg-gray-100 flex items-center justify-center overflow-hidden">
-                        <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/How%20GoSnel%20works/Your%20dish%20appears.png" alt="Dish appears to customer" class="w-full h-full object-cover">
+                    <div class="w-16 h-16 bg-teal-500 text-white rounded-full flex items-center justify-center text-3xl font-bold mx-auto mb-6">
+                        2
                     </div>
-                    <h3 id="step2_title" class="text-lg font-semibold text-black mb-2">Your dish appears</h3>
-                    <p id="step2_desc" class="text-gray-600 text-sm">When it matches their preferences</p>
+                    <h3 class="font-bold text-xl mb-3">They Order Directly</h3>
+                    <p class="text-gray-600">Click. Order via WhatsApp or pickup. No middleman. No commission.</p>
                 </div>
-                
+
                 <!-- Step 3 -->
                 <div class="text-center">
-                    <div class="w-20 h-20 mx-auto mb-4 rounded-full bg-gray-100 flex items-center justify-center overflow-hidden">
-                        <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/How%20GoSnel%20works/GoSnel%20sends%20customer%20to%20you.png" alt="Customer sent to restaurant" class="w-full h-full object-cover">
+                    <div class="w-16 h-16 bg-teal-500 text-white rounded-full flex items-center justify-center text-3xl font-bold mx-auto mb-6">
+                        3
                     </div>
-                    <h3 id="step3_title" class="text-lg font-semibold text-black mb-2">GoSnel sends customer to you</h3>
-                    <p id="step3_desc" class="text-gray-600 text-sm">Direct connection established</p>
-                </div>
-                
-                <!-- Step 4 -->
-                <div class="text-center">
-                    <div class="w-20 h-20 mx-auto mb-4 rounded-full bg-gray-100 flex items-center justify-center overflow-hidden">
-                        <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/How%20GoSnel%20works/You%20receive%20order.png" alt="You receive order" class="w-full h-full object-cover">
-                    </div>
-                    <h3 id="step4_title" class="text-lg font-semibold text-black mb-2">You receive order</h3>
-                    <p id="step4_desc" class="text-gray-600 text-sm">Pickup, WhatsApp, or delivery apps</p>
-                </div>
-            </div>
-            
-            <div class="text-center">
-                <p id="how_works_conclusion" class="text-2xl font-bold text-teal-600">
-                    You stay in control.<br>
-                    <span id="how_works_conclusion_2" class="text-teal-700">We just bring the customer.</span>
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- What GoSnel Is NOT -->
-    <section class="py-20 bg-gray-50 border-b border-gray-200">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 id="what_not_title" class="text-4xl md:text-5xl font-extrabold text-center text-gray-800 mb-16">
-                What GoSnel is not
-            </h2>
-            
-            <div class="grid md:grid-cols-2 gap-12">
-                <!-- What we're NOT -->
-                <div class="bg-red-50 p-8 rounded-2xl border border-red-200">
-                    <h3 id="what_not_left_title" class="text-2xl font-bold text-red-600 mb-6">What GoSnel is NOT</h3>
-                    <ul class="space-y-4">
-                        <li class="flex items-center gap-3">
-                            <span class="text-red-500 font-bold text-xl">❌</span>
-                            <span id="not_1" class="text-gray-700 font-medium">Not a delivery company</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <span class="text-red-500 font-bold text-xl">❌</span>
-                            <span id="not_2" class="text-gray-700 font-medium">No delivery commissions</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <span class="text-red-500 font-bold text-xl">❌</span>
-                            <span id="not_3" class="text-gray-700 font-medium">No hidden customer data</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <span class="text-red-500 font-bold text-xl">❌</span>
-                            <span id="not_4" class="text-gray-700 font-medium">No competition with your existing delivery apps</span>
-                        </li>
-                    </ul>
-                </div>
-                
-                <!-- What we ARE -->
-                <div class="bg-green-50 p-8 rounded-2xl border border-green-200">
-                    <h3 id="what_is_title" class="text-2xl font-bold text-green-600 mb-6">What GoSnel IS</h3>
-                    <ul class="space-y-4">
-                        <li class="flex items-center gap-3">
-                            <span class="text-green-500 font-bold text-xl">✅</span>
-                            <span id="is_1" class="text-gray-700 font-medium">A food discovery and growth channel</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <span class="text-green-500 font-bold text-xl">✅</span>
-                            <span id="is_2" class="text-gray-700 font-medium">A way to attract customers who don't know you yet</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <span class="text-green-500 font-bold text-xl">✅</span>
-                            <span id="is_3" class="text-gray-700 font-medium">A platform that helps customers try you for the first time</span>
-                        </li>
-                    </ul>
+                    <h3 class="font-bold text-xl mb-3">You Serve. You Keep 100%.</h3>
+                    <p class="text-gray-600">Full payment. New customer. Repeat business potential.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Why Restaurants Partner with GoSnel -->
-    <section class="py-20 bg-white border-b border-gray-200">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 id="why_partner_title" class="text-4xl md:text-5xl font-extrabold text-center text-teal-600 mb-16">
-                Why restaurants partner with GoSnel
-            </h2>
-            
-            <div class="grid md:grid-cols-3 gap-8 mb-12">
-                <div class="text-center p-8 bg-teal-50 rounded-2xl border border-teal-200">
-                    <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-teal-500 flex items-center justify-center">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
-                        </svg>
-                    </div>
-                    <h3 id="partner_1_title" class="text-xl font-bold text-teal-600 mb-3">New Customer Circle</h3>
-                    <p id="partner_1_desc" class="text-gray-700">Attract customers outside your usual circle</p>
-                </div>
-                
-                <div class="text-center p-8 bg-teal-50 rounded-2xl border border-teal-200">
-                    <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-teal-500 flex items-center justify-center">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
-                        </svg>
-                    </div>
-                    <h3 id="partner_2_title" class="text-xl font-bold text-teal-600 mb-3">Consistent Growth</h3>
-                    <p id="partner_2_desc" class="text-gray-700">Increase order frequency beyond weekends</p>
-                </div>
-                
-                <div class="text-center p-8 bg-teal-50 rounded-2xl border border-teal-200">
-                    <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-teal-500 flex items-center justify-center">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-                        </svg>
-                    </div>
-                    <h3 id="partner_3_title" class="text-xl font-bold text-teal-600 mb-3">Full Control</h3>
-                    <p id="partner_3_desc" class="text-gray-700">Keep control of pricing, delivery, and customer relationships</p>
-                </div>
-            </div>
-            
-            <div class="text-center">
-                <p id="why_partner_conclusion" class="text-2xl font-bold text-teal-600">
-                    We succeed when your food gets discovered.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="py-20 bg-gray-50 border-b border-gray-200">
+    <!-- THE MATH: ROI Section -->
+    <section class="py-16 bg-gradient-teal text-white">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 id="faq_title" class="text-4xl md:text-5xl font-extrabold text-center text-gray-800 mb-16">
-                Common questions
-            </h2>
-            
-            <div class="space-y-4">
-                <!-- FAQ 1 -->
-                <details class="group bg-white border border-gray-200 rounded-xl overflow-hidden">
-                    <summary class="flex justify-between items-center cursor-pointer p-6 hover:bg-gray-50 transition">
-                        <span id="faq1_question" class="font-semibold text-gray-800 text-lg">Do I need to change how my restaurant operates?</span>
-                        <svg class="w-5 h-5 text-teal-600 transform group-open:rotate-45 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-                    </summary>
-                    <div class="px-6 pb-6 pt-2 border-t border-gray-100">
-                        <p id="faq1_answer" class="text-gray-600 leading-relaxed">No. You keep your current workflow. GoSnel only brings discovery.</p>
+            <h2 class="text-4xl font-bold text-center mb-12">The math that matters</h2>
+
+            <div class="grid md:grid-cols-2 gap-12 mb-12">
+                <!-- Delivery App Cost -->
+                <div class="bg-white/20 backdrop-blur-sm p-8 rounded-xl">
+                    <h3 class="text-2xl font-bold mb-6">Delivery App Reality</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-3">
+                            <span class="font-bold">•</span>
+                            <span>Commission: 20-30%</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="font-bold">•</span>
+                            <span>Delivery fee: 5-15%</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="font-bold">•</span>
+                            <span>Platform fees: 2-5%</span>
+                        </li>
+                        <li class="text-xl font-bold pt-4 border-t border-white/50">
+                            Total loss: 30-50% per order
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- GoSnel Cost -->
+                <div class="bg-white/10 p-8 rounded-xl border-2 border-white">
+                    <h3 class="text-2xl font-bold mb-6">GoSnel Cost</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-3">
+                            <span class="font-bold">•</span>
+                            <span>Monthly fee: 99 AED</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="font-bold">•</span>
+                            <span>Per-order cost: 0%</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="font-bold">•</span>
+                            <span>Commission: 0%</span>
+                        </li>
+                        <li class="text-xl font-bold pt-4 border-t border-white/50">
+                            Break even: Just 3-4 orders
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Example -->
+            <div class="bg-white/20 backdrop-blur-sm p-8 rounded-xl text-center">
+                <p class="text-lg mb-4">
+                    <strong>Example: 100 AED order</strong>
+                </p>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <p class="text-gray-100 mb-2">With delivery app:</p>
+                        <p class="text-3xl font-bold">You get: 50-70 AED</p>
                     </div>
-                </details>
-                
-                <!-- FAQ 2 -->
-                <details class="group bg-white border border-gray-200 rounded-xl overflow-hidden">
-                    <summary class="flex justify-between items-center cursor-pointer p-6 hover:bg-gray-50 transition">
-                        <span id="faq2_question" class="font-semibold text-gray-800 text-lg">Does GoSnel replace delivery apps?</span>
-                        <svg class="w-5 h-5 text-teal-600 transform group-open:rotate-45 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-                    </summary>
-                    <div class="px-6 pb-6 pt-2 border-t border-gray-100">
-                        <p id="faq2_answer" class="text-gray-600 leading-relaxed">No. GoSnel complements them by bringing new customers.</p>
+                    <div>
+                        <p class="text-gray-100 mb-2">With GoSnel:</p>
+                        <p class="text-3xl font-bold text-yellow-300">You get: 100 AED</p>
                     </div>
-                </details>
-                
-                <!-- FAQ 3 -->
-                <details class="group bg-white border border-gray-200 rounded-xl overflow-hidden">
-                    <summary class="flex justify-between items-center cursor-pointer p-6 hover:bg-gray-50 transition">
-                        <span id="faq3_question" class="font-semibold text-gray-800 text-lg">Who owns the customer?</span>
-                        <svg class="w-5 h-5 text-teal-600 transform group-open:rotate-45 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-                    </summary>
-                    <div class="px-6 pb-6 pt-2 border-t border-gray-100">
-                        <p id="faq3_answer" class="text-gray-600 leading-relaxed">You do. We don't hide customer data.</p>
-                    </div>
-                </details>
-                
-                <!-- FAQ 4 -->
-                <details class="group bg-white border border-gray-200 rounded-xl overflow-hidden">
-                    <summary class="flex justify-between items-center cursor-pointer p-6 hover:bg-gray-50 transition">
-                        <span id="faq4_question" class="font-semibold text-gray-800 text-lg">Is there any upfront cost?</span>
-                        <svg class="w-5 h-5 text-teal-600 transform group-open:rotate-45 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-                    </summary>
-                    <div class="px-6 pb-6 pt-2 border-t border-gray-100">
-                        <p id="faq4_answer" class="text-gray-600 leading-relaxed">No. You can start for free.</p>
-                    </div>
-                </details>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Final CTA Section -->
-    <section class="py-20 bg-teal-600">
+    <!-- CTA SECTION: Final Conversion -->
+    <section class="py-16 bg-gray-900 text-white">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 id="final_cta_title" class="text-4xl md:text-5xl font-extrabold text-white mb-8">
-                Let new customers discover your food
-            </h2>
-            <p id="final_cta_desc" class="text-xl text-teal-100 mb-10 leading-relaxed">
-                No setup fees.<br>
-                No delivery commissions.<br>
-                Just more people trying your dishes.
+            <h2 class="text-4xl font-bold mb-6">Ready to keep 100% of your sales?</h2>
+            <p class="text-xl text-gray-300 mb-8">
+                Start free. Set up in minutes. No credit card required.
             </p>
-            <a id="final_cta" href="https://gosnel.com/vendor/signup" class="btn-primary inline-flex items-center justify-center bg-white text-teal-600 hover:bg-gray-50 px-12 py-5 rounded-xl font-bold text-xl">
-                Add your dishes and start free
+            <a href="https://gosnel.com/vendor/signup" class="btn-primary inline-block bg-teal-500 hover:bg-teal-600 text-white px-12 py-5 rounded-xl font-bold text-xl">
+                Start Free → 99 AED/Month
             </a>
         </div>
     </section>
@@ -506,325 +250,17 @@
     <!-- Footer -->
     <!--#include file="components/footer.html" -->
 
+    <!-- Language Toggle Script -->
     <script>
-        (function(){
-            const t = {
-                en: {
-                    // Hero
-                    hero_title: '<span class="text-green-400 block">Your food is great.</span><span class="text-green-400 block">New customers are just</span><span class="text-green-400 block">afraid to try it.</span>',
-                    hero_subtitle: 'GoSnel understands the customer first, then introduces them to your food at the right moment. So they try you for the first time with confidence',
-                    hero_tagline: 'With GoSnel, your restaurant stands equal to the big brands',
-                    primary_cta: 'Start free',
-                    secondary_cta: 'Pricing',
-                    
-                    // Problem Section
-                    problem_title: 'Why most restaurants stop growing',
-                    problem_intro: 'Most restaurants don\'t fail because of bad food.<br>They stop growing because customers are afraid to take risks.',
-                    fear_cycle_title: 'The Customer Fear Cycle',
-                    fear_cycle_1: 'Customers keep ordering from the same places to avoid wasting money',
-                    fear_cycle_2: 'New restaurants feel like a gamble to first-time customers',
-                    visibility_title: 'The Visibility Problem',
-                    visibility_1: 'Big brands dominate visibility, not better dishes',
-                    visibility_2: 'You see the same customers every week while growth stays flat',
-                    problem_conclusion: 'The problem isn\'t your food.',
-                    problem_conclusion_2: 'It\'s customer fear.',
-                    
-                    // Solution Section
-                    solution_title: 'How GoSnel brings you new customers',
-                    solution_intro: 'GoSnel is built to remove fear from food discovery through its unique approach.',
-                    discovery_title: 'Discovery, Not Search',
-                    discovery_1: 'Customers browse meals, not restaurant lists',
-                    discovery_2: 'Your dishes appear when customers are in the right mood and budget',
-                    confidence_title: 'Confidence Building',
-                    confidence_1: 'Visual discovery builds confidence before ordering',
-                    confidence_2: 'Customers feel safe trying something new for the first time',
-                    solution_conclusion: 'We don\'t push your restaurant.',
-                    solution_conclusion_2: 'We let your food do the convincing.',
-                    
-                    // Dish First Section
-                    dish_first_title: 'Dish-first, not brand-first',
-                    dish_first_desc1: 'On traditional apps, customers search for restaurants they already know.',
-                    dish_first_desc2: 'On GoSnel, customers discover food.',
-                    fair_competition_title: 'Fair Competition',
-                    fair_competition_desc: 'Your burger competes with the best burger — not the biggest brand',
-                    equal_visibility_title: 'Equal Visibility',
-                    equal_visibility_desc: 'Independent restaurants get equal visibility',
-                    quality_wins_title: 'Quality Wins',
-                    quality_wins_desc: 'Quality dishes win, not advertising budgets',
-                    fair_chance_title: 'Fair Chance',
-                    fair_chance_desc: 'Small kitchens finally get a fair chance',
-                    dish_first_conclusion: 'If your food is good, it gets seen.',
-                    
-                    // How It Works Section
-                    how_works_title: 'How GoSnel works',
-                    step1_title: 'Customer discovers meals',
-                    step1_desc: 'Based on what they want to eat',
-                    step2_title: 'Your dish appears',
-                    step2_desc: 'When it matches their preferences',
-                    step3_title: 'GoSnel sends customer to you',
-                    step3_desc: 'Direct connection established',
-                    step4_title: 'You receive order',
-                    step4_desc: 'Pickup, WhatsApp, or delivery apps',
-                    how_works_conclusion: 'You stay in control.',
-                    how_works_conclusion_2: 'We just bring the customer.',
-                    
-                    // What GoSnel Is NOT Section
-                    what_not_title: 'About us',
-                    what_not_left_title: 'What GoSnel is NOT',
-                    not_1: 'Not a delivery company',
-                    not_2: 'No delivery commissions',
-                    not_3: 'No hidden customer data',
-                    not_4: 'No competition with your existing delivery apps',
-                    what_is_title: 'What GoSnel IS',
-                    is_1: 'A food discovery and growth channel',
-                    is_2: 'A way to attract customers who don\'t know you yet',
-                    is_3: 'A platform that helps customers try you for the first time',
-                    
-                    // Why Partner Section
-                    why_partner_title: 'Why restaurants partner with GoSnel',
-                    partner_1_title: 'New Customer Circle',
-                    partner_1_desc: 'Attract customers outside your usual circle',
-                    partner_2_title: 'Consistent Growth',
-                    partner_2_desc: 'Increase order frequency beyond weekends',
-                    partner_3_title: 'Full Control',
-                    partner_3_desc: 'Keep control of pricing, delivery, and customer relationships',
-                    why_partner_conclusion: 'We succeed when your food gets discovered.',
-                    
-                    // FAQ Section
-                    faq_title: 'Common questions',
-                    faq1_question: 'Do I need to change how my restaurant operates?',
-                    faq1_answer: 'No. You keep your current workflow. GoSnel only brings discovery.',
-                    faq2_question: 'Does GoSnel replace delivery apps?',
-                    faq2_answer: 'No. GoSnel complements them by bringing new customers.',
-                    faq3_question: 'Who owns the customer?',
-                    faq3_answer: 'You do. We don\'t hide customer data.',
-                    faq4_question: 'Is there any upfront cost?',
-                    faq4_answer: 'No. You can start for free.',
-                    
-                    // Final CTA
-                    final_cta_title: 'Let new customers discover your food',
-                    final_cta_desc: 'No setup fees.<br>No delivery commissions.<br>Just more people trying your dishes.',
-                    final_cta: 'Add your dishes and start free'
-                },
-                ar: {
-                    // Hero
-                    hero_title: '<span class="text-green-400 block">أكلك ممتاز...</span><span class="text-green-400 block">بس الزباين الجدد</span><span class="text-green-400 block">خايفين يجربونه</span>',
-                    hero_subtitle: 'جوسنِل تفهم الزبون أولًا, ثم تقدّم له طعامك في اللحظة المناسبة, عشان يجربونك لأول مرة بثقة.',
-                    hero_tagline: 'مع جوسنِل، مطعمك بمستوى العلامات الكبرى.',
-                    primary_cta: 'ابدأ مجاناً',
-                    secondary_cta: 'الأسعار',
-                    
-                    // Problem Section
-                    problem_title: 'ليش أغلب المطاعم تتوقف عن النمو',
-                    problem_intro: 'أغلب المطاعم ما تفشل بسبب الأكل السيء.<br>تتوقف عن النمو لأن الزبائن خايفين يجازفون.',
-                    fear_cycle_title: 'خوف الزبون',
-                    fear_cycle_1: 'الزبائن يطلبون من نفس الأماكن عشان ما يضيعون فلوسهم',
-                    fear_cycle_2: 'المطاعم الجديدة تحس مثل مقامرة للزبائن الجدد',
-                    visibility_title: 'مشكلة الظهور',
-                    visibility_1: 'العلامات التجارية الكبيرة تسيطر على الظهور، مو الأطباق الأفضل',
-                    visibility_2: 'تشوف نفس الزبائن كل أسبوع والنمو واقف',
-                    problem_conclusion: 'المشكلة مو أكلك.',
-                    problem_conclusion_2: 'المشكلة خوف الزبون.',
-                    
-                    // Solution Section
-                    solution_title: 'كيف جوسنِل تجيب لك زبائن جدد',
-                    solution_intro: 'جوسنِل مبنية تشيل الخوف من اكتشاف الأكل بإسلوبها الفريد.',
-                    discovery_title: 'اكتشاف، مو بحث',
-                    discovery_1: 'الزبائن يتصفحون الوجبات، مو قوائم المطاعم',
-                    discovery_2: 'أطباقك تظهر لما الزبون في المود والميزانية المناسبة',
-                    confidence_title: 'بناء الثقة',
-                    confidence_1: 'الاكتشاف البصري يبني الثقة قبل الطلب',
-                    confidence_2: 'الزبائن يحسون بالأمان يجربون شي جديد لأول مرة',
-                    solution_conclusion: 'إحنا ما ندفع مطعمك.',
-                    solution_conclusion_2: 'نخلي أكلك يقنع.',
-                    
-                    // Dish First Section
-                    dish_first_title: 'الوجبة أولاً، مو العلامة التجارية',
-                    dish_first_desc1: 'في التطبيقات التقليدية، الزبائن يبحثون عن مطاعم يعرفونها.',
-                    dish_first_desc2: 'في جوسنِل، الزبائن يكتشفون الأكل.',
-                    fair_competition_title: 'منافسة عادلة',
-                    fair_competition_desc: 'برجرك ينافس أحسن برجر — مو أكبر علامة تجارية',
-                    equal_visibility_title: 'ظهور متساوي',
-                    equal_visibility_desc: 'المطاعم المستقلة تاخذ ظهور متساوي',
-                    quality_wins_title: 'الجودة تفوز',
-                    quality_wins_desc: 'الأطباق الجيدة تفوز، مو ميزانيات الإعلانات',
-                    fair_chance_title: 'فرصة عادلة',
-                    fair_chance_desc: 'المطابخ الصغيرة أخيراً تاخذ فرصة عادلة',
-                    dish_first_conclusion: 'إذا أكلك زين، يتشاف.',
-                    
-                    // How It Works Section
-                    how_works_title: 'كيف تشتغل جوسنِل',
-                    step1_title: 'الزبون يكتشف الوجبات',
-                    step1_desc: 'بناءً على اللي يبي ياكله',
-                    step2_title: 'طبقك يظهر',
-                    step2_desc: 'لما يطابق تفضيلاته',
-                    step3_title: 'جوسنِل ترسل الزبون لك',
-                    step3_desc: 'اتصال مباشر',
-                    step4_title: 'تستقبل الطلب',
-                    step4_desc: 'استلام، واتساب، أو تطبيقات التوصيل',
-                    how_works_conclusion: 'إنت تتحكم.',
-                    how_works_conclusion_2: 'إحنا بس نجيب الزبون.',
-                    
-                    // What GoSnel Is NOT Section
-                    what_not_title: 'مين نحنا',
-                    what_not_left_title: 'جوسنِل',
-                    not_1: 'ليست شركة توصيل',
-                    not_2: 'بدون عمولات توصيل',
-                    not_3: 'بدون بيانات زبائن مخفية',
-                    not_4: 'بدون منافسة مع تطبيقات التوصيل الحالية',
-                    what_is_title: 'جوسنِل هي',
-                    is_1: 'قناة اكتشاف طعام ونمو',
-                    is_2: 'طريقة تجذب زبائن ما يعرفونك بعد',
-                    is_3: 'منصة تساعد الزبائن يجربونك لأول مرة',
-                    
-                    // Why Partner Section
-                    why_partner_title: 'ليش المطاعم تتعاون مع جوسنِل',
-                    partner_1_title: 'دائرة زبائن جديدة',
-                    partner_1_desc: 'اجذب زبائن من خارج دائرتك المعتادة',
-                    partner_2_title: 'نمو مستمر',
-                    partner_2_desc: 'زيد تكرار الطلبات مو بس نهاية الأسبوع',
-                    partner_3_title: 'تحكم كامل',
-                    partner_3_desc: 'حافظ على تحكمك بالأسعار والتوصيل وعلاقات الزبائن',
-                    why_partner_conclusion: 'ننجح لما أكلك يُكتشف.',
-                    
-                    // FAQ Section
-                    faq_title: 'أسئلة شائعة',
-                    faq1_question: 'هل أحتاج أغير طريقة عمل مطعمي؟',
-                    faq1_answer: 'لا. تخلي نظام شغلك زي ما هو. جوسنِل بس تجيب الاكتشاف.',
-                    faq2_question: 'هل جوسنِل تبدل تطبيقات التوصيل؟',
-                    faq2_answer: 'لا. جوسنِل تكملها بإنها تجيب زبائن جدد.',
-                    faq3_question: 'مين يملك الزبون؟',
-                    faq3_answer: 'إنت. إحنا ما نخبي بيانات الزبائن.',
-                    faq4_question: 'في أي تكلفة مسبقة؟',
-                    faq4_answer: 'لا. تقدر تبدأ مجاناً.',
-                    
-                    // Final CTA
-                    final_cta_title: 'خلي زبائن جدد يكتشفون أكلك',
-                    final_cta_desc: 'بلا رسوم إعداد.<br>بلا عمولات توصيل.<br>بس ناس أكثر تجرب وجباتك.',
-                    final_cta: 'أضف وجباتك وابدأ مجاناً'
-                }
-            };
-
-            // Get all element references
-            function getElement(id) {
-                return document.getElementById(id);
+        // Basic multilingual setup
+        const translations = {
+            en: {
+                // Headlines and CTAs
+            },
+            ar: {
+                // Arabic versions
             }
-
-            const langEnBtn = getElement('vendor-lang-en');
-            const langArBtn = getElement('vendor-lang-ar');
-            const langEnBtnMobile = getElement('vendor-lang-en-mobile');
-            const langArBtnMobile = getElement('vendor-lang-ar-mobile');
-            const heroLangEn = getElement('hero-lang-en');
-            const heroLangAr = getElement('hero-lang-ar');
-            
-            let language = localStorage.getItem('gosnel_vendor_lang') || 'en';
-
-            function applyTexts(){
-                const current = t[language];
-                if(!current) return;
-                
-                // Apply all translations
-                Object.keys(current).forEach(function(key) {
-                    const el = getElement(key);
-                    if(el) {
-                        if(key === 'hero_title' || key === 'problem_intro' || key === 'final_cta_desc') {
-                            el.innerHTML = current[key];
-                        } else {
-                            el.textContent = current[key];
-                        }
-                    }
-                });
-
-                // Set RTL direction for Arabic
-                document.documentElement.setAttribute('dir', language==='ar' ? 'rtl' : 'ltr');
-            }
-
-            function updateButtonStyles(lang) {
-                // Update header desktop buttons
-                if(langEnBtn && langArBtn) {
-                    langEnBtn.classList.toggle('bg-teal-500', lang==='en');
-                    langEnBtn.classList.toggle('text-white', lang==='en');
-                    langEnBtn.classList.toggle('text-gray-600', lang!=='en');
-                    langArBtn.classList.toggle('bg-teal-500', lang==='ar');
-                    langArBtn.classList.toggle('text-white', lang==='ar');
-                    langArBtn.classList.toggle('text-gray-600', lang!=='ar');
-                }
-                
-                // Update header mobile buttons
-                if(langEnBtnMobile && langArBtnMobile) {
-                    langEnBtnMobile.classList.toggle('bg-teal-500', lang==='en');
-                    langEnBtnMobile.classList.toggle('text-white', lang==='en');
-                    langEnBtnMobile.classList.toggle('text-gray-600', lang!=='en');
-                    langArBtnMobile.classList.toggle('bg-teal-500', lang==='ar');
-                    langArBtnMobile.classList.toggle('text-white', lang==='ar');
-                    langArBtnMobile.classList.toggle('text-gray-600', lang!=='ar');
-                }
-                
-                // Update hero language toggle
-                if(heroLangEn && heroLangAr) {
-                    heroLangEn.classList.toggle('bg-white', lang==='en');
-                    heroLangEn.classList.toggle('text-teal-600', lang==='en');
-                    heroLangEn.classList.toggle('text-white', lang!=='en');
-                    heroLangAr.classList.toggle('bg-white', lang==='ar');
-                    heroLangAr.classList.toggle('text-teal-600', lang==='ar');
-                    heroLangAr.classList.toggle('text-white', lang!=='ar');
-                }
-            }
-
-            function setLang(lang){
-                language = lang;
-                localStorage.setItem('gosnel_vendor_lang', lang);
-                updateButtonStyles(lang);
-                applyTexts();
-            }
-
-            // Header language buttons
-            if(langEnBtn) langEnBtn.addEventListener('click', function(){ setLang('en'); });
-            if(langArBtn) langArBtn.addEventListener('click', function(){ setLang('ar'); });
-            if(langEnBtnMobile) langEnBtnMobile.addEventListener('click', function(){ setLang('en'); });
-            if(langArBtnMobile) langArBtnMobile.addEventListener('click', function(){ setLang('ar'); });
-            
-            // Hero language toggle
-            if(heroLangEn) heroLangEn.addEventListener('click', function(){ setLang('en'); });
-            if(heroLangAr) heroLangAr.addEventListener('click', function(){ setLang('ar'); });
-
-            setLang(language);
-        })();
-
-        // Meta Pixel Events
-        // Track ViewContent for vendor landing page
-        if (typeof fbq !== 'undefined') {
-            fbq('track', 'ViewContent', {
-                content_category: 'vendor_landing'
-            });
-        }
-
-        // Track CTA button clicks
-        document.addEventListener('DOMContentLoaded', function() {
-            // Track "Start free" button clicks
-            const signupButtons = document.querySelectorAll('a[href*="vendor/signup"]');
-            signupButtons.forEach(function(button) {
-                button.addEventListener('click', function() {
-                    if (typeof fbq !== 'undefined') {
-                        fbq('track', 'Lead', {
-                            content_category: 'vendor_signup_intent'
-                        });
-                    }
-                });
-            });
-
-            // Track "Pricing" button clicks
-            const pricingButtons = document.querySelectorAll('a[href*="pricing"]');
-            pricingButtons.forEach(function(button) {
-                button.addEventListener('click', function() {
-                    if (typeof fbq !== 'undefined') {
-                        fbq('track', 'ViewContent', {
-                            content_category: 'pricing_page_intent'
-                        });
-                    }
-                });
-            });
-        });
+        };
     </script>
 </body>
 </html>
