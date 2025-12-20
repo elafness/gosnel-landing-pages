@@ -1,263 +1,0 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GoSnel للمطاعم - جلب عملاء جدد بدون عمولات عالية</title>
-    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
-    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
-    <meta name="description" content="توقف عن خسارة 30% في العمولات. جلب عملاء جدد مباشرة مقابل 99 درهم فقط شهريًا. بدون عمولات توصيل. الطلبات تأتي مباشرة إلى واتساب الخاص بك.">
-    <link rel="stylesheet" href="/output.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        * { font-family: 'Cairo', system-ui, sans-serif; }
-        
-        .gradient-teal { background: linear-gradient(135deg, #4ECDC4, #1A9A93); }
-        .text-gradient-teal {
-            background: linear-gradient(90deg, #4ECDC4, #1A9A93);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .btn-primary {
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 24px rgba(78, 205, 196, 0.3);
-        }
-        .btn-primary:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 32px rgba(78, 205, 196, 0.5);
-        }
-    </style>
-</head>
-<body class="bg-white text-black min-h-screen">
-    <!-- Header -->
-    <!--#include file="components/vendor-header.html" -->
-
-    <!-- HERO SECTION: Financial Pain Hook -->
-    <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-20">
-        <!-- Background -->
-        <div class="absolute inset-0 -z-10">
-            <img src="/assets/images/signupImageWeb.webp" alt="مالك مطعم يبني الأعمال" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/50 to-black/40"></div>
-        </div>
-
-        <!-- Content -->
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-            <div class="max-w-3xl text-white z-10">
-                <!-- Main Headline: Financial Pain -->
-                <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-6">
-                    <span class="text-red-400">توقف عن خسارة 30%</span> في عمولات التوصيل
-                </h1>
-
-                <!-- Subheadline: What GoSnel Is -->
-                <h2 class="text-2xl md:text-3xl font-semibold text-gray-100 mb-8 leading-relaxed">
-                    GoSnel هو محرك اكتشاف طعام بالذكاء الاصطناعي. ليس تطبيق توصيل. عملاؤك يطلبون مباشرة منك.
-                </h2>
-
-                <!-- Single CTA Button -->
-                <div class="mb-12">
-                    <a href="https://gosnel.com/vendor/signup" class="btn-primary inline-block bg-teal-500 hover:bg-teal-600 text-white px-10 py-4 rounded-xl font-bold text-xl w-full sm:w-auto text-center">
-                        ابدأ مجانًا • بدون رسوم إعداد
-                    </a>
-                </div>
-
-                <!-- Three Aggressive Bullets -->
-                <div class="space-y-4 text-lg">
-                    <div class="flex items-start gap-4">
-                        <span class="text-2xl font-bold text-teal-400 flex-shrink-0">✓</span>
-                        <p><strong>بدون عمولات.</strong> يطلب العملاء مباشرة عبر واتساب أو الاستلام. تحتفظ بـ 100%.</p>
-                    </div>
-                    <div class="flex items-start gap-4">
-                        <span class="text-2xl font-bold text-teal-400 flex-shrink-0">✓</span>
-                        <p><strong>99 درهم فقط شهريًا.</strong> تكلفة ثابتة ومتوقعة. بدون رسوم مفاجئة.</p>
-                    </div>
-                    <div class="flex items-start gap-4">
-                        <span class="text-2xl font-bold text-teal-400 flex-shrink-0">✓</span>
-                        <p><strong>عملاء جدد.</strong> الذكاء الاصطناعي يجد الأشخاص الذين يريدون بالضبط ما تطبخه—ليس الذين يبحثون عن العلامات التجارية الكبيرة.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- OWNERSHIP & CONTROL Section -->
-    <section class="py-16 bg-gray-50 border-y border-gray-200">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-4xl font-bold mb-4">أنت تملك العميل</h2>
-                <p class="text-xl text-gray-600">
-                    الطلبات تأتي مباشرة إليك. أنت تتحكم في العلاقة.
-                </p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Customer owns relationship -->
-                <div class="bg-white p-8 rounded-xl border border-gray-200">
-                    <div class="text-4xl mb-4">👤</div>
-                    <h3 class="font-bold text-lg mb-2">تحصل على معلوماتهم</h3>
-                    <p class="text-gray-600">ترى اسمهم ورقمهم وعنوانهم. لا وسيط بينك وبينهم.</p>
-                </div>
-
-                <!-- Direct ordering -->
-                <div class="bg-white p-8 rounded-xl border border-gray-200">
-                    <div class="text-4xl mb-4">💬</div>
-                    <h3 class="font-bold text-lg mb-2">الطلبات عبر واتساب</h3>
-                    <p class="text-gray-600">يطلب العملاء على رقمك. تؤكد. علاقة مباشرة تبني نفسها.</p>
-                </div>
-
-                <!-- Full payment control -->
-                <div class="bg-white p-8 rounded-xl border border-gray-200">
-                    <div class="text-4xl mb-4">💳</div>
-                    <h3 class="font-bold text-lg mb-2">100% من الدفع</h3>
-                    <p class="text-gray-600">لا رسوم تطبيق. لا قطع توصيل. المال يذهب مباشرة إليك.</p>
-                </div>
-            </div>
-
-            <!-- Key differentiator -->
-            <div class="mt-12 bg-teal-50 border-r-4 border-teal-500 p-8 rounded">
-                <p class="text-lg font-semibold text-gray-900">
-                    بخلاف Talabat أو Uber: يملكون العميل. لا يمكنك التواصل معهم مرة أخرى. <br>
-                    <span class="text-teal-600">مع GoSnel: أنت تملك العميل. بناء أعمال متكررة.</span>
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- HOW IT WORKS: Ultra Short 3 Steps -->
-    <section class="py-16">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-4xl font-bold text-center mb-12">كيف يعمل (3 خطوات بسيطة)</h2>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Step 1 -->
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-teal-500 text-white rounded-full flex items-center justify-center text-3xl font-bold mx-auto mb-6">
-                        1
-                    </div>
-                    <h3 class="font-bold text-xl mb-3">العميل يكتشف وجباتك</h3>
-                    <p class="text-gray-600">الذكاء الاصطناعي يجد الأشخاص الذين يريدون بالضبط ما تطبخه. ليس البحث عن علامات تجارية—اكتشاف النكهات.</p>
-                </div>
-
-                <!-- Step 2 -->
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-teal-500 text-white rounded-full flex items-center justify-center text-3xl font-bold mx-auto mb-6">
-                        2
-                    </div>
-                    <h3 class="font-bold text-xl mb-3">يطلبون مباشرة</h3>
-                    <p class="text-gray-600">انقر. اطلب عبر واتساب أو الاستلام. لا وسيط. بدون عمولات.</p>
-                </div>
-
-                <!-- Step 3 -->
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-teal-500 text-white rounded-full flex items-center justify-center text-3xl font-bold mx-auto mb-6">
-                        3
-                    </div>
-                    <h3 class="font-bold text-xl mb-3">أنت تقدم. تحتفظ بـ 100%.</h3>
-                    <p class="text-gray-600">دفع كامل. عميل جديد. احتمالية أعمال متكررة.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- THE MATH: ROI Section -->
-    <section class="py-16 bg-gradient-teal text-white">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-4xl font-bold text-center mb-12">الرياضيات التي تهم</h2>
-
-            <div class="grid md:grid-cols-2 gap-12 mb-12">
-                <!-- Delivery App Cost -->
-                <div class="bg-white/20 backdrop-blur-sm p-8 rounded-xl">
-                    <h3 class="text-2xl font-bold mb-6">واقع تطبيق التوصيل</h3>
-                    <ul class="space-y-3">
-                        <li class="flex items-start gap-3">
-                            <span class="font-bold">•</span>
-                            <span>العمولة: 20-30%</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <span class="font-bold">•</span>
-                            <span>رسم التوصيل: 5-15%</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <span class="font-bold">•</span>
-                            <span>رسوم المنصة: 2-5%</span>
-                        </li>
-                        <li class="text-xl font-bold pt-4 border-t border-white/50">
-                            الخسارة الكلية: 30-50% لكل طلب
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- GoSnel Cost -->
-                <div class="bg-white/10 p-8 rounded-xl border-2 border-white">
-                    <h3 class="text-2xl font-bold mb-6">تكلفة GoSnel</h3>
-                    <ul class="space-y-3">
-                        <li class="flex items-start gap-3">
-                            <span class="font-bold">•</span>
-                            <span>الرسم الشهري: 99 درهم</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <span class="font-bold">•</span>
-                            <span>تكلفة لكل طلب: 0%</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <span class="font-bold">•</span>
-                            <span>العمولة: 0%</span>
-                        </li>
-                        <li class="text-xl font-bold pt-4 border-t border-white/50">
-                            ملاحظة التعادل: فقط 3-4 طلبات
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Example -->
-            <div class="bg-white/20 backdrop-blur-sm p-8 rounded-xl text-center">
-                <p class="text-lg mb-4">
-                    <strong>مثال: طلب بقيمة 100 درهم</strong>
-                </p>
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div>
-                        <p class="text-gray-100 mb-2">مع تطبيق التوصيل:</p>
-                        <p class="text-3xl font-bold">تحصل على: 50-70 درهم</p>
-                    </div>
-                    <div>
-                        <p class="text-gray-100 mb-2">مع GoSnel:</p>
-                        <p class="text-3xl font-bold text-yellow-300">تحصل على: 100 درهم</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA SECTION: Final Conversion -->
-    <section class="py-16 bg-gray-900 text-white">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-4xl font-bold mb-6">هل أنت مستعد للاحتفاظ بـ 100% من مبيعاتك؟</h2>
-            <p class="text-xl text-gray-300 mb-8">
-                ابدأ مجانًا. الإعداد في دقائق. لا حاجة لبطاقة ائتمان.
-            </p>
-            <a href="https://gosnel.com/vendor/signup" class="btn-primary inline-block bg-teal-500 hover:bg-teal-600 text-white px-12 py-5 rounded-xl font-bold text-xl">
-                ابدأ مجانًا → 99 درهم/شهر
-            </a>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <!--#include file="components/footer.html" -->
-
-    <!-- Language Toggle Script -->
-    <script>
-        // Basic multilingual setup
-        const translations = {
-            ar: {
-                // Arabic versions
-            }
-        };
-    </script>
-</body>
-</html>

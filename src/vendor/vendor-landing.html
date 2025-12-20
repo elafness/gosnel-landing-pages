@@ -12,9 +12,10 @@
     <link rel="stylesheet" href="/output.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * { font-family: 'Inter', system-ui, sans-serif; }
+        [lang="ar"] * { font-family: 'Cairo', system-ui, sans-serif; }
         
         .gradient-teal { background: linear-gradient(135deg, #4ECDC4, #1A9A93); }
         .text-gradient-teal {
@@ -32,11 +33,76 @@
             transform: translateY(-4px);
             box-shadow: 0 12px 32px rgba(78, 205, 196, 0.5);
         }
+
+        /* Language toggle */
+        .lang-toggle {
+            position: fixed;
+            top: 5rem;
+            right: 1rem;
+            z-index: 50;
+            display: flex;
+            gap: 0;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 8px;
+            padding: 4px;
+        }
+
+        .lang-btn {
+            padding: 8px 16px;
+            border: none;
+            background: transparent;
+            color: white;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            border-radius: 6px;
+        }
+
+        .lang-btn.active {
+            background: white;
+            color: #0f1419;
+        }
+
+        /* Hide non-active language content */
+        [lang="en"] { display: block; }
+        [lang="ar"] { display: none; }
+        
+        body.lang-ar [lang="en"] { display: none; }
+        body.lang-ar [lang="ar"] { display: block; }
+
+        [lang="ar"] {
+            direction: rtl;
+            text-align: right;
+        }
+
+        [lang="en"] {
+            direction: ltr;
+            text-align: left;
+        }
+
+        body.lang-ar [lang="ar"] .flex.items-start {
+            flex-direction: row-reverse;
+        }
+
+        body.lang-ar [lang="ar"] .mt-12 {
+            border-left: none;
+            border-right: 4px solid #14b8a6;
+        }
     </style>
 </head>
 <body class="bg-white text-black min-h-screen">
+    <!-- Language Toggle -->
+    <div class="lang-toggle">
+        <button class="lang-btn active" data-lang="en">English</button>
+        <button class="lang-btn" data-lang="ar">العربية</button>
+    </div>
+
     <!-- Header -->
     <!--#include file="components/vendor-header.html" -->
+
+    <!-- ENGLISH VERSION -->
+    <div lang="en">
 
     <!-- HERO SECTION: Financial Pain Hook -->
     <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-20">
@@ -245,22 +311,235 @@
                 Start Free → 99 AED/Month
             </a>
         </div>
+        </div>
     </section>
+
+    </a>
+        </div>
+    </section>
+    </div>
+
+    <!-- ARABIC VERSION -->
+    <div lang="ar">
+        <!-- HERO SECTION -->
+        <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-20">
+            <div class="absolute inset-0 -z-10">
+                <img src="/assets/images/signupImageWeb.webp" alt="مالك مطعم يبني الأعمال" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/50 to-black/40"></div>
+            </div>
+
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                <div class="max-w-3xl text-white z-10">
+                    <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-6">
+                        <span class="text-red-400">توقف عن خسارة 30%</span> في عمولات التوصيل
+                    </h1>
+
+                    <h2 class="text-2xl md:text-3xl font-semibold text-gray-100 mb-8 leading-relaxed">
+                        GoSnel هو محرك اكتشاف طعام بالذكاء الاصطناعي. ليس تطبيق توصيل. عملاؤك يطلبون مباشرة منك.
+                    </h2>
+
+                    <div class="mb-12">
+                        <a href="https://gosnel.com/vendor/signup" class="btn-primary inline-block bg-teal-500 hover:bg-teal-600 text-white px-10 py-4 rounded-xl font-bold text-xl w-full sm:w-auto text-center">
+                            ابدأ مجانًا • بدون رسوم إعداد
+                        </a>
+                    </div>
+
+                    <div class="space-y-4 text-lg">
+                        <div class="flex items-start gap-4">
+                            <span class="text-2xl font-bold text-teal-400 flex-shrink-0">✓</span>
+                            <p><strong>بدون عمولات.</strong> يطلب العملاء مباشرة عبر واتساب أو الاستلام. تحتفظ بـ 100%.</p>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <span class="text-2xl font-bold text-teal-400 flex-shrink-0">✓</span>
+                            <p><strong>99 درهم فقط شهريًا.</strong> تكلفة ثابتة ومتوقعة. بدون رسوم مفاجئة.</p>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <span class="text-2xl font-bold text-teal-400 flex-shrink-0">✓</span>
+                            <p><strong>عملاء جدد.</strong> الذكاء الاصطناعي يجد الأشخاص الذين يريدون بالضبط ما تطبخه—ليس الذين يبحثون عن العلامات التجارية الكبيرة.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- OWNERSHIP & CONTROL -->
+        <section class="py-16 bg-gray-50 border-y border-gray-200">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold mb-4">أنت تملك العميل</h2>
+                    <p class="text-xl text-gray-600">
+                        الطلبات تأتي مباشرة إليك. أنت تتحكم في العلاقة.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-white p-8 rounded-xl border border-gray-200">
+                        <div class="text-4xl mb-4">👤</div>
+                        <h3 class="font-bold text-lg mb-2">تحصل على معلوماتهم</h3>
+                        <p class="text-gray-600">ترى اسمهم ورقمهم وعنوانهم. لا وسيط بينك وبينهم.</p>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-xl border border-gray-200">
+                        <div class="text-4xl mb-4">💬</div>
+                        <h3 class="font-bold text-lg mb-2">الطلبات عبر واتساب</h3>
+                        <p class="text-gray-600">يطلب العملاء على رقمك. تؤكد. علاقة مباشرة تبني نفسها.</p>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-xl border border-gray-200">
+                        <div class="text-4xl mb-4">💳</div>
+                        <h3 class="font-bold text-lg mb-2">100% من الدفع</h3>
+                        <p class="text-gray-600">لا رسوم تطبيق. لا قطع توصيل. المال يذهب مباشرة إليك.</p>
+                    </div>
+                </div>
+
+                <div class="mt-12 bg-teal-50 border-r-4 border-teal-500 p-8 rounded">
+                    <p class="text-lg font-semibold text-gray-900">
+                        بخلاف Talabat أو Uber: يملكون العميل. لا يمكنك التواصل معهم مرة أخرى. <br>
+                        <span class="text-teal-600">مع GoSnel: أنت تملك العميل. بناء أعمال متكررة.</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- HOW IT WORKS -->
+        <section class="py-16">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-bold text-center mb-12">كيف يعمل (3 خطوات بسيطة)</h2>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-teal-500 text-white rounded-full flex items-center justify-center text-3xl font-bold mx-auto mb-6">1</div>
+                        <h3 class="font-bold text-xl mb-3">العميل يكتشف وجباتك</h3>
+                        <p class="text-gray-600">الذكاء الاصطناعي يجد الأشخاص الذين يريدون بالضبط ما تطبخه. ليس البحث عن علامات تجارية—اكتشاف النكهات.</p>
+                    </div>
+
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-teal-500 text-white rounded-full flex items-center justify-center text-3xl font-bold mx-auto mb-6">2</div>
+                        <h3 class="font-bold text-xl mb-3">يطلبون مباشرة</h3>
+                        <p class="text-gray-600">انقر. اطلب عبر واتساب أو الاستلام. لا وسيط. بدون عمولات.</p>
+                    </div>
+
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-teal-500 text-white rounded-full flex items-center justify-center text-3xl font-bold mx-auto mb-6">3</div>
+                        <h3 class="font-bold text-xl mb-3">أنت تقدم. تحتفظ بـ 100%.</h3>
+                        <p class="text-gray-600">دفع كامل. عميل جديد. احتمالية أعمال متكررة.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- THE MATH -->
+        <section class="py-16 bg-gradient-teal text-white">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-bold text-center mb-12">الرياضيات التي تهم</h2>
+
+                <div class="grid md:grid-cols-2 gap-12 mb-12">
+                    <div class="bg-white/20 backdrop-blur-sm p-8 rounded-xl">
+                        <h3 class="text-2xl font-bold mb-6">واقع تطبيق التوصيل</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3">
+                                <span class="font-bold">•</span>
+                                <span>العمولة: 20-30%</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="font-bold">•</span>
+                                <span>رسم التوصيل: 5-15%</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="font-bold">•</span>
+                                <span>رسوم المنصة: 2-5%</span>
+                            </li>
+                            <li class="text-xl font-bold pt-4 border-t border-white/50">
+                                الخسارة الكلية: 30-50% لكل طلب
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-white/10 p-8 rounded-xl border-2 border-white">
+                        <h3 class="text-2xl font-bold mb-6">تكلفة GoSnel</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3">
+                                <span class="font-bold">•</span>
+                                <span>الرسم الشهري: 99 درهم</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="font-bold">•</span>
+                                <span>تكلفة لكل طلب: 0%</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="font-bold">•</span>
+                                <span>العمولة: 0%</span>
+                            </li>
+                            <li class="text-xl font-bold pt-4 border-t border-white/50">
+                                ملاحظة التعادل: فقط 3-4 طلبات
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-white/20 backdrop-blur-sm p-8 rounded-xl text-center">
+                    <p class="text-lg mb-4"><strong>مثال: طلب بقيمة 100 درهم</strong></p>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <p class="text-gray-100 mb-2">مع تطبيق التوصيل:</p>
+                            <p class="text-3xl font-bold">تحصل على: 50-70 درهم</p>
+                        </div>
+                        <div>
+                            <p class="text-gray-100 mb-2">مع GoSnel:</p>
+                            <p class="text-3xl font-bold text-yellow-300">تحصل على: 100 درهم</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA SECTION -->
+        <section class="py-16 bg-gray-900 text-white">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-4xl font-bold mb-6">هل أنت مستعد للاحتفاظ بـ 100% من مبيعاتك؟</h2>
+                <p class="text-xl text-gray-300 mb-8">
+                    ابدأ مجانًا. الإعداد في دقائق. لا حاجة لبطاقة ائتمان.
+                </p>
+                <a href="https://gosnel.com/vendor/signup" class="btn-primary inline-block bg-teal-500 hover:bg-teal-600 text-white px-12 py-5 rounded-xl font-bold text-xl">
+                    ابدأ مجانًا → 99 درهم/شهر
+                </a>
+            </div>
+        </section>
+    </div>
 
     <!-- Footer -->
     <!--#include file="components/footer.html" -->
 
     <!-- Language Toggle Script -->
     <script>
-        // Basic multilingual setup
-        const translations = {
-            en: {
-                // Headlines and CTAs
-            },
-            ar: {
-                // Arabic versions
-            }
-        };
+        const langButtons = document.querySelectorAll('.lang-btn');
+        const body = document.body;
+
+        // Check for saved language preference
+        const savedLang = localStorage.getItem('vendor-lang') || 'en';
+        if (savedLang === 'ar') {
+            body.classList.add('lang-ar');
+            langButtons.forEach(btn => btn.classList.remove('active'));
+            document.querySelector('[data-lang="ar"]').classList.add('active');
+        }
+
+        // Language toggle
+        langButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const lang = btn.dataset.lang;
+                localStorage.setItem('vendor-lang', lang);
+                
+                langButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                if (lang === 'ar') {
+                    body.classList.add('lang-ar');
+                } else {
+                    body.classList.remove('lang-ar');
+                }
+            });
+        });
     </script>
-</body>
+
+    </body>
 </html>
