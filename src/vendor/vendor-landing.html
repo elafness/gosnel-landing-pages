@@ -16,6 +16,25 @@
     <style>
         * { font-family: 'Inter', system-ui, sans-serif; }
         [lang="ar"] * { font-family: 'Cairo', system-ui, sans-serif; }
+
+        :root {
+            --container-max: 72rem; /* 1152px */
+        }
+
+        .container-pro {
+            max-width: var(--container-max);
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section-pad {
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+        }
+
+        @media (min-width: 768px) {
+            .section-pad { padding-top: 6rem; padding-bottom: 6rem; }
+        }
         
         .gradient-teal { background: linear-gradient(135deg, #4ECDC4, #1A9A93); }
         .text-gradient-teal {
@@ -34,34 +53,79 @@
             box-shadow: 0 12px 32px rgba(78, 205, 196, 0.5);
         }
 
-        /* Language toggle */
+        /* Consistent line-icons */
+        .icon {
+            width: 40px;
+            height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            background: rgba(20, 184, 166, 0.10);
+            color: #0f766e;
+        }
+
+        .icon svg {
+            width: 22px;
+            height: 22px;
+            stroke: currentColor;
+            stroke-width: 1.8;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* More readable ROI section (dark text on translucent light cards) */
+        .roi-section { color: #0f172a; }
+        .roi-section h2,
+        .roi-section h3 { color: #0b1220; }
+        .roi-section ul,
+        .roi-section p,
+        .roi-section span { color: #0f172a; }
+        .roi-section .muted { color: rgba(15, 23, 42, 0.75); }
+        .roi-section .divider { border-color: rgba(15, 23, 42, 0.15) !important; }
+        .roi-section .card {
+            background: rgba(255, 255, 255, 0.92);
+            border: 1px solid rgba(15, 23, 42, 0.08);
+        }
+        .roi-section .card-outline {
+            background: rgba(255, 255, 255, 0.86);
+            border: 2px solid rgba(15, 23, 42, 0.10);
+        }
+
+        /* Language toggle (top-nav pill) */
         .lang-toggle {
             position: fixed;
-            top: 5rem;
-            right: 1rem;
-            z-index: 50;
+            top: 0.85rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 60;
             display: flex;
             gap: 0;
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            border-radius: 8px;
+            border-radius: 9999px;
             padding: 4px;
+            background: rgba(15, 23, 42, 0.50);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.20);
         }
 
         .lang-btn {
-            padding: 8px 16px;
+            padding: 8px 14px;
             border: none;
             background: transparent;
             color: white;
             cursor: pointer;
             font-weight: 600;
             transition: all 0.3s;
-            border-radius: 6px;
+            border-radius: 9999px;
+            font-size: 0.95rem;
+            line-height: 1;
         }
 
         .lang-btn.active {
-            background: white;
-            color: #0f1419;
+            background: rgba(255, 255, 255, 0.92);
+            color: #0f172a;
         }
 
         /* Hide non-active language content */
@@ -105,15 +169,15 @@
     <div lang="en">
 
     <!-- HERO SECTION: Financial Pain Hook -->
-    <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-20">
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-20">
         <!-- Background -->
         <div class="absolute inset-0 -z-10">
             <img src="/assets/images/signupImageWeb.webp" alt="Restaurant owner building business" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/50 to-black/40"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-black/45 via-black/35 to-black/20"></div>
         </div>
 
         <!-- Content -->
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+    <div class="container-pro px-4 sm:px-6 lg:px-8 w-full">
             <div class="max-w-3xl text-white z-10">
                 <!-- Main Headline: Financial Pain -->
                 <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-6">
@@ -121,7 +185,7 @@
                 </h1>
 
                 <!-- Subheadline: What GoSnel Is -->
-                <h2 class="text-2xl md:text-3xl font-semibold text-gray-100 mb-8 leading-relaxed">
+                <h2 class="text-xl md:text-2xl font-semibold text-gray-100 mb-8 leading-snug">
                     GoSnel is an AI food discovery engine. Not a delivery app. Your customers order directly to you.
                 </h2>
 
@@ -140,7 +204,7 @@
                     </div>
                     <div class="flex items-start gap-4">
                         <span class="text-2xl font-bold text-teal-400 flex-shrink-0">✓</span>
-                        <p><strong>99 AED/month only.</strong> Fixed cost, predictable. No surprise fees.</p>
+                        <p><strong>Free Forever.</strong> Start on the Free plan, then upgrade to Growth when you want to scale (aim for 15× ROI).</p>
                     </div>
                     <div class="flex items-start gap-4">
                         <span class="text-2xl font-bold text-teal-400 flex-shrink-0">✓</span>
@@ -152,8 +216,8 @@
     </section>
 
     <!-- OWNERSHIP & CONTROL Section -->
-    <section class="py-16 bg-gray-50 border-y border-gray-200">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section class="section-pad bg-gray-50 border-y border-gray-200">
+        <div class="container-pro px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
                 <h2 class="text-4xl font-bold mb-4">You own the customer</h2>
                 <p class="text-xl text-gray-600">
@@ -164,21 +228,42 @@
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- Customer owns relationship -->
                 <div class="bg-white p-8 rounded-xl border border-gray-200">
-                    <div class="text-4xl mb-4">👤</div>
+                    <div class="mb-4">
+                        <span class="icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M20 21a8 8 0 0 0-16 0" />
+                                <circle cx="12" cy="7" r="4" />
+                            </svg>
+                        </span>
+                    </div>
                     <h3 class="font-bold text-lg mb-2">You Get Their Info</h3>
                     <p class="text-gray-600">You see their name, phone, address. No middleman between you.</p>
                 </div>
 
                 <!-- Direct ordering -->
                 <div class="bg-white p-8 rounded-xl border border-gray-200">
-                    <div class="text-4xl mb-4">💬</div>
+                    <div class="mb-4">
+                        <span class="icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M21 12a8 8 0 0 1-8 8H7l-4 3V12a8 8 0 0 1 8-8h2a8 8 0 0 1 8 8Z" />
+                            </svg>
+                        </span>
+                    </div>
                     <h3 class="font-bold text-lg mb-2">Orders Via WhatsApp</h3>
                     <p class="text-gray-600">Customers order to your number. You confirm. Direct relationship built.</p>
                 </div>
 
                 <!-- Full payment control -->
                 <div class="bg-white p-8 rounded-xl border border-gray-200">
-                    <div class="text-4xl mb-4">💳</div>
+                    <div class="mb-4">
+                        <span class="icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24">
+                                <rect x="3" y="6" width="18" height="12" rx="2" />
+                                <path d="M3 10h18" />
+                                <path d="M7 15h4" />
+                            </svg>
+                        </span>
+                    </div>
                     <h3 class="font-bold text-lg mb-2">100% of Payment</h3>
                     <p class="text-gray-600">No app fees. No delivery cuts. Money goes straight to you.</p>
                 </div>
@@ -187,7 +272,7 @@
             <!-- Key differentiator -->
             <div class="mt-12 bg-teal-50 border-l-4 border-teal-500 p-8 rounded">
                 <p class="text-lg font-semibold text-gray-900">
-                    Unlike Talabat or Uber: They own the customer. You can't contact them again. <br>
+                    Unlike delivery apps: They own the customer. You can't contact them again. <br>
                     <span class="text-teal-600">With GoSnel: You own the customer. Build repeat business.</span>
                 </p>
             </div>
@@ -195,8 +280,8 @@
     </section>
 
     <!-- HOW IT WORKS: Ultra Short 3 Steps -->
-    <section class="py-16">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section class="section-pad">
+        <div class="container-pro px-4 sm:px-6 lg:px-8">
             <h2 class="text-4xl font-bold text-center mb-12">How it works (3 simple steps)</h2>
 
             <div class="grid md:grid-cols-3 gap-8">
@@ -231,18 +316,18 @@
     </section>
 
     <!-- THE MATH: ROI Section -->
-    <section class="py-16 bg-gradient-teal text-white">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-4xl font-bold text-center mb-12">The math that matters</h2>
+    <section class="roi-section section-pad bg-gradient-teal">
+        <div class="container-pro px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center mb-12">How We Compare to Delivery Apps</h2>
 
             <div class="grid md:grid-cols-2 gap-12 mb-12">
                 <!-- Delivery App Cost -->
-                <div class="bg-white/20 backdrop-blur-sm p-8 rounded-xl">
+        <div class="card p-8 rounded-xl">
                     <h3 class="text-2xl font-bold mb-6">Delivery App Reality</h3>
                     <ul class="space-y-3">
                         <li class="flex items-start gap-3">
                             <span class="font-bold">•</span>
-                            <span>Commission: 20-30%</span>
+                            <span>Commission: 25-35%</span>
                         </li>
                         <li class="flex items-start gap-3">
                             <span class="font-bold">•</span>
@@ -252,19 +337,19 @@
                             <span class="font-bold">•</span>
                             <span>Platform fees: 2-5%</span>
                         </li>
-                        <li class="text-xl font-bold pt-4 border-t border-white/50">
+            <li class="text-xl font-bold pt-4 border-t divider">
                             Total loss: 30-50% per order
                         </li>
                     </ul>
                 </div>
 
                 <!-- GoSnel Cost -->
-                <div class="bg-white/10 p-8 rounded-xl border-2 border-white">
+        <div class="card-outline p-8 rounded-xl">
                     <h3 class="text-2xl font-bold mb-6">GoSnel Cost</h3>
                     <ul class="space-y-3">
                         <li class="flex items-start gap-3">
                             <span class="font-bold">•</span>
-                            <span>Monthly fee: 99 AED</span>
+                            <span>Monthly fee: Start Free or 99 AED (aim for 15× ROI).</span>
                         </li>
                         <li class="flex items-start gap-3">
                             <span class="font-bold">•</span>
@@ -274,7 +359,7 @@
                             <span class="font-bold">•</span>
                             <span>Commission: 0%</span>
                         </li>
-                        <li class="text-xl font-bold pt-4 border-t border-white/50">
+            <li class="text-xl font-bold pt-4 border-t divider">
                             Break even: Just 3-4 orders
                         </li>
                     </ul>
@@ -282,18 +367,18 @@
             </div>
 
             <!-- Example -->
-            <div class="bg-white/20 backdrop-blur-sm p-8 rounded-xl text-center">
+        <div class="card p-8 rounded-xl text-center">
                 <p class="text-lg mb-4">
                     <strong>Example: 100 AED order</strong>
                 </p>
                 <div class="grid md:grid-cols-2 gap-8">
                     <div>
-                        <p class="text-gray-100 mb-2">With delivery app:</p>
+            <p class="muted mb-2">With delivery app:</p>
                         <p class="text-3xl font-bold">You get: 50-70 AED</p>
                     </div>
                     <div>
-                        <p class="text-gray-100 mb-2">With GoSnel:</p>
-                        <p class="text-3xl font-bold text-yellow-300">You get: 100 AED</p>
+            <p class="muted mb-2">With GoSnel:</p>
+            <p class="text-3xl font-bold text-teal-700">You get: 100 AED</p>
                     </div>
                 </div>
             </div>
@@ -301,20 +386,15 @@
     </section>
 
     <!-- CTA SECTION: Final Conversion -->
-    <section class="py-16 bg-gray-900 text-white">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <section class="section-pad bg-gray-900 text-white">
+        <div class="container-pro px-4 sm:px-6 lg:px-8 text-center">
             <h2 class="text-4xl font-bold mb-6">Ready to keep 100% of your sales?</h2>
             <p class="text-xl text-gray-300 mb-8">
                 Start free. Set up in minutes. No credit card required.
             </p>
             <a href="https://gosnel.com/vendor/signup" class="btn-primary inline-block bg-teal-500 hover:bg-teal-600 text-white px-12 py-5 rounded-xl font-bold text-xl">
-                Start Free → 99 AED/Month
+                Start Free
             </a>
-        </div>
-        </div>
-    </section>
-
-    </a>
         </div>
     </section>
     </div>
@@ -322,19 +402,19 @@
     <!-- ARABIC VERSION -->
     <div lang="ar">
         <!-- HERO SECTION -->
-        <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-20">
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-20">
             <div class="absolute inset-0 -z-10">
                 <img src="/assets/images/signupImageWeb.webp" alt="مالك مطعم يبني الأعمال" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/50 to-black/40"></div>
+                <div class="absolute inset-0 bg-gradient-to-r from-black/45 via-black/35 to-black/20"></div>
             </div>
 
-            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="container-pro px-4 sm:px-6 lg:px-8 w-full">
                 <div class="max-w-3xl text-white z-10">
                     <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-6">
                         <span class="text-red-400">توقف عن خسارة 30%</span> في عمولات التوصيل
                     </h1>
 
-                    <h2 class="text-2xl md:text-3xl font-semibold text-gray-100 mb-8 leading-relaxed">
+                    <h2 class="text-xl md:text-2xl font-semibold text-gray-100 mb-8 leading-snug">
                         GoSnel هو محرك اكتشاف طعام بالذكاء الاصطناعي. ليس تطبيق توصيل. عملاؤك يطلبون مباشرة منك.
                     </h2>
 
@@ -351,7 +431,7 @@
                         </div>
                         <div class="flex items-start gap-4">
                             <span class="text-2xl font-bold text-teal-400 flex-shrink-0">✓</span>
-                            <p><strong>99 درهم فقط شهريًا.</strong> تكلفة ثابتة ومتوقعة. بدون رسوم مفاجئة.</p>
+                            <p><strong>مجاني للأبد.</strong> ابدأ بالخطة المجانية، ثم الترقية إلى خطة النمو عندما تريد التوسع (استهدف 15× عائد على الاستثمار).</p>
                         </div>
                         <div class="flex items-start gap-4">
                             <span class="text-2xl font-bold text-teal-400 flex-shrink-0">✓</span>
@@ -363,8 +443,8 @@
         </section>
 
         <!-- OWNERSHIP & CONTROL -->
-        <section class="py-16 bg-gray-50 border-y border-gray-200">
-            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section class="section-pad bg-gray-50 border-y border-gray-200">
+            <div class="container-pro px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12">
                     <h2 class="text-4xl font-bold mb-4">أنت تملك العميل</h2>
                     <p class="text-xl text-gray-600">
@@ -374,19 +454,40 @@
 
                 <div class="grid md:grid-cols-3 gap-8">
                     <div class="bg-white p-8 rounded-xl border border-gray-200">
-                        <div class="text-4xl mb-4">👤</div>
+                        <div class="mb-4">
+                            <span class="icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M20 21a8 8 0 0 0-16 0" />
+                                    <circle cx="12" cy="7" r="4" />
+                                </svg>
+                            </span>
+                        </div>
                         <h3 class="font-bold text-lg mb-2">تحصل على معلوماتهم</h3>
                         <p class="text-gray-600">ترى اسمهم ورقمهم وعنوانهم. لا وسيط بينك وبينهم.</p>
                     </div>
 
                     <div class="bg-white p-8 rounded-xl border border-gray-200">
-                        <div class="text-4xl mb-4">💬</div>
+                        <div class="mb-4">
+                            <span class="icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M21 12a8 8 0 0 1-8 8H7l-4 3V12a8 8 0 0 1 8-8h2a8 8 0 0 1 8 8Z" />
+                                </svg>
+                            </span>
+                        </div>
                         <h3 class="font-bold text-lg mb-2">الطلبات عبر واتساب</h3>
                         <p class="text-gray-600">يطلب العملاء على رقمك. تؤكد. علاقة مباشرة تبني نفسها.</p>
                     </div>
 
                     <div class="bg-white p-8 rounded-xl border border-gray-200">
-                        <div class="text-4xl mb-4">💳</div>
+                        <div class="mb-4">
+                            <span class="icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24">
+                                    <rect x="3" y="6" width="18" height="12" rx="2" />
+                                    <path d="M3 10h18" />
+                                    <path d="M7 15h4" />
+                                </svg>
+                            </span>
+                        </div>
                         <h3 class="font-bold text-lg mb-2">100% من الدفع</h3>
                         <p class="text-gray-600">لا رسوم تطبيق. لا قطع توصيل. المال يذهب مباشرة إليك.</p>
                     </div>
@@ -394,7 +495,7 @@
 
                 <div class="mt-12 bg-teal-50 border-r-4 border-teal-500 p-8 rounded">
                     <p class="text-lg font-semibold text-gray-900">
-                        بخلاف Talabat أو Uber: يملكون العميل. لا يمكنك التواصل معهم مرة أخرى. <br>
+                        بخلاف تطبيقات التوصيل: يملكون العميل. لا يمكنك التواصل معهم مرة أخرى. <br>
                         <span class="text-teal-600">مع GoSnel: أنت تملك العميل. بناء أعمال متكررة.</span>
                     </p>
                 </div>
@@ -402,8 +503,8 @@
         </section>
 
         <!-- HOW IT WORKS -->
-        <section class="py-16">
-            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section class="section-pad">
+            <div class="container-pro px-4 sm:px-6 lg:px-8">
                 <h2 class="text-4xl font-bold text-center mb-12">كيف يعمل (3 خطوات بسيطة)</h2>
 
                 <div class="grid md:grid-cols-3 gap-8">
@@ -429,12 +530,12 @@
         </section>
 
         <!-- THE MATH -->
-        <section class="py-16 bg-gradient-teal text-white">
-            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-4xl font-bold text-center mb-12">الرياضيات التي تهم</h2>
+        <section class="roi-section section-pad bg-gradient-teal">
+            <div class="container-pro px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-bold text-center mb-12">مقارنتنا مع تطبيقات التوصيل</h2>
 
                 <div class="grid md:grid-cols-2 gap-12 mb-12">
-                    <div class="bg-white/20 backdrop-blur-sm p-8 rounded-xl">
+                    <div class="card p-8 rounded-xl">
                         <h3 class="text-2xl font-bold mb-6">واقع تطبيق التوصيل</h3>
                         <ul class="space-y-3">
                             <li class="flex items-start gap-3">
@@ -449,13 +550,13 @@
                                 <span class="font-bold">•</span>
                                 <span>رسوم المنصة: 2-5%</span>
                             </li>
-                            <li class="text-xl font-bold pt-4 border-t border-white/50">
+                <li class="text-xl font-bold pt-4 border-t divider">
                                 الخسارة الكلية: 30-50% لكل طلب
                             </li>
                         </ul>
                     </div>
 
-                    <div class="bg-white/10 p-8 rounded-xl border-2 border-white">
+            <div class="card-outline p-8 rounded-xl">
                         <h3 class="text-2xl font-bold mb-6">تكلفة GoSnel</h3>
                         <ul class="space-y-3">
                             <li class="flex items-start gap-3">
@@ -470,23 +571,23 @@
                                 <span class="font-bold">•</span>
                                 <span>العمولة: 0%</span>
                             </li>
-                            <li class="text-xl font-bold pt-4 border-t border-white/50">
+                            <li class="text-xl font-bold pt-4 border-t divider">
                                 ملاحظة التعادل: فقط 3-4 طلبات
                             </li>
                         </ul>
                     </div>
                 </div>
 
-                <div class="bg-white/20 backdrop-blur-sm p-8 rounded-xl text-center">
+                <div class="card p-8 rounded-xl text-center">
                     <p class="text-lg mb-4"><strong>مثال: طلب بقيمة 100 درهم</strong></p>
                     <div class="grid md:grid-cols-2 gap-8">
                         <div>
-                            <p class="text-gray-100 mb-2">مع تطبيق التوصيل:</p>
+                            <p class="muted mb-2">مع تطبيق التوصيل:</p>
                             <p class="text-3xl font-bold">تحصل على: 50-70 درهم</p>
                         </div>
                         <div>
-                            <p class="text-gray-100 mb-2">مع GoSnel:</p>
-                            <p class="text-3xl font-bold text-yellow-300">تحصل على: 100 درهم</p>
+                            <p class="muted mb-2">مع GoSnel:</p>
+                            <p class="text-3xl font-bold text-teal-700">تحصل على: 100 درهم</p>
                         </div>
                     </div>
                 </div>
@@ -494,14 +595,14 @@
         </section>
 
         <!-- CTA SECTION -->
-        <section class="py-16 bg-gray-900 text-white">
-            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <section class="section-pad bg-gray-900 text-white">
+            <div class="container-pro px-4 sm:px-6 lg:px-8 text-center">
                 <h2 class="text-4xl font-bold mb-6">هل أنت مستعد للاحتفاظ بـ 100% من مبيعاتك؟</h2>
                 <p class="text-xl text-gray-300 mb-8">
                     ابدأ مجانًا. الإعداد في دقائق. لا حاجة لبطاقة ائتمان.
                 </p>
                 <a href="https://gosnel.com/vendor/signup" class="btn-primary inline-block bg-teal-500 hover:bg-teal-600 text-white px-12 py-5 rounded-xl font-bold text-xl">
-                    ابدأ مجانًا → 99 درهم/شهر
+                    ابدأ مجانًا
                 </a>
             </div>
         </section>
