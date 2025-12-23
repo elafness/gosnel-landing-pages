@@ -816,7 +816,9 @@
                 icon.classList.add('rotate');
                 console.log('Opened FAQ item', index);
             }
-        }
+    }
+    // Expose toggleFAQ globally for inline onclick handlers
+    window.toggleFAQ = toggleFAQ;
 
             // Meta Pixel Events for Pricing Page
             if (typeof fbq !== 'undefined') {
