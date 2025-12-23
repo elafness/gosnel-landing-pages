@@ -197,12 +197,12 @@
         .faq-content {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease;
+            transition: max-height 0.4s ease-in-out;
             background: white;
         }
         
         .faq-content.open {
-            max-height: 200px;
+            max-height: 500px;
         }
         
         .faq-answer {
@@ -773,11 +773,21 @@
             }
         
         function toggleFAQ(index) {
+            console.log('toggleFAQ called with index:', index);
             const faqItems = document.querySelectorAll('.faq-item');
+            console.log('Found', faqItems.length, 'FAQ items');
+            
+            if (index >= faqItems.length) {
+                console.error('Invalid FAQ index:', index);
+                return;
+            }
+            
             const currentItem = faqItems[index];
             const header = currentItem.querySelector('.faq-header');
             const content = currentItem.querySelector('.faq-content');
             const icon = currentItem.querySelector('.faq-icon');
+            
+            console.log('Toggling FAQ item', index, '- current open state:', content.classList.contains('open'));
             
             // Close all other FAQ items
             faqItems.forEach((item, i) => {
@@ -799,10 +809,12 @@
                 content.classList.remove('open');
                 header.classList.remove('active');
                 icon.classList.remove('rotate');
+                console.log('Closed FAQ item', index);
             } else {
                 content.classList.add('open');
                 header.classList.add('active');
                 icon.classList.add('rotate');
+                console.log('Opened FAQ item', index);
             }
         }
 
