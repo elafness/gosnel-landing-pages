@@ -264,7 +264,8 @@
             </p>
             
             <!-- Billing Toggle -->
-            <div class="flex items-center justify-center space-x-4 mb-8">
+            <!-- COMMENTED OUT: Annual pricing coming soon -->
+            <!-- <div class="flex items-center justify-center space-x-4 mb-8">
                 <span class="text-gray-600 font-medium">Monthly</span>
                 <div class="relative">
                     <input type="checkbox" id="billingToggle" class="sr-only" checked onchange="toggleBilling()">
@@ -276,10 +277,10 @@
                     </label>
                 </div>
                 <span class="text-gray-600 font-medium">
-                    Monthly 
+                    Annual 
                     <span class="text-green-600 font-bold ml-1">(50% off)</span>
                 </span>
-            </div>
+            </div> -->
         </div>
     </section>
     
@@ -345,11 +346,11 @@
                     
                     <div class="mb-8">
                         <div class="flex items-baseline mb-2">
-                            <span class="text-3xl text-gray-400 line-through mr-3 growth-original-price">159</span>
-                            <span class="price text-gray-900 growth-price">79</span>
+                            <span class="text-3xl text-gray-400 line-through mr-3 growth-original-price">199</span>
+                            <span class="price text-gray-900 growth-price">99</span>
                             <span class="text-gray-900 ml-2 growth-period">AED/month</span>
                         </div>
-                        <p class="text-gray-600 growth-offer-text">Billed annually (948 AED/year) - 50% off</p>
+                        <p class="text-gray-600 growth-offer-text">50% off launch offer</p>
                     </div>
                     
                     <a href="https://gosnel.com/vendor/signup" class="btn-primary w-full mb-8">Start Growing</a>
@@ -485,7 +486,7 @@
                         <tr>
                             <th class="w-1/4">Features</th>
                             <th class="w-1/4 tier-starter text-center">Starter<br><span class="text-sm font-normal"><span class="text-gray-900 font-bold">Free</span></span></th>
-                            <th class="w-1/4 tier-growth text-center">Growth<br><span class="text-sm font-normal comparison-growth-price"><span class="line-through text-gray-400 text-lg">159</span> <span class="text-gray-900 font-bold">79 AED</span>/month</span></th>
+                            <th class="w-1/4 tier-growth text-center">Growth<br><span class="text-sm font-normal comparison-growth-price"><span class="line-through text-gray-400 text-lg">199</span> <span class="text-gray-900 font-bold">99 AED</span>/month</span></th>
                             <th class="w-1/4 tier-enterprise text-center">Enterprise<br><span class="text-sm font-normal">Custom</span></th>
                         </tr>
                     </thead>
@@ -635,14 +636,14 @@
                 
                 <div class="faq-item">
                     <div class="faq-header" onclick="toggleFAQ(1)">
-                        <h3 class="text-lg font-semibold text-gray-900">What's the difference between monthly and annual billing?</h3>
+                        <h3 class="text-lg font-semibold text-gray-900">What's the pricing for the Growth plan?</h3>
                         <svg class="w-5 h-5 faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </div>
                     <div class="faq-content">
                         <div class="faq-answer">
-                            <p class="text-gray-600">The Starter plan is completely free forever with all basic features. The Growth plan pricing varies: monthly billing at 99 AED/month (50% off) or annual billing at 79 AED/month (50% off the annual rate). Annual billing offers the same great discount with the convenience of paying once per year.</p>
+                            <p class="text-gray-600">The Growth plan is 99 AED/month with 50% off our launch offer (regular price: 199 AED/month). Annual billing options will be available soon.</p>
                         </div>
                     </div>
                 </div>
@@ -656,7 +657,7 @@
                     </div>
                     <div class="faq-content">
                         <div class="faq-answer">
-                            <p class="text-gray-600">Growth plan includes access to delivery partners, marketing growth tools, improvement recommendations, meal boosts, delivery platform integration, advanced analytics, finance tracking, WhatsApp support, and restaurant logo display on GoSnel platform. Early partners get priority access to delivery & marketing services when they launch. Choose monthly (99 AED/month) or annual billing (79 AED/month) to save 20%.</p>
+                            <p class="text-gray-600">Growth plan includes access to delivery partners, marketing growth tools, improvement recommendations, meal boosts, delivery platform integration, advanced analytics, finance tracking, WhatsApp support, restaurant logo display, and 7-Day Delivery Pass. Just 99 AED/month with 50% launch discount.</p>
                         </div>
                     </div>
                 </div>
@@ -755,25 +756,7 @@
                 
                 console.log('✅ All pricing elements found, updating...');
 
-                if (isAnnual) {
-                // Annual pricing
-                
-                // Starter Plan - Always Free (no changes needed)
-                
-                // Growth Plan - Annual (79 AED/month when billed annually - 50% off annual rate)
-                growthOriginalPrice.textContent = '159';
-                growthPrice.textContent = '79';
-                growthPeriod.textContent = 'AED/month';
-                growthOfferText.textContent = 'Billed annually (948 AED/year) - 50% off';
-                
-                // Update comparison table
-                if (comparisonGrowthPrice) {
-                    comparisonGrowthPrice.innerHTML = '<span class="line-through text-gray-400 text-lg">159</span> <span class="text-gray-900 font-bold">79 AED</span>/month';
-                }
-                
-            } else {
-                // Monthly pricing
-                
+                // Monthly pricing only (Annual pricing coming soon)
                 // Starter Plan - Always Free (no changes needed)
                 
                 // Growth Plan - Monthly (99 AED/month with 50% off from 199)
@@ -787,7 +770,6 @@
                     comparisonGrowthPrice.innerHTML = '<span class="line-through text-gray-400 text-lg">199</span> <span class="text-gray-900 font-bold">99 AED</span>/month';
                 }
             }
-        }
         
         function toggleFAQ(index) {
             const faqItems = document.querySelectorAll('.faq-item');
