@@ -10,7 +10,7 @@
     <!-- Open Graph Meta Tags -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="GoSnel - Meal Discovery | AI Food Ordering Chat">
-    <meta property="og:description" content="Discover your next meal with GoSnel's AI chat. Personalized food recommendations based on your taste, mood, and budget. Order from local restaurants in 100+ languages.">
+    <meta property="og:description" content="Discover your next meal with GoSnel's AI chat. Personalized food recommendations based on your taste, mood, and budget.">
     <meta property="og:url" content="https://user.gosnel.com">
     <meta property="og:site_name" content="GoSnel">
     <!-- Twitter Card Meta Tags -->
@@ -36,45 +36,6 @@
         
         /* Custom Gradient Classes */
         .gradient-teal { background: linear-gradient(135deg, #4ECDC4, #1A9A93); }
-        /* Language toggle (top-nav pill) - copied from vendor page */
-        .lang-toggle {
-            position: fixed;
-            top: 0.85rem;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 60;
-            display: flex;
-            gap: 0;
-            border-radius: 9999px;
-            padding: 4px;
-            background: rgba(15, 23, 42, 0.50);
-            backdrop-filter: blur(14px);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.20);
-        }
-
-        .lang-btn {
-            padding: 8px 14px;
-            border: none;
-            background: transparent;
-            color: white;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s;
-            border-radius: 9999px;
-            font-size: 0.95rem;
-            line-height: 1;
-        }
-
-        .lang-btn.active {
-            background: rgba(255, 255, 255, 0.92);
-            color: #0f172a;
-        }
-
-        /* Direction-aware alignment helper: centers in LTR, right-aligns in RTL */
-        [dir="ltr"] .lang-aligned { text-align: center; }
-        [dir="rtl"] .lang-aligned { text-align: right; }
-        
         .gradient-dark { background: linear-gradient(180deg, #222b38 0%, #1a2129 100%); }
         
         /* Text Gradient */
@@ -170,13 +131,8 @@
     </script>
 </head>
 <body class="bg-gray-50 min-h-screen text-gray-900">
-    <!-- Language Toggle (English / Arabic) -->
-    <div class="lang-toggle">
-        <button id="lang-en" class="lang-btn bg-teal-500 text-gray-900">English</button>
-        <button id="lang-ar" class="lang-btn">العربية</button>
-    </div>
-     <!-- Include User Header -->
-     <!--#include file="components/user-header.html" -->
+    <!-- Include User Header -->
+    <!--#include file="components/user-header.html" -->
 
     <!-- Hero Section -->
     <section class="py-12 md:py-20">
@@ -184,26 +140,52 @@
             <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                 <!-- Left Content -->
                 <div>
-                    <h1 id="hero_title" class="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight mb-6 text-teal-400">
-                        Stop scrolling.
+                    <h1 id="hero_title" class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6">
+                        <span class="text-teal-600">Not sure what to eat today?</span>
                         <br>
-                        Let AI pick for you in 30 seconds
+                        <span class="text-gray-900">Order now and get your meal delivered!</span>
                     </h1>
                     
-                    <p id="hero_desc" class="text-lg md:text-2xl text-gray-700 mb-6 leading-relaxed">
-                        Tired of spending 15 minutes scrolling through menus?
+                    <p id="hero_desc" class="text-lg md:text-xl text-gray-700 mb-8 leading-relaxed">
+                        Sit back and relax — GoSnel connects you with real local restaurants through smart AI chat.
+                        Get personalized meal recommendations, and place your order — all in one simple conversation.
                     </p>
                     
-                    <!-- What I Can Do (simplified) - unified size and left aligned -->
-                    <div class="mb-10 text-left">
-                        <h3 id="what_i_can_do" class="text-xl md:text-xl font-extrabold text-teal-400 mb-1">GoSnel uses AI to suggest the perfect meal</h3>
-                        <p id="suggest_meals" class="text-xl md:text-xl text-teal-400 max-w-xl">based on your taste and budget — in under a minute</p>
+                    <!-- What I Can Do -->
+                    <div class="mb-10">
+                        <h3 id="what_i_can_do" class="text-lg font-bold text-teal-400 mb-4">What I can do for you:</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center gap-3">
+                                <div class="w-6 h-6 rounded-full gradient-teal flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                                </div>
+                                <span id="suggest_meals" class="text-gray-700">Suggest meals based on your budget and taste</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-6 h-6 rounded-full gradient-teal flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                                </div>
+                                <span id="find_restaurants" class="text-gray-700">Find restaurants that match your preferences</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-6 h-6 rounded-full gradient-teal flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                                </div>
+                                <span id="translate_menus" class="text-gray-700">Remember your favorite dishes next time you chat</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-6 h-6 rounded-full gradient-teal flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                                </div>
+                                <span id="remember_favorites" class="text-gray-700">Deliver your meal hot to your door</span>
+                            </div>
+                        </div>
                     </div>
                     
                     <!-- CTA Buttons -->
                     <div class="flex flex-col sm:flex-row gap-4">
                         <a id="get_started" href="https://gosnel.com/user/signup" class="btn-primary gradient-teal text-gray-900 px-8 py-4 rounded-xl font-bold text-lg text-center">
-                            Try it now,  no download!
+                            Start now, it's free!
                         </a>
                         <a id="try_demo" href="https://gosnel.com/user/demo" class="px-8 py-4 rounded-xl font-bold text-lg text-center text-teal-400 border-2 border-teal-500 bg-white/5 hover:bg-teal-500/10 transition">
                             Try a demo chat
@@ -392,14 +374,14 @@
         (function(){
             const t = {
                 en: {
-                    hero_title: 'Stop scrolling.\nLet AI pick for you in 30 seconds',
-                    hero_desc: 'Tired of spending 15 minutes scrolling through menus?',
-                    what_i_can_do: 'GoSnel uses AI to suggest the perfect meal',
-                    suggest_meals: 'based on your taste and budget — in under a minute',
-                    find_restaurants: '',
-                    translate_menus: '',
-                    remember_favorites: '',
-                    get_started: " Try it now, no download required!",
+                    hero_title: 'Not sure what to eat today? \nOrder now and get your meal delivered! ',
+                    hero_desc: 'Sit back and relax — GoSnel connects you with real local restaurants through smart AI chat.\nGet personalized meal recommendations, and place your order — all in one simple conversation.',
+                    what_i_can_do: 'What I can do for you:',
+                    suggest_meals: 'Suggest meals based on your budget and taste',
+                    find_restaurants: 'Find restaurants that match your preferences',
+                    translate_menus: 'Remember your favorite dishes next time you chat',
+                    remember_favorites: 'Deliver your meal hot to your door',
+                    get_started: " Start now, it's completely free!",
                     try_demo: ' Try a demo chat',
                     login: 'Log In',
                     why_love: 'Why users love GoSnel ❤️',
@@ -435,13 +417,13 @@
                     privacy_note: 'We respect your privacy. Unsubscribe at any time.',
                 },
                 ar: {
-                    hero_title: 'ملّيت من اللف بين تطبيقات الطعام؟\nنختار لك الوجبة الصح في 30 ثانية.',
-                    hero_desc: 'طفشان تضيع 15 دقيقة وانت تتصفح قوائم المطاعم؟',
-                    what_i_can_do: 'جوسنِل يستخدم الذكاء الاصطناعي ويقترح لك الوجبة المناسبة',
-                    suggest_meals: 'حسب ذوقك وميزانيتك — خلال أقل من دقيقة',
-                    find_restaurants: '',
-                    translate_menus: '',
-                    remember_favorites: '',
+                    hero_title: 'محتار شو تاكل اليوم؟ \nاطلب والوجبة توصلك لبيتك! ',
+                    hero_desc: 'خلًك مرتاح، وخذ اقتراحات وجبات تناسب ذوقك وميزانيتك، واطلب أكلك بكل سهولة—كل هذا من خلال محادثة وحدة ويا جوسنِل الذكي.',
+                    what_i_can_do: 'شو أقدر أسوي لك ؟ 👇',
+                    suggest_meals: 'أقترح عليك وجبات حسب ميزانيتك وذوقك',
+                    find_restaurants: 'أساعدك تلقى المطاعم اللي تناسبك',
+                    translate_menus: 'أتذكر وجباتك المفضلة في المرات الجاية',
+                    remember_favorites: 'اوصلك الوجبة ع بيتك ساخنة',
                     get_started: ' جرّب الحين مجانًا',
                     try_demo: 'جرب محادثة سريعة ويا المساعد الذكي ',
                     login: 'تسجيل الدخول',
@@ -636,23 +618,27 @@
             }
 
             function setLang(lang){
-                 try {
-                     language = lang;
-                     localStorage.setItem('gosnel_lang', lang);
-                    // mirror vendor page: toggle body.lang-ar and active class on buttons
+                try {
+                    language = lang;
+                    localStorage.setItem('gosnel_lang', lang);
                     const langEn = document.getElementById('lang-en');
                     const langAr = document.getElementById('lang-ar');
-                    if (langEn) langEn.classList.toggle('active', lang === 'en');
-                    if (langAr) langAr.classList.toggle('active', lang === 'ar');
-                    if (document && document.body) document.body.classList.toggle('lang-ar', lang === 'ar');
-                     applyTexts();
-                     renderChat(lang);
-                 } catch (error) {
-                     console.error('Error setting language:', error);
-                     // Fallback: try to render chat anyway
-                     renderChat(lang);
-                 }
-             }
+                    if (langEn) {
+                        langEn.classList.toggle('bg-teal-500', lang==='en');
+                        langEn.classList.toggle('text-gray-900', lang==='en');
+                    }
+                    if (langAr) {
+                        langAr.classList.toggle('bg-teal-500', lang==='ar');
+                        langAr.classList.toggle('text-gray-900', lang==='ar');
+                    }
+                    applyTexts();
+                    renderChat(lang);
+                } catch (error) {
+                    console.error('Error setting language:', error);
+                    // Fallback: try to render chat anyway
+                    renderChat(lang);
+                }
+            }
 
             // Safe event listeners with null checks
             const langEn = document.getElementById('lang-en');
