@@ -142,6 +142,103 @@
     </style>
 </head>
 <body class="bg-white text-black min-h-screen">
+    <!-- Vendor Header -->
+    <nav class="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="/" class="flex items-center gap-4">
+                    <div class="flex items-center gap-3">
+                        <img src="/assets/images/gosnelLogoTransparate.png" alt="GoSnel Logo" class="w-10 h-10 object-contain">
+                        <div class="flex flex-col">
+                            <span class="text-xl font-bold text-gray-900">GoSnel</span>
+                            <span class="text-xs text-gray-600 hidden sm:block">Restaurant Growth Platform</span>
+                        </div>
+                    </div>
+                </a>
+
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="/" class="text-gray-900 hover:text-teal-600 font-medium transition">Home</a>
+                    <a href="/vendor/how-it-works" class="text-gray-900 hover:text-teal-600 font-medium transition">How It Works</a>
+                    <a href="/pricing" class="text-gray-900 hover:text-teal-600 font-medium transition">Pricing</a>
+                    <a href="/why-partner" class="text-gray-900 hover:text-teal-600 font-medium transition">Why Partner</a>
+                    <a href="/vendor/faq" class="text-gray-900 hover:text-teal-600 font-medium transition">FAQ</a>
+                </div>
+
+                <div class="hidden md:flex items-center gap-3">
+                    <a href="/login" class="text-gray-900 hover:text-teal-600 font-medium transition">Login</a>
+                    <a href="https://api.whatsapp.com/send?phone=971542503729&text=Hello%20GoSnel" class="flex items-center gap-2 bg-green-500 text-white px-3 py-2 rounded-lg text-sm hover:bg-green-600 transition">
+                        <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-8 8H7l-4 3V12a8 8 0 0 1 8-8h2a8 8 0 0 1 8 8Z" /></svg>
+                        <span class="whitespace-nowrap">WhatsApp</span>
+                    </a>
+                    <a href="/signup" class="bg-teal-500 text-white px-4 py-2 rounded-lg font-medium text-sm hover:bg-teal-600 transition">Get Started</a>
+                </div>
+
+                <button id="mobile-menu-btn" class="md:hidden flex items-center justify-center w-10 h-10 rounded-lg hover:bg-gray-100 transition">
+                    <svg class="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+
+            <div id="mobile-menu" class="md:hidden fixed inset-y-0 left-0 top-16 bottom-0 w-80 max-w-sm z-40 bg-white transform -translate-x-full transition-transform duration-300 shadow-xl">
+                <div class="p-6 space-y-6">
+                    <div class="space-y-4">
+                        <a href="/" class="block text-lg font-medium text-gray-900 hover:text-teal-600 transition">Home</a>
+                        <a href="/vendor/how-it-works" class="block text-lg font-medium text-gray-900 hover:text-teal-600 transition">How It Works</a>
+                        <a href="/pricing" class="block text-lg font-medium text-gray-900 hover:text-teal-600 transition">Pricing</a>
+                        <a href="/why-partner" class="block text-lg font-medium text-gray-900 hover:text-teal-600 transition">Why Partner</a>
+                        <a href="/vendor/faq" class="block text-lg font-medium text-gray-900 hover:text-teal-600 transition">FAQ</a>
+                    </div>
+
+                    <div class="pt-4 border-t border-gray-200 space-y-4">
+                        <a href="/login" class="block text-center py-2 text-sm text-gray-900 hover:text-teal-600 font-medium border border-gray-300 rounded-lg transition">Login</a>
+                        <a href="https://api.whatsapp.com/send?phone=971542503729&text=Hello%20GoSnel" class="flex items-center justify-center gap-2 py-2 bg-green-500 text-white rounded-lg font-medium text-sm hover:bg-green-600 transition">
+                            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-8 8H7l-4 3V12a8 8 0 0 1 8-8h2a8 8 0 0 1 8 8Z" /></svg>
+                            Chat on WhatsApp
+                        </a>
+                        <a href="/signup" class="block text-center py-2 text-sm bg-teal-500 text-white rounded-lg font-medium hover:bg-teal-600 transition">Get Started</a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="mobile-menu-overlay" class="md:hidden fixed inset-0 bg-black bg-opacity-50 z-30 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+        </div>
+    </nav>
+
+    <style>
+    .text-gradient-teal {
+        background: linear-gradient(90deg, #14b8a6, #0d9488);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    </style>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+
+        function toggleMobileMenu() {
+            const isOpen = !mobileMenu.classList.contains('-translate-x-full');
+            if (isOpen) {
+                mobileMenu.classList.add('-translate-x-full');
+                mobileMenuOverlay.classList.add('opacity-0', 'pointer-events-none');
+                document.body.style.overflow = '';
+            } else {
+                mobileMenu.classList.remove('-translate-x-full');
+                mobileMenuOverlay.classList.remove('opacity-0', 'pointer-events-none');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+        if (mobileMenuOverlay) mobileMenuOverlay.addEventListener('click', toggleMobileMenu);
+        const mobileNavLinks = mobileMenu?.querySelectorAll('a');
+        if (mobileNavLinks) mobileNavLinks.forEach(link => link.addEventListener('click', () => { mobileMenu.classList.add('-translate-x-full'); mobileMenuOverlay.classList.add('opacity-0', 'pointer-events-none'); document.body.style.overflow = ''; }));
+    });
+    </script>
+
     <!-- Language Toggle -->
     <div class="lang-toggle">
         <button class="lang-btn active" data-lang="en">English</button>
@@ -454,7 +551,7 @@
             </style>
         </div>
     </section>
-    <section class="section-pad bg-gray-900 text-white">
+    <section class="section-pad text-white" style="background-color: #333132;">
         <div class="container-pro px-4 sm:px-6 lg:px-8 text-center">
             <h2 class="text-3xl md:text-4xl font-bold mb-6">Join the first 50 restaurants in UAE</h2>
             <p class="text-xl text-gray-300 mb-8">Limited spots. Lifetime benefits. No credit card required.</p>
@@ -464,6 +561,7 @@
                 Become a Founding Partner
             </a>
             <div class="urgency-counter mt-8"><i data-lucide="clock" class="urgency-icon" aria-hidden="true"></i>Limited to 50 only | <span class="number">16 spots left</span></div>
+            <p class="text-lg italic mt-4" style="color: #4ECDC4;">No contracts. No commissions.</p>
         </div>
     </section>
 
@@ -770,7 +868,7 @@
     </section>
 
     <!-- FINAL CTA AR -->
-    <section class="section-pad bg-gray-900 text-white">
+    <section class="section-pad text-white" style="background-color: #333132;">
         <div class="container-pro px-4 sm:px-6 lg:px-8 text-center">
             <h2 class="text-3xl md:text-4xl font-bold mb-6">انضم لأول 50 مطعم في الإمارات</h2>
             <p class="text-xl text-gray-300 mb-8">مقاعد محدودة. مزايا مدى الحياة. لا حاجة لبطاقة ائتمان.</p>
@@ -780,6 +878,7 @@
                 كن شريك مؤسس
             </a>
             <div class="urgency-counter mt-8">⏰ محدود لـ 50 فقط | <span class="number">16 مقعد متبقي</span></div>
+            <p class="text-lg italic mt-4" style="color: #4ECDC4;">لا عقود. لا عمولات.</p>
         </div>
     </section>
 
