@@ -108,23 +108,24 @@
         
         /* Urgency counter styling */
         .urgency-counter {
-            background: rgba(255, 107, 107, 0.12);
+            background: rgba(255, 107, 107, 0.10);
             border: 2px solid #ff6b6b;
-            padding: 8px 14px;
-            border-radius: 10px;
+            padding: 6px 10px;
+            border-radius: 8px;
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            font-weight: 700;
-            font-size: 0.95rem;
+            font-weight: 600;
+            font-size: 0.82rem; /* smaller text */
             line-height: 1;
             color: #374151;
         }
-        
+
         .urgency-counter .number {
-            color: #ff6b6b;
+            color: #ef4444;
             font-weight: 700;
             display: inline-block;
+            font-size: 0.88rem;
         }
         
         .urgency-counter svg {
@@ -190,16 +191,20 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
-        
+
+        /* Red badge variant: keep single line and slightly smaller */
         .badge-red {
             background-color: #ef4444;
             color: white;
-            padding: 6px 16px;
+            padding: 4px 12px;
             border-radius: 12px;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 700;
             text-transform: none;
-            letter-spacing: 0.3px;
+            letter-spacing: 0.2px;
+            display: inline-block;
+            white-space: nowrap; /* prevent wrapping to two lines */
+            line-height: 1;
         }
         
         /* Comparison Table Styles */
