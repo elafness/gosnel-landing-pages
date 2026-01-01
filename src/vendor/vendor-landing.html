@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GoSnel for Restaurants - Be a Founding Partner | Launching Jan 2026</title>
+    <title>GoSnel for Restaurants - Be a Founding Partner | Launching feb 2026</title>
     <link rel="canonical" href="https://vendor.gosnel.com">
-    <meta name="description" content="Join the first 50 restaurants in UAE. Get lifetime 50% discount + exclusive benefits. No payment required. Launching January 2026.">
+    <meta name="description" content="Join the first 50 restaurants in UAE. Get lifetime 80% discount + exclusive benefits. No payment required. Launching february 2026.">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Be a Founding Partner - GoSnel Restaurants">
     <meta property="og:description" content="Stop losing 30% to delivery commissions. Join as founding partner before launch.">
@@ -43,6 +43,13 @@
             font-size: 0.9rem; letter-spacing: 0.5px; margin-bottom: 1rem;
             box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
             animation: pulse-badge 2s infinite;
+        }
+        .highlight {
+            display: block;
+            color: #4ECDC4;
+            font-weight: 800;
+            /* font-size removed so Tailwind utility classes control responsive sizing */
+            margin-top: 0.5rem;
         }
         @keyframes pulse-badge { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
         
@@ -139,6 +146,10 @@
     /* Urgency/clock icon used with lucide placeholders */
     .urgency-icon { display: inline-flex; vertical-align: middle; margin-inline-end: 0.5rem; color: #ff6b6b; }
     .urgency-icon svg { width: 1.25rem; height: 1.25rem; display: inline-block; stroke: currentColor; }
+    /* Force correct icon/text order for Arabic CTAs regardless of flex direction */
+    a[dir="rtl"].btn-primary { display: inline-flex; align-items: center; }
+    a[dir="rtl"].btn-primary .cta-icon { order: 1; margin-left: 0.75rem; margin-right: 0; display: inline-flex; align-items:center; }
+    a[dir="rtl"].btn-primary .cta-text { order: 2; }
     </style>
 </head>
 <body class="bg-white text-black min-h-screen">
@@ -251,34 +262,25 @@
     <!-- HERO SECTION -->
     <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-20">
         <div class="absolute inset-0 -z-10">
-            <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/signupImageWeb1.webp" alt="Restaurant owner" class="w-full h-full object-cover">
+            <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/heroimage.webp" alt="Restaurant owner" class="w-full h-full object-cover object-left" style="object-position: 60% 20%;">
             <div class="absolute inset-0 bg-gradient-to-r from-black/45 via-black/35 to-black/20"></div>
         </div>
 
         <div class="container-pro px-4 sm:px-6 lg:px-8 w-full">
-            <div class="max-w-3xl text-white z-10">
-                <div class="prelaunch-badge inline-flex items-center justify-center gap-2"><i data-lucide="rocket" aria-hidden="true"></i>LAUNCHING JANUARY 2026 — JOIN AS FOUNDING PARTNER</div>
+            <div class="max-w-3xl text-white z-10 text-left" dir="ltr">
+                <!-- prelaunch-badge moved below (above final CTA section) -->
 
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6">
-                    <span class="text-red-400">Stop losing 30%</span> to delivery commissions
-                </h1>
-
-                <h2 class="text-xl md:text-2xl font-semibold text-gray-100 mb-8 leading-snug">
-                    GoSnel is an AI-powered meal discovery app launching in UAE. <strong>Be one of the first 50 restaurants</strong> and lock in lifetime exclusive benefits.
+                <h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-4">
+                    Stop losing 30% to delivery commissions
                 </h2>
+                <h4 class="highlight text-4xl md:text-5xl font-extrabold mb-6">Save 600–1,000 AED per month</h4>
 
-                <div class="mb-8">
-                    <a href="https://api.whatsapp.com/send?phone=971542503729&text=Hi,%20I%20want%20to%20join%20as%20Founding%20Partner" 
-                       class="btn-primary inline-flex items-center justify-center gap-3 bg-green-500 hover:bg-green-600 text-white px-10 py-4 rounded-xl font-bold text-lg w-full sm:w-auto">
-                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M16.6 14c-.2-.1-1.5-.7-1.7-.8c-.2-.1-.4-.1-.6.1c-.2.2-.6.8-.8 1c-.1.2-.3.2-.5.1c-.7-.3-1.4-.7-2-1.2c-.5-.5-1-1.1-1.4-1.7c-.1-.2 0-.4.1-.5c.1-.1.2-.3.4-.4c.1-.1.2-.3.2-.4c.1-.1.1-.3 0-.4c-.1-.1-.6-1.3-.8-1.8c-.1-.7-.3-.7-.5-.7h-.5c-.2 0-.5.2-.6.3c-.6.6-.9 1.3-.9 2.1c.1.9.4 1.8 1 2.6c1.1 1.6 2.5 2.9 4.2 3.7c.5.2.9.4 1.4.5c.5.2 1 .2 1.6.1c.7-.1 1.3-.6 1.7-1.2c.2-.4.2-.8.1-1.2l-.4-.2m2.5-9.1C15.2 1 8.9 1 5 4.9c-3.2 3.2-3.8 8.1-1.6 12L2 22l5.3-1.4c1.5.8 3.1 1.2 4.7 1.2c5.5 0 9.9-4.4 9.9-9.9c.1-2.6-1-5.1-2.8-7m-2.7 14c-1.3.8-2.8 1.3-4.4 1.3c-1.5 0-2.9-.4-4.2-1.1l-.3-.2l-3.1.8l.8-3l-.2-.3c-2.4-4-1.2-9 2.7-11.5S16.6 3.7 19 7.5c2.4 3.9 1.3 9-2.6 11.4"/></svg>
-                        Join as Founding Partner
-                    </a>
-                </div>
+                <h3 class="text-xl md:text-2xl font-semibold text-gray-100 mb-8 leading-snug">GoSnel is an AI-powered meal discovery app</h3>
 
                 <div class="space-y-4 text-lg mb-6">
                     <div class="flex items-start gap-4">
                         <span class="text-2xl font-bold text-teal-400">✓</span>
-                        <div>Lifetime 50% discount.</div>
+                        <div>Lifetime 80% discount.</div>
                     </div>
                     <div class="flex items-start gap-4">
                         <span class="text-2xl font-bold text-teal-400">✓</span>
@@ -288,6 +290,14 @@
                         <span class="text-2xl font-bold text-teal-400">✓</span>
                         <div>Your restaurant logo on GoSnel page</div>
                     </div>
+                </div>
+
+                <div class="mb-8">
+                    <a href="https://api.whatsapp.com/send?phone=971542503729&text=Hi,%20I%20want%20to%20join%20as%20Founding%20Partner" 
+                       class="btn-primary inline-flex items-center justify-center gap-3 bg-green-500 hover:bg-green-600 text-white px-10 py-4 rounded-xl font-bold text-lg w-full sm:w-auto">
+                        <svg class="w-5 h-5 flex-shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 24 24" fill="#ffffff"><path fill="#ffffff" d="M16.6 14c-.2-.1-1.5-.7-1.7-.8c-.2-.1-.4-.1-.6.1c-.2.2-.6.8-.8 1c-.1.2-.3.2-.5.1c-.7-.3-1.4-.7-2-1.2c-.5-.5-1-1.1-1.4-1.7c-.1-.2 0-.4.1-.5c.1-.1.2-.3.4-.4c.1-.1.2-.3.2-.4c.1-.1.1-.3 0-.4c-.1-.1-.6-1.3-.8-1.8c-.1-.7-.3-.7-.5-.7h-.5c-.2 0-.5.2-.6.3c-.6.6-.9 1.3-.9 2.1c.1.9.4 1.8 1 2.6c1.1 1.6 2.5 2.9 4.2 3.7c.5.2.9.4 1.4.5c.5.2 1 .2 1.6.1c.7-.1 1.3-.6 1.7-1.2c.2-.4.2-.8.1-1.2l-.4-.2m2.5-9.1C15.2 1 8.9 1 5 4.9c-3.2 3.2-3.8 8.1-1.6 12L2 22l5.3-1.4c1.5.8 3.1 1.2 4.7 1.2c5.5 0 9.9-4.4 9.9-9.9c.1-2.6-1-5.1-2.8-7m-2.7 14c-1.3.8-2.8 1.3-4.4 1.3c-1.5 0-2.9-.4-4.2-1.1l-.3-.2l-3.1.8l.8-3l-.2-.3c-2.4-4-1.2-9 2.7-11.5S16.6 3.7 19 7.5c2.4 3.9 1.3 9-2.6 11.4"/></svg>
+                        Join as Founding Partner
+                    </a>
                 </div>
 
                 <div class="urgency-counter"><i data-lucide="clock" class="urgency-icon" aria-hidden="true"></i>Limited to 50 only | <span class="number">16 spots left</span></div>
@@ -305,17 +315,17 @@
             <div class="bg-gradient-to-br from-teal-500/10 to-teal-600/5 border border-teal-500/30 rounded-2xl p-6 glow-teal">
                 <div class="max-w-4xl mx-auto text-center">
                 <h2 class="text-3xl md:text-4xl font-bold mb-6">Why join before we launch?</h2>
-                <p class="text-xl text-gray-700 mb-8">After January 2026, all new restaurants pay <strong>full price (199 AED/month)</strong> without lifetime discounts.</p>
+                <p class="text-xl text-gray-700 mb-8">After february 2026, all new restaurants pay <strong>full price (499 AED/month)</strong> without lifetime discounts.</p>
                 <div class="grid md:grid-cols-2 gap-6">
                     <div class="bg-white p-6 rounded-xl shadow-md">
                         <div class="text-4xl mb-3 why-icon"><i data-lucide="zap"></i></div>
-                        <h3 class="font-bold text-lg mb-2">Founding Partners (NOW)</h3>
+                        <h3 class="font-bold text-lg mb-2">Founding Partners 80% off forever</h3>
                         <p class="text-gray-600">Free or 99 AED/month forever + VIP benefits</p>
                     </div>
                     <div class="bg-white p-6 rounded-xl shadow-md opacity-60">
                         <div class="text-4xl mb-3 why-icon"><i data-lucide="credit-card"></i></div>
-                        <h3 class="font-bold text-lg mb-2">After Launch (Jan 2026)</h3>
-                        <p class="text-gray-600">199 AED/month + standard treatment</p>
+                        <h3 class="font-bold text-lg mb-2">After Launch (feb 2026)</h3>
+                        <p class="text-gray-600">499 AED/month</p>
                     </div>
                 </div>
             </div>
@@ -355,6 +365,7 @@
         <div class="container-pro px-4 sm:px-6 lg:px-8">
             <div class="max-w-4xl mx-auto">
                 <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/Advanced_analytic_dashboard.webp" alt="Analytics Dashboard" class="w-full h-auto rounded-xl shadow-lg">
+                <p class="text-lg text-gray-700 mt-6 text-center">GoSnel is an AI-powered meal discovery app launching in UAE. Be one of the first 50 restaurants and lock in lifetime exclusive benefits.</p>
             </div>
         </div>
     </section>
@@ -364,14 +375,14 @@
         <div class="container-pro px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-16 text-white">
                 <h2 class="text-4xl md:text-5xl font-bold mb-6">Founding Partner Exclusive Benefits</h2>
-                <p class="text-xl opacity-95 max-w-3xl mx-auto"><strong>ONLY</strong> available before launch. After January 2026, normal pricing applies.</p>
+                <p class="text-xl opacity-95 max-w-3xl mx-auto"><strong>ONLY</strong> available before launch. After february 2026, normal pricing applies.</p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
                 <div class="benefit-card-premium">
                     <div class="limited-badge">LIMITED</div>
                     <div class="icon-premium"><i data-lucide="dollar-sign"></i></div>
-                    <h3 class="font-bold text-xl mb-3 text-gray-900">Lifetime 50% Discount</h3>
+                    <h3 class="font-bold text-xl mb-3 text-gray-900">Lifetime 80% Discount</h3>
                     <p class="text-gray-700 mb-4">Start free or Lock in 99 AED/month on Growth Plan — forever.</p>
                     <div class="text-sm font-semibold text-teal-700 bg-teal-50 p-3 rounded-lg">💎 Savings: ~600 AED/year, every year</div>
                 </div>
@@ -430,7 +441,7 @@
             <div class="max-w-4xl mx-auto">
                 <div class="faq-item">
                     <div class="faq-question">When exactly are you launching?</div>
-                    <div class="faq-answer">January 2026. We'll notify all registered restaurants 1 week before launch.</div>
+                    <div class="faq-answer">february 2026. We'll notify all registered restaurants 1 week before launch.</div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">Do I pay anything now?</div>
@@ -446,10 +457,10 @@
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">Why join NOW?</div>
-                    <div class="faq-answer"><strong>Money.</strong> Founding Partners save ~600 AED/year with 50% lifetime discount + 500+ AED in featured placement. After launch, everyone pays full price.</div>
+                    <div class="faq-answer"><strong>Money.</strong> Founding Partners save ~600 AED/year with 80% lifetime discount + 500+ AED in featured placement. After launch, everyone pays full price.</div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question">Is 50% discount really forever?</div>
+                    <div class="faq-question">Is 80% discount really forever?</div>
                     <div class="faq-answer">Yes. Locked permanently. Even if we raise prices, Founding Partners keep 99 AED rate for life.</div>
                 </div>
             </div>
@@ -488,7 +499,7 @@
     <section class="section-pad bg-white">
         <div class="container-pro px-4 sm:px-6 lg:px-8">
             <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Setup in 3 simple steps</h2>
-            <p class="text-center text-gray-600 mb-12 text-lg">Sign up now, launch in January 2026</p>
+            <p class="text-center text-gray-600 mb-12 text-lg">Sign up now, launch in february 2026</p>
             <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
                 <div class="text-center">
                     <div class="step-circle text-2xl font-bold mx-auto mb-4">1</div>
@@ -554,15 +565,17 @@
     </section>
     <section class="section-pad text-white" style="background-color: #333132;">
         <div class="container-pro px-4 sm:px-6 lg:px-8 text-center">
+            <div class="prelaunch-badge inline-flex items-center justify-center gap-2"><i data-lucide="rocket" aria-hidden="true"></i>LAUNCHING FEBRUARY 2026 — JOIN AS FOUNDING PARTNER</div>
+        </div>
+        <div class="container-pro px-4 sm:px-6 lg:px-8 text-center">
             <h2 class="text-3xl md:text-4xl font-bold mb-6">Join the first 50 restaurants in UAE</h2>
-            <p class="text-xl text-gray-300 mb-8">Limited spots. Lifetime benefits. No credit card required.</p>
-                <a href="https://api.whatsapp.com/send?phone=971542503729&text=Hi,%20Founding%20Partner%20signup" 
-                    class="btn-primary inline-flex items-center gap-3 bg-green-500 hover:bg-green-600 text-white px-10 py-3 rounded-xl font-bold text-base">
-                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M16.6 14c-.2-.1-1.5-.7-1.7-.8c-.2-.1-.4-.1-.6.1c-.2.2-.6.8-.8 1c-.1.2-.3.2-.5.1c-.7-.3-1.4-.7-2-1.2c-.5-.5-1-1.1-1.4-1.7c-.1-.2 0-.4.1-.5c.1-.1.2-.3.4-.4c.1-.1.2-.3.2-.4c.1-.1.1-.3 0-.4c-.1-.1-.6-1.3-.8-1.8c-.1-.7-.3-.7-.5-.7h-.5c-.2 0-.5.2-.6.3c-.6.6-.9 1.3-.9 2.1c.1.9.4 1.8 1 2.6c1.1 1.6 2.5 2.9 4.2 3.7c.5.2.9.4 1.4.5c.5.2 1 .2 1.6.1c.7-.1 1.3-.6 1.7-1.2c.2-.4.2-.8.1-1.2l-.4-.2m2.5-9.1C15.2 1 8.9 1 5 4.9c-3.2 3.2-3.8 8.1-1.6 12L2 22l5.3-1.4c1.5.8 3.1 1.2 4.7 1.2c5.5 0 9.9-4.4 9.9-9.9c.1-2.6-1-5.1-2.8-7m-2.7 14c-1.3.8-2.8 1.3-4.4 1.3c-1.5 0-2.9-.4-4.2-1.1l-.3-.2l-3.1.8l.8-3l-.2-.3c-2.4-4-1.2-9 2.7-11.5S16.6 3.7 19 7.5c2.4 3.9 1.3 9-2.6 11.4"/></svg>
-                Become a Founding Partner
+                    <a href="https://api.whatsapp.com/send?phone=971542503729&text=Hi,%20Founding%20Partner%20signup" 
+                    class="btn-primary inline-flex items-center gap-3 bg-green-500 hover:bg-green-600 text-white px-10 py-3 rounded-xl font-bold text-base" aria-label="Join as Founding Partner">
+                Join as Founding Partner
+                <svg class="w-6 h-6 flex-shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 24 24" fill="#ffffff"><path fill="#ffffff" d="M16.6 14c-.2-.1-1.5-.7-1.7-.8c-.2-.1-.4-.1-.6.1c-.2.2-.6.8-.8 1c-.1.2-.3.2-.5.1c-.7-.3-1.4-.7-2-1.2c-.5-.5-1-1.1-1.4-1.7c-.1-.2 0-.4.1-.5c.1-.1.2-.3.4-.4c.1-.1.2-.3.2-.4c.1-.1.1-.3 0-.4c-.1-.1-.6-1.3-.8-1.8c-.1-.7-.3-.7-.5-.7h-.5c-.2 0-.5.2-.6.3c-.6.6-.9 1.3-.9 2.1c.1.9.4 1.8 1 2.6c1.1 1.6 2.5 2.9 4.2 3.7c.5.2.9.4 1.4.5c.5.2 1 .2 1.6.1c.7-.1 1.3-.6 1.7-1.2c.2-.4.2-.8.1-1.2l-.4-.2m2.5-9.1C15.2 1 8.9 1 5 4.9c-3.2 3.2-3.8 8.1-1.6 12L2 22l5.3-1.4c1.5.8 3.1 1.2 4.7 1.2c5.5 0 9.9-4.4 9.9-9.9c.1-2.6-1-5.1-2.8-7m-2.7 14c-1.3.8-2.8 1.3-4.4 1.3c-1.5 0-2.9-.4-4.2-1.1l-.3-.2l-3.1.8l.8-3l-.2-.3c-2.4-4-1.2-9 2.7-11.5S16.6 3.7 19 7.5c2.4 3.9 1.3 9-2.6 11.4"/></svg>
             </a>
             <div class="urgency-counter mt-8"><i data-lucide="clock" class="urgency-icon" aria-hidden="true"></i>Limited to 50 only | <span class="number">16 spots left</span></div>
-            <p class="text-lg italic mt-4" style="color: #4ECDC4;">No contracts. No commissions.</p>
+            <p class="text-lg italic mt-4" style="color: #4ECDC4;">No contracts. No commissions. No credit card required.</p>
         </div>
     </section>
 
@@ -574,46 +587,45 @@
     <!-- HERO -->
     <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-20">
         <div class="absolute inset-0 -z-10">
-            <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/signupImageWeb1.webp" alt="مالك مطعم" class="w-full h-full object-cover">
+            <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/heroimage.webp" alt="مالك مطعم" class="w-full h-full object-cover" style="object-position: 90% 10%;">
             <div class="absolute inset-0 bg-gradient-to-r from-black/45 via-black/35 to-black/20"></div>
         </div>
 
         <div class="container-pro px-4 sm:px-6 lg:px-8 w-full">
             <div class="max-w-3xl text-white z-10">
-                <div class="prelaunch-badge inline-flex items-center justify-center gap-2"><i data-lucide="rocket" aria-hidden="true"></i>الإطلاق في يناير 2026 — انضم كشريك مؤسس</div>
+                <!-- prelaunch-badge moved below (above final CTA section) -->
 
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6">
-                    <span class="text-red-400">توقف عن خسارة 30%</span> في عمولات التوصيل
-                </h1>
-
-                <h2 class="text-xl md:text-2xl font-semibold text-gray-100 mb-8 leading-snug">
-                    جوسنِل تطبيق اكتشاف وجبات بالذكاء الاصطناعي سينطلق في الإمارات. <strong>كن من أول 50 مطعم</strong> واحصل على مزايا حصرية مدى الحياة.
+                <h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-4">
+                    توقف عن خسارة 30% في عمولات التوصيل
                 </h2>
+                <h4 class="highlight text-4xl md:text-5xl font-extrabold mb-6">وفر 600–1,000 درهم في الشهر</h4>
+
+                <h2 class="text-xl md:text-2xl font-semibold text-gray-100 mb-8 leading-snug">جوسنِل تطبيق اكتشاف الوجبات بالذكاء الاصطناعي</h2>
+
+                <div class="space-y-4 text-lg mb-6">
+                    <div class="flex items-start gap-4">
+                        <div>خصم مدى الحياة 80%.</div>
+                        <span class="text-2xl font-bold text-teal-400">✓</span>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div>ظهور مميز.</div>
+                        <span class="text-2xl font-bold text-teal-400">✓</span>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div>شعار مطعمك على صفحة GoSnel</div>
+                        <span class="text-2xl font-bold text-teal-400">✓</span>
+                    </div>
+                </div>
 
                 <div class="mb-8 flex justify-center">
-                    <a href="https://api.whatsapp.com/send?phone=971542503729&text=أريد%20الانضمام%20كشريك%20مؤسس" 
-                               class="btn-primary inline-flex items-center gap-3 bg-green-500 hover:bg-green-600 text-white px-8 py-3 rounded-xl font-bold text-base w-full sm:w-auto">
-                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M16.6 14c-.2-.1-1.5-.7-1.7-.8c-.2-.1-.4-.1-.6.1c-.2.2-.6.8-.8 1c-.1.2-.3.2-.5.1c-.7-.3-1.4-.7-2-1.2c-.5-.5-1-1.1-1.4-1.7c-.1-.2 0-.4.1-.5c.1-.1.2-.3.4-.4c.1-.1.2-.3.2-.4c.1-.1.1-.3 0-.4c-.1-.1-.6-1.3-.8-1.8c-.1-.7-.3-.7-.5-.7h-.5c-.2 0-.5.2-.6.3c-.6.6-.9 1.3-.9 2.1c.1.9.4 1.8 1 2.6c1.1 1.6 2.5 2.9 4.2 3.7c.5.2.9.4 1.4.5c.5.2 1 .2 1.6.1c.7-.1 1.3-.6 1.7-1.2c.2-.4.2-.8.1-1.2l-.4-.2m2.5-9.1C15.2 1 8.9 1 5 4.9c-3.2 3.2-3.8 8.1-1.6 12L2 22l5.3-1.4c1.5.8 3.1 1.2 4.7 1.2c5.5 0 9.9-4.4 9.9-9.9c.1-2.6-1-5.1-2.8-7m-2.7 14c-1.3.8-2.8 1.3-4.4 1.3c-1.5 0-2.9-.4-4.2-1.1l-.3-.2l-3.1.8l.8-3l-.2-.3c-2.4-4-1.2-9 2.7-11.5S16.6 3.7 19 7.5c2.4 3.9 1.3 9-2.6 11.4"/></svg>
-                        انضم كشريك مؤسس
+                    <a href="https://api.whatsapp.com/send?phone=971542503729&text=أريد%20الانضمام%20كشريك%20مؤسس"
+                       dir="rtl" aria-label="انضم كشريك مؤسس" class="btn-primary inline-flex items-center gap-3 text-right bg-green-500 hover:bg-green-600 text-white px-8 py-3 rounded-xl font-bold text-base w-full sm:w-auto" style="flex-direction: row-reverse !important;">
+                        <span class="cta-text">انضم كشريك مؤسس</span>
+                        <span class="cta-icon"><svg class="w-5 h-5 flex-shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 24 24" fill="#ffffff"><path fill="#ffffff" d="M16.6 14c-.2-.1-1.5-.7-1.7-.8c-.2-.1-.4-.1-.6.1c-.2.2-.6.8-.8 1c-.1.2-.3.2-.5.1c-.7-.3-1.4-.7-2-1.2c-.5-.5-1-1.1-1.4-1.7c-.1-.2 0-.4.1-.5c.1-.1.2-.3.4-.4c.1-.1.2-.3.2-.4c.1-.1.1-.3 0-.4c-.1-.1-.6-1.3-.8-1.8c-.1-.7-.3-.7-.5-.7h-.5c-.2 0-.5.2-.6.3c-.6.6-.9 1.3-.9 2.1c.1.9.4 1.8 1 2.6c1.1 1.6 2.5 2.9 4.2 3.7c.5.2.9.4 1.4.5c.5.2 1 .2 1.6.1c.7-.1 1.3-.6 1.7-1.2c.2-.4.2-.8.1-1.2l-.4-.2m2.5-9.1C15.2 1 8.9 1 5 4.9c-3.2 3.2-3.8 8.1-1.6 12L2 22l5.3-1.4c1.5.8 3.1 1.2 4.7 1.2c5.5 0 9.9-4.4 9.9-9.9c.1-2.6-1-5.1-2.8-7m-2.7 14c-1.3.8-2.8 1.3-4.4 1.3c-1.5 0-2.9-.4-4.2-1.1l-.3-.2l-3.1.8l.8-3l-.2-.3c-2.4-4-1.2-9 2.7-11.5S16.6 3.7 19 7.5c2.4 3.9 1.3 9-2.6 11.4"/></svg></span>
                     </a>
                 </div>
 
-                <div class="space-y-4 text-lg mb-6">
-                    <div class="flex items-start gap-4 flex-row-reverse">
-                        <span class="text-2xl font-bold text-teal-400">✓</span>
-                        <div>خصم مدى الحياة 50%.</div>
-                    </div>
-                    <div class="flex items-start gap-4 flex-row-reverse">
-                        <span class="text-2xl font-bold text-teal-400">✓</span>
-                        <div>ظهور مميز.</div>
-                    </div>
-                    <div class="flex items-start gap-4 flex-row-reverse">
-                        <span class="text-2xl font-bold text-teal-400">✓</span>
-                        <div>شعار مطعمك على صفحة GoSnel</div>
-                    </div>
-                </div>
-
-                <div class="urgency-counter">⏰ محدود لـ 50 فقط | <span class="number">16 مقعد متبقي</span></div>
+                <div class="urgency-counter text-right"><i data-lucide="clock" class="urgency-icon" aria-hidden="true"></i> محدود لـ 50 فقط | <span class="number">16 مقعد متبقي</span></div>
             </div>
         </div>
     </section>
@@ -625,17 +637,17 @@
             <div class="bg-gradient-to-br from-teal-500/10 to-teal-600/5 border border-teal-500/30 rounded-2xl p-6 glow-teal">
                 <div class="max-w-4xl mx-auto text-center">
                 <h2 class="text-3xl md:text-4xl font-bold mb-6">لماذا تنضم قبل الإنطلاق؟</h2>
-                <p class="text-xl text-gray-700 mb-8">بعد يناير 2026، جميع المطاعم الجديدة تدفع <strong>السعر الكامل (199 درهم/شهر)</strong> بدون خصومات.</p>
+                <p class="text-xl text-gray-700 mb-8">بعد فبراير 2026، جميع المطاعم الجديدة تدفع <strong>السعر الكامل (499 درهم/شهر)</strong> بدون خصومات.</p>
                 <div class="grid md:grid-cols-2 gap-6">
                     <div class="bg-white p-6 rounded-xl shadow-md">
                         <div class="text-4xl mb-3 why-icon"><i data-lucide="zap"></i></div>
-                        <h3 class="font-bold text-lg mb-2">الشركاء المؤسسون (الآن)</h3>
+                        <h3 class="font-bold text-lg mb-2">الشركاء المؤسسون خصم 80% للأبد</h3>
                         <p class="text-gray-600">مجانا أو 99 درهم/شهر للأبد + مزايا VIP</p>
                     </div>
                     <div class="bg-white p-6 rounded-xl shadow-md opacity-60">
                         <div class="text-4xl mb-3 why-icon"><i data-lucide="credit-card"></i></div>
-                        <h3 class="font-bold text-lg mb-2">بعد الإطلاق (يناير 2026)</h3>
-                        <p class="text-gray-600">199 درهم/شهر + معاملة عادية</p>
+                        <h3 class="font-bold text-lg mb-2">بعد الإطلاق (فبراير 2026)</h3>
+                        <p class="text-gray-600">499 درهم/شهر </p>
                     </div>
                 </div>
             </div>
@@ -683,14 +695,14 @@
         <div class="container-pro px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-16 text-white">
                 <h2 class="text-4xl md:text-5xl font-bold mb-6">مزايا الشريك المؤسس الحصرية</h2>
-                <p class="text-xl opacity-95 max-w-3xl mx-auto">متاحة <strong>فقط</strong> قبل الإطلاق. بعد يناير 2026، الأسعار العادية تُطبّق.</p>
+                <p class="text-xl opacity-95 max-w-3xl mx-auto">متاحة <strong>فقط</strong> قبل الإطلاق. بعد فبراير 2026، الأسعار العادية تُطبّق.</p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
                 <div class="benefit-card-premium">
                     <div class="limited-badge">محدود</div>
                     <div class="icon-premium"><i data-lucide="dollar-sign"></i></div>
-                    <h3 class="font-bold text-xl mb-3 text-gray-900">خصم مدى الحياة 50%</h3>
+                    <h3 class="font-bold text-xl mb-3 text-gray-900">خصم مدى الحياة 80%</h3>
                     <p class="text-gray-700 mb-4">إبدأ مجانا أو احجز 99 درهم/شهر — للأبد.</p>
                     <div class="text-sm font-semibold text-teal-700 bg-teal-50 p-3 rounded-lg">💎 توفير: ~600 درهم/سنة</div>
                 </div>
@@ -737,7 +749,7 @@
                    style="color: #4ECDC4;">
                     احجز مقعدك →
                 </a>
-                <p class="text-white mt-4 text-lg">⏰ محدود لـ 50 فقط | <span class="number">16 مقعد متبقي</span></p>
+                <p class="text-white mt-4 text-lg"><i data-lucide="clock" class="urgency-icon" aria-hidden="true"></i> محدود لـ 50 فقط | <span class="number">16 مقعد متبقي</span></p>
             </div>
         </div>
     </section>
@@ -749,7 +761,7 @@
             <div class="max-w-4xl mx-auto">
                 <div class="faq-item">
                     <div class="faq-question">متى سيكون الإطلاق بالضبط؟</div>
-                    <div class="faq-answer">يناير 2026. سنخطر جميع المطاعم المسجلة قبل الإطلاق بأسبوع.</div>
+                    <div class="faq-answer">فبراير 2026. سنخطر جميع المطاعم المسجلة قبل الإطلاق بأسبوع.</div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">هل أدفع شيئًا الآن؟</div>
@@ -768,7 +780,7 @@
                     <div class="faq-answer"><strong>المال.</strong> يوفر الشركاء المؤسسون ~600 درهم/سنة وميزات ظهور بقيمة ~500 درهم. بعد الإطلاق الجميع سيدفع السعر الكامل.</div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question">هل الخصم 50% دائم حقًا؟</div>
+                    <div class="faq-question">هل الخصم 80% دائم حقًا؟</div>
                     <div class="faq-answer">نعم. مقفل بشكل دائم. حتى إذا رفعنا الأسعار، يحتفظ الشركاء المؤسسون بسعر 99 درهم مدى الحياة.</div>
                 </div>
             </div>
@@ -845,7 +857,7 @@
     <section class="section-pad bg-white">
         <div class="container-pro px-4 sm:px-6 lg:px-8">
             <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">الإعداد في 3 خطوات بسيطة</h2>
-            <p class="text-center text-gray-600 mb-12 text-lg">سجّل الآن، الإطلاق في يناير 2026</p>
+            <p class="text-center text-gray-600 mb-12 text-lg">سجّل الآن، الإطلاق في فبراير 2026</p>
             <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
                 <div class="text-center">
                     <div class="step-circle text-2xl font-bold mx-auto mb-4">1</div>
@@ -870,17 +882,17 @@
     </section>
 
     <!-- FINAL CTA AR -->
-    <section class="section-pad text-white" style="background-color: #333132;">
+    <section class="section-pad text-white" style="background-image: linear-gradient(rgba(51,49,50,0.78), rgba(51,49,50,0.78)), url('https://pub-0d4798289dad4074a3236450ba640652.r2.dev/signupImageWeb1.webp'); background-size: cover; background-position: center; background-repeat: no-repeat;">
         <div class="container-pro px-4 sm:px-6 lg:px-8 text-center">
+            <div class="prelaunch-badge inline-flex items-center justify-center gap-2"><i data-lucide="rocket" aria-hidden="true"></i>الإطلاق في فبراير 2026 — انضم كشريك مؤسس</div>
             <h2 class="text-3xl md:text-4xl font-bold mb-6">انضم لأول 50 مطعم في الإمارات</h2>
-            <p class="text-xl text-gray-300 mb-8">مقاعد محدودة. مزايا مدى الحياة. لا حاجة لبطاقة ائتمان.</p>
-            <a href="https://api.whatsapp.com/send?phone=971542503729&text=أريد%20التسجيل%20كشريك%20مؤسس" 
-               class="btn-primary inline-flex items-center gap-3 bg-green-500 hover:bg-green-600 text-white px-12 py-5 rounded-xl font-bold text-lg">
-                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M16.6 14c-.2-.1-1.5-.7-1.7-.8c-.2-.1-.4-.1-.6.1c-.2.2-.6.8-.8 1c-.1.2-.3.2-.5.1c-.7-.3-1.4-.7-2-1.2c-.5-.5-1-1.1-1.4-1.7c-.1-.2 0-.4.1-.5c.1-.1.2-.3.4-.4c.1-.1.2-.3.2-.4c.1-.1.1-.3 0-.4c-.1-.1-.6-1.3-.8-1.8c-.1-.7-.3-.7-.5-.7h-.5c-.2 0-.5.2-.6.3c-.6.6-.9 1.3-.9 2.1c.1.9.4 1.8 1 2.6c1.1 1.6 2.5 2.9 4.2 3.7c.5.2.9.4 1.4.5c.5.2 1 .2 1.6.1c.7-.1 1.3-.6 1.7-1.2c.2-.4.2-.8.1-1.2l-.4-.2m2.5-9.1C15.2 1 8.9 1 5 4.9c-3.2 3.2-3.8 8.1-1.6 12L2 22l5.3-1.4c1.5.8 3.1 1.2 4.7 1.2c5.5 0 9.9-4.4 9.9-9.9c.1-2.6-1-5.1-2.8-7m-2.7 14c-1.3.8-2.8 1.3-4.4 1.3c-1.5 0-2.9-.4-4.2-1.1l-.3-.2l-3.1.8l.8-3l-.2-.3c-2.4-4-1.2-9 2.7-11.5S16.6 3.7 19 7.5c2.4 3.9 1.3 9-2.6 11.4"/></svg>
-                كن شريك مؤسس
+                <a href="https://api.whatsapp.com/send?phone=971542503729&text=أريد%20الانضمام%20كشريك%20مؤسس"
+                    dir="rtl" aria-label="انضم كشريك مؤسس" class="btn-primary inline-flex items-center gap-3 text-right bg-green-500 hover:bg-green-600 text-white px-12 py-5 rounded-xl font-bold text-lg" style="flex-direction: row-reverse !important;">
+                <span class="cta-text">انضم كشريك مؤسس</span>
+                <span class="cta-icon"><svg class="w-6 h-6 flex-shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 24 24" fill="#ffffff"><path fill="#ffffff" d="M16.6 14c-.2-.1-1.5-.7-1.7-.8c-.2-.1-.4-.1-.6.1c-.2.2-.6.8-.8 1c-.1.2-.3.2-.5.1c-.7-.3-1.4-.7-2-1.2c-.5-.5-1-1.1-1.4-1.7c-.1-.2 0-.4.1-.5c.1-.1.2-.3.4-.4c.1-.1.2-.3.2-.4c.1-.1.1-.3 0-.4c-.1-.1-.6-1.3-.8-1.8c-.1-.7-.3-.7-.5-.7h-.5c-.2 0-.5.2-.6.3c-.6.6-.9 1.3-.9 2.1c.1.9.4 1.8 1 2.6c1.1 1.6 2.5 2.9 4.2 3.7c.5.2.9.4 1.4.5c.5.2 1 .2 1.6.1c.7-.1 1.3-.6 1.7-1.2c.2-.4.2-.8.1-1.2l-.4-.2m2.5-9.1C15.2 1 8.9 1 5 4.9c-3.2 3.2-3.8 8.1-1.6 12L2 22l5.3-1.4c1.5.8 3.1 1.2 4.7 1.2c5.5 0 9.9-4.4 9.9-9.9c.1-2.6-1-5.1-2.8-7m-2.7 14c-1.3.8-2.8 1.3-4.4 1.3c-1.5 0-2.9-.4-4.2-1.1l-.3-.2l-3.1.8l.8-3l-.2-.3c-2.4-4-1.2-9 2.7-11.5S16.6 3.7 19 7.5c2.4 3.9 1.3 9-2.6 11.4"/></svg></span>
             </a>
-            <div class="urgency-counter mt-8">⏰ محدود لـ 50 فقط | <span class="number">16 مقعد متبقي</span></div>
-            <p class="text-lg italic mt-4" style="color: #4ECDC4;">لا عقود. لا عمولات.</p>
+            <div class="urgency-counter mt-8"><i data-lucide="clock" class="urgency-icon" aria-hidden="true"></i> محدود لـ 50 فقط | <span class="number">16 مقعد متبقي</span></div>
+            <p class="text-lg italic mt-4" style="color: #4ECDC4;">لا حاجة لبطاقة ائتمان. لا عقود. لا عمولات.</p>
         </div>
     </section>
 
@@ -965,12 +977,10 @@
     </style>
 
     <!-- WhatsApp Corner Icon -->
-    <a href="https://api.whatsapp.com/send?phone=971542503729&text=Founding%20Partner%20inquiry"
+        <a href="https://api.whatsapp.com/send?phone=971542503729&text=Founding%20Partner%20inquiry"
        class="fixed bottom-6 right-6 z-40 w-12 h-12 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 bg-green-500 text-white flex items-center justify-center"
        aria-label="Chat on WhatsApp" title="Chat on WhatsApp">
-        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M16.6 14c-.2-.1-1.5-.7-1.7-.8c-.2-.1-.4-.1-.6.1c-.2.2-.6.8-.8 1c-.1.2-.3.2-.5.1c-.7-.3-1.4-.7-2-1.2c-.5-.5-1-1.1-1.4-1.7c-.1-.2 0-.4.1-.5c.1-.1.2-.3.4-.4c.1-.1.2-.3.2-.4c.1-.1.1-.3 0-.4c-.1-.1-.6-1.3-.8-1.8c-.1-.7-.3-.7-.5-.7h-.5c-.2 0-.5.2-.6.3c-.6.6-.9 1.3-.9 2.1c.1.9.4 1.8 1 2.6c1.1 1.6 2.5 2.9 4.2 3.7c.5.2.9.4 1.4.5c.5.2 1 .2 1.6.1c.7-.1 1.3-.6 1.7-1.2c.2-.4.2-.8.1-1.2l-.4-.2m2.5-9.1C15.2 1 8.9 1 5 4.9c-3.2 3.2-3.8 8.1-1.6 12L2 22l5.3-1.4c1.5.8 3.1 1.2 4.7 1.2c5.5 0 9.9-4.4 9.9-9.9c.1-2.6-1-5.1-2.8-7m-2.7 14c-1.3.8-2.8 1.3-4.4 1.3c-1.5 0-2.9-.4-4.2-1.1l-.3-.2l-3.1.8l.8-3l-.2-.3c-2.4-4-1.2-9 2.7-11.5S16.6 3.7 19 7.5c2.4 3.9 1.3 9-2.6 11.4"/>
-        </svg>
+        <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 24 24" fill="#ffffff"><path fill="#ffffff" d="M16.6 14c-.2-.1-1.5-.7-1.7-.8c-.2-.1-.4-.1-.6.1c-.2.2-.6.8-.8 1c-.1.2-.3.2-.5.1c-.7-.3-1.4-.7-2-1.2c-.5-.5-1-1.1-1.4-1.7c-.1-.2 0-.4.1-.5c.1-.1.2-.3.4-.4c.1-.1.2-.3.2-.4c.1-.1.1-.3 0-.4c-.1-.1-.6-1.3-.8-1.8c-.1-.7-.3-.7-.5-.7h-.5c-.2 0-.5.2-.6.3c-.6.6-.9 1.3-.9 2.1c.1.9.4 1.8 1 2.6c1.1 1.6 2.5 2.9 4.2 3.7c.5.2.9.4 1.4.5c.5.2 1 .2 1.6.1c.7-.1 1.3-.6 1.7-1.2c.2-.4.2-.8.1-1.2l-.4-.2m2.5-9.1C15.2 1 8.9 1 5 4.9c-3.2 3.2-3.8 8.1-1.6 12L2 22l5.3-1.4c1.5.8 3.1 1.2 4.7 1.2c5.5 0 9.9-4.4 9.9-9.9c.1-2.6-1-5.1-2.8-7m-2.7 14c-1.3.8-2.8 1.3-4.4 1.3c-1.5 0-2.9-.4-4.2-1.1l-.3-.2l-3.1.8l.8-3l-.2-.3c-2.4-4-1.2-9 2.7-11.5S16.6 3.7 19 7.5c2.4 3.9 1.3 9-2.6 11.4"/></svg>
     </a>
 
     <!-- Language Toggle Script -->

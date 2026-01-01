@@ -11,7 +11,49 @@
     <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
     <meta name="description" content="GoSnel Pricing Plans for Restaurants. Simple, transparent pricing with no hidden fees.">
     <link rel="stylesheet" href="/output.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="h            <div class="faq-item">
+                <div class="faq-header" onclick="toggleFAQ(11)">
+                    <h3 class="text-lg font-semibold text-gray-900">What is the 7-Day Delivery Pass?</h3>
+                    <svg class="w-5 h-5 faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-answer">
+                        <p class="text-gray-600">It's a one-week spotlight that boosts sales, attracts new customers, and strengthens loyalty — making your restaurant the go-to choice fast.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-header" onclick="toggleFAQ(12)">
+                    <h3 class="text-lg font-semibold text-gray-900">What is Meal Visibility?</h3>
+                    <svg class="w-5 h-5 faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                </div>
+                <div class="faq-content">
+                    <div class="faq-answer">
+                        <p class="text-gray-600 mb-3">Meal visibility: Our AI meal recommendations show your meals to customers who are deciding what to eat.</p>
+                        <p class="text-gray-600 mb-3">The system decides which meals to show and when, based on user preferences and demand — not paid ads by default.</p>
+                        <p class="text-gray-600 font-medium mb-2">You can also:</p>
+                        <ul class="text-gray-600 space-y-2 ml-4">
+                            <li class="flex items-start">
+                                <span class="mr-2">•</span>
+                                <span>Buy extra visibility to show your meals more often</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="mr-2">•</span>
+                                <span>Boost specific meals with a paid promotion to highlight them to more customers</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>leapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Contentsquare User Experience Analytics -->
@@ -315,7 +357,7 @@
                         </div>
                         <div class="feature">
                             <div class="feature-check">✓</div>
-                            <span class="text-gray-700">List unlimited meals</span>
+                            <span class="text-gray-700">List up to 40 meals</span>
                         </div>
                         <div class="feature">
                             <div class="feature-check">✓</div>
@@ -333,6 +375,10 @@
                             <div class="feature-check">✓</div>
                             <span class="text-gray-700">Access to meal boosts</span>
                         </div>
+                        <div class="feature">
+                            <div class="feature-check">✓</div>
+                            <span class="text-gray-700">Meal visibility 20x/mo</span>
+                        </div>
                     </div>
                 </div>
                 
@@ -349,7 +395,7 @@
                     
                     <div class="mb-8">
                         <div class="flex items-baseline mb-2">
-                            <span class="text-3xl text-gray-400 line-through mr-3 growth-original-price">199</span>
+                            <span class="text-3xl text-gray-400 line-through mr-3 growth-original-price">499</span>
                             <span class="price text-gray-900 growth-price">99</span>
                             <span class="text-gray-900 ml-2 growth-period">AED/month</span>
                         </div>
@@ -420,6 +466,10 @@
                             <div class="feature-check">✓</div>
                             <span class="text-gray-700">7-Day Delivery Pass: Boost your sales & customer loyalty!</span>
                         </div>
+                        <div class="feature">
+                            <div class="feature-check">✓</div>
+                            <span class="text-gray-700">Meal visibility 200x/mo</span>
+                        </div>
                     </div>
                     </div>
                 <!-- Enterprise Plan -->
@@ -489,7 +539,7 @@
                         <tr>
                             <th class="w-1/4">Features</th>
                             <th class="w-1/4 tier-starter text-center">Starter<br><span class="text-sm font-normal"><span class="text-gray-900 font-bold">Free</span></span></th>
-                            <th class="w-1/4 tier-growth text-center">Growth<br><span class="text-sm font-normal comparison-growth-price"><span class="line-through text-gray-400 text-lg">199</span> <span class="text-gray-900 font-bold">99 AED</span>/month</span></th>
+                            <th class="w-1/4 tier-growth text-center">Growth<br><span class="text-sm font-normal comparison-growth-price"><span class="line-through text-gray-400 text-lg">499</span> <span class="text-gray-900 font-bold">99 AED</span>/month</span></th>
                             <th class="w-1/4 tier-enterprise text-center">Enterprise<br><span class="text-sm font-normal">Custom</span></th>
                         </tr>
                     </thead>
@@ -862,15 +912,15 @@
                 // Monthly pricing only (Annual pricing coming soon)
                 // Starter Plan - Always Free (no changes needed)
                 
-                // Growth Plan - Monthly (99 AED/month with 50% off from 199)
-                growthOriginalPrice.textContent = '199';
+                // Growth Plan - Monthly (99 AED/month with 80% off from 499)
+                growthOriginalPrice.textContent = '499';
                 growthPrice.textContent = '99';
                 growthPeriod.textContent = 'AED/month';
-                growthOfferText.textContent = '50% off launch offer';
-                
+                growthOfferText.textContent = 'Launch offer: 80% off forever';
+
                 // Update comparison table
                 if (comparisonGrowthPrice) {
-                    comparisonGrowthPrice.innerHTML = '<span class="line-through text-gray-400 text-lg">199</span> <span class="text-gray-900 font-bold">99 AED</span>/month';
+                    comparisonGrowthPrice.innerHTML = '<span class="line-through text-gray-400 text-lg">499</span> <span class="text-gray-900 font-bold">99 AED</span>/month';
                 }
             }
         
