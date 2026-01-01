@@ -84,6 +84,10 @@
             text-decoration: none;
             display: inline-block;
             text-align: center;
+            min-height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .btn-secondary {
@@ -96,6 +100,37 @@
             text-decoration: none;
             display: inline-block;
             text-align: center;
+            min-height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Urgency counter styling */
+        .urgency-counter {
+            background: rgba(255, 107, 107, 0.12);
+            border: 2px solid #ff6b6b;
+            padding: 8px 14px;
+            border-radius: 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            line-height: 1;
+            color: #374151;
+        }
+        
+        .urgency-counter .number {
+            color: #ff6b6b;
+            font-weight: 700;
+            display: inline-block;
+        }
+        
+        .urgency-counter svg {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
         }
         
         /* Simple feature list */
@@ -154,6 +189,17 @@
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+        }
+        
+        .badge-red {
+            background-color: #ef4444;
+            color: white;
+            padding: 6px 16px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: none;
+            letter-spacing: 0.3px;
         }
         
         /* Comparison Table Styles */
@@ -393,7 +439,7 @@
                 <!-- Growth Plan -->
                 <div class="pricing-card featured rounded-xl p-8 relative">
                     <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                        <span class="badge">Most Popular</span>
+                        <span class="badge badge-red">Save 400 AED Forever</span>
                     </div>
                     
                     <div class="mb-6 mt-4">
@@ -407,7 +453,14 @@
                             <span class="price text-gray-900 growth-price">99</span>
                             <span class="text-gray-900 ml-2 growth-period">AED/month</span>
                         </div>
-                        <p class="text-gray-600 growth-offer-text">50% off launch offer</p>
+                        <p class="text-gray-600 growth-offer-text mb-3">80% off launch offer</p>
+                        <div class="urgency-counter">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-red-500">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            Limited to 50 only | <span class="number">11 restaurants subscribed</span>
+                        </div>
                     </div>
                     
                     <a href="https://gosnel.com/vendor/signup" class="btn-primary w-full mb-8">Start Growing</a>
