@@ -67,7 +67,6 @@ https://user.gosnel.com/user/how-it-works /user/user-how-it-works 200
 https://user.gosnel.com/privacy-policy /legal 200
 https://user.gosnel.com/terms-conditions /legal 200
 https://user.gosnel.com/cookie-policy /legal 200
-https://user.gosnel.com/about-us /footer/about-us.html 200
 https://user.gosnel.com/footer/about-us /footer/about-us.html 200
 https://user.gosnel.com/footer/legal /legal 200
 
@@ -113,7 +112,6 @@ http://promo.gosnel.com/* https://promo.gosnel.com/:splat 301
 /privacy-policy /legal.html 200
 /terms-conditions /legal.html 200
 /cookie-policy /legal.html 200
-/about-us /footer/about-us.html 200
 /footer/about-us /footer/about-us.html 200
 /footer/legal /legal.html 200
 
