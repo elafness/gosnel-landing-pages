@@ -1,158 +1,43 @@
-# Cloudflare Pages Redirects - Multi-App Architecture
+# Cloudflare Pages Redirects - Clean Multi-App Architecture
 
 # ============================================
-# SUBDOMAIN ROUTING (NEW ARCHITECTURE)
+# SUBDOMAIN ROUTING (PRIMARY - SERVE DIRECTLY)
 # ============================================
-# Route subdomains to respective app directories
+# Each subdomain serves its own app independently
 
-# Partner subdomain routing
+# Partner subdomain - Business pages
 https://partner.gosnel.com/* /apps/partner-app/:splat 200
 https://partner.gosnel.com /apps/partner-app/index.html 200
 
-# Future: Driver subdomain routing
-# https://drivers.gosnel.com/* /apps/driver-app/:splat 200
-# https://drivers.gosnel.com /apps/driver-app/index.html 200
-
-# Main domain routes to user app
+# Main domain - Consumer pages
 https://gosnel.com/* /apps/user-app/:splat 200
 https://gosnel.com /apps/user-app/index.html 200
 
 # ============================================
-# SHARED RESOURCES ROUTING
+# SHARED RESOURCES (SERVE DIRECTLY)
 # ============================================
-# Route shared assets and legal pages
 /shared/* /shared/:splat 200
 /assets/* /shared/assets/:splat 200
 
 # ============================================
-# LEGACY REDIRECTS
+# MAIN DOMAIN ROUTING (200 - Direct serve)
 # ============================================
-# Redirect old paths to new structure
-
-# User paths
-/user/* /apps/user-app/features/:splat 301
-/blog/* /apps/user-app/blog/:splat 301
-/about /apps/user-app/about.html 301
-/faq /apps/user-app/faq.html 301
-
-# Vendor to partner redirects
-/vendor/* https://partner.gosnel.com/features/:splat 301
-/vendor https://partner.gosnel.com/ 301
-/partner/* https://partner.gosnel.com/features/:splat 301
-/partner https://partner.gosnel.com/ 301
-
-# Legacy subdomain redirects
-https://user.gosnel.com/* https://gosnel.com/:splat 301
-https://vendor.gosnel.com/* https://partner.gosnel.com/:splat 301
+# Serve user app pages directly
+/ /apps/user-app/features/landing.html 200
+/pricing /apps/user-app/features/pricing.html 200
+/how-it-works /apps/user-app/features/how-it-works.html 200
+/blog/* /apps/user-app/blog/:splat 200
+/about /apps/user-app/about.html 200
+/faq /apps/user-app/faq.html 200
+/food /apps/user-app/food.html 200
 
 # ============================================
-# LEGACY REDIRECTS - uae/user to root
+# SITEMAPS (SERVE DIRECTLY)
 # ============================================
-# Redirect old /uae/user paths to root domain for better SEO
-/uae/user /  301
-/uae/user/ /  301
-/uae/user/pricing /pricing  301
-/uae/user/how-it-works /how-it-works  301
-
-# ============================================
-# SITEMAPS FOR NEW STRUCTURE
-# ============================================
-/uae/user/sitemap.xml /user-sitemap.xml 200
-/uae/vendor/sitemap.xml /vendor-sitemap.xml 200
-/uae/driver/sitemap.xml /drivers-sitemap.xml 200
-/uae/promo/sitemap.xml /promo-sitemap.xml 200
-
-# Also map the root project domain variants (Cloudflare Pages sometimes serves a single project across multiple custom domains)
-gosnel-landing-pages.pages.dev/sitemap.xml /user-sitemap.xml 200
-https://gosnel-landing-pages.pages.dev/sitemap.xml /user-sitemap.xml 200
-
-# Extra safety: some edge cases may request /sitemap.xml without the host rule matching.
-# Keep these after the host-specific rules.
-/vendor/sitemap.xml /vendor-sitemap.xml 200
-/user/sitemap.xml /user-sitemap.xml 200
-/drivers/sitemap.xml /drivers-sitemap.xml 200
-/promo/sitemap.xml /promo-sitemap.xml 200
-
-# ============================================
-# STATIC ASSETS (serve directly)
-# ============================================
+/sitemap.xml /sitemap.xml 200
+/user-sitemap.xml /user-sitemap.xml 200
+/vendor-sitemap.xml /vendor-sitemap.xml 200
+/drivers-sitemap.xml /drivers-sitemap.xml 200
+/promo-sitemap.xml /promo-sitemap.xml 200
 /robots.txt /robots.txt 200
-
-# ============================================
-# MAIN DOMAIN ROUTING (root and /uae/*)
-# ============================================
-
-# Root domain now serves user landing page
-/ /user/user-landing.html 200
-
-# User pricing and how-it-works at root level
-/pricing /user/user-pricing.html 200
-/how-it-works /user/user-how-it-works.html 200
-
-# SEO-focused landing pages for key search terms
-/food /food.html 200
-
-# Vendor landing page and routes
-/uae/vendor /vendor/vendor-landing.html 200
-/uae/vendor/ /vendor/vendor-landing.html 200
-/uae/vendor/pricing /vendor/vendor-pricing.html 200
-/uae/vendor/how-it-works /vendor/vendor-how-it-works.html 200
-/uae/vendor/why-partner /vendor/vendor-why-partner.html 200
-/uae/vendor/customer-lead /vendor/vendor-customerLead.html 200
-/uae/vendor/guidelines /vendor/vendor-guidelines.html 200
-/uae/vendor/insights /vendor/vendor-insights.html 200
-
-# Driver landing page and routes
-/uae/driver /drivers/drivers-landing.html 200
-/uae/driver/ /drivers/drivers-landing.html 200
-
-# ============================================
-# SHARED PAGES (served directly at root level)
-# ============================================
-# These pages are served directly without redirects for better SEO
-
-# Blog routing
-/blog /blog/index.html 200
-/blog/ /blog/index.html 200
-
-# Vendor-specific shared pages  
-/why-partner /vendor/vendor-why-partner.html 200
-/guidelines /vendor/vendor-guidelines.html 200
-/insights /vendor/vendor-insights.html 200
-
-# ============================================
-# STATIC ASSETS - Serve directly
-# ============================================
-/assets/* /assets/:splat 200
-/output.css /output.css 200
-
-# ============================================
-# CANONICAL DOMAIN REDIRECTS  
-# ============================================
-http://www.gosnel.com/* https://gosnel.com/:splat 301
-https://www.gosnel.com/* https://gosnel.com/:splat 301
-
-# Force HTTPS for main domain
-http://gosnel.com/* https://gosnel.com/:splat 301
-
-# ============================================
-# LEGACY SUPPORT AND FALLBACKS
-# ============================================
-
-# Legacy /uae/user routes redirect to root (for SEO consolidation)
-/uae/user / 301
-/uae/user/ / 301
-/uae/user/pricing /pricing 301
-/uae/user/how-it-works /how-it-works 301
-
-# Root domain fallback routes (for development/testing)
-/vendor /uae/vendor 301
-/driver /uae/driver 301
-/drivers /uae/driver 301
-
-# ============================================
-# LOCALHOST DEVELOPMENT ROUTING
-# ============================================
-# Direct access routes for development (removed to avoid conflicts)
-# Users should access via /uae/* paths
 
