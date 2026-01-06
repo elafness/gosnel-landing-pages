@@ -2,6 +2,23 @@
 export async function onRequest(context) {
   const { request } = context;
   const url = new URL(request.url);
+  const path = url.pathname;
+  
+  // Skip function for static assets and special files
+  if (path.startsWith('/shared/') || 
+      path.startsWith('/assets/') || 
+      path === '/sitemap.xml' || 
+      path === '/robots.txt' || 
+      path.endsWith('.css') || 
+      path.endsWith('.js') || 
+      path.endsWith('.png') || 
+      path.endsWith('.jpg') || 
+      path.endsWith('.ico') || 
+      path.endsWith('.svg') || 
+      path.endsWith('.webmanifest')) {
+    // Let Cloudflare serve static files directly
+    return context.env.ASSETS.fetch(context.request);
+  }
   
   // Get the hostname (e.g., partner.gosnel.com, gosnel.com)
   const hostname = url.hostname;
@@ -85,6 +102,33 @@ async function handlePartnerDomain(url, context) {
 }
 
 async function handleMainDomain(url, context) {
-  // Let the normal _redirects and static files handle main domain
+  const path = url.pathname;
+  
+  // Handle special files for main domain
+  if (path === '/sitemap.xml') {
+    const response = await context.env.ASSETS.fetch(new Request(`${url.origin}/sitemap.xml`));
+    if (response.ok) {
+      return new Response(response.body, {
+        headers: {
+          'content-type': 'application/xml; charset=utf-8',
+          'cache-control': 'public, max-age=3600',
+        }
+      });
+    }
+  }
+  
+  if (path === '/robots.txt') {
+    const response = await context.env.ASSETS.fetch(new Request(`${url.origin}/robots.txt`));
+    if (response.ok) {
+      return new Response(response.body, {
+        headers: {
+          'content-type': 'text/plain; charset=utf-8',
+          'cache-control': 'public, max-age=3600',
+        }
+      });
+    }
+  }
+  
+  // Let the normal _redirects and static files handle other requests
   return context.env.ASSETS.fetch(context.request);
 }
