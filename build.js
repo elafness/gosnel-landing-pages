@@ -397,6 +397,14 @@ const buildPages = () => {
     }
   });
 
+  // Create index.html as fallback (copy of user landing)
+  const userLandingPath = path.join(distDir, "user-landing.html");
+  const indexPath = path.join(distDir, "index.html");
+  if (fs.existsSync(userLandingPath)) {
+    fs.copyFileSync(userLandingPath, indexPath);
+    console.log("✅ Created index.html fallback");
+  }
+
   // Copy apps and shared directories to dist for deployment
   const appsSourcePath = path.join(__dirname, "apps");
   const appsDestPath = path.join(distDir, "apps");
