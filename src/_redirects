@@ -61,6 +61,9 @@ https://gosnel-landing-pages.pages.dev/sitemap.xml /user-sitemap.xml 200
 /pricing /user/user-pricing.html 200
 /how-it-works /user/user-how-it-works.html 200
 
+# SEO-focused landing pages for key search terms
+/food /food.html 200
+
 # Vendor landing page and routes
 /uae/vendor /vendor/vendor-landing.html 200
 /uae/vendor/ /vendor/vendor-landing.html 200
