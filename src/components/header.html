@@ -1,4 +1,4 @@
-<!-- User Header Component -->
+<!-- Unified User Header Component for All User Pages -->
 <nav class="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-16">
@@ -16,10 +16,10 @@
             <!-- Desktop Navigation Links -->
             <div class="hidden md:flex items-center gap-8">
                 <a href="/" class="text-gray-900 hover:text-teal-600 font-medium transition">Home</a>
-                <a href="/user/how-it-works" class="text-gray-900 hover:text-teal-600 font-medium transition">How It Works</a>
-                <a href="/user/pricing" class="text-gray-900 hover:text-teal-600 font-medium transition">Pricing</a>
+                <a href="/user/user-how-it-works.html" class="text-gray-900 hover:text-teal-600 font-medium transition">How It Works</a>
+                <a href="/user/user-pricing.html" class="text-gray-900 hover:text-teal-600 font-medium transition">Pricing</a>
                 <a href="/faq" class="text-gray-900 hover:text-teal-600 font-medium transition">FAQ</a>
-                <a href="/blog" class="text-gray-900 hover:text-teal-600 font-medium transition">Blog</a>
+                <a href="/blog/" class="text-gray-900 hover:text-teal-600 font-medium transition">Blog</a>
                 <a href="/about" class="text-gray-900 hover:text-teal-600 font-medium transition">About Us</a>
             </div>
             
@@ -44,10 +44,25 @@
                 <!-- Mobile Navigation Links -->
                 <div class="space-y-4">
                     <a href="/" class="block text-lg font-medium text-gray-900 hover:text-teal-600 transition">Home</a>
-                    <a href="/user/how-it-works" class="block text-lg font-medium text-gray-900 hover:text-teal-600 transition">How It Works</a>
-                    <a href="/user/pricing" class="block text-lg font-medium text-gray-900 hover:text-teal-600 transition">Pricing</a>
+                    <a href="/user/user-how-it-works.html" class="block text-lg font-medium text-gray-900 hover:text-teal-600 transition">How It Works</a>
+                    <a href="/user/user-pricing.html" class="block text-lg font-medium text-gray-900 hover:text-teal-600 transition">Pricing</a>
                     <a href="/faq" class="block text-lg font-medium text-gray-900 hover:text-teal-600 transition">FAQ</a>
-                    <a href="/blog" class="block text-lg font-medium text-gray-900 hover:text-teal-600 transition">Blog</a>
+                    <a href="/blog/" class="block text-lg font-medium text-gray-900 hover:text-teal-600 transition">Blog</a>
+                    <a href="/about" class="block text-lg font-medium text-gray-900 hover:text-teal-600 transition">About Us</a>
+                </div>
+
+                <!-- Mobile Actions -->
+                <div class="pt-4 border-t border-gray-200 space-y-4">
+                    <a href="/login" class="block text-center py-3 text-gray-900 hover:text-teal-600 font-medium border border-gray-300 rounded-lg transition">Sign In</a>
+                    <a href="/signup" class="block text-center py-3 bg-teal-500 text-white rounded-lg font-medium hover:bg-teal-600 transition">Get Started</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu-overlay-user" class="md:hidden fixed inset-0 bg-black bg-opacity-50 z-30 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+    </div>
+</nav>
                     <a href="/about" class="block text-lg font-medium text-gray-900 hover:text-teal-600 transition">About Us</a>
                 </div>
 

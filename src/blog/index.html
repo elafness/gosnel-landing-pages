@@ -76,7 +76,7 @@
 </head>
 <body class="bg-white">
     <!-- Header -->
-    <!--#include file="components/user-header.html" -->
+    <!--#include file="../components/header.html" -->
 
     <!-- Main Content -->
     <main class="pt-20">
@@ -227,6 +227,75 @@
     </main>
 
     <!-- Footer -->
-    <!--#include file="components/footer.html" -->
+    <footer class="bg-gray-50 border-t border-gray-200 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-12 mb-12">
+                <!-- Brand -->
+                <div class="lg:col-span-1">
+                    <a href="/" class="flex items-center gap-3 mb-4">
+                        <img src="/assets/images/gosnelLogoTransparate.png" alt="GoSnel Logo" class="w-10 h-10 object-contain">
+                        <span class="text-xl font-bold text-gradient-teal">GoSnel</span>
+                    </a>
+                    <p class="text-gray-600 text-sm leading-relaxed">Meal Discovery AI Agent — Connecting you with the perfect meal in UAE, every time.</p>
+                </div>
+                
+                <!-- For Users -->
+                <div>
+                    <h4 class="text-sm font-bold text-teal-600 uppercase tracking-wide mb-4">For Users</h4>
+                    <nav class="space-y-3">
+                        <a href="/user/user-how-it-works.html" class="block text-sm text-gray-600 hover:text-teal-500 transition">How it works</a>
+                        <span class="block text-sm text-gray-400 italic">Download App (Coming Soon)</span>
+                        <a href="/faq" class="block text-sm text-gray-600 hover:text-teal-500 transition">FAQ</a>
+                        <a href="/blog" class="block text-sm text-teal-600 font-semibold transition">Blog</a>
+                        <a href="/about" class="block text-sm text-gray-600 hover:text-teal-500 transition">About Us</a>
+                        <a href="https://gosnel.com/user/help" class="block text-sm text-gray-600 hover:text-teal-500 transition">Help & Support</a>
+                    </nav>
+                </div>
+                
+                <!-- For Restaurants -->
+                <div>
+                    <h4 class="text-sm font-bold text-teal-600 uppercase tracking-wide mb-4">For Restaurants</h4>
+                    <nav class="space-y-3">
+                        <a href="https://gosnel.com/vendor/signup" class="block text-sm text-teal-600 font-semibold hover:text-teal-500 transition">Register Your Restaurant</a>
+                        <a href="https://gosnel.com/vendor/login" class="block text-sm text-gray-600 hover:text-teal-500 transition">Vendor Login</a>
+                        <a href="/vendor/vendor-why-partner.html" class="block text-sm text-gray-600 hover:text-teal-500 transition">Why Partner with GoSnel</a>
+                        <a href="/vendor/vendor-how-it-works.html" class="block text-sm text-gray-600 hover:text-teal-500 transition">How It Works for Restaurants</a>
+                        <a href="/blog/" class="block text-sm text-gray-600 hover:text-teal-500 transition">GoSnel Blog</a>
+                    </nav>
+                </div>
+                
+                <!-- Legal & Contact -->
+                <div class="lg:col-span-2">
+                    <h4 class="text-sm font-bold text-teal-600 uppercase tracking-wide mb-4">Contact & Legal</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <ul class="space-y-2 text-sm text-gray-600">
+                                <li><span class="font-semibold">Email:</span> <a href="mailto:business@gosnel.com" class="hover:text-teal-500 transition">business@gosnel.com</a></li>
+                                <li><span class="font-semibold">Phone:</span> <a href="tel:+971542503729" class="hover:text-teal-500 transition">+971 54 250 3729</a></li>
+                            </ul>
+                        </div>
+                        <nav class="space-y-2">
+                            <a href="/legal" class="block text-sm text-gray-600 hover:text-teal-500 transition">Privacy Policy</a>
+                            <a href="/legal" class="block text-sm text-gray-600 hover:text-teal-500 transition">Terms & Conditions</a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Copyright -->
+            <div class="border-t border-gray-200 pt-6 text-center">
+                <p class="text-xs text-gray-500">© 2025 GoSnel. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <style>
+    .text-gradient-teal {
+        background: linear-gradient(90deg, #4ECDC4, #1A9A93);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    </style>
 </body>
 </html>
