@@ -22,9 +22,9 @@ export async function onRequest(context) {
 async function handlePartnerDomain(url, context) {
   const path = url.pathname;
   
-  // Handle special files for partner domain
+  // Handle robots.txt - serve main robots.txt (unified)
   if (path === '/robots.txt') {
-    const response = await context.env.ASSETS.fetch(new Request(`${url.origin}/partner-robots.txt`));
+    const response = await context.env.ASSETS.fetch(new Request(`${url.origin}/robots.txt`));
     if (response.ok) {
       return new Response(response.body, {
         headers: {
@@ -35,8 +35,9 @@ async function handlePartnerDomain(url, context) {
     }
   }
   
+  // Handle sitemap.xml - serve unified sitemap
   if (path === '/sitemap.xml') {
-    const response = await context.env.ASSETS.fetch(new Request(`${url.origin}/partner-sitemap.xml`));
+    const response = await context.env.ASSETS.fetch(new Request(`${url.origin}/sitemap.xml`));
     if (response.ok) {
       return new Response(response.body, {
         headers: {

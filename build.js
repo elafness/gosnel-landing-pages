@@ -138,31 +138,13 @@ const buildPages = () => {
     console.log("✅ Copied robots.txt");
   }
 
-  // Copy partner-robots.txt (for partner.gosnel.com)
-  const partnerRobotsPath = path.join(srcDir, "partner-robots.txt");
-  const distPartnerRobotsPath = path.join(distDir, "partner-robots.txt");
-
-  if (fs.existsSync(partnerRobotsPath)) {
-    fs.copyFileSync(partnerRobotsPath, distPartnerRobotsPath);
-    console.log("✅ Copied partner-robots.txt");
-  }
-
-  // Copy main sitemap.xml (for gosnel.com)
+  // Copy unified sitemap.xml (contains all URLs for both domains)
   const mainSitemapPath = path.join(srcDir, "sitemap.xml");
   const distMainSitemapPath = path.join(distDir, "sitemap.xml");
 
   if (fs.existsSync(mainSitemapPath)) {
     fs.copyFileSync(mainSitemapPath, distMainSitemapPath);
     console.log("✅ Copied sitemap.xml");
-  }
-
-  // Copy partner-sitemap.xml (for partner.gosnel.com)
-  const partnerSitemapPath = path.join(srcDir, "partner-sitemap.xml");
-  const distPartnerSitemapPath = path.join(distDir, "partner-sitemap.xml");
-
-  if (fs.existsSync(partnerSitemapPath)) {
-    fs.copyFileSync(partnerSitemapPath, distPartnerSitemapPath);
-    console.log("✅ Copied partner-sitemap.xml");
   }
 
   // Copy subdirectory static pages with include processing
