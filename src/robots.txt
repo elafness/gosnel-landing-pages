@@ -1,6 +1,3 @@
-# GoSnel Robots.txt
-# https://gosnel.com
-
 User-agent: *
 Allow: /
 

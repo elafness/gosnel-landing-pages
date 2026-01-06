@@ -1,6 +1,3 @@
-# GoSnel Partner Robots.txt
-# https://partner.gosnel.com
-
 User-agent: *
 Allow: /
 
