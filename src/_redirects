@@ -1,16 +1,38 @@
-# Cloudflare Pages Redirects - Domain-based routing
+# Cloudflare Pages Redirects - Updated for main domain routing
 
 # ============================================
-# CRITICAL: SITEMAPS FIRST (Must be before any other routing!)
+# SUBDOMAIN TO MAIN DOMAIN REDIRECTS (PRIORITY)
 # ============================================
-# Deterministic sitemap rewrites
-# IMPORTANT: do NOT use a single relative /sitemap.xml rewrite here, because the same build
-# is served on multiple custom domains and that would make every subdomain return the same sitemap.
+# Redirect all subdomain traffic to main domain with new paths
 
-https://vendor.gosnel.com/sitemap.xml /vendor-sitemap.xml 200
-https://user.gosnel.com/sitemap.xml /user-sitemap.xml 200
-https://drivers.gosnel.com/sitemap.xml /drivers-sitemap.xml 200
-https://promo.gosnel.com/sitemap.xml /promo-sitemap.xml 200
+# User subdomain redirects - now redirect to root
+https://user.gosnel.com/* https://gosnel.com/:splat 301
+
+# Vendor subdomain redirects  
+https://vendor.gosnel.com/* https://gosnel.com/uae/vendor/:splat 301
+
+# Driver subdomain redirects
+https://drivers.gosnel.com/* https://gosnel.com/uae/driver/:splat 301
+
+# Promo subdomain redirects
+https://promo.gosnel.com/* https://gosnel.com/uae/promo/:splat 301
+
+# ============================================
+# LEGACY REDIRECTS - uae/user to root
+# ============================================
+# Redirect old /uae/user paths to root domain for better SEO
+/uae/user /  301
+/uae/user/ /  301
+/uae/user/pricing /pricing  301
+/uae/user/how-it-works /how-it-works  301
+
+# ============================================
+# SITEMAPS FOR NEW STRUCTURE
+# ============================================
+/uae/user/sitemap.xml /user-sitemap.xml 200
+/uae/vendor/sitemap.xml /vendor-sitemap.xml 200
+/uae/driver/sitemap.xml /drivers-sitemap.xml 200
+/uae/promo/sitemap.xml /promo-sitemap.xml 200
 
 # Also map the root project domain variants (Cloudflare Pages sometimes serves a single project across multiple custom domains)
 gosnel-landing-pages.pages.dev/sitemap.xml /user-sitemap.xml 200
@@ -29,78 +51,43 @@ https://gosnel-landing-pages.pages.dev/sitemap.xml /user-sitemap.xml 200
 /robots.txt /robots.txt 200
 
 # ============================================
-# VENDOR SUBDOMAIN ROUTING (vendor.gosnel.com ONLY)
+# MAIN DOMAIN ROUTING (root and /uae/*)
 # ============================================
-# Block user pages from vendor subdomain
-https://vendor.gosnel.com/user-pricing https://vendor.gosnel.com/pricing 301
-https://vendor.gosnel.com/user-faq https://vendor.gosnel.com/faq 301
-https://vendor.gosnel.com/user-how-it-works https://vendor.gosnel.com/how-it-works 301
-https://vendor.gosnel.com/user-* https://vendor.gosnel.com/ 301
 
-https://vendor.gosnel.com/how-it-works /vendor-how-it-works.html 200
-https://vendor.gosnel.com/why-partner /vendor-why-partner.html 200
-https://vendor.gosnel.com/customer-lead /vendor-customerLead.html 200
-https://vendor.gosnel.com/guidelines /vendor-guidelines.html 200
-https://vendor.gosnel.com/insights /vendor-insights.html 200
-https://vendor.gosnel.com/insight /vendor-insights.html 200
-https://vendor.gosnel.com/faq /vendor-faq.html 200
-# Vendor pricing - DISABLED redirects, now handled by Pages Function /functions/pricing.js
-# https://vendor.gosnel.com/pricing /vendor/vendor-pricing 200
-# https://vendor.gosnel.com/vendor/pricing /vendor/vendor-pricing 200
-https://vendor.gosnel.com/terms-conditions /legal.html 200
-https://vendor.gosnel.com/privacy-policy /legal.html 200
-https://vendor.gosnel.com/cookie-policy /legal.html 200
-https://vendor.gosnel.com/footer/about-us.html /footer/about-us.html 200
-https://vendor.gosnel.com/footer/about-us /footer/about-us.html 200
-https://vendor.gosnel.com/footer/legal /legal.html 200
-https://vendor.gosnel.com/about-us /user/user-about 200
-https://vendor.gosnel.com/about /user/user-about 200
+# Root domain now serves user landing page
+/ /user/user-landing.html 200
+
+# User pricing and how-it-works at root level
+/pricing /user/user-pricing.html 200
+/how-it-works /user/user-how-it-works.html 200
+
+# Vendor landing page and routes
+/uae/vendor /vendor/vendor-landing.html 200
+/uae/vendor/ /vendor/vendor-landing.html 200
+/uae/vendor/pricing /vendor/vendor-pricing.html 200
+/uae/vendor/how-it-works /vendor/vendor-how-it-works.html 200
+/uae/vendor/why-partner /vendor/vendor-why-partner.html 200
+/uae/vendor/customer-lead /vendor/vendor-customerLead.html 200
+/uae/vendor/guidelines /vendor/vendor-guidelines.html 200
+/uae/vendor/insights /vendor/vendor-insights.html 200
+
+# Driver landing page and routes
+/uae/driver /drivers/drivers-landing.html 200
+/uae/driver/ /drivers/drivers-landing.html 200
 
 # ============================================
-# USER SUBDOMAIN ROUTING (user.gosnel.com ONLY)
+# SHARED PAGES (served directly at root level)
 # ============================================
-https://user.gosnel.com/pricing /user/user-pricing 200
-https://user.gosnel.com/faq /user/user-faq 200
-https://user.gosnel.com/how-it-works /user/user-how-it-works 200
-https://user.gosnel.com/about-us /user/user-about 200
-https://user.gosnel.com/about /user/user-about 200
+# These pages are served directly without redirects for better SEO
 
-# User subpath routing (/user/*)
-https://user.gosnel.com/user/pricing /user/user-pricing 200
-https://user.gosnel.com/user/faq /user/user-faq 200
-https://user.gosnel.com/user/how-it-works /user/user-how-it-works 200
-https://user.gosnel.com/user/about-us /user/user-about 200
-https://user.gosnel.com/user/about /user/user-about 200
+# Blog routing
+/blog /blog/index.html 200
+/blog/ /blog/index.html 200
 
-https://user.gosnel.com/privacy-policy /legal 200
-https://user.gosnel.com/terms-conditions /legal 200
-https://user.gosnel.com/cookie-policy /legal 200
-https://user.gosnel.com/footer/about-us.html /footer/about-us.html 200
-https://user.gosnel.com/footer/about-us /footer/about-us.html 200
-https://user.gosnel.com/footer/legal /legal 200
-
-# ============================================
-# PROMO SUBDOMAIN ROUTING (promo.gosnel.com ONLY)
-# ============================================
-https://promo.gosnel.com/footer/about-us /footer/about-us.html 200
-https://promo.gosnel.com/footer/about-us.html /footer/about-us.html 200
-https://promo.gosnel.com/footer/legal /legal.html 200
-https://promo.gosnel.com/about-us /user/user-about 200
-https://promo.gosnel.com/about /user/user-about 200
-# ============================================
-# DRIVERS SUBDOMAIN ROUTING (drivers.gosnel.com ONLY)
-# ============================================
-https://drivers.gosnel.com/footer/about-us /footer/about-us.html 200
-https://drivers.gosnel.com/footer/about-us.html /footer/about-us.html 200
-https://drivers.gosnel.com/footer/legal /legal.html 200
-https://drivers.gosnel.com/about-us /user/user-about 200
-https://drivers.gosnel.com/about /user/user-about 200
-
-# ============================================
-# LOCALHOST DEVELOPMENT (about us routes)
-# ============================================
-http://localhost:8888/about-us /user/user-about 200
-http://localhost:8888/about /user/user-about 200
+# Vendor-specific shared pages  
+/why-partner /vendor/vendor-why-partner.html 200
+/guidelines /vendor/vendor-guidelines.html 200
+/insights /vendor/vendor-insights.html 200
 
 # ============================================
 # STATIC ASSETS - Serve directly
@@ -114,25 +101,27 @@ http://localhost:8888/about /user/user-about 200
 http://www.gosnel.com/* https://gosnel.com/:splat 301
 https://www.gosnel.com/* https://gosnel.com/:splat 301
 
-# Redirect HTTP to HTTPS for subdomains
-http://drivers.gosnel.com/* https://drivers.gosnel.com/:splat 301
-http://vendor.gosnel.com/* https://vendor.gosnel.com/:splat 301
-http://user.gosnel.com/* https://user.gosnel.com/:splat 301
-http://promo.gosnel.com/* https://promo.gosnel.com/:splat 301
+# Force HTTPS for main domain
+http://gosnel.com/* https://gosnel.com/:splat 301
 
 # ============================================
-# LOCALHOST DEVELOPMENT ROUTING (applies when no subdomain match)
+# LEGACY SUPPORT AND FALLBACKS
 # ============================================
-/how-it-works /user-how-it-works.html 200
-/faq /user-faq.html 200
-/pricing /user-pricing.html 200
-/why-partner /vendor-why-partner.html 200
-/guidelines /vendor-guidelines.html 200
-/insights /vendor-insights.html 200
-/privacy-policy /legal.html 200
-/terms-conditions /legal.html 200
-/cookie-policy /legal.html 200
-/footer/about-us.html /footer/about-us.html 200
-/footer/about-us /footer/about-us.html 200
-/footer/legal /legal.html 200
+
+# Legacy /uae/user routes redirect to root (for SEO consolidation)
+/uae/user / 301
+/uae/user/ / 301
+/uae/user/pricing /pricing 301
+/uae/user/how-it-works /how-it-works 301
+
+# Root domain fallback routes (for development/testing)
+/vendor /uae/vendor 301
+/driver /uae/driver 301
+/drivers /uae/driver 301
+
+# ============================================
+# LOCALHOST DEVELOPMENT ROUTING
+# ============================================
+# Direct access routes for development (removed to avoid conflicts)
+# Users should access via /uae/* paths
 

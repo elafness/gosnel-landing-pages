@@ -1,20 +1,19 @@
-// Cloudflare Pages Function - Handle pricing requests for all sections
+// Main domain landing page handler
 export async function onRequest(context) {
     const { request } = context;
     const url = new URL(request.url);
-    const path = url.pathname;
     
-    // Handle /pricing requests (legacy)
-    if (path === '/pricing') {
+    // Only handle root domain requests
+    if (url.pathname === '/' || url.pathname === '') {
         try {
-            // Default to user pricing for backward compatibility
-            const pricingResponse = await fetch(`${url.origin}/user/user-pricing.html`);
+            // Serve the main marketing landing page
+            const response = await fetch(`${url.origin}/index.html`);
             
-            if (!pricingResponse.ok) {
-                return new Response('Pricing page not found', { status: 404 });
+            if (!response.ok) {
+                return new Response('Page not found', { status: 404 });
             }
             
-            const html = await pricingResponse.text();
+            const html = await response.text();
             
             return new Response(html, {
                 headers: {
@@ -24,10 +23,11 @@ export async function onRequest(context) {
             });
             
         } catch (error) {
-            console.error('Pricing function error:', error);
+            console.error('Main page error:', error);
             return new Response('Internal Server Error', { status: 500 });
         }
     }
     
+    // Pass through to other handlers
     return new Response('Not Found', { status: 404 });
 }
