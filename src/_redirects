@@ -37,3 +37,7 @@ https://partner.gosnel.com/insights /partner-insights.html 200
 /promo-sitemap.xml /promo-sitemap.xml 200
 /robots.txt /robots.txt 200
 
+# ============================================
+# BLOCK INTERNAL PATHS
+# ============================================
+/apps/* / 404
