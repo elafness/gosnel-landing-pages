@@ -4,9 +4,9 @@
   "description": "GoSnel Landing Pages with Tailwind CSS Templates",
   "scripts": {
     "dev": "npm run build && node dev-server.js",
-    "dev:watch": "concurrently \"tailwindcss -i ./src/input.css -o ./dist/output.css --watch\" \"npm run build:pages -- --watch\"",
+    "dev:watch": "concurrently \"tailwindcss -i ./shared/styles/input.css -o ./shared/styles/output.css --watch\" \"npm run build:pages -- --watch\"",
     "build": "npm run build:css && npm run build:pages",
-    "build:css": "tailwindcss -i ./src/input.css -o ./dist/output.css --minify",
+    "build:css": "tailwindcss -i ./shared/styles/input.css -o ./shared/styles/output.css --minify",
     "build:pages": "node build.js",
     "serve": "npx http-server dist -p 3000 -c-1",
     "deploy": "npm run build && gh-pages -d dist"

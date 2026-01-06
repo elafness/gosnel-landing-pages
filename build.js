@@ -12,30 +12,40 @@ const buildPages = () => {
   }
 
   // Function to process HTML includes
-  const processIncludes = (htmlContent) => {
+  const processIncludes = (htmlContent, basePath = srcDir) => {
     // Replace <!--#include file="path" --> with actual file content
     const includeRegex = /<!--\s*#include\s+file="([^"]+)"\s*-->/g;
     return htmlContent.replace(includeRegex, (match, filePath) => {
-      const includePath = path.join(srcDir, filePath);
-      if (fs.existsSync(includePath)) {
-        return fs.readFileSync(includePath, "utf8");
-      } else {
-        console.warn(`⚠️  Include file not found: ${filePath}`);
-        return `<!-- Include not found: ${filePath} -->`;
+      // Try multiple possible paths for includes
+      const possiblePaths = [
+        path.join(basePath, filePath), // Original path relative to base
+        path.join(__dirname, filePath), // Relative to project root
+        path.join(__dirname, "apps", filePath), // In apps directory
+        path.join(__dirname, "shared", filePath), // In shared directory
+        path.join(srcDir, filePath) // In src directory
+      ];
+      
+      for (const includePath of possiblePaths) {
+        if (fs.existsSync(includePath)) {
+          return fs.readFileSync(includePath, "utf8");
+        }
       }
+      
+      console.warn(`⚠️  Include file not found: ${filePath}`);
+      return `<!-- Include not found: ${filePath} -->`;
     });
   };
 
   // Landing page files configuration
   const landingPages = [
-    { subdomain: "user", filename: "user/user-landing.html" },
-    { subdomain: "vendor", filename: "vendor/vendor-landing.html" },
-    { subdomain: "drivers", filename: "drivers/drivers-landing.html" },
-    { subdomain: "promo", filename: "promo/promo-landing.html" }
+    { subdomain: "user", filename: "apps/user-app/features/landing.html" },
+    { subdomain: "vendor", filename: "apps/partner-app/features/landing.html" },
+    { subdomain: "drivers", filename: "src/drivers/drivers-landing.html" },
+    { subdomain: "promo", filename: "src/promo/promo-landing.html" }
   ];
 
   landingPages.forEach(({ subdomain, filename }) => {
-    const srcPath = path.join(srcDir, filename);
+    const srcPath = path.join(__dirname, filename); // Use project root instead of srcDir
     // Build landing pages at root level with subdomain-specific names
     const distPath = path.join(distDir, `index-${subdomain}.html`);
 
@@ -44,7 +54,8 @@ const buildPages = () => {
       let htmlContent = fs.readFileSync(srcPath, "utf8");
 
       // Process includes first
-      htmlContent = processIncludes(htmlContent);
+      const fileDir = path.dirname(srcPath);
+      htmlContent = processIncludes(htmlContent, fileDir);
 
       // Replace CSS path to point to the compiled Tailwind CSS
       htmlContent = htmlContent.replace(
@@ -61,7 +72,8 @@ const buildPages = () => {
       let rootHtmlContent = fs.readFileSync(srcPath, "utf8");
       
       // Process includes for root version too
-      rootHtmlContent = processIncludes(rootHtmlContent);
+      const rootFileDir = path.dirname(srcPath);
+      rootHtmlContent = processIncludes(rootHtmlContent, rootFileDir);
       rootHtmlContent = rootHtmlContent.replace(
         /\.\.\/\.\.\/dist\/output\.css/g,
         "/output.css"
@@ -90,7 +102,8 @@ const buildPages = () => {
 
       // Copy landing page content as index.html in subdirectory
       let htmlContent = fs.readFileSync(srcPath, "utf8");
-      htmlContent = processIncludes(htmlContent);
+      const subFileDir = path.dirname(srcPath);
+      htmlContent = processIncludes(htmlContent, subFileDir);
       
       // Fix CSS paths for subdirectory access
       htmlContent = htmlContent.replace(
@@ -322,6 +335,33 @@ const buildPages = () => {
     }
   });
   console.log("✅ Created localhost development files");
+
+  // Copy apps and shared directories to dist for deployment
+  const appsSourcePath = path.join(__dirname, "apps");
+  const appsDestPath = path.join(distDir, "apps");
+  
+  if (fs.existsSync(appsSourcePath)) {
+    // Remove existing apps directory if it exists
+    if (fs.existsSync(appsDestPath)) {
+      fs.rmSync(appsDestPath, { recursive: true, force: true });
+    }
+    // Copy fresh apps directory
+    fs.cpSync(appsSourcePath, appsDestPath, { recursive: true });
+    console.log("✅ Copied apps directory");
+  }
+
+  const sharedSourcePath = path.join(__dirname, "shared");
+  const sharedDestPath = path.join(distDir, "shared");
+  
+  if (fs.existsSync(sharedSourcePath)) {
+    // Remove existing shared directory if it exists
+    if (fs.existsSync(sharedDestPath)) {
+      fs.rmSync(sharedDestPath, { recursive: true, force: true });
+    }
+    // Copy fresh shared directory
+    fs.cpSync(sharedSourcePath, sharedDestPath, { recursive: true });
+    console.log("✅ Copied shared directory");
+  }
 
   console.log("🎉 Build complete!");
 };
