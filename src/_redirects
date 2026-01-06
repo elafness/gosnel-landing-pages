@@ -4,7 +4,6 @@
 # SHARED RESOURCES (SERVE DIRECTLY)
 # ============================================
 /shared/* /shared/:splat 200
-/assets/* /shared/assets/:splat 200
 
 # ============================================
 # MAIN DOMAIN ROUTING (gosnel.com - Direct serve)
@@ -38,4 +37,11 @@ https://partner.gosnel.com/insights /apps/partner-app/features/insights.html 200
 /drivers-sitemap.xml /drivers-sitemap.xml 200
 /promo-sitemap.xml /promo-sitemap.xml 200
 /robots.txt /robots.txt 200
+
+# ============================================
+# BLOCK DIRECT ACCESS TO APPS FOLDER
+# ============================================
+# Prevent direct access to internal app directories
+/apps/* / 200
+/assets/* /shared/assets/:splat 200
 
