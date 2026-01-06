@@ -1,28 +1,15 @@
 # Cloudflare Pages Redirects - Clean Multi-App Architecture
 
 # ============================================
-# SUBDOMAIN ROUTING (PRIMARY - SERVE DIRECTLY)
-# ============================================
-# Each subdomain serves its own app independently
-
-# Partner subdomain - Business pages
-https://partner.gosnel.com/* /apps/partner-app/:splat 200
-https://partner.gosnel.com /apps/partner-app/index.html 200
-
-# Main domain - Consumer pages
-https://gosnel.com/* /apps/user-app/:splat 200
-https://gosnel.com /apps/user-app/index.html 200
-
-# ============================================
 # SHARED RESOURCES (SERVE DIRECTLY)
 # ============================================
 /shared/* /shared/:splat 200
 /assets/* /shared/assets/:splat 200
 
 # ============================================
-# MAIN DOMAIN ROUTING (200 - Direct serve)
+# MAIN DOMAIN ROUTING (gosnel.com - Direct serve)
 # ============================================
-# Serve user app pages directly
+# Serve user app pages directly without exposing internal paths
 / /apps/user-app/features/landing.html 200
 /pricing /apps/user-app/features/pricing.html 200
 /how-it-works /apps/user-app/features/how-it-works.html 200
@@ -30,6 +17,17 @@ https://gosnel.com /apps/user-app/index.html 200
 /about /apps/user-app/about.html 200
 /faq /apps/user-app/faq.html 200
 /food /apps/user-app/food.html 200
+
+# ============================================
+# PARTNER SUBDOMAIN (partner.gosnel.com - Direct serve)
+# ============================================
+# Serve partner app pages directly
+https://partner.gosnel.com/ /apps/partner-app/index.html 200
+https://partner.gosnel.com/pricing /apps/partner-app/features/pricing.html 200
+https://partner.gosnel.com/how-it-works /apps/partner-app/features/how-it-works.html 200
+https://partner.gosnel.com/why-partner /apps/partner-app/features/why-partner.html 200
+https://partner.gosnel.com/guidelines /apps/partner-app/features/guidelines.html 200
+https://partner.gosnel.com/insights /apps/partner-app/features/insights.html 200
 
 # ============================================
 # SITEMAPS (SERVE DIRECTLY)
