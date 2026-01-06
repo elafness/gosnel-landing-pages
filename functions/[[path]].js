@@ -4,20 +4,24 @@ export async function onRequest(context) {
   const url = new URL(request.url);
   const path = url.pathname;
   
-  // Skip function for static assets and special files
-  if (path.startsWith('/shared/') || 
+  // Skip function for static assets and special files - let Cloudflare handle them directly
+  if (path === '/sitemap.xml' || 
+      path === '/robots.txt' ||
+      path.startsWith('/shared/') || 
       path.startsWith('/assets/') || 
-      path === '/sitemap.xml' || 
-      path === '/robots.txt' || 
+      path.endsWith('.xml') ||
+      path.endsWith('.txt') ||
       path.endsWith('.css') || 
       path.endsWith('.js') || 
       path.endsWith('.png') || 
       path.endsWith('.jpg') || 
       path.endsWith('.ico') || 
       path.endsWith('.svg') || 
-      path.endsWith('.webmanifest')) {
-    // Let Cloudflare serve static files directly
-    return context.env.ASSETS.fetch(context.request);
+      path.endsWith('.webp') ||
+      path.endsWith('.webmanifest') ||
+      path.endsWith('.json')) {
+    // Pass through to Cloudflare's default handler (serves static files directly)
+    return context.next();
   }
   
   // Get the hostname (e.g., partner.gosnel.com, gosnel.com)
