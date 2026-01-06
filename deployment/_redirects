@@ -1,5 +1,5 @@
 # Cloudflare Pages Redirects - Clean Multi-App Architecture
-# Note: /apps/* is blocked via _routes.json for security
+# Files are copied to root with clean names during build
 
 # ============================================
 # SHARED RESOURCES (SERVE DIRECTLY)
@@ -10,25 +10,25 @@
 # ============================================
 # MAIN DOMAIN ROUTING (gosnel.com)
 # ============================================
-# Serve user app pages with clean URLs
-/ /apps/user-app/features/landing.html 200
-/pricing /apps/user-app/features/pricing.html 200
-/how-it-works /apps/user-app/features/how-it-works.html 200
+# Serve user app pages with clean URLs using root-level files
+/ /user-landing.html 200
+/pricing /user-pricing.html 200
+/how-it-works /user-how-it-works.html 200
 /blog/* /apps/user-app/blog/:splat 200
-/about /apps/user-app/about.html 200
-/faq /apps/user-app/faq.html 200
-/food /apps/user-app/food.html 200
+/about /user-about.html 200
+/faq /user-faq.html 200
+/food /user-food.html 200
 
 # ============================================
 # PARTNER SUBDOMAIN (partner.gosnel.com)
 # ============================================
-# Serve partner app pages with clean URLs
-https://partner.gosnel.com/ /apps/partner-app/index.html 200
-https://partner.gosnel.com/pricing /apps/partner-app/features/pricing.html 200
-https://partner.gosnel.com/how-it-works /apps/partner-app/features/how-it-works.html 200
-https://partner.gosnel.com/why-partner /apps/partner-app/features/why-partner.html 200
-https://partner.gosnel.com/guidelines /apps/partner-app/features/guidelines.html 200
-https://partner.gosnel.com/insights /apps/partner-app/features/insights.html 200
+# Serve partner app pages with clean URLs using root-level files
+https://partner.gosnel.com/ /partner-landing.html 200
+https://partner.gosnel.com/pricing /partner-pricing.html 200
+https://partner.gosnel.com/how-it-works /partner-how-it-works.html 200
+https://partner.gosnel.com/why-partner /partner-why-partner.html 200
+https://partner.gosnel.com/guidelines /partner-guidelines.html 200
+https://partner.gosnel.com/insights /partner-insights.html 200
 
 # ============================================
 # SITEMAPS (SERVE DIRECTLY)

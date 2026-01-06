@@ -336,6 +336,67 @@ const buildPages = () => {
   });
   console.log("✅ Created localhost development files");
 
+  // ============================================
+  // SOLID SOLUTION: Copy HTML files with clean names
+  // ============================================
+  // Copy app files to root level with clean names to avoid exposing /apps/* paths
+  
+  // User app files (for gosnel.com)
+  const userAppFiles = [
+    { src: "apps/user-app/features/landing.html", dest: "user-landing.html" },
+    { src: "apps/user-app/features/pricing.html", dest: "user-pricing.html" },
+    { src: "apps/user-app/features/how-it-works.html", dest: "user-how-it-works.html" },
+    { src: "apps/user-app/about.html", dest: "user-about.html" },
+    { src: "apps/user-app/faq.html", dest: "user-faq.html" },
+    { src: "apps/user-app/food.html", dest: "user-food.html" }
+  ];
+
+  // Partner app files (for partner.gosnel.com)
+  const partnerAppFiles = [
+    { src: "apps/partner-app/index.html", dest: "partner-landing.html" },
+    { src: "apps/partner-app/features/pricing.html", dest: "partner-pricing.html" },
+    { src: "apps/partner-app/features/how-it-works.html", dest: "partner-how-it-works.html" },
+    { src: "apps/partner-app/features/why-partner.html", dest: "partner-why-partner.html" },
+    { src: "apps/partner-app/features/guidelines.html", dest: "partner-guidelines.html" },
+    { src: "apps/partner-app/features/insights.html", dest: "partner-insights.html" }
+  ];
+
+  // Copy user app files
+  userAppFiles.forEach(({ src, dest }) => {
+    const srcPath = path.join(__dirname, src);
+    const destPath = path.join(distDir, dest);
+    if (fs.existsSync(srcPath)) {
+      let htmlContent = fs.readFileSync(srcPath, "utf8");
+      const fileDir = path.dirname(srcPath);
+      htmlContent = processIncludes(htmlContent, fileDir);
+      
+      // Fix CSS and asset paths for root level
+      htmlContent = htmlContent.replace(/href="\/shared\/styles\/output\.css"/g, 'href="/shared/styles/output.css"');
+      htmlContent = htmlContent.replace(/\/shared\/assets\//g, '/shared/assets/');
+      
+      fs.writeFileSync(destPath, htmlContent);
+      console.log(`✅ Copied ${src} to ${dest}`);
+    }
+  });
+
+  // Copy partner app files  
+  partnerAppFiles.forEach(({ src, dest }) => {
+    const srcPath = path.join(__dirname, src);
+    const destPath = path.join(distDir, dest);
+    if (fs.existsSync(srcPath)) {
+      let htmlContent = fs.readFileSync(srcPath, "utf8");
+      const fileDir = path.dirname(srcPath);
+      htmlContent = processIncludes(htmlContent, fileDir);
+      
+      // Fix CSS and asset paths for root level
+      htmlContent = htmlContent.replace(/href="\/shared\/styles\/output\.css"/g, 'href="/shared/styles/output.css"');
+      htmlContent = htmlContent.replace(/\/shared\/assets\//g, '/shared/assets/');
+      
+      fs.writeFileSync(destPath, htmlContent);
+      console.log(`✅ Copied ${src} to ${dest}`);
+    }
+  });
+
   // Copy apps and shared directories to dist for deployment
   const appsSourcePath = path.join(__dirname, "apps");
   const appsDestPath = path.join(distDir, "apps");
