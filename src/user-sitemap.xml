@@ -2,33 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <url>
-    <loc>https://user.gosnel.com/</loc>
-    <lastmod>2025-12-18</lastmod>
+    <loc>https://gosnel.com/</loc>
+    <lastmod>2026-01-07</lastmod>
   </url>
 
   <url>
-    <loc>https://user.gosnel.com/user/how-it-works</loc>
-    <lastmod>2025-12-18</lastmod>
+    <loc>https://gosnel.com/how-it-works</loc>
+    <lastmod>2026-01-07</lastmod>
   </url>
 
   <url>
-    <loc>https://user.gosnel.com/user/pricing</loc>
-    <lastmod>2025-12-18</lastmod>
+    <loc>https://gosnel.com/pricing</loc>
+    <lastmod>2026-01-07</lastmod>
   </url>
 
   <url>
-    <loc>https://user.gosnel.com/user/faq</loc>
-    <lastmod>2025-12-18</lastmod>
+    <loc>https://gosnel.com/faq</loc>
+    <lastmod>2026-01-07</lastmod>
   </url>
 
   <url>
-    <loc>https://user.gosnel.com/about-us</loc>
-    <lastmod>2025-12-18</lastmod>
-  </url>
-
-  <url>
-    <loc>https://user.gosnel.com/legal</loc>
-    <lastmod>2025-12-18</lastmod>
+    <loc>https://gosnel.com/about</loc>
+    <lastmod>2026-01-07</lastmod>
   </url>
 
 </urlset>

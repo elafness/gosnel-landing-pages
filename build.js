@@ -249,8 +249,8 @@ const buildPages = () => {
     }
   });
 
-  // NOTE: User pages are NOT created at root level to prevent cross-subdomain access
-  // User pages should only be accessible through user.gosnel.com subdomain
+  // NOTE: Multi-app architecture with clean URLs
+  // gosnel.com serves user-facing content, partner.gosnel.com serves partner content
 
   // Create root-level footer pages (universal pages)
   const footerPages = ['about-us', 'legal'];
