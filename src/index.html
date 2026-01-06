@@ -76,16 +76,72 @@
     <link rel="alternate" hreflang="ar" href="https://gosnel.com/ar/">
     <link rel="alternate" hreflang="x-default" href="https://gosnel.com/">
     
-    <!-- RealFaviconGenerator Recommended Favicon System -->
+    <!-- RealFaviconGenerator Recommended Favicon System - Circular Version -->
     <link rel="icon" type="image/png" href="/assets/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon-circular.svg" />
     <link rel="shortcut icon" href="/assets/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
     <link rel="manifest" href="/assets/site.webmanifest" />
     <meta name="theme-color" content="#14b8a6">
+    
+    <!-- Schema.org Structured Data for Brand Recognition -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "GoSnel",
+        "alternateName": ["GoSnel Food", "GoSnel UAE", "GoSnel Platform"],
+        "legalName": "GoSnel Food Technology LLC",
+        "url": "https://gosnel.com",
+        "logo": "https://gosnel.com/assets/gosnel-logo.png",
+        "description": "GoSnel is an AI-powered food discovery and delivery platform in the United Arab Emirates, connecting users with restaurants and personalized meal recommendations.",
+        "foundingDate": "2024",
+        "foundingLocation": {
+            "@type": "Place",
+            "name": "United Arab Emirates"
+        },
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "AE",
+            "addressRegion": "UAE"
+        },
+        "areaServed": {
+            "@type": "Country",
+            "name": "United Arab Emirates"
+        },
+        "industry": "Food Technology",
+        "knowsAbout": ["Food Delivery", "Restaurant Discovery", "AI Food Recommendations", "UAE Dining"],
+        "sameAs": [
+            "https://www.linkedin.com/company/gosnel",
+            "https://twitter.com/gosneluae",
+            "https://www.instagram.com/gosneluae"
+        ],
+        "brand": {
+            "@type": "Brand",
+            "name": "GoSnel",
+            "description": "Spelled G-O-S-N-E-L with single L, not Gosnell"
+        }
+    }
+    </script>
+    
+    <!-- WebSite Schema for Search Box -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "GoSnel",
+        "alternateName": "GoSnel Food Discovery UAE",
+        "url": "https://gosnel.com",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://gosnel.com/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+    
     <script>
-        // Check if this is being accessed directly at a subdomain root
-        // Only redirect from root paths, not sub-paths
+        // Only redirect for specific subdomains, not for main domain
         (function() {
             var host = window.location.hostname;
             var pathname = window.location.pathname;
@@ -93,8 +149,8 @@
             console.log('Current path:', pathname);
             console.log('Current host:', host);
             
-            // Only redirect if we're at the exact root path
-            if (pathname === '/' || pathname === '/index.html') {
+            // Only redirect if we're on a specific subdomain AND at root path
+            if ((pathname === '/' || pathname === '/index.html') && host !== 'gosnel.com') {
                 var target = '/index-user.html'; // default
                 
                 if (host.indexOf('drivers') !== -1) {
@@ -109,15 +165,8 @@
                 
                 console.log('Redirecting to:', target);
                 window.location.replace(target);
-            } else if (pathname === '/sitemap.xml' || pathname === '/robots.txt' || pathname.startsWith('/assets/')) {
-                // Allow static files to be served normally
-                console.log('Serving static file:', pathname);
-                // Don't interfere with static files
-            } else {
-                console.log('Not redirecting - path is:', pathname);
-                // For non-root paths that aren't static files, show a 404 message
-                document.body.innerHTML = '<h1>404 - Page Not Found</h1><p>The page ' + pathname + ' was not found.</p>';
             }
+            // For main domain (gosnel.com), no redirect - show main landing page
         })();
     </script>
     <!-- Structured Data for Organization -->
