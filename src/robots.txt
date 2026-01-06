@@ -1,4 +1,12 @@
+# GoSnel Robots.txt
+# https://gosnel.com
+
 User-agent: *
 Allow: /
 
+# Block internal app structure
+Disallow: /apps/
+Disallow: /_*
+
+# Sitemap
 Sitemap: https://gosnel.com/sitemap.xml
