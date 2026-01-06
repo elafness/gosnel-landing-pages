@@ -17,8 +17,9 @@ https://partner.gosnel.com/guidelines /partner-guidelines.html 200
 https://partner.gosnel.com/insights /partner-insights.html 200
 
 # ============================================
-# MAIN DOMAIN ROUTING (gosnel.com) - Fallback to index.html
+# MAIN DOMAIN ROUTING (gosnel.com)
 # ============================================
+/ /index.html 200
 /pricing /user-pricing.html 200
 /how-it-works /user-how-it-works.html 200
 /about /user-about.html 200
