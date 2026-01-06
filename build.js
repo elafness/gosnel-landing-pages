@@ -39,7 +39,7 @@ const buildPages = () => {
   // Landing page files configuration
   const landingPages = [
     { subdomain: "user", filename: "apps/user-app/features/landing.html" },
-    { subdomain: "vendor", filename: "apps/partner-app/features/landing.html" },
+    { subdomain: "partner", filename: "apps/partner-app/index.html" },
     { subdomain: "drivers", filename: "src/drivers/drivers-landing.html" },
     { subdomain: "promo", filename: "src/promo/promo-landing.html" }
   ];

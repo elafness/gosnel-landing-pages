@@ -1,25 +1,24 @@
 # Cloudflare Pages Redirects - Clean Multi-App Architecture
 
-# ============================================
-# PARTNER SUBDOMAIN (partner.gosnel.com) - PROCESS FIRST
-# ============================================
-https://partner.gosnel.com/ /partner-landing.html 200
-https://partner.gosnel.com/pricing /partner-pricing.html 200
-https://partner.gosnel.com/how-it-works /partner-how-it-works.html 200
-https://partner.gosnel.com/why-partner /partner-why-partner.html 200
-https://partner.gosnel.com/guidelines /partner-guidelines.html 200
-https://partner.gosnel.com/insights /partner-insights.html 200
+# TEST: Simple redirect without subdomain complexity
+/partner /partner-landing.html 200
 
 # ============================================
-# SHARED RESOURCES (SERVE DIRECTLY)
+# MAIN DOMAIN ROUTING (gosnel.com) - MUST BE FIRST
+# ============================================
+/ /index.html 200
+/pricing /user-pricing.html 200
+/how-it-works /user-how-it-works.html 200
+/about /user-about.html 200
+/faq /user-faq.html 200
+/food /user-food.html 200
+/blog/* /apps/user-app/blog/:splat 200
+
+# ============================================
+# SHARED RESOURCES (SERVE DIRECTLY)  
 # ============================================
 /shared/* /shared/:splat 200
 /assets/* /shared/assets/:splat 200
-
-# ============================================
-# MAIN DOMAIN ROUTING (gosnel.com)
-# ============================================
-/ /index.html 200
 /pricing /user-pricing.html 200
 /how-it-works /user-how-it-works.html 200
 /about /user-about.html 200
