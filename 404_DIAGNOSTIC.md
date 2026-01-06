@@ -13,9 +13,9 @@
 ## Current Configuration
 
 ### Domain Structure
-- **gosnel.com** → Main user-facing domain (NOT user.gosnel.com)
-- **partner.gosnel.com** → Partner/restaurant domain (NOT vendor.gosnel.com)
-- **NOT USING**: user.gosnel.com, vendor.gosnel.com, drivers.gosnel.com, promo.gosnel.com
+- **gosnel.com** → Main user-facing domain
+- **partner.gosnel.com** → Partner/restaurant domain
+- **REMOVED**: user.gosnel.com, vendor.gosnel.com, drivers.gosnel.com (legacy subdomains)
 
 ### File Structure in dist/
 ```

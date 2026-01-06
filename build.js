@@ -138,63 +138,16 @@ const buildPages = () => {
     console.log("✅ Copied robots.txt");
   }
 
-  // Note: Main sitemap.xml is handled by the main app, not landing pages
+  // Copy main sitemap.xml (consolidated sitemap for both domains)
+  const mainSitemapPath = path.join(srcDir, "sitemap.xml");
+  const distMainSitemapPath = path.join(distDir, "sitemap.xml");
 
-  // Copy subdomain-specific sitemaps
-  const vendorSitemapPath = path.join(srcDir, "vendor-sitemap.xml");
-  const distVendorSitemapPath = path.join(distDir, "vendor-sitemap.xml");
-
-  if (fs.existsSync(vendorSitemapPath)) {
-    fs.copyFileSync(vendorSitemapPath, distVendorSitemapPath);
-    console.log("✅ Copied vendor-sitemap.xml");
+  if (fs.existsSync(mainSitemapPath)) {
+    fs.copyFileSync(mainSitemapPath, distMainSitemapPath);
+    console.log("✅ Copied sitemap.xml");
   }
 
-  const userSitemapPath = path.join(srcDir, "user-sitemap.xml");
-  const distUserSitemapPath = path.join(distDir, "user-sitemap.xml");
-
-  if (fs.existsSync(userSitemapPath)) {
-    fs.copyFileSync(userSitemapPath, distUserSitemapPath);
-    console.log("✅ Copied user-sitemap.xml");
-  }
-
-  // Copy drivers sitemap
-  const driversSitemapPath = path.join(srcDir, "drivers-sitemap.xml");
-  const distDriversSitemapPath = path.join(distDir, "drivers-sitemap.xml");
-
-  if (fs.existsSync(driversSitemapPath)) {
-    fs.copyFileSync(driversSitemapPath, distDriversSitemapPath);
-    console.log("✅ Copied drivers-sitemap.xml");
-  }
-
-  // Copy promo sitemap
-  const promoSitemapPath = path.join(srcDir, "promo-sitemap.xml");
-  const distPromoSitemapPath = path.join(distDir, "promo-sitemap.xml");
-
-  if (fs.existsSync(promoSitemapPath)) {
-    fs.copyFileSync(promoSitemapPath, distPromoSitemapPath);
-    console.log("✅ Copied promo-sitemap.xml");
-  }
-
-  // Copy sitemaps to subdomain directories for direct access
-  const sitemapMappings = [
-    { src: distVendorSitemapPath, dest: path.join(distDir, "vendor", "sitemap.xml") },
-    { src: distUserSitemapPath, dest: path.join(distDir, "user", "sitemap.xml") },
-    { src: distDriversSitemapPath, dest: path.join(distDir, "drivers", "sitemap.xml") },
-    { src: distPromoSitemapPath, dest: path.join(distDir, "promo", "sitemap.xml") }
-  ];
-
-  sitemapMappings.forEach(({ src, dest }) => {
-    if (fs.existsSync(src)) {
-      const destDir = path.dirname(dest);
-      if (!fs.existsSync(destDir)) {
-        fs.mkdirSync(destDir, { recursive: true });
-      }
-      fs.copyFileSync(src, dest);
-    }
-  });
-  console.log("✅ Copied sitemaps to subdomain directories");
-
-    // Copy subdirectory static pages (user, vendor, footer, etc.) with include processing
+  // Copy subdirectory static pages with include processing
   const subdomains = ['user', 'vendor', 'drivers', 'promo', 'footer'];
   
   subdomains.forEach(subdomain => {
