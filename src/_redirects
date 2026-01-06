@@ -1,13 +1,7 @@
 # Cloudflare Pages Redirects - Clean Multi-App Architecture
 
 # ============================================
-# SHARED RESOURCES (SERVE DIRECTLY)
-# ============================================
-/shared/* /shared/:splat 200
-/assets/* /shared/assets/:splat 200
-
-# ============================================
-# PARTNER SUBDOMAIN (partner.gosnel.com)
+# PARTNER SUBDOMAIN (partner.gosnel.com) - PROCESS FIRST
 # ============================================
 https://partner.gosnel.com/ /partner-landing.html 200
 https://partner.gosnel.com/pricing /partner-pricing.html 200
@@ -15,6 +9,12 @@ https://partner.gosnel.com/how-it-works /partner-how-it-works.html 200
 https://partner.gosnel.com/why-partner /partner-why-partner.html 200
 https://partner.gosnel.com/guidelines /partner-guidelines.html 200
 https://partner.gosnel.com/insights /partner-insights.html 200
+
+# ============================================
+# SHARED RESOURCES (SERVE DIRECTLY)
+# ============================================
+/shared/* /shared/:splat 200
+/assets/* /shared/assets/:splat 200
 
 # ============================================
 # MAIN DOMAIN ROUTING (gosnel.com)
@@ -31,10 +31,6 @@ https://partner.gosnel.com/insights /partner-insights.html 200
 # SITEMAPS (SERVE DIRECTLY)
 # ============================================
 /sitemap.xml /sitemap.xml 200
-/user-sitemap.xml /user-sitemap.xml 200
-/vendor-sitemap.xml /vendor-sitemap.xml 200
-/drivers-sitemap.xml /drivers-sitemap.xml 200
-/promo-sitemap.xml /promo-sitemap.xml 200
 /robots.txt /robots.txt 200
 
 # ============================================
