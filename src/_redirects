@@ -1,14 +1,16 @@
 # Cloudflare Pages Redirects - Clean Multi-App Architecture
+# Note: /apps/* is blocked via _routes.json for security
 
 # ============================================
 # SHARED RESOURCES (SERVE DIRECTLY)
 # ============================================
 /shared/* /shared/:splat 200
+/assets/* /shared/assets/:splat 200
 
 # ============================================
-# MAIN DOMAIN ROUTING (gosnel.com - Direct serve)
+# MAIN DOMAIN ROUTING (gosnel.com)
 # ============================================
-# Serve user app pages directly without exposing internal paths
+# Serve user app pages with clean URLs
 / /apps/user-app/features/landing.html 200
 /pricing /apps/user-app/features/pricing.html 200
 /how-it-works /apps/user-app/features/how-it-works.html 200
@@ -18,9 +20,9 @@
 /food /apps/user-app/food.html 200
 
 # ============================================
-# PARTNER SUBDOMAIN (partner.gosnel.com - Direct serve)
+# PARTNER SUBDOMAIN (partner.gosnel.com)
 # ============================================
-# Serve partner app pages directly
+# Serve partner app pages with clean URLs
 https://partner.gosnel.com/ /apps/partner-app/index.html 200
 https://partner.gosnel.com/pricing /apps/partner-app/features/pricing.html 200
 https://partner.gosnel.com/how-it-works /apps/partner-app/features/how-it-works.html 200
@@ -37,11 +39,4 @@ https://partner.gosnel.com/insights /apps/partner-app/features/insights.html 200
 /drivers-sitemap.xml /drivers-sitemap.xml 200
 /promo-sitemap.xml /promo-sitemap.xml 200
 /robots.txt /robots.txt 200
-
-# ============================================
-# BLOCK DIRECT ACCESS TO APPS FOLDER
-# ============================================
-# Prevent direct access to internal app directories
-/apps/* / 200
-/assets/* /shared/assets/:splat 200
 
