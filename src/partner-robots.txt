@@ -1,0 +1,12 @@
+# GoSnel Partner Robots.txt
+# https://partner.gosnel.com
+
+User-agent: *
+Allow: /
+
+# Block internal app structure
+Disallow: /apps/
+Disallow: /_*
+
+# Sitemap
+Sitemap: https://partner.gosnel.com/partner-sitemap.xml

@@ -22,6 +22,31 @@ export async function onRequest(context) {
 async function handlePartnerDomain(url, context) {
   const path = url.pathname;
   
+  // Handle special files for partner domain
+  if (path === '/robots.txt') {
+    const response = await context.env.ASSETS.fetch(new Request(`${url.origin}/partner-robots.txt`));
+    if (response.ok) {
+      return new Response(response.body, {
+        headers: {
+          'content-type': 'text/plain; charset=utf-8',
+          'cache-control': 'public, max-age=3600',
+        }
+      });
+    }
+  }
+  
+  if (path === '/sitemap.xml') {
+    const response = await context.env.ASSETS.fetch(new Request(`${url.origin}/partner-sitemap.xml`));
+    if (response.ok) {
+      return new Response(response.body, {
+        headers: {
+          'content-type': 'application/xml; charset=utf-8',
+          'cache-control': 'public, max-age=3600',
+        }
+      });
+    }
+  }
+  
   // Map partner paths to partner files
   const partnerRoutes = {
     '/': '/partner-landing.html',
