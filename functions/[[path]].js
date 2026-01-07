@@ -43,32 +43,24 @@ export async function onRequest(context) {
 async function handlePartnerDomain(url, context) {
   const path = url.pathname;
   
-  // Route to apps files in dist (Cloudflare serves from dist/)
+  // Route to built prefixed files using redirect
   const partnerRoutes = {
-    '/': 'apps/partner-app/index.html',
-    '/pricing': 'apps/partner-app/features/pricing.html',
-    '/how-it-works': 'apps/partner-app/features/how-it-works.html',
-    '/why-partner': 'apps/partner-app/features/why-partner.html',
-    '/guidelines': 'apps/partner-app/features/guidelines.html',
-    '/insights': 'apps/partner-app/features/insights.html'
+    '/': 'partner-landing.html',
+    '/pricing': 'partner-pricing.html',
+    '/how-it-works': 'partner-how-it-works.html',
+    '/why-partner': 'partner-why-partner.html',
+    '/guidelines': 'partner-guidelines.html',
+    '/insights': 'partner-insights.html'
   };
   
-  // Only serve exact matches from the sitemap using apps files
+  // Redirect to prefixed files
   const targetFile = partnerRoutes[path];
   
   if (targetFile) {
-    try {
-      const response = await context.env.ASSETS.fetch(`${url.origin}/${targetFile}`);
-      if (response.ok) {
-        return response;
-      }
-      console.error(`File ${targetFile} returned status: ${response.status}`);
-    } catch (error) {
-      console.error(`Error fetching partner file ${targetFile}:`, error);
-    }
+    return Response.redirect(`${url.origin}/${targetFile}`, 301);
   }
   
-  // Return 404 for unmapped paths to avoid confusion
+  // Return 404 for unmapped paths
   return new Response(`Page not found: ${path}`, { 
     status: 404, 
     headers: { 'content-type': 'text/html' } 
@@ -78,29 +70,21 @@ async function handlePartnerDomain(url, context) {
 async function handleMainDomain(url, context) {
   const path = url.pathname;
   
-  // Route to apps files in dist (Cloudflare serves from dist/)
+  // Route to built prefixed files using redirect
   const userRoutes = {
-    '/': 'apps/user-app/features/landing.html',
-    '/pricing': 'apps/user-app/features/pricing.html',
-    '/how-it-works': 'apps/user-app/features/how-it-works.html',
-    '/about-us': 'apps/user-app/about.html',
-    '/faq': 'apps/user-app/faq.html',
-    '/food': 'apps/user-app/food.html'
+    '/': 'user-landing.html',
+    '/pricing': 'user-pricing.html',
+    '/how-it-works': 'user-how-it-works.html',
+    '/about-us': 'user-about.html',
+    '/faq': 'user-faq.html',
+    '/food': 'user-food.html'
   };
   
-  // Only serve exact matches from sitemap using apps files
+  // Redirect to prefixed files
   const targetFile = userRoutes[path];
   
   if (targetFile) {
-    try {
-      const response = await context.env.ASSETS.fetch(`${url.origin}/${targetFile}`);
-      if (response.ok) {
-        return response;
-      }
-      console.error(`File ${targetFile} returned status: ${response.status}`);
-    } catch (error) {
-      console.error(`Error fetching user file ${targetFile}:`, error);
-    }
+    return Response.redirect(`${url.origin}/${targetFile}`, 301);
   }
   
   // Handle special files for main domain

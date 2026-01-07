@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "include": ["/*"],
+  "exclude": [
+    "/shared/*",
+    "/assets/*",
+    "/*.css",
+    "/*.js", 
+    "/*.png",
+    "/*.jpg",
+    "/*.jpeg",
+    "/*.gif",
+    "/*.svg",
+    "/*.webp",
+    "/*.ico",
+    "/*.webmanifest",
+    "/*.json",
+    "/*.txt",
+    "/*.xml",
+    "/partner-*.html",
+    "/user-*.html",
+    "/index-*.html"
+  ]
+}
