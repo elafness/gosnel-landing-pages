@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
-  <!-- GOSNEL.COM - User/Consumer Pages -->
+  <!-- GOSNEL.COM - User/Consumer Pages (Root Level) -->
   <url>
     <loc>https://gosnel.com/</loc>
     <lastmod>2026-01-07</lastmod>
@@ -38,40 +38,46 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://gosnel.com/blog</loc>
+    <lastmod>2026-01-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
 
-  <!-- PARTNER.GOSNEL.COM - Restaurant Partner Pages -->
+  <!-- GOSNEL.COM/PARTNER - Restaurant Partner Pages (Subdirectory) -->
   <url>
-    <loc>https://partner.gosnel.com/</loc>
-    <lastmod>2026-01-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://partner.gosnel.com/pricing</loc>
+    <loc>https://gosnel.com/partner</loc>
     <lastmod>2026-01-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://partner.gosnel.com/how-it-works</loc>
-    <lastmod>2026-01-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://partner.gosnel.com/why-partner</loc>
+    <loc>https://gosnel.com/partner/pricing</loc>
     <lastmod>2026-01-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://partner.gosnel.com/guidelines</loc>
+    <loc>https://gosnel.com/partner/how-it-works</loc>
+    <lastmod>2026-01-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://gosnel.com/partner/why-partner</loc>
+    <lastmod>2026-01-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gosnel.com/partner/guidelines</loc>
     <lastmod>2026-01-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://partner.gosnel.com/insights</loc>
+    <loc>https://gosnel.com/partner/insights</loc>
     <lastmod>2026-01-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
