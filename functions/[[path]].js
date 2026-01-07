@@ -43,36 +43,30 @@ export async function onRequest(context) {
 async function handlePartnerDomain(url, context) {
   const path = url.pathname;
   
-  // Handle robots.txt - serve main robots.txt (unified)
-  if (path === '/robots.txt') {
-    return context.next();
-  }
-  
-  // Handle sitemap.xml - serve unified sitemap
-  if (path === '/sitemap.xml') {
-    return context.next();
-  }
-  
-  // Map partner paths to partner files
+  // Simple mapping without special handling for robots/sitemap
   const partnerRoutes = {
-    '/': '/partner-landing.html',
-    '/pricing': '/partner-pricing.html', 
-    '/how-it-works': '/partner-how-it-works.html',
-    '/why-partner': '/partner-why-partner.html',
-    '/guidelines': '/partner-guidelines.html',
-    '/insights': '/partner-insights.html'
+    '/': 'partner-landing.html',
+    '/pricing': 'partner-pricing.html', 
+    '/how-it-works': 'partner-how-it-works.html',
+    '/why-partner': 'partner-why-partner.html',
+    '/guidelines': 'partner-guidelines.html',
+    '/insights': 'partner-insights.html'
   };
   
-  // Check for direct file match first
-  if (partnerRoutes[path]) {
-    // Create a simple URL-based request
-    const targetUrl = url.origin + partnerRoutes[path];
-    return context.env.ASSETS.fetch(targetUrl);
+  const targetFile = partnerRoutes[path] || 'partner-landing.html';
+  
+  try {
+    const response = await context.env.ASSETS.fetch(`${url.origin}/${targetFile}`);
+    if (response.ok) {
+      return response;
+    }
+  } catch (error) {
+    // Log error and fallback
+    console.error('Error fetching partner file:', error);
   }
   
-  // Fallback to partner landing
-  const fallbackUrl = url.origin + '/partner-landing.html';
-  return context.env.ASSETS.fetch(fallbackUrl);
+  // Final fallback
+  return context.env.ASSETS.fetch(`${url.origin}/partner-landing.html`);
 }
 
 async function handleMainDomain(url, context) {
