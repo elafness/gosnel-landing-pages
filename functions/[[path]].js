@@ -82,16 +82,24 @@ async function handlePartnerDomain(url, context) {
   // If path matches exactly, serve that file
   if (partnerRoutes[path]) {
     const targetFile = partnerRoutes[path];
-    // Use context.next() to delegate to Cloudflare's normal static file serving
-    const request = new Request(url.origin + targetFile, { method: 'GET' });
-    const response = await context.env.ASSETS.fetch(request);
-    
-    if (response.ok) {
-      return new Response(response.body, {
-        status: response.status,
-        statusText: response.statusText,
-        headers: new Headers(response.headers)
-      });
+    try {
+      const request = new Request(url.origin + targetFile, { method: 'GET' });
+      const response = await context.env.ASSETS.fetch(request);
+      
+      if (response.ok) {
+        // Get the content type from the target file
+        const contentType = response.headers.get('content-type') || 'text/html; charset=utf-8';
+        return new Response(response.body, {
+          status: response.status,
+          statusText: response.statusText,
+          headers: {
+            'content-type': contentType,
+            'cache-control': 'public, max-age=300'
+          }
+        });
+      }
+    } catch (error) {
+      console.error(`Error fetching ${targetFile}:`, error);
     }
   }
   
