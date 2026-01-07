@@ -43,25 +43,17 @@ export async function onRequest(context) {
 async function handlePartnerDomain(url, context) {
   const path = url.pathname;
   
-  // Sitemap-based routing - matches exactly what's defined in src/sitemap.xml
-  // These URLs are listed in the sitemap for partner.gosnel.com:
-  // https://partner.gosnel.com/          -> partner-landing.html
-  // https://partner.gosnel.com/pricing  -> partner-pricing.html  
-  // https://partner.gosnel.com/how-it-works -> partner-how-it-works.html
-  // https://partner.gosnel.com/why-partner -> partner-why-partner.html
-  // https://partner.gosnel.com/guidelines -> partner-guidelines.html
-  // https://partner.gosnel.com/insights -> partner-insights.html
-  
+  // Route to actual files in apps/partner-app structure
   const partnerRoutes = {
-    '/': 'partner-landing.html',
-    '/pricing': 'partner-pricing.html', 
-    '/how-it-works': 'partner-how-it-works.html',
-    '/why-partner': 'partner-why-partner.html',
-    '/guidelines': 'partner-guidelines.html',
-    '/insights': 'partner-insights.html'
+    '/': 'apps/partner-app/index.html',
+    '/pricing': 'apps/partner-app/features/pricing.html',
+    '/how-it-works': 'apps/partner-app/features/how-it-works.html',
+    '/why-partner': 'apps/partner-app/features/why-partner.html',
+    '/guidelines': 'apps/partner-app/features/guidelines.html',
+    '/insights': 'apps/partner-app/features/insights.html'
   };
   
-  // Only serve exact matches from the sitemap
+  // Only serve exact matches from the sitemap using real source files
   const targetFile = partnerRoutes[path];
   
   if (targetFile) {
@@ -77,7 +69,7 @@ async function handlePartnerDomain(url, context) {
   }
   
   // Return 404 for unmapped paths to avoid confusion
-  return new Response('Page not found', { 
+  return new Response(`Page not found: ${path}`, { 
     status: 404, 
     headers: { 'content-type': 'text/html' } 
   });
