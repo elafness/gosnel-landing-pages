@@ -360,7 +360,7 @@ const buildPages = () => {
     console.log("✅ Created index.html fallback");
   }
 
-  // Copy app directories to dist for deployment
+  // Copy app directories to dist for deployment with include processing
   // Copy partner-app
   const partnerSourcePath = path.join(__dirname, "src", "partner-app");
   const partnerDestPath = path.join(distDir, "apps", "partner-app");
@@ -375,9 +375,34 @@ const buildPages = () => {
     if (fs.existsSync(partnerDestPath)) {
       fs.rmSync(partnerDestPath, { recursive: true, force: true });
     }
-    // Copy fresh partner-app directory
-    fs.cpSync(partnerSourcePath, partnerDestPath, { recursive: true });
-    console.log("✅ Copied partner-app directory");
+    
+    // Recursive copy function with HTML include processing
+    const copyDirectoryWithIncludes = (src, dest) => {
+      if (!fs.existsSync(dest)) {
+        fs.mkdirSync(dest, { recursive: true });
+      }
+      const entries = fs.readdirSync(src, { withFileTypes: true });
+      entries.forEach((entry) => {
+        const srcPath = path.join(src, entry.name);
+        const destPath = path.join(dest, entry.name);
+        
+        if (entry.isDirectory()) {
+          copyDirectoryWithIncludes(srcPath, destPath);
+        } else if (entry.name.endsWith('.html')) {
+          // Process HTML files with includes
+          let htmlContent = fs.readFileSync(srcPath, "utf8");
+          const fileDir = path.dirname(srcPath);
+          htmlContent = processIncludes(htmlContent, fileDir);
+          fs.writeFileSync(destPath, htmlContent);
+        } else {
+          fs.copyFileSync(srcPath, destPath);
+        }
+      });
+    };
+    
+    // Copy with include processing
+    copyDirectoryWithIncludes(partnerSourcePath, partnerDestPath);
+    console.log("✅ Copied partner-app directory with includes processed");
   }
 
   // Copy user-app
@@ -394,9 +419,34 @@ const buildPages = () => {
     if (fs.existsSync(userDestPath)) {
       fs.rmSync(userDestPath, { recursive: true, force: true });
     }
-    // Copy fresh user-app directory
-    fs.cpSync(userSourcePath, userDestPath, { recursive: true });
-    console.log("✅ Copied user-app directory");
+    
+    // Recursive copy function with HTML include processing (defined above)
+    const copyDirectoryWithIncludes = (src, dest) => {
+      if (!fs.existsSync(dest)) {
+        fs.mkdirSync(dest, { recursive: true });
+      }
+      const entries = fs.readdirSync(src, { withFileTypes: true });
+      entries.forEach((entry) => {
+        const srcPath = path.join(src, entry.name);
+        const destPath = path.join(dest, entry.name);
+        
+        if (entry.isDirectory()) {
+          copyDirectoryWithIncludes(srcPath, destPath);
+        } else if (entry.name.endsWith('.html')) {
+          // Process HTML files with includes
+          let htmlContent = fs.readFileSync(srcPath, "utf8");
+          const fileDir = path.dirname(srcPath);
+          htmlContent = processIncludes(htmlContent, fileDir);
+          fs.writeFileSync(destPath, htmlContent);
+        } else {
+          fs.copyFileSync(srcPath, destPath);
+        }
+      });
+    };
+    
+    // Copy with include processing
+    copyDirectoryWithIncludes(userSourcePath, userDestPath);
+    console.log("✅ Copied user-app directory with includes processed");
   }
 
   const sharedSourcePath = path.join(__dirname, "shared");
