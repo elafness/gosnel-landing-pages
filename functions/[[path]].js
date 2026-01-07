@@ -43,7 +43,7 @@ export async function onRequest(context) {
 async function handlePartnerDomain(url, context) {
   const path = url.pathname;
   
-  // Route to actual files in apps/partner-app structure
+  // Route to apps files now in src/apps/partner-app
   const partnerRoutes = {
     '/': 'apps/partner-app/index.html',
     '/pricing': 'apps/partner-app/features/pricing.html',
@@ -53,7 +53,7 @@ async function handlePartnerDomain(url, context) {
     '/insights': 'apps/partner-app/features/insights.html'
   };
   
-  // Only serve exact matches from the sitemap using real source files
+  // Only serve exact matches from the sitemap using apps files in src
   const targetFile = partnerRoutes[path];
   
   if (targetFile) {

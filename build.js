@@ -38,8 +38,8 @@ const buildPages = () => {
 
   // Landing page files configuration
   const landingPages = [
-    { subdomain: "user", filename: "apps/user-app/features/landing.html" },
-    { subdomain: "partner", filename: "apps/partner-app/index.html" },
+    { subdomain: "user", filename: "src/apps/user-app/features/landing.html" },
+    { subdomain: "partner", filename: "src/apps/partner-app/index.html" },
     { subdomain: "drivers", filename: "src/drivers/drivers-landing.html" },
     { subdomain: "promo", filename: "src/promo/promo-landing.html" }
   ];
@@ -296,22 +296,22 @@ const buildPages = () => {
   
   // User app files (for gosnel.com)
   const userAppFiles = [
-    { src: "apps/user-app/features/landing.html", dest: "user-landing.html" },
-    { src: "apps/user-app/features/pricing.html", dest: "user-pricing.html" },
-    { src: "apps/user-app/features/how-it-works.html", dest: "user-how-it-works.html" },
-    { src: "apps/user-app/about.html", dest: "user-about.html" },
-    { src: "apps/user-app/faq.html", dest: "user-faq.html" },
-    { src: "apps/user-app/food.html", dest: "user-food.html" }
+    { src: "src/apps/user-app/features/landing.html", dest: "user-landing.html" },
+    { src: "src/apps/user-app/features/pricing.html", dest: "user-pricing.html" },
+    { src: "src/apps/user-app/features/how-it-works.html", dest: "user-how-it-works.html" },
+    { src: "src/apps/user-app/about.html", dest: "user-about.html" },
+    { src: "src/apps/user-app/faq.html", dest: "user-faq.html" },
+    { src: "src/apps/user-app/food.html", dest: "user-food.html" }
   ];
 
   // Partner app files (for partner.gosnel.com)
   const partnerAppFiles = [
-    { src: "apps/partner-app/index.html", dest: "partner-landing.html" },
-    { src: "apps/partner-app/features/pricing.html", dest: "partner-pricing.html" },
-    { src: "apps/partner-app/features/how-it-works.html", dest: "partner-how-it-works.html" },
-    { src: "apps/partner-app/features/why-partner.html", dest: "partner-why-partner.html" },
-    { src: "apps/partner-app/features/guidelines.html", dest: "partner-guidelines.html" },
-    { src: "apps/partner-app/features/insights.html", dest: "partner-insights.html" }
+    { src: "src/apps/partner-app/index.html", dest: "partner-landing.html" },
+    { src: "src/apps/partner-app/features/pricing.html", dest: "partner-pricing.html" },
+    { src: "src/apps/partner-app/features/how-it-works.html", dest: "partner-how-it-works.html" },
+    { src: "src/apps/partner-app/features/why-partner.html", dest: "partner-why-partner.html" },
+    { src: "src/apps/partner-app/features/guidelines.html", dest: "partner-guidelines.html" },
+    { src: "src/apps/partner-app/features/insights.html", dest: "partner-insights.html" }
   ];
 
   // Copy user app files
