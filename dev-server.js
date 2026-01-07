@@ -20,8 +20,10 @@ const routeMap = {
   '/user/faq': '/user/faq.html',
   '/user/how-it-works': '/user/how-it-works.html',
   // Vendor/Partner pages
+  '/vendor': '/partner-landing.html',
   '/vendor/why-partner': '/partner-why-partner.html',
   '/vendor/how-it-works': '/partner-how-it-works.html',
+  '/vendor/pricing': '/partner-pricing.html',
   '/vendor/guidelines': '/partner-guidelines.html',
   '/vendor/insights': '/partner-insights.html',
   '/vendor/faq': '/partner-faq.html',
