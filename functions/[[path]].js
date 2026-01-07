@@ -78,6 +78,31 @@ async function handlePartnerDomain(url, context) {
 async function handleMainDomain(url, context) {
   const path = url.pathname;
   
+  // Route to apps files for user app
+  const userRoutes = {
+    '/': 'apps/user-app/features/landing.html',
+    '/pricing': 'apps/user-app/features/pricing.html',
+    '/how-it-works': 'apps/user-app/features/how-it-works.html',
+    '/about-us': 'apps/user-app/about.html',
+    '/faq': 'apps/user-app/faq.html',
+    '/food': 'apps/user-app/food.html'
+  };
+  
+  // Only serve exact matches from sitemap using apps files in src
+  const targetFile = userRoutes[path];
+  
+  if (targetFile) {
+    try {
+      const response = await context.env.ASSETS.fetch(`${url.origin}/${targetFile}`);
+      if (response.ok) {
+        return response;
+      }
+      console.error(`File ${targetFile} returned status: ${response.status}`);
+    } catch (error) {
+      console.error(`Error fetching user file ${targetFile}:`, error);
+    }
+  }
+  
   // Handle special files for main domain
   if (path === '/sitemap.xml') {
     const response = await context.env.ASSETS.fetch(new Request(`${url.origin}/sitemap.xml`));
@@ -103,6 +128,9 @@ async function handleMainDomain(url, context) {
     }
   }
   
-  // Let the normal _redirects and static files handle other requests
-  return context.env.ASSETS.fetch(context.request);
+  // Return 404 for unmapped paths
+  return new Response(`Page not found: ${path}`, { 
+    status: 404, 
+    headers: { 'content-type': 'text/html' } 
+  });
 }
