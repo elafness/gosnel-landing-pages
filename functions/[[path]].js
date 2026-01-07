@@ -72,35 +72,18 @@ async function handlePartnerDomain(url, context) {
   // Map partner paths to partner files
   const partnerRoutes = {
     '/': '/partner-landing.html',
-    '/pricing': '/partner-pricing.html',
+    '/pricing': '/partner-pricing.html', 
     '/how-it-works': '/partner-how-it-works.html',
     '/why-partner': '/partner-why-partner.html',
     '/guidelines': '/partner-guidelines.html',
     '/insights': '/partner-insights.html'
   };
   
-  // If path matches exactly, serve that file
+  // Check for direct file match first
   if (partnerRoutes[path]) {
     const targetFile = partnerRoutes[path];
-    try {
-      const request = new Request(url.origin + targetFile, { method: 'GET' });
-      const response = await context.env.ASSETS.fetch(request);
-      
-      if (response.ok) {
-        // Get the content type from the target file
-        const contentType = response.headers.get('content-type') || 'text/html; charset=utf-8';
-        return new Response(response.body, {
-          status: response.status,
-          statusText: response.statusText,
-          headers: {
-            'content-type': contentType,
-            'cache-control': 'public, max-age=300'
-          }
-        });
-      }
-    } catch (error) {
-      console.error(`Error fetching ${targetFile}:`, error);
-    }
+    // Direct static file serving
+    return await context.env.ASSETS.fetch(new Request(url.origin + targetFile));
   }
   
   // Fallback to partner landing
