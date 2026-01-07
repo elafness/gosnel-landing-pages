@@ -50,6 +50,9 @@ build.log
 # Reference files (for development only, not part of deployment)
 References/
 
+# Media tools (development assets, not part of deployment)
+media-tools/
+
 # Third-party components (should reference from docs/ in main repo)
 tailwind-ui-components-main/
 **/tailwind-ui-components*
