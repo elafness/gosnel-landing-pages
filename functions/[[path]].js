@@ -43,7 +43,15 @@ export async function onRequest(context) {
 async function handlePartnerDomain(url, context) {
   const path = url.pathname;
   
-  // Simple mapping without special handling for robots/sitemap
+  // Sitemap-based routing - matches exactly what's defined in src/sitemap.xml
+  // These URLs are listed in the sitemap for partner.gosnel.com:
+  // https://partner.gosnel.com/          -> partner-landing.html
+  // https://partner.gosnel.com/pricing  -> partner-pricing.html  
+  // https://partner.gosnel.com/how-it-works -> partner-how-it-works.html
+  // https://partner.gosnel.com/why-partner -> partner-why-partner.html
+  // https://partner.gosnel.com/guidelines -> partner-guidelines.html
+  // https://partner.gosnel.com/insights -> partner-insights.html
+  
   const partnerRoutes = {
     '/': 'partner-landing.html',
     '/pricing': 'partner-pricing.html', 
@@ -56,16 +64,17 @@ async function handlePartnerDomain(url, context) {
   const targetFile = partnerRoutes[path] || 'partner-landing.html';
   
   try {
+    // Direct fetch without URL manipulation
     const response = await context.env.ASSETS.fetch(`${url.origin}/${targetFile}`);
     if (response.ok) {
       return response;
     }
+    console.error(`File ${targetFile} not found or not OK status`);
   } catch (error) {
-    // Log error and fallback
-    console.error('Error fetching partner file:', error);
+    console.error(`Error fetching partner file ${targetFile}:`, error);
   }
   
-  // Final fallback
+  // Final fallback to landing page
   return context.env.ASSETS.fetch(`${url.origin}/partner-landing.html`);
 }
 
