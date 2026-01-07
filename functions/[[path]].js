@@ -43,7 +43,7 @@ export async function onRequest(context) {
 async function handlePartnerDomain(url, context) {
   const path = url.pathname;
   
-  // Route to apps files now in src/apps/partner-app
+  // Route to apps files in dist (Cloudflare serves from dist/)
   const partnerRoutes = {
     '/': 'apps/partner-app/index.html',
     '/pricing': 'apps/partner-app/features/pricing.html',
@@ -53,7 +53,7 @@ async function handlePartnerDomain(url, context) {
     '/insights': 'apps/partner-app/features/insights.html'
   };
   
-  // Only serve exact matches from the sitemap using apps files in src
+  // Only serve exact matches from the sitemap using apps files
   const targetFile = partnerRoutes[path];
   
   if (targetFile) {
@@ -78,7 +78,7 @@ async function handlePartnerDomain(url, context) {
 async function handleMainDomain(url, context) {
   const path = url.pathname;
   
-  // Route to apps files for user app
+  // Route to apps files in dist (Cloudflare serves from dist/)
   const userRoutes = {
     '/': 'apps/user-app/features/landing.html',
     '/pricing': 'apps/user-app/features/pricing.html',
@@ -88,7 +88,7 @@ async function handleMainDomain(url, context) {
     '/food': 'apps/user-app/food.html'
   };
   
-  // Only serve exact matches from sitemap using apps files in src
+  // Only serve exact matches from sitemap using apps files
   const targetFile = userRoutes[path];
   
   if (targetFile) {

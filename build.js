@@ -20,7 +20,9 @@ const buildPages = () => {
       const possiblePaths = [
         path.join(basePath, filePath), // Original path relative to base
         path.join(__dirname, filePath), // Relative to project root
-        path.join(__dirname, "apps", filePath), // In apps directory
+        path.join(__dirname, "src", "partner-app", filePath), // In src/partner-app directory
+        path.join(__dirname, "src", "user-app", filePath), // In src/user-app directory
+        path.join(__dirname, "src", filePath), // In src directory
         path.join(__dirname, "shared", filePath), // In shared directory
         path.join(srcDir, filePath) // In src directory
       ];
@@ -38,8 +40,8 @@ const buildPages = () => {
 
   // Landing page files configuration
   const landingPages = [
-    { subdomain: "user", filename: "src/apps/user-app/features/landing.html" },
-    { subdomain: "partner", filename: "src/apps/partner-app/index.html" },
+    { subdomain: "user", filename: "src/user-app/features/landing.html" },
+    { subdomain: "partner", filename: "src/partner-app/index.html" },
     { subdomain: "drivers", filename: "src/drivers/drivers-landing.html" },
     { subdomain: "promo", filename: "src/promo/promo-landing.html" }
   ];
@@ -296,22 +298,22 @@ const buildPages = () => {
   
   // User app files (for gosnel.com)
   const userAppFiles = [
-    { src: "src/apps/user-app/features/landing.html", dest: "user-landing.html" },
-    { src: "src/apps/user-app/features/pricing.html", dest: "user-pricing.html" },
-    { src: "src/apps/user-app/features/how-it-works.html", dest: "user-how-it-works.html" },
-    { src: "src/apps/user-app/about.html", dest: "user-about.html" },
-    { src: "src/apps/user-app/faq.html", dest: "user-faq.html" },
-    { src: "src/apps/user-app/food.html", dest: "user-food.html" }
+    { src: "src/user-app/features/landing.html", dest: "user-landing.html" },
+    { src: "src/user-app/features/pricing.html", dest: "user-pricing.html" },
+    { src: "src/user-app/features/how-it-works.html", dest: "user-how-it-works.html" },
+    { src: "src/user-app/about.html", dest: "user-about.html" },
+    { src: "src/user-app/faq.html", dest: "user-faq.html" },
+    { src: "src/user-app/food.html", dest: "user-food.html" }
   ];
 
   // Partner app files (for partner.gosnel.com)
   const partnerAppFiles = [
-    { src: "src/apps/partner-app/index.html", dest: "partner-landing.html" },
-    { src: "src/apps/partner-app/features/pricing.html", dest: "partner-pricing.html" },
-    { src: "src/apps/partner-app/features/how-it-works.html", dest: "partner-how-it-works.html" },
-    { src: "src/apps/partner-app/features/why-partner.html", dest: "partner-why-partner.html" },
-    { src: "src/apps/partner-app/features/guidelines.html", dest: "partner-guidelines.html" },
-    { src: "src/apps/partner-app/features/insights.html", dest: "partner-insights.html" }
+    { src: "src/partner-app/index.html", dest: "partner-landing.html" },
+    { src: "src/partner-app/features/pricing.html", dest: "partner-pricing.html" },
+    { src: "src/partner-app/features/how-it-works.html", dest: "partner-how-it-works.html" },
+    { src: "src/partner-app/features/why-partner.html", dest: "partner-why-partner.html" },
+    { src: "src/partner-app/features/guidelines.html", dest: "partner-guidelines.html" },
+    { src: "src/partner-app/features/insights.html", dest: "partner-insights.html" }
   ];
 
   // Copy user app files
@@ -358,18 +360,43 @@ const buildPages = () => {
     console.log("✅ Created index.html fallback");
   }
 
-  // Copy apps and shared directories to dist for deployment
-  const appsSourcePath = path.join(__dirname, "apps");
-  const appsDestPath = path.join(distDir, "apps");
+  // Copy app directories to dist for deployment
+  // Copy partner-app
+  const partnerSourcePath = path.join(__dirname, "src", "partner-app");
+  const partnerDestPath = path.join(distDir, "apps", "partner-app");
   
-  if (fs.existsSync(appsSourcePath)) {
-    // Remove existing apps directory if it exists
-    if (fs.existsSync(appsDestPath)) {
-      fs.rmSync(appsDestPath, { recursive: true, force: true });
+  if (fs.existsSync(partnerSourcePath)) {
+    // Ensure apps directory exists
+    const appsDestDir = path.join(distDir, "apps");
+    if (!fs.existsSync(appsDestDir)) {
+      fs.mkdirSync(appsDestDir, { recursive: true });
     }
-    // Copy fresh apps directory
-    fs.cpSync(appsSourcePath, appsDestPath, { recursive: true });
-    console.log("✅ Copied apps directory");
+    // Remove existing partner-app directory if it exists
+    if (fs.existsSync(partnerDestPath)) {
+      fs.rmSync(partnerDestPath, { recursive: true, force: true });
+    }
+    // Copy fresh partner-app directory
+    fs.cpSync(partnerSourcePath, partnerDestPath, { recursive: true });
+    console.log("✅ Copied partner-app directory");
+  }
+
+  // Copy user-app
+  const userSourcePath = path.join(__dirname, "src", "user-app");
+  const userDestPath = path.join(distDir, "apps", "user-app");
+  
+  if (fs.existsSync(userSourcePath)) {
+    // Ensure apps directory exists
+    const appsDestDir = path.join(distDir, "apps");
+    if (!fs.existsSync(appsDestDir)) {
+      fs.mkdirSync(appsDestDir, { recursive: true });
+    }
+    // Remove existing user-app directory if it exists
+    if (fs.existsSync(userDestPath)) {
+      fs.rmSync(userDestPath, { recursive: true, force: true });
+    }
+    // Copy fresh user-app directory
+    fs.cpSync(userSourcePath, userDestPath, { recursive: true });
+    console.log("✅ Copied user-app directory");
   }
 
   const sharedSourcePath = path.join(__dirname, "shared");
