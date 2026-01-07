@@ -28,7 +28,7 @@ export async function onRequest(context) {
   const hostname = url.hostname;
   
   // Route based on hostname
-  if (hostname === 'partner.gosnel.com') {
+  if (hostname === 'partner.gosnel.com' || hostname === 'www.partner.gosnel.com') {
     // Serve partner content
     return handlePartnerDomain(url, context);
   } else if (hostname === 'gosnel.com' || hostname === 'www.gosnel.com') {
