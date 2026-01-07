@@ -303,7 +303,13 @@ const buildPages = () => {
     { src: "src/user-app/features/how-it-works.html", dest: "user-how-it-works.html" },
     { src: "src/user-app/about.html", dest: "user-about.html" },
     { src: "src/user-app/faq.html", dest: "user-faq.html" },
-    { src: "src/user-app/food.html", dest: "user-food.html" }
+  { src: "src/user-app/food.html", dest: "user-food.html" },
+
+  // Blog (gosnel.com/blog)
+  { src: "src/user-app/blog/index.html", dest: "user-blog.html" },
+  { src: "src/user-app/blog/ai-food-recommendations-uae.html", dest: "user-blog-ai-food-recommendations-uae.html" },
+  { src: "src/user-app/blog/restaurant-technology-trends-2026.html", dest: "user-blog-restaurant-technology-trends-2026.html" },
+  { src: "src/user-app/blog/uae-food-delivery-evolution.html", dest: "user-blog-uae-food-delivery-evolution.html" }
   ];
 
   // Partner app files (for partner.gosnel.com)

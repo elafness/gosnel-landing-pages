@@ -13,3 +13,10 @@ https://partner.gosnel.com/insights /partner-insights.html 200
 /about-us /user-about.html 200
 /faq /user-faq.html 200
 /food /user-food.html 200
+
+# Blog
+/blog /user-blog.html 200
+/blog/ /user-blog.html 200
+/blog/ai-food-recommendations-uae /user-blog-ai-food-recommendations-uae.html 200
+/blog/restaurant-technology-trends-2026 /user-blog-restaurant-technology-trends-2026.html 200
+/blog/uae-food-delivery-evolution /user-blog-uae-food-delivery-evolution.html 200
