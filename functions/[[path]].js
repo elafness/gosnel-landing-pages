@@ -61,21 +61,26 @@ async function handlePartnerDomain(url, context) {
     '/insights': 'partner-insights.html'
   };
   
-  const targetFile = partnerRoutes[path] || 'partner-landing.html';
+  // Only serve exact matches from the sitemap
+  const targetFile = partnerRoutes[path];
   
-  try {
-    // Direct fetch without URL manipulation
-    const response = await context.env.ASSETS.fetch(`${url.origin}/${targetFile}`);
-    if (response.ok) {
-      return response;
+  if (targetFile) {
+    try {
+      const response = await context.env.ASSETS.fetch(`${url.origin}/${targetFile}`);
+      if (response.ok) {
+        return response;
+      }
+      console.error(`File ${targetFile} returned status: ${response.status}`);
+    } catch (error) {
+      console.error(`Error fetching partner file ${targetFile}:`, error);
     }
-    console.error(`File ${targetFile} not found or not OK status`);
-  } catch (error) {
-    console.error(`Error fetching partner file ${targetFile}:`, error);
   }
   
-  // Final fallback to landing page
-  return context.env.ASSETS.fetch(`${url.origin}/partner-landing.html`);
+  // Return 404 for unmapped paths to avoid confusion
+  return new Response('Page not found', { 
+    status: 404, 
+    headers: { 'content-type': 'text/html' } 
+  });
 }
 
 async function handleMainDomain(url, context) {
