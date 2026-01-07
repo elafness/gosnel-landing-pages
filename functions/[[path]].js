@@ -65,18 +65,14 @@ async function handlePartnerDomain(url, context) {
   
   // Check for direct file match first
   if (partnerRoutes[path]) {
-    // Rewrite the request URL to point to the target file
-    const newUrl = new URL(url);
-    newUrl.pathname = partnerRoutes[path];
-    const newRequest = new Request(newUrl, context.request);
-    return context.env.ASSETS.fetch(newRequest);
+    // Create a simple URL-based request
+    const targetUrl = url.origin + partnerRoutes[path];
+    return context.env.ASSETS.fetch(targetUrl);
   }
   
   // Fallback to partner landing
-  const fallbackUrl = new URL(url);
-  fallbackUrl.pathname = '/partner-landing.html';
-  const fallbackRequest = new Request(fallbackUrl, context.request);
-  return context.env.ASSETS.fetch(fallbackRequest);
+  const fallbackUrl = url.origin + '/partner-landing.html';
+  return context.env.ASSETS.fetch(fallbackUrl);
 }
 
 async function handleMainDomain(url, context) {
