@@ -1,13 +1,9 @@
 # Cloudflare Pages Redirects - Clean Multi-App Architecture
 
-# TEST: Simple redirect without subdomain complexity
-/partner /partner-landing.html 200
-
 # ============================================
 # MAIN DOMAIN ROUTING (gosnel.com) - MUST BE FIRST
 # ============================================
 / /index.html 200
-/pricing /user-pricing.html 200
 /how-it-works /user-how-it-works.html 200
 /about /user-about.html 200
 /faq /user-faq.html 200
@@ -19,7 +15,6 @@
 # ============================================
 /shared/* /shared/:splat 200
 /assets/* /shared/assets/:splat 200
-/pricing /user-pricing.html 200
 /how-it-works /user-how-it-works.html 200
 /about /user-about.html 200
 /faq /user-faq.html 200
