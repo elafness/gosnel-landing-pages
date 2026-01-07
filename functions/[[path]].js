@@ -45,28 +45,12 @@ async function handlePartnerDomain(url, context) {
   
   // Handle robots.txt - serve main robots.txt (unified)
   if (path === '/robots.txt') {
-    const response = await context.env.ASSETS.fetch(new Request(`${url.origin}/robots.txt`));
-    if (response.ok) {
-      return new Response(response.body, {
-        headers: {
-          'content-type': 'text/plain; charset=utf-8',
-          'cache-control': 'public, max-age=3600',
-        }
-      });
-    }
+    return context.next();
   }
   
   // Handle sitemap.xml - serve unified sitemap
   if (path === '/sitemap.xml') {
-    const response = await context.env.ASSETS.fetch(new Request(`${url.origin}/sitemap.xml`));
-    if (response.ok) {
-      return new Response(response.body, {
-        headers: {
-          'content-type': 'application/xml; charset=utf-8',
-          'cache-control': 'public, max-age=3600',
-        }
-      });
-    }
+    return context.next();
   }
   
   // Map partner paths to partner files
@@ -81,19 +65,18 @@ async function handlePartnerDomain(url, context) {
   
   // Check for direct file match first
   if (partnerRoutes[path]) {
-    const targetFile = partnerRoutes[path];
-    // Direct static file serving
-    return await context.env.ASSETS.fetch(new Request(url.origin + targetFile));
+    // Rewrite the request URL to point to the target file
+    const newUrl = new URL(url);
+    newUrl.pathname = partnerRoutes[path];
+    const newRequest = new Request(newUrl, context.request);
+    return context.env.ASSETS.fetch(newRequest);
   }
   
   // Fallback to partner landing
-  const fallbackRequest = new Request(url.origin + '/partner-landing.html', { method: 'GET' });
-  const fallbackResponse = await context.env.ASSETS.fetch(fallbackRequest);
-  return new Response(fallbackResponse.body, {
-    status: fallbackResponse.status,
-    statusText: fallbackResponse.statusText,
-    headers: new Headers(fallbackResponse.headers)
-  });
+  const fallbackUrl = new URL(url);
+  fallbackUrl.pathname = '/partner-landing.html';
+  const fallbackRequest = new Request(fallbackUrl, context.request);
+  return context.env.ASSETS.fetch(fallbackRequest);
 }
 
 async function handleMainDomain(url, context) {
