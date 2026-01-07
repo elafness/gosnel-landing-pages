@@ -79,29 +79,29 @@ async function handlePartnerDomain(url, context) {
     '/insights': '/partner-insights.html'
   };
   
-  const targetFile = partnerRoutes[path];
-  
-  if (targetFile) {
-    // Fetch the partner content
-    const response = await context.env.ASSETS.fetch(new Request(`${url.origin}${targetFile}`));
+  // If path matches exactly, serve that file
+  if (partnerRoutes[path]) {
+    const targetFile = partnerRoutes[path];
+    // Use context.next() to delegate to Cloudflare's normal static file serving
+    const request = new Request(url.origin + targetFile, { method: 'GET' });
+    const response = await context.env.ASSETS.fetch(request);
     
     if (response.ok) {
       return new Response(response.body, {
-        headers: {
-          'content-type': 'text/html; charset=utf-8',
-          'cache-control': 'public, max-age=300',
-        }
+        status: response.status,
+        statusText: response.statusText,
+        headers: new Headers(response.headers)
       });
     }
   }
   
   // Fallback to partner landing
-  const fallbackResponse = await context.env.ASSETS.fetch(new Request(`${url.origin}/partner-landing.html`));
+  const fallbackRequest = new Request(url.origin + '/partner-landing.html', { method: 'GET' });
+  const fallbackResponse = await context.env.ASSETS.fetch(fallbackRequest);
   return new Response(fallbackResponse.body, {
-    headers: {
-      'content-type': 'text/html; charset=utf-8',
-      'cache-control': 'public, max-age=300',
-    }
+    status: fallbackResponse.status,
+    statusText: fallbackResponse.statusText,
+    headers: new Headers(fallbackResponse.headers)
   });
 }
 
