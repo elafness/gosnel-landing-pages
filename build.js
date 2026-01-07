@@ -191,21 +191,83 @@ const buildPages = () => {
   
   console.log("✅ Copied subdirectory pages");
 
-  // Create root-level vendor static pages with vendor- prefix ONLY
-  const vendorPages = ['vendor-how-it-works', 'vendor-why-partner', 'vendor-guidelines', 'vendor-insights', 'vendor-faq', 'vendor-pricing'];
-  vendorPages.forEach(pageName => {
-    const srcPath = path.join(srcDir, 'vendor', `${pageName}.html`);
-    const distPath = path.join(distDir, `${pageName}.html`);
+  // Create /partner/ directory with partner pages (clean URLs)
+  const partnerDir = path.join(distDir, 'partner');
+  if (!fs.existsSync(partnerDir)) {
+    fs.mkdirSync(partnerDir, { recursive: true });
+  }
+  
+  const partnerPages = [
+    { src: 'partner-app/index.html', dest: 'index.html' },
+    { src: 'partner-app/features/how-it-works.html', dest: 'how-it-works.html' },
+    { src: 'partner-app/features/why-partner.html', dest: 'why-partner.html' },
+    { src: 'partner-app/features/pricing.html', dest: 'pricing.html' },
+    { src: 'partner-app/features/guidelines.html', dest: 'guidelines.html' },
+    { src: 'partner-app/features/insights.html', dest: 'insights.html' }
+  ];
+  
+  partnerPages.forEach(({ src, dest }) => {
+    const srcPath = path.join(srcDir, src);
+    const distPath = path.join(partnerDir, dest);
     
     if (fs.existsSync(srcPath)) {
       let htmlContent = fs.readFileSync(srcPath, "utf8");
-      htmlContent = processIncludes(htmlContent);
+      const fileDir = path.dirname(srcPath);
+      htmlContent = processIncludes(htmlContent, fileDir);
+      // Fix CSS paths for subdirectory
+      htmlContent = htmlContent.replace(
+        /\.\.\/\.\.\/dist\/output\.css/g,
+        "/output.css"
+      );
+      htmlContent = htmlContent.replace(
+        /href="\.\.\/\.\.\/output\.css"/g,
+        'href="/output.css"'
+      );
       fs.writeFileSync(distPath, htmlContent);
+      console.log(`✅ Created /partner/${dest}`);
+    } else {
+      console.log(`⚠️  Partner page not found: ${src}`);
     }
   });
 
-  // NOTE: Multi-app architecture with clean URLs
-  // gosnel.com serves user-facing content, partner.gosnel.com serves partner content
+  // Create user pages at ROOT level (for SEO - main domain content)
+  const userPages = [
+    { src: 'user-app/features/landing.html', dest: 'index.html' },
+    { src: 'user-app/features/how-it-works.html', dest: 'how-it-works.html' },
+    { src: 'user-app/features/pricing.html', dest: 'pricing.html' },
+    { src: 'user-app/food.html', dest: 'food.html' },
+    { src: 'user-app/about-gosnel.html', dest: 'about.html' },
+    { src: 'user-app/news.html', dest: 'blog.html' },
+    { src: 'user-app/features/help-support.html', dest: 'faq.html' }
+  ];
+  
+  userPages.forEach(({ src, dest }) => {
+    const srcPath = path.join(srcDir, src);
+    const distPath = path.join(distDir, dest);
+    
+    if (fs.existsSync(srcPath)) {
+      let htmlContent = fs.readFileSync(srcPath, "utf8");
+      const fileDir = path.dirname(srcPath);
+      htmlContent = processIncludes(htmlContent, fileDir);
+      // Fix CSS paths for root level
+      htmlContent = htmlContent.replace(
+        /\.\.\/\.\.\/dist\/output\.css/g,
+        "/output.css"
+      );
+      htmlContent = htmlContent.replace(
+        /href="\.\.\/\.\.\/output\.css"/g,
+        'href="/output.css"'
+      );
+      fs.writeFileSync(distPath, htmlContent);
+      console.log(`✅ Created /${dest}`);
+    } else {
+      console.log(`⚠️  User page not found: ${src}`);
+    }
+  });
+
+  // NOTE: Clean URL architecture for SEO
+  // User pages at root: gosnel.com/pricing, gosnel.com/faq, etc.
+  // Partner pages in subdirectory: gosnel.com/partner/pricing, gosnel.com/partner/how-it-works, etc.
 
   // Create root-level footer pages (universal pages)
   const footerPages = ['about-us', 'legal'];

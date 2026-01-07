@@ -7,26 +7,23 @@ const DIST_DIR = path.join(__dirname, 'dist');
 
 // Route mappings
 const routeMap = {
-  '/user': '/index-user.html',
-  '/vendor': '/index-partner.html',
+  '/': '/index.html',
   '/drivers': '/index-drivers.html',
   '/promo': '/index-promo.html',
-  '/': '/index.html',
-  // User pages
-  '/user/privacy-policy': '/user/privacy-policy.html',
-  '/user/terms-conditions': '/user/terms-conditions.html',
-  '/user/cookie-policy': '/user/cookie-policy.html',
-  '/user/about-us': '/user/about-us.html',
-  '/user/faq': '/user/faq.html',
-  '/user/how-it-works': '/user/how-it-works.html',
-  // Vendor/Partner pages
-  '/vendor': '/partner-landing.html',
-  '/vendor/why-partner': '/partner-why-partner.html',
-  '/vendor/how-it-works': '/partner-how-it-works.html',
-  '/vendor/pricing': '/partner-pricing.html',
-  '/vendor/guidelines': '/partner-guidelines.html',
-  '/vendor/insights': '/partner-insights.html',
-  '/vendor/faq': '/partner-faq.html',
+  // User pages at root level (SEO-friendly)
+  '/how-it-works': '/how-it-works.html',
+  '/pricing': '/pricing.html',
+  '/food': '/food.html',
+  '/about': '/about.html',
+  '/blog': '/blog.html',
+  '/faq': '/faq.html',
+  // Partner pages in /partner/ subdirectory
+  '/partner': '/partner/index.html',
+  '/partner/how-it-works': '/partner/how-it-works.html',
+  '/partner/why-partner': '/partner/why-partner.html',
+  '/partner/pricing': '/partner/pricing.html',
+  '/partner/guidelines': '/partner/guidelines.html',
+  '/partner/insights': '/partner/insights.html',
   // Driver pages
   '/driver/how-it-works': '/pages/driver/how-it-works.html',
   '/driver/requirements': '/pages/driver/requirements.html',
