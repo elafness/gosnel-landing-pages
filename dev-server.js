@@ -8,7 +8,7 @@ const DIST_DIR = path.join(__dirname, 'dist');
 // Route mappings
 const routeMap = {
   '/user': '/index-user.html',
-  '/vendor': '/index-vendor.html',
+  '/vendor': '/index-partner.html',
   '/drivers': '/index-drivers.html',
   '/promo': '/index-promo.html',
   '/': '/index.html',
@@ -19,12 +19,12 @@ const routeMap = {
   '/user/about-us': '/user/about-us.html',
   '/user/faq': '/user/faq.html',
   '/user/how-it-works': '/user/how-it-works.html',
-  // Vendor pages
-  '/vendor/why-partner': '/vendor/why-partner.html',
-  '/vendor/how-it-works': '/vendor/how-it-works.html',
-  '/vendor/guidelines': '/vendor/guidelines.html',
-  '/vendor/insights': '/vendor/insights.html',
-  '/vendor/faq': '/vendor/faq.html',
+  // Vendor/Partner pages
+  '/vendor/why-partner': '/partner-why-partner.html',
+  '/vendor/how-it-works': '/partner-how-it-works.html',
+  '/vendor/guidelines': '/partner-guidelines.html',
+  '/vendor/insights': '/partner-insights.html',
+  '/vendor/faq': '/partner-faq.html',
   // Driver pages
   '/driver/how-it-works': '/pages/driver/how-it-works.html',
   '/driver/requirements': '/pages/driver/requirements.html',
