@@ -282,6 +282,15 @@ const buildPages = () => {
     }
   });
   
+  // Copy legal.html from shared directory to dist root
+  const sharedLegalPath = path.join(__dirname, 'shared', 'legal', 'legal.html');
+  const distLegalPath = path.join(distDir, 'legal.html');
+  
+  if (fs.existsSync(sharedLegalPath)) {
+    fs.copyFileSync(sharedLegalPath, distLegalPath);
+    console.log("✅ Copied legal.html from shared to dist root");
+  }
+  
   console.log("✅ Created prefixed subdomain pages");
 
   // Copy assets if they exist (recursively)
