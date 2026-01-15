@@ -1,37 +1,181 @@
 <!-- User Header Component for User App -->
-<nav class="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
+<style>
+    .glass-header {
+        background: rgba(10, 15, 26, 0.8);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(78, 205, 196, 0.1);
+    }
+    
+    .nav-link {
+        position: relative;
+        color: rgba(255, 255, 255, 0.8);
+        transition: all 0.3s ease;
+    }
+    
+    .nav-link:hover {
+        color: #4ECDC4;
+    }
+    
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #4ECDC4, #2dd4bf);
+        transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover::after {
+        width: 100%;
+    }
+    
+    .header-btn-primary {
+        background: linear-gradient(135deg, #4ECDC4 0%, #2dd4bf 100%);
+        color: #0a0f1a;
+        padding: 10px 24px;
+        border-radius: 12px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+    
+    .header-btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(78, 205, 196, 0.3);
+    }
+    
+    .header-btn-secondary {
+        color: rgba(255, 255, 255, 0.9);
+        padding: 10px 20px;
+        border-radius: 12px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(78, 205, 196, 0.3);
+    }
+    
+    .header-btn-secondary:hover {
+        border-color: #4ECDC4;
+        background: rgba(78, 205, 196, 0.1);
+    }
+    
+    .mobile-menu-btn {
+        color: rgba(255, 255, 255, 0.9);
+        padding: 8px;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+    }
+    
+    .mobile-menu-btn:hover {
+        background: rgba(78, 205, 196, 0.1);
+    }
+</style>
+
+<nav class="glass-header sticky top-0 z-40">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center h-16">
+        <div class="flex justify-between items-center h-20">
             <!-- Logo with Slogan -->
-            <a href="/" class="flex items-center gap-4">
+            <a href="/" class="flex items-center gap-4 group">
                 <div class="flex items-center gap-3">
-                    <img src="/shared/assets/images/gosnelLogoTransparate.png" alt="GoSnel Logo" class="w-10 h-10 object-contain">
+                    <img src="/shared/assets/images/gosnelLogoTransparate.png" alt="GoSnel Logo" class="w-11 h-11 object-contain transition-transform group-hover:scale-110">
                     <div class="flex flex-col">
-                        <span class="text-xl font-bold text-gray-900">GoSnel</span>
-                        <span class="text-xs text-gray-600 hidden sm:block">Meal Discovery AI Agent</span>
+                        <span class="text-xl font-bold text-white">GoSnel</span>
+                        <span class="text-xs text-gray-400 hidden sm:block">Meal Discovery AI Agent</span>
                     </div>
                 </div>
             </a>
             
             <!-- Desktop Navigation Links -->
-            <div class="hidden md:flex items-center gap-8">
-                <a href="/" class="text-gray-900 hover:text-teal-600 font-medium transition">Home</a>
-                <a href="/how-it-works" class="text-gray-900 hover:text-teal-600 font-medium transition">How It Works</a>
-                <a href="/pricing" class="text-gray-900 hover:text-teal-600 font-medium transition">Pricing</a>
-                <a href="/faq" class="text-gray-900 hover:text-teal-600 font-medium transition">FAQ</a>
-                <a href="/blog/" class="text-gray-900 hover:text-teal-600 font-medium transition">Blog</a>
-                <a href="/about-us" class="text-gray-900 hover:text-teal-600 font-medium transition">About Us</a>
+            <div class="hidden md:flex items-center gap-6">
+                <a href="/" class="nav-link font-medium">Home</a>
+                <a href="/how-it-works" class="nav-link font-medium">How It Works</a>
+                <a href="/pricing" class="nav-link font-medium">Pricing</a>
+                <a href="/faq" class="nav-link font-medium">FAQ</a>
+                <a href="/blog/" class="nav-link font-medium">Blog</a>
+                <a href="/about-us" class="nav-link font-medium">About Us</a>
             </div>
             
             <!-- Desktop Right Actions -->
             <div class="hidden md:flex items-center gap-3">
-                <a href="#" class="text-gray-900 hover:text-teal-600 font-medium transition">Sign In</a>
-                <a href="#" class="bg-teal-500 text-white px-4 py-2 rounded-lg font-medium hover:bg-teal-600 transition">Get Started</a>
+                <a href="#" class="header-btn-secondary">Sign In</a>
+                <a href="#" class="header-btn-primary">Get Started</a>
             </div>
 
             <!-- Mobile Menu Button -->
-            <button id="mobile-menu-btn-user" class="md:hidden flex items-center justify-center w-10 h-10 rounded-lg hover:bg-gray-100 transition">
-                <svg class="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <button id="mobile-menu-btn-user" class="mobile-menu-btn md:hidden">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+</nav>
+    }
+    
+    .header-btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(78, 205, 196, 0.3);
+    }
+    
+    .header-btn-secondary {
+        color: rgba(255, 255, 255, 0.9);
+        padding: 10px 20px;
+        border-radius: 12px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(78, 205, 196, 0.3);
+    }
+    
+    .header-btn-secondary:hover {
+        border-color: #4ECDC4;
+        background: rgba(78, 205, 196, 0.1);
+    }
+    
+    .mobile-menu-btn {
+        color: rgba(255, 255, 255, 0.9);
+        padding: 8px;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+    }
+    
+    .mobile-menu-btn:hover {
+        background: rgba(78, 205, 196, 0.1);
+    }
+</style>
+
+<nav class="glass-header sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+            <!-- Logo with Slogan -->
+            <a href="/" class="flex items-center gap-4 group">
+                <div class="flex items-center gap-3">
+                    <img src="/shared/assets/images/gosnelLogoTransparate.png" alt="GoSnel Logo" class="w-11 h-11 object-contain transition-transform group-hover:scale-110">
+                    <div class="flex flex-col">
+                        <span class="text-xl font-bold text-white">GoSnel</span>
+                        <span class="text-xs text-gray-400 hidden sm:block">Meal Discovery AI Agent</span>
+                    </div>
+                </div>
+            </a>
+            
+            <!-- Desktop Navigation Links -->
+            <div class="hidden md:flex items-center gap-6">
+                <a href="/" class="nav-link font-medium">Home</a>
+                <a href="/how-it-works" class="nav-link font-medium">How It Works</a>
+                <a href="/pricing" class="nav-link font-medium">Pricing</a>
+                <a href="/faq" class="nav-link font-medium">FAQ</a>
+                <a href="/blog/" class="nav-link font-medium">Blog</a>
+                <a href="/about-us" class="nav-link font-medium">About Us</a>
+            </div>
+            
+            <!-- Desktop Right Actions -->
+            <div class="hidden md:flex items-center gap-3">
+                <a href="#" class="header-btn-secondary">Sign In</a>
+                <a href="#" class="header-btn-primary">Get Started</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn-user" class="mobile-menu-btn md:hidden">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
                 </svg>
             </button>
