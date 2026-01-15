@@ -11,7 +11,7 @@
     <link rel="shortcut icon" href="/shared/assets/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/shared/assets/apple-touch-icon.png" />
     <link rel="manifest" href="/shared/assets/site.webmanifest" />
-    <meta name="theme-color" content="#14b8a6">
+    <meta name="theme-color" content="#4ECDC4">
     
     <link rel="canonical" href="https://gosnel.com">
     <meta name="description" content="Discover your next meal with GoSnel's AI chat. Personalized food recommendations based on your taste, mood, and budget. Order from local restaurants in 100+ languages.">
@@ -73,12 +73,76 @@
     <style>
         * { font-family: 'Inter', system-ui, sans-serif; }
         
-        /* Custom Gradient Classes */
-        .gradient-teal { background: linear-gradient(135deg, #4ECDC4, #1A9A93); }
-        /* Language toggle (top-nav pill) - copied from vendor page */
+        /* Dark Theme Base */
+        body {
+            background: linear-gradient(180deg, #0a0f1a 0%, #111827 50%, #0d1117 100%);
+            min-height: 100vh;
+        }
+
+        /* Animated gradient background */
+        .hero-gradient {
+            background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(78, 205, 196, 0.15), transparent),
+                        radial-gradient(ellipse 60% 40% at 80% 50%, rgba(78, 205, 196, 0.08), transparent);
+        }
+
+        /* Glass card effect */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(78, 205, 196, 0.15);
+        }
+
+        .glass-card-light {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Brand gradient */
+        .gradient-teal { 
+            background: linear-gradient(135deg, #4ECDC4 0%, #2dd4bf 50%, #14b8a6 100%); 
+        }
+
+        /* Glowing effects */
+        .glow-teal {
+            box-shadow: 0 0 60px rgba(78, 205, 196, 0.2), 0 0 100px rgba(78, 205, 196, 0.1);
+        }
+
+        .glow-border {
+            position: relative;
+        }
+        .glow-border::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: inherit;
+            padding: 1px;
+            background: linear-gradient(135deg, rgba(78, 205, 196, 0.5), transparent, rgba(78, 205, 196, 0.3));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+        }
+
+        /* Text styles */
+        .text-gradient {
+            background: linear-gradient(135deg, #4ECDC4, #2dd4bf, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .text-gradient-teal {
+            background: linear-gradient(90deg, #4ECDC4, #2dd4bf);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Language toggle */
         .lang-toggle {
             position: fixed;
-            top: 0.85rem;
+            top: 1rem;
             left: 50%;
             transform: translateX(-50%);
             z-index: 60;
@@ -86,263 +150,350 @@
             gap: 0;
             border-radius: 9999px;
             padding: 4px;
-            background: rgba(15, 23, 42, 0.50);
-            backdrop-filter: blur(14px);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.20);
+            background: rgba(10, 15, 26, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(78, 205, 196, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
         }
 
         .lang-btn {
-            padding: 8px 14px;
+            padding: 10px 18px;
             border: none;
             background: transparent;
-            color: white;
+            color: rgba(255, 255, 255, 0.7);
             cursor: pointer;
             font-weight: 600;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
             border-radius: 9999px;
-            font-size: 0.95rem;
-            line-height: 1;
+            font-size: 0.9rem;
         }
 
         .lang-btn.active {
-            background: rgba(255, 255, 255, 0.92);
-            color: #0f172a;
+            background: linear-gradient(135deg, #4ECDC4, #2dd4bf);
+            color: #0a0f1a;
         }
 
-        /* Direction-aware alignment helper: centers in LTR, right-aligns in RTL */
-        [dir="ltr"] .lang-aligned { text-align: center; }
-        [dir="rtl"] .lang-aligned { text-align: right; }
-        
-        .gradient-dark { background: linear-gradient(180deg, #222b38 0%, #1a2129 100%); }
-        
-        /* Text Gradient */
-        .text-gradient {
-            background: linear-gradient(90deg, #ffffff, #4ECDC4);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .lang-btn:hover:not(.active) {
+            color: #4ECDC4;
         }
-        .text-gradient-teal {
-            background: linear-gradient(90deg, #4ECDC4, #1A9A93);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        /* Card Hover Effects - Removed animations */
-        .card-hover {
-            transition: none;
-        }
-        
-        /* Button Hover - Removed animations */
+
+        /* Button styles */
         .btn-primary {
-            transition: none;
+            background: linear-gradient(135deg, #4ECDC4 0%, #2dd4bf 100%);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, #2dd4bf 0%, #14b8a6 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
         .btn-primary:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 32px rgba(78, 205, 196, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 20px 40px rgba(78, 205, 196, 0.3);
         }
-        
-        /* Chat Bubble Animation */
+
+        .btn-primary:hover::before {
+            opacity: 1;
+        }
+
+        .btn-primary span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid rgba(78, 205, 196, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            border-color: #4ECDC4;
+            background: rgba(78, 205, 196, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Feature card hover */
+        .feature-card {
+            transition: all 0.4s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(78, 205, 196, 0.4);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3), 0 0 30px rgba(78, 205, 196, 0.1);
+        }
+
+        /* Chat animation */
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(10px); }
+            from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
         }
         .chat-bubble {
-            animation: fadeInUp 0.3s ease forwards;
+            animation: fadeInUp 0.4s ease forwards;
         }
-        
-        /* Glow Effect */
-        .glow-teal {
-            box-shadow: 0 0 30px rgba(78, 205, 196, 0.3);
-        }
-        
-        /* Scrollbar */
+
+        /* Chat scrollbar */
         .chat-container::-webkit-scrollbar {
             width: 6px;
         }
         .chat-container::-webkit-scrollbar-track {
-            background: rgba(255,255,255,0.05);
+            background: rgba(255,255,255,0.02);
             border-radius: 3px;
         }
         .chat-container::-webkit-scrollbar-thumb {
             background: rgba(78, 205, 196, 0.3);
             border-radius: 3px;
         }
-        
-        /* Feature Icon */
-        .feature-icon {
-            width: 64px;
-            height: 64px;
+
+        /* Image placeholder */
+        .image-placeholder {
+            background: linear-gradient(135deg, rgba(78, 205, 196, 0.1), rgba(78, 205, 196, 0.05));
+            border: 2px dashed rgba(78, 205, 196, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(78, 205, 196, 0.6);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
         }
-        
-        /* Language Flags */
-        .lang-pill {
-            transition: all 0.2s ease;
+
+        /* Floating particles effect */
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(78, 205, 196, 0.4);
+            border-radius: 50%;
+            pointer-events: none;
         }
-        .lang-pill:hover {
-            background: rgba(78, 205, 196, 0.2);
+
+        /* Section divider */
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(78, 205, 196, 0.3), transparent);
         }
+
+        /* Direction-aware */
+        [dir="rtl"] .lang-aligned { text-align: right; }
+        [dir="ltr"] .lang-aligned { text-align: left; }
     </style>
-    <!-- Structured Data (JSON-LD) -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "GoSnel",
-      "description": "Discover your next meal with GoSnel's AI chat. Personalized food recommendations.",
-      "url": "https://gosnel.com",
-      "applicationCategory": "FoodApplication",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "AED"
-      },
-      "screenshot": "https://gosnel.com/shared/assets/og-image.png",
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.8",
-        "ratingCount": "1200"
-      }
-    }
-    </script>
 </head>
-<body class="bg-gray-50 min-h-screen text-gray-900">
-    <!-- Language Toggle (English / Arabic) -->
+<body class="text-white">
+    <!-- Language Toggle -->
     <div class="lang-toggle">
-        <button id="lang-en" class="lang-btn bg-teal-500 text-gray-900">English</button>
+        <button id="lang-en" class="lang-btn active">English</button>
         <button id="lang-ar" class="lang-btn">العربية</button>
     </div>
-     <!-- Include User Header -->
-     <!--#include file="../components/header.html" -->
+
+    <!-- Include User Header -->
+    <!--#include file="../components/header.html" -->
 
     <!-- Hero Section -->
-    <section class="py-12 md:py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+    <section class="hero-gradient min-h-screen flex items-center pt-20 pb-16 relative overflow-hidden">
+        <!-- Decorative elements -->
+        <div class="absolute top-20 left-10 w-72 h-72 bg-[#4ECDC4]/10 rounded-full blur-[100px]"></div>
+        <div class="absolute bottom-20 right-10 w-96 h-96 bg-[#4ECDC4]/5 rounded-full blur-[120px]"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
                 <!-- Left Content -->
-                <div>
-                    <h1 id="hero_title" class="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight mb-6 text-teal-400">
-                        Stop scrolling.
+                <div class="space-y-8">
+                    <!-- Badge -->
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-sm">
+                        <span class="w-2 h-2 bg-[#4ECDC4] rounded-full animate-pulse"></span>
+                        <span class="text-gray-300">AI-Powered Food Discovery</span>
+                    </div>
+
+                    <h1 id="hero_title" class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight">
+                        <span class="text-white">Stop scrolling.</span>
                         <br>
-                        Let AI pick for you in 30 seconds
+                        <span class="text-gradient">Let AI pick for you in 30 seconds</span>
                     </h1>
                     
-                    <p id="hero_desc" class="text-lg md:text-2xl text-gray-700 mb-6 leading-relaxed">
+                    <p id="hero_desc" class="text-xl md:text-2xl text-gray-400 leading-relaxed">
                         Tired of spending 15 minutes scrolling through menus?
                     </p>
                     
-                    <!-- What I Can Do (simplified) - unified size and left aligned -->
-                    <div class="mb-10 text-left">
-                        <h3 id="what_i_can_do" class="text-xl md:text-xl font-extrabold text-teal-400 mb-1">GoSnel uses AI to suggest the perfect meal</h3>
-                        <p id="suggest_meals" class="text-xl md:text-xl text-teal-400 max-w-xl">based on your taste and budget — in under a minute</p>
+                    <!-- Value prop -->
+                    <div class="space-y-2">
+                        <h3 id="what_i_can_do" class="text-lg md:text-xl font-semibold text-[#4ECDC4]">GoSnel uses AI to suggest the perfect meal</h3>
+                        <p id="suggest_meals" class="text-lg text-gray-400">based on your taste and budget — in under a minute</p>
                     </div>
                     
                     <!-- CTA Buttons -->
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <a id="get_started" href="https://gosnel.com/user/signup" class="btn-primary gradient-teal text-gray-900 px-8 py-4 rounded-xl font-bold text-lg text-center">
-                            Try it now,  no download!
+                    <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                        <a id="get_started" href="https://gosnel.com/user/signup" class="btn-primary text-gray-900 px-8 py-4 rounded-xl font-bold text-lg text-center">
+                            <span>Try it now, no download!</span>
                         </a>
-                        <a id="try_demo" href="https://gosnel.com/user/demo" class="px-8 py-4 rounded-xl font-bold text-lg text-center text-teal-400 border-2 border-teal-500 bg-white/5 hover:bg-teal-500/10 transition">
+                        <a id="try_demo" href="https://gosnel.com/user/demo" class="btn-secondary px-8 py-4 rounded-xl font-bold text-lg text-center text-[#4ECDC4]">
                             Try a demo chat
                         </a>
+                    </div>
+
+                    <!-- Trust indicators -->
+                    <div class="flex items-center gap-6 pt-4 text-sm text-gray-500">
+                        <div class="flex items-center gap-2">
+                            <svg class="w-5 h-5 text-[#4ECDC4]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                            <span>No signup required</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <svg class="w-5 h-5 text-[#4ECDC4]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                            <span>100% Free to use</span>
+                        </div>
                     </div>
                 </div>
                 
                 <!-- Right - Chat Preview -->
-                <div class="bg-gradient-to-br from-teal-500/10 to-teal-600/5 border border-teal-500/30 rounded-2xl p-6 glow-teal">
-                    <div class="flex items-center gap-2 mb-6">
-                        <svg class="w-5 h-5 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
-                        <span id="live_preview" class="text-lg font-bold text-teal-400">Demo Chat</span>
+                <div class="relative">
+                    <div class="glass-card rounded-3xl p-6 glow-teal glow-border">
+                        <div class="flex items-center gap-3 mb-6 pb-4 border-b border-white/10">
+                            <div class="w-10 h-10 rounded-full gradient-teal flex items-center justify-center">
+                                <svg class="w-5 h-5 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+                            </div>
+                            <div>
+                                <span id="live_preview" class="text-lg font-bold text-white">Demo Chat</span>
+                                <p class="text-xs text-gray-500">GoSnel AI Assistant</p>
+                            </div>
+                            <div class="ml-auto flex items-center gap-1">
+                                <span class="w-2 h-2 bg-green-400 rounded-full"></span>
+                                <span class="text-xs text-gray-500">Online</span>
+                            </div>
+                        </div>
+                        
+                        <div id="chat_container" class="chat-container h-[380px] overflow-y-auto space-y-4 pr-2"></div>
                     </div>
-                    
-                    <div id="chat_container" class="chat-container h-[400px] overflow-y-auto space-y-4 pr-2"></div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- IMAGE PLACEHOLDER 1 -->
+    <section class="py-16">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="image-placeholder rounded-3xl h-[400px] md:h-[500px]">
+                <div class="text-center">
+                    <svg class="w-16 h-16 mx-auto mb-4 text-[#4ECDC4]/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                    <p class="text-sm">SET IMAGE HERE</p>
+                    <p class="text-xs text-gray-500 mt-2">Hero image / App screenshot / Food visual</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider max-w-4xl mx-auto"></div>
+
     <!-- Why Users Love GoSnel -->
-    <section class="py-20 bg-white/[0.02] border-y border-white/10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 id="why_love" class="text-3xl md:text-4xl font-extrabold text-center text-gray-900 mb-4">
-                Why users love GoSnel
-            </h2>
-            <p class="text-center text-gray-700 mb-16 text-lg">Smart, simple, and speaks your language</p>
+    <section class="py-24 relative">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#4ECDC4]/5 to-transparent"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 id="why_love" class="text-3xl md:text-5xl font-extrabold text-white mb-4">
+                    Why users love GoSnel
+                </h2>
+                <p class="text-gray-400 text-lg max-w-2xl mx-auto">Smart, simple, and speaks your language</p>
+            </div>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <!-- Feature 1 -->
-                <div class="card-hover bg-white/[0.03] border border-teal-500/20 rounded-xl p-8 text-center">
-                    <div class="feature-icon mx-auto mb-6 rounded-xl gradient-teal flex items-center justify-center">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                <div class="feature-card glass-card rounded-2xl p-8 text-center">
+                    <div class="w-16 h-16 mx-auto mb-6 rounded-2xl gradient-teal flex items-center justify-center">
+                        <svg class="w-8 h-8 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
                     </div>
-                    <h3 id="smart_suggestions" class="text-xl font-bold text-teal-400 mb-3">Smart Suggestions</h3>
-                    <p id="smart_desc" class="text-gray-700 text-sm leading-relaxed">Get meal ideas personalized to your taste and budget in seconds.</p>
+                    <h3 id="smart_suggestions" class="text-xl font-bold text-white mb-3">Smart Suggestions</h3>
+                    <p id="smart_desc" class="text-gray-400 text-sm leading-relaxed">Get meal ideas personalized to your taste and budget in seconds.</p>
                 </div>
                 
                 <!-- Feature 2 -->
-                <div class="card-hover bg-white/[0.03] border border-teal-500/20 rounded-xl p-8 text-center">
-                    <div class="feature-icon mx-auto mb-6 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
+                <div class="feature-card glass-card rounded-2xl p-8 text-center">
+                    <div class="w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
                         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                     </div>
-                    <h3 id="languages" class="text-xl font-bold text-teal-400 mb-3">100+ Languages</h3>
-                    <p id="languages_desc" class="text-gray-700 text-sm leading-relaxed">Speak your language, and I'll understand perfectly.</p>
+                    <h3 id="languages" class="text-xl font-bold text-white mb-3">100+ Languages</h3>
+                    <p id="languages_desc" class="text-gray-400 text-sm leading-relaxed">Speak your language, and I'll understand perfectly.</p>
                 </div>
                 
                 <!-- Feature 3 -->
-                <div class="card-hover bg-white/[0.03] border border-teal-500/20 rounded-xl p-8 text-center">
-                    <div class="feature-icon mx-auto mb-6 rounded-xl bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center">
+                <div class="feature-card glass-card rounded-2xl p-8 text-center">
+                    <div class="w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center">
                         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
                     </div>
-                    <h3 id="real_restaurants" class="text-xl font-bold text-teal-400 mb-3">Real Restaurants</h3>
-                    <p id="real_desc" class="text-gray-700 text-sm leading-relaxed">Browse local vendors with authentic menus and real food.</p>
+                    <h3 id="real_restaurants" class="text-xl font-bold text-white mb-3">Real Restaurants</h3>
+                    <p id="real_desc" class="text-gray-400 text-sm leading-relaxed">Browse local vendors with authentic menus and real food.</p>
                 </div>
                 
                 <!-- Feature 4 -->
-                <div class="card-hover bg-white/[0.03] border border-teal-500/20 rounded-xl p-8 text-center">
-                    <div class="feature-icon mx-auto mb-6 rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center">
+                <div class="feature-card glass-card rounded-2xl p-8 text-center">
+                    <div class="w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center">
                         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
                     </div>
-                    <h3 id="natural_chat" class="text-xl font-bold text-teal-400 mb-3">Natural Conversations</h3>
-                    <p id="natural_desc" class="text-gray-700 text-sm leading-relaxed">Chat with me like you're texting a friend — no confusing menus.</p>
+                    <h3 id="natural_chat" class="text-xl font-bold text-white mb-3">Natural Conversations</h3>
+                    <p id="natural_desc" class="text-gray-400 text-sm leading-relaxed">Chat with me like you're texting a friend — no confusing menus.</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- IMAGE PLACEHOLDER 2 -->
+    <section class="py-16">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="image-placeholder rounded-3xl h-[400px] md:h-[500px]">
+                <div class="text-center">
+                    <svg class="w-16 h-16 mx-auto mb-4 text-[#4ECDC4]/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                    <p class="text-sm">SET IMAGE HERE</p>
+                    <p class="text-xs text-gray-500 mt-2">Feature showcase / User testimonials / Food collage</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider max-w-4xl mx-auto"></div>
+
     <!-- Dietary Preferences Section -->
-    <section class="py-20 bg-gradient-to-br from-teal-500/5 to-teal-600/[0.02] border-y border-teal-500/20">
+    <section class="py-24 relative">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 id="dietary_title" class="text-3xl md:text-4xl font-extrabold text-center text-gray-900 mb-4">
-                <svg class="w-10 h-10 inline mr-3 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-                Dietary Preferences & Diet Goals
-            </h2>
-            <p class="text-center text-gray-700 mb-12 text-lg">Your health goals, our priority</p>
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-sm mb-6">
+                    <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                    <span class="text-gray-300">Health-Focused</span>
+                </div>
+                <h2 id="dietary_title" class="text-3xl md:text-5xl font-extrabold text-white mb-4">
+                    Dietary Preferences & Diet Goals
+                </h2>
+                <p class="text-gray-400 text-lg">Your health goals, our priority</p>
+            </div>
             
             <div class="grid md:grid-cols-2 gap-8">
                 <!-- Card 1 -->
-                <div class="card-hover bg-white/[0.03] border border-teal-500/30 rounded-xl p-8">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 rounded-lg bg-green-500/20 flex items-center justify-center">
-                            <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                <div class="feature-card glass-card rounded-2xl p-8">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-14 h-14 rounded-2xl bg-green-500/20 flex items-center justify-center">
+                            <svg class="w-7 h-7 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
                         </div>
-                        <h3 id="diet_goals_1" class="text-xl font-bold text-teal-400">Weight-loss Goals</h3>
+                        <h3 id="diet_goals_1" class="text-2xl font-bold text-white">Weight-loss Goals</h3>
                     </div>
-                    <p id="dietary_desc1" class="text-gray-700 leading-relaxed">
+                    <p id="dietary_desc1" class="text-gray-400 leading-relaxed text-lg">
                         No matter your dietary goal, GoSnel has you covered! 🌿 Whether you're vegetarian, vegan, gluten-free, keto/low-carb, or following a weight-loss diet, we select healthy, balanced meals tailored to your taste and budget.
                     </p>
                 </div>
                 
                 <!-- Card 2 -->
-                <div class="card-hover bg-white/[0.03] border border-teal-500/30 rounded-xl p-8">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 rounded-lg bg-yellow-500/20 flex items-center justify-center">
-                            <svg class="w-6 h-6 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                <div class="feature-card glass-card rounded-2xl p-8">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-14 h-14 rounded-2xl bg-yellow-500/20 flex items-center justify-center">
+                            <svg class="w-7 h-7 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
                         </div>
-                        <h3 id="diet_goals_2" class="text-xl font-bold text-teal-400">Diet Goals</h3>
+                        <h3 id="diet_goals_2" class="text-2xl font-bold text-white">Diet Goals</h3>
                     </div>
-                    <p id="dietary_desc2" class="text-gray-700 leading-relaxed">
+                    <p id="dietary_desc2" class="text-gray-400 leading-relaxed text-lg">
                         With GoSnel, you don't have to worry about calories or ingredients — our AI suggests meals that fit your diet, helping you reach your health goals without feeling deprived, all from real restaurants near you. 😋
                     </p>
                 </div>
@@ -351,74 +502,86 @@
     </section>
 
     <!-- Supported Languages -->
-    <section class="py-20 bg-teal-500/5 border-y border-teal-500/20">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">
-                <svg class="w-10 h-10 inline mr-3 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+    <section class="py-24 relative">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-blue-500/5 to-transparent"></div>
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-sm mb-6">
+                <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <span class="text-gray-300">Global Support</span>
+            </div>
+            <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-8">
                 Supported Languages
             </h2>
-            <p class="text-gray-700 text-lg leading-relaxed mt-6">
-                English, Arabic (العربية), Hindi (हिन्दी), Spanish (Español), French (Français), Chinese (中文), Japanese (日本語), Korean (한국어), Turkish (Türkçe), Portuguese (Português), Russian (Русский), Italian (Italiano), German (Deutsch), Greek (Ελληνικά), Thai, Vietnamese, Filipino, Indonesian, Malay, Swedish, Norwegian, Danish, Finnish, Polish, Dutch, Czech, Hungarian, Romanian, Bulgarian, Croatian, Serbian, Slovak, Slovenian, Hebrew, Farsi, Urdu, Bengali, Tamil, Telugu, Kannada, Marathi, Gujarati, <strong class="text-teal-400">and 50+ more languages.</strong>
+            <p class="text-gray-400 text-lg leading-relaxed">
+                English, Arabic (العربية), Hindi (हिन्दी), Spanish (Español), French (Français), Chinese (中文), Japanese (日本語), Korean (한국어), Turkish (Türkçe), Portuguese (Português), Russian (Русский), Italian (Italiano), German (Deutsch), Greek (Ελληνικά), Thai, Vietnamese, Filipino, Indonesian, Malay, Swedish, Norwegian, Danish, Finnish, Polish, Dutch, Czech, Hungarian, Romanian, Bulgarian, Croatian, Serbian, Slovak, Slovenian, Hebrew, Farsi, Urdu, Bengali, Tamil, Telugu, Kannada, Marathi, Gujarati, <strong class="text-[#4ECDC4]">and 50+ more languages.</strong>
             </p>
         </div>
     </section>
 
     <!-- Start Ordering CTA -->
-    <section class="py-20">
-        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 id="start_ordering" class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-6">Start ordering in your language</h2>
-            <p id="trust_desc_2" class="text-gray-700 text-lg leading-relaxed mb-10">
-                No subscription. No hidden fees. No language barriers.<br>
-                Order anytime, cancel anytime — and try our demo chat free, no signup needed!
-            </p>
-            <a id="create_account" href="https://gosnel.com/user/signup" class="btn-primary inline-block gradient-teal text-gray-900 px-10 py-5 rounded-xl font-bold text-xl">
-                Create Your Account
-            </a>
+    <section class="py-24">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="glass-card rounded-3xl p-12 md:p-16 text-center glow-border relative overflow-hidden">
+                <!-- Background decoration -->
+                <div class="absolute top-0 right-0 w-64 h-64 bg-[#4ECDC4]/10 rounded-full blur-[80px]"></div>
+                <div class="absolute bottom-0 left-0 w-48 h-48 bg-[#4ECDC4]/5 rounded-full blur-[60px]"></div>
+                
+                <div class="relative z-10">
+                    <h2 id="start_ordering" class="text-3xl md:text-5xl font-extrabold text-white mb-6">Start ordering in your language</h2>
+                    <p id="trust_desc_2" class="text-gray-400 text-lg leading-relaxed mb-10 max-w-2xl mx-auto">
+                        No subscription. No hidden fees. No language barriers.<br>
+                        Order anytime, cancel anytime — and try our demo chat free, no signup needed!
+                    </p>
+                    <a id="create_account" href="https://gosnel.com/user/signup" class="btn-primary inline-block text-gray-900 px-12 py-5 rounded-xl font-bold text-xl">
+                        <span>Create Your Account</span>
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Newsletter Subscription -->
-    <section class="pb-20">
+    <section class="pb-24">
         <div class="max-w-xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-white/5 border border-teal-500/20 rounded-2xl p-8 md:p-12 text-center">
+            <div class="glass-card rounded-3xl p-8 md:p-12 text-center">
                 <!-- Icon -->
-                <div class="w-16 h-16 rounded-full bg-teal-500/10 flex items-center justify-center mx-auto mb-6">
-                    <svg class="w-8 h-8 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="w-16 h-16 rounded-2xl gradient-teal flex items-center justify-center mx-auto mb-6">
+                    <svg class="w-8 h-8 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                     </svg>
                 </div>
                 
-                <h3 id="subscribe_title" class="text-2xl md:text-3xl font-bold text-gray-900 mb-3">Be the First to Know</h3>
-                <p id="subscribe_desc" class="text-gray-700 mb-8">Get notified when we launch new features and special offers</p>
+                <h3 id="subscribe_title" class="text-2xl md:text-3xl font-bold text-white mb-3">Be the First to Know</h3>
+                <p id="subscribe_desc" class="text-gray-400 mb-8">Get notified when we launch new features and special offers</p>
                 
                 <!-- Subscription Type -->
                 <div class="mb-6 text-left">
-                    <p id="notification_type" class="text-sm font-semibold text-gray-900 mb-4">How would you like to be notified?</p>
+                    <p id="notification_type" class="text-sm font-semibold text-gray-300 mb-4">How would you like to be notified?</p>
                     <div class="space-y-3">
-                        <label class="flex items-center gap-3 cursor-pointer">
-                            <input id="notify_email" type="radio" name="notify" value="email" checked class="w-4 h-4 accent-teal-500">
-                            <svg class="w-5 h-5 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                            <span id="email_option" class="text-gray-900 text-sm">Email Notifications</span>
+                        <label class="flex items-center gap-3 cursor-pointer group">
+                            <input id="notify_email" type="radio" name="notify" value="email" checked class="w-4 h-4 accent-[#4ECDC4]">
+                            <svg class="w-5 h-5 text-[#4ECDC4]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                            <span id="email_option" class="text-gray-300 text-sm group-hover:text-white transition">Email Notifications</span>
                         </label>
-                        <label class="flex items-center gap-3 cursor-pointer">
+                        <label class="flex items-center gap-3 cursor-pointer group">
                             <input id="notify_whatsapp" type="radio" name="notify" value="whatsapp" class="w-4 h-4 accent-green-500">
                             <svg class="w-5 h-5 text-green-500" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.097"/></svg>
-                            <span id="whatsapp_option" class="text-gray-900 text-sm">WhatsApp Messages</span>
+                            <span id="whatsapp_option" class="text-gray-300 text-sm group-hover:text-white transition">WhatsApp Messages</span>
                         </label>
                     </div>
                 </div>
                 
                 <!-- Email Input -->
                 <div id="email_group" class="mb-4">
-                    <input id="email_input" type="email" placeholder="your@email.com" class="w-full px-5 py-4 rounded-lg bg-white/5 border border-teal-500/30 text-gray-900 placeholder-gray-500 focus:outline-none focus:border-teal-500 transition">
+                    <input id="email_input" type="email" placeholder="your@email.com" class="w-full px-5 py-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-[#4ECDC4] focus:ring-1 focus:ring-[#4ECDC4] transition">
                 </div>
                 <div id="phone_group" class="mb-4 hidden">
-                    <input id="phone_input" type="tel" placeholder="051234567" class="w-full px-5 py-4 rounded-lg bg-white/5 border border-teal-500/30 text-gray-900 placeholder-gray-500 focus:outline-none focus:border-teal-500 transition">
+                    <input id="phone_input" type="tel" placeholder="051234567" class="w-full px-5 py-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-[#4ECDC4] focus:ring-1 focus:ring-[#4ECDC4] transition">
                 </div>
                 
                 <!-- Submit Button -->
-                <button id="notify_btn" class="w-full py-4 rounded-lg font-semibold text-gray-900 bg-teal-500 hover:bg-teal-400 transition">Notify Me</button>
-                <div id="subscribe_success" class="hidden mt-4 text-teal-400 text-sm"></div>
+                <button id="notify_btn" class="w-full py-4 rounded-xl font-bold text-gray-900 gradient-teal hover:opacity-90 transition">Notify Me</button>
+                <div id="subscribe_success" class="hidden mt-4 text-[#4ECDC4] text-sm"></div>
                 
                 <p id="privacy_note" class="text-xs text-gray-500 mt-4">We respect your privacy. Unsubscribe at any time.</p>
             </div>
@@ -427,341 +590,331 @@
 
     <!-- Footer -->
     <!--#include file="../components/footer.html" -->
-        <script>
-        (function(){
-            const t = {
-                en: {
-                    hero_title: 'Stop scrolling.\nLet AI pick for you in 30 seconds',
-                    hero_desc: 'Tired of spending 15 minutes scrolling through menus?',
-                    what_i_can_do: 'GoSnel uses AI to suggest the perfect meal',
-                    suggest_meals: 'based on your taste and budget — in under a minute',
-                    find_restaurants: '',
-                    translate_menus: '',
-                    remember_favorites: '',
-                    get_started: " Try it now, no download required!",
-                    try_demo: ' Try a demo chat',
-                    login: 'Log In',
-                    why_love: 'Why users love GoSnel ❤️',
-                    smart_suggestions: '⚡ Smart Suggestions',
-                    smart_desc: 'Get meal ideas personalized to your taste and budget in seconds.',
-                    languages: '100+ Languages',
-                    languages_desc: "Speak your language, and I'll understand perfectly.",
-                    real_restaurants: 'Real Restaurants',
-                    real_desc: 'Browse local vendors with authentic menus and real food.',
-                    natural_chat: 'Natural Conversations',
-                    natural_desc: "Chat with me like you're texting a friend — no confusing menus or clunky apps.",
-                    dietary_title: ' Dietary Preferences & Diet Goals',
-                    diet_goals_1: 'Weight-loss Goals',
-                    diet_goals_2: 'Diet Goals',
-                    dietary_desc1: "No matter your dietary goal, GoSnel has you covered! 🌿 Whether you're vegetarian, vegan, gluten-free, keto/low-carb, or following a weight-loss diet, we select healthy, balanced meals tailored to your taste and budget.",
-                    dietary_desc2: "With GoSnel, you don't have to worry about calories or ingredients — our  GoSnel-AI suggests meals that fit your diet, helping you reach your health goals without feeling deprived, all from real restaurants near you. Lose weight, stay healthy, and enjoy delicious meals! 😋",
-                    start_ordering: 'Start ordering in your language',
-                    trust_desc: 'No subscription. No hidden fees. No language barriers.\nOrder anytime, cancel anytime — and try our demo chat free, no signup needed!',
-                    create_account: 'Create Your Account',
-                    live_preview: 'Demo Chat ',
-                    subscribe_title: 'Be the First to Know',
-                    subscribe_desc: 'Get notified when we launch new features and special offers',
-                    notification_type: 'How would you like to be notified?',
-                    email_option: 'Email Notifications',
-                    whatsapp_option: 'WhatsApp Messages',
-                    email_placeholder: 'your@email.com',
-                    phone_placeholder: '051234567',
-                    notify_me: 'Notify Me',
-                    send_whatsapp: 'Send to WhatsApp',
-                    subscribe_success: 'Thank You! ✓',
-                    subscribe_success_email: 'Check your email for confirmation and updates!',
-                    subscribe_success_whatsapp: "We'll send you updates on WhatsApp!",
-                    privacy_note: 'We respect your privacy. Unsubscribe at any time.',
-                },
-                ar: {
-                    hero_title: 'ملّيت من اللف بين تطبيقات الطعام؟\nنختار لك الوجبة الصح في 30 ثانية.',
-                    hero_desc: 'طفشان تضيع 15 دقيقة وانت تتصفح قوائم المطاعم؟',
-                    what_i_can_do: 'جوسنِل يستخدم الذكاء الاصطناعي ويقترح لك الوجبة المناسبة',
-                    suggest_meals: 'حسب ذوقك وميزانيتك — خلال أقل من دقيقة',
-                    find_restaurants: '',
-                    translate_menus: '',
-                    remember_favorites: '',
-                    get_started: ' جرّب الحين مجانًا',
-                    try_demo: 'جرب محادثة سريعة ويا المساعد الذكي ',
-                    login: 'تسجيل الدخول',
-                    why_love: 'ليش الناس تحب جوسنيل ❤️',
-                    smart_suggestions: '⚡ اقتراحات ذكية',
-                    smart_desc: 'يعرف شو يناسب ذوقك وميزانيتك في ثواني',
-                    languages: ' أكثر من 100 لغة',
-                    languages_desc: 'كلّمنا بلغتك، وأنا أفهمك عدل',
-                    real_restaurants: ' مطاعم حقيقية',
-                    real_desc: 'تصفح مطاعم محلية حقيقية بأكل أصلي ولذيذ',
-                    natural_chat: ' محادثة طبيعية وسلسة',
-                    natural_desc: 'كلّمني كأنك تراسل صديقك، بدون قوائم معقّدة ولا تطبيقات مربكة',
-                    dietary_title: ' التفضيلات الغذائية والدايت',
-                    diet_goals_1: 'عندك هدف صحي؟',
-                    diet_goals_2: 'بدك تخفف وزنك؟',
-                    dietary_desc1: 'مهما كان هدفك الغذائي، جوسنيل معك! 🌿 سواء كنت نباتي، نباتي صارم (Vegan)، أو تتبع نظام خالي من الغلوتين، أو كيتو / منخفض الكربوهيدرات، نحن نختار لك وجبات صحية، متوازنة، ومناسبة لميزانيتك وذوقك.',
-                    dietary_desc2: 'مع جوسنيل، ما تحتاج تقلق من السعرات أو المكونات، أنا بيقترح لك وجبات متناسبة مع الدايت  لتخفيف الوزن، تساعدك توصل لهدفك الصحي بدون حرمان، وكل هذا من مطاعم حقيقية قريبة منك. خفف وزنك، حافظ على صحتك، وتمتع بوجبات لذيذة! 😋',
-                    start_ordering: 'ابدأ وجبتك بلغتك',
-                    trust_desc: 'بدون اشتراك ولا رسوم ولا تعقيد.\nجرب المحادثة التوضيحية الحين، مجانية بالكامل بدون تسجيل!',
-                    create_account: 'أنشئ حسابك الآن',
-                    live_preview: 'محادثة تجريبية ',
-                    subscribe_title: 'كن أول من يعرف',
-                    subscribe_desc: 'احصل على إشعارات عندما نطلق ميزات جديدة وعروض خاصة',
-                    notification_type: 'كيف تحب نخبرك؟',
-                    email_option: 'إشعارات الإيميل',
-                    whatsapp_option: 'رسائل واتساب',
-                    email_placeholder: 'your@email.com',
-                    phone_placeholder: '051234567',
-                    notify_me: 'خبرني',
-                    send_whatsapp: 'أرسل للواتساب',
-                    subscribe_success: 'شكرًا لك! ✓',
-                    subscribe_success_email: 'تحقق من إيميلك للتأكيد والتحديثات!',
-                    subscribe_success_whatsapp: 'بنرسلك التحديثات على الواتساب!',
-                    privacy_note: 'نحترم خصوصيتك. يمكنك إلغاء الاشتراك في أي وقت.',
-                },
-            };
 
-            const chatExamples = {
-                en: [
-                    { role: 'user', message: 'Hey' },
-                    { role: 'bot', message: "Yo, foodie! 😋 Hope you're hungry today! How was that [Grilled Chicken Wrap] last time?" },
-                    { role: 'user', message: 'Not bad' },
-                    { role: 'bot', message: "Umm...🤔 Let's make your next bite even better — but first, what's your budget for today's meal?\nThat way, I can find the perfect options just for you!" },
-                    { role: 'user', message: '40' },
-                    { role: 'bot', message: "Perfect! With a 40 AED budget in UAE, here are two mouthwatering options waiting for you:\n\n1️⃣ Chicken Alfredo Pasta – 35 AED (Trending 89🔥)\nCreamy, rich, and full of flavor — tender chicken mixed with smooth Alfredo sauce and fettuccine. Comfort in every single bite! 🍝 from [Italiano Restaurant] \n\n2️⃣ Signature Burger – 39 AED (Rated 4.9⭐️)\nJuicy beef patty topped with melted cheese, caramelized onions, and MoM-foodi's secret sauce — served with crispy fries on the side. 🍔 from [MoM-foodi Restaurant]\n\nBoth meals are customer favorites — guaranteed to fill your stomach and brighten your mood!\nWhich one tempts you more today? and It will arrive hot 😄" },
-                    { role: 'user', message: '2' },
-                    { role: 'bot', message: "Awesome choice! 🍔\nYour Signature Burger from MoM-foodi Restaurant has been added to your cart 🛒\n\nI'll notify you with live tracking once it's on the way — it should arrive in about 20–30 minutes 🚗💨\nKeep an eye on your WhatsApp, you'll receive a confirmation message shortly.\n\nEnjoy your meal, foodie — you've got great taste! 😋🔥" },
-                ],
-                ar: [
-                    { role: 'user', message: 'السلام عليكم' },
-                    { role: 'bot', message: 'هلا يا طويل العمر 😋! اليوم جوعان؟ كيف كانت وجبة المندي المدخن آخر مرة؟' },
-                    { role: 'user', message: 'تمام' },
-                    { role: 'bot', message: 'تمام بو زايد! مبسوط إنها عجبتك 🙌\nخلنا نرتّب لك اليوم شي أزكى منها! بس قبل، كم ميزانيتك اليوم عشان أقدر أختار لك أنسب الأطباق؟' },
-                    { role: 'user', message: '40' },
-                    { role: 'bot', message: ':ممتاز! بميزانية 40 درهم في الإمارات، عندي لك خيارين لذيذين \n\n1️⃣ باستا الدجاج – 35 درهم 🍝  (ترند 89)\nباستا غنية وطريّة مع صوص ألفريدو الكريمي وقطع دجاج طرية… راحة نفسية بكل لقمة من [مطعم إيلاف]!\n\n2️⃣ برجر إيتاليانو المميز – 39 درهم 🍔 (تقييم 4.9)\nبرجر لحم عصيّب، عليه جبن سايح وبصل مكرمل وصوص ايطالي السري، ومعاه بطاطس مقرمشة عالطريق من [مطعم إيتاليانو]!\n\nكل الثنتين من أكثر الطلبات اللي يحبها الزباين، وتخليك راضي ومبسوط بعد الأكل 😋\nشو رايك؟ تختار أي وحدة اليوم؟ وخلال 30 دقيقة توصلك ساخنة ' },
-                    { role: 'user', message: '2' },
-                    { role: 'bot', message: 'اختيار رهيب والله! 🍔\nتمت إضافة برجر التوقيع من مطعم إیتالیانو لعربتك 🛒\n\nبخبرك بتتبع الطلب مباشر أول بأول، وبيوصلك خلال 20–30 دقيقة تقريبا 🚗💨\nتأكد بعد من واتسابك، بتوصلك رسالة تأكيد هناك 😉\n\nاستمتع بوجبتك بو زايد، دايم تختار الصح 😋🔥' },
-                ],
-            };
+    <script>
+    (function(){
+        const t = {
+            en: {
+                hero_title: 'Stop scrolling.\nLet AI pick for you in 30 seconds',
+                hero_desc: 'Tired of spending 15 minutes scrolling through menus?',
+                what_i_can_do: 'GoSnel uses AI to suggest the perfect meal',
+                suggest_meals: 'based on your taste and budget — in under a minute',
+                find_restaurants: '',
+                translate_menus: '',
+                remember_favorites: '',
+                get_started: " Try it now, no download required!",
+                try_demo: ' Try a demo chat',
+                login: 'Log In',
+                why_love: 'Why users love GoSnel ❤️',
+                smart_suggestions: '⚡ Smart Suggestions',
+                smart_desc: 'Get meal ideas personalized to your taste and budget in seconds.',
+                languages: '100+ Languages',
+                languages_desc: "Speak your language, and I'll understand perfectly.",
+                real_restaurants: 'Real Restaurants',
+                real_desc: 'Browse local vendors with authentic menus and real food.',
+                natural_chat: 'Natural Conversations',
+                natural_desc: "Chat with me like you're texting a friend — no confusing menus or clunky apps.",
+                dietary_title: ' Dietary Preferences & Diet Goals',
+                diet_goals_1: 'Weight-loss Goals',
+                diet_goals_2: 'Diet Goals',
+                dietary_desc1: "No matter your dietary goal, GoSnel has you covered! 🌿 Whether you're vegetarian, vegan, gluten-free, keto/low-carb, or following a weight-loss diet, we select healthy, balanced meals tailored to your taste and budget.",
+                dietary_desc2: "With GoSnel, you don't have to worry about calories or ingredients — our  GoSnel-AI suggests meals that fit your diet, helping you reach your health goals without feeling deprived, all from real restaurants near you. Lose weight, stay healthy, and enjoy delicious meals! 😋",
+                start_ordering: 'Start ordering in your language',
+                trust_desc: 'No subscription. No hidden fees. No language barriers.\nOrder anytime, cancel anytime — and try our demo chat free, no signup needed!',
+                create_account: 'Create Your Account',
+                live_preview: 'Demo Chat ',
+                subscribe_title: 'Be the First to Know',
+                subscribe_desc: 'Get notified when we launch new features and special offers',
+                notification_type: 'How would you like to be notified?',
+                email_option: 'Email Notifications',
+                whatsapp_option: 'WhatsApp Messages',
+                email_placeholder: 'your@email.com',
+                phone_placeholder: '051234567',
+                notify_me: 'Notify Me',
+                send_whatsapp: 'Send to WhatsApp',
+                subscribe_success: 'Thank You! ✓',
+                subscribe_success_email: 'Check your email for confirmation and updates!',
+                subscribe_success_whatsapp: "We'll send you updates on WhatsApp!",
+                privacy_note: 'We respect your privacy. Unsubscribe at any time.',
+            },
+            ar: {
+                hero_title: 'ملّيت من اللف بين تطبيقات الطعام؟\nنختار لك الوجبة الصح في 30 ثانية.',
+                hero_desc: 'طفشان تضيع 15 دقيقة وانت تتصفح قوائم المطاعم؟',
+                what_i_can_do: 'جوسنِل يستخدم الذكاء الاصطناعي ويقترح لك الوجبة المناسبة',
+                suggest_meals: 'حسب ذوقك وميزانيتك — خلال أقل من دقيقة',
+                find_restaurants: '',
+                translate_menus: '',
+                remember_favorites: '',
+                get_started: ' جرّب الحين مجانًا',
+                try_demo: 'جرب محادثة سريعة ويا المساعد الذكي ',
+                login: 'تسجيل الدخول',
+                why_love: 'ليش الناس تحب جوسنيل ❤️',
+                smart_suggestions: '⚡ اقتراحات ذكية',
+                smart_desc: 'يعرف شو يناسب ذوقك وميزانيتك في ثواني',
+                languages: ' أكثر من 100 لغة',
+                languages_desc: 'كلّمنا بلغتك، وأنا أفهمك عدل',
+                real_restaurants: ' مطاعم حقيقية',
+                real_desc: 'تصفح مطاعم محلية حقيقية بأكل أصلي ولذيذ',
+                natural_chat: ' محادثة طبيعية وسلسة',
+                natural_desc: 'كلّمني كأنك تراسل صديقك، بدون قوائم معقّدة ولا تطبيقات مربكة',
+                dietary_title: ' التفضيلات الغذائية والدايت',
+                diet_goals_1: 'عندك هدف صحي؟',
+                diet_goals_2: 'بدك تخفف وزنك؟',
+                dietary_desc1: 'مهما كان هدفك الغذائي، جوسنيل معك! 🌿 سواء كنت نباتي، نباتي صارم (Vegan)، أو تتبع نظام خالي من الغلوتين، أو كيتو / منخفض الكربوهيدرات، نحن نختار لك وجبات صحية، متوازنة، ومناسبة لميزانيتك وذوقك.',
+                dietary_desc2: 'مع جوسنيل، ما تحتاج تقلق من السعرات أو المكونات، أنا بيقترح لك وجبات متناسبة مع الدايت  لتخفيف الوزن، تساعدك توصل لهدفك الصحي بدون حرمان، وكل هذا من مطاعم حقيقية قريبة منك. خفف وزنك، حافظ على صحتك، وتمتع بوجبات لذيذة! 😋',
+                start_ordering: 'ابدأ وجبتك بلغتك',
+                trust_desc: 'بدون اشتراك ولا رسوم ولا تعقيد.\nجرب المحادثة التوضيحية الحين، مجانية بالكامل بدون تسجيل!',
+                create_account: 'أنشئ حسابك الآن',
+                live_preview: 'محادثة تجريبية ',
+                subscribe_title: 'كن أول من يعرف',
+                subscribe_desc: 'احصل على إشعارات عندما نطلق ميزات جديدة وعروض خاصة',
+                notification_type: 'كيف تحب نخبرك؟',
+                email_option: 'إشعارات الإيميل',
+                whatsapp_option: 'رسائل واتساب',
+                email_placeholder: 'your@email.com',
+                phone_placeholder: '051234567',
+                notify_me: 'خبرني',
+                send_whatsapp: 'أرسل للواتساب',
+                subscribe_success: 'شكرًا لك! ✓',
+                subscribe_success_email: 'تحقق من إيميلك للتأكيد والتحديثات!',
+                subscribe_success_whatsapp: 'بنرسلك التحديثات على الواتساب!',
+                privacy_note: 'نحترم خصوصيتك. يمكنك إلغاء الاشتراك في أي وقت.',
+            },
+        };
 
-            const ids = {
-                hero_title: document.getElementById('hero_title'),
-                hero_desc: document.getElementById('hero_desc'),
-                what_i_can_do: document.getElementById('what_i_can_do'),
-                suggest_meals: document.getElementById('suggest_meals'),
-                find_restaurants: document.getElementById('find_restaurants'),
-                translate_menus: document.getElementById('translate_menus'),
-                remember_favorites: document.getElementById('remember_favorites'),
-                get_started: document.getElementById('get_started'),
-                try_demo: document.getElementById('try_demo'),
-                login: document.getElementById('login'),
-                live_preview: document.getElementById('live_preview'),
-                why_love: document.getElementById('why_love'),
-                smart_suggestions: document.getElementById('smart_suggestions'),
-                smart_desc: document.getElementById('smart_desc'),
-                languages: document.getElementById('languages'),
-                languages_desc: document.getElementById('languages_desc'),
-                real_restaurants: document.getElementById('real_restaurants'),
-                real_desc: document.getElementById('real_desc'),
-                natural_chat: document.getElementById('natural_chat'),
-                natural_desc: document.getElementById('natural_desc'),
-                dietary_title: document.getElementById('dietary_title'),
-                diet_goals_1: document.getElementById('diet_goals_1'),
-                diet_goals_2: document.getElementById('diet_goals_2'),
-                dietary_desc1: document.getElementById('dietary_desc1'),
-                dietary_desc2: document.getElementById('dietary_desc2'),
-                start_ordering: document.getElementById('start_ordering'),
-                trust_desc_2: document.getElementById('trust_desc_2'),
-                create_account: document.getElementById('create_account'),
-                subscribe_title: document.getElementById('subscribe_title'),
-                subscribe_desc: document.getElementById('subscribe_desc'),
-                notification_type: document.getElementById('notification_type'),
-                email_option: document.getElementById('email_option'),
-                whatsapp_option: document.getElementById('whatsapp_option'),
-                privacy_note: document.getElementById('privacy_note'),
-                chat_container: document.getElementById('chat_container'),
-            };
+        const chatExamples = {
+            en: [
+                { role: 'user', message: 'Hey' },
+                { role: 'bot', message: "Yo, foodie! 😋 Hope you're hungry today! How was that [Grilled Chicken Wrap] last time?" },
+                { role: 'user', message: 'Not bad' },
+                { role: 'bot', message: "Umm...🤔 Let's make your next bite even better — but first, what's your budget for today's meal?\nThat way, I can find the perfect options just for you!" },
+                { role: 'user', message: '40' },
+                { role: 'bot', message: "Perfect! With a 40 AED budget in UAE, here are two mouthwatering options waiting for you:\n\n1️⃣ Chicken Alfredo Pasta – 35 AED (Trending 89🔥)\nCreamy, rich, and full of flavor — tender chicken mixed with smooth Alfredo sauce and fettuccine. Comfort in every single bite! 🍝 from [Italiano Restaurant] \n\n2️⃣ Signature Burger – 39 AED (Rated 4.9⭐️)\nJuicy beef patty topped with melted cheese, caramelized onions, and MoM-foodi's secret sauce — served with crispy fries on the side. 🍔 from [MoM-foodi Restaurant]\n\nBoth meals are customer favorites — guaranteed to fill your stomach and brighten your mood!\nWhich one tempts you more today? and It will arrive hot 😄" },
+                { role: 'user', message: '2' },
+                { role: 'bot', message: "Awesome choice! 🍔\nYour Signature Burger from MoM-foodi Restaurant has been added to your cart 🛒\n\nI'll notify you with live tracking once it's on the way — it should arrive in about 20–30 minutes 🚗💨\nKeep an eye on your WhatsApp, you'll receive a confirmation message shortly.\n\nEnjoy your meal, foodie — you've got great taste! 😋🔥" },
+            ],
+            ar: [
+                { role: 'user', message: 'السلام عليكم' },
+                { role: 'bot', message: 'هلا يا طويل العمر 😋! اليوم جوعان؟ كيف كانت وجبة المندي المدخن آخر مرة؟' },
+                { role: 'user', message: 'تمام' },
+                { role: 'bot', message: 'تمام بو زايد! مبسوط إنها عجبتك 🙌\nخلنا نرتّب لك اليوم شي أزكى منها! بس قبل، كم ميزانيتك اليوم عشان أقدر أختار لك أنسب الأطباق؟' },
+                { role: 'user', message: '40' },
+                { role: 'bot', message: ':ممتاز! بميزانية 40 درهم في الإمارات، عندي لك خيارين لذيذين \n\n1️⃣ باستا الدجاج – 35 درهم 🍝  (ترند 89)\nباستا غنية وطريّة مع صوص ألفريدو الكريمي وقطع دجاج طرية… راحة نفسية بكل لقمة من [مطعم إيلاف]!\n\n2️⃣ برجر إيتاليانو المميز – 39 درهم 🍔 (تقييم 4.9)\nبرجر لحم عصيّب، عليه جبن سايح وبصل مكرمل وصوص ايطالي السري، ومعاه بطاطس مقرمشة عالطريق من [مطعم إيتاليانو]!\n\nكل الثنتين من أكثر الطلبات اللي يحبها الزباين، وتخليك راضي ومبسوط بعد الأكل 😋\nشو رايك؟ تختار أي وحدة اليوم؟ وخلال 30 دقيقة توصلك ساخنة ' },
+                { role: 'user', message: '2' },
+                { role: 'bot', message: 'اختيار رهيب والله! 🍔\nتمت إضافة برجر التوقيع من مطعم إیتالیانو لعربتك 🛒\n\nبخبرك بتتبع الطلب مباشر أول بأول، وبيوصلك خلال 20–30 دقيقة تقريبا 🚗💨\nتأكد بعد من واتسابك، بتوصلك رسالة تأكيد هناك 😉\n\nاستمتع بوجبتك بو زايد، دايم تختار الصح 😋🔥' },
+            ],
+        };
 
-            const langEnBtn = document.getElementById('lang-en');
-            const langArBtn = document.getElementById('lang-ar');
-            const emailGroup = document.getElementById('email_group');
-            const phoneGroup = document.getElementById('phone_group');
-            const emailInput = document.getElementById('email_input');
-            const phoneInput = document.getElementById('phone_input');
-            const notifyBtn = document.getElementById('notify_btn');
-            const notifyEmail = document.getElementById('notify_email');
-            const notifyWhatsapp = document.getElementById('notify_whatsapp');
-            const subscribeSuccess = document.getElementById('subscribe_success');
+        const ids = {
+            hero_title: document.getElementById('hero_title'),
+            hero_desc: document.getElementById('hero_desc'),
+            what_i_can_do: document.getElementById('what_i_can_do'),
+            suggest_meals: document.getElementById('suggest_meals'),
+            find_restaurants: document.getElementById('find_restaurants'),
+            translate_menus: document.getElementById('translate_menus'),
+            remember_favorites: document.getElementById('remember_favorites'),
+            get_started: document.getElementById('get_started'),
+            try_demo: document.getElementById('try_demo'),
+            login: document.getElementById('login'),
+            live_preview: document.getElementById('live_preview'),
+            why_love: document.getElementById('why_love'),
+            smart_suggestions: document.getElementById('smart_suggestions'),
+            smart_desc: document.getElementById('smart_desc'),
+            languages: document.getElementById('languages'),
+            languages_desc: document.getElementById('languages_desc'),
+            real_restaurants: document.getElementById('real_restaurants'),
+            real_desc: document.getElementById('real_desc'),
+            natural_chat: document.getElementById('natural_chat'),
+            natural_desc: document.getElementById('natural_desc'),
+            dietary_title: document.getElementById('dietary_title'),
+            diet_goals_1: document.getElementById('diet_goals_1'),
+            diet_goals_2: document.getElementById('diet_goals_2'),
+            dietary_desc1: document.getElementById('dietary_desc1'),
+            dietary_desc2: document.getElementById('dietary_desc2'),
+            start_ordering: document.getElementById('start_ordering'),
+            trust_desc_2: document.getElementById('trust_desc_2'),
+            create_account: document.getElementById('create_account'),
+            subscribe_title: document.getElementById('subscribe_title'),
+            subscribe_desc: document.getElementById('subscribe_desc'),
+            notification_type: document.getElementById('notification_type'),
+            email_option: document.getElementById('email_option'),
+            whatsapp_option: document.getElementById('whatsapp_option'),
+            privacy_note: document.getElementById('privacy_note'),
+            chat_container: document.getElementById('chat_container'),
+        };
 
-            let language = localStorage.getItem('gosnel_lang') || 'en';
+        const langEnBtn = document.getElementById('lang-en');
+        const langArBtn = document.getElementById('lang-ar');
+        const emailGroup = document.getElementById('email_group');
+        const phoneGroup = document.getElementById('phone_group');
+        const emailInput = document.getElementById('email_input');
+        const phoneInput = document.getElementById('phone_input');
+        const notifyBtn = document.getElementById('notify_btn');
+        const notifyEmail = document.getElementById('notify_email');
+        const notifyWhatsapp = document.getElementById('notify_whatsapp');
+        const subscribeSuccess = document.getElementById('subscribe_success');
 
-            function nl2br(str){
-                return (str || '').replace(/\n/g, '<br/>');
-            }
+        let language = localStorage.getItem('gosnel_lang') || 'en';
 
-            function renderChat(lang){
-                try {
-                    const msgs = chatExamples[lang] || [];
-                    if (!ids.chat_container) {
-                        console.error('Chat container not found');
-                        return;
+        function nl2br(str){
+            return (str || '').replace(/\n/g, '<br/>');
+        }
+
+        function renderChat(lang){
+            try {
+                const msgs = chatExamples[lang] || [];
+                if (!ids.chat_container) {
+                    console.error('Chat container not found');
+                    return;
+                }
+                ids.chat_container.innerHTML = '';
+                msgs.forEach(m => {
+                    const isUser = m.role === 'user';
+                    const wrapper = document.createElement('div');
+                    wrapper.className = 'flex ' + (isUser ? 'justify-end' : 'justify-start') + ' chat-bubble';
+                    const inner = document.createElement('div');
+                    inner.className = 'flex items-end gap-2 ' + (isUser ? 'flex-row-reverse' : '');
+                    const avatar = document.createElement('div');
+                    avatar.className = 'w-8 h-8 rounded-full flex items-center justify-center ' + (isUser ? 'bg-[#4ECDC4] text-gray-900 font-bold text-sm' : 'bg-gradient-to-br from-[#4ECDC4] to-[#2dd4bf]');
+                    if(isUser){
+                        avatar.textContent = 'U';
+                    } else {
+                        avatar.innerHTML = '<svg class="w-4 h-4 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>';
                     }
-                    ids.chat_container.innerHTML = '';
-                    msgs.forEach(m => {
-                        const isUser = m.role === 'user';
-                        const wrapper = document.createElement('div');
-                        wrapper.className = 'flex ' + (isUser ? 'justify-end' : 'justify-start') + ' chat-bubble';
-                        const inner = document.createElement('div');
-                        inner.className = 'flex items-end gap-2 ' + (isUser ? 'flex-row-reverse' : '');
-                        const avatar = document.createElement('div');
-                        avatar.className = 'w-8 h-8 rounded-full bg-teal-500 flex items-center justify-center ' + (isUser ? 'text-gray-900 font-bold text-sm' : '');
-                        if(isUser){
-                            avatar.textContent = 'U';
-                        } else {
-                            avatar.innerHTML = '<svg class="w-5 h-5 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>';
-                        }
-                        const bubble = document.createElement('div');
-                        bubble.className = (isUser ? 'bg-teal-500 text-gray-900 rounded-br-sm' : 'bg-white/10 text-gray-900 rounded-bl-sm') + ' px-4 py-3 rounded-2xl max-w-[80%]';
-                        bubble.innerHTML = '<p class="text-sm leading-relaxed">' + nl2br(m.message) + '</p>';
-                        inner.appendChild(avatar);
-                        inner.appendChild(bubble);
-                        wrapper.appendChild(inner);
-                        ids.chat_container.appendChild(wrapper);
+                    const bubble = document.createElement('div');
+                    bubble.className = (isUser ? 'bg-[#4ECDC4] text-gray-900 rounded-br-sm' : 'bg-white/10 text-white rounded-bl-sm') + ' px-4 py-3 rounded-2xl max-w-[80%]';
+                    bubble.innerHTML = '<p class="text-sm leading-relaxed">' + nl2br(m.message) + '</p>';
+                    inner.appendChild(avatar);
+                    inner.appendChild(bubble);
+                    wrapper.appendChild(inner);
+                    ids.chat_container.appendChild(wrapper);
+                });
+                console.log('Chat rendered with', msgs.length, 'messages');
+            } catch (error) {
+                console.error('Error rendering chat:', error);
+            }
+        }
+
+        function applyTexts(){
+            const current = t[language];
+            if(!current) return;
+            if(ids.hero_title) ids.hero_title.innerHTML = nl2br(current.hero_title);
+            if(ids.hero_desc) ids.hero_desc.textContent = current.hero_desc;
+            if(ids.what_i_can_do) ids.what_i_can_do.textContent = current.what_i_can_do;
+            if(ids.suggest_meals) ids.suggest_meals.textContent = current.suggest_meals;
+            if(ids.get_started) ids.get_started.textContent = current.get_started;
+            if(ids.try_demo) ids.try_demo.textContent = current.try_demo;
+            if(ids.live_preview) ids.live_preview.textContent = current.live_preview;
+            if(ids.why_love) ids.why_love.textContent = current.why_love;
+            if(ids.smart_suggestions) ids.smart_suggestions.textContent = current.smart_suggestions;
+            if(ids.smart_desc) ids.smart_desc.textContent = current.smart_desc;
+            if(ids.languages) ids.languages.textContent = current.languages;
+            if(ids.languages_desc) ids.languages_desc.textContent = current.languages_desc;
+            if(ids.real_restaurants) ids.real_restaurants.textContent = current.real_restaurants;
+            if(ids.real_desc) ids.real_desc.textContent = current.real_desc;
+            if(ids.natural_chat) ids.natural_chat.textContent = current.natural_chat;
+            if(ids.natural_desc) ids.natural_desc.textContent = current.natural_desc;
+            if(ids.dietary_title) ids.dietary_title.textContent = current.dietary_title;
+            if(ids.diet_goals_1) ids.diet_goals_1.textContent = current.diet_goals_1;
+            if(ids.diet_goals_2) ids.diet_goals_2.textContent = current.diet_goals_2;
+            if(ids.dietary_desc1) ids.dietary_desc1.textContent = current.dietary_desc1;
+            if(ids.dietary_desc2) ids.dietary_desc2.textContent = current.dietary_desc2;
+            if(ids.start_ordering) ids.start_ordering.textContent = current.start_ordering;
+            if(ids.trust_desc_2) ids.trust_desc_2.innerHTML = nl2br(current.trust_desc);
+            if(ids.create_account) ids.create_account.textContent = current.create_account;
+            if(ids.subscribe_title) ids.subscribe_title.textContent = current.subscribe_title;
+            if(ids.subscribe_desc) ids.subscribe_desc.textContent = current.subscribe_desc;
+            if(ids.notification_type) ids.notification_type.textContent = current.notification_type;
+            if(ids.email_option) ids.email_option.textContent = current.email_option;
+            if(ids.whatsapp_option) ids.whatsapp_option.textContent = current.whatsapp_option;
+            if(emailInput) emailInput.placeholder = current.email_placeholder;
+            if(phoneInput) phoneInput.placeholder = current.phone_placeholder;
+            if(notifyBtn) notifyBtn.textContent = (notifyWhatsapp && notifyWhatsapp.checked) ? current.send_whatsapp : current.notify_me;
+            if(ids.privacy_note) ids.privacy_note.textContent = current.privacy_note;
+            document.documentElement.setAttribute('dir', language === 'ar' ? 'rtl' : 'ltr');
+        }
+
+        function setLang(lang){
+            try {
+                language = lang;
+                localStorage.setItem('gosnel_lang', lang);
+                const langEn = document.getElementById('lang-en');
+                const langAr = document.getElementById('lang-ar');
+                if (langEn) langEn.classList.toggle('active', lang === 'en');
+                if (langAr) langAr.classList.toggle('active', lang === 'ar');
+                if (document && document.body) document.body.classList.toggle('lang-ar', lang === 'ar');
+                applyTexts();
+                renderChat(lang);
+            } catch (error) {
+                console.error('Error setting language:', error);
+                renderChat(lang);
+            }
+        }
+
+        const langEn = document.getElementById('lang-en');
+        const langAr = document.getElementById('lang-ar');
+        
+        if (langEn) {
+            langEn.addEventListener('click', function(){ setLang('en'); });
+        }
+        if (langAr) {
+            langAr.addEventListener('click', function(){ setLang('ar'); });
+        }
+
+        function updateNotifyUI(){
+            const current = t[language];
+            const useWhatsapp = notifyWhatsapp && notifyWhatsapp.checked;
+            if(useWhatsapp){
+                if(emailGroup) emailGroup.classList.add('hidden');
+                if(phoneGroup) phoneGroup.classList.remove('hidden');
+                if(notifyBtn) notifyBtn.textContent = current.send_whatsapp;
+            } else {
+                if(phoneGroup) phoneGroup.classList.add('hidden');
+                if(emailGroup) emailGroup.classList.remove('hidden');
+                if(notifyBtn) notifyBtn.textContent = current.notify_me;
+            }
+        }
+
+        if (notifyEmail) {
+            notifyEmail.addEventListener('change', updateNotifyUI);
+        }
+        if (notifyWhatsapp) {
+            notifyWhatsapp.addEventListener('change', updateNotifyUI);
+        }
+        
+        if (notifyBtn) {
+            notifyBtn.addEventListener('click', function(){
+                const current = t[language];
+                if (subscribeSuccess) {
+                    subscribeSuccess.classList.remove('hidden');
+                    subscribeSuccess.classList.add('block');
+                    subscribeSuccess.textContent = current.subscribe_success + ' ' + (notifyWhatsapp && notifyWhatsapp.checked ? current.subscribe_success_whatsapp : current.subscribe_success_email);
+                }
+                
+                if (typeof fbq !== 'undefined') {
+                    fbq('track', 'CompleteRegistration', {
+                        content_category: 'user_waitlist'
                     });
-                    console.log('Chat rendered with', msgs.length, 'messages');
-                } catch (error) {
-                    console.error('Error rendering chat:', error);
                 }
-            }
+            });
+        }
 
-            function applyTexts(){
-                const current = t[language];
-                if(!current) return;
-                if(ids.hero_title) ids.hero_title.innerHTML = nl2br(current.hero_title);
-                if(ids.hero_desc) ids.hero_desc.textContent = current.hero_desc;
-                if(ids.what_i_can_do) ids.what_i_can_do.textContent = current.what_i_can_do;
-                if(ids.suggest_meals) ids.suggest_meals.textContent = current.suggest_meals;
-                if(ids.find_restaurants) ids.find_restaurants.textContent = current.find_restaurants;
-                if(ids.translate_menus) ids.translate_menus.textContent = current.translate_menus;
-                if(ids.remember_favorites) ids.remember_favorites.textContent = current.remember_favorites;
-                if(ids.get_started) ids.get_started.textContent = current.get_started;
-                if(ids.try_demo) ids.try_demo.textContent = current.try_demo;
-                if(ids.login) ids.login.textContent = current.login;
-                if(ids.live_preview) ids.live_preview.textContent = current.live_preview;
-                if(ids.why_love) ids.why_love.textContent = current.why_love;
-                if(ids.smart_suggestions) ids.smart_suggestions.textContent = current.smart_suggestions;
-                if(ids.smart_desc) ids.smart_desc.textContent = current.smart_desc;
-                if(ids.languages) ids.languages.textContent = current.languages;
-                if(ids.languages_desc) ids.languages_desc.textContent = current.languages_desc;
-                if(ids.real_restaurants) ids.real_restaurants.textContent = current.real_restaurants;
-                if(ids.real_desc) ids.real_desc.textContent = current.real_desc;
-                if(ids.natural_chat) ids.natural_chat.textContent = current.natural_chat;
-                if(ids.natural_desc) ids.natural_desc.textContent = current.natural_desc;
-                if(ids.dietary_title) ids.dietary_title.textContent = current.dietary_title;
-                if(ids.diet_goals_1) ids.diet_goals_1.textContent = current.diet_goals_1;
-                if(ids.diet_goals_2) ids.diet_goals_2.textContent = current.diet_goals_2;
-                if(ids.dietary_desc1) ids.dietary_desc1.textContent = current.dietary_desc1;
-                if(ids.dietary_desc2) ids.dietary_desc2.textContent = current.dietary_desc2;
-                if(ids.start_ordering) ids.start_ordering.textContent = current.start_ordering;
-                if(ids.trust_desc_2) ids.trust_desc_2.innerHTML = nl2br(current.trust_desc);
-                if(ids.create_account) ids.create_account.textContent = current.create_account;
-                if(ids.subscribe_title) ids.subscribe_title.textContent = current.subscribe_title;
-                if(ids.subscribe_desc) ids.subscribe_desc.textContent = current.subscribe_desc;
-                if(ids.notification_type) ids.notification_type.textContent = current.notification_type;
-                if(ids.email_option) ids.email_option.textContent = current.email_option;
-                if(ids.whatsapp_option) ids.whatsapp_option.textContent = current.whatsapp_option;
-                if(emailInput) emailInput.placeholder = current.email_placeholder;
-                if(phoneInput) phoneInput.placeholder = current.phone_placeholder;
-                if(notifyBtn) notifyBtn.textContent = (notifyWhatsapp && notifyWhatsapp.checked) ? current.send_whatsapp : current.notify_me;
-                if(ids.privacy_note) ids.privacy_note.textContent = current.privacy_note;
-                document.documentElement.setAttribute('dir', language === 'ar' ? 'rtl' : 'ltr');
-            }
+        setLang(localStorage.getItem('gosnel_lang') || 'en');
+        updateNotifyUI();
 
-            function setLang(lang){
-                 try {
-                     language = lang;
-                     localStorage.setItem('gosnel_lang', lang);
-                    // mirror vendor page: toggle body.lang-ar and active class on buttons
-                    const langEn = document.getElementById('lang-en');
-                    const langAr = document.getElementById('lang-ar');
-                    if (langEn) langEn.classList.toggle('active', lang === 'en');
-                    if (langAr) langAr.classList.toggle('active', lang === 'ar');
-                    if (document && document.body) document.body.classList.toggle('lang-ar', lang === 'ar');
-                     applyTexts();
-                     renderChat(lang);
-                 } catch (error) {
-                     console.error('Error setting language:', error);
-                     // Fallback: try to render chat anyway
-                     renderChat(lang);
-                 }
-             }
+        setTimeout(function() {
+            if (ids.chat_container && ids.chat_container.innerHTML.trim() === '') {
+                console.log('Chat empty, forcing render...');
+                renderChat(language || 'en');
+            }
+        }, 1000);
 
-            // Safe event listeners with null checks
-            const langEn = document.getElementById('lang-en');
-            const langAr = document.getElementById('lang-ar');
-            
-            if (langEn) {
-                langEn.addEventListener('click', function(){ setLang('en'); });
-            }
-            if (langAr) {
-                langAr.addEventListener('click', function(){ setLang('ar'); });
-            }
-
-            function updateNotifyUI(){
-                const current = t[language];
-                const useWhatsapp = notifyWhatsapp.checked;
-                if(useWhatsapp){
-                    emailGroup.classList.add('hidden');
-                    phoneGroup.classList.remove('hidden');
-                    notifyBtn.textContent = current.send_whatsapp;
-                } else {
-                    phoneGroup.classList.add('hidden');
-                    emailGroup.classList.remove('hidden');
-                    notifyBtn.textContent = current.notify_me;
-                }
-            }
-
-            // Safe event listeners with null checks
-            if (notifyEmail) {
-                notifyEmail.addEventListener('change', updateNotifyUI);
-            }
-            if (notifyWhatsapp) {
-                notifyWhatsapp.addEventListener('change', updateNotifyUI);
-            }
-            
-            if (notifyBtn) {
-                notifyBtn.addEventListener('click', function(){
-                    const current = t[language];
-                    if (subscribeSuccess) {
-                        subscribeSuccess.classList.remove('hidden');
-                        subscribeSuccess.classList.add('block');
-                        subscribeSuccess.textContent = current.subscribe_success + ' ' + (notifyWhatsapp && notifyWhatsapp.checked ? current.subscribe_success_whatsapp : current.subscribe_success_email);
-                    }
-                    
-                    // Track subscription as CompleteRegistration
-                    if (typeof fbq !== 'undefined') {
-                        fbq('track', 'CompleteRegistration', {
-                            content_category: 'user_waitlist'
-                        });
-                    }
-                });
-            }
-
-            setLang(localStorage.getItem('gosnel_lang') || 'en');
-            updateNotifyUI();
-
-            // Fallback: ensure chat is rendered after page load
-            setTimeout(function() {
-                if (ids.chat_container && ids.chat_container.innerHTML.trim() === '') {
-                    console.log('Chat empty, forcing render...');
-                    renderChat(language || 'en');
-                }
-            }, 1000);
-
-            // Track user landing page view
-            if (typeof fbq !== 'undefined') {
-                fbq('track', 'ViewContent', {
-                    content_category: 'user_landing'
-                });
-            }
-        })();
-        </script>
+        if (typeof fbq !== 'undefined') {
+            fbq('track', 'ViewContent', {
+                content_category: 'user_landing'
+            });
+        }
+    })();
+    </script>
 </body>
 </html>
