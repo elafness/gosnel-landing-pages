@@ -36,14 +36,34 @@
         .btn-primary { transition: all 0.3s ease; box-shadow: 0 8px 24px rgba(78, 205, 196, 0.3); }
         .btn-primary:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(78, 205, 196, 0.5); }
         
-        [lang] { display: none !important; }
+        /* Language visibility logic */
+        [lang="en"], [lang="ar"], [lang="hi"], [lang="ur"], [lang="ml"], [lang="tl"] { display: none; }
+        
+        /* Show English by default or if specifically selected */
         body:not([class*="lang-"]) [lang="en"],
-        body.lang-en [lang="en"] { display: inherit !important; }
-        body.lang-ar [lang="ar"] { display: inherit !important; }
-        body.lang-hi [lang="hi"] { display: inherit !important; }
-        body.lang-ur [lang="ur"] { display: inherit !important; }
-        body.lang-ml [lang="ml"] { display: inherit !important; }
-        body.lang-tl [lang="tl"] { display: inherit !important; }
+        body.lang-en [lang="en"] { display: inline; }
+        
+        /* Show other languages when their class is present */
+        body.lang-ar [lang="ar"] { display: inline; }
+        body.lang-hi [lang="hi"] { display: inline; }
+        body.lang-ur [lang="ur"] { display: inline; }
+        body.lang-ml [lang="ml"] { display: inline; }
+        body.lang-tl [lang="tl"] { display: inline; }
+        
+        /* Block level elements with lang should use block display */
+        h1[lang], h2[lang], h3[lang], h4[lang], p[lang], div[lang] { display: none; }
+        body:not([class*="lang-"]) h1[lang="en"], body.lang-en h1[lang="en"],
+        body:not([class*="lang-"]) h2[lang="en"], body.lang-en h2[lang="en"],
+        body:not([class*="lang-"]) h3[lang="en"], body.lang-en h3[lang="en"],
+        body:not([class*="lang-"]) h4[lang="en"], body.lang-en h4[lang="en"],
+        body:not([class*="lang-"]) p[lang="en"], body.lang-en p[lang="en"],
+        body:not([class*="lang-"]) div[lang="en"], body.lang-en div[lang="en"] { display: block; }
+        
+        body.lang-ar h1[lang="ar"], body.lang-ar h2[lang="ar"], body.lang-ar h3[lang="ar"], body.lang-ar h4[lang="ar"], body.lang-ar p[lang="ar"], body.lang-ar div[lang="ar"] { display: block; }
+        body.lang-hi h1[lang="hi"], body.lang-hi h2[lang="hi"], body.lang-hi h3[lang="hi"], body.lang-hi h4[lang="hi"], body.lang-hi p[lang="hi"], body.lang-hi div[lang="hi"] { display: block; }
+        body.lang-ur h1[lang="ur"], body.lang-ur h2[lang="ur"], body.lang-ur h3[lang="ur"], body.lang-ur h4[lang="ur"], body.lang-ur p[lang="ur"], body.lang-ur div[lang="ur"] { display: block; }
+        body.lang-ml h1[lang="ml"], body.lang-ml h2[lang="ml"], body.lang-ml h3[lang="ml"], body.lang-ml h4[lang="ml"], body.lang-ml p[lang="ml"], body.lang-ml div[lang="ml"] { display: block; }
+        body.lang-tl h1[lang="tl"], body.lang-tl h2[lang="tl"], body.lang-tl h3[lang="tl"], body.lang-tl h4[lang="tl"], body.lang-tl p[lang="tl"], body.lang-tl div[lang="tl"] { display: block; }
         
         body.lang-ar, body.lang-ur { direction: rtl; text-align: right; }
         body:not(.lang-ar):not(.lang-ur) { direction: ltr; text-align: left; }

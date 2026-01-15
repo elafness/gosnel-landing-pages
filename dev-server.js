@@ -10,6 +10,8 @@ const routeMap = {
   '/': '/index.html',
   '/drivers': '/index-drivers.html',
   '/promo': '/index-promo.html',
+  '/vendor': '/partner/index.html',
+  '/user': '/index.html',
   // User pages at root level (SEO-friendly)
   '/how-it-works': '/how-it-works.html',
   '/pricing': '/pricing.html',
