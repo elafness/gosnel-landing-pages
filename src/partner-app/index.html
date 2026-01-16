@@ -114,6 +114,16 @@
         }
         
         a[dir="rtl"].btn-primary, body.lang-ar .btn-primary, body.lang-ur .btn-primary { display: inline-flex; align-items: center; flex-direction: row-reverse !important; }
+        
+        .faq-item { border-bottom: 1px solid rgba(0,0,0,0.1); }
+        .faq-question { width: 100%; text-align: left; padding: 1.25rem 0; display: flex; justify-content: space-between; align-items: center; font-weight: 700; cursor: pointer; background: none; border: none; outline: none; transition: color 0.2s; font-size: 1.1rem; }
+        .faq-question:hover { color: #4ECDC4; }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out, padding 0.3s ease; padding: 0; color: #4B5563; line-height: 1.6; }
+        .faq-item.active .faq-answer { max-height: 800px; padding-bottom: 1.25rem; }
+        .faq-icon { transition: transform 0.3s; flex-shrink: 0; margin-left: 1rem; }
+        .faq-item.active .faq-icon { transform: rotate(180deg); }
+        body.lang-ar .faq-question, body.lang-ur .faq-question { text-align: right; }
+        body.lang-ar .faq-icon, body.lang-ur .faq-icon { margin-left: 0; margin-right: 1rem; }
     </style>
 </head>
 <body class="bg-white text-black min-h-screen">
@@ -404,6 +414,433 @@
         </div>
     </section>
 
+    <!-- FAQ SECTION -->
+    <section class="section-pad bg-gray-50">
+        <div class="container-pro px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
+                <span lang="en">Frequently Asked Questions (FAQ)</span>
+                <span lang="ar">الأسئلة الشائعة</span>
+                <span lang="hi">अक्सर पूछे जाने वाले प्रश्न (FAQ)</span>
+                <span lang="ur">اکثر پوچھے گئے سوالات (FAQ)</span>
+                <span lang="ml">പതിവായി ചോദിക്കുന്ന ചോദ്യങ്ങൾ (FAQ)</span>
+                <span lang="tl">Mga Madalas Itanong (FAQ)</span>
+            </h2>
+
+            <div class="max-w-3xl mx-auto bg-white rounded-2xl shadow-sm border border-gray-100 p-6 md:p-8">
+                <!-- Q1 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span lang="en">What is GoSnel?</span>
+                        <span lang="ar">ما هو جوسنِل؟</span>
+                        <span lang="hi">GoSnel क्या है?</span>
+                        <span lang="ur">GoSnel کیا ہے؟</span>
+                        <span lang="ml">എന്താണ് GoSnel?</span>
+                        <span lang="tl">Ano ang GoSnel?</span>
+                        <svg class="faq-icon w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p lang="en">GoSnel is an AI-powered meal discovery app that helps customers decide what to eat and connects them directly with your restaurant — without delivery app commissions.</p>
+                        <p lang="ar">جوسنِل تطبيق اكتشاف وجبات مدعوم بالذكاء الاصطناعي يساعد العملاء على اختيار ما يأكلونه ويربطهم مباشرة بمطعمك - بدون عمولات تطبيقات التوصيل.</p>
+                        <p lang="hi">GoSnel एक AI-संचालित भोजन खोज ऐप है जो ग्राहकों को यह तय करने में मदद करता है कि क्या खाना है और उन्हें सीधे आपके रेस्तरां से जोड़ता है - बिना किसी डिलीवरी ऐप कमीशन के।</p>
+                        <p lang="ur">GoSnel ایک AI سے چلنے والی کھانے کی دریافت ایپ ہے جو صارفین کو یہ فیصلہ کرنے میں مدد کرتی ہے کہ کیا کھانا ہے اور انہیں براہ راست آپ کے ریستوراں سے جوڑتی ہے — بغیر کسی ڈیلیوری ایپ کمیشن کے۔</p>
+                        <p lang="ml">എന്ത് കഴിക്കണമെന്ന് തീരുമാനിക്കാൻ ഉപഭോക്താക്കളെ സഹായിക്കുകയും അവരെ നേരിട്ട് നിങ്ങളുടെ റെസ്റ്റോറന്റുമായി ബന്ധിപ്പിക്കുകയും ചെയ്യുന്ന ഒരു AI-അധിഷ്ഠിത ഭക്ഷണ കണ്ടെത്തൽ ആപ്പാണ് GoSnel — ഡെലിവറി ആപ്പ് കമ്മീഷനുകളില്ലാതെ.</p>
+                        <p lang="tl">Ang GoSnel ay isang AI-powered meal discovery app na tumutulong sa mga customer na magpasya kung ano ang kakainin at direktang ikinokonekta sila sa iyong restaurant — nang walang mga komisyon sa delivery app.</p>
+                    </div>
+                </div>
+
+                <!-- Q2 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span lang="en">How do orders work?</span>
+                        <span lang="ar">كيف تعمل الطلبات؟</span>
+                        <span lang="hi">ऑर्डर कैसे काम करते हैं?</span>
+                        <span lang="ur">آرڈر کیسے کام کرتے ہیں؟</span>
+                        <span lang="ml">ഓർഡറുകൾ എങ്ങനെ പ്രവർത്തിക്കും?</span>
+                        <span lang="tl">Paano gumagana ang mga order?</span>
+                        <svg class="faq-icon w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p lang="en">Customers order through our AI-powered app. Orders are sent to you directly, either on the GoSnel platform or via WhatsApp — you confirm and fulfill the order.</p>
+                        <p lang="ar">يطلب العملاء من خلال تطبيقنا المدعوم بالذكاء الاصطناعي. تُرسل الطلبات إليك مباشرة، إما على منصة جوسنِل أو عبر واتساب - ثم تقوم بتأكيد الطلب وتلبيته.</p>
+                        <p lang="hi">ग्राहक हमारे AI-संचालित ऐप के माध्यम से ऑर्डर करते हैं। ऑर्डर आपको सीधे भेजे जाते हैं, या तो GoSnel प्लेटफॉर्म पर या व्हाट्सएप के माध्यम से - आप ऑर्डर की पुष्टि करते हैं और उसे पूरा करते हैं।</p>
+                        <p lang="ur">صارفین ہماری AI سے چلنے والی ایپ کے ذریعے آرڈر کرتے ہیں۔ آرڈرز آپ کو براہ راست بھیجے جاتے ہیں، یا تو GoSnel پلیٹ فارم پر یا واٹس ایپ کے ذریعے — آپ آرڈر کی تصدیق اور تکمیل کرتے ہیں۔</p>
+                        <p lang="ml">ഉപഭോക്താക്കൾ ഞങ്ങളുടെ AI-അധിഷ്ഠിത ആപ്പ് വഴി ഓർഡർ ചെയ്യുന്നു. ഓർഡറുകൾ GoSnel പ്ലാറ്റ്‌ഫോമിലോ വാട്ട്‌സ്ആപ്പ് വഴിയോ നേരിട്ട് നിങ്ങൾക്ക് അയയ്‌ക്കുന്നു — നിങ്ങൾ ഓർഡർ സ്ഥിരീകരിക്കുകയും പൂർത്തിയാക്കുകയും ചെയ്യുന്നു.</p>
+                        <p lang="tl">Nag-order ang mga customer sa pamamagitan ng aming AI-powered app. Ang mga order ay direktang ipinapadala sa iyo, sa GoSnel platform man o sa pamamagitan ng WhatsApp — kinukumpirma at tinutupad mo ang order.</p>
+                    </div>
+                </div>
+
+                <!-- Q3 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span lang="en">Where do I receive orders?</span>
+                        <span lang="ar">أين أستلم الطلبات؟</span>
+                        <span lang="hi">मुझे ऑर्डर कहां प्राप्त होंगे?</span>
+                        <span lang="ur">مجھے آرڈر کہاں ملیں گے؟</span>
+                        <span lang="ml">എനിക്ക് എവിടെയാണ് ഓർഡറുകൾ ലഭിക്കുക?</span>
+                        <span lang="tl">Saan ako makakatanggap ng mga order?</span>
+                        <svg class="faq-icon w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <div lang="en">
+                            <p>You can choose how to receive orders:</p>
+                            <ul class="list-disc ml-5 mt-2">
+                                <li>On the GoSnel platform (dashboard)</li>
+                                <li>Or directly on WhatsApp</li>
+                            </ul>
+                            <p class="mt-2 font-semibold">No middlemen. No call centers.</p>
+                        </div>
+                        <div lang="ar">
+                            <p>يمكنك اختيار طريقة استقبال الطلبات:</p>
+                            <ul class="list-disc mr-5 mt-2">
+                                <li>على منصة جوسنِل (لوحة التحكم)</li>
+                                <li>أو مباشرة على واتساب</li>
+                            </ul>
+                            <p class="mt-2 font-semibold">لا وسطاء. لا مراكز اتصال.</p>
+                        </div>
+                        <div lang="hi">
+                            <p>आप चुन सकते हैं कि ऑर्डर कैसे प्राप्त करें:</p>
+                            <ul class="list-disc ml-5 mt-2">
+                                <li>GoSnel प्लेटफॉर्म (डैशबोर्ड) पर</li>
+                                <li>या सीधे व्हाट्सएप पर</li>
+                            </ul>
+                            <p class="mt-2 font-semibold">कोई बिचौलिया नहीं। कोई कॉल सेंटर नहीं।</p>
+                        </div>
+                        <div lang="ur">
+                            <p>آپ منتخب کر سکتے ہیں کہ آرڈر کیسے وصول کیے جائیں:</p>
+                            <ul class="list-disc mr-5 mt-2">
+                                <li>GoSnel پلیٹ فارم (ڈیش بورڈ) پر</li>
+                                <li>یا براہ راست واٹس ایپ پر</li>
+                            </ul>
+                            <p class="mt-2 font-semibold">کوئی درمیانی آدمی نہیں۔ کوئی کال سینٹر نہیں۔</p>
+                        </div>
+                        <div lang="ml">
+                            <p>ഓർഡറുകൾ എങ്ങനെ സ്വീകരിക്കണമെന്ന് നിങ്ങൾക്ക് തിരഞ്ഞെടുക്കാം:</p>
+                            <ul class="list-disc ml-5 mt-2">
+                                <li>GoSnel പ്ലാറ്റ്‌ഫോമിൽ (ഡാഷ്‌ബോർഡ്)</li>
+                                <li>അല്ലെങ്കിൽ നേരിട്ട് വാട്ട്‌സ്ആപ്പിൽ</li>
+                            </ul>
+                            <p class="mt-2 font-semibold">ഇടനിലക്കാരില്ല. കോൾ സെന്ററുകളില്ല.</p>
+                        </div>
+                        <div lang="tl">
+                            <p>Maaari mong piliin kung paano tatanggap ng mga order:</p>
+                            <ul class="list-disc ml-5 mt-2">
+                                <li>Sa GoSnel platform (dashboard)</li>
+                                <li>O direktang sa WhatsApp</li>
+                            </ul>
+                            <p class="mt-2 font-semibold">Walang middlemen. Walang call centers.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q4 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span lang="en">How does delivery work?</span>
+                        <span lang="ar">كيف يعمل التوصيل؟</span>
+                        <span lang="hi">डिलीवरी कैसे काम करती है?</span>
+                        <span lang="ur">ڈیلیوری کیسے کام کرتی ہے؟</span>
+                        <span lang="ml">ഡെലിവറി എങ്ങനെ പ്രവർത്തിക്കും?</span>
+                        <span lang="tl">Paano gumagana ang delivery?</span>
+                        <svg class="faq-icon w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <div lang="en">
+                            <p>GoSnel does not handle delivery.</p>
+                            <p class="mt-2">You choose your delivery distance (1km, 3km, or 7km). You can:</p>
+                            <ul class="list-disc ml-5 mt-2">
+                                <li>Deliver orders yourself</li>
+                                <li>Or offer pickup only</li>
+                            </ul>
+                            <p class="mt-2 font-semibold">Delivery is fully under your control.</p>
+                        </div>
+                        <div lang="ar">
+                            <p>جوسنِل لا تتولى التوصيل.</p>
+                            <p class="mt-2">أنت تختار مسافة التوصيل الخاصة بك (1 كم، 3 كم، أو 7 كم). يمكنك:</p>
+                            <ul class="list-disc mr-5 mt-2">
+                                <li>توصيل الطلبات بنفسك</li>
+                                <li>أو تقديم خدمة الاستلام فقط</li>
+                            </ul>
+                            <p class="mt-2 font-semibold">التوصيل تحت سيطرتك بالكامل.</p>
+                        </div>
+                        <div lang="hi">
+                            <p>GoSnel डिलीवरी को हैंडल नहीं करता है।</p>
+                            <p class="mt-2">आप अपनी डिलीवरी दूरी (1 किमी, 3 किमी, या 7 किमी) चुनते हैं। आप कर सकते हैं:</p>
+                            <ul class="list-disc ml-5 mt-2">
+                                <li>स्वयं ऑर्डर डिलीवर करें</li>
+                                <li>या केवल पिकअप की पेशकश करें</li>
+                            </ul>
+                            <p class="mt-2 font-semibold">डिलीवरी पूरी तरह से आपके नियंत्रण में है।</p>
+                        </div>
+                        <div lang="ur">
+                            <p>GoSnel ڈیلیوری کو سنبھالتا نہیں ہے۔</p>
+                            <p class="mt-2">آپ اپنی ڈیلیوری کا فاصلہ (1 کلومیٹر، 3 کلومیٹر، یا 7 کلومیٹر) منتخب کرتے ہیں۔ آپ کر سکتے ہیں:</p>
+                            <ul class="list-disc mr-5 mt-2">
+                                <li>آرڈرز خود فراہم کریں</li>
+                                <li>یا صرف پک اپ کی پیشکش کریں</li>
+                            </ul>
+                            <p class="mt-2 font-semibold">ڈیلیوری مکمل طور پر آپ کے کنٹرول میں ہے۔</p>
+                        </div>
+                        <div lang="ml">
+                            <p>GoSnel ഡെലിവറി കൈകാര്യം ചെയ്യുന്നില്ല.</p>
+                            <p class="mt-2">നിങ്ങളുടെ ഡെലിവറി ദൂരം (1km, 3km, അല്ലെങ്കിൽ 7km) നിങ്ങൾ തിരഞ്ഞെടുക്കുന്നു. നിങ്ങൾക്ക് ഇവ ചെയ്യാനാകും:</p>
+                            <ul class="list-disc ml-5 mt-2">
+                                <li>ഓർഡറുകൾ സ്വയം ഡെലിവർ ചെയ്യുക</li>
+                                <li>അല്ലെങ്കിൽ പിക്കപ്പ് മാത്രം നൽകുക</li>
+                            </ul>
+                            <p class="mt-2 font-semibold">ഡെലിവറി പൂർണ്ണമായും നിങ്ങളുടെ നിയന്ത്രണത്തിലാണ്.</p>
+                        </div>
+                        <div lang="tl">
+                            <p>Ang GoSnel ay hindi humahawak ng delivery.</p>
+                            <p class="mt-2">Pinipili mo ang distansya ng iyong delivery (1km, 3km, o 7km). Maaari kang:</p>
+                            <ul class="list-disc ml-5 mt-2">
+                                <li>Mag-deliver ng mga order nang mag-isa</li>
+                                <li>O mag-alok ng pickup lamang</li>
+                            </ul>
+                            <p class="mt-2 font-semibold">Ang delivery ay ganap na nasa ilalim ng iyong kontrol.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q5 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span lang="en">How do customers pay?</span>
+                        <span lang="ar">كيف يدفع العملاء؟</span>
+                        <span lang="hi">ग्राहक भुगतान कैसे करते हैं?</span>
+                        <span lang="ur">صارفین ادائیگی کیسے کرتے ہیں؟</span>
+                        <span lang="ml">ഉപഭോക്താക്കൾ എങ്ങനെ പണമടയ്ക്കും?</span>
+                        <span lang="tl">Paano nagbabayad ang mga customer?</span>
+                        <svg class="faq-icon w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p lang="en">Customers pay you directly. There is no payment holding and no delayed payouts.</p>
+                        <p lang="ar">يدفع العملاء لك مباشرة. لا يوجد احتجاز للمدفوعات ولا تأخير في صرف الأرباح.</p>
+                        <p lang="hi">ग्राहक आपको सीधे भुगतान करते हैं। कोई भुगतान रोकना नहीं है और कोई विलंबित भुगतान नहीं है।</p>
+                        <p lang="ur">صارفین آپ کو براہ راست ادائیگی کرتے ہیں۔ کوئی ادائیگی ہولڈنگ نہیں ہے اور نہ ہی تاخیر سے ادائیگیاں ہیں۔</p>
+                        <p lang="ml">ഉപഭോക്താക്കൾ നിങ്ങൾക്ക് നേരിട്ട് പണം നൽകുന്നു. പേയ്‌മെന്റ് ഹോൾഡിംഗും വൈകിയ പേഔട്ടുകളും ഇല്ല.</p>
+                        <p lang="tl">Direktang nagbabayad ang mga customer sa iyo. Walang pagpigil sa pagbabayad at walang naantalang payout.</p>
+                    </div>
+                </div>
+
+                <!-- Q6 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span lang="en">Do you take commission on orders?</span>
+                        <span lang="ar">هل تأخذون عمولة على الطلبات؟</span>
+                        <span lang="hi">क्या आप ऑर्डर पर कमीशन लेते हैं?</span>
+                        <span lang="ur">کیا آپ آرڈرز پر کمیشن لیتے ہیں؟</span>
+                        <span lang="ml">നിങ്ങൾ ഓർഡറുകൾക്ക് കമ്മീഷൻ എടുക്കുന്നുണ്ടോ?</span>
+                        <span lang="tl">Kumuha ka ba ng komisyon sa mga order?</span>
+                        <svg class="faq-icon w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p lang="en">No commission. GoSnel charges a fixed fee per meal, not a percentage. This means your profit doesn’t shrink as your sales grow.</p>
+                        <p lang="ar">لا توجد عمولة. جوسنِل تفرض رسوماً ثابتة لكل وجبة، وليس نسبة مئوية. هذا يعني أن ربحك لا يتقلص مع نمو مبيعاتك.</p>
+                        <p lang="hi">कोई कमीशन नहीं। GoSnel प्रति भोजन एक निश्चित शुल्क लेता है, प्रतिशत नहीं। इसका मतलब है कि आपकी बिक्री बढ़ने पर आपका लाभ कम नहीं होता है।</p>
+                        <p lang="ur">کوئی کمیشن نہیں۔ GoSnel فی کھانے کی ایک مقررہ فیس لیتا ہے، فیصد نہیں۔ اس کا مطلب ہے کہ آپ کی فروخت بڑھنے کے ساتھ ہی آپ کا منافع کم نہیں ہوتا ہے۔</p>
+                        <p lang="ml">കമ്മീഷൻ ഇല്ല. GoSnel ഓരോ ഭക്ഷണത്തിനും ഒരു നിശ്ചിത ഫീസ് ഈടാക്കുന്നു, ശതമാനമല്ല. ഇതിനർത്ഥം നിങ്ങളുടെ വിൽപന വളരുന്നതിനനുസരിച്ച് നിങ്ങളുടെ ലാഭം കുറയുന്നില്ല എന്നാണ്.</p>
+                        <p lang="tl">Walang komisyon. Naniningil ang GoSnel ng fixed fee bawat pagkain, hindi porsyento. Nangangahulugan ito na ang iyong kita ay hindi lumiliit habang lumalaki ang iyong benta.</p>
+                    </div>
+                </div>
+
+                <!-- Q7 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span lang="en">What is AI meal discovery?</span>
+                        <span lang="ar">ما هو اكتشاف الوجبات بالذكاء الاصطناعي؟</span>
+                        <span lang="hi">AI भोजन खोज क्या है?</span>
+                        <span lang="ur">AI کھانے کی دریافت کیا ہے؟</span>
+                        <span lang="ml">എന്താണ് AI മീൽ ഡിസ്കവറി?</span>
+                        <span lang="tl">Ano ang AI meal discovery?</span>
+                        <svg class="faq-icon w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p lang="en">GoSnel’s AI helps customers who don’t know what to eat by recommending meals based on preferences and demand. Your dishes are shown based on relevance and quality — not ad budgets.</p>
+                        <p lang="ar">يساعد الذكاء الاصطناعي في جوسنِل العملاء الذين لا يعرفون ماذا يأكلون من خلال التوصية بوجبات بناءً على التفضيلات والطلب. تُعرض أطباقك بناءً على الصلة والجودة - وليس ميزانيات الإعلانات.</p>
+                        <p lang="hi">GoSnel का AI उन ग्राहकों की मदद करता है जिन्हें नहीं पता कि क्या खाना है, उनकी पसंद और मांग के आधार पर भोजन की सिफारिश करके। आपके व्यंजन प्रासंगिकता और गुणवत्ता के आधार पर दिखाए जाते हैं - विज्ञापन बजट के आधार पर नहीं।</p>
+                        <p lang="ur">GoSnel کی AI ان صارفین کی مدد کرتی ہے جنہیں نہیں معلوم کہ کیا کھانا ہے ترجیحات اور طلب کی بنیاد پر کھانوں کی سفارش کر کے۔ آپ کے پکوان مطابقت اور معیار کی بنیاد پر دکھائے جاتے ہیں — اشتہاری بجٹ کی بنیاد پر نہیں۔</p>
+                        <p lang="ml">എന്ത് കഴിക്കണമെന്ന് അറിയാത്ത ഉപഭോക്താക്കളെ മുൻഗണനകളുടെയും ഡിമാൻഡിന്റെയും അടിസ്ഥാനത്തിൽ ഭക്ഷണം ശുപാർശ ചെയ്തുകൊണ്ട് GoSnel-ന്റെ AI സഹായിക്കുന്നു. നിങ്ങളുടെ വിഭവങ്ങൾ പ്രസക്തിയുടെയും ഗുണനിലവാരത്തിന്റെയും അടിസ്ഥാനത്തിലാണ് കാണിക്കുന്നത് - പരസ്യ ബജറ്റുകളുടെ അടിസ്ഥാനത്തിലല്ല.</p>
+                        <p lang="tl">Ang AI ng GoSnel ay tumutulong sa mga customer na hindi alam kung ano ang kakainin sa pamamagitan ng pagre-rekomenda ng mga pagkain batay sa mga kagustuhan at demand. Ang iyong mga putahe ay ipinapakita batay sa kaugnayan at kalidad — hindi sa mga badyet ng ad.</p>
+                    </div>
+                </div>
+
+                <!-- Q8 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span lang="en">Can I increase my meal visibility?</span>
+                        <span lang="ar">هل يمكنني زيادة ظهور وجباتي؟</span>
+                        <span lang="hi">क्या मैं अपने भोजन की दृश्यता बढ़ा सकता हूँ?</span>
+                        <span lang="ur">کیا میں اپنے کھانے کی نمائش بڑھا سکتا ہوں؟</span>
+                        <span lang="ml">എനിക്ക് എന്റെ ഭക്ഷണത്തിന്റെ ദൃശ്യപരത വർദ്ധിപ്പിക്കാൻ കഴിയുമോ?</span>
+                        <span lang="tl">Maaari ko bang dagdagan ang visibility ng aking pagkain?</span>
+                        <svg class="faq-icon w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <div lang="en">
+                            <p>Yes. You can:</p>
+                            <ul class="list-disc ml-5 mt-2">
+                                <li>Buy extra meal visibility</li>
+                                <li>Boost specific meals with paid promotions</li>
+                            </ul>
+                            <p class="mt-2">Both are optional and fully under your control.</p>
+                        </div>
+                        <div lang="ar">
+                            <p>نعم. يمكنك:</p>
+                            <ul class="list-disc mr-5 mt-2">
+                                <li>شراء رؤية إضافية للوجبات</li>
+                                <li>تعزيز وجبات معينة من خلال عروض ترويجية مدفوعة</li>
+                            </ul>
+                            <p class="mt-2">كلاهما اختياري وتحت سيطرتك بالكامل.</p>
+                        </div>
+                        <div lang="hi">
+                            <p>हाँ। आप कर सकते हैं:</p>
+                            <ul class="list-disc ml-5 mt-2">
+                                <li>अतिरिक्त भोजन दृश्यता खरीदें</li>
+                                <li>भुगतान किए गए प्रचारों के साथ विशिष्ट भोजन को बढ़ावा दें</li>
+                            </ul>
+                            <p class="mt-2">दोनों वैकल्पिक हैं और पूरी तरह से आपके नियंत्रण में हैं।</p>
+                        </div>
+                        <div lang="ur">
+                            <p>جی ہاں۔ آپ کر سکتے ہیں:</p>
+                            <ul class="list-disc mr-5 mt-2">
+                                <li>اضافی کھانے کی نمائش خریدیں</li>
+                                <li>بامعاوضہ پروموشنز کے ساتھ مخصوص کھانوں کو فروغ دیں</li>
+                            </ul>
+                            <p class="mt-2">دونوں اختیاری ہیں اور مکمل طور پر آپ کے کنٹرول میں ہیں۔</p>
+                        </div>
+                        <div lang="ml">
+                            <p>അതെ. നിങ്ങൾക്ക് ഇവ ചെയ്യാനാകും:</p>
+                            <ul class="list-disc ml-5 mt-2">
+                                <li>അധിക ഭക്ഷണ ദൃശ്യപരത വാങ്ങുക</li>
+                                <li>പെയ്ഡ് പ്രമോഷനുകൾ ഉപയോഗിച്ച് നിർദ്ദിഷ്ട ഭക്ഷണങ്ങൾ വർദ്ധിപ്പിക്കുക</li>
+                            </ul>
+                            <p class="mt-2">ഇവ രണ്ടും ഓപ്ഷണലാണ്, പൂർണ്ണമായും നിങ്ങളുടെ നിയന്ത്രണത്തിലാണ്.</p>
+                        </div>
+                        <div lang="tl">
+                            <p>Oo. Maaari kang:</p>
+                            <ul class="list-disc ml-5 mt-2">
+                                <li>Bumili ng dagdag na visibility ng pagkain</li>
+                                <li>I-boost ang mga partikular na pagkain gamit ang mga paid promotion</li>
+                            </ul>
+                            <p class="mt-2">Parehong opsyonal at ganap na nasa ilalim ng iyong kontrol.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q9 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span lang="en">Do I need a contract or long-term commitment?</span>
+                        <span lang="ar">هل أحتاج إلى عقد أو التزام طويل الأمد؟</span>
+                        <span lang="hi">क्या मुझे अनुबंध या दीर्घकालिक प्रतिबद्धता की आवश्यकता है?</span>
+                        <span lang="ur">کیا مجھے معاہدے یا طویل مدتی وابستگی کی ضرورت ہے؟</span>
+                        <span lang="ml">എനിക്ക് കരാറോ ദീർഘകാല പ്രതിബദ്ധതയോ ആവശ്യമുണ്ടോ?</span>
+                        <span lang="tl">Kailangan ko ba ng kontrata o pangmatagalang commitment?</span>
+                        <svg class="faq-icon w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p lang="en">No contracts. You can start, pause, or stop anytime.</p>
+                        <p lang="ar">لا توجد عقود. يمكنك البدء أو التوقف مؤقتاً أو التوقف تماماً في أي وقت.</p>
+                        <p lang="hi">कोई अनुबंध नहीं। आप कभी भी शुरू, रोक या बंद कर सकते हैं।</p>
+                        <p lang="ur">کوئی معاہدہ نہیں۔ آپ کسی بھی وقت شروع، روک یا بند کر سکتے ہیں۔</p>
+                        <p lang="ml">കരാറുകളില്ല. നിങ്ങൾക്ക് എപ്പോൾ വേണമെങ്കിലും ആരംഭിക്കാനോ താൽക്കാലികമായി നിർത്താനോ നിർത്താനോ കഴിയും.</p>
+                        <p lang="tl">Walang mga kontrata. Maaari kang magsimula, mag-pause, o huminto anumang oras.</p>
+                    </div>
+                </div>
+
+                <!-- Q10 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span lang="en">When does GoSnel launch?</span>
+                        <span lang="ar">متى ينطلق جوسنِل؟</span>
+                        <span lang="hi">GoSnel कब लॉन्च होगा?</span>
+                        <span lang="ur">GoSnel کب لانچ ہوگا؟</span>
+                        <span lang="ml">GoSnel എപ്പോഴാണ് ലോഞ്ച് ചെയ്യുന്നത്?</span>
+                        <span lang="tl">Kailan maglulunsad ang GoSnel?</span>
+                        <svg class="faq-icon w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p lang="en">GoSnel is launching soon in the UAE. Early partner restaurants lock in exclusive lifetime benefits.</p>
+                        <p lang="ar">سينطلق جوسنِل قريباً في الإمارات. المطاعم الشريكة المبكرة تضمن مزايا حصرية مدى الحياة.</p>
+                        <p lang="hi">GoSnel जल्द ही UAE में लॉन्च हो रहा है। शुरुआती भागीदार रेस्तरां विशेष आजीवन लाभ सुरक्षित करते हैं।</p>
+                        <p lang="ur">GoSnel جلد ہی UAE میں لانچ ہو رہا ہے۔ ابتدائی پارٹنر ریستوراں تاحیات خصوصی فوائد حاصل کرتے ہیں۔</p>
+                        <p lang="ml">GoSnel ഉടൻ യുഎഇയിൽ ലോഞ്ച് ചെയ്യും. ആദ്യകാല പാർട്ണർ റെസ്റ്റോറന്റുകൾ ആജീവനാന്ത എക്സ്ക്ലൂസീവ് ആനുകൂല്യങ്ങൾ നേടുന്നു.</p>
+                        <p lang="tl">Malapit nang ilunsad ang GoSnel sa UAE. Ang mga early partner na restaurant ay nakakakuha ng mga eksklusibong panghabambuhay na benepisyo.</p>
+                    </div>
+                </div>
+
+                <!-- Q11 -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span lang="en">Why should I join now?</span>
+                        <span lang="ar">لماذا يجب أن أنضم الآن؟</span>
+                        <span lang="hi">मुझे अभी क्यों शामिल होना चाहिए?</span>
+                        <span lang="ur">مجھے ابھی کیوں شامل ہونا چاہئے؟</span>
+                        <span lang="ml">ഞാൻ എന്തിനാണ് ഇപ്പോൾ ചേരുന്നത്?</span>
+                        <span lang="tl">Bakit ako dapat sumali ngayon?</span>
+                        <svg class="faq-icon w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <div lang="en">
+                            <p>Early partners get:</p>
+                            <ul class="list-disc ml-5 mt-2">
+                                <li>200 AED signup bonus</li>
+                                <li>Lifetime exclusive benefits</li>
+                                <li>Priority visibility at launch</li>
+                            </ul>
+                            <p class="mt-2">Spots are limited.</p>
+                        </div>
+                        <div lang="ar">
+                            <p>يحصل الشركاء المبكرون على:</p>
+                            <ul class="list-disc mr-5 mt-2">
+                                <li>مكافأة تسجيل بقيمة 200 درهم</li>
+                                <li>مزايا حصرية مدى الحياة</li>
+                                <li>أولوية الظهور عند الإطلاق</li>
+                            </ul>
+                            <p class="mt-2">الأماكن محدودة.</p>
+                        </div>
+                        <div lang="hi">
+                            <p>शुरुआती भागीदारों को मिलता है:</p>
+                            <ul class="list-disc ml-5 mt-2">
+                                <li>200 AED साइनअप बोनस</li>
+                                <li>आजीवन विशेष लाभ</li>
+                                <li>लॉन्च के समय प्राथमिकता दृश्यता</li>
+                            </ul>
+                            <p class="mt-2">स्थान सीमित हैं।</p>
+                        </div>
+                        <div lang="ur">
+                            <p>ابتدائی شراکت داروں کو ملتا ہے:</p>
+                            <ul class="list-disc mr-5 mt-2">
+                                <li>200 AED سائن اپ بونس</li>
+                                <li>تاحیات خصوصی فوائد</li>
+                                <li>لانچ پر ترجیحی نمائش</li>
+                            </ul>
+                            <p class="mt-2">جگہیں محدود ہیں۔</p>
+                        </div>
+                        <div lang="ml">
+                            <p>ആദ്യകാല പങ്കാളികൾക്ക് ലഭിക്കുന്നത്:</p>
+                            <ul class="list-disc ml-5 mt-2">
+                                <li>200 AED സൈൻഅപ്പ് ബോണസ്</li>
+                                <li>ആജീവനാന്ത എക്സ്ക്ലൂസീവ് ആനുകൂല്യങ്ങൾ</li>
+                                <li>ലോഞ്ചിലെ മുൻഗണനാ ദൃശ്യപരത</li>
+                            </ul>
+                            <p class="mt-2">സ്ഥലങ്ങൾ പരിമിതമാണ്.</p>
+                        </div>
+                        <div lang="tl">
+                            <p>Ang mga maagang kasosyo ay nakakakuha ng:</p>
+                            <ul class="list-disc ml-5 mt-2">
+                                <li>200 AED signup bonus</li>
+                                <li>Panghabambuhay na eksklusibong mga benepisyo</li>
+                                <li>Priyoridad na visibility sa paglulunsad</li>
+                            </ul>
+                            <p class="mt-2">Limitado ang mga slot.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- COMPATIBLE WITH -->
     <section class="pt-6 pb-20 md:pt-8 md:pb-24 bg-white border-b border-gray-100">
         <div class="container-pro px-4 sm:px-6 lg:px-8">
@@ -457,12 +894,12 @@
                 </a>
             </div>
             <p class="text-lg italic mt-4" style="color: #4ECDC4;">
-                <span lang="en">No contracts. No commissions.</span>
-                <span lang="ar">لا عقود. لا عمولات.</span>
-                <span lang="hi">कोई अनुबंध नहीं। कोई कमीशन नहीं।</span>
-                <span lang="ur">کوئی معاہدہ نہیں۔ کوئی کمیشن نہیں۔</span>
-                <span lang="ml">കരാറുകളില്ല. കമ്മീഷനുകളില്ല.</span>
-                <span lang="tl">Walang kontrata. Walang komisyon.</span>
+                <span lang="en">No contracts. No registration fee</span>
+                <span lang="ar">لا عقود. لا رسوم تسجيل.</span>
+                <span lang="hi">कोई अनुबंध नहीं। कोई पंजीकरण शुल्क नहीं।</span>
+                <span lang="ur">کوئی معاہدہ نہیں۔ کوئی رجسٹریشن فیس نہیں۔</span>
+                <span lang="ml">കരാറുകളില്ല. രജിസ്ട്രേഷൻ ഫീസില്ല.</span>
+                <span lang="tl">Walang kontrata. Walang bayad sa pagpaparehistro.</span>
             </p>
             <p class="text-sm mt-2 opacity-90">
                 <a href="https://gosnel.com/legal" class="underline hover:text-white transition-colors text-white">
@@ -507,6 +944,24 @@
         langButtons.forEach(btn => {
             btn.addEventListener('click', () => {
                 setLanguage(btn.dataset.lang);
+            });
+        });
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const item = button.parentElement;
+                const isActive = item.classList.contains('active');
+                
+                // Close all other items
+                document.querySelectorAll('.faq-item').forEach(otherItem => {
+                    otherItem.classList.remove('active');
+                });
+
+                // Toggle current item
+                if (!isActive) {
+                    item.classList.add('active');
+                }
             });
         });
     </script>
