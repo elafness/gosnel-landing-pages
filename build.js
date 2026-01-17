@@ -43,7 +43,8 @@ const buildPages = () => {
     { subdomain: "user", filename: "src/user-app/features/landing.html" },
     { subdomain: "partner", filename: "src/partner-app/index.html" },
     { subdomain: "drivers", filename: "src/drivers/drivers-landing.html" },
-    { subdomain: "promo", filename: "src/promo/promo-landing.html" }
+    { subdomain: "promo", filename: "src/promo/promo-landing.html" },
+    { subdomain: "restaurants", filename: "src/restaurants/index.html" }
   ];
 
   landingPages.forEach(({ subdomain, filename }) => {

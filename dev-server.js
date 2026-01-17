@@ -10,6 +10,7 @@ const routeMap = {
   '/': '/index.html',
   '/drivers': '/index-drivers.html',
   '/promo': '/index-promo.html',
+  '/restaurants': '/index-restaurants.html',
   '/vendor': '/partner/index.html',
   '/user': '/index.html',
   // User pages at root level (SEO-friendly)
@@ -103,5 +104,6 @@ server.listen(PORT, () => {
   console.log(`   http://localhost:${PORT}/user`);
   console.log(`   http://localhost:${PORT}/vendor`);
   console.log(`   http://localhost:${PORT}/drivers`);
-  console.log(`   http://localhost:${PORT}/promo\n`);
+  console.log(`   http://localhost:${PORT}/promo`);
+  console.log(`   http://localhost:${PORT}/restaurants\n`);
 });
