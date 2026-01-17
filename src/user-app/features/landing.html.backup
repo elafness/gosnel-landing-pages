@@ -73,40 +73,29 @@
     <style>
         * { font-family: 'Inter', system-ui, sans-serif; }
         
-        /* Light Theme Base - Warm & Human */
+        /* Dark Theme Base */
         body {
-            background: linear-gradient(180deg, #ffffff 0%, #f8fafc 50%, #f1f5f9 100%);
+            background: linear-gradient(180deg, #0a0f1a 0%, #111827 50%, #0d1117 100%);
             min-height: 100vh;
-            color: #1f2937;
         }
 
-        /* Hero gradient - soft warm teal glow */
+        /* Animated gradient background */
         .hero-gradient {
-            background: linear-gradient(180deg, #ffffff 0%, #f0fdfa 50%, #f8fafc 100%);
-            position: relative;
-        }
-        .hero-gradient::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 60%;
-            height: 100%;
-            background: radial-gradient(ellipse 80% 80% at 70% 20%, rgba(78, 205, 196, 0.08), transparent);
-            pointer-events: none;
+            background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(78, 205, 196, 0.15), transparent),
+                        radial-gradient(ellipse 60% 40% at 80% 50%, rgba(78, 205, 196, 0.08), transparent);
         }
 
-        /* Soft card effect - Light mode */
+        /* Glass card effect */
         .glass-card {
-            background: #ffffff;
-            border: 1px solid #e5e7eb;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(78, 205, 196, 0.15);
         }
 
         .glass-card-light {
-            background: #ffffff;
-            border: 1px solid #f3f4f6;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         /* Brand gradient */
@@ -114,35 +103,43 @@
             background: linear-gradient(135deg, #4ECDC4 0%, #2dd4bf 50%, #14b8a6 100%); 
         }
 
-        /* Soft shadow effects for light mode */
+        /* Glowing effects */
         .glow-teal {
-            box-shadow: 0 20px 50px rgba(78, 205, 196, 0.15), 0 10px 30px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 0 60px rgba(78, 205, 196, 0.2), 0 0 100px rgba(78, 205, 196, 0.1);
         }
 
         .glow-border {
             position: relative;
-            border: 2px solid rgba(78, 205, 196, 0.2);
         }
-        .glow-border:hover {
-            border-color: rgba(78, 205, 196, 0.4);
+        .glow-border::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: inherit;
+            padding: 1px;
+            background: linear-gradient(135deg, rgba(78, 205, 196, 0.5), transparent, rgba(78, 205, 196, 0.3));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
         }
 
-        /* Text styles for light mode */
+        /* Text styles */
         .text-gradient {
-            background: linear-gradient(135deg, #0d9488, #14b8a6, #2dd4bf);
+            background: linear-gradient(135deg, #4ECDC4, #2dd4bf, #ffffff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
         .text-gradient-teal {
-            background: linear-gradient(90deg, #0d9488, #14b8a6);
+            background: linear-gradient(90deg, #4ECDC4, #2dd4bf);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
-        /* Language toggle - Light mode */
+        /* Language toggle */
         .lang-toggle {
             position: fixed;
             top: 1rem;
@@ -153,16 +150,17 @@
             gap: 0;
             border-radius: 9999px;
             padding: 4px;
-            background: #ffffff;
-            border: 1px solid #e5e7eb;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            background: rgba(10, 15, 26, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(78, 205, 196, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
         }
 
         .lang-btn {
             padding: 10px 18px;
             border: none;
             background: transparent;
-            color: #6b7280;
+            color: rgba(255, 255, 255, 0.7);
             cursor: pointer;
             font-weight: 600;
             transition: all 0.3s ease;
@@ -172,21 +170,19 @@
 
         .lang-btn.active {
             background: linear-gradient(135deg, #4ECDC4, #2dd4bf);
-            color: #ffffff;
+            color: #0a0f1a;
         }
 
         .lang-btn:hover:not(.active) {
-            color: #0d9488;
-            background: #f0fdfa;
+            color: #4ECDC4;
         }
 
-        /* Button styles - Light mode */
+        /* Button styles */
         .btn-primary {
             background: linear-gradient(135deg, #4ECDC4 0%, #2dd4bf 100%);
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(78, 205, 196, 0.3);
         }
 
         .btn-primary::before {
@@ -200,7 +196,7 @@
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(78, 205, 196, 0.4);
+            box-shadow: 0 20px 40px rgba(78, 205, 196, 0.3);
         }
 
         .btn-primary:hover::before {
@@ -213,30 +209,26 @@
         }
 
         .btn-secondary {
-            background: #ffffff;
-            border: 2px solid #4ECDC4;
-            color: #0d9488 !important;
+            background: transparent;
+            border: 2px solid rgba(78, 205, 196, 0.5);
             transition: all 0.3s ease;
         }
 
         .btn-secondary:hover {
-            background: #f0fdfa;
-            border-color: #2dd4bf;
+            border-color: #4ECDC4;
+            background: rgba(78, 205, 196, 0.1);
             transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(78, 205, 196, 0.2);
         }
 
-        /* Feature card hover - Light mode */
+        /* Feature card hover */
         .feature-card {
             transition: all 0.4s ease;
-            background: #ffffff;
-            border: 1px solid #e5e7eb;
         }
 
         .feature-card:hover {
             transform: translateY(-8px);
-            border-color: rgba(78, 205, 196, 0.3);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.08), 0 10px 30px rgba(78, 205, 196, 0.1);
+            border-color: rgba(78, 205, 196, 0.4);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3), 0 0 30px rgba(78, 205, 196, 0.1);
         }
 
         /* Chat animation */
@@ -248,124 +240,51 @@
             animation: fadeInUp 0.4s ease forwards;
         }
 
-        /* Chat scrollbar - Light mode */
+        /* Chat scrollbar */
         .chat-container::-webkit-scrollbar {
             width: 6px;
         }
         .chat-container::-webkit-scrollbar-track {
-            background: #f3f4f6;
+            background: rgba(255,255,255,0.02);
             border-radius: 3px;
         }
         .chat-container::-webkit-scrollbar-thumb {
-            background: rgba(78, 205, 196, 0.5);
+            background: rgba(78, 205, 196, 0.3);
             border-radius: 3px;
         }
 
-        /* Food image section */
-        .food-image-section {
-            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fcd34d 100%);
-            border-radius: 24px;
-            overflow: hidden;
-            position: relative;
-        }
-        .food-image-section img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* Image placeholder - Now shows real food */
+        /* Image placeholder */
         .image-placeholder {
-            background: linear-gradient(135deg, #fef3c7, #fed7aa);
-            border-radius: 24px;
+            background: linear-gradient(135deg, rgba(78, 205, 196, 0.1), rgba(78, 205, 196, 0.05));
+            border: 2px dashed rgba(78, 205, 196, 0.3);
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
-            position: relative;
-        }
-        .image-placeholder img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            color: rgba(78, 205, 196, 0.6);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
         }
 
-        /* Section divider - Light mode */
+        /* Floating particles effect */
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(78, 205, 196, 0.4);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        /* Section divider */
         .section-divider {
             height: 1px;
-            background: linear-gradient(90deg, transparent, #e5e7eb, transparent);
-        }
-
-        /* Warm section backgrounds */
-        .section-warm {
-            background: linear-gradient(180deg, #fffbeb 0%, #fef3c7 100%);
-        }
-        .section-teal-light {
-            background: linear-gradient(180deg, #f0fdfa 0%, #ccfbf1 50%, #f0fdfa 100%);
-        }
-        .section-gray {
-            background: #f8fafc;
-        }
-
-        /* Trust badges */
-        .trust-badge {
-            background: #ffffff;
-            border: 1px solid #e5e7eb;
-            border-radius: 9999px;
-            padding: 8px 16px;
-            font-size: 0.875rem;
-            color: #4b5563;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            background: linear-gradient(90deg, transparent, rgba(78, 205, 196, 0.3), transparent);
         }
 
         /* Direction-aware */
         [dir="rtl"] .lang-aligned { text-align: right; }
         [dir="ltr"] .lang-aligned { text-align: left; }
-
-        /* Override text colors for light mode */
-        .text-white { color: #1f2937 !important; }
-        .text-gray-400 { color: #6b7280 !important; }
-        .text-gray-300 { color: #9ca3af !important; }
-        .text-gray-500 { color: #6b7280 !important; }
-        
-        /* Chat container light mode */
-        .chat-container .text-white { color: #1f2937 !important; }
-        .chat-container .bg-white\/10 { background: #f3f4f6 !important; }
-        
-        /* Food image hover effects */
-        .food-image-card {
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-        }
-        .food-image-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        }
-        
-        /* CTA Section special styling */
-        .cta-section {
-            background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 100%);
-        }
-        .cta-section .text-white { color: #1f2937 !important; }
-        .cta-section .text-gray-400 { color: #4b5563 !important; }
-
-        /* Newsletter section */
-        .newsletter-card {
-            background: #ffffff;
-            border: 1px solid #e5e7eb;
-        }
-        .newsletter-card input {
-            background: #f9fafb !important;
-            border: 1px solid #e5e7eb !important;
-            color: #1f2937 !important;
-        }
-        .newsletter-card input::placeholder {
-            color: #9ca3af !important;
-        }
-        .newsletter-card .text-gray-300 { color: #4b5563 !important; }
-        .newsletter-card .text-gray-500 { color: #6b7280 !important; }
     </style>
 </head>
 <body class="text-white">
@@ -424,7 +343,7 @@
                 <!-- Right - Chat Preview -->
                 <div class="relative">
                     <div class="glass-card rounded-3xl p-6 glow-teal glow-border">
-                        <div class="flex items-center gap-3 mb-6 pb-4 border-b border-gray-200">
+                        <div class="flex items-center gap-3 mb-6 pb-4 border-b border-white/10">
                             <div class="w-10 h-10 rounded-full gradient-teal flex items-center justify-center">
                                 <svg class="w-5 h-5 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
                             </div>
@@ -445,17 +364,14 @@
         </div>
     </section>
 
-    <!-- Food Lifestyle Image 1 -->
+    <!-- IMAGE PLACEHOLDER 1 -->
     <section class="py-16">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="rounded-3xl h-[400px] md:h-[500px] overflow-hidden shadow-xl relative">
-                <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200&h=600&fit=crop&q=80" 
-                     alt="Delicious food spread" 
-                     class="w-full h-full object-cover"
-                     loading="lazy">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
-                <div class="absolute bottom-8 left-8 right-8">
-                    <p class="text-white text-lg md:text-2xl font-semibold drop-shadow-lg">Discover meals that match your mood</p>
+            <div class="image-placeholder rounded-3xl h-[400px] md:h-[500px]">
+                <div class="text-center">
+                    <svg class="w-16 h-16 mx-auto mb-4 text-[#4ECDC4]/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                    <p class="text-sm">SET IMAGE HERE</p>
+                    <p class="text-xs text-gray-500 mt-2">Hero image / App screenshot / Food visual</p>
                 </div>
             </div>
         </div>
@@ -514,30 +430,16 @@
         </div>
     </section>
 
-    <!-- Food Lifestyle Image 2 -->
+    <!-- IMAGE PLACEHOLDER 2 -->
     <section class="py-16">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="rounded-2xl h-[300px] overflow-hidden shadow-lg">
-                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&h=400&fit=crop&q=80" 
-                         alt="Fresh pizza" 
-                         class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                         loading="lazy">
-                </div>
-                <div class="rounded-2xl h-[300px] overflow-hidden shadow-lg">
-                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=400&fit=crop&q=80" 
-                         alt="Healthy salad bowl" 
-                         class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                         loading="lazy">
-                </div>
-                <div class="rounded-2xl h-[300px] overflow-hidden shadow-lg">
-                    <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=400&h=400&fit=crop&q=80" 
-                         alt="Delicious pancakes" 
-                         class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                         loading="lazy">
+            <div class="image-placeholder rounded-3xl h-[400px] md:h-[500px]">
+                <div class="text-center">
+                    <svg class="w-16 h-16 mx-auto mb-4 text-[#4ECDC4]/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                    <p class="text-sm">SET IMAGE HERE</p>
+                    <p class="text-xs text-gray-500 mt-2">Feature showcase / User testimonials / Food collage</p>
                 </div>
             </div>
-            <p class="text-center text-gray-500 mt-6 text-sm">Every craving has a perfect match</p>
         </div>
     </section>
 
@@ -868,7 +770,7 @@
                         avatar.innerHTML = '<svg class="w-4 h-4 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>';
                     }
                     const bubble = document.createElement('div');
-                    bubble.className = (isUser ? 'bg-[#4ECDC4] text-gray-900 rounded-br-sm' : 'bg-gray-100 text-gray-800 rounded-bl-sm') + ' px-4 py-3 rounded-2xl max-w-[80%]';
+                    bubble.className = (isUser ? 'bg-[#4ECDC4] text-gray-900 rounded-br-sm' : 'bg-white/10 text-white rounded-bl-sm') + ' px-4 py-3 rounded-2xl max-w-[80%]';
                     bubble.innerHTML = '<p class="text-sm leading-relaxed">' + nl2br(m.message) + '</p>';
                     inner.appendChild(avatar);
                     inner.appendChild(bubble);
