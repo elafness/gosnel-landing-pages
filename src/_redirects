@@ -6,8 +6,8 @@ https://partner.gosnel.com/why-partner /partner-why-partner.html 200
 https://partner.gosnel.com/guidelines /partner-guidelines.html 200
 https://partner.gosnel.com/insights /partner-insights.html 200
 
-# Restaurants Domain - Redirect to Partner Page
-https://restaurants.gosnel.com/* https://gosnel.com/partner/ 301
+# Restaurants Domain - Serve redirect page (allows OG tags to be read)
+https://restaurants.gosnel.com/ /index-restaurants.html 200
 
 # Alias routes (for backwards compatibility)
 /about-us /about.html 200
