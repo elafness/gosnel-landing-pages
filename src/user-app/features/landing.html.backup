@@ -326,7 +326,7 @@
                     <!-- Value prop -->
                     <div class="space-y-2">
                         <h3 id="what_i_can_do" class="text-lg md:text-xl font-semibold text-[#4ECDC4]">GoSnel uses AI to suggest the perfect meal</h3>
-                        <p id="suggest_meals" class="text-lg text-gray-400">based on your taste and budget — in under a minute</p>
+                        <p id="suggest_meals" class="text-lg text-gray-400">based on your taste and budget  in under a minute</p>
                     </div>
                     
                     <!-- CTA Buttons -->
@@ -586,7 +586,7 @@
                 hero_title: 'Stop scrolling.\nLet AI pick for you in 30 seconds',
                 hero_desc: 'Tired of spending 15 minutes scrolling through menus?',
                 what_i_can_do: 'GoSnel uses AI to suggest the perfect meal',
-                suggest_meals: 'based on your taste and budget — in under a minute',
+                suggest_meals: 'based on your taste and budget  in under a minute',
                 find_restaurants: '',
                 translate_menus: '',
                 remember_favorites: '',
@@ -629,7 +629,7 @@
                 hero_title: 'ملّيت من اللف بين تطبيقات الطعام؟\nنختار لك الوجبة الصح في 30 ثانية.',
                 hero_desc: 'طفشان تضيع 15 دقيقة وانت تتصفح قوائم المطاعم؟',
                 what_i_can_do: 'جوسنِل يستخدم الذكاء الاصطناعي ويقترح لك الوجبة المناسبة',
-                suggest_meals: 'حسب ذوقك وميزانيتك — خلال أقل من دقيقة',
+                suggest_meals: 'حسب ذوقك وميزانيتك  خلال أقل من دقيقة',
                 find_restaurants: '',
                 translate_menus: '',
                 remember_favorites: '',

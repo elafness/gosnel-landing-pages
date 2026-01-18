@@ -73,6 +73,12 @@
     <!-- Contentsquare Analytics -->
     <script src="https://t.contentsquare.net/uxa/0dcccabc249da.js"></script>
     
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
     <style>
         * { 
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -94,7 +100,7 @@
             display: flex;
             align-items: center;
             overflow: hidden;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%);
         }
         
         .hero-bg-image {
@@ -107,14 +113,24 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: 0.3;
+            opacity: 0.9; /* 90% clear */
         }
         
         .hero-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.85) 100%);
+            background: linear-gradient(to right, rgba(15, 23, 42, 0.7) 0%, rgba(15, 23, 42, 0.1) 60%, transparent 100%);
             z-index: 2;
+        }
+
+        /* Mobile specific overlay adjustment */
+        @media (max-width: 768px) {
+            .hero-overlay {
+                background: linear-gradient(to bottom, rgba(15, 23, 42, 0.8) 0%, rgba(15, 23, 42, 0.6) 100%);
+            }
+            .hero-bg-image img {
+                opacity: 0.6;
+            }
         }
         
         .hero-content {
@@ -248,13 +264,11 @@
             font-weight: 500;
         }
         
-        /* === FLOATING CHAT PREVIEW === */
-        .chat-preview-float {
-            position: absolute;
-            right: 80px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 380px;
+        /* === DEMO CHAT CARD === */
+        .chat-preview-card {
+            width: 100%;
+            max-width: 450px;
+            margin: 60px auto 0;
             background: rgba(255, 255, 255, 0.98);
             border-radius: 24px;
             padding: 24px;
@@ -262,12 +276,6 @@
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             z-index: 10;
-        }
-        
-        @media (max-width: 1280px) {
-            .chat-preview-float {
-                display: none;
-            }
         }
         
         .chat-header {
@@ -288,7 +296,13 @@
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
+            color: white;
         }
+        
+        /* Icon styling */
+        .icon-sm { width: 18px; height: 18px; vertical-align: middle; margin-right: 8px; }
+        [dir="rtl"] .icon-sm { margin-right: 0; margin-left: 8px; }
+        .icon-inline { display: inline-flex; align-items: center; gap: 8px; }
         
         .chat-info h4 {
             margin: 0;
@@ -405,10 +419,6 @@
         /* === SECTIONS === */
         .section {
             padding: 120px 0;
-        }
-        
-        .section-sm {
-            padding: 80px 0;
         }
         
         .container {
@@ -609,9 +619,31 @@
         
         /* === CTA SECTION === */
         .cta-section {
-            background: linear-gradient(135deg, #4ECDC4 0%, #2dd4bf 100%);
-            padding: 100px 0;
+            position: relative;
+            padding: 120px 0;
             text-align: center;
+            overflow: hidden;
+            background: #0f172a;
+        }
+        
+        .cta-bg-image {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+        }
+        
+        .cta-bg-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.9; /* 90% clear */
+        }
+        
+        .cta-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.6) 0%, rgba(78, 205, 196, 0.3) 100%);
+            z-index: 2;
         }
         
         .cta-section h2 {
@@ -684,7 +716,6 @@
         <button id="lang-ar" class="lang-btn">العربية</button>
     </div>
 
-    <!-- Include Header -->
     <!--#include file="../components/header.html" -->
 
     <!-- HERO SECTION -->
@@ -714,11 +745,8 @@
                 
                 <div class="hero-cta-group">
                     <a href="https://gosnel.com/user/signup" class="btn-hero-primary">
-                        <span id="cta_try_now">Try it now, free</span>
+                        <span id="cta_button_hero">Chat with me</span>
                         <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-                    </a>
-                    <a href="https://gosnel.com/user/demo" class="btn-hero-secondary">
-                        <span id="cta_demo">Try a demo chat</span>
                     </a>
                 </div>
                 
@@ -736,26 +764,6 @@
                         <div class="hero-stat-label" id="stat_cost">Cost to use</div>
                     </div>
                 </div>
-            </div>
-        </div>
-        
-        <!-- Floating Chat Preview (Desktop Only) -->
-        <div class="chat-preview-float">
-            <div class="chat-header">
-                <div class="chat-avatar">
-                    <svg width="20" height="20" fill="none" stroke="white" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
-                </div>
-                <div class="chat-info">
-                    <h4 id="chat_title">GoSnel AI</h4>
-                    <p id="chat_subtitle">Food discovery assistant</p>
-                </div>
-                <div class="chat-status">
-                    <span class="chat-status-dot"></span>
-                    <span id="chat_status">Online</span>
-                </div>
-            </div>
-            <div class="chat-messages" id="chat_messages">
-                <!-- Messages populated by JS -->
             </div>
         </div>
     </section>
@@ -786,7 +794,7 @@
                 
                 <div class="value-card">
                     <div class="value-icon">
-                        <svg width="28" height="28" fill="none" stroke="white" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        <svg width="28" height="28" fill="none" stroke="white" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 104 0 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                     </div>
                     <h3 id="feature_2_title">100+ Languages</h3>
                     <p id="feature_2_desc">Speak your language, and I'll understand perfectly.</p>
@@ -819,7 +827,7 @@
                     <span id="how_badge">How it works</span>
                 </div>
                 <h2 class="section-title" id="how_title">
-                    From "I don't know" to "I'm eating" in 3 steps
+                    From "I don't know what to eat" to "GoSnel knows what I want
                 </h2>
             </div>
             
@@ -839,7 +847,7 @@
                 <div class="step-card">
                     <div class="step-number">3</div>
                     <h3 id="step_3_title">Order Your Way</h3>
-                    <p id="step_3_desc">Order via WhatsApp, Talabat, or pickup — however you prefer.</p>
+                    <p id="step_3_desc">Order via WhatsApp or pickup — however you prefer.</p>
                 </div>
             </div>
         </div>
@@ -859,23 +867,43 @@
             
             <div class="comparison-grid">
                 <div class="comparison-card">
-                    <h3 id="traditional_title">❌ Traditional Apps</h3>
+                    <h3 id="traditional_title"><i data-lucide="circle-x" class="icon-sm" style="color: #ef4444;"></i> Traditional Apps</h3>
                     <ul class="comparison-list">
-                        <li id="traditional_1">🔍 Search "burger" → 100 results</li>
-                        <li id="traditional_2">⏰ Scroll for 15+ minutes</li>
-                        <li id="traditional_3">😩 Decision paralysis</li>
-                        <li id="traditional_4">💸 High commissions (30%)</li>
+                        <li id="traditional_1"><i data-lucide="search" class="icon-sm"></i> Search "burger" → 100 results</li>
+                        <li id="traditional_2"><i data-lucide="clock" class="icon-sm"></i> Scroll for 15+ minutes</li>
+                        <li id="traditional_3"><i data-lucide="frown" class="icon-sm"></i> Decision paralysis</li>
+                        <li id="traditional_4"><i data-lucide="trending-up" class="icon-sm"></i> Prices higher than restaurant</li>
                     </ul>
                 </div>
                 
                 <div class="comparison-card highlight">
-                    <h3 id="gosnel_title">✅ GoSnel</h3>
+                    <h3 id="gosnel_title"><i data-lucide="check-circle" class="icon-sm" style="color: #4ECDC4;"></i> GoSnel</h3>
                     <ul class="comparison-list">
-                        <li id="gosnel_1">🤖 AI suggests 3-5 perfect matches</li>
-                        <li id="gosnel_2">⚡ Decide in 30 seconds</li>
-                        <li id="gosnel_3">😊 Confidence & clarity</li>
-                        <li id="gosnel_4">🆓 Free to use (no commissions)</li>
+                        <li id="gosnel_1"><i data-lucide="bot" class="icon-sm"></i> AI suggests 3-5 perfect matches</li>
+                        <li id="gosnel_2"><i data-lucide="zap" class="icon-sm"></i> Decide in 30 seconds</li>
+                        <li id="gosnel_3"><i data-lucide="smile" class="icon-sm"></i> Confidence & clarity</li>
+                        <li id="gosnel_4"><i data-lucide="tag" class="icon-sm"></i> Real restaurant prices</li>
                     </ul>
+                </div>
+            </div>
+
+            <!-- Demo Chat Preview -->
+            <div class="chat-preview-card">
+                <div class="chat-header">
+                    <div class="chat-avatar">
+                        <svg width="20" height="20" fill="none" stroke="white" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+                    </div>
+                    <div class="chat-info">
+                        <h4 id="chat_title">GoSnel AI</h4>
+                        <p id="chat_subtitle">Food discovery assistant</p>
+                    </div>
+                    <div class="chat-status">
+                        <span class="chat-status-dot"></span>
+                        <span id="chat_status">Online</span>
+                    </div>
+                </div>
+                <div class="chat-messages" id="chat_messages">
+                    <!-- Messages populated by JS -->
                 </div>
             </div>
         </div>
@@ -883,14 +911,18 @@
 
     <!-- CTA -->
     <section class="cta-section">
-        <div class="container">
+        <div class="cta-bg-image">
+            <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1920&q=80" alt="Restaurant Background">
+        </div>
+        <div class="cta-overlay"></div>
+        <div class="container" style="position: relative; z-index: 10;">
             <h2 id="cta_title">Start ordering in your language</h2>
             <p id="cta_subtitle">
                 No subscription. No hidden fees. No language barriers.<br>
                 Try our demo chat free, no signup needed!
             </p>
             <a href="https://gosnel.com/user/signup" class="btn-cta-large">
-                <span id="cta_button">Create Your Account</span>
+                <span id="cta_button">Chat with me</span>
                 <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
             </a>
         </div>
@@ -907,8 +939,7 @@
                 hero_title_1: 'Stop scrolling.',
                 hero_title_2: 'Let AI pick for you in 30 seconds',
                 hero_subtitle: "Tired of spending 15 minutes scrolling through menus? GoSnel's AI suggests the perfect meal based on your taste and budget — in under a minute.",
-                cta_try_now: 'Try it now, free',
-                cta_demo: 'Try a demo chat',
+                cta_button_hero: 'Chat with me',
                 stat_languages: 'Languages',
                 stat_time: 'Average time',
                 stat_cost: 'Cost to use',
@@ -927,36 +958,35 @@
                 feature_4_title: 'Natural Conversations',
                 feature_4_desc: "Chat with me like you're texting a friend — no confusing menus.",
                 how_badge: 'How it works',
-                how_title: 'From "I don\'t know" to "I\'m eating" in 3 steps',
+                how_title: 'From "I don\'t know what to eat" to "GoSnel knows what I want"',
                 step_1_title: 'Chat with AI',
                 step_1_desc: 'Tell me what you\'re craving, your budget, or just say "I\'m hungry" — I\'ll understand.',
                 step_2_title: 'Get Suggestions',
                 step_2_desc: 'I\'ll suggest 3-5 perfect meals from nearby restaurants based on your preferences.',
                 step_3_title: 'Order Your Way',
-                step_3_desc: 'Order via WhatsApp, Talabat, or pickup — however you prefer.',
+                step_3_desc: 'Order via WhatsApp or pickup — however you prefer.',
                 comparison_title: 'GoSnel vs Traditional Food Apps',
                 comparison_subtitle: 'Stop searching. Start discovering.',
-                traditional_title: '❌ Traditional Apps',
-                traditional_1: '🔍 Search "burger" → 100 results',
-                traditional_2: '⏰ Scroll for 15+ minutes',
-                traditional_3: '😩 Decision paralysis',
-                traditional_4: '💸 High commissions (30%)',
-                gosnel_title: '✅ GoSnel',
-                gosnel_1: '🤖 AI suggests 3-5 perfect matches',
-                gosnel_2: '⚡ Decide in 30 seconds',
-                gosnel_3: '😊 Confidence & clarity',
-                gosnel_4: '🆓 Free to use (no commissions)',
+                traditional_title: '<i data-lucide="circle-x" class="icon-sm" style="color: #ef4444;"></i> Traditional Apps',
+                traditional_1: '<i data-lucide="search" class="icon-sm"></i> Search "burger" → 100 results',
+                traditional_2: '<i data-lucide="clock" class="icon-sm"></i> Scroll for 15+ minutes',
+                traditional_3: '<i data-lucide="frown" class="icon-sm"></i> Decision paralysis',
+                traditional_4: '<i data-lucide="trending-up" class="icon-sm"></i> Prices higher than restaurant',
+                gosnel_title: '<i data-lucide="check-circle" class="icon-sm" style="color: #4ECDC4;"></i> GoSnel',
+                gosnel_1: '<i data-lucide="bot" class="icon-sm"></i> AI suggests 3-5 perfect matches',
+                gosnel_2: '<i data-lucide="zap" class="icon-sm"></i> Decide in 30 seconds',
+                gosnel_3: '<i data-lucide="smile" class="icon-sm"></i> Confidence & clarity',
+                gosnel_4: '<i data-lucide="tag" class="icon-sm"></i> Real restaurant prices',
                 cta_title: 'Start ordering in your language',
                 cta_subtitle: 'No subscription. No hidden fees. No language barriers.\nTry our demo chat free, no signup needed!',
-                cta_button: 'Create Your Account',
+                cta_button: 'Chat with me',
             },
             ar: {
                 hero_badge: 'اكتشاف الطعام بالذكاء الاصطناعي',
                 hero_title_1: 'توقف عن التمرير.',
                 hero_title_2: 'دع الذكاء الاصطناعي يختار لك في 30 ثانية',
                 hero_subtitle: 'تعبت من قضاء 15 دقيقة في تصفح القوائم؟ الذكاء الاصطناعي من جوسنِل يقترح لك الوجبة المثالية بناءً على ذوقك وميزانيتك — في أقل من دقيقة.',
-                cta_try_now: 'جرب الآن، مجانًا',
-                cta_demo: 'جرب محادثة تجريبية',
+                cta_button_hero: 'تحدث معي',
                 stat_languages: 'لغة',
                 stat_time: 'متوسط الوقت',
                 stat_cost: 'تكلفة الاستخدام',
@@ -975,43 +1005,49 @@
                 feature_4_title: 'محادثات طبيعية',
                 feature_4_desc: 'تحدث معي كأنك تراسل صديقك — بدون قوائم معقدة.',
                 how_badge: 'كيف يعمل',
-                how_title: 'من "لا أعرف" إلى "أنا آكل" في 3 خطوات',
+                how_title: 'من "ما أعرف شو آكل" إلى "جوسنِل يعرف اللي يناسبني"',
                 step_1_title: 'تحدث مع الذكاء الاصطناعي',
                 step_1_desc: 'أخبرني بما تشتهيه، ميزانيتك، أو قل فقط "أنا جائع" — سأفهم.',
                 step_2_title: 'احصل على اقتراحات',
                 step_2_desc: 'سأقترح 3-5 وجبات مثالية من المطاعم القريبة بناءً على تفضيلاتك.',
                 step_3_title: 'اطلب بطريقتك',
-                step_3_desc: 'اطلب عبر واتساب، طلبات، أو استلام — كما تفضل.',
+                step_3_desc: 'اطلب عبر واتساب أو استلام — كما تفضل.',
                 comparison_title: 'جوسنِل مقابل تطبيقات الطعام التقليدية',
                 comparison_subtitle: 'توقف عن البحث. ابدأ الاكتشاف.',
-                traditional_title: '❌ التطبيقات التقليدية',
-                traditional_1: '🔍 ابحث عن "برجر" → 100 نتيجة',
-                traditional_2: '⏰ تمرير لأكثر من 15 دقيقة',
-                traditional_3: '😩 شلل اتخاذ القرار',
-                traditional_4: '💸 عمولات عالية (30%)',
-                gosnel_title: '✅ جوسنِل',
-                gosnel_1: '🤖 الذكاء الاصطناعي يقترح 3-5 خيارات مثالية',
-                gosnel_2: '⚡ قرر في 30 ثانية',
-                gosnel_3: '😊 ثقة ووضوح',
-                gosnel_4: '🆓 مجاني للاستخدام (بدون عمولات)',
+                traditional_title: '<i data-lucide="circle-x" class="icon-sm" style="color: #ef4444;"></i> التطبيقات التقليدية',
+                traditional_1: '<i data-lucide="search" class="icon-sm"></i> ابحث عن "برجر" → 100 نتيجة',
+                traditional_2: '<i data-lucide="clock" class="icon-sm"></i> تمرير لأكثر من 15 دقيقة',
+                traditional_3: '<i data-lucide="frown" class="icon-sm"></i> شلل اتخاذ القرار',
+                traditional_4: '<i data-lucide="trending-up" class="icon-sm"></i> أسعار أعلى من المطعم',
+                gosnel_title: '<i data-lucide="check-circle" class="icon-sm" style="color: #4ECDC4;"></i> جوسنِل',
+                gosnel_1: '<i data-lucide="bot" class="icon-sm"></i> الذكاء الاصطناعي يقترح 3-5 خيارات مثالية',
+                gosnel_2: '<i data-lucide="zap" class="icon-sm"></i> قرر في 30 ثانية',
+                gosnel_3: '<i data-lucide="smile" class="icon-sm"></i> ثقة ووضوح',
+                gosnel_4: '<i data-lucide="tag" class="icon-sm"></i> أسعار المطعم الأصلية',
                 cta_title: 'ابدأ الطلب بلغتك',
                 cta_subtitle: 'بدون اشتراك. بدون رسوم مخفية. بدون حواجز لغوية.\nجرب محادثتنا التجريبية مجانًا، بدون تسجيل!',
-                cta_button: 'أنشئ حسابك',
-            }
+                cta_button: 'تحدث معي',
+            },
         };
         
         const chatMessages = {
             en: [
                 { user: true, text: 'Hey' },
-                { user: false, text: "Yo, foodie! 😋 Hope you're hungry today!" },
+                { user: false, text: 'Yo, foodie! <i data-lucide="utensils" class="icon-sm"></i> Hope you\'re hungry today!' },
                 { user: true, text: 'I want something spicy for lunch' },
-                { user: false, text: "Perfect! I've got 3 amazing spicy options for you:\n\n1️⃣ Spicy Chicken Biryani – 35 AED 🔥\n2️⃣ Thai Red Curry – 38 AED 🌶️\n3️⃣ Mexican Tacos – 28 AED 🌮\n\nWhich one sounds good?" }
+                { user: false, text: 'Perfect! I\'ve got 3 amazing spicy options for you:
+
+1️⃣ Spicy Chicken Biryani – 35 AED <i data-lucide="flame" class="icon-sm" style="color:#f97316;"></i>
+2️⃣ Thai Red Curry – 38 AED <i data-lucide="flame" class="icon-sm" style="color:#ef4444;"></i>
+3️⃣ Mexican Tacos – 28 AED <i data-lucide="utensils" class="icon-sm"></i>
+
+Which one sounds good?' }
             ],
             ar: [
                 { user: true, text: 'السلام عليكم' },
-                { user: false, text: 'هلا! 😋 جوعان اليوم؟' },
+                { user: false, text: 'هلا! <i data-lucide="utensils" class="icon-sm"></i> جوعان اليوم؟' },
                 { user: true, text: 'أبغى شي حار للغداء' },
-                { user: false, text: "تمام! عندي 3 خيارات حارة رهيبة:\n\n1️⃣ برياني دجاج حار – 35 درهم 🔥\n2️⃣ كاري تايلندي أحمر – 38 درهم 🌶️\n3️⃣ تاكو مكسيكي – 28 درهم 🌮\n\nأي وحدة تعجبك؟" }
+                { user: false, text: 'تمام! عندي 3 خيارات حارة رهيبة:\n\n1️⃣ برياني دجاج حار – 35 درهم <i data-lucide="flame" class="icon-sm" style="color:#f97316;"></i>\n2️⃣ كاري تايلندي أحمر – 38 درهم <i data-lucide="flame" class="icon-sm" style="color:#ef4444;"></i>\n3️⃣ تاكو مكسيكي – 28 درهم <i data-lucide="utensils" class="icon-sm"></i>\n\nأي وحدة تعجبك؟' }
             ]
         };
         
@@ -1022,7 +1058,7 @@
             Object.keys(t).forEach(key => {
                 const el = document.getElementById(key);
                 if (el) {
-                    if (key.includes('subtitle') || key.includes('desc')) {
+                    if (key.includes('subtitle') || key.includes('desc') || key.includes('title') || key.includes('gosnel_') || key.includes('traditional_')) {
                         el.innerHTML = t[key].replace(/\n/g, '<br>');
                     } else {
                         el.textContent = t[key];
@@ -1032,6 +1068,7 @@
             
             document.documentElement.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
             renderChat();
+            if (window.lucide) { lucide.createIcons(); }
         }
         
         function renderChat() {
@@ -1048,6 +1085,7 @@
                     div.innerHTML = `<div class="chat-bubble">${msg.text.replace(/\n/g, '<br>')}</div>`;
                     container.appendChild(div);
                     container.scrollTop = container.scrollHeight;
+                    if (window.lucide) { lucide.createIcons(); }
                 }, i * 300);
             });
         }
@@ -1068,6 +1106,24 @@
         applyTranslations();
         
         if (typeof fbq !== 'undefined') {
+            fbq('track', 'ViewContent', { content_category: 'user_landing' });
+        }
+    })();
+    </script>
+</body>
+</html> if (typeof fbq !== 'undefined') {
+            fbq('track', 'ViewContent', { content_category: 'user_landing' });
+        }
+    })();
+    </script>
+</body>
+</html> if (typeof fbq !== 'undefined') {
+            fbq('track', 'ViewContent', { content_category: 'user_landing' });
+        }
+    })();
+    </script>
+</body>
+</html> if (typeof fbq !== 'undefined') {
             fbq('track', 'ViewContent', { content_category: 'user_landing' });
         }
     })();
