@@ -6,9 +6,10 @@
     <title>GoSnel - AI Food Discovery | Stop Scrolling, Start Eating</title>
     
     <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="icon" type="image/png" href="/shared/assets/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/shared/assets/favicon-circular.svg" />
-    <link rel="shortcut icon" href="/shared/assets/favicon.ico" />
+    <link rel="shortcut icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/shared/assets/apple-touch-icon.png" />
     <link rel="manifest" href="/shared/assets/site.webmanifest" />
     <meta name="theme-color" content="#4ECDC4">
@@ -42,7 +43,7 @@
     <meta name="twitter:image" content="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/gosnelicon.png">
     <meta name="twitter:site" content="@GoSnel">
     
-    <!-- JSON-LD -->
+    <!-- JSON-LD: WebApplication -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -52,6 +53,7 @@
       "url": "https://gosnel.com",
       "applicationCategory": "FoodService",
       "operatingSystem": "Web",
+      "image": "https://pub-0d4798289dad4074a3236450ba640652.r2.dev/gosnelicon.png",
       "offers": {
         "@type": "Offer",
         "price": "0",
@@ -65,6 +67,26 @@
     }
     </script>
     
+    <!-- JSON-LD: Organization (for Google Knowledge Panel & Favicon) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "GoSnel",
+      "url": "https://gosnel.com",
+      "logo": "https://pub-0d4798289dad4074a3236450ba640652.r2.dev/gosnelicon.png",
+      "image": "https://pub-0d4798289dad4074a3236450ba640652.r2.dev/gosnelicon.png",
+      "description": "AI-powered meal discovery platform connecting food lovers with restaurants across the UAE.",
+      "foundingDate": "2024",
+      "areaServed": "United Arab Emirates",
+      "sameAs": [
+        "https://www.instagram.com/gosneluae",
+        "https://twitter.com/gosneluae",
+        "https://www.linkedin.com/company/gosnel"
+      ]
+    }
+    </script>
+    
     <link rel="stylesheet" href="/shared/styles/output.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -72,9 +94,6 @@
     
     <!-- Contentsquare Analytics -->
     <script src="https://t.contentsquare.net/uxa/0dcccabc249da.js"></script>
-    
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
     
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -1263,13 +1282,25 @@
                 { user: true, text: 'Hey' },
                 { user: false, text: 'Yo, foodie! <i data-lucide="utensils" class="icon-sm"></i> Hope you\'re hungry today!' },
                 { user: true, text: 'I want something spicy for lunch' },
-                { user: false, text: 'Perfect! I\'ve got 3 amazing spicy options for you:\n\n1️⃣ Spicy Chicken Biryani – 35 AED <i data-lucide="flame" class="icon-sm" style="color:#f97316;"></i>\n2️⃣ Thai Red Curry – 38 AED <i data-lucide="flame" class="icon-sm" style="color:#ef4444;"></i>\n3️⃣ Mexican Tacos – 28 AED <i data-lucide="utensils" class="icon-sm"></i>\n\nWhich one sounds good?' }
+                { user: false, text: `Perfect! I've got 3 amazing spicy options for you:
+
+1️⃣ Spicy Chicken Biryani – 35 AED <i data-lucide="flame" class="icon-sm" style="color:#f97316;"></i>
+2️⃣ Thai Red Curry – 38 AED <i data-lucide="flame" class="icon-sm" style="color:#ef4444;"></i>
+3️⃣ Mexican Tacos – 28 AED <i data-lucide="utensils" class="icon-sm"></i>
+
+Which one sounds good?` }
             ],
             ar: [
                 { user: true, text: 'السلام عليكم' },
                 { user: false, text: 'هلا! <i data-lucide="utensils" class="icon-sm"></i> جوعان اليوم؟' },
                 { user: true, text: 'أبغى شي حار للغداء' },
-                { user: false, text: 'تمام! عندي 3 خيارات حارة رهيبة:\n\n1️⃣ برياني دجاج حار – 35 درهم <i data-lucide="flame" class="icon-sm" style="color:#f97316;"></i>\n2️⃣ كاري تايلندي أحمر – 38 درهم <i data-lucide="flame" class="icon-sm" style="color:#ef4444;"></i>\n3️⃣ تاكو مكسيكي – 28 درهم <i data-lucide="utensils" class="icon-sm"></i>\n\nأي وحدة تعجبك؟' }
+                { user: false, text: `تمام! عندي 3 خيارات حارة رهيبة:
+
+1️⃣ برياني دجاج حار – 35 درهم <i data-lucide="flame" class="icon-sm" style="color:#f97316;"></i>
+2️⃣ كاري تايلندي أحمر – 38 درهم <i data-lucide="flame" class="icon-sm" style="color:#ef4444;"></i>
+3️⃣ تاكو مكسيكي – 28 درهم <i data-lucide="utensils" class="icon-sm"></i>
+
+أي وحدة تعجبك؟` }
             ]
         };
         
