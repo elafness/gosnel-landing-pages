@@ -1,84 +1,118 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
-  <!-- GOSNEL.COM - User/Consumer Pages (Root Level) -->
+  <!-- GOSNEL.COM - Main Pages -->
   <url>
     <loc>https://gosnel.com/</loc>
-    <lastmod>2026-01-07</lastmod>
+    <lastmod>2026-01-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://gosnel.com/pricing</loc>
-    <lastmod>2026-01-07</lastmod>
+    <lastmod>2026-01-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://gosnel.com/how-it-works</loc>
-    <lastmod>2026-01-07</lastmod>
+    <lastmod>2026-01-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://gosnel.com/about</loc>
-    <lastmod>2026-01-07</lastmod>
+    <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://gosnel.com/faq</loc>
-    <lastmod>2026-01-07</lastmod>
+    <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://gosnel.com/food</loc>
-    <lastmod>2026-01-07</lastmod>
+    <lastmod>2026-01-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://gosnel.com/legal</loc>
+    <lastmod>2026-01-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- GOSNEL.COM/BLOG - Blog Pages -->
+  <url>
     <loc>https://gosnel.com/blog</loc>
-    <lastmod>2026-01-07</lastmod>
+    <lastmod>2026-01-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://gosnel.com/blog/ai-food-recommendations-uae</loc>
+    <lastmod>2026-01-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gosnel.com/blog/uae-food-delivery-evolution</loc>
+    <lastmod>2026-01-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://gosnel.com/blog/restaurant-technology-trends-2026</loc>
+    <lastmod>2026-01-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- GOSNEL.COM/DRIVERS - Driver Recruitment -->
+  <url>
+    <loc>https://gosnel.com/drivers</loc>
+    <lastmod>2026-01-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- GOSNEL.COM/PARTNER - Restaurant Partner Pages (Subdirectory) -->
+  <!-- GOSNEL.COM/PARTNER - Restaurant Partner Pages -->
   <url>
     <loc>https://gosnel.com/partner</loc>
-    <lastmod>2026-01-07</lastmod>
+    <lastmod>2026-01-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://gosnel.com/partner/pricing</loc>
-    <lastmod>2026-01-07</lastmod>
+    <lastmod>2026-01-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://gosnel.com/partner/how-it-works</loc>
-    <lastmod>2026-01-07</lastmod>
+    <lastmod>2026-01-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://gosnel.com/partner/why-partner</loc>
-    <lastmod>2026-01-07</lastmod>
+    <lastmod>2026-01-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://gosnel.com/partner/guidelines</loc>
-    <lastmod>2026-01-07</lastmod>
+    <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://gosnel.com/partner/insights</loc>
-    <lastmod>2026-01-07</lastmod>
+    <lastmod>2026-01-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
