@@ -286,7 +286,7 @@
         /* === DEMO CHAT CARD === */
         .chat-preview-card {
             width: 100%;
-            max-width: 540px;
+            max-width: 620px;
             margin: 60px auto 0;
             background: rgba(255, 255, 255, 0.98);
             border-radius: 24px;
@@ -319,9 +319,10 @@
         }
         
         /* Icon styling */
-        .icon-sm { width: 18px; height: 18px; vertical-align: middle; margin-right: 8px; }
-        [dir="rtl"] .icon-sm { margin-right: 0; margin-left: 8px; }
+        .icon-sm { width: 16px; height: 16px; vertical-align: middle; margin-right: 4px; display: inline-block; }
+        [dir="rtl"] .icon-sm { margin-right: 0; margin-left: 4px; }
         .icon-inline { display: inline-flex; align-items: center; gap: 8px; }
+        .chat-line { white-space: nowrap; display: block; }
         
         .chat-info h4 {
             margin: 0;
@@ -381,8 +382,8 @@
             max-width: 98%;
             padding: 10px 14px;
             border-radius: 16px;
-            font-size: 14px;
-            line-height: 1.5;
+            font-size: 13.5px;
+            line-height: 1.4;
         }
         
         .chat-message.user .chat-bubble {
@@ -1280,7 +1281,7 @@
         const chatMessages = {
             en: [
                 { user: true, text: 'Hey' },
-                { user: false, text: 'Yo, foodie! <i data-lucide="utensils" class="icon-sm"></i> Hope you\'re hungry today!' },
+                { user: false, text: 'Yo, foodie! Hope you\'re hungry today!' },
                 { user: true, text: 'I want something spicy for lunch' },
                 { user: false, text: `Perfect! I've got 3 amazing spicy options for you:
 
@@ -1292,7 +1293,7 @@ Which one sounds good?` }
             ],
             ar: [
                 { user: true, text: 'السلام عليكم' },
-                { user: false, text: 'هلا! <i data-lucide="utensils" class="icon-sm"></i> جوعان اليوم؟' },
+                { user: false, text: 'هلا! جوعان اليوم؟' },
                 { user: true, text: 'أبغى شي حار للغداء' },
                 { user: false, text: `تمام! عندي 3 خيارات حارة رهيبة:
 
@@ -1335,7 +1336,7 @@ Which one sounds good?` }
                 setTimeout(() => {
                     const div = document.createElement('div');
                     div.className = `chat-message ${msg.user ? 'user' : 'bot'}`;
-                    div.innerHTML = `<div class="chat-bubble">${msg.text.replace(/\n/g, '<br>')}</div>`;
+                    div.innerHTML = `<div class="chat-bubble">${msg.text.split('\n').map(line => line.trim() ? `<div class="chat-line">${line}</div>` : '<br>').join('')}</div>`;
                     container.appendChild(div);
                     container.scrollTop = container.scrollHeight;
                     if (window.lucide) { lucide.createIcons(); }
