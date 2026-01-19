@@ -291,6 +291,24 @@ const buildPages = () => {
     console.log("✅ Copied legal.html from shared to dist root");
   }
   
+  // Copy favicon.ico to root level for Google Search Console
+  const faviconSrcPath = path.join(__dirname, 'shared', 'assets', 'favicon.ico');
+  const faviconDestPath = path.join(distDir, 'favicon.ico');
+  
+  if (fs.existsSync(faviconSrcPath)) {
+    fs.copyFileSync(faviconSrcPath, faviconDestPath);
+    console.log("✅ Copied favicon.ico to root for Google Search");
+  }
+  
+  // Copy apple-touch-icon.png to root level for iOS bookmarks
+  const appleTouchSrcPath = path.join(__dirname, 'shared', 'assets', 'apple-touch-icon.png');
+  const appleTouchDestPath = path.join(distDir, 'apple-touch-icon.png');
+  
+  if (fs.existsSync(appleTouchSrcPath)) {
+    fs.copyFileSync(appleTouchSrcPath, appleTouchDestPath);
+    console.log("✅ Copied apple-touch-icon.png to root");
+  }
+  
   console.log("✅ Created prefixed subdomain pages");
 
   // Copy assets if they exist (recursively)
