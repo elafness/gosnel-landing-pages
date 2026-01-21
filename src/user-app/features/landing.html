@@ -39,7 +39,7 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="GoSnel - AI Food Discovery">
-    <meta name="twitter:description" content="Stop scrolling. Let AI pick your perfect meal in 30 seconds.">
+    <meta name="twitter:description" content="Stop scrolling. Let me pick your perfect meal in 30 seconds.">
     <meta name="twitter:image" content="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/gosnelicon.png">
     <meta name="twitter:site" content="@GoSnel">
     
@@ -747,6 +747,7 @@
             overflow: hidden;
             cursor: pointer;
             transition: all 0.3s ease;
+            border: 1px solid #4ECDC4;
         }
         
         .dietary-card:hover {
@@ -769,7 +770,7 @@
         .dietary-card-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(180deg, rgba(15, 23, 42, 0.3) 0%, rgba(15, 23, 42, 0.8) 100%);
+            background: linear-gradient(to top, rgba(15, 23, 42, 0.8) 0%, rgba(15, 23, 42, 0.2) 50%, transparent 100%);
             z-index: 2;
         }
         
@@ -863,7 +864,7 @@
                 
                 <h1 class="hero-title">
                     <span id="hero_title_1">Stop scrolling.</span><br>
-                    <span class="gradient-text" id="hero_title_2">Let AI pick for you in 30 seconds</span>
+                    <span class="gradient-text" id="hero_title_2">Let me pick for you in 30 seconds</span>
                 </h1>
                 
                 <p class="hero-subtitle" id="hero_subtitle">
@@ -895,54 +896,13 @@
         </div>
     </section>
 
-    <!-- WHY GOSNEL -->
-    <section class="section">
+    <!-- TRANSITION SECTION -->
+    <section class="section-transition" style="padding: 60px 0; background: #ffffff; text-align: center; border-bottom: 1px solid #f1f5f9;">
         <div class="container">
-            <div class="section-header">
-                <div class="section-badge">
-                    <span id="why_badge">Why GoSnel</span>
-                </div>
-                <h2 class="section-title" id="why_title">
-                    Why users love GoSnel
-                </h2>
-                <p class="section-subtitle" id="why_subtitle">
-                    Smart, simple, and speaks your language
-                </p>
-            </div>
-            
-            <div class="value-grid">
-                <div class="value-card">
-                    <div class="value-icon">
-                        <svg width="28" height="28" fill="none" stroke="white" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-                    </div>
-                    <h3 id="feature_1_title">Smart Suggestions</h3>
-                    <p id="feature_1_desc">Get meal ideas personalized to your taste and budget in seconds.</p>
-                </div>
-                
-                <div class="value-card">
-                    <div class="value-icon">
-                        <svg width="28" height="28" fill="none" stroke="white" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 104 0 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                    </div>
-                    <h3 id="feature_2_title">100+ Languages</h3>
-                    <p id="feature_2_desc">Speak your language, and I'll understand perfectly.</p>
-                </div>
-                
-                <div class="value-card">
-                    <div class="value-icon">
-                        <svg width="28" height="28" fill="none" stroke="white" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
-                    </div>
-                    <h3 id="feature_3_title">Real Restaurants</h3>
-                    <p id="feature_3_desc">Browse local vendors with authentic menus and real food.</p>
-                </div>
-                
-                <div class="value-card">
-                    <div class="value-icon">
-                        <svg width="28" height="28" fill="none" stroke="white" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
-                    </div>
-                    <h3 id="feature_4_title">Natural Conversations</h3>
-                    <p id="feature_4_desc">Chat with me like you're texting a friend — no confusing menus.</p>
-                </div>
-            </div>
+            <div style="font-size: 20px; font-weight: 500; color: #64748b; margin-bottom: 4px;" id="trans_line_1">From</div>
+            <div style="font-size: clamp(24px, 4vw, 40px); font-weight: 800; color: #0f172a; margin-bottom: 32px;" id="trans_line_2">I don't know what to eat</div>
+            <div style="font-size: 20px; font-weight: 500; color: #64748b; margin-bottom: 4px;" id="trans_line_3">To</div>
+            <div style="font-size: clamp(24px, 4vw, 40px); font-weight: 800; color: #4ECDC4; margin-bottom: 0;" id="trans_line_4">"GoSnel knows what I want"</div>
         </div>
     </section>
 
@@ -962,13 +922,10 @@
                 <!-- Plant-Based -->
                 <div class="dietary-card">
                     <div class="dietary-card-image">
-                        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800&h=600&fit=crop&q=80" alt="Plant-Based Meals" loading="lazy">
+                        <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/user_landing_preferences/Plant_Based.png" alt="Plant-Based Meals" loading="lazy">
                     </div>
                     <div class="dietary-card-overlay"></div>
                     <div class="dietary-card-content">
-                        <div class="dietary-card-icon">
-                            <i data-lucide="leaf" style="color: #4ECDC4; width: 24px; height: 24px;"></i>
-                        </div>
                         <h3 id="diet_1_title">Plant-Based</h3>
                         <p id="diet_1_desc">Vegetarian or vegan meals, automatically selected</p>
                     </div>
@@ -977,13 +934,10 @@
                 <!-- Weight & Shape -->
                 <div class="dietary-card">
                     <div class="dietary-card-image">
-                        <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=800&h=600&fit=crop&q=80" alt="Balanced Meals" loading="lazy">
+                        <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/user_landing_preferences/Weight_Shape.png" alt="Balanced Meals" loading="lazy">
                     </div>
                     <div class="dietary-card-overlay"></div>
                     <div class="dietary-card-content">
-                        <div class="dietary-card-icon">
-                            <i data-lucide="scale" style="color: #4ECDC4; width: 24px; height: 24px;"></i>
-                        </div>
                         <h3 id="diet_2_title">Weight & Shape</h3>
                         <p id="diet_2_desc">Balanced meals that fit your goals</p>
                     </div>
@@ -992,13 +946,10 @@
                 <!-- Performance -->
                 <div class="dietary-card">
                     <div class="dietary-card-image">
-                        <img src="https://images.unsplash.com/photo-1532550907401-a500c9a57435?w=800&h=600&fit=crop&q=80" alt="High Protein Meals" loading="lazy">
+                        <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/user_landing_preferences/Performance.png" alt="High Protein Meals" loading="lazy">
                     </div>
                     <div class="dietary-card-overlay"></div>
                     <div class="dietary-card-content">
-                        <div class="dietary-card-icon">
-                            <i data-lucide="activity" style="color: #4ECDC4; width: 24px; height: 24px;"></i>
-                        </div>
                         <h3 id="diet_3_title">Performance</h3>
                         <p id="diet_3_desc">High-protein or low-carb, depending on your day</p>
                     </div>
@@ -1007,13 +958,10 @@
                 <!-- Health Needs -->
                 <div class="dietary-card">
                     <div class="dietary-card-image">
-                        <img src="https://images.unsplash.com/photo-1543362906-acfc16c67564?w=800&h=600&fit=crop&q=80" alt="Allergy-Aware Options" loading="lazy">
+                        <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/user_landing_preferences/Health_Needs.png" alt="Allergy-Aware Options" loading="lazy">
                     </div>
                     <div class="dietary-card-overlay"></div>
                     <div class="dietary-card-content">
-                        <div class="dietary-card-icon">
-                            <i data-lucide="shield-check" style="color: #4ECDC4; width: 24px; height: 24px;"></i>
-                        </div>
                         <h3 id="diet_4_title">Health Needs</h3>
                         <p id="diet_4_desc">Gluten-free and allergy-aware options</p>
                     </div>
@@ -1022,13 +970,10 @@
                 <!-- Smart Preferences -->
                 <div class="dietary-card">
                     <div class="dietary-card-image">
-                        <img src="https://images.unsplash.com/photo-1547592180-85f173990554?w=800&h=600&fit=crop&q=80" alt="Custom Preferences" loading="lazy">
+                        <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/user_landing_preferences/Smart_Preferences.png" alt="Custom Preferences" loading="lazy">
                     </div>
                     <div class="dietary-card-overlay"></div>
                     <div class="dietary-card-content">
-                        <div class="dietary-card-icon">
-                            <i data-lucide="settings" style="color: #4ECDC4; width: 24px; height: 24px;"></i>
-                        </div>
                         <h3 id="diet_5_title">Smart Preferences</h3>
                         <p id="diet_5_desc">I want meal with:</p>
                         <div class="dietary-card-tags">
@@ -1038,40 +983,6 @@
                             <span class="dietary-tag">No dairy and more</span>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- HOW IT WORKS -->
-    <section class="section how-it-works">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-badge">
-                    <span id="how_badge">How it works</span>
-                </div>
-                <h2 class="section-title" id="how_title">
-                    From "I don't know what to eat" to "GoSnel knows what I want
-                </h2>
-            </div>
-            
-            <div class="steps-grid">
-                <div class="step-card">
-                    <div class="step-number">1</div>
-                    <h3 id="step_1_title">Chat with AI</h3>
-                    <p id="step_1_desc">Tell me what you're craving, your budget, or just say "I'm hungry" — I'll understand.</p>
-                </div>
-                
-                <div class="step-card">
-                    <div class="step-number">2</div>
-                    <h3 id="step_2_title">Get Suggestions</h3>
-                    <p id="step_2_desc">I'll suggest 3-5 perfect meals from nearby restaurants based on your preferences.</p>
-                </div>
-                
-                <div class="step-card">
-                    <div class="step-number">3</div>
-                    <h3 id="step_3_title">Order Your Way</h3>
-                    <p id="step_3_desc">Order via WhatsApp or pickup — however you prefer.</p>
                 </div>
             </div>
         </div>
@@ -1133,6 +1044,37 @@
         </div>
     </section>
 
+    <!-- HOW IT WORKS -->
+    <section class="section how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">
+                    <span id="how_badge">How it works</span>
+                </div>
+            </div>
+            
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number" style="border-radius: 50%; width: 80px; height: 80px; margin: 0 auto 24px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #4ECDC4, #2dd4bf); color: white; font-size: 24px; font-weight: 800; box-shadow: 0 8px 24px rgba(78, 205, 196, 0.3);"><i data-lucide="message-square-text" style="width: 40px; height: 40px;"></i></div>
+                    <h3 id="step_1_title">Chat with Me</h3>
+                    <p id="step_1_desc">Tell me what you're craving, your budget, or just say "I'm hungry" — I'll understand.</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number" style="border-radius: 50%; width: 80px; height: 80px; margin: 0 auto 24px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #4ECDC4, #2dd4bf); color: white; font-size: 24px; font-weight: 800; box-shadow: 0 8px 24px rgba(78, 205, 196, 0.3);"><img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/gosnelicon.png" alt="GoSnel" style="width: 100%; height: 100%; border-radius: 50%; object-fit: contain; padding: 8px;"></div>
+                    <h3 id="step_2_title">Get Suggestions</h3>
+                    <p id="step_2_desc">I'll suggest 3-5 perfect meals from nearby restaurants based on your preferences.</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number" style="border-radius: 50%; width: 80px; height: 80px; margin: 0 auto 24px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #4ECDC4, #2dd4bf); color: white; font-size: 24px; font-weight: 800; box-shadow: 0 8px 24px rgba(78, 205, 196, 0.3);"><svg class="w-10 h-10" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white"><path fill="white" d="M16.6 14c-.2-.1-1.5-.7-1.7-.8c-.2-.1-.4-.1-.6.1c-.2.2-.6.8-.8 1c-.1.2-.3.2-.5.1c-.7-.3-1.4-.7-2-1.2c-.5-.5-1-1.1-1.4-1.7c-.1-.2 0-.4.1-.5c.1-.1.2-.3.4-.4c.1-.1.2-.3.2-.4c.1-.1.1-.3 0-.4c-.1-.1-.6-1.3-.8-1.8c-.1-.7-.3-.7-.5-.7h-.5c-.2 0-.5.2-.6.3c-.6.6-.9 1.3-.9 2.1c.1.9.4 1.8 1 2.6c1.1 1.6 2.5 2.9 4.2 3.7c.5.2.9.4 1.4.5c.5.2 1 .2 1.6.1c.7-.1 1.3-.6 1.7-1.2c.2-.4.2-.8.1-1.2l-.4-.2m2.5-9.1C15.2 1 8.9 1 5 4.9c-3.2 3.2-3.8 8.1-1.6 12L2 22l5.3-1.4c1.5.8 3.1 1.2 4.7 1.2c5.5 0 9.9-4.4 9.9-9.9c.1-2.6-1-5.1-2.8-7m-2.7 14c-1.3.8-2.8 1.3-4.4 1.3c-1.5 0-2.9-.4-4.2-1.1l-.3-.2l-3.1.8l.8-3l-.2-.3c-2.4-4-1.2-9 2.7-11.5S16.6 3.7 19 7.5c2.4 3.9 1.3 9-2.6 11.4"/></svg></div>
+                    <h3 id="step_3_title">Order Your Way</h3>
+                    <p id="step_3_desc">Order via WhatsApp or pickup — however you prefer.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- CTA -->
     <section class="cta-section">
         <div class="cta-bg-image">
@@ -1140,15 +1082,35 @@
         </div>
         <div class="cta-overlay"></div>
         <div class="container" style="position: relative; z-index: 10;">
-            <h2 id="cta_title">Start ordering in your language</h2>
-            <p id="cta_subtitle">
-                No subscription. No hidden fees. No language barriers.<br>
-                Try our demo chat free, no signup needed!
-            </p>
-            <a href="https://gosnel.com/user/signup" class="btn-cta-large">
-                <span id="cta_button">Chat with me</span>
-                <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-            </a>
+            <div class="cta-card" style="padding: 60px 40px; border-radius: 24px; border: 2px solid #4ECDC4; background: rgba(78, 205, 196, 0.1); backdrop-filter: blur(10px); max-width: 800px; margin: 0 auto;">
+                <h2 id="cta_title" style="font-size: 36px; font-weight: 900; color: #4ECDC4; margin: 0 0 24px 0; text-align: center;">Why try me</h2>
+                <p id="cta_subtitle" style="font-size: 20px; font-weight: 600; color: #ffffff; margin: 0 0 40px 0; text-align: center; line-height: 1.6;"></p>
+                
+                <div style="max-width: 700px; margin: 0 auto 40px;">
+                    <div id="cta_benefit_1" style="font-size: 16px; color: rgba(255, 255, 255, 0.95); margin: 24px 0; padding: 16px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                        <strong style="font-size: 18px; display: flex; align-items: center; gap: 8px; margin-bottom: 0;"><i data-lucide="tag" style="width: 20px; height: 20px;"></i>Same restaurant prices always</strong>
+                    </div>
+                    <div id="cta_benefit_2" style="font-size: 16px; color: rgba(255, 255, 255, 0.95); margin: 24px 0; padding: 16px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                        <strong style="font-size: 18px; display: flex; align-items: center; gap: 8px; margin-bottom: 0;"><i data-lucide="badge-percent" style="width: 20px; height: 20px;"></i>I find the top discounts for you</strong>
+                    </div>
+                    <div id="cta_benefit_3" style="font-size: 16px; color: rgba(255, 255, 255, 0.95); margin: 24px 0; padding: 16px 0;">
+                        <strong style="font-size: 18px; display: flex; align-items: center; gap: 8px;">
+                            <svg style="width: 20px; height: 20px; fill: white;" viewBox="0 0 24 24"><path d="M16.6 14c-.2-.1-1.5-.7-1.7-.8c-.2-.1-.4-.1-.6.1c-.2.2-.6.8-.8 1c-.1.2-.3.2-.5.1c-.7-.3-1.4-.7-2-1.2c-.5-.5-1-1.1-1.4-1.7c-.1-.2 0-.4.1-.5c.1-.1.2-.3.4-.4c.1-.1.2-.3.2-.4c.1-.1.1-.3 0-.4c-.1-.1-.6-1.3-.8-1.8c-.1-.7-.3-.7-.5-.7h-.5c-.2 0-.5.2-.6.3c-.6.6-.9 1.3-.9 2.1c.1.9.4 1.8 1 2.6c1.1 1.6 2.5 2.9 4.2 3.7c.5.2.9.4 1.4.5c.5.2 1 .2 1.6.1c.7-.1 1.3-.6 1.7-1.2c.2-.4.2-.8.1-1.2l-.4-.2m2.5-9.1C15.2 1 8.9 1 5 4.9c-3.2 3.2-3.8 8.1-1.6 12L2 22l5.3-1.4c1.5.8 3.1 1.2 4.7 1.2c5.5 0 9.9-4.4 9.9-9.9c.1-2.6-1-5.1-2.8-7m-2.7 14c-1.3.8-2.8 1.3-4.4 1.3c-1.5 0-2.9-.4-4.2-1.1l-.3-.2l-3.1.8l.8-3l-.2-.3c-2.4-4-1.2-9 2.7-11.5S16.6 3.7 19 7.5c2.4 3.9 1.3 9-2.6 11.4"/></svg>
+                            Order on WhatsApp Pay on delivery
+                        </strong>
+                    </div>
+                    <div id="cta_benefit_4" style="font-size: 16px; color: rgba(255, 255, 255, 0.95); margin: 24px 0; padding: 16px 0;">
+                        <strong style="font-size: 18px; display: flex; align-items: center; gap: 8px; margin-bottom: 0;"><i data-lucide="languages" style="width: 20px; height: 20px;"></i>I speak your language</strong>
+                    </div>
+                </div>
+                
+                <div style="text-align: center;">
+                    <a href="https://gosnel.com/user/signup" class="btn-cta-large">
+                        <span id="cta_button">Chat with me</span>
+                        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -1161,12 +1123,16 @@
             en: {
                 hero_badge: 'AI-Powered Food Discovery',
                 hero_title_1: 'Stop scrolling.',
-                hero_title_2: 'Let AI pick for you in 30 seconds',
-                hero_subtitle: "Tired of spending 15 minutes scrolling through menus? GoSnel's AI suggests the perfect meal based on your taste and budget — in under a minute.",
+                hero_title_2: 'Let me pick for you in 30 seconds',
+                hero_subtitle: "Tired of spending 15 minutes scrolling through menus? GoSnel's AI suggests the perfect meal based on your taste and budget in under a minute.",
                 cta_button_hero: 'Chat with me',
                 stat_languages: 'Languages',
                 stat_time: 'Average time',
                 stat_cost: 'Cost to use',
+                trans_line_1: 'From',
+                trans_line_2: 'I don\'t know what to eat',
+                trans_line_3: 'To',
+                trans_line_4: 'GoSnel knows what I want',
                 chat_title: 'GoSnel AI',
                 chat_subtitle: 'Food discovery assistant',
                 chat_status: 'Online',
@@ -1180,7 +1146,7 @@
                 feature_3_title: 'Real Restaurants',
                 feature_3_desc: 'Browse local vendors with authentic menus and real food.',
                 feature_4_title: 'Natural Conversations',
-                feature_4_desc: "Chat with me like you're texting a friend — no confusing menus.",
+                feature_4_desc: "Chat with me like you're texting a friend - no confusing menus.",
                 personalized_badge: 'Personalized to You',
                 personalized_title: 'You can tell me your preferences',
                 diet_1_title: 'Plant-Based',
@@ -1194,13 +1160,13 @@
                 diet_5_title: 'Smart Preferences',
                 diet_5_desc: 'I want meal with:',
                 how_badge: 'How it works',
-                how_title: 'From "I don\'t know what to eat" to "GoSnel knows what I want"',
-                step_1_title: 'Chat with AI',
-                step_1_desc: 'Tell me what you\'re craving, your budget, or just say "I\'m hungry" — I\'ll understand.',
+                how_title: 'How it works',
+                step_1_title: 'Chat with Me',
+                step_1_desc: 'Tell me what you\'re craving, your budget, or just say "I\'m hungry" - I\'ll understand.',
                 step_2_title: 'Get Suggestions',
                 step_2_desc: 'I\'ll suggest 3-5 perfect meals from nearby restaurants based on your preferences.',
                 step_3_title: 'Order Your Way',
-                step_3_desc: 'Order via WhatsApp or pickup — however you prefer.',
+                step_3_desc: 'Order via WhatsApp or pickup - however you prefer.',
                 comparison_title: 'GoSnel vs Traditional Food Apps',
                 comparison_subtitle: 'Stop searching. Start discovering.',
                 traditional_title: '<i data-lucide="circle-x" class="icon-sm" style="color: #ef4444;"></i> Traditional Apps',
@@ -1213,19 +1179,26 @@
                 gosnel_2: '<i data-lucide="zap" class="icon-sm"></i> Decide in 30 seconds',
                 gosnel_3: '<i data-lucide="smile" class="icon-sm"></i> Confidence & clarity',
                 gosnel_4: '<i data-lucide="tag" class="icon-sm"></i> Real restaurant prices',
-                cta_title: 'Start ordering in your language',
-                cta_subtitle: 'No subscription. No hidden fees. No language barriers.\nTry our demo chat free, no signup needed!',
-                cta_button: 'Chat with me',
+                cta_title: 'Why try me',
+                cta_subtitle: '',
+                cta_benefit_1: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 8px; margin-bottom: 0;"><i data-lucide="tag" style="width: 20px; height: 20px;"></i>Same restaurant prices always</strong>',
+                cta_benefit_2: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 8px; margin-bottom: 0;"><i data-lucide="badge-percent" style="width: 20px; height: 20px;"></i>I find the top discounts for you</strong>',
+                cta_benefit_3: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 12px;"><svg style="width: 24px; height: 24px; fill: white; flex-shrink: 0;" viewBox="0 0 24 24"><path d="M16.6 14c-.2-.1-1.5-.7-1.7-.8c-.2-.1-.4-.1-.6.1c-.2.2-.6.8-.8 1c-.1.2-.3.2-.5.1c-.7-.3-1.4-.7-2-1.2c-.5-.5-1-1.1-1.4-1.7c-.1-.2 0-.4.1-.5c.1-.1.2-.3.4-.4c.1-.1.2-.3.2-.4c.1-.1.1-.3 0-.4c-.1-.1-.6-1.3-.8-1.8c-.1-.7-.3-.7-.5-.7h-.5c-.2 0-.5.2-.6.3c-.6.6-.9 1.3-.9 2.1c.1.9.4 1.8 1 2.6c1.1 1.6 2.5 2.9 4.2 3.7c.5.2.9.4 1.4.5c.5.2 1 .2 1.6.1c.7-.1 1.3-.6 1.7-1.2c.2-.4.2-.8.1-1.2l-.4-.2m2.5-9.1C15.2 1 8.9 1 5 4.9c-3.2 3.2-3.8 8.1-1.6 12L2 22l5.3-1.4c1.5.8 3.1 1.2 4.7 1.2c5.5 0 9.9-4.4 9.9-9.9c.1-2.6-1-5.1-2.8-7m-2.7 14c-1.3.8-2.8 1.3-4.4 1.3c-1.5 0-2.9-.4-4.2-1.1l-.3-.2l-3.1.8l.8-3l-.2-.3c-2.4-4-1.2-9 2.7-11.5S16.6 3.7 19 7.5c2.4 3.9 1.3 9-2.6 11.4"/></svg>Order on WhatsApp Pay on delivery</strong>',
+                cta_benefit_4: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 8px; margin-bottom: 0;"><i data-lucide="languages" style="width: 20px; height: 20px;"></i>I speak your language</strong>',
             },
             ar: {
                 hero_badge: 'اكتشاف الطعام بالذكاء الاصطناعي',
-                hero_title_1: 'توقف عن التمرير.',
-                hero_title_2: 'دع الذكاء الاصطناعي يختار لك في 30 ثانية',
-                hero_subtitle: 'تعبت من قضاء 15 دقيقة في تصفح القوائم؟ الذكاء الاصطناعي من جوسنِل يقترح لك الوجبة المثالية بناءً على ذوقك وميزانيتك — في أقل من دقيقة.',
+                hero_title_1: 'توقف عن التمرير',
+                hero_title_2: 'خلني اختار لك في 30 ثانية',
+                hero_subtitle: 'تعبت من قضاء 15 دقيقة في تصفح القوائم؟ انا بقترح لك الوجبة المثالية بناءً على ذوقك وميزانيتك في أقل من دقيقة.',
                 cta_button_hero: 'تحدث معي',
                 stat_languages: 'لغة',
                 stat_time: 'متوسط الوقت',
                 stat_cost: 'تكلفة الاستخدام',
+                trans_line_1: 'من',
+                trans_line_2: 'ما أعرف شو آكل',
+                trans_line_3: 'إلى',
+                trans_line_4: 'جوسنِل يعرف اللي يناسبني',
                 chat_title: 'جوسنِل AI',
                 chat_subtitle: 'مساعد اكتشاف الطعام',
                 chat_status: 'متصل',
@@ -1239,7 +1212,7 @@
                 feature_3_title: 'مطاعم حقيقية',
                 feature_3_desc: 'تصفح البائعين المحليين بقوائم أصلية وطعام حقيقي.',
                 feature_4_title: 'محادثات طبيعية',
-                feature_4_desc: 'تحدث معي كأنك تراسل صديقك — بدون قوائم معقدة.',
+                feature_4_desc: 'تحدث معي كأنك تراسل صديقك - بدون قوائم معقدة.',
                 personalized_badge: 'مخصص لك',
                 personalized_title: 'يمكنك إخباري بتفضيلاتك',
                 diet_1_title: 'نباتي',
@@ -1253,13 +1226,13 @@
                 diet_5_title: 'التفضيلات الذكية',
                 diet_5_desc: 'أريد وجبة مع:',
                 how_badge: 'كيف يعمل',
-                how_title: 'من "ما أعرف شو آكل" إلى "جوسنِل يعرف اللي يناسبني"',
-                step_1_title: 'تحدث مع الذكاء الاصطناعي',
-                step_1_desc: 'أخبرني بما تشتهيه، ميزانيتك، أو قل فقط "أنا جائع" — سأفهم.',
+                how_title: 'كيف يعمل',
+                step_1_title: 'تحدث معي',
+                step_1_desc: 'أخبرني بما تشتهيه، ميزانيتك، أو قل فقط " جوعان" - سأفهم.',
                 step_2_title: 'احصل على اقتراحات',
                 step_2_desc: 'سأقترح 3-5 وجبات مثالية من المطاعم القريبة بناءً على تفضيلاتك.',
                 step_3_title: 'اطلب بطريقتك',
-                step_3_desc: 'اطلب عبر واتساب أو استلام — كما تفضل.',
+                step_3_desc: 'اطلب عبر واتساب أو استلام - كما تفضل.',
                 comparison_title: 'جوسنِل مقابل تطبيقات الطعام التقليدية',
                 comparison_subtitle: 'توقف عن البحث. ابدأ الاكتشاف.',
                 traditional_title: '<i data-lucide="circle-x" class="icon-sm" style="color: #ef4444;"></i> التطبيقات التقليدية',
@@ -1268,12 +1241,16 @@
                 traditional_3: '<i data-lucide="frown" class="icon-sm"></i> شلل اتخاذ القرار',
                 traditional_4: '<i data-lucide="trending-up" class="icon-sm"></i> أسعار أعلى من المطعم',
                 gosnel_title: '<i data-lucide="check-circle" class="icon-sm" style="color: #4ECDC4;"></i> جوسنِل',
-                gosnel_1: '<i data-lucide="bot" class="icon-sm"></i> الذكاء الاصطناعي يقترح 3-5 خيارات مثالية',
+                gosnel_1: '<i data-lucide="bot" class="icon-sm"></i>انا بقترح 3-5 خيارات مثالية',
                 gosnel_2: '<i data-lucide="zap" class="icon-sm"></i> قرر في 30 ثانية',
                 gosnel_3: '<i data-lucide="smile" class="icon-sm"></i> ثقة ووضوح',
                 gosnel_4: '<i data-lucide="tag" class="icon-sm"></i> أسعار المطعم الأصلية',
-                cta_title: 'ابدأ الطلب بلغتك',
-                cta_subtitle: 'بدون اشتراك. بدون رسوم مخفية. بدون حواجز لغوية.\nجرب محادثتنا التجريبية مجانًا، بدون تسجيل!',
+                cta_title: 'ليه تجربني؟',
+                cta_subtitle: '',
+                cta_benefit_1: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 8px; margin-bottom: 0;"><i data-lucide="tag" style="width: 20px; height: 20px;"></i>بجيب لك أسعار المطعم الاصلية</strong>',
+                cta_benefit_2: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 8px; margin-bottom: 0;"><i data-lucide="badge-percent" style="width: 20px; height: 20px;"></i>بجيب لك أفضل الخصومات</strong>',
+                cta_benefit_3: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 12px;"><svg style="width: 24px; height: 24px; fill: white; flex-shrink: 0;" viewBox="0 0 24 24"><path d="M16.6 14c-.2-.1-1.5-.7-1.7-.8c-.2-.1-.4-.1-.6.1c-.2.2-.6.8-.8 1c-.1.2-.3.2-.5.1c-.7-.3-1.4-.7-2-1.2c-.5-.5-1-1.1-1.4-1.7c-.1-.2 0-.4.1-.5c.1-.1.2-.3.4-.4c.1-.1.2-.3.2-.4c.1-.1.1-.3 0-.4c-.1-.1-.6-1.3-.8-1.8c-.1-.7-.3-.7-.5-.7h-.5c-.2 0-.5.2-.6.3c-.6.6-.9 1.3-.9 2.1c.1.9.4 1.8 1 2.6c1.1 1.6 2.5 2.9 4.2 3.7c.5.2.9.4 1.4.5c.5.2 1 .2 1.6.1c.7-.1 1.3-.6 1.7-1.2c.2-.4.2-.8.1-1.2l-.4-.2m2.5-9.1C15.2 1 8.9 1 5 4.9c-3.2 3.2-3.8 8.1-1.6 12L2 22l5.3-1.4c1.5.8 3.1 1.2 4.7 1.2c5.5 0 9.9-4.4 9.9-9.9c.1-2.6-1-5.1-2.8-7m-2.7 14c-1.3.8-2.8 1.3-4.4 1.3c-1.5 0-2.9-.4-4.2-1.1l-.3-.2l-3.1.8l.8-3l-.2-.3c-2.4-4-1.2-9 2.7-11.5S16.6 3.7 19 7.5c2.4 3.9 1.3 9-2.6 11.4"/></svg>برتبلك طلبك على الواتساب  وبخلي المطعم يوصلك وجبتك وبتدفع عند الاستلام</strong>',
+                cta_benefit_4: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 8px; margin-bottom: 0;"><i data-lucide="languages" style="width: 20px; height: 20px;"></i>وبحكي لغتك</strong>',
                 cta_button: 'تحدث معي',
             },
         };
@@ -1312,7 +1289,7 @@ Which one sounds good?` }
             Object.keys(t).forEach(key => {
                 const el = document.getElementById(key);
                 if (el) {
-                    if (key.includes('subtitle') || key.includes('desc') || key.includes('title') || key.includes('gosnel_') || key.includes('traditional_')) {
+                    if (key.includes('subtitle') || key.includes('desc') || key.includes('title') || key.includes('gosnel_') || key.includes('traditional_') || key.includes('benefit')) {
                         el.innerHTML = t[key].replace(/\n/g, '<br>');
                     } else {
                         el.textContent = t[key];

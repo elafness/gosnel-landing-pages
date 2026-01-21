@@ -316,7 +316,7 @@
                     <h1 id="hero_title" class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight">
                         <span class="text-white">Stop scrolling.</span>
                         <br>
-                        <span class="text-gradient">Let AI pick for you in 30 seconds</span>
+                        <span class="text-gradient">Let me pick for you in 30 seconds</span>
                     </h1>
                     
                     <p id="hero_desc" class="text-xl md:text-2xl text-gray-400 leading-relaxed">
@@ -583,7 +583,7 @@
     (function(){
         const t = {
             en: {
-                hero_title: 'Stop scrolling.\nLet AI pick for you in 30 seconds',
+                hero_title: 'Stop scrolling.\nLet me pick for you in 30 seconds',
                 hero_desc: 'Tired of spending 15 minutes scrolling through menus?',
                 what_i_can_do: 'GoSnel uses AI to suggest the perfect meal',
                 suggest_meals: 'based on your taste and budget  in under a minute',
