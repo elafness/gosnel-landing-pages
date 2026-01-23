@@ -733,6 +733,71 @@
             background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
         }
         
+        .dietary-list {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        
+        .dietary-item {
+            display: flex;
+            align-items: center;
+            padding: 16px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .dietary-item:last-child {
+            border-bottom: none;
+        }
+        
+        .dietary-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        
+        .dietary-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .dietary-content {
+            flex-grow: 1;
+        }
+        
+        .dietary-content h3 {
+            margin: 0 0 4px 0;
+            font-size: 18px;
+            font-weight: 700;
+            color: #0f172a;
+        }
+        
+        .dietary-content p {
+            margin: 0;
+            font-size: 15px;
+            color: #64748b;
+        }
+        
+        .dietary-card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .dietary-tag {
+            padding: 6px 12px;
+            background: rgba(78, 205, 196, 0.1);
+            border: 1px solid rgba(78, 205, 196, 0.3);
+            border-radius: 100px;
+            font-size: 13px;
+            color: #000000;
+            font-weight: 500;
+        }
+        
         .dietary-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -910,69 +975,59 @@
                 </h2>
             </div>
             
-            <div class="dietary-grid">
-                <!-- Plant-Based -->
-                <div class="dietary-card">
-                    <div class="dietary-card-image">
-                        <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/user_landing_preferences/Plant_Based.png" alt="Plant-Based Meals" loading="lazy">
+            <div class="dietary-list" style="max-width: 800px; margin: 0 auto; padding: 20px 0;">
+                <div class="dietary-item" style="display: flex; align-items: center; padding: 16px 0; border-bottom: 1px solid #e2e8f0;">
+                    <div class="dietary-image" style="width: 60px; height: 60px; border-radius: 50%; overflow: hidden; margin-right: 20px; flex-shrink: 0;">
+                        <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/user_landing_preferences/Plant_Based.png" alt="Plant-Based" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
-                    <div class="dietary-card-overlay"></div>
-                    <div class="dietary-card-content">
-                        <h3 id="diet_1_title">Plant-Based</h3>
-                        <p id="diet_1_desc">Vegetarian or vegan meals, automatically selected</p>
+                    <div class="dietary-content">
+                        <h3 id="diet_1_title" style="margin: 0 0 4px 0; font-size: 18px; font-weight: 700;">Plant-Based</h3>
+                        <p id="diet_1_desc" style="margin: 0; font-size: 15px; color: #64748b;">Vegetarian or vegan meals, automatically selected</p>
                     </div>
                 </div>
                 
-                <!-- Weight & Shape -->
-                <div class="dietary-card">
-                    <div class="dietary-card-image">
-                        <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/user_landing_preferences/Weight_Shape.png" alt="Balanced Meals" loading="lazy">
+                <div class="dietary-item" style="display: flex; align-items: center; padding: 16px 0; border-bottom: 1px solid #e2e8f0;">
+                    <div class="dietary-image" style="width: 60px; height: 60px; border-radius: 50%; overflow: hidden; margin-right: 20px; flex-shrink: 0;">
+                        <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/user_landing_preferences/Weight_Shape.png" alt="Weight & Shape" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
-                    <div class="dietary-card-overlay"></div>
-                    <div class="dietary-card-content">
-                        <h3 id="diet_2_title">Weight & Shape</h3>
-                        <p id="diet_2_desc">Balanced meals that fit your goals</p>
+                    <div class="dietary-content">
+                        <h3 id="diet_2_title" style="margin: 0 0 4px 0; font-size: 18px; font-weight: 700;">Weight & Shape</h3>
+                        <p id="diet_2_desc" style="margin: 0; font-size: 15px; color: #64748b;">Balanced meals that fit your goals</p>
                     </div>
                 </div>
                 
-                <!-- Performance -->
-                <div class="dietary-card">
-                    <div class="dietary-card-image">
-                        <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/user_landing_preferences/Performance.png" alt="High Protein Meals" loading="lazy">
+                <div class="dietary-item" style="display: flex; align-items: center; padding: 16px 0; border-bottom: 1px solid #e2e8f0;">
+                    <div class="dietary-image" style="width: 60px; height: 60px; border-radius: 50%; overflow: hidden; margin-right: 20px; flex-shrink: 0;">
+                        <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/user_landing_preferences/Performance.png" alt="Performance" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
-                    <div class="dietary-card-overlay"></div>
-                    <div class="dietary-card-content">
-                        <h3 id="diet_3_title">Performance</h3>
-                        <p id="diet_3_desc">High-protein or low-carb, depending on your day</p>
+                    <div class="dietary-content">
+                        <h3 id="diet_3_title" style="margin: 0 0 4px 0; font-size: 18px; font-weight: 700;">Performance</h3>
+                        <p id="diet_3_desc" style="margin: 0; font-size: 15px; color: #64748b;">High-protein or low-carb, depending on your day</p>
                     </div>
                 </div>
                 
-                <!-- Health Needs -->
-                <div class="dietary-card">
-                    <div class="dietary-card-image">
-                        <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/user_landing_preferences/Health_Needs.png" alt="Allergy-Aware Options" loading="lazy">
+                <div class="dietary-item" style="display: flex; align-items: center; padding: 16px 0; border-bottom: 1px solid #e2e8f0;">
+                    <div class="dietary-image" style="width: 60px; height: 60px; border-radius: 50%; overflow: hidden; margin-right: 20px; flex-shrink: 0;">
+                        <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/user_landing_preferences/Health_Needs.png" alt="Health Needs" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
-                    <div class="dietary-card-overlay"></div>
-                    <div class="dietary-card-content">
-                        <h3 id="diet_4_title">Health Needs</h3>
-                        <p id="diet_4_desc">Gluten-free and allergy-aware options</p>
+                    <div class="dietary-content">
+                        <h3 id="diet_4_title" style="margin: 0 0 4px 0; font-size: 18px; font-weight: 700;">Health Needs</h3>
+                        <p id="diet_4_desc" style="margin: 0; font-size: 15px; color: #64748b;">Gluten-free and allergy-aware options</p>
                     </div>
                 </div>
                 
-                <!-- Smart Preferences -->
-                <div class="dietary-card">
-                    <div class="dietary-card-image">
-                        <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/user_landing_preferences/Smart_Preferences.png" alt="Custom Preferences" loading="lazy">
+                <div class="dietary-item" style="display: flex; align-items: center; padding: 16px 0;">
+                    <div class="dietary-image" style="width: 60px; height: 60px; border-radius: 50%; overflow: hidden; margin-right: 20px; flex-shrink: 0;">
+                        <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/user_landing_preferences/Smart_Preferences.png" alt="Smart Preferences" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
-                    <div class="dietary-card-overlay"></div>
-                    <div class="dietary-card-content">
-                        <h3 id="diet_5_title">Smart Preferences</h3>
-                        <p id="diet_5_desc">I want meal with:</p>
-                        <div class="dietary-card-tags">
-                            <span class="dietary-tag">No rice</span>
-                            <span class="dietary-tag">Not spicy</span>
-                            <span class="dietary-tag">Extra protein</span>
-                            <span class="dietary-tag">No dairy and more</span>
+                    <div class="dietary-content">
+                        <h3 id="diet_5_title" style="margin: 0 0 4px 0; font-size: 18px; font-weight: 700;">Smart Preferences</h3>
+                        <p id="diet_5_desc" style="margin: 0 0 8px 0; font-size: 15px; color: #64748b;">I want meal with:</p>
+                        <div class="dietary-card-tags" style="display: flex; flex-wrap: wrap; gap: 8px;">
+                            <span class="dietary-tag" style="padding: 6px 12px; background: rgba(78, 205, 196, 0.1); border: 1px solid rgba(78, 205, 196, 0.3); border-radius: 100px; font-size: 13px; color: #000000; font-weight: 500;">No rice</span>
+                            <span class="dietary-tag" style="padding: 6px 12px; background: rgba(78, 205, 196, 0.1); border: 1px solid rgba(78, 205, 196, 0.3); border-radius: 100px; font-size: 13px; color: #000000; font-weight: 500;">Not spicy</span>
+                            <span class="dietary-tag" style="padding: 6px 12px; background: rgba(78, 205, 196, 0.1); border: 1px solid rgba(78, 205, 196, 0.3); border-radius: 100px; font-size: 13px; color: #000000; font-weight: 500;">Extra protein</span>
+                            <span class="dietary-tag" style="padding: 6px 12px; background: rgba(78, 205, 196, 0.1); border: 1px solid rgba(78, 205, 196, 0.3); border-radius: 100px; font-size: 13px; color: #000000; font-weight: 500;">No dairy and more</span>
                         </div>
                     </div>
                 </div>
