@@ -203,7 +203,8 @@ const buildPages = () => {
     { src: 'partner-app/features/why-partner.html', dest: 'why-partner.html' },
     { src: 'partner-app/features/pricing.html', dest: 'pricing.html' },
     { src: 'partner-app/features/guidelines.html', dest: 'guidelines.html' },
-    { src: 'partner-app/features/insights.html', dest: 'insights.html' }
+    { src: 'partner-app/features/insights.html', dest: 'insights.html' },
+    { src: 'partner-app/pdf.html', dest: 'pdf.html' }
   ];
   
   partnerPages.forEach(({ src, dest }) => {

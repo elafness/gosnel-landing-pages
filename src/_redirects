@@ -2,6 +2,9 @@
 https://restaurants.gosnel.com/* https://gosnel.com/partner/ 301
 https://restaurants.gosnel.com/ https://gosnel.com/partner/ 301
 
+# Vendor alias routes (vendor and partner are the same)
+/vendor/* /partner/:splat 301
+
 # Alias routes (for backwards compatibility)
 /about-us /about.html 200
 
