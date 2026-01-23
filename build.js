@@ -201,7 +201,6 @@ const buildPages = () => {
     { src: 'partner-app/index.html', dest: 'index.html' },
     { src: 'partner-app/features/how-it-works.html', dest: 'how-it-works.html' },
     { src: 'partner-app/features/why-partner.html', dest: 'why-partner.html' },
-    { src: 'partner-app/features/pricing.html', dest: 'pricing.html' },
     { src: 'partner-app/features/guidelines.html', dest: 'guidelines.html' },
     { src: 'partner-app/features/insights.html', dest: 'insights.html' },
     { src: 'partner-app/pdf.html', dest: 'pdf.html' }
@@ -235,11 +234,10 @@ const buildPages = () => {
   const userPages = [
     { src: 'user-app/features/landing.html', dest: 'index.html' },
     { src: 'user-app/features/how-it-works.html', dest: 'how-it-works.html' },
-    { src: 'user-app/features/pricing.html', dest: 'pricing.html' },
     { src: 'user-app/food.html', dest: 'food.html' },
     { src: 'user-app/about-gosnel.html', dest: 'about.html' },
-    { src: 'user-app/news.html', dest: 'blog.html' },
-    { src: 'user-app/features/help-support.html', dest: 'faq.html' }
+    { src: 'user-app/blog.html', dest: 'blog.html' },
+    { src: 'user-app/new-faq.html', dest: 'faq.html' }
   ];
   
   userPages.forEach(({ src, dest }) => {

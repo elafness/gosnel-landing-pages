@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frequently Asked Questions - GoSnel | AI Food Discovery Platform UAE</title>
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" href="/shared/assets/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/shared/assets/favicon-circular.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/shared/assets/apple-touch-icon.png" />
+    <link rel="manifest" href="/shared/assets/site.webmanifest" />
+    <meta name="theme-color" content="#4ECDC4">
+    
+    <link rel="canonical" href="https://gosnel.com/faq">
+    <meta name="description" content="Find answers to common questions about GoSnel's AI-powered food discovery platform. Learn how our smart recommendations work and how to get the most from your food experience.">
+    <meta name="keywords" content="GoSnel FAQ, food discovery questions, AI meal recommendations, UAE food platform, restaurant recommendations">
+    
+    <!-- SEO -->
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="geo.region" content="AE">
+    <meta name="geo.placename" content="United Arab Emirates">
+    <meta name="author" content="GoSnel">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Frequently Asked Questions - GoSnel">
+    <meta property="og:description" content="Find answers to common questions about GoSnel's AI-powered food discovery platform.">
+    <meta property="og:url" content="https://gosnel.com/faq">
+    <meta property="og:site_name" content="GoSnel">
+    <meta property="og:image" content="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/gosnelicon.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="en_AE">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="GoSnel FAQ - AI Food Discovery">
+    <meta name="twitter:description" content="Find answers to common questions about GoSnel's AI-powered food discovery platform.">
+    <meta name="twitter:image" content="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/gosnelicon.png">
+    <meta name="twitter:site" content="@GoSnel">
+    
+    <link rel="stylesheet" href="/shared/styles/output.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        * { 
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            background: #ffffff;
+            color: #0f172a;
+            overflow-x: hidden;
+        }
+        
+        /* FAQ Section Styles */
+        .faq-section {
+            padding: 100px 0;
+            background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .faq-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .faq-title {
+            font-size: 48px;
+            font-weight: 900;
+            color: #0f172a;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .faq-subtitle {
+            font-size: 20px;
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .faq-item {
+            background: white;
+            border-radius: 16px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        }
+        
+        .faq-question {
+            padding: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 700;
+            color: #0f172a;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            color: #4ECDC4;
+        }
+        
+        .faq-icon {
+            transition: transform 0.3s ease;
+            color: #4ECDC4;
+            width: 24px;
+            height: 24px;
+        }
+        
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+        
+        .faq-answer {
+            padding: 0 24px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            color: #64748b;
+            line-height: 1.7;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 0 24px 24px 24px;
+            max-height: 500px;
+        }
+        
+        .contact-banner {
+            background: linear-gradient(135deg, #4ECDC4, #2dd4bf);
+            border-radius: 20px;
+            padding: 60px 40px;
+            text-align: center;
+            margin-top: 60px;
+            color: white;
+        }
+        
+        .contact-title {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+        
+        .contact-text {
+            font-size: 18px;
+            margin-bottom: 32px;
+            opacity: 0.9;
+        }
+        
+        .contact-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 32px;
+            background: white;
+            color: #4ECDC4;
+            font-weight: 700;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        @media (max-width: 768px) {
+            .faq-title {
+                font-size: 36px;
+            }
+            
+            .faq-subtitle {
+                font-size: 18px;
+            }
+            
+            .faq-question {
+                padding: 20px;
+                font-size: 16px;
+            }
+            
+            .faq-item.active .faq-answer {
+                padding: 0 20px 20px 20px;
+            }
+            
+            .contact-banner {
+                padding: 40px 20px;
+            }
+            
+            .contact-title {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <!--#include file="components/header.html" -->
+    
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="faq-container">
+            <div class="faq-header">
+                <h1 class="faq-title">Frequently Asked Questions</h1>
+                <p class="faq-subtitle">Everything you need to know about GoSnel's AI-powered food discovery platform</p>
+            </div>
+            
+            <div class="faq-list">
+                <!-- FAQ 1 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How does GoSnel's AI work?
+                        <i data-lucide="chevron-down" class="faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>GoSnel's AI analyzes your preferences, dietary needs, budget, and mood to suggest personalized meals from local restaurants. The more you chat with our AI, the better it becomes at understanding your taste and recommending perfect meals for you.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ 2 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Is GoSnel free to use?
+                        <i data-lucide="chevron-down" class="faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! GoSnel is completely free for customers. You only pay for the food you order from restaurants. There are no subscription fees, hidden charges, or delivery fees from our side.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ 3 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How do I order food through GoSnel?
+                        <i data-lucide="chevron-down" class="faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Simply chat with our AI assistant and tell us what you're craving, your budget, or just say "I'm hungry." Our AI will suggest 3-5 perfect meals from nearby restaurants and help you place your order through WhatsApp or your preferred method.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ 4 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Which areas do you serve?
+                        <i data-lucide="chevron-down" class="faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We currently serve major cities across the UAE including Dubai, Abu Dhabi, Sharjah, and Ajman. We're expanding to more emirates soon - sign up to be notified when we launch in your area.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ 5 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Do you support dietary restrictions?
+                        <i data-lucide="chevron-down" class="faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely! GoSnel supports vegetarian, vegan, gluten-free, keto, halal, and other dietary preferences. Just tell our AI about your dietary needs and it will filter recommendations accordingly to find meals that match your requirements.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ 6 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How is GoSnel different from food delivery apps?
+                        <i data-lucide="chevron-down" class="faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Unlike traditional food delivery apps that show you endless menus to scroll through, GoSnel uses AI to understand what you want and suggests the perfect meal for you. We save you time by doing the thinking and recommending exactly what you'll love.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ 7 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Can I cancel or modify my order?
+                        <i data-lucide="chevron-down" class="faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, you can cancel or modify your order through the chat interface within a reasonable time frame before the restaurant starts preparing your meal. Simply let our AI assistant know what changes you'd like to make.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ 8 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Is there a mobile app?
+                        <i data-lucide="chevron-down" class="faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>A mobile app is coming soon! For now, you can use GoSnel through your web browser on any device. The experience is fully optimized for mobile and works seamlessly on smartphones and tablets.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ 9 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How do restaurants participate?
+                        <i data-lucide="chevron-down" class="faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Restaurants can join GoSnel by registering on our partner platform. We help them showcase their menu to the right customers through our AI recommendations. Interested restaurants can visit restaurants.gosnel.com to learn more about partnership opportunities.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ 10 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What languages do you support?
+                        <i data-lucide="chevron-down" class="faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>GoSnel supports over 100 languages including English, Arabic, Hindi, Urdu, Malayalam, Tagalog, and many others. You can chat with our AI in your preferred language for a truly personalized experience.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Contact Banner -->
+            <div class="contact-banner">
+                <h2 class="contact-title">Still Have Questions?</h2>
+                <p class="contact-text">Our support team is here to help you get the most out of GoSnel</p>
+                <a href="https://wa.me/971542503729" class="contact-button">
+                    <i data-lucide="message-circle" style="width: 20px; height: 20px;"></i>
+                    Chat with Support
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <!--#include file="../shared/components/footer.html" -->
+    
+    <script>
+        // Initialize Lucide icons
+        if (window.lucide) {
+            lucide.createIcons();
+        }
+        
+        // FAQ Toggle Functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                const isActive = faqItem.classList.contains('active');
+                
+                // Close all FAQ items
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Open clicked item if it wasn't active
+                if (!isActive) {
+                    faqItem.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
