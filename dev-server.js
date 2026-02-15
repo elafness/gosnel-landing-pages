@@ -20,6 +20,7 @@ const routeMap = {
   '/about': '/about.html',
   '/blog': '/blog.html',
   '/faq': '/faq.html',
+  '/account-soon': '/account-soon.html',
   // Partner pages in /partner/ subdirectory
   '/partner': '/partner/index.html',
   '/partner/how-it-works': '/partner/how-it-works.html',
