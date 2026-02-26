@@ -906,6 +906,9 @@
     <div class="lang-toggle">
         <button id="lang-en" class="lang-btn active">English</button>
         <button id="lang-ar" class="lang-btn">العربية</button>
+        <button id="lang-ml" class="lang-btn">മലയാളം</button>
+        <button id="lang-hi" class="lang-btn">हिंदी</button>
+        <button id="lang-ur" class="lang-btn">اردو</button>
     </div>
 
     <!--#include file="../components/header.html" -->
@@ -1307,6 +1310,216 @@
                 tag_extra_protein: 'بروتين إضافي',
                 tag_no_dairy: 'بدون منتجات الألبان والمزيد'
             },
+            ml: {
+                hero_badge: 'AI-അധിഷ്ഠിത ഭക്ഷണ കണ്ടെത്തൽ',
+                hero_title_1: 'തിരയുന്നത് നിർത്തൂ.',
+                hero_title_2: 'എന്നെ 30 സെക്കൻഡിനുള്ളിൽ തിരഞ്ഞെടുക്കാൻ അനുവദിക്കുക',
+                hero_subtitle: 'മെനുകളിലൂടെ 15 മിനിറ്റ് ചെലവഴിച്ച് നിങ്ങൾ വിഷമിച്ചോ? നിങ്ങളുടെ രുചിയും ബജറ്റും അടിസ്ഥാനമാക്കി ഗോസ്നെൽ എഐ ഏറ്റവും നല്ല ഭക്ഷണം നിർദ്ദേശിക്കുന്നു – ഒരു മിനിറ്റിനുള്ളിൽ.',
+                stat_languages: 'ഭാഷകൾ',
+                stat_time: 'ശരാശരി സമയം',
+                stat_cost: 'ഉപയോഗിക്കാനുള്ള ചെലവ്',
+                trans_line_1: 'നിന്ന്',
+                trans_line_2: 'എനിക്ക് എന്ത് കഴിക്കണമെന്ന് അറിയില്ല',
+                trans_line_3: 'എന്ന്',
+                trans_line_4: '"ഗോസ്നെൽ എനിക്ക് എന്താണ് വേണ്ടതെന്ന് അറിയാം"',
+                chat_title: 'ഗോസ്നെൽ AI',
+                chat_subtitle: 'ഫുഡ് ഡിസ്കവറി അസിസ്റ്റന്റ്',
+                chat_status: 'ഓൺലൈൻ',
+                why_badge: 'എന്തുകൊണ്ട് ഗോസ്നെൽ',
+                why_title: 'ഗോസ്നെൽ ഉപയോക്താക്കൾ സ്നേഹിക്കുന്നത് എന്തുകൊണ്ട്',
+                why_subtitle: 'സ്മാർട്ട്, ലളിതവും നിങ്ങളുടെ ഭാഷ സംസാരിക്കുന്നു',
+                feature_1_title: 'സ്മാർട്ട് നിർദ്ദേശങ്ങൾ',
+                feature_1_desc: 'നിങ്ങളുടെ രുചിയും ബജറ്റും അടിസ്ഥാനമാക്കി സെക്കൻഡുകൾക്കുള്ളിൽ ഭക്ഷണ ആശയങ്ങൾ നേടുക.',
+                feature_2_title: '100+ ഭാഷകൾ',
+                feature_2_desc: 'നിങ്ങളുടെ ഭാഷ സംസാരിക്കുക, ഞാൻ നിങ്ങളെ മനസ്സിലാക്കും.',
+                feature_3_title: 'യഥാർത്ഥ റെസ്റ്റോറന്റുകൾ',
+                feature_3_desc: 'യഥാർത്ഥ മെനുകളും യഥാർത്ഥ ഭക്ഷണവുമായി പ്രാദേശിക വിൽപനക്കാരെ ബ്രൗസ് ചെയ്യുക.',
+                feature_4_title: 'സ്വാഭാവിക സംഭാഷണങ്ങൾ',
+                feature_4_desc: 'നിങ്ങളുടെ സുഹൃത്തിനൊപ്പം സന്ദേശം അയയ്ക്കുന്നതുപോലെ എന്നോട് സംസാരിക്കുക - ആകുലപ്പെടുത്തുന്ന മെനുകളില്ല.',
+                personalized_badge: 'നിങ്ങൾക്കായി പ്രത്യേകം',
+                personalized_title: 'നിങ്ങൾക്ക് എന്നോട് നിങ്ങളുടെ മുൻഗണനകൾ പറയാം',
+                diet_1_title: 'പ്ലാന്റ്-ബേസ്ഡ്',
+                diet_1_desc: 'പൂർണ്ണമായും തിരഞ്ഞെടുത്ത ശാകാഹാര ഭക്ഷണം',
+                diet_2_title: 'വെയിറ്റ് & ഷെയ്പ്',
+                diet_2_desc: 'നിങ്ങളുടെ ലക്ഷ്യങ്ങൾക്കനുസൃതമായ ബാലൻസ്ഡ് ഭക്ഷണം',
+                diet_3_title: 'പെർഫോമൻസ്',
+                diet_3_desc: 'നിങ്ങളുടെ ദിവസത്തെ ആശ്രയിച്ച് ഹൈ-പ്രോട്ടീൻ അല്ലെങ്കിൽ ലോ-കാർബ്',
+                diet_4_title: 'ആരോഗ്യ ആവശ്യങ്ങൾ',
+                diet_4_desc: 'ഗ്ലൂട്ടൻ-ഫ്രീയും അലർജി അറിവുള്ള ഓപ്ഷനുകളും',
+                diet_5_title: 'സ്മാർട്ട് മുൻഗണനകൾ',
+                diet_5_desc: 'എനിക്ക് ഇതുപയോഗിച്ച് ഭക്ഷണം വേണം:',
+                how_badge: 'എങ്ങനെ പ്രവർത്തിക്കുന്നു',
+                how_title: 'എങ്ങനെ പ്രവർത്തിക്കുന്നു',
+                step_1_title: 'എന്നോട് സംസാരിക്കുക',
+                step_1_desc: 'നിങ്ങൾ ആഗ്രഹിക്കുന്നത് എന്നോട് പറയുക, നിങ്ങളുടെ ബജറ്റ്, അല്ലെങ്കിൽ കേവലം "എനിക്ക് വിശപ്പാണ്" എന്ന് പറയുക - ഞാൻ മനസ്സിലാക്കും.',
+                step_2_title: 'നിർദ്ദേശങ്ങൾ നേടുക',
+                step_2_desc: 'നിങ്ങളുടെ മുൻഗണനകൾ അടിസ്ഥാനമാക്കി അടുത്തുള്ള റെസ്റ്റോറന്റുകളിൽ നിന്ന് 3-5 ഏറ്റവും നല്ല ഭക്ഷണങ്ങൾ ഞാൻ നിർദ്ദേശിക്കും.',
+                step_3_title: 'നിങ്ങളുടെ രീതിയിൽ ഓർഡർ ചെയ്യുക',
+                step_3_desc: 'ഇൻസ്റ്റാഗ്രാം വഴി അല്ലെങ്കിൽ പിക്കപ്പ് ചെയ്യുക - നിങ്ങൾ ഇഷ്ടപ്പെടുന്നത് പോലെ.',
+                comparison_title: 'ഗോസ്നെൽ വിസ് ട്രാഡിഷണൽ ഫുഡ് ആപ്പുകൾ',
+                comparison_subtitle: 'തിരയുന്നത് നിർത്തുക. കണ്ടെത്തുന്നത് ആരംഭിക്കുക.',
+                traditional_title: '<i data-lucide="circle-x" class="icon-sm" style="color: #ef4444;"></i> പരമ്പരാഗത ആപ്പുകൾ',
+                traditional_1: '<i data-lucide="search" class="icon-sm"></i> "ബർഗർ" തിരയുക → 100 ഫലങ്ങൾ',
+                traditional_2: '<i data-lucide="clock" class="icon-sm"></i> 15+ മിനിറ്റ് സ്ക്രോൾ ചെയ്യുക',
+                traditional_3: '<i data-lucide="frown" class="icon-sm"></i> തീരുമാനിക്കാനാകാത്ത അവസ്ഥ',
+                traditional_4: '<i data-lucide="trending-up" class="icon-sm"></i>',
+                gosnel_title: '<i data-lucide="check-circle" class="icon-sm" style="color: #4ECDC4;"></i> ഗോസ്നെൽ',
+                gosnel_1: '<i data-lucide="bot" class="icon-sm"></i> എഐ 3-5 ഏറ്റവും നല്ല കളിപ്പാട്ടങ്ങൾ നിർദ്ദേശിക്കുന്നു',
+                gosnel_2: '<i data-lucide="zap" class="icon-sm"></i> 30 സെക്കൻഡിൽ തീരുമാനിക്കുക',
+                gosnel_3: '<i data-lucide="smile" class="icon-sm"></i> ആത്മവിശ്വാസവും വ്യക്തതയും',
+                gosnel_4: '<i data-lucide="tag" class="icon-sm"></i> യഥാർത്ഥ റെസ്റ്റോറന്റ് വിലകൾ',
+                cta_title: 'എന്നെ പരീക്ഷിക്കാൻ കാരണം',
+                cta_subtitle: '',
+                cta_benefit_1: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 8px; margin-bottom: 0;"><i data-lucide="tag" style="width: 20px; height: 20px;"></i>എപ്പോഴും യഥാർത്ഥ റെസ്റ്റോറന്റ് വിലകൾ</strong>',
+                cta_benefit_2: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 8px; margin-bottom: 0;"><i data-lucide="badge-percent" style="width: 20px; height: 20px;"></i>നിങ്ങൾക്കായി ഏറ്റവും മികച്ച ഡിസ്കൗണ്ടുകൾ ഞാൻ കണ്ടെത്തുന്നു</strong>',
+                cta_benefit_3: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 12px;"><svg style="width: 24px; height: 24px; fill: white; flex-shrink: 0;" viewBox="0 0 24 24"><path d="M16.6 14c-.2-.1-1.5-.7-1.7-.8c-.2-.1-.4-.1-.6.1c-.2.2-.6.8-.8 1c-.1.2-.3.2-.5.1c-.7-.3-1.4-.7-2-1.2c-.5-.5-1-1.1-1.4-1.7c-.1-.2 0-.4.1-.5c.1-.1.2-.3.4-.4c.1-.1.2-.3.2-.4c.1-.1.1-.3 0-.4c-.1-.1-.6-1.3-.8-1.8c-.1-.7-.3-.7-.5-.7h-.5c-.2 0-.5.2-.6.3c-.6.6-.9 1.3-.9 2.1c.1.9.4 1.8 1 2.6c1.1 1.6 2.5 2.9 4.2 3.7c.5.2.9.4 1.4.5c.5.2 1 .2 1.6.1c.7-.1 1.3-.6 1.7-1.2c.2-.4.2-.8.1-1.2l-.4-.2m2.5-9.1C15.2 1 8.9 1 5 4.9c-3.2 3.2-3.8 8.1-1.6 12L2 22l5.3-1.4c1.5.8 3.1 1.2 4.7 1.2c5.5 0 9.9-4.4 9.9-9.9c.1-2.6-1-5.1-2.8-7m-2.7 14c-1.3.8-2.8 1.3-4.4 1.3c-1.5 0-2.9-.4-4.2-1.1l-.3-.2l-3.1.8l.8-3l-.2-.3c-2.4-4-1.2-9 2.7-11.5S16.6 3.7 19 7.5c2.4 3.9 1.3 9-2.6 11.4"/></svg>ഇൻസ്റ്റാഗ്രാമിൽ ഓർഡർ ചെയ്യുക ഡെലിവറിയിൽ പേയ്</strong>',
+                cta_benefit_4: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 8px; margin-bottom: 0;"><i data-lucide="languages" style="width: 20px; height: 20px;"></i>എനിക്ക് നിങ്ങളുടെ ഭാഷ സംസാരിക്കാൻ കഴിയും</strong>',
+                cta_button: 'എന്നോട് സംസാരിക്കുക',
+                tag_no_rice: 'അരി ഇല്ല',
+                tag_not_spicy: 'ഉപ്പില്ല',
+                tag_extra_protein: 'എക്സ്ട്രാ പ്രോട്ടീൻ',
+                tag_no_dairy: 'പാൽ ഉൽപ്പന്നങ്ങൾ ഇല്ല കൂടുതൽ'
+            },
+            hi: {
+                hero_badge: 'AI-पावर्ड फूड डिस्कवरी',
+                hero_title_1: 'स्क्रॉल करना बंद करें.',
+                hero_title_2: 'मुझे 30 सेकंड में आपके लिए चुनने दें',
+                hero_subtitle: 'मेनू के माध्यम से 15 मिनट बर्बाद करने से थक गए? गोस्नेल का एआई आपकी पसंद और बजट के आधार पर एक शानदार भोजन का सुझाव देता है – एक मिनट से भी कम समय में.',
+                stat_languages: 'भाषाएँ',
+                stat_time: 'औसत समय',
+                stat_cost: 'उपयोग करने की लागत',
+                trans_line_1: 'से',
+                trans_line_2: 'मुझे नहीं पता कि क्या खाना है',
+                trans_line_3: 'तक',
+                trans_line_4: '"गोस्नेल जानता है कि मुझे क्या चाहिए"',
+                chat_title: 'गोस्नेल AI',
+                chat_subtitle: 'भोजन खोज असिस्टेंट',
+                chat_status: 'ऑनलाइन',
+                why_badge: 'क्यों गोस्नेल',
+                why_title: 'उपयोगकर्ताओं को गोस्नेल क्यों पसंद है',
+                why_subtitle: 'स्मार्ट, सरल और आपकी भाषा बोलता है',
+                feature_1_title: 'स्मार्ट सुझाव',
+                feature_1_desc: 'कुछ ही सेकंड में आपकी रुचि और बजट के अनुसार भोजन के विचार प्राप्त करें.',
+                feature_2_title: '100+ भाषाएँ',
+                feature_2_desc: 'अपनी भाषा बोलें, और मैं आपको समझ जाऊंगा.',
+                feature_3_title: 'वास्तविक रेस्तरां',
+                feature_3_desc: 'वास्तविक मेनू और वास्तविक भोजन के साथ स्थानीय विक्रेताओं को ब्राउज़ करें.',
+                feature_4_title: 'प्राकृतिक बातचीत',
+                feature_4_desc: 'एक दोस्त के साथ संदेश भेजने की तरह मेरे साथ बात करें - कोई भ्रमित करने वाला मेनू नहीं.',
+                personalized_badge: 'आपके लिए व्यक्तिगत',
+                personalized_title: 'आप मुझे अपनी प्राथमिकताएं बता सकते हैं',
+                diet_1_title: 'प्लांट-आधारित',
+                diet_1_desc: 'शाकाहारी या शाकाहारी भोजन, स्वचालित रूप से चुना गया',
+                diet_2_title: 'वजन और आकार',
+                diet_2_desc: 'संतुलित भोजन जो आपके लक्ष्यों को फिट करता है',
+                diet_3_title: 'प्रदर्शन',
+                diet_3_desc: 'आपके दिन के आधार पर उच्च प्रोटीन या कम कार्ब',
+                diet_4_title: 'स्वास्थ्य आवश्यकताएं',
+                diet_4_desc: 'ग्लूटेन-मुक्त और एलर्जी जागरूक विकल्प',
+                diet_5_title: 'स्मार्ट प्राथमिकताएं',
+                diet_5_desc: 'मुझे भोजन के साथ चाहिए:',
+                how_badge: 'कैसे काम करता है',
+                how_title: 'कैसे काम करता है',
+                step_1_title: 'मेरे साथ बात करें',
+                step_1_desc: 'मुझे बताएं कि आप क्या भूखे हैं, आपका बजट, या केवल कहें "मुझे भूख लगी है" - मैं समझ जाऊंगा.',
+                step_2_title: 'सुझाव प्राप्त करें',
+                step_2_desc: 'मैं आपकी प्राथमिकताओं के आधार पर आसपास के रेस्तरां से 3-5 बेहतरीन भोजन का सुझाव दूंगा.',
+                step_3_title: 'अपने तरीके से ऑर्डर करें',
+                step_3_desc: 'इंस्टाग्राम के माध्यम से या पिकअप करें - जैसा आप पसंद करें.',
+                comparison_title: 'गोस्नेल बनाम पारंपरिक भोजन ऐप्स',
+                comparison_subtitle: 'खोजना बंद करो. खोजना शुरू करो.',
+                traditional_title: '<i data-lucide="circle-x" class="icon-sm" style="color: #ef4444;"></i> पारंपरिक ऐप्स',
+                traditional_1: '<i data-lucide="search" class="icon-sm"></i> "बर्गर" खोजें → 100 परिणाम',
+                traditional_2: '<i data-lucide="clock" class="icon-sm"></i> 15+ मिनट के लिए स्क्रॉल करें',
+                traditional_3: '<i data-lucide="frown" class="icon-sm"></i> निर्णय लेने में अक्षमता',
+                traditional_4: '<i data-lucide="trending-up" class="icon-sm"></i>',
+                gosnel_title: '<i data-lucide="check-circle" class="icon-sm" style="color: #4ECDC4;"></i> गोस्नेल',
+                gosnel_1: '<i data-lucide="bot" class="icon-sm"></i> एआई 3-5 बेहतरीन मैचों का सुझाव देता है',
+                gosnel_2: '<i data-lucide="zap" class="icon-sm"></i> 30 सेकंड में निर्णय लें',
+                gosnel_3: '<i data-lucide="smile" class="icon-sm"></i> आत्मविश्वास और स्पष्टता',
+                gosnel_4: '<i data-lucide="tag" class="icon-sm"></i> वास्तविक रेस्तरां की कीमतें',
+                cta_title: 'मुझे क्यों आजमाएं',
+                cta_subtitle: '',
+                cta_benefit_1: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 8px; margin-bottom: 0;"><i data-lucide="tag" style="width: 20px; height: 20px;"></i>हमेशा वास्तविक रेस्तरां की कीमतें',
+                cta_benefit_2: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 8px; margin-bottom: 0;"><i data-lucide="badge-percent" style="width: 20px; height: 20px;"></i>मैं आपके लिए शीर्ष छूट ढूंढता हूं',
+                cta_benefit_3: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 12px;"><svg style="width: 24px; height: 24px; fill: white; flex-shrink: 0;" viewBox="0 0 24 24"><path d="M16.6 14c-.2-.1-1.5-.7-1.7-.8c-.2-.1-.4-.1-.6.1c-.2.2-.6.8-.8 1c-.1.2-.3.2-.5.1c-.7-.3-1.4-.7-2-1.2c-.5-.5-1-1.1-1.4-1.7c-.1-.2 0-.4.1-.5c.1-.1.2-.3.4-.4c.1-.1.2-.3.2-.4c.1-.1.1-.3 0-.4c-.1-.1-.6-1.3-.8-1.8c-.1-.7-.3-.7-.5-.7h-.5c-.2 0-.5.2-.6.3c-.6.6-.9 1.3-.9 2.1c.1.9.4 1.8 1 2.6c1.1 1.6 2.5 2.9 4.2 3.7c.5.2.9.4 1.4.5c.5.2 1 .2 1.6.1c.7-.1 1.3-.6 1.7-1.2c.2-.4.2-.8.1-1.2l-.4-.2m2.5-9.1C15.2 1 8.9 1 5 4.9c-3.2 3.2-3.8 8.1-1.6 12L2 22l5.3-1.4c1.5.8 3.1 1.2 4.7 1.2c5.5 0 9.9-4.4 9.9-9.9c.1-2.6-1-5.1-2.8-7m-2.7 14c-1.3.8-2.8 1.3-4.4 1.3c-1.5 0-2.9-.4-4.2-1.1l-.3-.2l-3.1.8l.8-3l-.2-.3c-2.4-4-1.2-9 2.7-11.5S16.6 3.7 19 7.5c2.4 3.9 1.3 9-2.6 11.4"/></svg>इंस्टाग्राम पर ऑर्डर करें डिलीवरी पर भुगतान करें',
+                cta_benefit_4: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 8px; margin-bottom: 0;"><i data-lucide="languages" style="width: 20px; height: 20px;"></i>मैं आपकी भाषा बोलता हूं',
+                cta_button: 'मेरे साथ बात करें',
+                tag_no_rice: 'चावल नहीं',
+                tag_not_spicy: 'मसालेदार नहीं',
+                tag_extra_protein: 'अतिरिक्त प्रोटीन',
+                tag_no_dairy: 'डेयरी नहीं और अधिक'
+            },
+            ur: {
+                hero_badge: 'AI سے لیس کھانے کی تلاش',
+                hero_title_1: 'اسکرول کرنا بند کریں.',
+                hero_title_2: 'مجھے 30 سیکنڈ میں آپ کے لیے انتخاب کرنے دیں',
+                hero_subtitle: 'مینو کے ذریعے 15 منٹ ضائع کرنے سے تنگ آ چکے ہیں؟ گوسلنل کا AI آپ کی پسند اور بجٹ کے مطابق ایک بہترین کھانا تجویز کرتا ہے – ایک منٹ سے بھی کم وقت میں.',
+                stat_languages: 'زبانیں',
+                stat_time: 'اوسط وقت',
+                stat_cost: 'استعمال کرنے کی لاگت',
+                trans_line_1: 'سے',
+                trans_line_2: 'مجھے نہیں معلوم کہ کیا کھانا ہے',
+                trans_line_3: 'تک',
+                trans_line_4: '"گوسلنل جانتا ہے کہ میں کیا چاہتا ہوں"',
+                chat_title: 'گوسلنل AI',
+                chat_subtitle: 'کھانے کی تلاش کا اسسٹنٹ',
+                chat_status: 'آن لائن',
+                why_badge: 'کیوں گوسلنل',
+                why_title: 'صارفین گوسلنل کو کیوں پسند کرتے ہیں',
+                why_subtitle: 'سمارٹ، سادہ اور آپ کی زبان بولتا ہے',
+                feature_1_title: 'سمارٹ تجاویز',
+                feature_1_desc: 'چند سیکنڈوں میں آپ کی ذائقہ اور بجٹ کے مطابق کھانے کے خیالات حاصل کریں.',
+                feature_2_title: '100+ زبانیں',
+                feature_2_desc: 'اپنی زبان بولیں، اور میں آپ کو سمجھ جاؤں گا.',
+                feature_3_title: 'حقیقی ریستوراں',
+                feature_3_desc: ' حقیقی مینو اور حقیقی کھانے کے ساتھ مقامی فروشوں کو براؤز کریں.',
+                feature_4_title: 'قدرتی گفتگو',
+                feature_4_desc: 'ایک دوست کے ساتھ پیغام بھیجنے کی طرح میرے ساتھ بات کریں - کوئی الجھن والا مینو نہیں.',
+                personalized_badge: 'آپ کے لیے ذاتی',
+                personalized_title: 'آپ مجھے اپنی ترجیحات بتا سکتے ہیں',
+                diet_1_title: 'پودوں پر مبنی',
+                diet_1_desc: 'سبزی خور یا سبزی خور کھانا، خود بخود منتخب',
+                diet_2_title: 'وزن اور شکل',
+                diet_2_desc: 'متوازن کھانا جو آپ کے اہداف کے مطابق ہو',
+                diet_3_title: 'کارکردگی',
+                diet_3_desc: 'آپ کے دن کے مطابق زیادہ پروٹین یا کم کاربوہائیڈریٹ',
+                diet_4_title: 'صحت کی ضرورتیں',
+                diet_4_desc: 'گلوٹین فری اور الرجی کا خیال رکھنے والے اختیارات',
+                diet_5_title: 'سمارٹ ترجیحات',
+                diet_5_desc: 'مجھے کھانے کے ساتھ چاہیے:',
+                how_badge: 'کیسے کام کرتا ہے',
+                how_title: 'کیسے کام کرتا ہے',
+                step_1_title: 'مجھ سے بات کریں',
+                step_1_desc: 'مجھے بتائیں کہ آپ کیا بھوک لگی ہے، آپ کا بجٹ، یا صرف کہیں "مجھے بھوک لگی ہے" - میں سمجھ جاؤں گا.',
+                step_2_title: 'تجاویز حاصل کریں',
+                step_2_desc: 'میں آپ کی ترجیحات کے مطابق قریبی ریستوراں سے 3-5 بہترین کھانوں کی تجویز دوں گا.',
+                step_3_title: 'اپنے انداز میں آرڈر کریں',
+                step_3_desc: 'انسٹاگرام کے ذریعے یا پک اپ کریں - جیسا آپ چاہیں.',
+                comparison_title: 'گوسلنل بمقابلہ روایتی کھانے کی ایپس',
+                comparison_subtitle: 'تلاش کرنا بند کریں. تلاش شروع کریں.',
+                traditional_title: '<i data-lucide="circle-x" class="icon-sm" style="color: #ef4444;"></i> روایتی ایپس',
+                traditional_1: '<i data-lucide="search" class="icon-sm"></i> "برگر" تلاش کریں → 100 نتائج',
+                traditional_2: '<i data-lucide="clock" class="icon-sm"></i> 15+ منٹ تک اسکرول کریں',
+                traditional_3: '<i data-lucide="frown" class="icon-sm"></i> فیصلہ کرنے کی اہلیت',
+                traditional_4: '<i data-lucide="trending-up" class="icon-sm"></i>',
+                gosnel_title: '<i data-lucide="check-circle" class="icon-sm" style="color: #4ECDC4;"></i> گوسلنل',
+                gosnel_1: '<i data-lucide="bot" class="icon-sm"></i> AI 3-5 بہترین میچوں کی تجویز دیتا ہے',
+                gosnel_2: '<i data-lucide="zap" class="icon-sm"></i> 30 سیکنڈ میں فیصلہ کریں',
+                gosnel_3: '<i data-lucide="smile" class="icon-sm"></i> اعتماد اور وضاحت',
+                gosnel_4: '<i data-lucide="tag" class="icon-sm"></i> حقیقی ریستوراں کی قیمتیں',
+                cta_title: 'مجھے کیوں آزمانا چاہیے',
+                cta_subtitle: '',
+                cta_benefit_1: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 8px; margin-bottom: 0;"><i data-lucide="tag" style="width: 20px; height: 20px;"></i>ہمیشہ حقیقی ریستوراں کی قیمتیں',
+                cta_benefit_2: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 8px; margin-bottom: 0;"><i data-lucide="badge-percent" style="width: 20px; height: 20px;"></i>میں آپ کے لیے بہترین ڈسکاؤنٹ تلاش کرتا ہوں',
+                cta_benefit_3: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 12px;"><svg style="width: 24px; height: 24px; fill: white; flex-shrink: 0;" viewBox="0 0 24 24"><path d="M16.6 14c-.2-.1-1.5-.7-1.7-.8c-.2-.1-.4-.1-.6.1c-.2.2-.6.8-.8 1c-.1.2-.3.2-.5.1c-.7-.3-1.4-.7-2-1.2c-.5-.5-1-1.1-1.4-1.7c-.1-.2 0-.4.1-.5c.1-.1.2-.3.4-.4c.1-.1.2-.3.2-.4c.1-.1.1-.3 0-.4c-.1-.1-.6-1.3-.8-1.8c-.1-.7-.3-.7-.5-.7h-.5c-.2 0-.5.2-.6.3c-.6.6-.9 1.3-.9 2.1c.1.9.4 1.8 1 2.6c1.1 1.6 2.5 2.9 4.2 3.7c.5.2.9.4 1.4.5c.5.2 1 .2 1.6.1c.7-.1 1.3-.6 1.7-1.2c.2-.4.2-.8.1-1.2l-.4-.2m2.5-9.1C15.2 1 8.9 1 5 4.9c-3.2 3.2-3.8 8.1-1.6 12L2 22l5.3-1.4c1.5.8 3.1 1.2 4.7 1.2c5.5 0 9.9-4.4 9.9-9.9c.1-2.6-1-5.1-2.8-7m-2.7 14c-1.3.8-2.8 1.3-4.4 1.3c-1.5 0-2.9-.4-4.2-1.1l-.3-.2l-3.1.8l.8-3l-.2-.3c-2.4-4-1.2-9 2.7-11.5S16.6 3.7 19 7.5c2.4 3.9 1.3 9-2.6 11.4"/></svg>انسٹاگرام پر آرڈر کریں ڈیلیوری پر ادائیگی کریں',
+                cta_benefit_4: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 8px; margin-bottom: 0;"><i data-lucide="languages" style="width: 20px; height: 20px;"></i>میں آپ کی زبان بولتا ہوں',
+                cta_button: 'مجھ سے بات کریں',
+                tag_no_rice: 'چاول نہیں',
+                tag_not_spicy: 'تیز نہیں',
+                tag_extra_protein: 'اضافی پروٹین',
+                tag_no_dairy: 'ڈیری نہیں اور مزید'
+            },
         };
         
         const chatMessages = {
@@ -1333,6 +1546,42 @@ Which one sounds good?` }
 3. تاكو مكسيكي – 28 درهم <i data-lucide="utensils" class="icon-sm"></i>
 
 أي وحدة تعجبك؟` }
+            ],
+            ml: [
+                { user: true, text: 'ഹായ്' },
+                { user: false, text: 'ഹായ്, ഫുഡി! ഇന്ന് നിങ്ങൾ വിശന്നിട്ടുണ്ടോ?' },
+                { user: true, text: 'ഞാൻ ഉച്ചഭക്ഷണത്തിന് എന്തെങ്കിലും മസാല ആഗ്രഹിക്കുന്നു' },
+                { user: false, text: `മികച്ചത്! നിങ്ങൾക്കായി 3 അത്ഭുതമായ മസാല ഓപ്ഷനുകൾ എനിക്ക് ലഭിച്ചിട്ടുണ്ട്:
+
+1. മസാല ചിക്കൻ ബിരിയാണി – 35 AED <i data-lucide="flame" class="icon-sm" style="color:#f97316;"></i>
+2. തായ് റെഡ് കറി – 38 AED <i data-lucide="flame" class="icon-sm" style="color:#ef4444;"></i>
+3. മെക്സിക്കൻ ടാകോസ് – 28 AED <i data-lucide="utensils" class="icon-sm"></i>
+
+ഏതാണ് നല്ലതെന്ന് തോന്നുന്നത്?` }
+            ],
+            hi: [
+                { user: true, text: 'नमस्ते' },
+                { user: false, text: 'नमस्ते, फूडी! आज आप भूखे हैं?' },
+                { user: true, text: 'मैं दोपहर के भोजन के लिए कुछ मसालेदार चाहता हूं' },
+                { user: false, text: `बढ़िया! आपके लिए 3 शानदार मसालेदार विकल्प मिल गए हैं:
+
+1. मसालेदार चिकन बिरयानी – 35 AED <i data-lucide="flame" class="icon-sm" style="color:#f97316;"></i>
+2. थाई रेड करी – 38 AED <i data-lucide="flame" class="icon-sm" style="color:#ef4444;"></i>
+3. मेक्सिकन टैकोस – 28 AED <i data-lucide="utensils" class="icon-sm"></i>
+
+कौन सा अच्छा लग रहा है?` }
+            ],
+            ur: [
+                { user: true, text: 'ہیلو' },
+                { user: false, text: 'ہیلو، فوڈی! کیا آج آپ بھوکے ہیں؟' },
+                { user: true, text: 'میں دوپہر کے کھانے کے لیے کچھ تیز مسالہ چاہتا ہوں' },
+                { user: false, text: `perfect! آپ کے لیے 3 حیرت انگیز تیز مسالہ اختیارات مل گئے ہیں:
+
+1. تیز مسالہ چکن بیریانی – 35 AED <i data-lucide="flame" class="icon-sm" style="color:#f97316;"></i>
+2. تھائی ریڈ کری – 38 AED <i data-lucide="flame" class="icon-sm" style="color:#ef4444;"></i>
+3. میکسیکن ٹیکوس – 28 AED <i data-lucide="utensils" class="icon-sm"></i>
+
+کون سا اچھا لگ رہا ہے؟` }
             ]
         };
         
@@ -1381,12 +1630,18 @@ Which one sounds good?` }
             
             document.getElementById('lang-en').classList.toggle('active', lang === 'en');
             document.getElementById('lang-ar').classList.toggle('active', lang === 'ar');
+            document.getElementById('lang-ml').classList.toggle('active', lang === 'ml');
+            document.getElementById('lang-hi').classList.toggle('active', lang === 'hi');
+            document.getElementById('lang-ur').classList.toggle('active', lang === 'ur');
             
             applyTranslations();
         }
         
         document.getElementById('lang-en').addEventListener('click', () => setLang('en'));
         document.getElementById('lang-ar').addEventListener('click', () => setLang('ar'));
+        document.getElementById('lang-ml').addEventListener('click', () => setLang('ml'));
+        document.getElementById('lang-hi').addEventListener('click', () => setLang('hi'));
+        document.getElementById('lang-ur').addEventListener('click', () => setLang('ur'));
         
         applyTranslations();
         
