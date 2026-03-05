@@ -41,10 +41,8 @@
 
     <style>
         body { 
-            background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #4facfe);
-            background-size: 400% 400%;
-            animation: gradient-shift 15s ease infinite;
-            color: #1a202c; 
+            background-color: #f8fafc;
+            color: #0f172a; 
             margin: 0; 
             padding: 0; 
             line-height: 1.7; 
@@ -86,20 +84,14 @@
         }
         
         .lang-btn.active {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #4ecdc4;
             color: #ffffff;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 4px 15px rgba(78, 205, 196, 0.4);
         }
         
         .lang-btn:hover:not(.active) {
-            color: #2d3748;
-            background: rgba(102, 126, 234, 0.1);
-        }
-
-        @keyframes gradient-shift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            color: #0f172a;
+            background: rgba(78, 205, 196, 0.1);
         }
         
         /* Smooth Language Transition */
