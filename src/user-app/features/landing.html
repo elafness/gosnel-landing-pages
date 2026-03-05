@@ -41,14 +41,73 @@
 
     <style>
         body { 
-            background-color: #f8fafc; 
-            color: #0f172a; 
+            background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #4facfe);
+            background-size: 400% 400%;
+            animation: gradient-shift 15s ease infinite;
+            color: #1a202c; 
+            margin: 0; 
+            padding: 0; 
+            line-height: 1.7; 
             overflow-x: hidden; 
+            box-sizing: border-box;
+        }
+        
+        *, *::before, *::after {
+            box-sizing: inherit;
+        }
+        
+        /* === LANGUAGE TOGGLE === */
+        .lang-toggle {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+            display: flex;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            border-radius: 100px;
+            padding: 6px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .lang-btn {
+            padding: 12px 28px;
+            border: none;
+            background: transparent;
+            color: #718096;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 100px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            white-space: nowrap;
+        }
+        
+        .lang-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #ffffff;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .lang-btn:hover:not(.active) {
+            color: #2d3748;
+            background: rgba(102, 126, 234, 0.1);
+        }
+
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         
         /* Smooth Language Transition */
         .lang-ar { font-family: 'Cairo', sans-serif; direction: rtl; }
         .lang-en { font-family: 'Inter', sans-serif; direction: ltr; }
+        .lang-ml { font-family: 'Inter', sans-serif; direction: ltr; }
+        .lang-hi { font-family: 'Inter', sans-serif; direction: ltr; }
+        .lang-ur { font-family: 'Inter', sans-serif; direction: rtl; }
 
         /* Subtle floating animation for the hero image */
         .float-img {
@@ -100,6 +159,15 @@
     </style>
 </head>
 <body class="lang-en selection:bg-brand selection:text-white pb-20">
+
+    <!-- Language Toggle -->
+    <div class="lang-toggle">
+        <button id="lang-en" class="lang-btn active">English</button>
+        <button id="lang-ar" class="lang-btn">العربية</button>
+        <button id="lang-ml" class="lang-btn">മലയാളം</button>
+        <button id="lang-hi" class="lang-btn">हिंदी</button>
+        <button id="lang-ur" class="lang-btn">اردو</button>
+    </div>
 
     <!-- Navbar -->
     <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
@@ -268,7 +336,7 @@
         lucide.createIcons();
 
         // State & Translations
-        const state = { lang: 'en' };
+        let currentLang = localStorage.getItem('gosnel_lang') || 'en';
 
         const translations = {
             en: {
@@ -308,53 +376,100 @@
                 video_cta: "جربها بنفسك الآن",
                 footer_title: "جاهز تقضي على جوعك؟",
                 footer_cta: "افتح تطبيق الويب"
+            },
+            ml: {
+                nav_cta: "ചാറ്റ് ആരംഭിക്കുക",
+                hero_badge: "തിരയുന്നത് നിർത്തൂ. ഭക്ഷണം ആരംഭിക്കൂ.",
+                hero_title: "30 സെക്കൻഡിൽ <span class='text-brand'>3-ഇനം കോമ്പോ</span>.",
+                hero_desc: "നിങ്ങളുടെ AI ഭക്ഷണ ഏജന്റാണ് GoSnel. മികച്ച ലോക്കൽ സ്ഥലങ്ങളിൽ നിന്ന് പർഫക്റ്റ് മെയിൻ, സൈഡ്, ഡ്രിങ്ക് കോമ്പോ ഉടൻ നിർമ്മിച്ചുകൊണ്ട് ഞങ്ങൾ മെനു ക്ഷീണം മാറ്റുന്നു. ചാറ്റ് ചെയ്യുക, സ്ഥിരീകരിക്കുക, വാട്‌സ്ആപ്പിലൂടെ ഓർഡർ ചെയ്യുക.",
+                btn_primary: "GoSnel-മായി സംസാരിക്കുക",
+                btn_secondary: "ഇത് എങ്ങനെ പ്രവർത്തിക്കുന്നു കാണുക",
+                trust_1: "ഒളിഞ്ഞിരിക്കുന്ന ചാർജുകളില്ല", trust_2: "ഡെലിവറിയിൽ പേയ്മെന്റ്",
+                workflow_title: "GoSnel എങ്ങനെ പ്രവർത്തിക്കുന്നു", workflow_desc: "നിങ്ങളുടെ പർഫക്റ്റ് ഭക്ഷണത്തിലേക്കുള്ള മൂന്ന് ലളിതമായ ഘട്ടങ്ങൾ.",
+                step1_title: "1. AI-നോട് നിങ്ങളുടെ മൂഡ് പറയുക", step1_desc: "ഒരു ബർഗർ ആഗ്രഹിക്കുന്നുണ്ടോ? ആരോഗ്യകരമായ ഭക്ഷണം കഴിക്കുന്നുണ്ടോ? അത് ടൈപ്പ് ചെയ്യുക. ഞങ്ങളുടെ AI ഉടൻ തന്നെ സന്ദർഭം മനസ്സിലാക്കുന്നു.",
+                step_badge: "മാജിക് സംഭവിക്കുന്നു",
+                step2_title: "2. 3-ഇനം കോമ്പോ നേടുക", step2_desc: "നിങ്ങളുടെ അടുത്തുള്ള ടോപ്പ് റേറ്റ് ചെയ്ത റെസ്റ്റോറന്റുകളിൽ നിന്ന് ഞങ്ങൾ ഉടൻ തന്നെ ഒരു കോഹീസീവ് കോമ്പോ (മെയിൻ, സൈഡ്, ഡ്രിങ്ക്) നിർമ്മിക്കുന്നു.",
+                step3_title: "3. വാട്‌സ്ആപ്പിലൂടെ ഓർഡർ ചെയ്യുക", step3_desc: "ഒരു ക്ലിക്കിൽ നിങ്ങളുടെ ഫോർമാറ്റ് ചെയ്ത ഓർഡർ നേരിട്ട് റെസ്റ്റോറന്റിന്റെ വാട്‌സ്ആപ്പിലേക്ക് അയയ്ക്കുന്നു. ആപ്പുകൾ ആവശ്യമില്ല.",
+                video_title: "പ്രവർത്തനത്തിലെ AI കാണുക",
+                video_desc: "'എനിക്ക് വിശപ്പുണ്ട്' എന്നതിൽ നിന്ന് വാട്‌സ്ആപ്പിൽ നിങ്ങളുടെ ഓർഡർ സ്ഥിരീകരിക്കുന്നതിലേക്ക് എത്ര വേഗത്തിൽ പോകാമെന്ന് കാണുക. അവസാനമില്ലാത്ത സ്ക്രോളിംഗില്ല, തീരുമാനിക്കാൻ കഴിയാത്ത അവസ്ഥയില്ല. നിമിഷങ്ങൾക്കുള്ളിൽ നിങ്ങൾക്കായി ക്യൂറേറ്റ് ചെയ്ത പർഫക്റ്റ് കോമ്പോ മാത്രം.",
+                video_cta: "ഇപ്പോൾ തന്നെ പരീക്ഷിക്കുക",
+                footer_title: "നിങ്ങളുടെ വിശപ്പ് മാറ്റാൻ തയ്യാറാണോ?",
+                footer_cta: "വെബ് ആപ്പ് തുറക്കുക"
+            },
+            hi: {
+                nav_cta: "चैट शुरू करें",
+                hero_badge: "स्क्रॉल करना बंद करें। खाना शुरू करें।",
+                hero_title: "30 सेकंड में <span class='text-brand'>3-आइटम कॉम्बो</span>।",
+                hero_desc: "GoSnel आपका AI फूड एजेंट है। हम शीर्ष स्थानीय स्थानों से सही मेन, साइड और ड्रिंक कॉम्बो तुरंत बनाकर मेनू थकान को दूर करते हैं। बस चैट करें, पुष्टि करें, और व्हाट्सएप के माध्यम से ऑर्डर करें।",
+                btn_primary: "GoSnel के साथ चैट करें",
+                btn_secondary: "देखें कि यह कैसे काम करता है",
+                trust_1: "कोई छिपी हुई फीस नहीं", trust_2: "डिलीवरी पर भुगतान",
+                workflow_title: "GoSnel कैसे काम करता है", workflow_desc: "आपके आदर्श भोजन के लिए तीन सरल चरण।",
+                step1_title: "1. AI को अपना मूड बताएं", step1_desc: "बर्गर की इच्छा हो रही है? स्वस्थ भोजन कर रहे हैं? बस टाइप करें। हमारा AI तुरंत संदर्भ समझ जाता है।",
+                step_badge: "जादू होता है",
+                step2_title: "2. 3-आइटम कॉम्बो प्राप्त करें", step2_desc: "हम आपके पास के शीर्ष रेट किए गए रेस्तरां से तुरंत एक सुसंगत कॉम्बो (मेन, साइड, ड्रिंक) बनाते हैं।",
+                step3_title: "3. व्हाट्सएप के माध्यम से ऑर्डर करें", step3_desc: "एक क्लिक आपके फ़ॉर्मेटेड ऑर्डर को सीधे रेस्तरां के व्हाट्सएप पर भेजता है। किसी ऐप की आवश्यकता नहीं।",
+                video_title: "कार्यवाई में AI देखें",
+                video_desc: "देखें कि आप 'मुझे भूख लगी है' से व्हाट्सएप पर अपना ऑर्डर पुष्टि करने तक कितनी तेजी से जा सकते हैं। कोई अंतहीन स्क्रॉलिंग नहीं, कोई निर्णय थकान नहीं। बस सेकंडों में आपके लिए क्यूरेट किया गया एकदम सही कॉम्बो।",
+                video_cta: "अभी خود试 करें",
+                footer_title: "अपनी भूख मिटाने के लिए तैयार हैं?",
+                footer_cta: "वेब ऐप खोलें"
+            },
+            ur: {
+                nav_cta: "چیٹ شروع کریں",
+                hero_badge: "اسکرول کرنا بند کریں۔ کھانا شروع کریں۔",
+                hero_title: "30 سیکنڈ میں <span class='text-brand'>3-آئٹم کمبو</span>۔",
+                hero_desc: "GoSnel آپ کا AI فوڈ ایجنٹ ہے۔ ہم بہترین مقامی ریستورانوں سے کامل مین، سائیڈ، اور ڈرنک کمبو فوری طور پر بنا کر مینو تھکاوٹ کو دور کرتے ہیں۔ بس چیٹ کریں، تصدیق کریں، اور واٹس ایپ کے ذریعے آرڈر کریں۔",
+                btn_primary: "GoSnel کے ساتھ بات کریں",
+                btn_secondary: "دیکھیں کہ یہ کیسے کام کرتا ہے",
+                trust_1: "کوئی پوشیدہ فیس نہیں", trust_2: "ڈیلیوری پر ادائیگی",
+                workflow_title: "GoSnel کیسے کام کرتا ہے", workflow_desc: "آپ کے بہترین کھانے کے لیے تین آسان مراحل۔",
+                step1_title: "1. AI کو اپنا موڈ بتائیں", step1_desc: "برگر کی خواہش ہے؟ صحت مند کھا رہے ہیں؟ بس ٹائپ کریں۔ ہمارا AI فوری طور پر سیاق و سباق سمجھ جاتا ہے۔",
+                step_badge: "جادو ہوتا ہے",
+                step2_title: "2. 3-آئٹم کمبو حاصل کریں", step2_desc: "ہم آپ کے قریب بہترین ریٹ شدہ ریستورانوں سے فوری طور پر ایک مربوط کمبو (مین، سائیڈ، ڈرنک) بناتے ہیں۔",
+                step3_title: "3. واٹس ایپ کے ذریعے آرڈر کریں", step3_desc: "ایک کلک آپ کے فارمیٹڈ آرڈر کو براہ راست ریستوراں کے واٹس ایپ پر بھیجتا ہے۔ کسی ایپ کی ضرورت نہیں۔",
+                video_title: "عمل میں AI دیکھیں",
+                video_desc: "دیکھیں کہ آپ 'مجھے بھوک لگی ہے' سے واٹس ایپ پر اپنا آرڈر تصدیق کرنے تک کتنی تیزی سے جا سکتے ہیں۔ کوئی لامحدود اسکرولنگ نہیں، کوئی فیصلہ سازی کی تھکاوٹ نہیں۔ صرف سیکنڈوں میں آپ کے لیے کیوریٹ کیا گیا ایک کامل کمبو۔",
+                video_cta: "ابھی خود آزمائیں",
+                footer_title: "اپنی بھوک مٹانے کے لیے تیار ہیں؟",
+                footer_cta: "ویب ایپ کھولیں"
             }
         };
 
-        // Language Switcher Logic
-        document.getElementById('langSelector').addEventListener('change', (e) => {
-            const lang = e.target.value;
-            state.lang = lang;
+        // Language Switcher Function
+        function setLang(lang) {
+            currentLang = lang;
+            localStorage.setItem('gosnel_lang', lang);
             
-            // Update HTML attributes for CSS targeting (dir, font)
+            // Update active button state
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(`lang-${lang}`).classList.add('active');
+            
+            // Update HTML attributes
             document.documentElement.lang = lang;
-            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            document.documentElement.dir = (lang === 'ar' || lang === 'ur') ? 'rtl' : 'ltr';
             
-            // Toggle body classes for font-family
-            if (lang === 'ar') {
-                document.body.classList.remove('lang-en');
-                document.body.classList.add('lang-ar');
-            } else {
-                document.body.classList.remove('lang-ar');
-                document.body.classList.add('lang-en');
-            }
-
-            // Update text content
+            // Update body class for font-family
+            document.body.className = `lang-${lang} selection:bg-brand selection:text-white pb-20`;
+            
+            // Update translations
             const t = translations[lang];
             
-            // Helper function to safely update innerHTML
             const updateEl = (id, html) => {
                 const el = document.getElementById(id);
                 if(el) el.innerHTML = html;
             };
 
             updateEl('nav_cta', t.nav_cta);
-            
-            // Keep icons intact where needed
             document.getElementById('hero_badge').innerHTML = `<i data-lucide="zap" class="w-4 h-4"></i><span>${t.hero_badge}</span>`;
-            
             updateEl('hero_title', t.hero_title);
             updateEl('hero_desc', t.hero_desc);
-            
             document.getElementById('btn_primary').innerText = t.btn_primary;
             document.getElementById('btn_secondary').innerText = t.btn_secondary;
-            
             updateEl('trust_1', t.trust_1);
             updateEl('trust_2', t.trust_2);
-            
             updateEl('workflow_title', t.workflow_title);
             updateEl('workflow_desc', t.workflow_desc);
-            
             updateEl('step1_title', t.step1_title);
             updateEl('step1_desc', t.step1_desc);
             updateEl('step_badge', t.step_badge);
@@ -362,30 +477,42 @@
             updateEl('step2_desc', t.step2_desc);
             updateEl('step3_title', t.step3_title);
             updateEl('step3_desc', t.step3_desc);
-            
             updateEl('video_title', t.video_title);
             updateEl('video_desc', t.video_desc);
             document.getElementById('video_cta').innerText = t.video_cta;
-            
             updateEl('footer_title', t.footer_title);
             document.getElementById('footer_cta').innerText = t.footer_cta;
 
-            // Re-render icons after DOM manipulation
             lucide.createIcons();
             
-            // Handle RTL specific display logic for icons in navbar
+            // Handle RTL icons
             const navCtaBtn = document.querySelector('a[href="https://app.gosnel.com"]');
-            const rightArrow = navCtaBtn.querySelector('[data-lucide="arrow-right"]');
-            const leftArrow = navCtaBtn.querySelector('[data-lucide="arrow-left"]');
-            
-            if(lang === 'ar') {
-                rightArrow.classList.add('hidden');
-                leftArrow.classList.remove('hidden');
-            } else {
-                rightArrow.classList.remove('hidden');
-                leftArrow.classList.add('hidden');
+            if (navCtaBtn) {
+                const rightArrow = navCtaBtn.querySelector('[data-lucide="arrow-right"]');
+                const leftArrow = navCtaBtn.querySelector('[data-lucide="arrow-left"]');
+                if (lang === 'ar' || lang === 'ur') {
+                    rightArrow.classList.add('hidden');
+                    leftArrow.classList.remove('hidden');
+                } else {
+                    rightArrow.classList.remove('hidden');
+                    leftArrow.classList.add('hidden');
+                }
             }
-        });
+        }
+
+        // Add event listeners to language buttons
+        document.getElementById('lang-en').addEventListener('click', () => setLang('en'));
+        document.getElementById('lang-ar').addEventListener('click', () => setLang('ar'));
+        document.getElementById('lang-ml').addEventListener('click', () => setLang('ml'));
+        document.getElementById('lang-hi').addEventListener('click', () => setLang('hi'));
+        document.getElementById('lang-ur').addEventListener('click', () => setLang('ur'));
+        
+        // Remove old language selector
+        const oldSelector = document.getElementById('langSelector');
+        if (oldSelector) oldSelector.parentElement.remove();
+        
+        // Initialize with saved language
+        setLang(currentLang);
     </script>
 </body>
 </html>
