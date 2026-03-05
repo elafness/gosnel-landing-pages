@@ -19,6 +19,44 @@
             align-items: center;
         }
 
+        /* === LANGUAGE TOGGLE === */
+        .lang-toggle {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+            display: flex;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 100px;
+            padding: 4px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .lang-btn {
+            padding: 10px 24px;
+            border: none;
+            background: transparent;
+            color: #64748b;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 100px;
+            transition: all 0.3s ease;
+        }
+        
+        .lang-btn.active {
+            background: linear-gradient(135deg, #4ECDC4, #2dd4bf);
+            color: #ffffff;
+        }
+        
+        .lang-btn:hover:not(.active) {
+            color: #0f172a;
+            background: rgba(0, 0, 0, 0.03);
+        }
+
         /* Container to center content */
         .container {
             max-width: 960px;
@@ -210,29 +248,34 @@
     </style>
 </head>
 <body>
+    <!-- Language Toggle -->
+    <div class="lang-toggle">
+        <button id="lang-en" class="lang-btn">English</button>
+        <button id="lang-ar" class="lang-btn active">العربية</button>
+        <button id="lang-ml" class="lang-btn">മലയാളം</button>
+        <button id="lang-hi" class="lang-btn">हिंदी</button>
+        <button id="lang-ur" class="lang-btn">اردو</button>
+    </div>
 
     <header>
         <div class="container">
-            <img src="IMG_6802.jpg" alt="GoSnel Logo" style="height: 60px; display: block; margin: 0 auto;">
+            <img src="https://pub-36067fecb2654f06ab5b13fe9340062d.r2.dev/landingPageImaged/1.png" alt="GoSnel Logo" style="height: 60px; display: block; margin: 0 auto;">
         </div>
     </header>
 
     <section class="hero">
         <div class="container">
-            <h1>خلي الذكاء الاصطناعي يضبطك!</h1>
-            <p>
+            <h1 id="hero_title">خلي الذكاء الاصطناعي يضبطك!</h1>
+            <p id="hero_subtitle">
                 خلص من حيرة الأكل في 30 ثانية. جوسنل، عميلك الذكي للأكل، بيختار لك أفضل 3 وجبات من اللي حولك. اختار الكومبو اللي يعجبك، واطلب فوراً ع الواتساب.
             </p>
             
             <div class="row">
                 <div class="column">
-                    <div class="gosnel-placeholder">
-                        [IMAGE PLACEHOLDER 1]<br>
-                        GoSnel Hero Rescue - Surfing on Burger
-                    </div>
+                    <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/gosnelicon.png" alt="GoSnel Hero Rescue - Surfing on Burger" class="food-image">
                 </div>
                 <div class="column">
-                    <p style="text-align: right;">
+                    <p style="text-align: right;" id="why_gosnel">
                         لماذا GoSnel؟ لأننا ندمج ذكاء الـ AI مع أفضل الكومبوهات المحلية. نحن لا نقترح عليك فقط؛ بل نجهز لك كومبو متكامل من 3 قطع يضبط مودك وميزانيتك. بلمحة عين، حيرتك تنتهي، وطلبك يكون جاهز.
                     </p>
                 </div>
@@ -242,35 +285,26 @@
 
     <section class="how-it-works">
         <div class="container">
-            <h2>جوسنل: كومبو 3 وجبات... بلمحة عين</h2>
-            <p>
+            <h2 id="how_title">جوسنل: كومبو 3 وجبات... بلمحة عين</h2>
+            <p id="how_subtitle">
                 جرب طريقة GoSnel الفريدة. الذكاء الاصطناعي الخاص بنا يحلل تفضيلاتك ويخلق لك الكومبو المثالي المكون من 3 قطع: طبق رئيسي، جانب، ومشروب. شاهد كيف يعمل السحر:
             </p>
             
             <div class="row">
                 <div class="column">
-                    <div class="gosnel-placeholder">
-                        [IMAGE PLACEHOLDER 2]<br>
-                        GoSnel Step 1 - Juggling Ingredients
-                    </div>
-                    <div class="image-title">1. كلم جوسنل</div>
-                    <p>ابدأ المحادثة معنا. الذكاء الاصطناعي يستمع لرغبتك الحالية.</p>
+                    <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/gosnelicon.png" alt="GoSnel Step 1 - Juggling Ingredients" class="food-image">
+                    <div class="image-title" id="step1_title">1. كلم جوسنل</div>
+                    <p id="step1_desc">ابدأ المحادثة معنا. الذكاء الاصطناعي يستمع لرغبتك الحالية.</p>
                 </div>
                 <div class="column">
-                    <div class="gosnel-placeholder">
-                        [IMAGE PLACEHOLDER 3]<br>
-                        GoSnel Step 2 - Blender Explosion
-                    </div>
-                    <div class="image-title">2. جوسنل يضبطك</div>
-                    <p>الـ AI يخلق الكومبو المثالي من 3 قطع بناءً على ذوقك.</p>
+                    <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/gosnelicon.png" alt="GoSnel Step 2 - Blender Explosion" class="food-image">
+                    <div class="image-title" id="step2_title">2. جوسنل يضبطك</div>
+                    <p id="step2_desc">الـ AI يخلق الكومبو المثالي من 3 قطع بناءً على ذوقك.</p>
                 </div>
                 <div class="column">
-                    <div class="gosnel-placeholder">
-                        [IMAGE PLACEHOLDER 4]<br>
-                        GoSnel Step 3 - selfie with Giant Shawarma
-                    </div>
-                    <div class="image-title">3. اطلب ع الواتساب</div>
-                    <p>كبسة زر واحدة تنقلك مباشرة لإتمام الطلب عبر الواتساب.</p>
+                    <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/gosnelicon.png" alt="GoSnel Step 3 - selfie with Giant Shawarma" class="food-image">
+                    <div class="image-title" id="step3_title">3. اطلب ع الواتساب</div>
+                    <p id="step3_desc">كبسة زر واحدة تنقلك مباشرة لإتمام الطلب عبر الواتساب.</p>
                 </div>
             </div>
             
@@ -286,15 +320,142 @@
     <section class="order-section">
         <div class="container">
             <div class="gosnel-placeholder" style="margin-bottom: 40px; min-height: 250px;">
-                [IMAGE PLACEHOLDER 5]<br>
-                GoSnel Final CTA - Friendly Pirate pointing to Treasure Chest Meal
+                <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/gosnelicon.png" alt="GoSnel Final CTA - Friendly Pirate pointing to Treasure Chest Meal" style="width: 100%; height: auto; border-radius: 8px;">
             </div>
-            <p>
+            <p id="cta_text">
                 جاهز للكومبو؟ ابدأ المحادثة مع جوسنل الحين، واطلب الكومبو المفضل عندك عبر الواتساب في ثواني. لا تضيع وقتك في البحث، خل الـ AI يضبطك.
             </p>
-            <a href="#" class="order-button">كلم جوسنل ع الواتساب!</a>
+            <a href="#" class="order-button" id="cta_button">كلم جوسنل ع الواتساب!</a>
         </div>
     </section>
 
 </body>
-</html>
+<script>
+    (function() {
+        let currentLang = localStorage.getItem('gosnel_lang') || 'ar';
+        
+        const translations = {
+            ar: {
+                hero_title: 'خلي الذكاء الاصطناعي يضبطك!',
+                hero_subtitle: 'خلص من حيرة الأكل في 30 ثانية. جوسنل، عميلك الذكي للأكل، بيختار لك أفضل 3 وجبات من اللي حولك. اختار الكومبو اللي يعجبك، واطلب فوراً ع الواتساب.',
+                why_gosnel: 'لماذا GoSnel؟ لأننا ندمج ذكاء الـ AI مع أفضل الكومبوهات المحلية. نحن لا نقترح عليك فقط؛ بل نجهز لك كومبو متكامل من 3 قطع يضبط مودك وميزانيتك. بلمحة عين، حيرتك تنتهي، وطلبك يكون جاهز.',
+                how_title: 'جوسنل: كومبو 3 وجبات... بلمحة عين',
+                how_subtitle: 'جرب طريقة GoSnel الفريدة. الذكاء الاصطناعي الخاص بنا يحلل تفضيلاتك ويخلق لك الكومبو المثالي المكون من 3 قطع: طبق رئيسي، جانب، ومشروب. شاهد كيف يعمل السحر:',
+                step1_title: '1. كلم جوسنل',
+                step1_desc: 'ابدأ المحادثة معنا. الذكاء الاصطناعي يستمع لرغبتك الحالية.',
+                step2_title: '2. جوسنل يضبطك',
+                step2_desc: 'الـ AI يخلق الكومبو المثالي من 3 قطع بناءً على ذوقك.',
+                step3_title: '3. اطلب ع الواتساب',
+                step3_desc: 'كبسة زر واحدة تنقلك مباشرة لإتمام الطلب عبر الواتساب.',
+                cta_text: 'جاهز للكومبو؟ ابدأ المحادثة مع جوسنل الحين، واطلب الكومبو المفضل عندك عبر الواتساب في ثواني. لا تضيع وقتك في البحث، خل الـ AI يضبطك.',
+                cta_button: 'كلم جوسنل ع الواتساب!'
+            },
+            en: {
+                hero_title: 'Let AI Pick Your Perfect Meal!',
+                hero_subtitle: 'End food indecision in 30 seconds. GoSnel, your AI food assistant, selects the best 3 meals around you. Choose your combo and order instantly via WhatsApp.',
+                why_gosnel: 'Why GoSnel? Because we combine AI intelligence with the best local combos. We don\'t just suggest; we prepare a complete 3-piece combo that matches your mood and budget. In the blink of an eye, your indecision ends, and your order is ready.',
+                how_title: 'GoSnel: 3-Meal Combo... In a Blink',
+                how_subtitle: 'Experience GoSnel\'s unique method. Our AI analyzes your preferences and creates your perfect 3-piece combo: main dish, side, and drink. Watch the magic happen:',
+                step1_title: '1. Talk to GoSnel',
+                step1_desc: 'Start a conversation with us. The AI listens to your current craving.',
+                step2_title: '2. GoSnel Picks for You',
+                step2_desc: 'The AI creates your perfect 3-piece combo based on your taste.',
+                step3_title: '3. Order via WhatsApp',
+                step3_desc: 'One click takes you directly to complete your order via WhatsApp.',
+                cta_text: 'Ready for your combo? Start chatting with GoSnel now, and order your favorite combo via WhatsApp in seconds. Don\'t waste time searching, let AI pick for you.',
+                cta_button: 'Chat with GoSnel on WhatsApp!'
+            },
+            ml: {
+                hero_title: 'AI നിങ്ങളുടെ ഭക്ഷണം തിരഞ്ഞെടുക്കാട്ടെ!',
+                hero_subtitle: '30 സെക്കൻഡിൽ ഭക്ഷണ സംശയം അവസാനിപ്പിക്കുക. GoSnel, നിങ്ങളുടെ AI ഭക്ഷണ അസിസ്റ്റന്റ്, ചുറ്റുമുള്ള മികച്ച 3 ഭക്ഷണങ്ങൾ തിരഞ്ഞെടുക്കുന്നു. നിങ്ങളുടെ കോമ്പോ തിരഞ്ഞെടുത്ത് വാട്‌സ്ആപ്പിലൂടെ ഉടൻ ഓർഡർ ചെയ്യുക.',
+                why_gosnel: 'എന്തുകൊണ്ട് GoSnel? ഞങ്ങൾ AI ഇന്റലിജൻസും മികച്ച ലോക്കൽ കോമ്പോകളും സംയോജിപ്പിക്കുന്നു. ഞങ്ങൾ വെറും നിർദ്ദേശങ്ങൾ നൽകുന്നില്ല; നിങ്ങളുടെ മൂഡും ബജറ്റും അനുയോജ്യമായ 3-പീസ് കോമ്പോ തയ്യാറാക്കുന്നു. ഒരു കണ്ണിമ ചിമ്മുന്നതിനുള്ളിൽ, നിങ്ങളുടെ സംശയം അവസാനിക്കുന്നു, ഓർഡർ തയ്യാർ.',
+                how_title: 'GoSnel: 3-ഭക്ഷണ കോമ്പോ... ഒരു നിമിഷം കൊണ്ട്',
+                how_subtitle: 'GoSnel\'ന്റെ അദ്വിതീയ രീതി അനുഭവിക്കുക. ഞങ്ങളുടെ AI നിങ്ങളുടെ മുൻഗണനകൾ വിശകലനം ചെയ്ത് നിങ്ങളുടെ തികച്ചും 3-പീസ് കോമ്പോ സൃഷ്ടിക്കുന്നു: പ്രധാന വിഭവം, സൈഡ്, പാനീയം. മാജിക് എങ്ങനെ പ്രവർത്തിക്കുന്നു എന്ന് കാണുക:',
+                step1_title: '1. GoSnel-മായി സംസാരിക്കുക',
+                step1_desc: 'ഞങ്ങളുമായി സംഭാഷണം ആരംഭിക്കുക. AI നിങ്ങളുടെ നിലവിലെ ആഗ്രഹം ശ്രദ്ധിക്കുന്നു.',
+                step2_title: '2. GoSnel നിങ്ങൾക്കായി തിരഞ്ഞെടുക്കുന്നു',
+                step2_desc: 'AI നിങ്ങളുടെ രുചി അടിസ്ഥാനമാക്കി നിങ്ങളുടെ തികച്ചും 3-പീസ് കോമ്പോ സൃഷ്ടിക്കുന്നു.',
+                step3_title: '3. വാട്‌സ്ആപ്പിലൂടെ ഓർഡർ ചെയ്യുക',
+                step3_desc: 'ഒരു ക്ലിക്കിൽ നിങ്ങളെ നേരിട്ട് വാട്‌സ്ആപ്പിലൂടെ ഓർഡർ പൂർത്തിയാക്കാൻ കൊണ്ടുപോകുന്നു.',
+                cta_text: 'നിങ്ങളുടെ കോമ്പോയ്ക്ക് തയ്യാറാണോ? GoSnel-മായി ഇപ്പോൾ ചാറ്റിംഗ് ആരംഭിക്കുക, സെക്കൻഡുകൾക്കുള്ളിൽ വാട്‌സ്ആപ്പിലൂടെ നിങ്ങളുടെ പ്രിയപ്പെട്ട കോമ്പോ ഓർഡർ ചെയ്യുക. സമയം കളയരുത്, AI നിങ്ങൾക്കായി തിരഞ്ഞെടുക്കാട്ടെ.',
+                cta_button: 'വാട്‌സ്ആപ്പിലൂടെ GoSnel-മായി സംസാരിക്കൂ!'
+            },
+            hi: {
+                hero_title: 'AI को अपना सही भोजन चुनने दें!',
+                hero_subtitle: '30 सेकंड में भोजन संशय समाप्त करें। GoSnel, आपका AI भोजन सहायक, आपके आसपास के सर्वोत्तम 3 भोजन का चयन करता है। अपना कॉम्बो चुनें और व्हाट्सएप के माध्यम से तुरंत ऑर्डर करें।',
+                why_gosnel: 'GoSnel क्यों? क्योंकि हम AI बुद्धिमत्ता को सर्वोत्तम स्थानीय कॉम्बो के साथ जोड़ते हैं। हम केवल सुझाव नहीं देते; हम आपके मूड और बजट के अनुसार 3-पीस कॉम्बो तैयार करते हैं। एक पलक झपकते ही, आपकी अनिर्णय समाप्त होती है, और आपका ऑर्डर तैयार होता है।',
+                how_title: 'GoSnel: 3-भोजन कॉम्बो... एक पल में',
+                how_subtitle: 'GoSnel की अनोखी विधि का अनुभव करें। हमारा AI आपकी प्राथमिकताओं का विश्लेषण करता है और आपका सही 3-पीस कॉम्बो बनाता है: मुख्य व्यंजन, साइड, और पेय।देखें जादू कैसे काम करता है:',
+                step1_title: '1. GoSnel से बात करें',
+                step1_desc: 'हमारे साथ बातचीत शुरू करें। AI आपकी वर्तमान इच्छा को सुनता है।',
+                step2_title: '2. GoSnel आपके लिए चुनता है',
+                step2_desc: 'AI आपकी पसंद के आधार पर आपका सही 3-पीस कॉम्बो बनाता है।',
+                step3_title: '3. व्हाट्सएप के माध्यम से ऑर्डर करें',
+                step3_desc: 'एक क्लिक आपको सीधे व्हाट्सएप के माध्यम से अपना ऑर्डर पूरा करने के लिए ले जाता है।',
+                cta_text: 'अपने कॉम्बो के लिए तैयार? GoSnel के साथ अभी चैटिंग शुरू करें, और सेकंडों में व्हाट्सएप के माध्यम से अपना पसंदीदा कॉम्बो ऑर्डर करें। समय बर्बाद न करें, AI को आपके लिए चुनने दें।',
+                cta_button: 'व्हाट्सएप पर GoSnel से बात करें!'
+            },
+            ur: {
+                hero_title: 'AI کو اپنا بہترین کھانا منتخب کرنے دیں!',
+                hero_subtitle: '30 سیکنڈ میں کھانے کی کشمکش ختم کریں۔ GoSnel، آپ کا AI فوڈ اسسٹنٹ، آپ کے ارد گرد بہترین 3 کھانے منتخب کرتا ہے۔ اپنا کمبو منتخب کریں اور واٹس ایپ کے ذریعے فوری طور پر آرڈر کریں۔',
+                why_gosnel: 'GoSnel کیوں؟ کیونکہ ہم AI ذہانت کو بہترین مقامی کمبو کے ساتھ جوڑتے ہیں۔ ہم صرف تجویز نہیں دیتے؛ ہم آپ کے موڈ اور بجٹ کے مطابق 3-پیس کمبو تیار کرتے ہیں۔ ایک پلک جھپکتے ہی، آپ کی کشمکش ختم ہوتی ہے، اور آپ کا آرڈر تیار ہوتا ہے۔',
+                how_title: 'GoSnel: 3-کھانے کا کمبو... ایک پل میں',
+                how_subtitle: 'GoSnel کا منفرد طریقہ کار تجربہ کریں۔ ہمارا AI آپ کی ترجیحات کا تجزیہ کرتا ہے اور آپ کا بہترین 3-پیس کمبو بناتا ہے: مرکزی ڈش، سائیڈ، اور مشروب۔دیکھیں جادو کیسے کام کرتا ہے:',
+                step1_title: '1. GoSnel سے بات کریں',
+                step1_desc: 'ہمارے ساتھ بات چیت شروع کریں۔ AI آپ کی موجودہ خواہش کو سنتا ہے۔',
+                step2_title: '2. GoSnel آپ کے لیے منتخب کرتا ہے',
+                step2_desc: 'AI آپ کی پسند کی بنیاد پر آپ کا بہترین 3-پیس کمبو بناتا ہے۔',
+                step3_title: '3. واٹس ایپ کے ذریعے آرڈر کریں',
+                step3_desc: 'ایک کلک آپ کو براہ راست واٹس ایپ کے ذریعے اپنا آرڈر مکمل کرنے کے لیے لے جاتا ہے۔',
+                cta_text: 'اپنے کمبو کے لیے تیار؟ GoSnel کے ساتھ ابھی چیٹنگ شروع کریں، اور سیکنڈوں میں واٹس ایپ کے ذریعے اپنا پسندیدہ کمبو آرڈر کریں۔ وقت ضائع نہ کریں، AI کو آپ کے لیے منتخب کرنے دیں۔',
+                cta_button: 'واٹس ایپ پر GoSnel سے بات کریں!'
+            }
+        };
+        
+        function applyTranslations() {
+            const t = translations[currentLang];
+            if (!t) return;
+            
+            document.getElementById('hero_title').textContent = t.hero_title;
+            document.getElementById('hero_subtitle').textContent = t.hero_subtitle;
+            document.getElementById('why_gosnel').textContent = t.why_gosnel;
+            document.getElementById('how_title').textContent = t.how_title;
+            document.getElementById('how_subtitle').textContent = t.how_subtitle;
+            document.getElementById('step1_title').textContent = t.step1_title;
+            document.getElementById('step1_desc').textContent = t.step1_desc;
+            document.getElementById('step2_title').textContent = t.step2_title;
+            document.getElementById('step2_desc').textContent = t.step2_desc;
+            document.getElementById('step3_title').textContent = t.step3_title;
+            document.getElementById('step3_desc').textContent = t.step3_desc;
+            document.getElementById('cta_text').textContent = t.cta_text;
+            document.getElementById('cta_button').textContent = t.cta_button;
+            
+            // Update HTML lang and dir attributes
+            document.documentElement.setAttribute('lang', currentLang);
+            document.documentElement.setAttribute('dir', currentLang === 'ar' || currentLang === 'ur' ? 'rtl' : 'ltr');
+        }
+        
+        function setLang(lang) {
+            currentLang = lang;
+            localStorage.setItem('gosnel_lang', lang);
+            
+            document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+            document.getElementById('lang-ar').classList.toggle('active', lang === 'ar');
+            document.getElementById('lang-ml').classList.toggle('active', lang === 'ml');
+            document.getElementById('lang-hi').classList.toggle('active', lang === 'hi');
+            document.getElementById('lang-ur').classList.toggle('active', lang === 'ur');
+            
+            applyTranslations();
+        }
+        
+        document.getElementById('lang-en').addEventListener('click', () => setLang('en'));
+        document.getElementById('lang-ar').addEventListener('click', () => setLang('ar'));
+        document.getElementById('lang-ml').addEventListener('click', () => setLang('ml'));
+        document.getElementById('lang-hi').addEventListener('click', () => setLang('hi'));
+        document.getElementById('lang-ur').addEventListener('click', () => setLang('ur'));
+        
+        // Initialize
+        setLang(currentLang);
+    })();
+    </script>
+</body>
