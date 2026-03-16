@@ -1,306 +1,443 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-T2K2VT8V');</script>
-    <!-- End Google Tag Manager -->
-
-    <!-- Meta Pixel Code -->
-    <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1619857376123481');
-    fbq('track', 'PageView');
-    </script>
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=1619857376123481&ev=PageView&noscript=1"
-    /></noscript>
-    <!-- End Meta Pixel Code -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GoSnel Food Discovery UAE | Meal Delivery & Restaurant Finder</title>
+    <title>GoSnel | AI Food Agent</title>
+    <meta name="description" content="Stop scrolling endlessly through food apps. GoSnel's AI suggests personalized meals from nearby restaurants in seconds.">
     
-    <!-- Primary SEO Meta Tags -->
-    <meta name="title" content="GoSnel Food Discovery UAE | Meal Delivery & Restaurant Finder">
-    <meta name="description" content="GoSnel food delivery and discovery platform in UAE. Find restaurants, order meals, get AI-powered food recommendations in Dubai, Abu Dhabi, Sharjah. Your smart food assistant for UAE dining.">
-    <meta name="keywords" content="GoSnel, gosnel food, gosnel UAE, food delivery UAE, restaurant finder, meal discovery, GoSnel food delivery, food ordering UAE, restaurant recommendations, AI food assistant, UAE restaurants, UAE dining, smart food ordering, food discovery platform, meal delivery service">
-    <meta name="author" content="GoSnel">
-    <meta name="robots" content="index, follow">
-    <meta name="language" content="en-US">
-    <meta name="revisit-after" content="1 days">
+    <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Arabic Language Meta Tags -->
-    <meta name="description" lang="ar" content="منصة قوسنل لتوصيل الطعام واكتشاف المطاعم في الإمارات. اعثر على مطاعم، اطلب وجبات، احصل على توصيات طعام ذكية في دبي، أبوظبي، الشارقة. مساعدك الذكي للطعام في الإمارات.">
-    <meta name="keywords" lang="ar" content="قوسنل, طعام قوسنل, قوسنل الإمارات, توصيل طعام الإمارات, باحث مطاعم, اكتشاف وجبات, توصيل طعام قوسنل, طلب طعام الإمارات, توصيات مطاعم, مساعد طعام ذكي, مطاعم الإمارات, تناول طعام الإمارات">
+    <script src="https://unpkg.com/lucide@latest"></script>
     
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://gosnel.com/">
-    <meta property="og:title" content="GoSnel Food Discovery UAE | Meal Delivery & Restaurant Finder">
-    <meta property="og:description" content="GoSnel food delivery and discovery platform in UAE. Find restaurants, order meals, get AI-powered food recommendations.">
-    <meta property="og:image" content="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/gosnelicon.png">
-    <meta property="og:site_name" content="GoSnel">
-    <meta property="og:locale" content="en_US">
-    <meta property="og:locale:alternate" content="ar_AE">
-    
-    <!-- Twitter Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://gosnel.com/">
-    <meta name="twitter:title" content="GoSnel - Meal Discovery | AI-Powered Restaurant Recommendations UAE">
-    <meta name="twitter:description" content="GoSnel is your AI-powered food discovery platform in UAE. Get personalized restaurant recommendations and meal suggestions from local eateries in UAE.">
-    <meta name="twitter:image" content="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/gosnelicon.png">
-    
-    <!-- Brand Clarification for Search Engines -->
-    <meta name="brand" content="GoSnel">
-    <meta name="brand-spelling" content="GoSnel with single L, not Gosnell">
-    <meta name="company" content="GoSnel Food Technology LLC">
-    <meta name="geo.region" content="AE-AJ">
-    <meta name="geo.placename" content="United Arab Emirates">
-    <meta name="geo.position" content="25.4052;55.5136">
-    <meta name="ICBM" content="25.4052, 55.5136">
-    
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://gosnel.com/">
-    
-    <!-- Hreflang for International SEO -->
-    <link rel="alternate" hreflang="en" href="https://gosnel.com/">
-    <link rel="alternate" hreflang="ar" href="https://gosnel.com/ar/">
-    <link rel="alternate" hreflang="x-default" href="https://gosnel.com/">
-    
-    <!-- RealFaviconGenerator Recommended Favicon System - Circular Version -->
-    <link rel="icon" type="image/png" href="/shared/assets/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="/shared/assets/favicon-circular.svg" />
-    <link rel="shortcut icon" href="/shared/assets/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/shared/assets/apple-touch-icon.png" />
-    <link rel="manifest" href="/shared/assets/site.webmanifest" />
-    <meta name="theme-color" content="#14b8a6">
-    
-    <!-- Schema.org Structured Data for Brand Recognition -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "GoSnel",
-        "alternateName": ["GoSnel Food", "GoSnel UAE", "GoSnel Platform"],
-        "legalName": "GoSnel Food Technology LLC",
-        "url": "https://gosnel.com",
-        "logo": "https://pub-0d4798289dad4074a3236450ba640652.r2.dev/gosnelicon.png",
-        "description": "GoSnel is an AI-powered food discovery and delivery platform in the United Arab Emirates, connecting users with restaurants and personalized meal recommendations.",
-        "foundingDate": "2024",
-        "foundingLocation": {
-            "@type": "Place",
-            "name": "United Arab Emirates"
-        },
-        "address": {
-            "@type": "PostalAddress",
-            "addressCountry": "AE",
-            "addressRegion": "UAE"
-        },
-        "areaServed": {
-            "@type": "Country",
-            "name": "United Arab Emirates"
-        },
-        "industry": "Food Technology",
-        "knowsAbout": ["Food Delivery", "Restaurant Discovery", "AI Food Recommendations", "UAE Dining"],
-        "sameAs": [
-            "https://www.linkedin.com/company/gosnel",
-            "https://twitter.com/gosneluae",
-            "https://www.instagram.com/gosneluae"
-        ],
-        "brand": {
-            "@type": "Brand",
-            "name": "GoSnel",
-            "description": "Spelled G-O-S-N-E-L with single L, not Gosnell"
-        }
-    }
-    </script>
-    
-    <!-- WebSite Schema for Search Box -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "GoSnel",
-        "alternateName": "GoSnel Food Discovery UAE",
-        "url": "https://gosnel.com",
-        "potentialAction": {
-            "@type": "SearchAction",
-            "target": "https://gosnel.com/search?q={search_term_string}",
-            "query-input": "required name=search_term_string"
-        }
-    }
-    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <script>
-        // Only redirect for specific subdomains, not for main domain
-        (function() {
-            var host = window.location.hostname;
-            var pathname = window.location.pathname;
-            
-            console.log('Current path:', pathname);
-            console.log('Current host:', host);
-            
-            // Only redirect if we're on a specific subdomain AND at root path
-            if ((pathname === '/' || pathname === '/index.html') && host !== 'gosnel.com') {
-                var target = '/index-user.html'; // default
-                
-                if (host.indexOf('drivers') !== -1) {
-                    target = '/index-drivers.html';
-                } else if (host.indexOf('vendor') !== -1) {
-                    target = '/index-vendor.html';
-                } else if (host.indexOf('promo') !== -1) {
-                    target = '/index-promo.html';
-                } else if (host.indexOf('user') !== -1) {
-                    target = '/index-user.html';
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        arabic: ['Cairo', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            DEFAULT: '#4ecdc4',
+                            light: '#e6f9f8',
+                            dark: '#3db5ac'
+                        },
+                        gs: {
+                            dark: '#0f172a',
+                            light: '#f8fafc',
+                            gray: '#64748b'
+                        }
+                    },
+                    animation: {
+                        'float': 'float 4s ease-in-out infinite',
+                        'pulse-brand': 'pulse-brand 2s infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        'pulse-brand': {
+                            '0%': { boxShadow: '0 0 0 0 rgba(78, 205, 196, 0.4)' },
+                            '70%': { boxShadow: '0 0 0 15px rgba(78, 205, 196, 0)' },
+                            '100%': { boxShadow: '0 0 0 0 rgba(78, 205, 196, 0)' },
+                        }
+                    }
                 }
-                
-                console.log('Redirecting to:', target);
-                window.location.replace(target);
             }
-            // For main domain (gosnel.com), no redirect - show main landing page
-        })();
-    </script>
-    <!-- Structured Data for Organization -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "GoSnel",
-      "alternateName": "GoSnel UAE",
-      "description": "AI-powered food discovery platform connecting food lovers with restaurants across the UAE. Smart meal recommendations and restaurant technology.",
-      "url": "https://gosnel.com",
-      "logo": "https://pub-0d4798289dad4074a3236450ba640652.r2.dev/gosnelicon.png",
-      "image": "https://pub-0d4798289dad4074a3236450ba640652.r2.dev/gosnelicon.png",
-      "telephone": "+971-XX-XXX-XXXX",
-      "email": "info@gosnel.com",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "UAE",
-        "addressRegion": "UAE",
-        "addressCountry": "AE"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 25.4052,
-        "longitude": 55.5136
-      },
-      "areaServed": {
-        "@type": "Country",
-        "name": "United Arab Emirates"
-      },
-      "serviceType": "Food Technology Platform",
-      "industry": "Food & Beverage Technology",
-      "foundingLocation": {
-        "@type": "Place",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "UAE",
-          "addressCountry": "AE"
         }
-      },
-      "sameAs": [
-        "https://linkedin.com/company/gosnel",
-        "https://twitter.com/gosneluae",
-        "https://instagram.com/gosneluae"
-      ],
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://gosnel.com/search?q={search_term_string}",
-        "query-input": "required name=search_term_string"
-      }
-    }
     </script>
 
-    <!-- Structured Data for Website -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "GoSnel - AI Food Discovery Platform UAE",
-      "description": "Your intelligent food ordering companion. Discover restaurants, get personalized meal recommendations, and enjoy seamless dining experiences across the UAE.",
-      "url": "https://gosnel.com",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://gosnel.com/search?q={search_term_string}",
-        "query-input": "required name=search_term_string"
-      },
-      "inLanguage": ["en-AE", "ar-AE"],
-      "about": {
-        "@type": "Thing",
-        "name": "AI-powered food technology",
-        "description": "Artificial intelligence for restaurant discovery and meal recommendations"
-      }
-    }
-    </script>
-
-    <!-- Structured Data for Service -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Service",
-      "name": "GoSnel AI Food Discovery",
-      "description": "AI-powered platform connecting food lovers with restaurants through intelligent meal recommendations and seamless ordering technology.",
-      "provider": {
-        "@type": "Organization",
-        "name": "GoSnel"
-      },
-      "areaServed": {
-        "@type": "Country",
-        "name": "United Arab Emirates"
-      },
-      "serviceType": "Food Discovery Platform",
-      "category": "Food Technology",
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "GoSnel Services",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "AI Meal Recommendations",
-              "description": "Personalized food suggestions based on preferences and dietary requirements"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Restaurant Discovery",
-              "description": "Smart restaurant search and discovery across the UAE"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Food Ordering Platform",
-              "description": "Seamless food ordering and delivery coordination"
-            }
-          }
-        ]
-      }
-    }
-    </script>
+    <style>
+        /* Base Setup */
+        html { scroll-behavior: smooth; }
+        body { background-color: #f8fafc; color: #0f172a; overflow-x: hidden; }
+        
+        /* Language Support Classes */
+        body.lang-ar, body.lang-ur { font-family: 'Cairo', sans-serif; direction: rtl; }
+        body.lang-en, body.lang-ml, body.lang-hi { font-family: 'Inter', sans-serif; direction: ltr; }
+        
+        /* Glassmorphism Lang Toggle */
+        .lang-toggle {
+            position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+            z-index: 100; display: flex; gap: 4px;
+            background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px);
+            border-radius: 100px; padding: 6px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        .lang-btn {
+            padding: 8px 20px; border-radius: 100px; font-weight: 600; font-size: 14px;
+            color: #64748b; transition: all 0.3s ease;
+        }
+        .lang-btn.active { background: #4ecdc4; color: white; box-shadow: 0 4px 12px rgba(78, 205, 196, 0.3); }
+        .lang-btn:hover:not(.active) { background: rgba(78, 205, 196, 0.1); color: #0f172a; }
+    </style>
 </head>
-<body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T2K2VT8V"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
+<body class="lang-en antialiased pb-20 selection:bg-brand selection:text-white">
 
-    <p>Loading...</p>
-    
-    <!--#include file="../shared/components/footer.html" -->
+    <div class="lang-toggle">
+        <button onclick="setLang('en')" id="btn-en" class="lang-btn active">English</button>
+        <button onclick="setLang('ar')" id="btn-ar" class="lang-btn">العربية</button>
+        <button onclick="setLang('ml')" id="btn-ml" class="lang-btn">മലയാളം</button>
+        <button onclick="setLang('hi')" id="btn-hi" class="lang-btn">हिंदी</button>
+        <button onclick="setLang('ur')" id="btn-ur" class="lang-btn">اردو</button>
+    </div>
+
+    <nav class="fixed w-full z-40 bg-white/80 backdrop-blur-md border-b border-gray-100 top-0 pt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center gap-3">
+                    <img src="https://pub-36067fecb2654f06ab5b13fe9340062d.r2.dev/GosnelPersonality.png" alt="GoSnel Logo" class="w-10 h-10 rounded-full shadow-sm">
+                    <span class="font-bold text-2xl tracking-tight text-gs-dark">GoSnel</span>
+                </div>
+                <div>
+                    <a href="https://app.gosnel.com" class="flex items-center gap-2 bg-gs-dark text-white px-6 py-2.5 rounded-full font-semibold hover:bg-black transition-all text-sm shadow-md hover:shadow-lg hover:-translate-y-0.5">
+                        <span id="nav_cta">Start Chat</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 rtl:hidden"></i>
+                        <i data-lucide="arrow-left" class="w-4 h-4 hidden rtl:block"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="pt-40 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+        <div class="flex-1 text-center lg:text-start">
+            <div class="inline-flex items-center gap-2 bg-brand/10 text-brand-dark font-semibold px-4 py-1.5 rounded-full text-sm mb-6 border border-brand/20">
+                <i data-lucide="zap" class="w-4 h-4"></i>
+                <span id="hero_badge">Stop Scrolling. Start Eating.</span>
+            </div>
+            
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 text-gs-dark" id="hero_title">
+                The Perfect <span class="text-brand">4-Item Combo</span> in 30 Seconds.
+            </h1>
+            
+            <p class="text-lg text-gs-gray mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed" id="hero_desc">
+                GoSnel is your AI food agent. We cure menu fatigue by instantly building the perfect Main, Side, Drink, and Dessert combo from top local spots. Just chat, confirm, and order via WhatsApp.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <a href="https://app.gosnel.com" class="animate-pulse-brand bg-brand text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-brand-dark transition-colors shadow-lg shadow-brand/30 flex items-center justify-center gap-3 w-full sm:w-auto">
+                    <i data-lucide="message-square" class="w-5 h-5"></i>
+                    <span id="btn_primary">Chat with GoSnel</span>
+                </a>
+                <a href="#how-it-works" class="bg-white text-gs-dark border border-gray-200 px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-50 transition-colors flex items-center justify-center gap-3 w-full sm:w-auto">
+                    <i data-lucide="play-circle" class="w-5 h-5 text-gs-gray"></i>
+                    <span id="btn_secondary">See how it works</span>
+                </a>
+            </div>
+            
+            <div class="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-sm text-gs-gray font-medium">
+                <div class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand"></i> <span id="trust_1">No Hidden Fees</span></div>
+                <div class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand"></i> <span id="trust_2">Cash on Delivery</span></div>
+                <div class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand"></i> <span id="trust_3">Real Restaurant Prices</span></div>
+            </div>
+        </div>
+
+        <div class="flex-1 w-full max-w-md mx-auto relative">
+            <div class="absolute inset-0 bg-brand/10 blur-[80px] rounded-full"></div>
+            <img src="https://pub-36067fecb2654f06ab5b13fe9340062d.r2.dev/landingPageImaged/1.png" alt="GoSnel App" class="relative z-10 w-full h-auto animate-float object-contain rounded-[32px]">
+        </div>
+    </section>
+
+    <section class="py-20 bg-white border-y border-gray-100">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <div class="inline-block bg-brand/10 text-brand px-4 py-1.5 rounded-full text-sm font-semibold mb-4" id="personalized_badge">Personalized to You</div>
+                <h2 class="text-3xl md:text-4xl font-bold text-gs-dark" id="personalized_title">You can tell me your preferences</h2>
+            </div>
+            
+            <div class="space-y-2">
+                <div class="flex items-center p-4 hover:bg-slate-50 rounded-2xl transition-colors border-b border-gray-100 last:border-0">
+                    <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/user_landing_preferences/Plant_Based.png" alt="Plant-Based" class="w-16 h-16 rounded-full object-cover mr-4 rtl:mr-0 rtl:ml-4 flex-shrink-0">
+                    <div>
+                        <h3 class="font-bold text-lg text-gs-dark" id="diet_1_title">Plant-Based</h3>
+                        <p class="text-gs-gray text-sm" id="diet_1_desc">Vegetarian or vegan meals, automatically selected</p>
+                    </div>
+                </div>
+                <div class="flex items-center p-4 hover:bg-slate-50 rounded-2xl transition-colors border-b border-gray-100 last:border-0">
+                    <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/user_landing_preferences/Weight_Shape.png" alt="Weight" class="w-16 h-16 rounded-full object-cover mr-4 rtl:mr-0 rtl:ml-4 flex-shrink-0">
+                    <div>
+                        <h3 class="font-bold text-lg text-gs-dark" id="diet_2_title">Weight & Shape</h3>
+                        <p class="text-gs-gray text-sm" id="diet_2_desc">Balanced meals that fit your goals</p>
+                    </div>
+                </div>
+                <div class="flex items-center p-4 hover:bg-slate-50 rounded-2xl transition-colors border-b border-gray-100 last:border-0">
+                    <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/user_landing_preferences/Smart_Preferences.png" alt="Smart" class="w-16 h-16 rounded-full object-cover mr-4 rtl:mr-0 rtl:ml-4 flex-shrink-0">
+                    <div>
+                        <h3 class="font-bold text-lg text-gs-dark mb-2" id="diet_5_title">Smart Preferences</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-brand/10 text-brand-dark border border-brand/20 rounded-full text-xs font-semibold" id="tag_no_rice">No rice</span>
+                            <span class="px-3 py-1 bg-brand/10 text-brand-dark border border-brand/20 rounded-full text-xs font-semibold" id="tag_not_spicy">Not spicy</span>
+                            <span class="px-3 py-1 bg-brand/10 text-brand-dark border border-brand/20 rounded-full text-xs font-semibold" id="tag_extra_protein">Extra protein</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gs-dark mb-4" id="workflow_title">How GoSnel Works</h2>
+                <p class="text-gs-gray" id="workflow_desc">Three simple steps to your perfect meal.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 text-center hover:shadow-md transition-shadow">
+                    <div class="w-16 h-16 bg-brand/10 text-brand rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i data-lucide="message-circle" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-3 text-gs-dark" id="step1_title">1. Tell AI Your Mood</h3>
+                    <p class="text-gs-gray leading-relaxed text-sm" id="step1_desc">Craving a burger? Eating healthy? Just type it. Our AI understands context instantly.</p>
+                </div>
+
+                <div class="bg-brand/5 p-8 rounded-3xl border border-brand/20 text-center relative hover:shadow-md transition-shadow">
+                    <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-brand text-white text-xs font-bold px-4 py-1 rounded-full shadow-sm" id="step_badge">Magic Happens</div>
+                    <div class="w-16 h-16 bg-brand text-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-md">
+                        <i data-lucide="utensils" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-3 text-gs-dark" id="step2_title">2. Get a 4-Item Combo</h3>
+                    <p class="text-gs-gray leading-relaxed text-sm" id="step2_desc">We instantly build a cohesive combo (Main, Side, Drink, Dessert) from top-rated restaurants near you.</p>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 text-center hover:shadow-md transition-shadow">
+                    <div class="w-16 h-16 bg-green-50 text-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i data-lucide="smartphone" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-3 text-gs-dark" id="step3_title">3. Order via WhatsApp</h3>
+                    <p class="text-gs-gray leading-relaxed text-sm" id="step3_desc">One click sends your formatted order directly to the restaurant's WhatsApp. No apps needed.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-gs-dark relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-brand/20 rounded-full blur-[120px]"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col lg:flex-row gap-16 items-center">
+            
+            <div class="flex-1 w-full">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-2" id="comparison_title">GoSnel vs Traditional Food Apps</h2>
+                <p class="text-slate-400 mb-10" id="comparison_subtitle">Stop searching. Start discovering.</p>
+                
+                <div class="space-y-6">
+                    <div class="p-6 rounded-2xl border border-slate-700 bg-slate-800/50 backdrop-blur-sm">
+                        <h3 class="text-red-400 font-bold text-lg mb-4 flex items-center gap-2" id="traditional_title"><i data-lucide="circle-x" class="w-5 h-5"></i> Traditional Apps</h3>
+                        <ul class="space-y-3 text-slate-300">
+                            <li class="flex items-center gap-3"><i data-lucide="search" class="w-4 h-4 text-slate-500"></i> <span id="traditional_1">Search "burger" → 100 results</span></li>
+                            <li class="flex items-center gap-3"><i data-lucide="clock" class="w-4 h-4 text-slate-500"></i> <span id="traditional_2">Scroll for 15+ minutes</span></li>
+                            <li class="flex items-center gap-3"><i data-lucide="frown" class="w-4 h-4 text-slate-500"></i> <span id="traditional_3">Decision paralysis</span></li>
+                        </ul>
+                    </div>
+                    <div class="p-6 rounded-2xl border border-brand bg-brand/10 backdrop-blur-sm shadow-[0_0_30px_rgba(78,205,196,0.15)]">
+                        <h3 class="text-brand font-bold text-lg mb-4 flex items-center gap-2" id="gosnel_title"><i data-lucide="check-circle-2" class="w-5 h-5"></i> GoSnel</h3>
+                        <ul class="space-y-3 text-white font-medium">
+                            <li class="flex items-center gap-3"><i data-lucide="bot" class="w-4 h-4 text-brand"></i> <span id="gosnel_1">AI suggests perfect combos</span></li>
+                            <li class="flex items-center gap-3"><i data-lucide="zap" class="w-4 h-4 text-brand"></i> <span id="gosnel_2">Decide in 30 seconds</span></li>
+                            <li class="flex items-center gap-3"><i data-lucide="smile" class="w-4 h-4 text-brand"></i> <span id="gosnel_3">Confidence & clarity</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full lg:w-[480px] bg-white rounded-[2rem] shadow-2xl overflow-hidden flex flex-col h-[480px] shrink-0 border border-slate-100">
+                <div class="bg-slate-50 border-b border-gray-200 p-4 flex items-center gap-3">
+                    <div class="w-10 h-10 bg-brand rounded-full flex items-center justify-center flex-shrink-0 text-white shadow-sm">
+                        <i data-lucide="bot" class="w-6 h-6"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h4 class="font-bold text-gs-dark leading-none mb-1" id="chat_title">GoSnel AI</h4>
+                        <div class="flex items-center gap-1.5 text-xs text-green-500 font-semibold">
+                            <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                            <span id="chat_status">Online</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-1 p-5 overflow-y-auto bg-slate-50/80 flex flex-col gap-4" id="chat_box">
+                    </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <section class="py-20 bg-brand text-center relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 2px 2px, black 1px, transparent 0); background-size: 32px 32px;"></div>
+        <div class="max-w-3xl mx-auto px-4 relative z-10">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-gs-dark mb-6" id="footer_title">Ready to cure your hunger?</h2>
+            <p class="text-gs-dark/80 text-lg mb-10 font-medium max-w-xl mx-auto" id="footer_subtitle">Join hundreds of foodies skipping the scroll and getting exactly what they crave instantly.</p>
+            <a href="https://app.gosnel.com" class="inline-flex items-center justify-center gap-2 bg-gs-dark text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-black transition-transform hover:scale-105 shadow-xl">
+                <i data-lucide="bot" class="w-5 h-5"></i>
+                <span id="footer_cta">Open Web App</span>
+            </a>
+            <p class="text-sm text-gs-dark/60 mt-8">© 2026 GoSnel AI. All rights reserved.</p>
+        </div>
+    </section>
+
+    <script>
+        // Dictionary
+        const translations = {
+            en: {
+                nav_cta: "Start Chat",
+                hero_badge: "Stop Scrolling. Start Eating.",
+                hero_title: "The Perfect <span class='text-brand'>4-Item Combo</span> in 30 Seconds.",
+                hero_desc: "GoSnel is your AI food agent. We cure menu fatigue by instantly building the perfect Main, Side, Drink, and Dessert combo from top local spots. Just chat, confirm, and order via WhatsApp.",
+                btn_primary: "Chat with GoSnel",
+                btn_secondary: "See how it works",
+                trust_1: "No Hidden Fees", trust_2: "Cash on Delivery", trust_3: "Real Restaurant Prices",
+                personalized_badge: "Personalized to You",
+                personalized_title: "You can tell me your preferences",
+                diet_1_title: "Plant-Based", diet_1_desc: "Vegetarian or vegan meals, automatically selected",
+                diet_2_title: "Weight & Shape", diet_2_desc: "Balanced meals that fit your goals",
+                diet_5_title: "Smart Preferences",
+                tag_no_rice: "No rice", tag_not_spicy: "Not spicy", tag_extra_protein: "Extra protein",
+                workflow_title: "How GoSnel Works", workflow_desc: "Three simple steps to your perfect meal.",
+                step1_title: "1. Tell AI Your Mood", step1_desc: "Craving a burger? Eating healthy? Just type it. Our AI understands context instantly.",
+                step_badge: "Magic Happens",
+                step2_title: "2. Get a 4-Item Combo", step2_desc: "We instantly build a cohesive combo (Main, Side, Drink, Dessert) from top-rated restaurants near you.",
+                step3_title: "3. Order via WhatsApp", step3_desc: "One click sends your formatted order directly to the restaurant's WhatsApp. No apps needed.",
+                comparison_title: "GoSnel vs Traditional Food Apps", comparison_subtitle: "Stop searching. Start discovering.",
+                traditional_title: "Traditional Apps", traditional_1: "Search 'burger' → 100 results", traditional_2: "Scroll for 15+ minutes", traditional_3: "Decision paralysis",
+                gosnel_title: "GoSnel", gosnel_1: "AI suggests perfect combos", gosnel_2: "Decide in 30 seconds", gosnel_3: "Confidence & clarity",
+                chat_title: "GoSnel AI", chat_status: "Online",
+                footer_title: "Ready to cure your hunger?", footer_subtitle: "Join hundreds of foodies skipping the scroll and getting exactly what they crave instantly.", footer_cta: "Open Web App",
+                chat_msgs: [
+                    { user: true, text: "I want something cheesy and filling for lunch!" },
+                    { user: false, text: "Perfect! I've got 3 great combos for you:<br><br>1. Pizza Shawarma 🍕 + Cheese Salad 🥗 + Pepsi Cola 🥤 + Cheesecake 🍰 - 45 AED<br>2. Cheesy Burger 🍔 + Mozzarella Sticks 🧀 + Strawberry Milkshake 🥤 + Chocolate Brownie 🍫 - 50 AED<br>3. Four Cheese Pasta 🍝 + Garlic Bread 🥖 + Iced Tea 🍹 + Tiramisu 🍮 - 42 AED<br><br>Which one sounds good?" }
+                ]
+            },
+            ar: {
+                nav_cta: "ابدأ المحادثة",
+                hero_badge: "وقف تدوير.. وابدأ تاكل.",
+                hero_title: "كومبو <span class='text-brand'>من 4 أصناف</span> في 30 ثانية.",
+                hero_desc: "جوسنل هو عميلك الذكي. نقضي على حيرة الاختيار بتجهيز أفضل طبق رئيسي، جانبي، مشروب، وحلويات من المطاعم القريبة منك. كلمنا، أكد طلبك، واطلب عبر واتساب فوراً.",
+                btn_primary: "تحدث مع جوسنل",
+                btn_secondary: "شاهد كيف يعمل",
+                trust_1: "بدون رسوم مخفية", trust_2: "الدفع عند الاستلام", trust_3: "أسعار المطاعم الحقيقية",
+                personalized_badge: "مخصص لك",
+                personalized_title: "تقدر تخبرني بتفضيلاتك",
+                diet_1_title: "نباتي", diet_1_desc: "وجبات نباتية بالكامل، نختارها لك تلقائياً",
+                diet_2_title: "الوزن والشكل", diet_2_desc: "وجبات متوازنة تناسب أهدافك الصحية",
+                diet_5_title: "تفضيلات ذكية",
+                tag_no_rice: "بدون أرز", tag_not_spicy: "غير حار", tag_extra_protein: "بروتين إضافي",
+                workflow_title: "كيف يعمل جوسنل؟", workflow_desc: "ثلاث خطوات بسيطة لوجبتك المثالية.",
+                step1_title: "1. عبر عن مزاجك", step1_desc: "مشتهي برجر؟ تبي أكل صحي؟ بس اكتبها. الذكاء الاصطناعي يفهم طلبك فوراً.",
+                step_badge: "هنا السحر",
+                step2_title: "2. استلم كومبو من 4 أصناف", step2_desc: "نجهز لك كومبو متكامل (رئيسي، جانبي، مشروب، حلويات) من أفضل المطاعم تقييماً حولك.",
+                step3_title: "3. اطلب عبر واتساب", step3_desc: "بضغطة زر نرسل تفاصيل طلبك مباشرة لواتساب المطعم. بدون الحاجة لتطبيقات إضافية.",
+                comparison_title: "جوسنِل مقابل تطبيقات الطعام التقليدية", comparison_subtitle: "توقف عن البحث. ابدأ الاكتشاف.",
+                traditional_title: "التطبيقات التقليدية", traditional_1: "تبحث عن 'برجر' ← 100 نتيجة", traditional_2: "تضيع 15 دقيقة في التصفح", traditional_3: "حيرة في اتخاذ القرار",
+                gosnel_title: "جوسنِل", gosnel_1: "الذكاء الاصطناعي يقترح كومبو مثالي", gosnel_2: "تقرر في 30 ثانية", gosnel_3: "ثقة ووضوح في الاختيار",
+                chat_title: "جوسنِل AI", chat_status: "متصل الآن",
+                footer_title: "جاهز تقضي على جوعك؟", footer_subtitle: "انضم لمئات الأشخاص اللي اختصروا وقتهم وطلبوا وجبتهم المثالية في ثواني.", footer_cta: "افتح تطبيق الويب",
+                chat_msgs: [
+                    { user: true, text: "أبغى شي مليان جبنة ومشبع للغداء!" },
+                    { user: false, text: "يا هلا! لقيت لك 3 خيارات رهيبة:<br><br>1. بيتزا شاورما 🍕 + سلطة جبنة 🥗 + بيبسي كولا 🥤 + تشيز كيك 🍰 - 45 درهم<br>2. برجر بالجبنة 🍔 + أصابع موزاريلا 🧀 + ميلك شيك فراولة 🥤 + براوني شوكولاتة 🍫 - 50 درهم<br>3. باستا الأجبان الأربعة 🍝 + خبز بالثوم 🥖 + شاي مثلج 🍹 + تيراميسو 🍮 - 42 درهم<br><br>أي كومبو يعجبك؟" }
+                ]
+            },
+            ml: {
+                nav_cta: "ചാറ്റ് ആരംഭിക്കുക", hero_badge: "തിരയുന്നത് നിർത്തൂ. ഭക്ഷണം ആരംഭിക്കൂ.", hero_title: "30 സെക്കൻഡിൽ <span class='text-brand'>4-ഇനം കോമ്പോ</span>.", hero_desc: "നിങ്ങളുടെ AI ഭക്ഷണ ഏജന്റാണ് GoSnel. മികച്ച ലോക്കൽ സ്ഥലങ്ങളിൽ നിന്ന് പർഫക്റ്റ് മെയിൻ, സൈഡ്, ഡ്രിങ്ക്, ഡെസേർട്ട് കോമ്പോ ഉടൻ നിർമ്മിച്ചുകൊണ്ട് ഞങ്ങൾ മെനു ക്ഷീണം മാറ്റുന്നു...",
+                btn_primary: "GoSnel-മായി സംസാരിക്കുക", btn_secondary: "എങ്ങനെ പ്രവർത്തിക്കുന്നു കാണുക", trust_1: "ഒളിഞ്ഞിരിക്കുന്ന ചാർജുകളില്ല", trust_2: "ഡെലിവറിയിൽ പേയ്മെന്റ്", trust_3: "യഥാർത്ഥ റെസ്റ്റോറന്റ് വിലകൾ",
+                personalized_badge: "നിങ്ങൾക്കായി പ്രത്യേകം", personalized_title: "നിങ്ങൾക്ക് മുൻഗണനകൾ പറയാം", diet_1_title: "പ്ലാന്റ്-ബേസ്ഡ്", diet_1_desc: "തിരഞ്ഞെടുത്ത ശാകാഹാര ഭക്ഷണം", diet_2_title: "വെയിറ്റ് & ഷെയ്പ്", diet_2_desc: "ബാലൻസ്ഡ് ഭക്ഷണം", diet_5_title: "സ്മാർട്ട് മുൻഗണനകൾ", tag_no_rice: "അരി ഇല്ല", tag_not_spicy: "എരിവില്ല", tag_extra_protein: "എക്സ്ട്രാ പ്രോട്ടീൻ",
+                workflow_title: "GoSnel എങ്ങനെ പ്രവർത്തിക്കുന്നു", workflow_desc: "മൂന്ന് ലളിതമായ ഘട്ടങ്ങൾ.", step1_title: "1. മൂഡ് പറയുക", step1_desc: "എന്ത് വേണമെന്ന് ടൈപ്പ് ചെയ്യുക.", step_badge: "മാജിക് സംഭവിക്കുന്നു", step2_title: "2. 4-ഇനം കോമ്പോ നേടുക", step2_desc: "ഞങ്ങൾ ഉടൻ ഒരു കോഹീസീവ് കോമ്പോ നിർമ്മിക്കുന്നു.", step3_title: "3. വാട്‌സ്ആപ്പിലൂടെ ഓർഡർ ചെയ്യുക", step3_desc: "ഓർഡർ നേരിട്ട് അയയ്ക്കുന്നു.",
+                comparison_title: "ഗോസ്നെൽ vs ട്രാഡിഷണൽ ആപ്പുകൾ", comparison_subtitle: "കണ്ടെത്തുന്നത് ആരംഭിക്കുക.", traditional_title: "പരമ്പരാഗത ആപ്പുകൾ", traditional_1: "100 ഫലങ്ങൾ", traditional_2: "15+ മിനിറ്റ് സ്ക്രോൾ ചെയ്യുക", traditional_3: "തീരുമാനിക്കാനാകാത്ത അവസ്ഥ", gosnel_title: "ഗോസ്നെൽ", gosnel_1: "മികച്ച കോമ്പോ നിർദ്ദേശങ്ങൾ", gosnel_2: "30 സെക്കൻഡിൽ തീരുമാനിക്കുക", gosnel_3: "ആത്മവിശ്വാസവും വ്യക്തതയും",
+                chat_title: "ഗോസ്നെൽ AI", chat_status: "ഓൺലൈൻ", footer_title: "നിങ്ങളുടെ വിശപ്പ് മാറ്റാൻ തയ്യാറാണോ?", footer_subtitle: "ഉടൻ ഭക്ഷണം നേടുക.", footer_cta: "വെബ് ആപ്പ് തുറക്കുക",
+                chat_msgs: [ { user: true, text: "എനിക്ക് ഉച്ചഭക്ഷണത്തിന് ചീസി ആയ എന്തെങ്കിലും വേണം!" }, { user: false, text: "മികച്ചത്! നിങ്ങൾക്കായി 3 മികച്ച കോമ്പോകൾ ഉണ്ട്:<br><br>1. പിസ്സ ഷവർമ 🍕 + ചീസ് സാലഡ് 🥗 + പെപ്സി കോള 🥤 + ചീസ് കേക്ക് 🍰 - 45 AED<br>2. ചീസി ബീഫ് ബർഗർ 🍔 + മൊസറെല്ല സ്റ്റിക്സ് 🧀 + സ്ട്രോബെറി മിൽക്ക് ഷേക്ക് 🥤 + ചോക്ലേറ്റ് ബ്രൗണി 🍫 - 50 AED<br>3. ഫോർ ചീസ് പാസ്ത 🍝 + ഗാർലിക് ബ്രെഡ് 🥖 + ഐസ്ഡ് ടീ 🍹 + ടിറാമിസു 🍮 - 42 AED<br><br>ഏതാണ് ഓർഡർ ചെയ്യേണ്ടത്?" } ]
+            },
+            hi: {
+                nav_cta: "चैट शुरू करें", hero_badge: "स्क्रॉल करना बंद करें। खाना शुरू करें।", hero_title: "30 सेकंड में <span class='text-brand'>4-आइटम कॉम्बो</span>।", hero_desc: "GoSnel आपका AI फूड एजेंट है। हम शीर्ष स्थानीय स्थानों से सही मेन, साइड, ड्रिंक और डेज़र्ट कॉम्बो तुरंत बनाकर मेनू थकान को दूर करते हैं...",
+                btn_primary: "GoSnel के साथ चैट करें", btn_secondary: "देखें कि यह कैसे काम करता है", trust_1: "कोई छिपी हुई फीस नहीं", trust_2: "डिलीवरी पर भुगतान", trust_3: "असली रेस्टोरेंट की कीमतें",
+                personalized_badge: "आपके लिए व्यक्तिगत", personalized_title: "अपनी प्राथमिकताएं बताएं", diet_1_title: "शाकाहारी", diet_1_desc: "शाकाहारी भोजन, स्वचालित रूप से चुना गया", diet_2_title: "वजन और आकार", diet_2_desc: "संतुलित भोजन", diet_5_title: "स्मार्ट प्राथमिकताएं", tag_no_rice: "चावल नहीं", tag_not_spicy: "मसालेदार नहीं", tag_extra_protein: "अतिरिक्त प्रोटीन",
+                workflow_title: "GoSnel कैसे काम करता है", workflow_desc: "आदर्श भोजन के लिए तीन सरल चरण।", step1_title: "1. अपना मूड बताएं", step1_desc: "बस टाइप करें, हमारा AI समझता है।", step_badge: "जादू होता है", step2_title: "2. 4-आइटम कॉम्बो प्राप्त करें", step2_desc: "हम तुरंत एक सुसंगत कॉम्बो बनाते हैं।", step3_title: "3. व्हाट्सएप से ऑर्डर करें", step3_desc: "सीधे व्हाट्सएप पर भेजता है।",
+                comparison_title: "GoSnel vs पारंपरिक ऐप्स", comparison_subtitle: "खोजना शुरू करो।", traditional_title: "पारंपरिक ऐप्स", traditional_1: "100 परिणाम", traditional_2: "15+ मिनट बर्बाद", traditional_3: "निर्णय न ले पाना", gosnel_title: "GoSnel", gosnel_1: "AI का सटीक सुझाव", gosnel_2: "30 सेकंड में निर्णय", gosnel_3: "स्पष्टता",
+                chat_title: "GoSnel AI", chat_status: "ऑनलाइन", footer_title: "अपनी भूख मिटाने के लिए तैयार हैं?", footer_subtitle: "तुरंत अपना मनपसंद खाना पाएं।", footer_cta: "वेब ऐप खोलें",
+                chat_msgs: [ { user: true, text: "लंच के लिए कुछ चीज़ी और पेट भरने वाला चाहिए!" }, { user: false, text: "बढ़िया! मेरे पास आपके लिए 3 बेहतरीन कॉम्बो हैं:<br><br>1. पिज्जा शावरमा 🍕 + चीज सलाद 🥗 + पेप्सी कोला 🥤 + चीज केक 🍰 - 45 AED<br>2. चीज़ी बर्गर 🍔 + मोज़ेरेला स्टिक्स 🧀 + स्ट्रॉबेरी मिल्कशेक 🥤 + चॉकलेट ब्राउनी 🍫 - 50 AED<br>3. फोर चीज़ पास्ता 🍝 + गार्लिक ब्रेड 🥖 + आइस्ड टी 🍹 + तिरमिसू 🍮 - 42 AED<br><br>कौन सा अच्छा लग रहा है?" } ]
+            },
+            ur: {
+                nav_cta: "چیٹ شروع کریں", hero_badge: "اسکرول کرنا بند کریں۔ کھانا شروع کریں۔", hero_title: "30 سیکنڈ میں <span class='text-brand'>4-آئٹم کمبو</span>۔", hero_desc: "GoSnel آپ کا AI فوڈ ایجنٹ ہے۔ ہم فوری طور پر بہترین مین، سائیڈ، ڈرنک اور میٹھے کا کمبو بنا کر مینو تھکاوٹ کو دور کرتے ہیں۔",
+                btn_primary: "GoSnel کے ساتھ بات کریں", btn_secondary: "یہ کیسے کام کرتا ہے", trust_1: "کوئی پوشیدہ فیس نہیں", trust_2: "ڈیلیوری پر ادائیگی", trust_3: "حقیقی ریستوراں کی قیمتیں",
+                personalized_badge: "آپ کے لیے ذاتی", personalized_title: "آپ ترجیحات بتا سکتے ہیں", diet_1_title: "پودوں پر مبنی", diet_1_desc: "سبزی خور کھانا، خود بخود منتخب", diet_2_title: "وزن اور شکل", diet_2_desc: "متوازن کھانا", diet_5_title: "سمارٹ ترجیحات", tag_no_rice: "چاول نہیں", tag_not_spicy: "تیز نہیں", tag_extra_protein: "اضافی پروٹین",
+                workflow_title: "GoSnel کیسے کام کرتا ہے", workflow_desc: "بہترین کھانے کے لیے تین آسان مراحل۔", step1_title: "1. اپنا موڈ بتائیں", step1_desc: "بس ٹائپ کریں، AI سمجھتا ہے۔", step_badge: "جادو ہوتا ہے", step2_title: "2. 4-آئٹم کمبو حاصل کریں", step2_desc: "ہم فوری طور پر کمبو بناتے ہیں۔", step3_title: "3. واٹس ایپ سے آرڈر کریں", step3_desc: "براہ راست واٹس ایپ پر بھیجیں۔",
+                comparison_title: "GoSnel بمقابلہ روایتی ایپس", comparison_subtitle: "تلاش شروع کریں۔", traditional_title: "روایتی ایپس", traditional_1: "100 نتائج", traditional_2: "15+ منٹ ضائع", traditional_3: "فیصلہ کرنے میں الجھن", gosnel_title: "GoSnel", gosnel_1: "AI کا بہترین مشورہ", gosnel_2: "30 سیکنڈ میں فیصلہ", gosnel_3: "اعتماد اور وضاحت",
+                chat_title: "GoSnel AI", chat_status: "آن لائن", footer_title: "اپنی بھوک مٹانے کے لیے تیار ہیں؟", footer_subtitle: "فوری طور پر اپنا پسندیدہ کھانا حاصل کریں۔", footer_cta: "ویب ایپ کھولیں",
+                chat_msgs: [ { user: true, text: "مجھے دوپہر کے کھانے کے لیے کچھ چیزی چاہیے!" }, { user: false, text: "بہترین! میرے پاس آپ کے لیے 3 کمال کے کمبو ہیں:<br><br>1. پیزا شاورما 🍕 + چیز سلاد 🥗 + پیپسی کولا 🥤 + چیز کیک 🍰 - 45 درہم<br>2. چیزی برگر 🍔 + موزاریلا سٹکس 🧀 + اسٹرابیری ملک شیک 🥤 + چاکلیٹ براؤنی 🍫 - 50 درہم<br>3. فور چیز پاستا 🍝 + گارلک بریڈ 🥖 + آئسڈ ٹی 🍹 + ترامیسو 🍮 - 42 درہم<br><br>کون سا کمبو پسند آیا؟" } ]
+            }
+        };
+
+        let chatTimeouts = [];
+
+        function setLang(lang) {
+            localStorage.setItem('gosnel_lang', lang);
+            const isRtl = ['ar', 'ur'].includes(lang);
+            
+            // HTML Attributes
+            document.documentElement.lang = lang;
+            document.documentElement.dir = isRtl ? 'rtl' : 'ltr';
+            
+            // Body Classes (Font)
+            document.body.className = `lang-${lang} antialiased pb-20 selection:bg-brand selection:text-white`;
+
+            // Active Toggle Button
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active', 'bg-brand', 'text-white'));
+            const activeBtn = document.getElementById(`btn-${lang}`);
+            if(activeBtn) {
+                activeBtn.classList.add('active', 'bg-brand', 'text-white');
+                activeBtn.classList.remove('text-gs-gray');
+            }
+
+            // Apply Translations
+            const t = translations[lang];
+            Object.keys(t).forEach(key => {
+                const el = document.getElementById(key);
+                if (el && key !== 'chat_msgs') {
+                    el.innerHTML = t[key];
+                }
+            });
+
+            // Re-render chat safely
+            renderChat(t.chat_msgs);
+            
+            // Re-initialize Icons
+            if (window.lucide) { lucide.createIcons(); }
+        }
+
+        function renderChat(messages) {
+            const chatBox = document.getElementById('chat_box');
+            if (!chatBox) return;
+            
+            // Clear existing messages and running timers
+            chatBox.innerHTML = '';
+            chatTimeouts.forEach(clearTimeout);
+            chatTimeouts = [];
+            
+            messages.forEach((msg, idx) => {
+                const timer = setTimeout(() => {
+                    const div = document.createElement('div');
+                    const align = msg.user ? 'self-end bg-brand text-white' : 'self-start bg-white border border-gray-200 text-gs-dark';
+                    const radius = msg.user ? 'rounded-2xl rounded-tr-sm' : 'rounded-2xl rounded-tl-sm shadow-sm';
+                    
+                    div.className = `max-w-[95%] px-4 py-3 text-sm leading-relaxed ${align} ${radius}`;
+                    div.innerHTML = msg.text;
+                    chatBox.appendChild(div);
+                    chatBox.scrollTop = chatBox.scrollHeight;
+                }, idx * 700);
+                chatTimeouts.push(timer);
+            });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.lucide) { lucide.createIcons(); }
+            const savedLang = localStorage.getItem('gosnel_lang') || 'en';
+            setLang(savedLang);
+        });
+    </script>
 </body>
 </html>
