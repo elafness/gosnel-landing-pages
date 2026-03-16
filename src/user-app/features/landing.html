@@ -9,287 +9,18 @@
     <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    
-    <!-- Google Fonts: Inter for English, Cairo for Arabic -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'], // Default to Inter
-                        arabic: ['Cairo', 'sans-serif'], // For Arabic translation
-                    },
-                    colors: {
-                        brand: {
-                            DEFAULT: '#4ecdc4', // The requested Hex
-                            light: '#e6f9f8',
-                            dark: '#3db5ac'
-                        },
-                        gs: {
-                            dark: '#0f172a',
-                            light: '#f8fafc',
-                            gray: '#64748b'
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-
-    <style>
-        body { 
-            background-color: #f8fafc;
-            color: #0f172a; 
-            margin: 0; 
-            padding: 0; 
-            line-height: 1.7; 
-            overflow-x: hidden; 
-            box-sizing: border-box;
-        }
-        
-        *, *::before, *::after {
-            box-sizing: inherit;
-        }
-        
-        /* === LANGUAGE TOGGLE === */
-        .lang-toggle {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 100;
-            display: flex;
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(20px);
-            border-radius: 100px;
-            padding: 6px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-        
-        .lang-btn {
-            padding: 12px 28px;
-            border: none;
-            background: transparent;
-            color: #718096;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            border-radius: 100px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            white-space: nowrap;
-        }
-        
-        .lang-btn.active {
-            background: #4ecdc4;
-            color: #ffffff;
-            box-shadow: 0 4px 15px rgba(78, 205, 196, 0.4);
-        }
-        
-        .lang-btn:hover:not(.active) {
-            color: #0f172a;
-            background: rgba(78, 205, 196, 0.1);
-        }
-        
-        /* Smooth Language Transition */
-        .lang-ar { font-family: 'Cairo', sans-serif; direction: rtl; }
-        .lang-en { font-family: 'Inter', sans-serif; direction: ltr; }
-        .lang-ml { font-family: 'Inter', sans-serif; direction: ltr; }
-        .lang-hi { font-family: 'Inter', sans-serif; direction: ltr; }
-        .lang-ur { font-family: 'Inter', sans-serif; direction: rtl; }
-
-        /* Subtle floating animation for the hero image */
-        .float-img {
-            animation: float 4s ease-in-out infinite;
-        }
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-
-        /* Pulse for the primary CTA */
-        .btn-pulse {
-            box-shadow: 0 0 0 0 rgba(78, 205, 196, 0.4);
-            animation: pulse-brand 2s infinite;
-        }
-        @keyframes pulse-brand {
-            0% { box-shadow: 0 0 0 0 rgba(78, 205, 196, 0.4); }
-            70% { box-shadow: 0 0 0 15px rgba(78, 205, 196, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(78, 205, 196, 0); }
-        }
-
-        /* Video Container Styling */
-        .video-wrapper {
-            position: relative;
-            padding-bottom: 177.77%; /* 16:9 Aspect Ratio for vertical video */
-            height: 0;
-            overflow: hidden;
-            border-radius: 1.5rem;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
-            background: #000;
-        }
-        .video-wrapper video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* Gradient Text Utility */
-        .text-gradient {
-            background: linear-gradient(135deg, #0f172a 0%, #4ecdc4 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-    </style>
-</head>
-<body class="lang-en selection:bg-brand selection:text-white pb-20">
-
-    <!-- Language Toggle -->
-    <div class="lang-toggle">
-        <button id="lang-en" class="lang-btn active">English</button>
-        <button id="lang-ar" class="lang-btn">العربية</button>
+    <!-- Footer CTA -->
+    <section class="py-16 bg-white border-t border-gray-200 text-center">
+        <div class="max-w-3xl mx-auto px-4">
+            <h2 class="text-2xl font-bold text-gs-dark mb-6" id="footer_title">Ready to cure your hunger?</h2>
+            <a href="https://app.gosnel.com" class="inline-flex items-center justify-center gap-2 bg-gs-dark text-white px-10 py-4 rounded-full font-bold hover:bg-black transition shadow-md">
+                <i data-lucide="bot" class="w-5 h-5"></i>
+                <span id="footer_cta">Open Web App</span>
+            </a>
+        </div>
+    </section>
         <button id="lang-ml" class="lang-btn">മലയാളം</button>
-        <button id="lang-hi" class="lang-btn">हिंदी</button>
-        <button id="lang-ur" class="lang-btn">اردو</button>
-    </div>
-
-    <!-- Navbar -->
-    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <!-- Logo -->
-                <div class="flex items-center gap-2">
-                    <img src="https://pub-36067fecb2654f06ab5b13fe9340062d.r2.dev/GosnelPersonality.png" alt="GoSnel Logo" class="w-8 h-8 rounded-full">
-                    <span class="font-bold text-xl tracking-tight text-gs-dark">GoSnel</span>
-                </div>
-                
-                <!-- Controls -->
-                <div class="flex items-center gap-4">
-                    <select id="langSelector" class="bg-transparent border-none text-sm font-semibold text-gs-gray focus:ring-0 cursor-pointer outline-none hover:text-gs-dark transition">
-                        <option value="en" selected>EN</option>
-                        <option value="ar">AR</option>
-                    </select>
-                    <a href="https://app.gosnel.com" class="hidden sm:flex items-center gap-2 bg-gs-dark text-white px-5 py-2 rounded-full font-semibold hover:bg-gray-800 transition text-sm">
-                        <span id="nav_cta">Start Chat</span>
-                        <i data-lucide="arrow-right" class="w-4 h-4 rtl:hidden"></i>
-                        <i data-lucide="arrow-left" class="w-4 h-4 hidden rtl:block"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="pt-32 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
-        <!-- Text Content -->
-        <div class="flex-1 text-center lg:text-left rtl:lg:text-right">
-            <div class="inline-flex items-center gap-2 bg-brand-light text-brand-dark font-semibold px-4 py-1.5 rounded-full text-sm mb-6 border border-brand/20" id="hero_badge">
-                <i data-lucide="zap" class="w-4 h-4"></i>
-                <span>Stop Scrolling. Start Eating.</span>
-            </div>
-            
-            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 text-gs-dark" id="hero_title">
-                The Perfect <span class="text-brand">3-Item Combo</span> in 30 Seconds.
-            </h1>
-            
-            <p class="text-lg text-gs-gray mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed" id="hero_desc">
-                GoSnel is your AI food agent. We cure menu fatigue by instantly building the perfect Main, Side, and Drink combo from top local spots. Just chat, confirm, and order via WhatsApp.
-            </p>
-            
-            <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start rtl:lg:justify-end">
-                <a href="https://app.gosnel.com" class="btn-pulse bg-brand text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-brand-dark transition shadow-lg flex items-center justify-center gap-3 w-full sm:w-auto">
-                    <i data-lucide="message-square" class="w-5 h-5"></i>
-                    <span id="btn_primary">Chat with GoSnel</span>
-                </a>
-                <a href="#how-it-works" class="bg-white text-gs-dark border border-gray-200 px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-50 transition flex items-center justify-center gap-3 w-full sm:w-auto">
-                    <i data-lucide="play-circle" class="w-5 h-5 text-gs-gray"></i>
-                    <span id="btn_secondary">See how it works</span>
-                </a>
-            </div>
-            
-            <!-- Trust Indicators -->
-            <div class="mt-10 flex items-center justify-center lg:justify-start gap-6 text-sm text-gs-gray font-medium">
-                <div class="flex items-center gap-2">
-                    <i data-lucide="check-circle-2" class="w-4 h-4 text-brand"></i>
-                    <span id="trust_1">No Hidden Fees</span>
-                </div>
-                <div class="flex items-center gap-2">
-                    <i data-lucide="check-circle-2" class="w-4 h-4 text-brand"></i>
-                    <span id="trust_2">Cash on Delivery</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Hero Image (Provided by User) -->
-        <div class="flex-1 w-full max-w-md mx-auto relative">
-            <!-- Background Glow -->
-            <div class="absolute inset-0 bg-brand/10 blur-[80px] rounded-full"></div>
-            <img src="https://pub-36067fecb2654f06ab5b13fe9340062d.r2.dev/landingPageImaged/1.png" alt="" class="relative z-10 w-full h-auto float-img object-contain" style="border-radius: 32px;">
-        </div>
-    </section>
-
-    <!-- Value Proposition / Workflow -->
-    <section class="py-20 bg-white border-y border-gray-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-gs-dark mb-4" id="workflow_title">How GoSnel Works</h2>
-                <p class="text-gs-gray" id="workflow_desc">Three simple steps to your perfect meal.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                <!-- Step 1 -->
-                <div class="flex flex-col items-center text-center p-6 bg-gs-light rounded-3xl border border-gray-100">
-                    <div class="w-16 h-16 bg-brand-light text-brand rounded-full flex items-center justify-center mb-6">
-                        <i data-lucide="message-circle" class="w-8 h-8"></i>
-                    </div>
-                    <h3 class="font-bold text-xl mb-2 text-gs-dark" id="step1_title">1. Tell AI Your Mood</h3>
-                    <p class="text-gs-gray text-sm leading-relaxed" id="step1_desc">Craving a burger? Eating healthy? Just type it. Our AI understands context instantly.</p>
-                </div>
-                
-                <!-- Step 2 -->
-                <div class="flex flex-col items-center text-center p-6 bg-brand/5 rounded-3xl border border-brand/20 relative">
-                    <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-brand text-white text-xs font-bold px-3 py-1 rounded-full shadow-sm">
-                        <span id="step_badge">Magic Happens</span>
-                    </div>
-                    <div class="w-16 h-16 bg-brand text-white rounded-full flex items-center justify-center mb-6 shadow-md">
-                        <i data-lucide="sparkles" class="w-8 h-8"></i>
-                    </div>
-                    <h3 class="font-bold text-xl mb-2 text-gs-dark" id="step2_title">2. Get a 3-Item Combo</h3>
-                    <p class="text-gs-gray text-sm leading-relaxed" id="step2_desc">We instantly build a cohesive combo (Main, Side, Drink) from top-rated restaurants near you.</p>
-                </div>
-
-                <!-- Step 3 -->
-                <div class="flex flex-col items-center text-center p-6 bg-gs-light rounded-3xl border border-gray-100">
-                    <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-6">
-                        <i data-lucide="smartphone" class="w-8 h-8"></i>
-                    </div>
-                    <h3 class="font-bold text-xl mb-2 text-gs-dark" id="step3_title">3. Order via WhatsApp</h3>
-                    <p class="text-gs-gray text-sm leading-relaxed" id="step3_desc">One click sends your formatted order directly to the restaurant's WhatsApp. No apps needed.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Video Proof Section -->
-    <section id="how-it-works" class="py-24 bg-gs-dark relative overflow-hidden">
-        <!-- Decorative bg -->
-        <div class="absolute top-0 right-0 w-96 h-96 bg-brand rounded-full mix-blend-multiply filter blur-[128px] opacity-20"></div>
-        
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col md:flex-row items-center gap-12">
-            
-            <!-- Video Container (Strict 16:9 vertical format handler) -->
-            <div class="w-full max-w-[300px] mx-auto md:mx-0 flex-shrink-0">
-                <div class="video-wrapper border-4 border-slate-800">
-                    <video autoplay loop muted playsinline>
-                        <source src="https://pub-36067fecb2654f06ab5b13fe9340062d.r2.dev/landingPageImaged/videoHow1.mp4" type="video/mp4">
+    
                         Your browser does not support the video tag.
                     </video>
                 </div>
@@ -318,7 +49,7 @@
                 <i data-lucide="bot" class="w-5 h-5"></i>
                 <span id="footer_cta">Open Web App</span>
             </a>
-            <p class="text-sm text-gs-gray mt-8">© 2026 GoSnel AI. All rights reserved.</p>
+            
         </div>
     </section>
 
@@ -367,7 +98,7 @@
                 video_desc: "شوف كيف تنتقل من 'أنا جوعان' إلى تأكيد طلبك على واتساب في ثواني. لا مزيد من التقليب اللانهائي، ولا تعب الاختيار. فقط كومبو مثالي مجهز لك.",
                 video_cta: "جربها بنفسك الآن",
                 footer_title: "جاهز تقضي على جوعك؟",
-                footer_cta: "افتح تطبيق الويب"
+                footer_cta: ""
             },
             ml: {
                 nav_cta: "ചാറ്റ് ആരംഭിക്കുക",
@@ -1398,15 +1129,7 @@
     </style>
 </head>
 <body>
-    <!-- Language Toggle -->
-    <div class="lang-toggle">
-        <button id="lang-en" class="lang-btn active">English</button>
-        <button id="lang-ar" class="lang-btn">العربية</button>
-        <button id="lang-ml" class="lang-btn">മലയാളം</button>
-        <button id="lang-hi" class="lang-btn">हिंदी</button>
-        <button id="lang-ur" class="lang-btn">اردو</button>
-    </div>
-
+    
     <!-- TRANSITION SECTION -->
     <section class="section-transition" style="padding: 60px 0; background: #ffffff; text-align: center; border-bottom: 1px solid #f1f5f9;">
         <div class="container">
