@@ -1,18 +1,513 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GoSnel - AI Food Discovery | Stop Scrolling, Start Eating</title>
+    <title>GoSnel | AI Food Agent</title>
     
-    <!-- Favicons -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="icon" type="image/png" href="/shared/assets/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="/shared/assets/favicon-circular.svg" />
-    <link rel="shortcut icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/shared/assets/apple-touch-icon.png" />
-    <link rel="manifest" href="/shared/assets/site.webmanifest" />
-    <meta name="theme-color" content="#4ECDC4">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Google Fonts: Inter for English, Cairo for Arabic -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'], // Default to Inter
+                        arabic: ['Cairo', 'sans-serif'], // For Arabic translation
+                    },
+                    colors: {
+                        brand: {
+                            DEFAULT: '#4ecdc4', // The requested Hex
+                            light: '#e6f9f8',
+                            dark: '#3db5ac'
+                        },
+                        gs: {
+                            dark: '#0f172a',
+                            light: '#f8fafc',
+                            gray: '#64748b'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { 
+            background-color: #f8fafc;
+            color: #0f172a; 
+            margin: 0; 
+            padding: 0; 
+            line-height: 1.7; 
+            overflow-x: hidden; 
+            box-sizing: border-box;
+        }
+        
+        *, *::before, *::after {
+            box-sizing: inherit;
+        }
+        
+        /* === LANGUAGE TOGGLE === */
+        .lang-toggle {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+            display: flex;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            border-radius: 100px;
+            padding: 6px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .lang-btn {
+            padding: 12px 28px;
+            border: none;
+            background: transparent;
+            color: #718096;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 100px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            white-space: nowrap;
+        }
+        
+        .lang-btn.active {
+            background: #4ecdc4;
+            color: #ffffff;
+            box-shadow: 0 4px 15px rgba(78, 205, 196, 0.4);
+        }
+        
+        .lang-btn:hover:not(.active) {
+            color: #0f172a;
+            background: rgba(78, 205, 196, 0.1);
+        }
+        
+        /* Smooth Language Transition */
+        .lang-ar { font-family: 'Cairo', sans-serif; direction: rtl; }
+        .lang-en { font-family: 'Inter', sans-serif; direction: ltr; }
+        .lang-ml { font-family: 'Inter', sans-serif; direction: ltr; }
+        .lang-hi { font-family: 'Inter', sans-serif; direction: ltr; }
+        .lang-ur { font-family: 'Inter', sans-serif; direction: rtl; }
+
+        /* Subtle floating animation for the hero image */
+        .float-img {
+            animation: float 4s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Pulse for the primary CTA */
+        .btn-pulse {
+            box-shadow: 0 0 0 0 rgba(78, 205, 196, 0.4);
+            animation: pulse-brand 2s infinite;
+        }
+        @keyframes pulse-brand {
+            0% { box-shadow: 0 0 0 0 rgba(78, 205, 196, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(78, 205, 196, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(78, 205, 196, 0); }
+        }
+
+        /* Video Container Styling */
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 177.77%; /* 16:9 Aspect Ratio for vertical video */
+            height: 0;
+            overflow: hidden;
+            border-radius: 1.5rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            background: #000;
+        }
+        .video-wrapper video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Gradient Text Utility */
+        .text-gradient {
+            background: linear-gradient(135deg, #0f172a 0%, #4ecdc4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body class="lang-en selection:bg-brand selection:text-white pb-20">
+
+    <!-- Language Toggle -->
+    <div class="lang-toggle">
+        <button id="lang-en" class="lang-btn active">English</button>
+        <button id="lang-ar" class="lang-btn">العربية</button>
+        <button id="lang-ml" class="lang-btn">മലയാളം</button>
+        <button id="lang-hi" class="lang-btn">हिंदी</button>
+        <button id="lang-ur" class="lang-btn">اردو</button>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center gap-2">
+                    <img src="https://pub-36067fecb2654f06ab5b13fe9340062d.r2.dev/GosnelPersonality.png" alt="GoSnel Logo" class="w-8 h-8 rounded-full">
+                    <span class="font-bold text-xl tracking-tight text-gs-dark">GoSnel</span>
+                </div>
+                
+                <!-- Controls -->
+                <div class="flex items-center gap-4">
+                    <select id="langSelector" class="bg-transparent border-none text-sm font-semibold text-gs-gray focus:ring-0 cursor-pointer outline-none hover:text-gs-dark transition">
+                        <option value="en" selected>EN</option>
+                        <option value="ar">AR</option>
+                    </select>
+                    <a href="https://app.gosnel.com" class="hidden sm:flex items-center gap-2 bg-gs-dark text-white px-5 py-2 rounded-full font-semibold hover:bg-gray-800 transition text-sm">
+                        <span id="nav_cta">Start Chat</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 rtl:hidden"></i>
+                        <i data-lucide="arrow-left" class="w-4 h-4 hidden rtl:block"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+        <!-- Text Content -->
+        <div class="flex-1 text-center lg:text-left rtl:lg:text-right">
+            <div class="inline-flex items-center gap-2 bg-brand-light text-brand-dark font-semibold px-4 py-1.5 rounded-full text-sm mb-6 border border-brand/20" id="hero_badge">
+                <i data-lucide="zap" class="w-4 h-4"></i>
+                <span>Stop Scrolling. Start Eating.</span>
+            </div>
+            
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 text-gs-dark" id="hero_title">
+                The Perfect <span class="text-brand">3-Item Combo</span> in 30 Seconds.
+            </h1>
+            
+            <p class="text-lg text-gs-gray mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed" id="hero_desc">
+                GoSnel is your AI food agent. We cure menu fatigue by instantly building the perfect Main, Side, and Drink combo from top local spots. Just chat, confirm, and order via WhatsApp.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start rtl:lg:justify-end">
+                <a href="https://app.gosnel.com" class="btn-pulse bg-brand text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-brand-dark transition shadow-lg flex items-center justify-center gap-3 w-full sm:w-auto">
+                    <i data-lucide="message-square" class="w-5 h-5"></i>
+                    <span id="btn_primary">Chat with GoSnel</span>
+                </a>
+                <a href="#how-it-works" class="bg-white text-gs-dark border border-gray-200 px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-50 transition flex items-center justify-center gap-3 w-full sm:w-auto">
+                    <i data-lucide="play-circle" class="w-5 h-5 text-gs-gray"></i>
+                    <span id="btn_secondary">See how it works</span>
+                </a>
+            </div>
+            
+            <!-- Trust Indicators -->
+            <div class="mt-10 flex items-center justify-center lg:justify-start gap-6 text-sm text-gs-gray font-medium">
+                <div class="flex items-center gap-2">
+                    <i data-lucide="check-circle-2" class="w-4 h-4 text-brand"></i>
+                    <span id="trust_1">No Hidden Fees</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <i data-lucide="check-circle-2" class="w-4 h-4 text-brand"></i>
+                    <span id="trust_2">Cash on Delivery</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hero Image (Provided by User) -->
+        <div class="flex-1 w-full max-w-md mx-auto relative">
+            <!-- Background Glow -->
+            <div class="absolute inset-0 bg-brand/10 blur-[80px] rounded-full"></div>
+            <img src="https://pub-36067fecb2654f06ab5b13fe9340062d.r2.dev/landingPageImaged/1.png" alt="" class="relative z-10 w-full h-auto float-img object-contain" style="border-radius: 32px;">
+        </div>
+    </section>
+
+    <!-- Value Proposition / Workflow -->
+    <section class="py-20 bg-white border-y border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gs-dark mb-4" id="workflow_title">How GoSnel Works</h2>
+                <p class="text-gs-gray" id="workflow_desc">Three simple steps to your perfect meal.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Step 1 -->
+                <div class="flex flex-col items-center text-center p-6 bg-gs-light rounded-3xl border border-gray-100">
+                    <div class="w-16 h-16 bg-brand-light text-brand rounded-full flex items-center justify-center mb-6">
+                        <i data-lucide="message-circle" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-2 text-gs-dark" id="step1_title">1. Tell AI Your Mood</h3>
+                    <p class="text-gs-gray text-sm leading-relaxed" id="step1_desc">Craving a burger? Eating healthy? Just type it. Our AI understands context instantly.</p>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="flex flex-col items-center text-center p-6 bg-brand/5 rounded-3xl border border-brand/20 relative">
+                    <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-brand text-white text-xs font-bold px-3 py-1 rounded-full shadow-sm">
+                        <span id="step_badge">Magic Happens</span>
+                    </div>
+                    <div class="w-16 h-16 bg-brand text-white rounded-full flex items-center justify-center mb-6 shadow-md">
+                        <i data-lucide="sparkles" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-2 text-gs-dark" id="step2_title">2. Get a 3-Item Combo</h3>
+                    <p class="text-gs-gray text-sm leading-relaxed" id="step2_desc">We instantly build a cohesive combo (Main, Side, Drink) from top-rated restaurants near you.</p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="flex flex-col items-center text-center p-6 bg-gs-light rounded-3xl border border-gray-100">
+                    <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-6">
+                        <i data-lucide="smartphone" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-2 text-gs-dark" id="step3_title">3. Order via WhatsApp</h3>
+                    <p class="text-gs-gray text-sm leading-relaxed" id="step3_desc">One click sends your formatted order directly to the restaurant's WhatsApp. No apps needed.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Proof Section -->
+    <section id="how-it-works" class="py-24 bg-gs-dark relative overflow-hidden">
+        <!-- Decorative bg -->
+        <div class="absolute top-0 right-0 w-96 h-96 bg-brand rounded-full mix-blend-multiply filter blur-[128px] opacity-20"></div>
+        
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col md:flex-row items-center gap-12">
+            
+            <!-- Video Container (Strict 16:9 vertical format handler) -->
+            <div class="w-full max-w-[300px] mx-auto md:mx-0 flex-shrink-0">
+                <div class="video-wrapper border-4 border-slate-800">
+                    <video autoplay loop muted playsinline>
+                        <source src="https://pub-36067fecb2654f06ab5b13fe9340062d.r2.dev/landingPageImaged/videoHow1.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+
+            <!-- Video Context text -->
+            <div class="flex-1 text-center md:text-left rtl:md:text-right">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-6" id="video_title">See the AI in Action</h2>
+                <p class="text-slate-300 text-lg mb-8 leading-relaxed" id="video_desc">
+                    Watch how fast you can go from "I'm hungry" to confirming your order on WhatsApp. No endless scrolling, no decision fatigue. Just a perfect combo curated for you in seconds.
+                </p>
+                
+                <a href="https://app.gosnel.com" class="inline-flex items-center justify-center gap-2 bg-brand text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-brand-dark transition shadow-lg shadow-brand/20">
+                    <i data-lucide="external-link" class="w-5 h-5"></i>
+                    <span id="video_cta">Try it yourself now</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer CTA -->
+    <section class="py-16 bg-white border-t border-gray-200 text-center">
+        <div class="max-w-3xl mx-auto px-4">
+            <h2 class="text-2xl font-bold text-gs-dark mb-6" id="footer_title">Ready to cure your hunger?</h2>
+            <a href="https://app.gosnel.com" class="inline-flex items-center justify-center gap-2 bg-gs-dark text-white px-10 py-4 rounded-full font-bold hover:bg-black transition shadow-md">
+                <i data-lucide="bot" class="w-5 h-5"></i>
+                <span id="footer_cta">Open Web App</span>
+            </a>
+            <p class="text-sm text-gs-gray mt-8">© 2026 GoSnel AI. All rights reserved.</p>
+        </div>
+    </section>
+
+    <!-- Logic -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // State & Translations
+        let currentLang = localStorage.getItem('gosnel_lang') || 'en';
+
+        const translations = {
+            en: {
+                nav_cta: "Start Chat",
+                hero_badge: "Stop Scrolling. Start Eating.",
+                hero_title: "The Perfect <span class='text-brand'>3-Item Combo</span> in 30 Seconds.",
+                hero_desc: "GoSnel is your AI food agent. We cure menu fatigue by instantly building the perfect Main, Side, and Drink combo from top local spots. Just chat, confirm, and order via WhatsApp.",
+                btn_primary: "Chat with GoSnel",
+                btn_secondary: "See how it works",
+                trust_1: "No Hidden Fees", trust_2: "Cash on Delivery",
+                workflow_title: "How GoSnel Works", workflow_desc: "Three simple steps to your perfect meal.",
+                step1_title: "1. Tell AI Your Mood", step1_desc: "Craving a burger? Eating healthy? Just type it. Our AI understands context instantly.",
+                step_badge: "Magic Happens",
+                step2_title: "2. Get a 3-Item Combo", step2_desc: "We instantly build a cohesive combo (Main, Side, Drink) from top-rated restaurants near you.",
+                step3_title: "3. Order via WhatsApp", step3_desc: "One click sends your formatted order directly to the restaurant's WhatsApp. No apps needed.",
+                video_title: "See the AI in Action",
+                video_desc: "Watch how fast you can go from 'I'm hungry' to confirming your order on WhatsApp. No endless scrolling, no decision fatigue. Just a perfect combo curated for you in seconds.",
+                video_cta: "Try it yourself now",
+                footer_title: "Ready to cure your hunger?",
+                footer_cta: "Open Web App"
+            },
+            ar: {
+                nav_cta: "ابدأ المحادثة",
+                hero_badge: "وقف تدوير.. وابدأ تاكل.",
+                hero_title: "كومبو <span class='text-brand'>من 3 أصناف</span> في 30 ثانية.",
+                hero_desc: "جوسنل هو عميلك الذكي. نقضي على حيرة الاختيار بتجهيز أفضل طبق رئيسي، جانبي، ومشروب من المطاعم القريبة منك. كلمنا، أكد طلبك، واطلب عبر واتساب فوراً.",
+                btn_primary: "تحدث مع جوسنل",
+                btn_secondary: "شاهد كيف يعمل",
+                trust_1: "بدون رسوم مخفية", trust_2: "الدفع عند الاستلام",
+                workflow_title: "كيف يعمل جوسنل؟", workflow_desc: "ثلاث خطوات بسيطة لوجبتك المثالية.",
+                step1_title: "1. عبر عن مزاجك", step1_desc: "مشتهي برجر؟ تبي أكل صحي؟ بس اكتبها. الذكاء الاصطناعي يفهم طلبك فوراً.",
+                step_badge: "هنا السحر",
+                step2_title: "2. استلم الكومبو", step2_desc: "نجهز لك كومبو متكامل (رئيسي، جانبي، مشروب) من أفضل المطاعم تقييماً حولك.",
+                step3_title: "3. اطلب عبر واتساب", step3_desc: "بضغطة زر نرسل تفاصيل طلبك مباشرة لواتساب المطعم. بدون الحاجة لتطبيقات إضافية.",
+                video_title: "شاهد الذكاء الاصطناعي",
+                video_desc: "شوف كيف تنتقل من 'أنا جوعان' إلى تأكيد طلبك على واتساب في ثواني. لا مزيد من التقليب اللانهائي، ولا تعب الاختيار. فقط كومبو مثالي مجهز لك.",
+                video_cta: "جربها بنفسك الآن",
+                footer_title: "جاهز تقضي على جوعك؟",
+                footer_cta: "افتح تطبيق الويب"
+            },
+            ml: {
+                nav_cta: "ചാറ്റ് ആരംഭിക്കുക",
+                hero_badge: "തിരയുന്നത് നിർത്തൂ. ഭക്ഷണം ആരംഭിക്കൂ.",
+                hero_title: "30 സെക്കൻഡിൽ <span class='text-brand'>3-ഇനം കോമ്പോ</span>.",
+                hero_desc: "നിങ്ങളുടെ AI ഭക്ഷണ ഏജന്റാണ് GoSnel. മികച്ച ലോക്കൽ സ്ഥലങ്ങളിൽ നിന്ന് പർഫക്റ്റ് മെയിൻ, സൈഡ്, ഡ്രിങ്ക് കോമ്പോ ഉടൻ നിർമ്മിച്ചുകൊണ്ട് ഞങ്ങൾ മെനു ക്ഷീണം മാറ്റുന്നു. ചാറ്റ് ചെയ്യുക, സ്ഥിരീകരിക്കുക, വാട്‌സ്ആപ്പിലൂടെ ഓർഡർ ചെയ്യുക.",
+                btn_primary: "GoSnel-മായി സംസാരിക്കുക",
+                btn_secondary: "ഇത് എങ്ങനെ പ്രവർത്തിക്കുന്നു കാണുക",
+                trust_1: "ഒളിഞ്ഞിരിക്കുന്ന ചാർജുകളില്ല", trust_2: "ഡെലിവറിയിൽ പേയ്മെന്റ്",
+                workflow_title: "GoSnel എങ്ങനെ പ്രവർത്തിക്കുന്നു", workflow_desc: "നിങ്ങളുടെ പർഫക്റ്റ് ഭക്ഷണത്തിലേക്കുള്ള മൂന്ന് ലളിതമായ ഘട്ടങ്ങൾ.",
+                step1_title: "1. AI-നോട് നിങ്ങളുടെ മൂഡ് പറയുക", step1_desc: "ഒരു ബർഗർ ആഗ്രഹിക്കുന്നുണ്ടോ? ആരോഗ്യകരമായ ഭക്ഷണം കഴിക്കുന്നുണ്ടോ? അത് ടൈപ്പ് ചെയ്യുക. ഞങ്ങളുടെ AI ഉടൻ തന്നെ സന്ദർഭം മനസ്സിലാക്കുന്നു.",
+                step_badge: "മാജിക് സംഭവിക്കുന്നു",
+                step2_title: "2. 3-ഇനം കോമ്പോ നേടുക", step2_desc: "നിങ്ങളുടെ അടുത്തുള്ള ടോപ്പ് റേറ്റ് ചെയ്ത റെസ്റ്റോറന്റുകളിൽ നിന്ന് ഞങ്ങൾ ഉടൻ തന്നെ ഒരു കോഹീസീവ് കോമ്പോ (മെയിൻ, സൈഡ്, ഡ്രിങ്ക്) നിർമ്മിക്കുന്നു.",
+                step3_title: "3. വാട്‌സ്ആപ്പിലൂടെ ഓർഡർ ചെയ്യുക", step3_desc: "ഒരു ക്ലിക്കിൽ നിങ്ങളുടെ ഫോർമാറ്റ് ചെയ്ത ഓർഡർ നേരിട്ട് റെസ്റ്റോറന്റിന്റെ വാട്‌സ്ആപ്പിലേക്ക് അയയ്ക്കുന്നു. ആപ്പുകൾ ആവശ്യമില്ല.",
+                video_title: "പ്രവർത്തനത്തിലെ AI കാണുക",
+                video_desc: "'എനിക്ക് വിശപ്പുണ്ട്' എന്നതിൽ നിന്ന് വാട്‌സ്ആപ്പിൽ നിങ്ങളുടെ ഓർഡർ സ്ഥിരീകരിക്കുന്നതിലേക്ക് എത്ര വേഗത്തിൽ പോകാമെന്ന് കാണുക. അവസാനമില്ലാത്ത സ്ക്രോളിംഗില്ല, തീരുമാനിക്കാൻ കഴിയാത്ത അവസ്ഥയില്ല. നിമിഷങ്ങൾക്കുള്ളിൽ നിങ്ങൾക്കായി ക്യൂറേറ്റ് ചെയ്ത പർഫക്റ്റ് കോമ്പോ മാത്രം.",
+                video_cta: "ഇപ്പോൾ തന്നെ പരീക്ഷിക്കുക",
+                footer_title: "നിങ്ങളുടെ വിശപ്പ് മാറ്റാൻ തയ്യാറാണോ?",
+                footer_cta: "വെബ് ആപ്പ് തുറക്കുക"
+            },
+            hi: {
+                nav_cta: "चैट शुरू करें",
+                hero_badge: "स्क्रॉल करना बंद करें। खाना शुरू करें।",
+                hero_title: "30 सेकंड में <span class='text-brand'>3-आइटम कॉम्बो</span>।",
+                hero_desc: "GoSnel आपका AI फूड एजेंट है। हम शीर्ष स्थानीय स्थानों से सही मेन, साइड और ड्रिंक कॉम्बो तुरंत बनाकर मेनू थकान को दूर करते हैं। बस चैट करें, पुष्टि करें, और व्हाट्सएप के माध्यम से ऑर्डर करें।",
+                btn_primary: "GoSnel के साथ चैट करें",
+                btn_secondary: "देखें कि यह कैसे काम करता है",
+                trust_1: "कोई छिपी हुई फीस नहीं", trust_2: "डिलीवरी पर भुगतान",
+                workflow_title: "GoSnel कैसे काम करता है", workflow_desc: "आपके आदर्श भोजन के लिए तीन सरल चरण।",
+                step1_title: "1. AI को अपना मूड बताएं", step1_desc: "बर्गर की इच्छा हो रही है? स्वस्थ भोजन कर रहे हैं? बस टाइप करें। हमारा AI तुरंत संदर्भ समझ जाता है।",
+                step_badge: "जादू होता है",
+                step2_title: "2. 3-आइटम कॉम्बो प्राप्त करें", step2_desc: "हम आपके पास के शीर्ष रेट किए गए रेस्तरां से तुरंत एक सुसंगत कॉम्बो (मेन, साइड, ड्रिंक) बनाते हैं।",
+                step3_title: "3. व्हाट्सएप के माध्यम से ऑर्डर करें", step3_desc: "एक क्लिक आपके फ़ॉर्मेटेड ऑर्डर को सीधे रेस्तरां के व्हाट्सएप पर भेजता है। किसी ऐप की आवश्यकता नहीं।",
+                video_title: "कार्यवाई में AI देखें",
+                video_desc: "देखें कि आप 'मुझे भूख लगी है' से व्हाट्सएप पर अपना ऑर्डर पुष्टि करने तक कितनी तेजी से जा सकते हैं। कोई अंतहीन स्क्रॉलिंग नहीं, कोई निर्णय थकान नहीं। बस सेकंडों में आपके लिए क्यूरेट किया गया एकदम सही कॉम्बो।",
+                video_cta: "अभी خود试 करें",
+                footer_title: "अपनी भूख मिटाने के लिए तैयार हैं?",
+                footer_cta: "वेब ऐप खोलें"
+            },
+            ur: {
+                nav_cta: "چیٹ شروع کریں",
+                hero_badge: "اسکرول کرنا بند کریں۔ کھانا شروع کریں۔",
+                hero_title: "30 سیکنڈ میں <span class='text-brand'>3-آئٹم کمبو</span>۔",
+                hero_desc: "GoSnel آپ کا AI فوڈ ایجنٹ ہے۔ ہم بہترین مقامی ریستورانوں سے کامل مین، سائیڈ، اور ڈرنک کمبو فوری طور پر بنا کر مینو تھکاوٹ کو دور کرتے ہیں۔ بس چیٹ کریں، تصدیق کریں، اور واٹس ایپ کے ذریعے آرڈر کریں۔",
+                btn_primary: "GoSnel کے ساتھ بات کریں",
+                btn_secondary: "دیکھیں کہ یہ کیسے کام کرتا ہے",
+                trust_1: "کوئی پوشیدہ فیس نہیں", trust_2: "ڈیلیوری پر ادائیگی",
+                workflow_title: "GoSnel کیسے کام کرتا ہے", workflow_desc: "آپ کے بہترین کھانے کے لیے تین آسان مراحل۔",
+                step1_title: "1. AI کو اپنا موڈ بتائیں", step1_desc: "برگر کی خواہش ہے؟ صحت مند کھا رہے ہیں؟ بس ٹائپ کریں۔ ہمارا AI فوری طور پر سیاق و سباق سمجھ جاتا ہے۔",
+                step_badge: "جادو ہوتا ہے",
+                step2_title: "2. 3-آئٹم کمبو حاصل کریں", step2_desc: "ہم آپ کے قریب بہترین ریٹ شدہ ریستورانوں سے فوری طور پر ایک مربوط کمبو (مین، سائیڈ، ڈرنک) بناتے ہیں۔",
+                step3_title: "3. واٹس ایپ کے ذریعے آرڈر کریں", step3_desc: "ایک کلک آپ کے فارمیٹڈ آرڈر کو براہ راست ریستوراں کے واٹس ایپ پر بھیجتا ہے۔ کسی ایپ کی ضرورت نہیں۔",
+                video_title: "عمل میں AI دیکھیں",
+                video_desc: "دیکھیں کہ آپ 'مجھے بھوک لگی ہے' سے واٹس ایپ پر اپنا آرڈر تصدیق کرنے تک کتنی تیزی سے جا سکتے ہیں۔ کوئی لامحدود اسکرولنگ نہیں، کوئی فیصلہ سازی کی تھکاوٹ نہیں۔ صرف سیکنڈوں میں آپ کے لیے کیوریٹ کیا گیا ایک کامل کمبو۔",
+                video_cta: "ابھی خود آزمائیں",
+                footer_title: "اپنی بھوک مٹانے کے لیے تیار ہیں؟",
+                footer_cta: "ویب ایپ کھولیں"
+            }
+        };
+
+        // Language Switcher Function
+        function setLang(lang) {
+            currentLang = lang;
+            localStorage.setItem('gosnel_lang', lang);
+            
+            // Update active button state
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(`lang-${lang}`).classList.add('active');
+            
+            // Update HTML attributes
+            document.documentElement.lang = lang;
+            document.documentElement.dir = (lang === 'ar' || lang === 'ur') ? 'rtl' : 'ltr';
+            
+            // Update body class for font-family
+            document.body.className = `lang-${lang} selection:bg-brand selection:text-white pb-20`;
+            
+            // Update translations
+            const t = translations[lang];
+            
+            const updateEl = (id, html) => {
+                const el = document.getElementById(id);
+                if(el) el.innerHTML = html;
+            };
+
+            updateEl('nav_cta', t.nav_cta);
+            document.getElementById('hero_badge').innerHTML = `<i data-lucide="zap" class="w-4 h-4"></i><span>${t.hero_badge}</span>`;
+            updateEl('hero_title', t.hero_title);
+            updateEl('hero_desc', t.hero_desc);
+            document.getElementById('btn_primary').innerText = t.btn_primary;
+            document.getElementById('btn_secondary').innerText = t.btn_secondary;
+            updateEl('trust_1', t.trust_1);
+            updateEl('trust_2', t.trust_2);
+            updateEl('workflow_title', t.workflow_title);
+            updateEl('workflow_desc', t.workflow_desc);
+            updateEl('step1_title', t.step1_title);
+            updateEl('step1_desc', t.step1_desc);
+            updateEl('step_badge', t.step_badge);
+            updateEl('step2_title', t.step2_title);
+            updateEl('step2_desc', t.step2_desc);
+            updateEl('step3_title', t.step3_title);
+            updateEl('step3_desc', t.step3_desc);
+            updateEl('video_title', t.video_title);
+            updateEl('video_desc', t.video_desc);
+            document.getElementById('video_cta').innerText = t.video_cta;
+            updateEl('footer_title', t.footer_title);
+            document.getElementById('footer_cta').innerText = t.footer_cta;
+
+            lucide.createIcons();
+            
+            // Handle RTL icons
+            const navCtaBtn = document.querySelector('a[href="https://app.gosnel.com"]');
+            if (navCtaBtn) {
+                const rightArrow = navCtaBtn.querySelector('[data-lucide="arrow-right"]');
+                const leftArrow = navCtaBtn.querySelector('[data-lucide="arrow-left"]');
+                if (lang === 'ar' || lang === 'ur') {
+                    rightArrow.classList.add('hidden');
+                    leftArrow.classList.remove('hidden');
+                } else {
+                    rightArrow.classList.remove('hidden');
+                    leftArrow.classList.add('hidden');
+                }
+            }
+        }
+
+        // Add event listeners to language buttons
+        document.getElementById('lang-en').addEventListener('click', () => setLang('en'));
+        document.getElementById('lang-ar').addEventListener('click', () => setLang('ar'));
+        document.getElementById('lang-ml').addEventListener('click', () => setLang('ml'));
+        document.getElementById('lang-hi').addEventListener('click', () => setLang('hi'));
+        document.getElementById('lang-ur').addEventListener('click', () => setLang('ur'));
+        
+        // Remove old language selector
+        const oldSelector = document.getElementById('langSelector');
+        if (oldSelector) oldSelector.parentElement.remove();
+        
+        // Initialize with saved language
+        setLang(currentLang);
+    </script>
+</body>
+</html>
     
     <link rel="canonical" href="https://gosnel.com">
     <meta name="description" content="Stop scrolling endlessly through food apps. GoSnel's AI suggests personalized meals from nearby restaurants in seconds. Order via Instagram or pickup.">
@@ -912,49 +1407,6 @@
         <button id="lang-ur" class="lang-btn">اردو</button>
     </div>
 
-    <!-- HERO SECTION -->
-    <section class="hero-modern">
-        <div class="hero-bg-image">
-            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1920&h=1080&fit=crop&q=85" 
-                 alt="Delicious food spread" 
-                 loading="eager">
-        </div>
-        <div class="hero-overlay"></div>
-        
-        <div class="container hero-content">
-            <div style="max-width: 700px;">
-                <div class="hero-badge">
-                    <span class="hero-pulse"></span>
-                    <span id="hero_badge">AI-Powered Food Discovery</span>
-                </div>
-                
-                <h1 class="hero-title">
-                    <span id="hero_title_1">Stop scrolling.</span><br>
-                    <span class="gradient-text" id="hero_title_2">Let me pick for you in 30 seconds</span>
-                </h1>
-                
-                <p class="hero-subtitle" id="hero_subtitle">
-                    Tired of spending 15 minutes scrolling through menus? GoSnel's AI suggests the perfect meal based on your taste and budget — in under a minute.
-                </p>
-                
-                <div class="hero-stats">
-                    <div class="hero-stat">
-                        <div class="hero-stat-value">100+</div>
-                        <div class="hero-stat-label" id="stat_languages">Languages</div>
-                    </div>
-                    <div class="hero-stat">
-                        <div class="hero-stat-value">30s</div>
-                        <div class="hero-stat-label" id="stat_time">Average time</div>
-                    </div>
-                    <div class="hero-stat">
-                        <div class="hero-stat-value">0 AED</div>
-                        <div class="hero-stat-label" id="stat_cost">Cost to use</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- TRANSITION SECTION -->
     <section class="section-transition" style="padding: 60px 0; background: #ffffff; text-align: center; border-bottom: 1px solid #f1f5f9;">
         <div class="container">
@@ -1110,13 +1562,13 @@
                 </div>
                 
                 <div class="step-card">
-                    <div class="step-number" style="border-radius: 50%; width: 80px; height: 80px; margin: 0 auto 24px; display: flex; align-content: center; justify-content: center; background: linear-gradient(135deg, #4ECDC4, #2dd4bf); color: white; font-size: 24px; font-weight: 800; box-shadow: 0 8px 24px rgba(78, 205, 196, 0.3);"><img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/gosnelicon.png" alt="GoSnel" style="width: 100%; height: 100%; border-radius: 50%; object-fit: contain; padding: 8px;"></div>
+                    <div class="step-number" style="border-radius: 50%; width: 80px; height: 80px; margin: 0 auto 24px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #4ECDC4, #2dd4bf); color: white; font-size: 24px; font-weight: 800; box-shadow: 0 8px 24px rgba(78, 205, 196, 0.3);"><img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/gosnelicon.png" alt="GoSnel" style="width: 100%; height: 100%; border-radius: 50%; object-fit: contain; padding: 8px;"></div>
                     <h3 id="step_2_title">Get Suggestions</h3>
                     <p id="step_2_desc">I'll suggest 3-5 perfect meals from nearby restaurants based on your preferences.</p>
                 </div>
                 
                 <div class="step-card">
-                    <div class="step-number" style="border-radius: 50%; width: 80px; height: 80px; margin: 0 auto 24px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #4ECDC4, #2dd4bf); color: white; font-size: 24px; font-weight: 800; box-shadow: 0 8px 24px rgba(78, 205, 196, 0.3);"><svg class="w-10 h-10" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M16.6 14c-.2-.1-1.5-.7-1.7-.8c-.2-.1-.4.1-.6.1c-.2.2-.6.8-.8 1c-.1.2-.3.2-.5.1c-.7-.3-1.4-.7-2-1.2c-.5-.5-1-1.1-1.4-1.7c-.1-.2 0-.4.1-.5c.1-.1.2-.3.4-.4c.1-.1.2-.3.2-.4c.1-.1.1-.3 0-.4c-.1-.1-.6-1.3-.8-1.8c-.1-.7-.3-.7-.5-.7h-.5c-.2 0-.5.2-.6.3c-.6.6-.9 1.3-.9 2.1c.1.9.4 1.8 1 2.6c1.1 1.6 2.5 2.9 4.2 3.7c.5.2.9.4 1.4.5c.5.2 1 .2 1.6.1c.7-.1 1.3-.6 1.7-1.2c.2-.4.2-.8.1-1.2l-.4-.2m2.5-9.1C15.2 1 8.9 1 5 4.9c-3.2 3.2-3.8 8.1-1.6 12L2 22l5.3-1.4c1.5.8 3.1 1.2 4.7 1.2c5.5 0 9.9-4.4 9.9-9.9c.1-2.6-1-5.1-2.8-7m-2.7 14c-1.3.8-2.8 1.3-4.4 1.3c.-1.5 0-2.9.-0.4-4.2-1.1l.-0.3.-0.2l-3.1.8l.8-3l.-0.2.-0.3c-2.4-4-1.2-9 2.7-11.5S16.6 3.7 19 7.5c2.4 3.9 1.3 9-2.6 11.4"/></svg></div>
+                    <div class="step-number" style="border-radius: 50%; width: 80px; height: 80px; margin: 0 auto 24px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #4ECDC4, #2dd4bf); color: white; font-size: 24px; font-weight: 800; box-shadow: 0 8px 24px rgba(78, 205, 196, 0.3);"><svg class="w-10 h-10" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white"><path fill="white" d="M16.6 14c-.2-.1-1.5-.7-1.7-.8c-.2-.1-.4-.1-.6.1c-.2.2-.6.8-.8 1c-.1.2-.3.2-.5.1c-.7-.3-1.4-.7-2-1.2c-.5-.5-1-1.1-1.4-1.7c-.1-.2 0-.4.1-.5c.1-.1.2-.3.4-.4c.1-.1.2-.3.2-.4c.1-.1.1-.3 0-.4c-.1-.1-.6-1.3-.8-1.8c-.1-.7-.3-.7-.5-.7h-.5c-.2 0-.5.2-.6.3c-.6.6-.9 1.3-.9 2.1c.1.9.4 1.8 1 2.6c1.1 1.6 2.5 2.9 4.2 3.7c.5.2.9.4 1.4.5c.5.2 1 .2 1.6.1c.7-.1 1.3-.6 1.7-1.2c.2-.4.2-.8.1-1.2l-.4-.2m2.5-9.1C15.2 1 8.9 1 5 4.9c-3.2 3.2-3.8 8.1-1.6 12L2 22l5.3-1.4c1.5.8 3.1 1.2 4.7 1.2c5.5 0 9.9-4.4 9.9-9.9c.1-2.6-1-5.1-2.8-7m-2.7 14c-1.3.8-2.8 1.3-4.4 1.3c-1.5 0-2.9-.4-4.2-1.1l-.3-.2l-3.1.8l.8-3l-.2-.3c-2.4-4-1.2-9 2.7-11.5S16.6 3.7 19 7.5c2.4 3.9 1.3 9-2.6 11.4"/></svg></div>
                     <h3 id="step_3_title">Order Your Way</h3>
                     <p id="step_3_desc">Order via Instagram or pickup — however you prefer.</p>
                 </div>
@@ -1143,8 +1595,8 @@
                         <strong style="font-size: 16px; display: flex; align-items: center; gap: 6px; margin-bottom: 0;"><i data-lucide="badge-percent" style="width: 18px; height: 18px;"></i>I find the top discounts for you</strong>
                     </div>
                     <div id="cta_benefit_3" style="font-size: 15px; color: rgba(255, 255, 255, 0.95); margin: 12px 0; padding: 10px 0;">
-                        <strong style="font-size: 16px; display: flex; align-items: center; gap: 12px;">
-                            <svg style="width: 18px; height: 18px; fill: white; flex-shrink: 0;" viewBox="0 0 24 24"><path d="M16.6 14c-.2-.1-1.5-.7-1.7-.8c-.2-.1-.4.-0.1-.6.1c.-0.2.2.-0.6.8.-0.8 1c.-0.1.2.-0.3.2.-0.5.1c.-0.7.-0.3.-1.4.-0.7.-2-1.2c.-0.5.-0.5.-1-1.1.-1.4-1.7c.-0.1.-0.2 0.-0.4 0.1.-0.5c.1.-0.1.2.-0.3.4.-0.4c.1.-0.1.2.-0.3.2.-0.4c.1.-0.1.1.-0.3 0.-0.4c.-0.1.-0.1.-0.6-1.3.-0.8-1.8c.-0.1.-0.7.-0.3.-0.7.-0.5.-0.7h.-0.5c.-0.2 0.-0.5.2.-0.6.3c.-0.6.6.-0.9 1.3.-0.9 2.1c.1 0.9.4 1.8 1 2.6c1.1 1.6 2.5 2.9 4.2 3.7c.5.2.9.4 1.4.5c.5.2 1 .2 1.6.1c.7.-0.1 1.3.-0.6 1.7-1.2c.2.-0.4.2.-0.8.1-1.2l.-0.4.-0.2m2.5-9.1C15.2 1 8.9 1 5 4.9c-3.2 3.2-3.8 8.1-1.6 12L2 22l5.3-1.4c1.5.8 3.1 1.2 4.7 1.2c5.5 0 9.9-4.4 9.9-9.9c.1-2.6-1-5.1-2.8-7m-2.7 14c-1.3.8-2.8 1.3-4.4 1.3c.-1.5 0-2.9.-0.4-4.2-1.1l.-0.3.-0.2l-3.1.8l.8-3l.-0.2.-0.3c-2.4-4-1.2-9 2.7-11.5S16.6 3.7 19 7.5c2.4 3.9 1.3 9-2.6 11.4"/></svg>
+                        <strong style="font-size: 16px; display: flex; align-items: center; gap: 6px;">
+                            <svg style="width: 18px; height: 18px; fill: white; flex-shrink: 0;" viewBox="0 0 24 24"><path d="M16.6 14c-.2-.1-1.5-.7-1.7-.8c-.2-.1-.4-.1-.6.1c-.2.2-.6.8-.8 1c-.1.2-.3.2-.5.1c-.7-.3-1.4-.7-2-1.2c-.5-.5-1-1.1-1.4-1.7c-.1-.2 0-.4.1-.5c.1-.1.2-.3.4-.4c.1-.1.2-.3.2-.4c.1-.1.1-.3 0-.4c-.1-.1-.6-1.3-.8-1.8c-.1-.7-.3-.7-.5-.7h-.5c-.2 0-.5.2-.6.3c-.6.6-.9 1.3-.9 2.1c.1.9.4 1.8 1 2.6c1.1 1.6 2.5 2.9 4.2 3.7c.5.2.9.4 1.4.5c.5.2 1 .2 1.6.1c.7-.1 1.3-.6 1.7-1.2c.2-.4.2-.8.1-1.2l-.4-.2m2.5-9.1C15.2 1 8.9 1 5 4.9c-3.2 3.2-3.8 8.1-1.6 12L2 22l5.3-1.4c1.5.8 3.1 1.2 4.7 1.2c5.5 0 9.9-4.4 9.9-9.9c.1-2.6-1-5.1-2.8-7m-2.7 14c-1.3.8-2.8 1.3-4.4 1.3c-1.5 0-2.9-.4-4.2-1.1l-.3-.2l-3.1.8l.8-3l-.2-.3c-2.4-4-1.2-9 2.7-11.5S16.6 3.7 19 7.5c2.4 3.9 1.3 9-2.6 11.4"/></svg>
                             Order on Instagram Pay on delivery
                         </strong>
                     </div>
@@ -1231,8 +1683,8 @@
                 cta_subtitle: '',
                 cta_benefit_1: '',
                 cta_benefit_2: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 8px; margin-bottom: 0;"><i data-lucide="badge-percent" style="width: 20px; height: 20px;"></i>I find the top discounts for you</strong>',
-                cta_benefit_3: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 12px;"><svg style="width: 24px; height: 24px; fill: white; flex-shrink: 0;" viewBox="0 0 24 24"><path d="M16.6 14c-.2-.1-1.5-.7-1.7-.8c-.2-.1-.4.-0.1-.6.1c.-0.2.2.-0.6.8.-0.8 1c.-0.1.2.-0.3.2.-0.5.1c.-0.7.-0.3.-1.4.-0.7.-2-1.2c.-0.5.-0.5.-1-1.1.-1.4-1.7c.-0.1.-0.2 0.-0.4 0.1.-0.5c.1.-0.1.2.-0.3.4.-0.4c.1.-0.1.2.-0.3.2.-0.4c.1.-0.1.1.-0.3 0.-0.4c.-0.1.-0.1.-0.6-1.3.-0.8-1.8c.-0.1.-0.7.-0.3.-0.7.-0.5.-0.7h.-0.5c.-0.2 0.-0.5.2.-0.6.3c.-0.6.6.-0.9 1.3.-0.9 2.1c.1 0.9.4 1.8 1 2.6c1.1 1.6 2.5 2.9 4.2 3.7c.5.2.9.4 1.4.5c.5.2 1 .2 1.6.1c.7.-0.1 1.3.-0.6 1.7-1.2c.2.-0.4.2.-0.8.1-1.2l.-0.4.-0.2m2.5-9.1C15.2 1 8.9 1 5 4.9c-3.2 3.2-3.8 8.1-1.6 12L2 22l5.3-1.4c1.5.8 3.1 1.2 4.7 1.2c5.5 0 9.9-4.4 9.9-9.9c.1-2.6-1-5.1-2.8-7m-2.7 14c-1.3.8-2.8 1.3-4.4 1.3c.-1.5 0-2.9.-0.4-4.2-1.1l.-0.3.-0.2l-3.1.8l.8-3l.-0.2.-0.3c-2.4-4-1.2-9 2.7-11.5S16.6 3.7 19 7.5c2.4 3.9 1.3 9-2.6 11.4"/></svg>Order on Instagram Pay on delivery</strong>',
-                cta_benefit_4: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 8px; margin-bottom: 0;"><i data-lucide="languages" style="width: 18px; height: 18px;"></i>I speak your language</strong>',
+                cta_benefit_3: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 12px;"><svg style="width: 24px; height: 24px; fill: white; flex-shrink: 0;" viewBox="0 0 24 24"><path d="M16.6 14c-.2-.1-1.5-.7-1.7-.8c-.2-.1-.4-.1-.6.1c-.2.2-.6.8-.8 1c-.1.2-.3.2-.5.1c-.7-.3-1.4-.7-2-1.2c-.5-.5-1-1.1-1.4-1.7c-.1-.2 0-.4.1-.5c.1-.1.2-.3.4-.4c.1-.1.2-.3.2-.4c.1-.1.1-.3 0-.4c-.1-.1-.6-1.3-.8-1.8c-.1-.7-.3-.7-.5-.7h-.5c-.2 0-.5.2-.6.3c-.6.6-.9 1.3-.9 2.1c.1.9.4 1.8 1 2.6c1.1 1.6 2.5 2.9 4.2 3.7c.5.2.9.4 1.4.5c.5.2 1 .2 1.6.1c.7-.1 1.3-.6 1.7-1.2c.2-.4.2-.8.1-1.2l-.4-.2m2.5-9.1C15.2 1 8.9 1 5 4.9c-3.2 3.2-3.8 8.1-1.6 12L2 22l5.3-1.4c1.5.8 3.1 1.2 4.7 1.2c5.5 0 9.9-4.4 9.9-9.9c.1-2.6-1-5.1-2.8-7m-2.7 14c-1.3.8-2.8 1.3-4.4 1.3c-1.5 0-2.9-.4-4.2-1.1l-.3-.2l-3.1.8l.8-3l-.2-.3c-2.4-4-1.2-9 2.7-11.5S16.6 3.7 19 7.5c2.4 3.9 1.3 9-2.6 11.4"/></svg>Order on Instagram Pay on delivery</strong>',
+                cta_benefit_4: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 8px; margin-bottom: 0;"><i data-lucide="languages" style="width: 20px; height: 20px;"></i>I speak your language</strong>',
                 cta_button: 'Chat with me',
                 tag_no_rice: 'No rice',
                 tag_not_spicy: 'Not spicy',
@@ -1301,7 +1753,7 @@
                 cta_subtitle: '',
                 cta_benefit_1: '',
                 cta_benefit_2: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 8px; margin-bottom: 0;"><i data-lucide="badge-percent" style="width: 20px; height: 20px;"></i>بجيب لك أفضل الخصومات</strong>',
-                cta_benefit_3: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 12px;"><svg style="width: 24px; height: 24px; fill: white; flex-shrink: 0;" viewBox="0 0 24 24"><path d="M16.6 14c-.2.-0.1-1.5.-0.7-1.7.-0.8c.-0.2.-0.1.-0.4.-0.1.-0.6.1c.-0.2.2.-0.6.8.-0.8 1c.-0.1.2.-0.3.2.-0.5.1c.-0.7.-0.3.-1.4.-0.7.-2-1.2c.-0.5.-0.5.-1-1.1.-1.4-1.7c.-0.1.-0.2 0.-0.4 0.1.-0.5c.1.-0.1.2.-0.3.4.-0.4c.1.-0.1.2.-0.3.2.-0.4c.1.-0.1.1.-0.3 0.-0.4c.-0.1.-0.1.-0.6-1.3.-0.8-1.8c.-0.1.-0.7.-0.3.-0.7.-0.5.-0.7h.-0.5c.-0.2 0.-0.5.2.-0.6.3c.-0.6.6.-0.9 1.3.-0.9 2.1c.1 0.9.4 1.8 1 2.6c1.1 1.6 2.5 2.9 4.2 3.7c.5.2.9.4 1.4.5c.5.2 1 .2 1.6.1c.7.-0.1 1.3.-0.6 1.7-1.2c.2.-0.4.2.-0.8.1-1.2l.-0.4.-0.2m2.5-9.1C15.2 1 8.9 1 5 4.9c-3.2 3.2-3.8 8.1-1.6 12L2 22l5.3-1.4c1.5.8 3.1 1.2 4.7 1.2c5.5 0 9.9-4.4 9.9-9.9c.1-2.6-1-5.1-2.8-7m-2.7 14c-1.3.8-2.8 1.3-4.4 1.3c.-1.5 0-2.9.-0.4-4.2-1.1l.-0.3.-0.2l-3.1.8l.8-3l.-0.2.-0.3c-2.4-4-1.2-9 2.7-11.5S16.6 3.7 19 7.5c2.4 3.9 1.3 9-2.6 11.4"/></svg>برتبلك طلبك على الواتساب  وبخلي المطعم يوصلك وجبتك وبتدفع عند الاستلام</strong>',
+                cta_benefit_3: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 12px;"><svg style="width: 24px; height: 24px; fill: white; flex-shrink: 0;" viewBox="0 0 24 24"><path d="M16.6 14c-.2-.1-1.5-.7-1.7-.8c-.2-.1-.4-.1-.6.1c-.2.2-.6.8-.8 1c-.1.2-.3.2-.5.1c-.7-.3-1.4-.7-2-1.2c-.5-.5-1-1.1-1.4-1.7c-.1-.2 0-.4.1-.5c.1-.1.2-.3.4-.4c.1-.1.2-.3.2-.4c.1-.1.1-.3 0-.4c-.1-.1-.6-1.3-.8-1.8c-.1-.7-.3-.7-.5-.7h-.5c-.2 0-.5.2-.6.3c-.6.6-.9 1.3-.9 2.1c.1.9.4 1.8 1 2.6c1.1 1.6 2.5 2.9 4.2 3.7c.5.2.9.4 1.4.5c.5.2 1 .2 1.6.1c.7-.1 1.3-.6 1.7-1.2c.2-.4.2-.8.1-1.2l-.4-.2m2.5-9.1C15.2 1 8.9 1 5 4.9c-3.2 3.2-3.8 8.1-1.6 12L2 22l5.3-1.4c1.5.8 3.1 1.2 4.7 1.2c5.5 0 9.9-4.4 9.9-9.9c.1-2.6-1-5.1-2.8-7m-2.7 14c-1.3.8-2.8 1.3-4.4 1.3c-1.5 0-2.9-.4-4.2-1.1l-.3-.2l-3.1.8l.8-3l-.2-.3c-2.4-4-1.2-9 2.7-11.5S16.6 3.7 19 7.5c2.4 3.9 1.3 9-2.6 11.4"/></svg>برتبلك طلبك على الواتساب  وبخلي المطعم يوصلك وجبتك وبتدفع عند الاستلام</strong>',
                 cta_benefit_4: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 8px; margin-bottom: 0;"><i data-lucide="languages" style="width: 20px; height: 20px;"></i>وبحكي لغتك</strong>',
                 cta_button: 'تحدث معي',
                 tag_no_rice: 'أرز بدون',
@@ -1310,7 +1762,7 @@
                 tag_no_dairy: 'بدون منتجات الألبان والمزيد'
             },
             ml: {
-                hero_badge: 'AI-അധിഷ്ടിത ഭക്ഷണ കണ്ടെത്തൽ',
+                hero_badge: 'AI-അധിഷ്ഠിത ഭക്ഷണ കണ്ടെത്തൽ',
                 hero_title_1: 'തിരയുന്നത് നിർത്തൂ.',
                 hero_title_2: 'എന്നെ 30 സെക്കൻഡിനുള്ളിൽ തിരഞ്ഞെടുക്കാൻ അനുവദിക്കുക',
                 hero_subtitle: 'മെനുകളിലൂടെ 15 മിനിറ്റ് ചെലവഴിച്ച് നിങ്ങൾ വിഷമിച്ചോ? നിങ്ങളുടെ രുചിയും ബജറ്റും അടിസ്ഥാനമാക്കി ഗോസ്നെൽ എഐ ഏറ്റവും നല്ല ഭക്ഷണം നിർദ്ദേശിക്കുന്നു – ഒരു മിനിറ്റിനുള്ളിൽ.',
@@ -1318,13 +1770,13 @@
                 stat_time: 'ശരാശരി സമയം',
                 stat_cost: 'ഉപയോഗിക്കാനുള്ള ചെലവ്',
                 trans_line_1: 'നിന്ന്',
-                trans_line_2: 'എനിക്ക് എന്ത് ഭക്ഷണം എന്ന് അറിയില്ല',
+                trans_line_2: 'എനിക്ക് എന്ത് കഴിക്കണമെന്ന് അറിയില്ല',
                 trans_line_3: 'എന്ന്',
                 trans_line_4: '"ഗോസ്നെൽ എനിക്ക് എന്താണ് വേണ്ടതെന്ന് അറിയാം"',
                 chat_title: 'ഗോസ്നെൽ AI',
                 chat_subtitle: 'ഫുഡ് ഡിസ്കവറി അസിസ്റ്റന്റ്',
                 chat_status: 'ഓൺലൈൻ',
-                why_badge: 'ഏത് കാരണത്താലാണ് ഗോസ്നെൽ',
+                why_badge: 'എന്തുകൊണ്ട് ഗോസ്നെൽ',
                 why_title: 'ഗോസ്നെൽ ഉപയോക്താക്കൾ സ്നേഹിക്കുന്നത് എന്തുകൊണ്ട്',
                 why_subtitle: 'സ്മാർട്ട്, ലളിതവും നിങ്ങളുടെ ഭാഷ സംസാരിക്കുന്നു',
                 feature_1_title: 'സ്മാർട്ട് നിർദ്ദേശങ്ങൾ',
@@ -1334,44 +1786,44 @@
                 feature_3_title: 'യഥാർത്ഥ റെസ്റ്റോറന്റുകൾ',
                 feature_3_desc: 'യഥാർത്ഥ മെനുകളും യഥാർത്ഥ ഭക്ഷണവുമായി പ്രാദേശിക വിൽപനക്കാരെ ബ്രൗസ് ചെയ്യുക.',
                 feature_4_title: 'സ്വാഭാവിക സംഭാഷണങ്ങൾ',
-                feature_4_desc: 'നിങ്ങളുടെ സുഹൃത്തിനൊപ്പം സന്ദേശം അയയ്ക്കുന്നതുപോലെ എന്നോട് സംസാരിക്കുക - ഡിഫിക്കുന്ന മെനുകൾ ഇല്ല.',
-                personalized_badge: 'നിങ്ങൾക്കായി spesielt',
+                feature_4_desc: 'നിങ്ങളുടെ സുഹൃത്തിനൊപ്പം സന്ദേശം അയയ്ക്കുന്നതുപോലെ എന്നോട് സംസാരിക്കുക - ആകുലപ്പെടുത്തുന്ന മെനുകളില്ല.',
+                personalized_badge: 'നിങ്ങൾക്കായി പ്രത്യേകം',
                 personalized_title: 'നിങ്ങൾക്ക് എന്നോട് നിങ്ങളുടെ മുൻഗണനകൾ പറയാം',
                 diet_1_title: 'പ്ലാന്റ്-ബേസ്ഡ്',
                 diet_1_desc: 'പൂർണ്ണമായും തിരഞ്ഞെടുത്ത ശാകാഹാര ഭക്ഷണം',
                 diet_2_title: 'വെയിറ്റ് & ഷെയ്പ്',
                 diet_2_desc: 'നിങ്ങളുടെ ലക്ഷ്യങ്ങൾക്കനുസൃതമായ ബാലൻസ്ഡ് ഭക്ഷണം',
                 diet_3_title: 'പെർഫോമൻസ്',
-                diet_3_desc: 'നിങ്ങളുടെ ദിനത്തിനനുസരിച്ച് ഹൈ-പ്രോട്ടീൻ അല്ലെങ്കിൽ ലോ-കാർബ്',
+                diet_3_desc: 'നിങ്ങളുടെ ദിവസത്തെ ആശ്രയിച്ച് ഹൈ-പ്രോട്ടീൻ അല്ലെങ്കിൽ ലോ-കാർബ്',
                 diet_4_title: 'ആരോഗ്യ ആവശ്യങ്ങൾ',
                 diet_4_desc: 'ഗ്ലൂട്ടൻ-ഫ്രീയും അലർജി അറിവുള്ള ഓപ്ഷനുകളും',
                 diet_5_title: 'സ്മാർട്ട് മുൻഗണനകൾ',
-                diet_5_desc: 'എനിക്ക് ഭക്ഷണത്തില്‍ ഉണ്ടാകണമെന്ന് ആഗ്രഹിക്കുന്നു:',
+                diet_5_desc: 'എനിക്ക് ഇതുപയോഗിച്ച് ഭക്ഷണം വേണം:',
                 how_badge: 'എങ്ങനെ പ്രവർത്തിക്കുന്നു',
                 how_title: 'എങ്ങനെ പ്രവർത്തിക്കുന്നു',
                 step_1_title: 'എന്നോട് സംസാരിക്കുക',
-                step_1_desc: 'നിങ്ങൾ ആഗ്രഹിക്കുന്നത് എന്നോട് പറയുക, നിങ്ങളുടെ ബജറ്റ്, അല്ലെങ്കിൽ കേവലം "എനിക്ക് വിശപ്പ് വന്നിരിക്കുന്നു" - ഞാൻ മനസ്സിലാക്കും.',
+                step_1_desc: 'നിങ്ങൾ ആഗ്രഹിക്കുന്നത് എന്നോട് പറയുക, നിങ്ങളുടെ ബജറ്റ്, അല്ലെങ്കിൽ കേവലം "എനിക്ക് വിശപ്പാണ്" എന്ന് പറയുക - ഞാൻ മനസ്സിലാക്കും.',
                 step_2_title: 'നിർദ്ദേശങ്ങൾ നേടുക',
-                step_2_desc: 'നിങ്ങളുടെ മുൻഗണനകൾ അടിസ്ഥാനമാക്കി അടുത്തുള്ള റെസ്റ്റോറന്റുകളിൽ നിന്ന് 3-5 മികച്ച ഭക്ഷണങ്ങൾ ഞാൻ നിർദ്ദേശിക്കും.',
+                step_2_desc: 'നിങ്ങളുടെ മുൻഗണനകൾ അടിസ്ഥാനമാക്കി അടുത്തുള്ള റെസ്റ്റോറന്റുകളിൽ നിന്ന് 3-5 ഏറ്റവും നല്ല ഭക്ഷണങ്ങൾ ഞാൻ നിർദ്ദേശിക്കും.',
                 step_3_title: 'നിങ്ങളുടെ രീതിയിൽ ഓർഡർ ചെയ്യുക',
-                step_3_desc: 'ഇൻസ്റ്റാഗ്രാമിലൂടെ അല്ലെങ്കിൽ പിക്കപ്പ് - നിങ്ങള് ഇഷ്ടപ്പെടുന്നതുപോലെ.',
-                comparison_title: 'ഗോസ്നെൽ vs പരമ്പരാഗത ഫുഡ് ആപ്പുകൾ',
-                comparison_subtitle: 'തിരയുന്നത് നിർത്തൂ. കണ്ടെത്തൽ ആരംഭിക്കുക.',
+                step_3_desc: 'ഇൻസ്റ്റാഗ്രാം വഴി അല്ലെങ്കിൽ പിക്കപ്പ് ചെയ്യുക - നിങ്ങൾ ഇഷ്ടപ്പെടുന്നത് പോലെ.',
+                comparison_title: 'ഗോസ്നെൽ വിസ് ട്രാഡിഷണൽ ഫുഡ് ആപ്പുകൾ',
+                comparison_subtitle: 'തിരയുന്നത് നിർത്തുക. കണ്ടെത്തുന്നത് ആരംഭിക്കുക.',
                 traditional_title: '<i data-lucide="circle-x" class="icon-sm" style="color: #ef4444;"></i> പരമ്പരാഗത ആപ്പുകൾ',
                 traditional_1: '<i data-lucide="search" class="icon-sm"></i> "ബർഗർ" തിരയുക → 100 ഫലങ്ങൾ',
                 traditional_2: '<i data-lucide="clock" class="icon-sm"></i> 15+ മിനിറ്റ് സ്ക്രോൾ ചെയ്യുക',
-                traditional_3: '<i data-lucide="frown" class="icon-sm"></i> തീരുമാനമെടുക്കാൻ പറ്റുന്നില്ല',
+                traditional_3: '<i data-lucide="frown" class="icon-sm"></i> തീരുമാനിക്കാനാകാത്ത അവസ്ഥ',
                 traditional_4: '<i data-lucide="trending-up" class="icon-sm"></i>',
                 gosnel_title: '<i data-lucide="check-circle" class="icon-sm" style="color: #4ECDC4;"></i> ഗോസ്നെൽ',
-                gosnel_1: '<i data-lucide="bot" class="icon-sm"></i> എഐ 3-5 മികച്ച ഓപ്ഷനുകൾ നിർദ്ദേശിക്കുന്നു',
+                gosnel_1: '<i data-lucide="bot" class="icon-sm"></i> എഐ 3-5 ഏറ്റവും നല്ല കളിപ്പാട്ടങ്ങൾ നിർദ്ദേശിക്കുന്നു',
                 gosnel_2: '<i data-lucide="zap" class="icon-sm"></i> 30 സെക്കൻഡിൽ തീരുമാനിക്കുക',
                 gosnel_3: '<i data-lucide="smile" class="icon-sm"></i> ആത്മവിശ്വാസവും വ്യക്തതയും',
                 gosnel_4: '<i data-lucide="tag" class="icon-sm"></i> യഥാർത്ഥ റെസ്റ്റോറന്റ് വിലകൾ',
                 cta_title: 'എന്നെ പരീക്ഷിക്കാൻ കാരണം',
                 cta_subtitle: '',
                 cta_benefit_1: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 8px; margin-bottom: 0;"><i data-lucide="tag" style="width: 20px; height: 20px;"></i>എപ്പോഴും യഥാർത്ഥ റെസ്റ്റോറന്റ് വിലകൾ</strong>',
-                cta_benefit_2: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 8px; margin-bottom: 0;"><i data-lucide="badge-percent" style="width: 20px; height: 20px;"></i>ഞാൻ നിങ്ങളുടെ വേണ്ടി മികച്ച ഡിസ്കൗണ്ടുകൾ കണ്ടെത്തുന്നു</strong>',
-                cta_benefit_3: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 12px;"><svg style="width: 24px; height: 24px; fill: white; flex-shrink: 0;" viewBox="0 0 24 24"><path d="M16.6 14c-.2.-0.1-1.5.-0.7-1.7.-0.8c.-0.2.-0.1.-0.4.-0.1.-0.6.1c.-0.2.2.-0.6.8.-0.8 1c.-0.1.2.-0.3.2.-0.5.1c.-0.7.-0.3.-1.4.-0.7.-2-1.2c.-0.5.-0.5.-1-1.1.-1.4-1.7c.-0.1.-0.2 0.-0.4 0.1.-0.5c.1.-0.1.2.-0.3.4.-0.4c.1.-0.1.2.-0.3.2.-0.4c.1.-0.1.1.-0.3 0.-0.4c.-0.1.-0.1.-0.6-1.3.-0.8-1.8c.-0.1.-0.7.-0.3.-0.7.-0.5.-0.7h.-0.5c.-0.2 0.-0.5.2.-0.6.3c.-0.6.6.-0.9 1.3.-0.9 2.1c.1 0.9.4 1.8 1 2.6c1.1 1.6 2.5 2.9 4.2 3.7c.5.2.9.4 1.4.5c.5.2 1 .2 1.6.1c.7.-0.1 1.3.-0.6 1.7-1.2c.2.-0.4.2.-0.8.1-1.2l.-0.4.-0.2m2.5-9.1C15.2 1 8.9 1 5 4.9c-3.2 3.2-3.8 8.1-1.6 12L2 22l5.3-1.4c1.5.8 3.1 1.2 4.7 1.2c5.5 0 9.9-4.4 9.9-9.9c.1-2.6-1-5.1-2.8-7m-2.7 14c-1.3.8-2.8 1.3-4.4 1.3c.-1.5 0-2.9.-0.4-4.2-1.1l.-0.3.-0.2l-3.1.8l.8-3l.-0.2.-0.3c-2.4-4-1.2-9 2.7-11.5S16.6 3.7 19 7.5c2.4 3.9 1.3 9-2.6 11.4"/></svg>ഇൻസ്റ്റാഗ്രാമിൽ ഓർഡർ ചെയ്യുക ഡെലിവറിയിൽ പേയ്</strong>',
+                cta_benefit_2: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 8px; margin-bottom: 0;"><i data-lucide="badge-percent" style="width: 20px; height: 20px;"></i>നിങ്ങൾക്കായി ഏറ്റവും മികച്ച ഡിസ്കൗണ്ടുകൾ ഞാൻ കണ്ടെത്തുന്നു</strong>',
+                cta_benefit_3: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 12px;"><svg style="width: 24px; height: 24px; fill: white; flex-shrink: 0;" viewBox="0 0 24 24"><path d="M16.6 14c-.2-.1-1.5-.7-1.7-.8c-.2-.1-.4-.1-.6.1c-.2.2-.6.8-.8 1c-.1.2-.3.2-.5.1c-.7-.3-1.4-.7-2-1.2c-.5-.5-1-1.1-1.4-1.7c-.1-.2 0-.4.1-.5c.1-.1.2-.3.4-.4c.1-.1.2-.3.2-.4c.1-.1.1-.3 0-.4c-.1-.1-.6-1.3-.8-1.8c-.1-.7-.3-.7-.5-.7h-.5c-.2 0-.5.2-.6.3c-.6.6-.9 1.3-.9 2.1c.1.9.4 1.8 1 2.6c1.1 1.6 2.5 2.9 4.2 3.7c.5.2.9.4 1.4.5c.5.2 1 .2 1.6.1c.7-.1 1.3-.6 1.7-1.2c.2-.4.2-.8.1-1.2l-.4-.2m2.5-9.1C15.2 1 8.9 1 5 4.9c-3.2 3.2-3.8 8.1-1.6 12L2 22l5.3-1.4c1.5.8 3.1 1.2 4.7 1.2c5.5 0 9.9-4.4 9.9-9.9c.1-2.6-1-5.1-2.8-7m-2.7 14c-1.3.8-2.8 1.3-4.4 1.3c-1.5 0-2.9-.4-4.2-1.1l-.3-.2l-3.1.8l.8-3l-.2-.3c-2.4-4-1.2-9 2.7-11.5S16.6 3.7 19 7.5c2.4 3.9 1.3 9-2.6 11.4"/></svg>ഇൻസ്റ്റാഗ്രാമിൽ ഓർഡർ ചെയ്യുക ഡെലിവറിയിൽ പേയ്</strong>',
                 cta_benefit_4: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 8px; margin-bottom: 0;"><i data-lucide="languages" style="width: 20px; height: 20px;"></i>എനിക്ക് നിങ്ങളുടെ ഭാഷ സംസാരിക്കാൻ കഴിയും</strong>',
                 cta_button: 'എന്നോട് സംസാരിക്കുക',
                 tag_no_rice: 'അരി ഇല്ല',
@@ -1426,7 +1878,7 @@
                 step_3_title: 'अपने तरीके से ऑर्डर करें',
                 step_3_desc: 'इंस्टाग्राम के माध्यम से या पिकअप करें - जैसा आप पसंद करें.',
                 comparison_title: 'गोस्नेल बनाम पारंपरिक भोजन ऐप्स',
-                comparison_subtitle: 'खोजना बंद करो. खोज शुरू करो.',
+                comparison_subtitle: 'खोजना बंद करो. खोजना शुरू करो.',
                 traditional_title: '<i data-lucide="circle-x" class="icon-sm" style="color: #ef4444;"></i> पारंपरिक ऐप्स',
                 traditional_1: '<i data-lucide="search" class="icon-sm"></i> "बर्गर" खोजें → 100 परिणाम',
                 traditional_2: '<i data-lucide="clock" class="icon-sm"></i> 15+ मिनट के लिए स्क्रॉल करें',
@@ -1439,10 +1891,10 @@
                 gosnel_4: '<i data-lucide="tag" class="icon-sm"></i> वास्तविक रेस्तरां की कीमतें',
                 cta_title: 'मुझे क्यों आजमाएं',
                 cta_subtitle: '',
-                cta_benefit_1: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 8px; margin-bottom: 0;"><i data-lucide="tag" style="width: 20px; height: 20px;"></i>हमेशा वास्तविक रेस्तरां की कीमतें</strong>',
-                cta_benefit_2: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 8px; margin-bottom: 0;"><i data-lucide="badge-percent" style="width: 20px; height: 20px;"></i>मैं आपके लिए शीर्ष छूट ढूंढता हूं</strong>',
-                cta_benefit_3: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 12px;"><svg style="width: 24px; height: 24px; fill: white; flex-shrink: 0;" viewBox="0 0 24 24"><path d="M16.6 14c-.2.-0.1-1.5.-0.7-1.7.-0.8c.-0.2.-0.1.-0.4.-0.1.-0.6.1c.-0.2.2.-0.6.8.-0.8 1c.-0.1.2.-0.3.2.-0.5.1c.-0.7.-0.3.-1.4.-0.7.-2-1.2c.-0.5.-0.5.-1-1.1.-1.4-1.7c.-0.1.-0.2 0.-0.4 0.1.-0.5c.1.-0.1.2.-0.3.4.-0.4c.1.-0.1.2.-0.3.2.-0.4c.1.-0.1.1.-0.3 0.-0.4c.-0.1.-0.1.-0.6-1.3.-0.8-1.8c.-0.1.-0.7.-0.3.-0.7.-0.5.-0.7h.-0.5c.-0.2 0.-0.5.2.-0.6.3c.-0.6.6.-0.9 1.3.-0.9 2.1c.1 0.9.4 1.8 1 2.6c1.1 1.6 2.5 2.9 4.2 3.7c.5.2.9.4 1.4.5c.5.2 1 .2 1.6.1c.7.-0.1 1.3.-0.6 1.7-1.2c.2.-0.4.2.-0.8.1-1.2l.-0.4.-0.2m2.5-9.1C15.2 1 8.9 1 5 4.9c-3.2 3.2-3.8 8.1-1.6 12L2 22l5.3-1.4c1.5.8 3.1 1.2 4.7 1.2c5.5 0 9.9-4.4 9.9-9.9c.1-2.6-1-5.1-2.8-7m-2.7 14c-1.3.8-2.8 1.3-4.4 1.3c.-1.5 0-2.9.-0.4-4.2-1.1l.-0.3.-0.2l-3.1.8l.8-3l.-0.2.-0.3c-2.4-4-1.2-9 2.7-11.5S16.6 3.7 19 7.5c2.4 3.9 1.3 9-2.6 11.4"/></svg>इंस्टाग्राम पर ऑर्डर करें डिलीवरी पर भुगतान करें',
-                cta_benefit_4: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 8px; margin-bottom: 0;"><i data-lucide="languages" style="width: 20px; height: 20px;"></i>मैं आपकी भाषा बोलता हूँ</strong>',
+                cta_benefit_1: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 8px; margin-bottom: 0;"><i data-lucide="tag" style="width: 20px; height: 20px;"></i>हमेशा वास्तविक रेस्तरां की कीमतें',
+                cta_benefit_2: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 8px; margin-bottom: 0;"><i data-lucide="badge-percent" style="width: 20px; height: 20px;"></i>मैं आपके लिए शीर्ष छूट ढूंढता हूं',
+                cta_benefit_3: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 12px;"><svg style="width: 24px; height: 24px; fill: white; flex-shrink: 0;" viewBox="0 0 24 24"><path d="M16.6 14c-.2-.1-1.5-.7-1.7-.8c-.2-.1-.4-.1-.6.1c-.2.2-.6.8-.8 1c-.1.2-.3.2-.5.1c-.7-.3-1.4-.7-2-1.2c-.5-.5-1-1.1-1.4-1.7c-.1-.2 0-.4.1-.5c.1-.1.2-.3.4-.4c.1-.1.2-.3.2-.4c.1-.1.1-.3 0-.4c-.1-.1-.6-1.3-.8-1.8c-.1-.7-.3-.7-.5-.7h-.5c-.2 0-.5.2-.6.3c-.6.6-.9 1.3-.9 2.1c.1.9.4 1.8 1 2.6c1.1 1.6 2.5 2.9 4.2 3.7c.5.2.9.4 1.4.5c.5.2 1 .2 1.6.1c.7-.1 1.3-.6 1.7-1.2c.2-.4.2-.8.1-1.2l-.4-.2m2.5-9.1C15.2 1 8.9 1 5 4.9c-3.2 3.2-3.8 8.1-1.6 12L2 22l5.3-1.4c1.5.8 3.1 1.2 4.7 1.2c5.5 0 9.9-4.4 9.9-9.9c.1-2.6-1-5.1-2.8-7m-2.7 14c-1.3.8-2.8 1.3-4.4 1.3c-1.5 0-2.9-.4-4.2-1.1l-.3-.2l-3.1.8l.8-3l-.2-.3c-2.4-4-1.2-9 2.7-11.5S16.6 3.7 19 7.5c2.4 3.9 1.3 9-2.6 11.4"/></svg>इंस्टाग्राम पर ऑर्डर करें डिलीवरी पर भुगतान करें',
+                cta_benefit_4: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 8px; margin-bottom: 0;"><i data-lucide="languages" style="width: 20px; height: 20px;"></i>मैं आपकी भाषा बोलता हूं',
                 cta_button: 'मेरे साथ बात करें',
                 tag_no_rice: 'चावल नहीं',
                 tag_not_spicy: 'मसालेदार नहीं',
@@ -1472,7 +1924,7 @@
                 feature_2_title: '100+ زبانیں',
                 feature_2_desc: 'اپنی زبان بولیں، اور میں آپ کو سمجھ جاؤں گا.',
                 feature_3_title: 'حقیقی ریستوراں',
-                feature_3_desc: 'حقیقی مینو اور حقیقی کھانے کے ساتھ مقامی فروشوں کو براؤز کریں.',
+                feature_3_desc: ' حقیقی مینو اور حقیقی کھانے کے ساتھ مقامی فروشوں کو براؤز کریں.',
                 feature_4_title: 'قدرتی گفتگو',
                 feature_4_desc: 'ایک دوست کے ساتھ پیغام بھیجنے کی طرح میرے ساتھ بات کریں - کوئی الجھن والا مینو نہیں.',
                 personalized_badge: 'آپ کے لیے ذاتی',
@@ -1490,7 +1942,7 @@
                 how_badge: 'کیسے کام کرتا ہے',
                 how_title: 'کیسے کام کرتا ہے',
                 step_1_title: 'مجھ سے بات کریں',
-                step_1_desc: 'مجھے بتائیں کہ آپ کیا بھوکے ہیں، آپ کا بجٹ، یا صرف کہیں "مجھے بھوک لگی ہے" - میں سمجھ جاؤں گا.',
+                step_1_desc: 'مجھے بتائیں کہ آپ کیا بھوک لگی ہے، آپ کا بجٹ، یا صرف کہیں "مجھے بھوک لگی ہے" - میں سمجھ جاؤں گا.',
                 step_2_title: 'تجاویز حاصل کریں',
                 step_2_desc: 'میں آپ کی ترجیحات کے مطابق قریبی ریستوراں سے 3-5 بہترین کھانوں کی تجویز دوں گا.',
                 step_3_title: 'اپنے انداز میں آرڈر کریں',
@@ -1509,16 +1961,16 @@
                 gosnel_4: '<i data-lucide="tag" class="icon-sm"></i> حقیقی ریستوراں کی قیمتیں',
                 cta_title: 'مجھے کیوں آزمانا چاہیے',
                 cta_subtitle: '',
-                cta_benefit_1: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 8px; margin-bottom: 0;"><i data-lucide="tag" style="width: 20px; height: 20px;"></i>ہمیشہ حقیقی ریستوراں کی قیمتیں</strong>',
-                cta_benefit_2: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 8px; margin-bottom: 0;"><i data-lucide="badge-percent" style="width: 20px; height: 20px;"></i>میں آپ کے لیے بہترین ڈسکاؤنٹ تلاش کرتا ہوں</strong>',
-                cta_benefit_3: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 12px;"><svg style="width: 24px; height: 24px; fill: white; flex-shrink: 0;" viewBox="0 0 24 24"><path d="M16.6 14c-.2.-0.1-1.5.-0.7-1.7.-0.8c.-0.2.-0.1-0.4.-0.1-0.6.1c.-0.2.2.-0.6.8.-0.8 1c.-0.1.2.-0.3.2.-0.5.1c.-0.7.-0.3.-1.4.-0.7.-2-1.2c.-0.5.-0.5.-1-1.1.-1.4-1.7c.-0.1.-0.2 0.-0.4 0.1.-0.5c.1.-0.1.2.-0.3.4.-0.4c.1.-0.1.2.-0.3.2.-0.4c.1.-0.1.1.-0.3 0.-0.4c.-0.1.-0.1.-0.6-1.3.-0.8-1.8c.-0.1.-0.7.-0.3.-0.7.-0.5.-0.7h.-0.5c.-0.2 0.-0.5.2.-0.6.3c.-0.6.6.-0.9 1.3.-0.9 2.1c.1 0.9.4 1.8 1 2.6c1.1 1.6 2.5 2.9 4.2 3.7c.5.2.9.4 1.4.5c.5.2 1 .2 1.6.1c.7.-0.1 1.3.-0.6 1.7-1.2c.2.-0.4.2.-0.8.1-1.2l.-0.4.-0.2m2.5-9.1C15.2 1 8.9 1 5 4.9c-3.2 3.2-3.8 8.1-1.6 12L2 22l5.3-1.4c1.5.8 3.1 1.2 4.7 1.2c5.5 0 9.9-4.4 9.9-9.9c.1-2.6-1-5.1-2.8-7m-2.7 14c-1.3.8-2.8 1.3-4.4 1.3c.-1.5 0-2.9.-0.4-4.2-1.1l.-0.3.-0.2l-3.1.8l.8-3l.-0.2.-0.3c-2.4-4-1.2-9 2.7-11.5S16.6 3.7 19 7.5c2.4 3.9 1.3 9-2.6 11.4"/></svg>انسٹاگرام پر آرڈر کریں ڈیلیوری پر ادائیگی کریں',
-                cta_benefit_4: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 8px; margin-bottom: 0;"><i data-lucide="languages" style="width: 20px; height: 20px;"></i>میں آپ کی زبان بولتا ہوں</strong>',
+                cta_benefit_1: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 8px; margin-bottom: 0;"><i data-lucide="tag" style="width: 20px; height: 20px;"></i>ہمیشہ حقیقی ریستوراں کی قیمتیں',
+                cta_benefit_2: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 8px; margin-bottom: 0;"><i data-lucide="badge-percent" style="width: 20px; height: 20px;"></i>میں آپ کے لیے بہترین ڈسکاؤنٹ تلاش کرتا ہوں',
+                cta_benefit_3: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 12px;"><svg style="width: 24px; height: 24px; fill: white; flex-shrink: 0;" viewBox="0 0 24 24"><path d="M16.6 14c-.2-.1-1.5-.7-1.7-.8c-.2-.1-.4-.1-.6.1c-.2.2-.6.8-.8 1c-.1.2-.3.2-.5.1c-.7-.3-1.4-.7-2-1.2c-.5-.5-1-1.1-1.4-1.7c-.1-.2 0-.4.1-.5c.1-.1.2-.3.4-.4c.1-.1.2-.3.2-.4c.1-.1.1-.3 0-.4c-.1-.1-.6-1.3-.8-1.8c-.1-.7-.3-.7-.5-.7h-.5c-.2 0-.5.2-.6.3c-.6.6-.9 1.3-.9 2.1c.1.9.4 1.8 1 2.6c1.1 1.6 2.5 2.9 4.2 3.7c.5.2.9.4 1.4.5c.5.2 1 .2 1.6.1c.7-.1 1.3-.6 1.7-1.2c.2-.4.2-.8.1-1.2l-.4-.2m2.5-9.1C15.2 1 8.9 1 5 4.9c-3.2 3.2-3.8 8.1-1.6 12L2 22l5.3-1.4c1.5.8 3.1 1.2 4.7 1.2c5.5 0 9.9-4.4 9.9-9.9c.1-2.6-1-5.1-2.8-7m-2.7 14c-1.3.8-2.8 1.3-4.4 1.3c-1.5 0-2.9-.4-4.2-1.1l-.3-.2l-3.1.8l.8-3l-.2-.3c-2.4-4-1.2-9 2.7-11.5S16.6 3.7 19 7.5c2.4 3.9 1.3 9-2.6 11.4"/></svg>انسٹاگرام پر آرڈر کریں ڈیلیوری پر ادائیگی کریں',
+                cta_benefit_4: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 8px; margin-bottom: 0;"><i data-lucide="languages" style="width: 20px; height: 20px;"></i>میں آپ کی زبان بولتا ہوں',
                 cta_button: 'مجھ سے بات کریں',
                 tag_no_rice: 'چاول نہیں',
                 tag_not_spicy: 'تیز نہیں',
                 tag_extra_protein: 'اضافی پروٹین',
                 tag_no_dairy: 'ڈیری نہیں اور مزید'
-            }
+            },
         };
         
         const chatMessages = {
@@ -1548,7 +2000,7 @@ Which one sounds good?` }
             ],
             ml: [
                 { user: true, text: 'ഹായ്' },
-                { user: false, text: 'ഹായ്, ഫൂഡി! ഇന്ന് നിങ്ങൾ വിശന്നിട്ടുണ്ടോ?' },
+                { user: false, text: 'ഹായ്, ഫുഡി! ഇന്ന് നിങ്ങൾ വിശന്നിട്ടുണ്ടോ?' },
                 { user: true, text: 'ഞാൻ ഉച്ചഭക്ഷണത്തിന് എന്തെങ്കിലും മസാല ആഗ്രഹിക്കുന്നു' },
                 { user: false, text: `മികച്ചത്! നിങ്ങൾക്കായി 3 അത്ഭുതമായ മസാല ഓപ്ഷനുകൾ എനിക്ക് ലഭിച്ചിട്ടുണ്ട്:
 

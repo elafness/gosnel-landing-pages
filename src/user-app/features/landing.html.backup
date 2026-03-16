@@ -1,24 +1,59 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GoSnel | الذكاء الاصطناعي يضبطك لأفضل كومبو أكل في 30 ثانية</title>
-    <meta name="description" content="GoSnel هو عميل أكل ذكاء اصطناعي يجهز لك أفضل كومبو من 3 وجبات من اللي حولك. اختار الكومبو اللي يعجبك واطلب فوراً ع الواتساب.">
+    <title>GoSnel | AI Food Agent</title>
     
-    <style>
-        /* Base styles */
-        body {
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Google Fonts: Inter for English, Cairo for Arabic -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'], // Default to Inter
+                        arabic: ['Cairo', 'sans-serif'], // For Arabic translation
+                    },
+                    colors: {
+                        brand: {
+                            DEFAULT: '#4ecdc4', // The requested Hex
+                            light: '#e6f9f8',
+                            dark: '#3db5ac'
+                        },
+                        gs: {
+                            dark: '#0f172a',
+                            light: '#f8fafc',
+                            gray: '#64748b'
+                        }
+                    }
+                }
+            }
         }
+    </script>
 
+    <style>
+        body { 
+            background-color: #f8fafc;
+            color: #0f172a; 
+            margin: 0; 
+            padding: 0; 
+            line-height: 1.7; 
+            overflow-x: hidden; 
+            box-sizing: border-box;
+        }
+        
+        *, *::before, *::after {
+            box-sizing: inherit;
+        }
+        
         /* === LANGUAGE TOGGLE === */
         .lang-toggle {
             position: fixed;
@@ -27,435 +62,449 @@
             transform: translateX(-50%);
             z-index: 100;
             display: flex;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
             border-radius: 100px;
-            padding: 4px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(0, 0, 0, 0.05);
+            padding: 6px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
         
         .lang-btn {
-            padding: 10px 24px;
+            padding: 12px 28px;
             border: none;
             background: transparent;
-            color: #64748b;
-            font-size: 15px;
+            color: #718096;
+            font-size: 16px;
             font-weight: 600;
             cursor: pointer;
             border-radius: 100px;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            white-space: nowrap;
         }
         
         .lang-btn.active {
-            background: linear-gradient(135deg, #4ECDC4, #2dd4bf);
+            background: #4ecdc4;
             color: #ffffff;
+            box-shadow: 0 4px 15px rgba(78, 205, 196, 0.4);
         }
         
         .lang-btn:hover:not(.active) {
             color: #0f172a;
-            background: rgba(0, 0, 0, 0.03);
+            background: rgba(78, 205, 196, 0.1);
+        }
+        
+        /* Smooth Language Transition */
+        .lang-ar { font-family: 'Cairo', sans-serif; direction: rtl; }
+        .lang-en { font-family: 'Inter', sans-serif; direction: ltr; }
+        .lang-ml { font-family: 'Inter', sans-serif; direction: ltr; }
+        .lang-hi { font-family: 'Inter', sans-serif; direction: ltr; }
+        .lang-ur { font-family: 'Inter', sans-serif; direction: rtl; }
+
+        /* Subtle floating animation for the hero image */
+        .float-img {
+            animation: float 4s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
         }
 
-        /* Container to center content */
-        .container {
-            max-width: 960px;
+        /* Pulse for the primary CTA */
+        .btn-pulse {
+            box-shadow: 0 0 0 0 rgba(78, 205, 196, 0.4);
+            animation: pulse-brand 2s infinite;
+        }
+        @keyframes pulse-brand {
+            0% { box-shadow: 0 0 0 0 rgba(78, 205, 196, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(78, 205, 196, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(78, 205, 196, 0); }
+        }
+
+        /* Video Container Styling */
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 177.77%; /* 16:9 Aspect Ratio for vertical video */
+            height: 0;
+            overflow: hidden;
+            border-radius: 1.5rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            background: #000;
+        }
+        .video-wrapper video {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            padding: 0 15px;
-            box-sizing: border-box;
+            height: 100%;
+            object-fit: cover;
         }
 
-        /* Generic image styles for consistency */
-        .food-image {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
-
-        /* Generic video styles */
-        video {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
-
-        /* GoSnel Character Placeholder styles */
-        .gosnel-placeholder {
-            border: 4px dashed #FF6B00; /* GoSnel Vibrant Orange */
-            background-color: #FFF3E0;
-            color: #FF6B00;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            text-align: center;
-            padding: 20px;
-            box-sizing: border-box;
-            font-size: 1.2rem;
-            min-height: 200px;
-        }
-
-        /* Header (Logo only) */
-        header {
-            width: 100%;
-            padding: 20px 0;
-            background-color: #fff;
-            border-bottom: 1px solid #ddd;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* Hero Section (Introduction) */
-        .hero {
-            padding: 60px 0;
-            text-align: center;
-            background-color: #fff;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: #000;
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            line-height: 1.6;
-            margin-bottom: 40px;
-            color: #666;
-            max-width: 700px;
-        }
-
-        /* Secondary Image Section (How it works - 3 combos) */
-        .how-it-works {
-            padding: 60px 0;
-            background-color: #fafafa;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .how-it-works h2 {
-            font-size: 2.2rem;
-            margin-bottom: 20px;
-            color: #000;
-            text-align: center;
-        }
-
-        .how-it-works p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            margin-bottom: 40px;
-            color: #666;
-            max-width: 700px;
-            text-align: center;
-        }
-
-        /* Layout for multi-column sections */
-        .row {
-            display: flex;
-            width: 100%;
-            margin-bottom: 40px;
-        }
-
-        .row .column {
-            flex: 1;
-            padding: 0 15px;
-            box-sizing: border-box;
-        }
-
-        .column .image-title {
-            font-size: 1.5rem;
-            margin-top: 15px;
-            margin-bottom: 10px;
-            color: #000;
-        }
-
-        .column p {
-            font-size: 1rem;
-            line-height: 1.6;
-            margin-bottom: 20px;
-            color: #666;
-        }
-
-        /* Tertiary Order Section (Final Call to Action) */
-        .order-section {
-            padding: 80px 0;
-            background-color: #fff;
-            text-align: center;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .order-section p {
-            font-size: 1.2rem;
-            line-height: 1.6;
-            margin-bottom: 40px;
-            color: #666;
-            max-width: 700px;
-        }
-
-        /* Order Button (WhatsApp Focused) */
-        .order-button {
-            display: inline-block;
-            padding: 18px 40px;
-            background-color: #25D366; /* WhatsApp Green */
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.3rem;
-            border-radius: 50px;
-            transition: background-color 0.3s ease;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .order-button:hover {
-            background-color: #1ebe57;
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .row {
-                flex-direction: column;
-            }
-
-            .column {
-                margin-bottom: 30px;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1.1rem;
-            }
-
-            .how-it-works h2 {
-                font-size: 1.8rem;
-            }
+        /* Gradient Text Utility */
+        .text-gradient {
+            background: linear-gradient(135deg, #0f172a 0%, #4ecdc4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
     </style>
 </head>
-<body>
+<body class="lang-en selection:bg-brand selection:text-white pb-20">
+
     <!-- Language Toggle -->
     <div class="lang-toggle">
-        <button id="lang-en" class="lang-btn">English</button>
-        <button id="lang-ar" class="lang-btn active">العربية</button>
+        <button id="lang-en" class="lang-btn active">English</button>
+        <button id="lang-ar" class="lang-btn">العربية</button>
         <button id="lang-ml" class="lang-btn">മലയാളം</button>
         <button id="lang-hi" class="lang-btn">हिंदी</button>
         <button id="lang-ur" class="lang-btn">اردو</button>
     </div>
 
-    <header>
-        <div class="container">
-            <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/gosnelicon.png" alt="GoSnel Logo" style="height: 60px; display: block; margin: 0 auto;">
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center gap-2">
+                    <img src="https://pub-36067fecb2654f06ab5b13fe9340062d.r2.dev/GosnelPersonality.png" alt="GoSnel Logo" class="w-8 h-8 rounded-full">
+                    <span class="font-bold text-xl tracking-tight text-gs-dark">GoSnel</span>
+                </div>
+                
+                <!-- Controls -->
+                <div class="flex items-center gap-4">
+                    <select id="langSelector" class="bg-transparent border-none text-sm font-semibold text-gs-gray focus:ring-0 cursor-pointer outline-none hover:text-gs-dark transition">
+                        <option value="en" selected>EN</option>
+                        <option value="ar">AR</option>
+                    </select>
+                    <a href="https://app.gosnel.com" class="hidden sm:flex items-center gap-2 bg-gs-dark text-white px-5 py-2 rounded-full font-semibold hover:bg-gray-800 transition text-sm">
+                        <span id="nav_cta">Start Chat</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 rtl:hidden"></i>
+                        <i data-lucide="arrow-left" class="w-4 h-4 hidden rtl:block"></i>
+                    </a>
+                </div>
+            </div>
         </div>
-    </header>
+    </nav>
 
-    <section class="hero">
-        <div class="container">
-            <h1 id="hero_title">خلي الذكاء الاصطناعي يضبطك!</h1>
-            <p id="hero_subtitle">
-                خلص من حيرة الأكل في 30 ثانية. جوسنل، عميلك الذكي للأكل، بيختار لك أفضل 3 وجبات من اللي حولك. اختار الكومبو اللي يعجبك، واطلب فوراً ع الواتساب.
+    <!-- Hero Section -->
+    <section class="pt-32 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+        <!-- Text Content -->
+        <div class="flex-1 text-center lg:text-left rtl:lg:text-right">
+            <div class="inline-flex items-center gap-2 bg-brand-light text-brand-dark font-semibold px-4 py-1.5 rounded-full text-sm mb-6 border border-brand/20" id="hero_badge">
+                <i data-lucide="zap" class="w-4 h-4"></i>
+                <span>Stop Scrolling. Start Eating.</span>
+            </div>
+            
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 text-gs-dark" id="hero_title">
+                The Perfect <span class="text-brand">3-Item Combo</span> in 30 Seconds.
+            </h1>
+            
+            <p class="text-lg text-gs-gray mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed" id="hero_desc">
+                GoSnel is your AI food agent. We cure menu fatigue by instantly building the perfect Main, Side, and Drink combo from top local spots. Just chat, confirm, and order via WhatsApp.
             </p>
             
-            <div class="row">
-                <div class="column">
-                    <img src="https://pub-36067fecb2654f06ab5b13fe9340062d.r2.dev/landingPageImaged/1.png" alt="GoSnel Hero Rescue - Surfing on Burger" class="food-image">
+            <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start rtl:lg:justify-end">
+                <a href="https://app.gosnel.com" class="btn-pulse bg-brand text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-brand-dark transition shadow-lg flex items-center justify-center gap-3 w-full sm:w-auto">
+                    <i data-lucide="message-square" class="w-5 h-5"></i>
+                    <span id="btn_primary">Chat with GoSnel</span>
+                </a>
+                <a href="#how-it-works" class="bg-white text-gs-dark border border-gray-200 px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-50 transition flex items-center justify-center gap-3 w-full sm:w-auto">
+                    <i data-lucide="play-circle" class="w-5 h-5 text-gs-gray"></i>
+                    <span id="btn_secondary">See how it works</span>
+                </a>
+            </div>
+            
+            <!-- Trust Indicators -->
+            <div class="mt-10 flex items-center justify-center lg:justify-start gap-6 text-sm text-gs-gray font-medium">
+                <div class="flex items-center gap-2">
+                    <i data-lucide="check-circle-2" class="w-4 h-4 text-brand"></i>
+                    <span id="trust_1">No Hidden Fees</span>
                 </div>
-                <div class="column">
-                    <p style="text-align: right;" id="why_gosnel">
-                        لماذا GoSnel؟ لأننا ندمج ذكاء الـ AI مع أفضل الكومبوهات المحلية. نحن لا نقترح عليك فقط؛ بل نجهز لك كومبو متكامل من 3 قطع يضبط مودك وميزانيتك. بلمحة عين، حيرتك تنتهي، وطلبك يكون جاهز.
-                    </p>
+                <div class="flex items-center gap-2">
+                    <i data-lucide="check-circle-2" class="w-4 h-4 text-brand"></i>
+                    <span id="trust_2">Cash on Delivery</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hero Image (Provided by User) -->
+        <div class="flex-1 w-full max-w-md mx-auto relative">
+            <!-- Background Glow -->
+            <div class="absolute inset-0 bg-brand/10 blur-[80px] rounded-full"></div>
+            <img src="https://pub-36067fecb2654f06ab5b13fe9340062d.r2.dev/landingPageImaged/1.png" alt="" class="relative z-10 w-full h-auto float-img object-contain" style="border-radius: 32px;">
+        </div>
+    </section>
+
+    <!-- Value Proposition / Workflow -->
+    <section class="py-20 bg-white border-y border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gs-dark mb-4" id="workflow_title">How GoSnel Works</h2>
+                <p class="text-gs-gray" id="workflow_desc">Three simple steps to your perfect meal.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Step 1 -->
+                <div class="flex flex-col items-center text-center p-6 bg-gs-light rounded-3xl border border-gray-100">
+                    <div class="w-16 h-16 bg-brand-light text-brand rounded-full flex items-center justify-center mb-6">
+                        <i data-lucide="message-circle" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-2 text-gs-dark" id="step1_title">1. Tell AI Your Mood</h3>
+                    <p class="text-gs-gray text-sm leading-relaxed" id="step1_desc">Craving a burger? Eating healthy? Just type it. Our AI understands context instantly.</p>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="flex flex-col items-center text-center p-6 bg-brand/5 rounded-3xl border border-brand/20 relative">
+                    <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-brand text-white text-xs font-bold px-3 py-1 rounded-full shadow-sm">
+                        <span id="step_badge">Magic Happens</span>
+                    </div>
+                    <div class="w-16 h-16 bg-brand text-white rounded-full flex items-center justify-center mb-6 shadow-md">
+                        <i data-lucide="sparkles" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-2 text-gs-dark" id="step2_title">2. Get a 3-Item Combo</h3>
+                    <p class="text-gs-gray text-sm leading-relaxed" id="step2_desc">We instantly build a cohesive combo (Main, Side, Drink) from top-rated restaurants near you.</p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="flex flex-col items-center text-center p-6 bg-gs-light rounded-3xl border border-gray-100">
+                    <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-6">
+                        <i data-lucide="smartphone" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-2 text-gs-dark" id="step3_title">3. Order via WhatsApp</h3>
+                    <p class="text-gs-gray text-sm leading-relaxed" id="step3_desc">One click sends your formatted order directly to the restaurant's WhatsApp. No apps needed.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="how-it-works">
-        <div class="container">
-            <h2 id="how_title">جوسنل: كومبو 3 وجبات... بلمحة عين</h2>
-            <p id="how_subtitle">
-                جرب طريقة GoSnel الفريدة. الذكاء الاصطناعي الخاص بنا يحلل تفضيلاتك ويخلق لك الكومبو المثالي المكون من 3 قطع: طبق رئيسي، جانب، ومشروب. شاهد كيف يعمل السحر:
-            </p>
-            
-            <div class="row">
-                <div class="column">
-                    <img src="https://pub-36067fecb2654f06ab5b13fe9340062d.r2.dev/landingPageImaged/chatwithup.png" alt="GoSnel Step 1 - Juggling Ingredients" class="food-image">
-                    <div class="image-title" id="step1_title">1. كلم جوسنل</div>
-                    <p id="step1_desc">ابدأ المحادثة معنا. الذكاء الاصطناعي يستمع لرغبتك الحالية.</p>
-                </div>
-                <div class="column">
-                    <img src="https://pub-36067fecb2654f06ab5b13fe9340062d.r2.dev/landingPageImaged/get_combo.png" alt="GoSnel Step 2 - Blender Explosion" class="food-image">
-                    <div class="image-title" id="step2_title">2. جوسنل يضبطك</div>
-                    <p id="step2_desc">الـ AI يخلق الكومبو المثالي من 3 قطع بناءً على ذوقك.</p>
-                </div>
-                <div class="column">
-                    <img src="https://pub-36067fecb2654f06ab5b13fe9340062d.r2.dev/landingPageImaged/orderviaWA.png" alt="GoSnel Step 3 - selfie with Giant Shawarma" class="food-image">
-                    <div class="image-title" id="step3_title">3. اطلب ع الواتساب</div>
-                    <p id="step3_desc">كبسة زر واحدة تنقلك مباشرة لإتمام الطلب عبر الواتساب.</p>
-                </div>
-            </div>
-            
-            <div style="max-width: 540px; width: 100%; margin: 60px auto 0 auto;">
-                <video controls style="aspect-ratio: 9/16; width: 100%; height: auto; display: block; margin: 0 auto;">
-                    <source src="https://pub-36067fecb2654f06ab5b13fe9340062d.r2.dev/landingPageImaged/videoHow.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-        </div>
-    </section>
-
-    <section class="order-section">
-        <div class="container">
-            <div class="gosnel-placeholder" style="margin-bottom: 40px; min-height: 250px;">
-                <img src="https://pub-36067fecb2654f06ab5b13fe9340062d.r2.dev/landingPageImaged/get.png" alt="GoSnel Final CTA - Friendly Pirate pointing to Treasure Chest Meal" style="width: 100%; height: auto; border-radius: 8px;">
-            </div>
-            <p id="cta_text">
-                جاهز للكومبو؟ ابدأ المحادثة مع جوسنل الحين، واطلب الكومبو المفضل عندك عبر الواتساب في ثواني. لا تضيع وقتك في البحث، خل الـ AI يضبطك.
-            </p>
-            <a href="#" class="order-button" id="cta_button">كلم جوسنل ع الواتساب!</a>
-        </div>
-    </section>
-
-</body>
-<script>
-    (function() {
-        let currentLang = localStorage.getItem('gosnel_lang') || 'ar';
+    <!-- Video Proof Section -->
+    <section id="how-it-works" class="py-24 bg-gs-dark relative overflow-hidden">
+        <!-- Decorative bg -->
+        <div class="absolute top-0 right-0 w-96 h-96 bg-brand rounded-full mix-blend-multiply filter blur-[128px] opacity-20"></div>
         
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col md:flex-row items-center gap-12">
+            
+            <!-- Video Container (Strict 16:9 vertical format handler) -->
+            <div class="w-full max-w-[300px] mx-auto md:mx-0 flex-shrink-0">
+                <div class="video-wrapper border-4 border-slate-800">
+                    <video autoplay loop muted playsinline>
+                        <source src="https://pub-36067fecb2654f06ab5b13fe9340062d.r2.dev/landingPageImaged/videoHow1.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+
+            <!-- Video Context text -->
+            <div class="flex-1 text-center md:text-left rtl:md:text-right">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-6" id="video_title">See the AI in Action</h2>
+                <p class="text-slate-300 text-lg mb-8 leading-relaxed" id="video_desc">
+                    Watch how fast you can go from "I'm hungry" to confirming your order on WhatsApp. No endless scrolling, no decision fatigue. Just a perfect combo curated for you in seconds.
+                </p>
+                
+                <a href="https://app.gosnel.com" class="inline-flex items-center justify-center gap-2 bg-brand text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-brand-dark transition shadow-lg shadow-brand/20">
+                    <i data-lucide="external-link" class="w-5 h-5"></i>
+                    <span id="video_cta">Try it yourself now</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer CTA -->
+    <section class="py-16 bg-white border-t border-gray-200 text-center">
+        <div class="max-w-3xl mx-auto px-4">
+            <h2 class="text-2xl font-bold text-gs-dark mb-6" id="footer_title">Ready to cure your hunger?</h2>
+            <a href="https://app.gosnel.com" class="inline-flex items-center justify-center gap-2 bg-gs-dark text-white px-10 py-4 rounded-full font-bold hover:bg-black transition shadow-md">
+                <i data-lucide="bot" class="w-5 h-5"></i>
+                <span id="footer_cta">Open Web App</span>
+            </a>
+            <p class="text-sm text-gs-gray mt-8">© 2026 GoSnel AI. All rights reserved.</p>
+        </div>
+    </section>
+
+    <!-- Logic -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // State & Translations
+        let currentLang = localStorage.getItem('gosnel_lang') || 'en';
+
         const translations = {
-            ar: {
-                hero_title: 'خلي الذكاء الاصطناعي يضبطك!',
-                hero_subtitle: 'خلص من حيرة الأكل في 30 ثانية. جوسنل، عميلك الذكي للأكل، بيختار لك أفضل 3 وجبات من اللي حولك. اختار الكومبو اللي يعجبك، واطلب فوراً ع الواتساب.',
-                why_gosnel: 'لماذا GoSnel؟ لأننا ندمج ذكاء الـ AI مع أفضل الكومبوهات المحلية. نحن لا نقترح عليك فقط؛ بل نجهز لك كومبو متكامل من 3 قطع يضبط مودك وميزانيتك. بلمحة عين، حيرتك تنتهي، وطلبك يكون جاهز.',
-                how_title: 'جوسنل: كومبو 3 وجبات... بلمحة عين',
-                how_subtitle: 'جرب طريقة GoSnel الفريدة. الذكاء الاصطناعي الخاص بنا يحلل تفضيلاتك ويخلق لك الكومبو المثالي المكون من 3 قطع: طبق رئيسي، جانب، ومشروب. شاهد كيف يعمل السحر:',
-                step1_title: '1. كلم جوسنل',
-                step1_desc: 'ابدأ المحادثة معنا. الذكاء الاصطناعي يستمع لرغبتك الحالية.',
-                step2_title: '2. جوسنل يضبطك',
-                step2_desc: 'الـ AI يخلق الكومبو المثالي من 3 قطع بناءً على ذوقك.',
-                step3_title: '3. اطلب ع الواتساب',
-                step3_desc: 'كبسة زر واحدة تنقلك مباشرة لإتمام الطلب عبر الواتساب.',
-                cta_text: 'جاهز للكومبو؟ ابدأ المحادثة مع جوسنل الحين، واطلب الكومبو المفضل عندك عبر الواتساب في ثواني. لا تضيع وقتك في البحث، خل الـ AI يضبطك.',
-                cta_button: 'اطلب الآن!'
-            },
             en: {
-                hero_title: 'Let AI Pick Your Perfect Meal!',
-                hero_subtitle: 'End food indecision in 30 seconds. GoSnel, your AI food assistant, selects the best 3 meals around you. Choose your combo and order instantly via WhatsApp.',
-                why_gosnel: 'Why GoSnel? Because we combine AI intelligence with the best local combos. We don\'t just suggest; we prepare a complete 3-piece combo that matches your mood and budget. In the blink of an eye, your indecision ends, and your order is ready.',
-                how_title: 'GoSnel: 3-Meal Combo... In a Blink',
-                how_subtitle: 'Experience GoSnel\'s unique method. Our AI analyzes your preferences and creates your perfect 3-piece combo: main dish, side, and drink. Watch the magic happen:',
-                step1_title: '1. Talk to GoSnel',
-                step1_desc: 'Start a conversation with us. The AI listens to your current craving.',
-                step2_title: '2. GoSnel Picks for You',
-                step2_desc: 'The AI creates your perfect 3-piece combo based on your taste.',
-                step3_title: '3. Order via WhatsApp',
-                step3_desc: 'One click takes you directly to complete your order via WhatsApp.',
-                cta_text: 'Ready for your combo? Start chatting with GoSnel now, and order your favorite combo via WhatsApp in seconds. Don\'t waste time searching, let AI pick for you.',
-                cta_button: 'Order Now!'
+                nav_cta: "Start Chat",
+                hero_badge: "Stop Scrolling. Start Eating.",
+                hero_title: "The Perfect <span class='text-brand'>3-Item Combo</span> in 30 Seconds.",
+                hero_desc: "GoSnel is your AI food agent. We cure menu fatigue by instantly building the perfect Main, Side, and Drink combo from top local spots. Just chat, confirm, and order via WhatsApp.",
+                btn_primary: "Chat with GoSnel",
+                btn_secondary: "See how it works",
+                trust_1: "No Hidden Fees", trust_2: "Cash on Delivery",
+                workflow_title: "How GoSnel Works", workflow_desc: "Three simple steps to your perfect meal.",
+                step1_title: "1. Tell AI Your Mood", step1_desc: "Craving a burger? Eating healthy? Just type it. Our AI understands context instantly.",
+                step_badge: "Magic Happens",
+                step2_title: "2. Get a 3-Item Combo", step2_desc: "We instantly build a cohesive combo (Main, Side, Drink) from top-rated restaurants near you.",
+                step3_title: "3. Order via WhatsApp", step3_desc: "One click sends your formatted order directly to the restaurant's WhatsApp. No apps needed.",
+                video_title: "See the AI in Action",
+                video_desc: "Watch how fast you can go from 'I'm hungry' to confirming your order on WhatsApp. No endless scrolling, no decision fatigue. Just a perfect combo curated for you in seconds.",
+                video_cta: "Try it yourself now",
+                footer_title: "Ready to cure your hunger?",
+                footer_cta: "Open Web App"
+            },
+            ar: {
+                nav_cta: "ابدأ المحادثة",
+                hero_badge: "وقف تدوير.. وابدأ تاكل.",
+                hero_title: "كومبو <span class='text-brand'>من 3 أصناف</span> في 30 ثانية.",
+                hero_desc: "جوسنل هو عميلك الذكي. نقضي على حيرة الاختيار بتجهيز أفضل طبق رئيسي، جانبي، ومشروب من المطاعم القريبة منك. كلمنا، أكد طلبك، واطلب عبر واتساب فوراً.",
+                btn_primary: "تحدث مع جوسنل",
+                btn_secondary: "شاهد كيف يعمل",
+                trust_1: "بدون رسوم مخفية", trust_2: "الدفع عند الاستلام",
+                workflow_title: "كيف يعمل جوسنل؟", workflow_desc: "ثلاث خطوات بسيطة لوجبتك المثالية.",
+                step1_title: "1. عبر عن مزاجك", step1_desc: "مشتهي برجر؟ تبي أكل صحي؟ بس اكتبها. الذكاء الاصطناعي يفهم طلبك فوراً.",
+                step_badge: "هنا السحر",
+                step2_title: "2. استلم الكومبو", step2_desc: "نجهز لك كومبو متكامل (رئيسي، جانبي، مشروب) من أفضل المطاعم تقييماً حولك.",
+                step3_title: "3. اطلب عبر واتساب", step3_desc: "بضغطة زر نرسل تفاصيل طلبك مباشرة لواتساب المطعم. بدون الحاجة لتطبيقات إضافية.",
+                video_title: "شاهد الذكاء الاصطناعي",
+                video_desc: "شوف كيف تنتقل من 'أنا جوعان' إلى تأكيد طلبك على واتساب في ثواني. لا مزيد من التقليب اللانهائي، ولا تعب الاختيار. فقط كومبو مثالي مجهز لك.",
+                video_cta: "جربها بنفسك الآن",
+                footer_title: "جاهز تقضي على جوعك؟",
+                footer_cta: "افتح تطبيق الويب"
             },
             ml: {
-                hero_title: 'AI നിങ്ങളുടെ ഭക്ഷണം തിരഞ്ഞെടുക്കാട്ടെ!',
-                hero_subtitle: '30 സെക്കൻഡിൽ ഭക്ഷണ സംശയം അവസാനിപ്പിക്കുക. GoSnel, നിങ്ങളുടെ AI ഭക്ഷണ അസിസ്റ്റന്റ്, ചുറ്റുമുള്ള മികച്ച 3 ഭക്ഷണങ്ങൾ തിരഞ്ഞെടുക്കുന്നു. നിങ്ങളുടെ കോമ്പോ തിരഞ്ഞെടുത്ത് വാട്‌സ്ആപ്പിലൂടെ ഉടൻ ഓർഡർ ചെയ്യുക.',
-                why_gosnel: 'എന്തുകൊണ്ട് GoSnel? ഞങ്ങൾ AI ഇന്റലിജൻസും മികച്ച ലോക്കൽ കോമ്പോകളും സംയോജിപ്പിക്കുന്നു. ഞങ്ങൾ വെറും നിർദ്ദേശങ്ങൾ നൽകുന്നില്ല; നിങ്ങളുടെ മൂഡും ബജറ്റും അനുയോജ്യമായ 3-പീസ് കോമ്പോ തയ്യാറാക്കുന്നു. ഒരു കണ്ണിമ ചിമ്മുന്നതിനുള്ളിൽ, നിങ്ങളുടെ സംശയം അവസാനിക്കുന്നു, ഓർഡർ തയ്യാർ.',
-                how_title: 'GoSnel: 3-ഭക്ഷണ കോമ്പോ... ഒരു നിമിഷം കൊണ്ട്',
-                how_subtitle: 'GoSnel\'ന്റെ അദ്വിതീയ രീതി അനുഭവിക്കുക. ഞങ്ങളുടെ AI നിങ്ങളുടെ മുൻഗണനകൾ വിശകലനം ചെയ്ത് നിങ്ങളുടെ തികച്ചും 3-പീസ് കോമ്പോ സൃഷ്ടിക്കുന്നു: പ്രധാന വിഭവം, സൈഡ്, പാനീയം. മാജിക് എങ്ങനെ പ്രവർത്തിക്കുന്നു എന്ന് കാണുക:',
-                step1_title: '1. GoSnel-മായി സംസാരിക്കുക',
-                step1_desc: 'ഞങ്ങളുമായി സംഭാഷണം ആരംഭിക്കുക. AI നിങ്ങളുടെ നിലവിലെ ആഗ്രഹം ശ്രദ്ധിക്കുന്നു.',
-                step2_title: '2. GoSnel നിങ്ങൾക്കായി തിരഞ്ഞെടുക്കുന്നു',
-                step2_desc: 'AI നിങ്ങളുടെ രുചി അടിസ്ഥാനമാക്കി നിങ്ങളുടെ തികച്ചും 3-പീസ് കോമ്പോ സൃഷ്ടിക്കുന്നു.',
-                step3_title: '3. വാട്‌സ്ആപ്പിലൂടെ ഓർഡർ ചെയ്യുക',
-                step3_desc: 'ഒരു ക്ലിക്കിൽ നിങ്ങളെ നേരിട്ട് വാട്‌സ്ആപ്പിലൂടെ ഓർഡർ പൂർത്തിയാക്കാൻ കൊണ്ടുപോകുന്നു.',
-                cta_text: 'നിങ്ങളുടെ കോമ്പോയ്ക്ക് തയ്യാറാണോ? GoSnel-മായി ഇപ്പോൾ ചാറ്റിംഗ് ആരംഭിക്കുക, സെക്കൻഡുകൾക്കുള്ളിൽ വാട്‌സ്ആപ്പിലൂടെ നിങ്ങളുടെ പ്രിയപ്പെട്ട കോമ്പോ ഓർഡർ ചെയ്യുക. സമയം കളയരുത്, AI നിങ്ങൾക്കായി തിരഞ്ഞെടുക്കാട്ടെ.',
-                cta_button: 'ഇപ്പോൾ ഓർഡർ ചെയ്യുക!'
+                nav_cta: "ചാറ്റ് ആരംഭിക്കുക",
+                hero_badge: "തിരയുന്നത് നിർത്തൂ. ഭക്ഷണം ആരംഭിക്കൂ.",
+                hero_title: "30 സെക്കൻഡിൽ <span class='text-brand'>3-ഇനം കോമ്പോ</span>.",
+                hero_desc: "നിങ്ങളുടെ AI ഭക്ഷണ ഏജന്റാണ് GoSnel. മികച്ച ലോക്കൽ സ്ഥലങ്ങളിൽ നിന്ന് പർഫക്റ്റ് മെയിൻ, സൈഡ്, ഡ്രിങ്ക് കോമ്പോ ഉടൻ നിർമ്മിച്ചുകൊണ്ട് ഞങ്ങൾ മെനു ക്ഷീണം മാറ്റുന്നു. ചാറ്റ് ചെയ്യുക, സ്ഥിരീകരിക്കുക, വാട്‌സ്ആപ്പിലൂടെ ഓർഡർ ചെയ്യുക.",
+                btn_primary: "GoSnel-മായി സംസാരിക്കുക",
+                btn_secondary: "ഇത് എങ്ങനെ പ്രവർത്തിക്കുന്നു കാണുക",
+                trust_1: "ഒളിഞ്ഞിരിക്കുന്ന ചാർജുകളില്ല", trust_2: "ഡെലിവറിയിൽ പേയ്മെന്റ്",
+                workflow_title: "GoSnel എങ്ങനെ പ്രവർത്തിക്കുന്നു", workflow_desc: "നിങ്ങളുടെ പർഫക്റ്റ് ഭക്ഷണത്തിലേക്കുള്ള മൂന്ന് ലളിതമായ ഘട്ടങ്ങൾ.",
+                step1_title: "1. AI-നോട് നിങ്ങളുടെ മൂഡ് പറയുക", step1_desc: "ഒരു ബർഗർ ആഗ്രഹിക്കുന്നുണ്ടോ? ആരോഗ്യകരമായ ഭക്ഷണം കഴിക്കുന്നുണ്ടോ? അത് ടൈപ്പ് ചെയ്യുക. ഞങ്ങളുടെ AI ഉടൻ തന്നെ സന്ദർഭം മനസ്സിലാക്കുന്നു.",
+                step_badge: "മാജിക് സംഭവിക്കുന്നു",
+                step2_title: "2. 3-ഇനം കോമ്പോ നേടുക", step2_desc: "നിങ്ങളുടെ അടുത്തുള്ള ടോപ്പ് റേറ്റ് ചെയ്ത റെസ്റ്റോറന്റുകളിൽ നിന്ന് ഞങ്ങൾ ഉടൻ തന്നെ ഒരു കോഹീസീവ് കോമ്പോ (മെയിൻ, സൈഡ്, ഡ്രിങ്ക്) നിർമ്മിക്കുന്നു.",
+                step3_title: "3. വാട്‌സ്ആപ്പിലൂടെ ഓർഡർ ചെയ്യുക", step3_desc: "ഒരു ക്ലിക്കിൽ നിങ്ങളുടെ ഫോർമാറ്റ് ചെയ്ത ഓർഡർ നേരിട്ട് റെസ്റ്റോറന്റിന്റെ വാട്‌സ്ആപ്പിലേക്ക് അയയ്ക്കുന്നു. ആപ്പുകൾ ആവശ്യമില്ല.",
+                video_title: "പ്രവർത്തനത്തിലെ AI കാണുക",
+                video_desc: "'എനിക്ക് വിശപ്പുണ്ട്' എന്നതിൽ നിന്ന് വാട്‌സ്ആപ്പിൽ നിങ്ങളുടെ ഓർഡർ സ്ഥിരീകരിക്കുന്നതിലേക്ക് എത്ര വേഗത്തിൽ പോകാമെന്ന് കാണുക. അവസാനമില്ലാത്ത സ്ക്രോളിംഗില്ല, തീരുമാനിക്കാൻ കഴിയാത്ത അവസ്ഥയില്ല. നിമിഷങ്ങൾക്കുള്ളിൽ നിങ്ങൾക്കായി ക്യൂറേറ്റ് ചെയ്ത പർഫക്റ്റ് കോമ്പോ മാത്രം.",
+                video_cta: "ഇപ്പോൾ തന്നെ പരീക്ഷിക്കുക",
+                footer_title: "നിങ്ങളുടെ വിശപ്പ് മാറ്റാൻ തയ്യാറാണോ?",
+                footer_cta: "വെബ് ആപ്പ് തുറക്കുക"
             },
             hi: {
-                hero_title: 'AI को अपना सही भोजन चुनने दें!',
-                hero_subtitle: '30 सेकंड में भोजन संशय समाप्त करें। GoSnel, आपका AI भोजन सहायक, आपके आसपास के सर्वोत्तम 3 भोजन का चयन करता है। अपना कॉम्बो चुनें और व्हाट्सएप के माध्यम से तुरंत ऑर्डर करें।',
-                why_gosnel: 'GoSnel क्यों? क्योंकि हम AI बुद्धिमत्ता को सर्वोत्तम स्थानीय कॉम्बो के साथ जोड़ते हैं। हम केवल सुझाव नहीं देते; हम आपके मूड और बजट के अनुसार 3-पीस कॉम्बो तैयार करते हैं। एक पलक झपकते ही, आपकी अनिर्णय समाप्त होती है, और आपका ऑर्डर तैयार होता है।',
-                how_title: 'GoSnel: 3-भोजन कॉम्बो... एक पल में',
-                how_subtitle: 'GoSnel की अनोखी विधि का अनुभव करें। हमारा AI आपकी प्राथमिकताओं का विश्लेषण करता है और आपका सही 3-पीस कॉम्बो बनाता है: मुख्य व्यंजन, साइड, और पेय।देखें जादू कैसे काम करता है:',
-                step1_title: '1. GoSnel से बात करें',
-                step1_desc: 'हमारे साथ बातचीत शुरू करें। AI आपकी वर्तमान इच्छा को सुनता है।',
-                step2_title: '2. GoSnel आपके लिए चुनता है',
-                step2_desc: 'AI आपकी पसंद के आधार पर आपका सही 3-पीस कॉम्बो बनाता है।',
-                step3_title: '3. व्हाट्सएप के माध्यम से ऑर्डर करें',
-                step3_desc: 'एक क्लिक आपको सीधे व्हाट्सएप के माध्यम से अपना ऑर्डर पूरा करने के लिए ले जाता है।',
-                cta_text: 'अपने कॉम्बो के लिए तैयार? GoSnel के साथ अभी चैटिंग शुरू करें, और सेकंडों में व्हाट्सएप के माध्यम से अपना पसंदीदा कॉम्बो ऑर्डर करें। समय बर्बाद न करें, AI को आपके लिए चुनने दें।',
-                cta_button: 'अब ऑर्डर करें!'
+                nav_cta: "चैट शुरू करें",
+                hero_badge: "स्क्रॉल करना बंद करें। खाना शुरू करें।",
+                hero_title: "30 सेकंड में <span class='text-brand'>3-आइटम कॉम्बो</span>।",
+                hero_desc: "GoSnel आपका AI फूड एजेंट है। हम शीर्ष स्थानीय स्थानों से सही मेन, साइड और ड्रिंक कॉम्बो तुरंत बनाकर मेनू थकान को दूर करते हैं। बस चैट करें, पुष्टि करें, और व्हाट्सएप के माध्यम से ऑर्डर करें।",
+                btn_primary: "GoSnel के साथ चैट करें",
+                btn_secondary: "देखें कि यह कैसे काम करता है",
+                trust_1: "कोई छिपी हुई फीस नहीं", trust_2: "डिलीवरी पर भुगतान",
+                workflow_title: "GoSnel कैसे काम करता है", workflow_desc: "आपके आदर्श भोजन के लिए तीन सरल चरण।",
+                step1_title: "1. AI को अपना मूड बताएं", step1_desc: "बर्गर की इच्छा हो रही है? स्वस्थ भोजन कर रहे हैं? बस टाइप करें। हमारा AI तुरंत संदर्भ समझ जाता है।",
+                step_badge: "जादू होता है",
+                step2_title: "2. 3-आइटम कॉम्बो प्राप्त करें", step2_desc: "हम आपके पास के शीर्ष रेट किए गए रेस्तरां से तुरंत एक सुसंगत कॉम्बो (मेन, साइड, ड्रिंक) बनाते हैं।",
+                step3_title: "3. व्हाट्सएप के माध्यम से ऑर्डर करें", step3_desc: "एक क्लिक आपके फ़ॉर्मेटेड ऑर्डर को सीधे रेस्तरां के व्हाट्सएप पर भेजता है। किसी ऐप की आवश्यकता नहीं।",
+                video_title: "कार्यवाई में AI देखें",
+                video_desc: "देखें कि आप 'मुझे भूख लगी है' से व्हाट्सएप पर अपना ऑर्डर पुष्टि करने तक कितनी तेजी से जा सकते हैं। कोई अंतहीन स्क्रॉलिंग नहीं, कोई निर्णय थकान नहीं। बस सेकंडों में आपके लिए क्यूरेट किया गया एकदम सही कॉम्बो।",
+                video_cta: "अभी خود试 करें",
+                footer_title: "अपनी भूख मिटाने के लिए तैयार हैं?",
+                footer_cta: "वेब ऐप खोलें"
             },
             ur: {
-                hero_title: 'AI کو اپنا بہترین کھانا منتخب کرنے دیں!',
-                hero_subtitle: '30 سیکنڈ میں کھانے کی کشمکش ختم کریں۔ GoSnel، آپ کا AI فوڈ اسسٹنٹ، آپ کے ارد گرد بہترین 3 کھانے منتخب کرتا ہے۔ اپنا کمبو منتخب کریں اور واٹس ایپ کے ذریعے فوری طور پر آرڈر کریں۔',
-                why_gosnel: 'GoSnel کیوں؟ کیونکہ ہم AI ذہانت کو بہترین مقامی کمبو کے ساتھ جوڑتے ہیں۔ ہم صرف تجویز نہیں دیتے؛ ہم آپ کے موڈ اور بجٹ کے مطابق 3-پیس کمبو تیار کرتے ہیں۔ ایک پلک جھپکتے ہی، آپ کی کشمکش ختم ہوتی ہے، اور آپ کا آرڈر تیار ہوتا ہے۔',
-                how_title: 'GoSnel: 3-کھانے کا کمبو... ایک پل میں',
-                how_subtitle: 'GoSnel کا منفرد طریقہ کار تجربہ کریں۔ ہمارا AI آپ کی ترجیحات کا تجزیہ کرتا ہے اور آپ کا بہترین 3-پیس کمبو بناتا ہے: مرکزی ڈش، سائیڈ، اور مشروب۔دیکھیں جادو کیسے کام کرتا ہے:',
-                step1_title: '1. GoSnel سے بات کریں',
-                step1_desc: 'ہمارے ساتھ بات چیت شروع کریں۔ AI آپ کی موجودہ خواہش کو سنتا ہے۔',
-                step2_title: '2. GoSnel آپ کے لیے منتخب کرتا ہے',
-                step2_desc: 'AI آپ کی پسند کی بنیاد پر آپ کا بہترین 3-پیس کمبو بناتا ہے۔',
-                step3_title: '3. واٹس ایپ کے ذریعے آرڈر کریں',
-                step3_desc: 'ایک کلک آپ کو براہ راست واٹس ایپ کے ذریعے اپنا آرڈر مکمل کرنے کے لیے لے جاتا ہے۔',
-                cta_text: 'اپنے کمبو کے لیے تیار؟ GoSnel کے ساتھ ابھی چیٹنگ شروع کریں، اور سیکنڈوں میں واٹس ایپ کے ذریعے اپنا پسندیدہ کمبو آرڈر کریں۔ وقت ضائع نہ کریں، AI کو آپ کے لیے منتخب کرنے دیں۔',
-                cta_button: 'ابھی آرڈر کریں!'
+                nav_cta: "چیٹ شروع کریں",
+                hero_badge: "اسکرول کرنا بند کریں۔ کھانا شروع کریں۔",
+                hero_title: "30 سیکنڈ میں <span class='text-brand'>3-آئٹم کمبو</span>۔",
+                hero_desc: "GoSnel آپ کا AI فوڈ ایجنٹ ہے۔ ہم بہترین مقامی ریستورانوں سے کامل مین، سائیڈ، اور ڈرنک کمبو فوری طور پر بنا کر مینو تھکاوٹ کو دور کرتے ہیں۔ بس چیٹ کریں، تصدیق کریں، اور واٹس ایپ کے ذریعے آرڈر کریں۔",
+                btn_primary: "GoSnel کے ساتھ بات کریں",
+                btn_secondary: "دیکھیں کہ یہ کیسے کام کرتا ہے",
+                trust_1: "کوئی پوشیدہ فیس نہیں", trust_2: "ڈیلیوری پر ادائیگی",
+                workflow_title: "GoSnel کیسے کام کرتا ہے", workflow_desc: "آپ کے بہترین کھانے کے لیے تین آسان مراحل۔",
+                step1_title: "1. AI کو اپنا موڈ بتائیں", step1_desc: "برگر کی خواہش ہے؟ صحت مند کھا رہے ہیں؟ بس ٹائپ کریں۔ ہمارا AI فوری طور پر سیاق و سباق سمجھ جاتا ہے۔",
+                step_badge: "جادو ہوتا ہے",
+                step2_title: "2. 3-آئٹم کمبو حاصل کریں", step2_desc: "ہم آپ کے قریب بہترین ریٹ شدہ ریستورانوں سے فوری طور پر ایک مربوط کمبو (مین، سائیڈ، ڈرنک) بناتے ہیں۔",
+                step3_title: "3. واٹس ایپ کے ذریعے آرڈر کریں", step3_desc: "ایک کلک آپ کے فارمیٹڈ آرڈر کو براہ راست ریستوراں کے واٹس ایپ پر بھیجتا ہے۔ کسی ایپ کی ضرورت نہیں۔",
+                video_title: "عمل میں AI دیکھیں",
+                video_desc: "دیکھیں کہ آپ 'مجھے بھوک لگی ہے' سے واٹس ایپ پر اپنا آرڈر تصدیق کرنے تک کتنی تیزی سے جا سکتے ہیں۔ کوئی لامحدود اسکرولنگ نہیں، کوئی فیصلہ سازی کی تھکاوٹ نہیں۔ صرف سیکنڈوں میں آپ کے لیے کیوریٹ کیا گیا ایک کامل کمبو۔",
+                video_cta: "ابھی خود آزمائیں",
+                footer_title: "اپنی بھوک مٹانے کے لیے تیار ہیں؟",
+                footer_cta: "ویب ایپ کھولیں"
             }
         };
-        
-        function applyTranslations() {
-            const t = translations[currentLang];
-            if (!t) return;
-            
-            document.getElementById('hero_title').textContent = t.hero_title;
-            document.getElementById('hero_subtitle').textContent = t.hero_subtitle;
-            document.getElementById('why_gosnel').textContent = t.why_gosnel;
-            document.getElementById('how_title').textContent = t.how_title;
-            document.getElementById('how_subtitle').textContent = t.how_subtitle;
-            document.getElementById('step1_title').textContent = t.step1_title;
-            document.getElementById('step1_desc').textContent = t.step1_desc;
-            document.getElementById('step2_title').textContent = t.step2_title;
-            document.getElementById('step2_desc').textContent = t.step2_desc;
-            document.getElementById('step3_title').textContent = t.step3_title;
-            document.getElementById('step3_desc').textContent = t.step3_desc;
-            document.getElementById('cta_text').textContent = t.cta_text;
-            document.getElementById('cta_button').textContent = t.cta_button;
-            
-            // Update HTML lang and dir attributes
-            document.documentElement.setAttribute('lang', currentLang);
-            document.documentElement.setAttribute('dir', currentLang === 'ar' || currentLang === 'ur' ? 'rtl' : 'ltr');
-        }
-        
+
+        // Language Switcher Function
         function setLang(lang) {
             currentLang = lang;
             localStorage.setItem('gosnel_lang', lang);
             
-            document.getElementById('lang-en').classList.toggle('active', lang === 'en');
-            document.getElementById('lang-ar').classList.toggle('active', lang === 'ar');
-            document.getElementById('lang-ml').classList.toggle('active', lang === 'ml');
-            document.getElementById('lang-hi').classList.toggle('active', lang === 'hi');
-            document.getElementById('lang-ur').classList.toggle('active', lang === 'ur');
+            // Update active button state
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(`lang-${lang}`).classList.add('active');
             
-            applyTranslations();
+            // Update HTML attributes
+            document.documentElement.lang = lang;
+            document.documentElement.dir = (lang === 'ar' || lang === 'ur') ? 'rtl' : 'ltr';
+            
+            // Update body class for font-family
+            document.body.className = `lang-${lang} selection:bg-brand selection:text-white pb-20`;
+            
+            // Update translations
+            const t = translations[lang];
+            
+            const updateEl = (id, html) => {
+                const el = document.getElementById(id);
+                if(el) el.innerHTML = html;
+            };
+
+            updateEl('nav_cta', t.nav_cta);
+            document.getElementById('hero_badge').innerHTML = `<i data-lucide="zap" class="w-4 h-4"></i><span>${t.hero_badge}</span>`;
+            updateEl('hero_title', t.hero_title);
+            updateEl('hero_desc', t.hero_desc);
+            document.getElementById('btn_primary').innerText = t.btn_primary;
+            document.getElementById('btn_secondary').innerText = t.btn_secondary;
+            updateEl('trust_1', t.trust_1);
+            updateEl('trust_2', t.trust_2);
+            updateEl('workflow_title', t.workflow_title);
+            updateEl('workflow_desc', t.workflow_desc);
+            updateEl('step1_title', t.step1_title);
+            updateEl('step1_desc', t.step1_desc);
+            updateEl('step_badge', t.step_badge);
+            updateEl('step2_title', t.step2_title);
+            updateEl('step2_desc', t.step2_desc);
+            updateEl('step3_title', t.step3_title);
+            updateEl('step3_desc', t.step3_desc);
+            updateEl('video_title', t.video_title);
+            updateEl('video_desc', t.video_desc);
+            document.getElementById('video_cta').innerText = t.video_cta;
+            updateEl('footer_title', t.footer_title);
+            document.getElementById('footer_cta').innerText = t.footer_cta;
+
+            lucide.createIcons();
+            
+            // Handle RTL icons
+            const navCtaBtn = document.querySelector('a[href="https://app.gosnel.com"]');
+            if (navCtaBtn) {
+                const rightArrow = navCtaBtn.querySelector('[data-lucide="arrow-right"]');
+                const leftArrow = navCtaBtn.querySelector('[data-lucide="arrow-left"]');
+                if (lang === 'ar' || lang === 'ur') {
+                    rightArrow.classList.add('hidden');
+                    leftArrow.classList.remove('hidden');
+                } else {
+                    rightArrow.classList.remove('hidden');
+                    leftArrow.classList.add('hidden');
+                }
+            }
         }
-        
+
+        // Add event listeners to language buttons
         document.getElementById('lang-en').addEventListener('click', () => setLang('en'));
         document.getElementById('lang-ar').addEventListener('click', () => setLang('ar'));
         document.getElementById('lang-ml').addEventListener('click', () => setLang('ml'));
         document.getElementById('lang-hi').addEventListener('click', () => setLang('hi'));
         document.getElementById('lang-ur').addEventListener('click', () => setLang('ur'));
         
-        // Initialize
+        // Remove old language selector
+        const oldSelector = document.getElementById('langSelector');
+        if (oldSelector) oldSelector.parentElement.remove();
+        
+        // Initialize with saved language
         setLang(currentLang);
-    })();
     </script>
 </body>
+</html>
