@@ -4,63 +4,296 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GoSnel | AI Food Agent</title>
+    <meta name="description" content="Stop scrolling endlessly through food apps. GoSnel's AI suggests personalized meals from nearby restaurants in seconds.">
     
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Lucide Icons -->
-    <!-- Footer CTA -->
-    <section class="py-16 bg-white border-t border-gray-200 text-center">
-        <div class="max-w-3xl mx-auto px-4">
-            <h2 class="text-2xl font-bold text-gs-dark mb-6" id="footer_title">Ready to cure your hunger?</h2>
-            <a href="https://app.gosnel.com" class="inline-flex items-center justify-center gap-2 bg-gs-dark text-white px-10 py-4 rounded-full font-bold hover:bg-black transition shadow-md">
-                <i data-lucide="bot" class="w-5 h-5"></i>
-                <span id="footer_cta">Open Web App</span>
-            </a>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        arabic: ['Cairo', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            DEFAULT: '#4ecdc4',
+                            light: '#e6f9f8',
+                            dark: '#3db5ac'
+                        },
+                        gs: {
+                            dark: '#0f172a',
+                            light: '#f8fafc',
+                            gray: '#64748b'
+                        }
+                    },
+                    animation: {
+                        'float': 'float 4s ease-in-out infinite',
+                        'pulse-brand': 'pulse-brand 2s infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        'pulse-brand': {
+                            '0%': { boxShadow: '0 0 0 0 rgba(78, 205, 196, 0.4)' },
+                            '70%': { boxShadow: '0 0 0 15px rgba(78, 205, 196, 0)' },
+                            '100%': { boxShadow: '0 0 0 0 rgba(78, 205, 196, 0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Base Setup */
+        html { scroll-behavior: smooth; }
+        body { background-color: #f8fafc; color: #0f172a; overflow-x: hidden; }
+        
+        /* Language Support Classes */
+        body.lang-ar, body.lang-ur { font-family: 'Cairo', sans-serif; direction: rtl; }
+        body.lang-en, body.lang-ml, body.lang-hi { font-family: 'Inter', sans-serif; direction: ltr; }
+        
+        /* Glassmorphism Lang Toggle */
+        .lang-toggle {
+            position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+            z-index: 100; display: flex; gap: 4px;
+            background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px);
+            border-radius: 100px; padding: 6px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        .lang-btn {
+            padding: 8px 20px; border-radius: 100px; font-weight: 600; font-size: 14px;
+            color: #64748b; transition: all 0.3s ease;
+        }
+        .lang-btn.active { background: #4ecdc4; color: white; box-shadow: 0 4px 12px rgba(78, 205, 196, 0.3); }
+        .lang-btn:hover:not(.active) { background: rgba(78, 205, 196, 0.1); color: #0f172a; }
+
+        /* Video Wrapper */
+        .video-wrapper {
+            position: relative; padding-bottom: 177.77%; height: 0; overflow: hidden;
+            border-radius: 1.5rem; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            background: #000;
+        }
+        .video-wrapper video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
+        
+        /* Gradient Text Utility */
+        .text-gradient { background: linear-gradient(135deg, #0f172a 0%, #4ecdc4 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    </style>
+</head>
+<body class="lang-en antialiased pb-20 selection:bg-brand selection:text-white">
+
+    <div class="lang-toggle">
+        <button onclick="setLang('en')" id="btn-en" class="lang-btn active">English</button>
+        <button onclick="setLang('ar')" id="btn-ar" class="lang-btn">العربية</button>
+        <button onclick="setLang('ml')" id="btn-ml" class="lang-btn">മലയാളം</button>
+        <button onclick="setLang('hi')" id="btn-hi" class="lang-btn">हिंदी</button>
+        <button onclick="setLang('ur')" id="btn-ur" class="lang-btn">اردو</button>
+    </div>
+
+    <nav class="fixed w-full z-40 bg-white/80 backdrop-blur-md border-b border-gray-100 top-0 pt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center gap-3">
+                    <img src="https://pub-36067fecb2654f06ab5b13fe9340062d.r2.dev/GosnelPersonality.png" alt="GoSnel Logo" class="w-10 h-10 rounded-full shadow-sm">
+                    <span class="font-bold text-2xl tracking-tight text-gs-dark">GoSnel</span>
+                </div>
+                <div>
+                    <a href="https://app.gosnel.com" class="flex items-center gap-2 bg-gs-dark text-white px-6 py-2.5 rounded-full font-semibold hover:bg-black transition-all text-sm shadow-md hover:shadow-lg hover:-translate-y-0.5">
+                        <span id="nav_cta">Start Chat</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 rtl:hidden"></i>
+                        <i data-lucide="arrow-left" class="w-4 h-4 hidden rtl:block"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="pt-40 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+        <div class="flex-1 text-center lg:text-start">
+            <div class="inline-flex items-center gap-2 bg-brand/10 text-brand-dark font-semibold px-4 py-1.5 rounded-full text-sm mb-6 border border-brand/20">
+                <i data-lucide="zap" class="w-4 h-4"></i>
+                <span id="hero_badge">Stop Scrolling. Start Eating.</span>
+            </div>
+            
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 text-gs-dark" id="hero_title">
+                The Perfect <span class="text-brand">3-Item Combo</span> in 30 Seconds.
+            </h1>
+            
+            <p class="text-lg text-gs-gray mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed" id="hero_desc">
+                GoSnel is your AI food agent. We cure menu fatigue by instantly building the perfect Main, Side, and Drink combo from top local spots. Just chat, confirm, and order via WhatsApp.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <a href="https://app.gosnel.com" class="animate-pulse-brand bg-brand text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-brand-dark transition-colors shadow-lg shadow-brand/30 flex items-center justify-center gap-3 w-full sm:w-auto">
+                    <i data-lucide="message-square" class="w-5 h-5"></i>
+                    <span id="btn_primary">Chat with GoSnel</span>
+                </a>
+                <a href="#how-it-works" class="bg-white text-gs-dark border border-gray-200 px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-50 transition-colors flex items-center justify-center gap-3 w-full sm:w-auto">
+                    <i data-lucide="play-circle" class="w-5 h-5 text-gs-gray"></i>
+                    <span id="btn_secondary">See how it works</span>
+                </a>
+            </div>
+            
+            <div class="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-sm text-gs-gray font-medium">
+                <div class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand"></i> <span id="trust_1">No Hidden Fees</span></div>
+                <div class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand"></i> <span id="trust_2">Cash on Delivery</span></div>
+                <div class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand"></i> <span id="trust_3">Real Restaurant Prices</span></div>
+            </div>
+        </div>
+
+        <div class="flex-1 w-full max-w-md mx-auto relative">
+            <div class="absolute inset-0 bg-brand/10 blur-[80px] rounded-full"></div>
+            <img src="https://pub-36067fecb2654f06ab5b13fe9340062d.r2.dev/landingPageImaged/1.png" alt="GoSnel App" class="relative z-10 w-full h-auto animate-float object-contain rounded-[32px]">
         </div>
     </section>
-        <button id="lang-ml" class="lang-btn">മലയാളം</button>
-    
-                        Your browser does not support the video tag.
-                    </video>
+
+    <section class="py-20 bg-white border-y border-gray-100">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <div class="inline-block bg-brand/10 text-brand px-4 py-1.5 rounded-full text-sm font-semibold mb-4" id="personalized_badge">Personalized to You</div>
+                <h2 class="text-3xl md:text-4xl font-bold text-gs-dark" id="personalized_title">You can tell me your preferences</h2>
+            </div>
+            
+            <div class="space-y-2">
+                <div class="flex items-center p-4 hover:bg-slate-50 rounded-2xl transition-colors border-b border-gray-100 last:border-0">
+                    <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/user_landing_preferences/Plant_Based.png" alt="Plant-Based" class="w-16 h-16 rounded-full object-cover mr-4 rtl:mr-0 rtl:ml-4 flex-shrink-0">
+                    <div>
+                        <h3 class="font-bold text-lg text-gs-dark" id="diet_1_title">Plant-Based</h3>
+                        <p class="text-gs-gray text-sm" id="diet_1_desc">Vegetarian or vegan meals, automatically selected</p>
+                    </div>
+                </div>
+                <div class="flex items-center p-4 hover:bg-slate-50 rounded-2xl transition-colors border-b border-gray-100 last:border-0">
+                    <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/user_landing_preferences/Weight_Shape.png" alt="Weight" class="w-16 h-16 rounded-full object-cover mr-4 rtl:mr-0 rtl:ml-4 flex-shrink-0">
+                    <div>
+                        <h3 class="font-bold text-lg text-gs-dark" id="diet_2_title">Weight & Shape</h3>
+                        <p class="text-gs-gray text-sm" id="diet_2_desc">Balanced meals that fit your goals</p>
+                    </div>
+                </div>
+                <div class="flex items-center p-4 hover:bg-slate-50 rounded-2xl transition-colors border-b border-gray-100 last:border-0">
+                    <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/user_landing_preferences/Smart_Preferences.png" alt="Smart" class="w-16 h-16 rounded-full object-cover mr-4 rtl:mr-0 rtl:ml-4 flex-shrink-0">
+                    <div>
+                        <h3 class="font-bold text-lg text-gs-dark mb-2" id="diet_5_title">Smart Preferences</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-brand/10 text-brand-dark border border-brand/20 rounded-full text-xs font-semibold" id="tag_no_rice">No rice</span>
+                            <span class="px-3 py-1 bg-brand/10 text-brand-dark border border-brand/20 rounded-full text-xs font-semibold" id="tag_not_spicy">Not spicy</span>
+                            <span class="px-3 py-1 bg-brand/10 text-brand-dark border border-brand/20 rounded-full text-xs font-semibold" id="tag_extra_protein">Extra protein</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gs-dark mb-4" id="workflow_title">How GoSnel Works</h2>
+                <p class="text-gs-gray" id="workflow_desc">Three simple steps to your perfect meal.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 text-center hover:shadow-md transition-shadow">
+                    <div class="w-16 h-16 bg-brand/10 text-brand rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i data-lucide="message-circle" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-3 text-gs-dark" id="step1_title">1. Tell AI Your Mood</h3>
+                    <p class="text-gs-gray leading-relaxed text-sm" id="step1_desc">Craving a burger? Eating healthy? Just type it. Our AI understands context instantly.</p>
+                </div>
+
+                <div class="bg-brand/5 p-8 rounded-3xl border border-brand/20 text-center relative hover:shadow-md transition-shadow">
+                    <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-brand text-white text-xs font-bold px-4 py-1 rounded-full shadow-sm" id="step_badge">Magic Happens</div>
+                    <div class="w-16 h-16 bg-brand text-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-md">
+                        <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/gosnelicon.png" class="w-10 h-10 object-contain brightness-0 invert" alt="GoSnel">
+                    </div>
+                    <h3 class="font-bold text-xl mb-3 text-gs-dark" id="step2_title">2. Get a 3-Item Combo</h3>
+                    <p class="text-gs-gray leading-relaxed text-sm" id="step2_desc">We instantly build a cohesive combo (Main, Side, Drink) from top-rated restaurants near you.</p>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 text-center hover:shadow-md transition-shadow">
+                    <div class="w-16 h-16 bg-green-50 text-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i data-lucide="smartphone" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-3 text-gs-dark" id="step3_title">3. Order via WhatsApp</h3>
+                    <p class="text-gs-gray leading-relaxed text-sm" id="step3_desc">One click sends your formatted order directly to the restaurant's WhatsApp. No apps needed.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-gs-dark relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-brand/20 rounded-full blur-[120px]"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col lg:flex-row gap-16 items-center">
+            
+            <div class="flex-1 w-full">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-2" id="comparison_title">GoSnel vs Traditional Food Apps</h2>
+                <p class="text-slate-400 mb-10" id="comparison_subtitle">Stop searching. Start discovering.</p>
+                
+                <div class="space-y-6">
+                    <div class="p-6 rounded-2xl border border-slate-700 bg-slate-800/50 backdrop-blur-sm">
+                        <h3 class="text-red-400 font-bold text-lg mb-4 flex items-center gap-2" id="traditional_title"><i data-lucide="circle-x" class="w-5 h-5"></i> Traditional Apps</h3>
+                        <ul class="space-y-3 text-slate-300">
+                            <li class="flex items-center gap-3"><i data-lucide="search" class="w-4 h-4 text-slate-500"></i> <span id="traditional_1">Search "burger" → 100 results</span></li>
+                            <li class="flex items-center gap-3"><i data-lucide="clock" class="w-4 h-4 text-slate-500"></i> <span id="traditional_2">Scroll for 15+ minutes</span></li>
+                            <li class="flex items-center gap-3"><i data-lucide="frown" class="w-4 h-4 text-slate-500"></i> <span id="traditional_3">Decision paralysis</span></li>
+                        </ul>
+                    </div>
+                    <div class="p-6 rounded-2xl border border-brand bg-brand/10 backdrop-blur-sm shadow-[0_0_30px_rgba(78,205,196,0.15)]">
+                        <h3 class="text-brand font-bold text-lg mb-4 flex items-center gap-2" id="gosnel_title"><i data-lucide="check-circle-2" class="w-5 h-5"></i> GoSnel</h3>
+                        <ul class="space-y-3 text-white font-medium">
+                            <li class="flex items-center gap-3"><i data-lucide="bot" class="w-4 h-4 text-brand"></i> <span id="gosnel_1">AI suggests 3-5 perfect matches</span></li>
+                            <li class="flex items-center gap-3"><i data-lucide="zap" class="w-4 h-4 text-brand"></i> <span id="gosnel_2">Decide in 30 seconds</span></li>
+                            <li class="flex items-center gap-3"><i data-lucide="smile" class="w-4 h-4 text-brand"></i> <span id="gosnel_3">Confidence & clarity</span></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 
-            <!-- Video Context text -->
-            <div class="flex-1 text-center md:text-left rtl:md:text-right">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-6" id="video_title">See the AI in Action</h2>
-                <p class="text-slate-300 text-lg mb-8 leading-relaxed" id="video_desc">
-                    Watch how fast you can go from "I'm hungry" to confirming your order on WhatsApp. No endless scrolling, no decision fatigue. Just a perfect combo curated for you in seconds.
-                </p>
-                
-                <a href="https://app.gosnel.com" class="inline-flex items-center justify-center gap-2 bg-brand text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-brand-dark transition shadow-lg shadow-brand/20">
-                    <i data-lucide="external-link" class="w-5 h-5"></i>
-                    <span id="video_cta">Try it yourself now</span>
-                </a>
+            <div class="flex-1 w-full max-w-md bg-white rounded-[2rem] shadow-2xl overflow-hidden flex flex-col h-[500px]">
+                <div class="bg-slate-50 border-b border-gray-100 p-4 flex items-center gap-3">
+                    <div class="w-10 h-10 bg-brand rounded-full flex items-center justify-center flex-shrink-0 text-white shadow-sm">
+                        <i data-lucide="bot" class="w-6 h-6"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h4 class="font-bold text-gs-dark leading-none mb-1" id="chat_title">GoSnel AI</h4>
+                        <div class="flex items-center gap-1.5 text-xs text-green-500 font-semibold">
+                            <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                            <span id="chat_status">Online</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-1 p-5 overflow-y-auto bg-slate-50/50 flex flex-col gap-4" id="chat_box">
+                    </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Footer CTA -->
-    <section class="py-16 bg-white border-t border-gray-200 text-center">
-        <div class="max-w-3xl mx-auto px-4">
-            <h2 class="text-2xl font-bold text-gs-dark mb-6" id="footer_title">Ready to cure your hunger?</h2>
-            <a href="https://app.gosnel.com" class="inline-flex items-center justify-center gap-2 bg-gs-dark text-white px-10 py-4 rounded-full font-bold hover:bg-black transition shadow-md">
-                <i data-lucide="bot" class="w-5 h-5"></i>
-                <span id="footer_cta">Open Web App</span>
-            </a>
             
         </div>
     </section>
 
-    <!-- Logic -->
+    <section class="py-20 bg-brand text-center relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 2px 2px, black 1px, transparent 0); background-size: 32px 32px;"></div>
+        <div class="max-w-3xl mx-auto px-4 relative z-10">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-gs-dark mb-6" id="footer_title">Ready to cure your hunger?</h2>
+            <p class="text-gs-dark/80 text-lg mb-10 font-medium max-w-xl mx-auto" id="footer_subtitle">Join hundreds of foodies skipping the scroll and getting exactly what they crave instantly.</p>
+            <a href="https://app.gosnel.com" class="inline-flex items-center justify-center gap-2 bg-gs-dark text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-black transition-transform hover:scale-105 shadow-xl">
+                <i data-lucide="bot" class="w-5 h-5"></i>
+                <span id="footer_cta">Open Web App</span>
+            </a>
+            <p class="text-sm text-gs-dark/60 mt-8">© 2026 GoSnel AI. All rights reserved.</p>
+        </div>
+    </section>
+
     <script>
-        // Initialize Lucide Icons
-        lucide.createIcons();
-
-        // State & Translations
-        let currentLang = localStorage.getItem('gosnel_lang') || 'en';
-
+        // Dictionary
         const translations = {
             en: {
                 nav_cta: "Start Chat",
@@ -69,17 +302,27 @@
                 hero_desc: "GoSnel is your AI food agent. We cure menu fatigue by instantly building the perfect Main, Side, and Drink combo from top local spots. Just chat, confirm, and order via WhatsApp.",
                 btn_primary: "Chat with GoSnel",
                 btn_secondary: "See how it works",
-                trust_1: "No Hidden Fees", trust_2: "Cash on Delivery",
+                trust_1: "No Hidden Fees", trust_2: "Cash on Delivery", trust_3: "Real Restaurant Prices",
+                personalized_badge: "Personalized to You",
+                personalized_title: "You can tell me your preferences",
+                diet_1_title: "Plant-Based", diet_1_desc: "Vegetarian or vegan meals, automatically selected",
+                diet_2_title: "Weight & Shape", diet_2_desc: "Balanced meals that fit your goals",
+                diet_5_title: "Smart Preferences",
+                tag_no_rice: "No rice", tag_not_spicy: "Not spicy", tag_extra_protein: "Extra protein",
                 workflow_title: "How GoSnel Works", workflow_desc: "Three simple steps to your perfect meal.",
                 step1_title: "1. Tell AI Your Mood", step1_desc: "Craving a burger? Eating healthy? Just type it. Our AI understands context instantly.",
                 step_badge: "Magic Happens",
                 step2_title: "2. Get a 3-Item Combo", step2_desc: "We instantly build a cohesive combo (Main, Side, Drink) from top-rated restaurants near you.",
                 step3_title: "3. Order via WhatsApp", step3_desc: "One click sends your formatted order directly to the restaurant's WhatsApp. No apps needed.",
-                video_title: "See the AI in Action",
-                video_desc: "Watch how fast you can go from 'I'm hungry' to confirming your order on WhatsApp. No endless scrolling, no decision fatigue. Just a perfect combo curated for you in seconds.",
-                video_cta: "Try it yourself now",
-                footer_title: "Ready to cure your hunger?",
-                footer_cta: "Open Web App"
+                comparison_title: "GoSnel vs Traditional Food Apps", comparison_subtitle: "Stop searching. Start discovering.",
+                traditional_title: "Traditional Apps", traditional_1: "Search 'burger' → 100 results", traditional_2: "Scroll for 15+ minutes", traditional_3: "Decision paralysis",
+                gosnel_title: "GoSnel", gosnel_1: "AI suggests perfect combos", gosnel_2: "Decide in 30 seconds", gosnel_3: "Confidence & clarity",
+                chat_title: "GoSnel AI", chat_status: "Online",
+                footer_title: "Ready to cure your hunger?", footer_subtitle: "Join hundreds of foodies skipping the scroll and getting exactly what they crave instantly.", footer_cta: "Open Web App",
+                chat_msgs: [
+                    { user: true, text: "I want something spicy for lunch!" },
+                    { user: false, text: "Perfect! I've got a great combo:<br>1. Spicy Chicken Biryani 🔥<br>2. Raita 🥗<br>3. Mint Lemonade 🍹<br><br>Total: 35 AED. Sounds good?" }
+                ]
             },
             ar: {
                 nav_cta: "ابدأ المحادثة",
@@ -88,1741 +331,115 @@
                 hero_desc: "جوسنل هو عميلك الذكي. نقضي على حيرة الاختيار بتجهيز أفضل طبق رئيسي، جانبي، ومشروب من المطاعم القريبة منك. كلمنا، أكد طلبك، واطلب عبر واتساب فوراً.",
                 btn_primary: "تحدث مع جوسنل",
                 btn_secondary: "شاهد كيف يعمل",
-                trust_1: "بدون رسوم مخفية", trust_2: "الدفع عند الاستلام",
+                trust_1: "بدون رسوم مخفية", trust_2: "الدفع عند الاستلام", trust_3: "أسعار المطاعم الحقيقية",
+                personalized_badge: "مخصص لك",
+                personalized_title: "تقدر تخبرني بتفضيلاتك",
+                diet_1_title: "نباتي", diet_1_desc: "وجبات نباتية بالكامل، نختارها لك تلقائياً",
+                diet_2_title: "الوزن والشكل", diet_2_desc: "وجبات متوازنة تناسب أهدافك الصحية",
+                diet_5_title: "تفضيلات ذكية",
+                tag_no_rice: "بدون أرز", tag_not_spicy: "غير حار", tag_extra_protein: "بروتين إضافي",
                 workflow_title: "كيف يعمل جوسنل؟", workflow_desc: "ثلاث خطوات بسيطة لوجبتك المثالية.",
                 step1_title: "1. عبر عن مزاجك", step1_desc: "مشتهي برجر؟ تبي أكل صحي؟ بس اكتبها. الذكاء الاصطناعي يفهم طلبك فوراً.",
                 step_badge: "هنا السحر",
                 step2_title: "2. استلم الكومبو", step2_desc: "نجهز لك كومبو متكامل (رئيسي، جانبي، مشروب) من أفضل المطاعم تقييماً حولك.",
                 step3_title: "3. اطلب عبر واتساب", step3_desc: "بضغطة زر نرسل تفاصيل طلبك مباشرة لواتساب المطعم. بدون الحاجة لتطبيقات إضافية.",
-                video_title: "شاهد الذكاء الاصطناعي",
-                video_desc: "شوف كيف تنتقل من 'أنا جوعان' إلى تأكيد طلبك على واتساب في ثواني. لا مزيد من التقليب اللانهائي، ولا تعب الاختيار. فقط كومبو مثالي مجهز لك.",
-                video_cta: "جربها بنفسك الآن",
-                footer_title: "جاهز تقضي على جوعك؟",
-                footer_cta: ""
+                comparison_title: "جوسنِل مقابل تطبيقات الطعام التقليدية", comparison_subtitle: "توقف عن البحث. ابدأ الاكتشاف.",
+                traditional_title: "التطبيقات التقليدية", traditional_1: "تبحث عن 'برجر' ← 100 نتيجة", traditional_2: "تضيع 15 دقيقة في التصفح", traditional_3: "حيرة في اتخاذ القرار",
+                gosnel_title: "جوسنِل", gosnel_1: "الذكاء الاصطناعي يقترح كومبو مثالي", gosnel_2: "تقرر في 30 ثانية", gosnel_3: "ثقة ووضوح في الاختيار",
+                chat_title: "جوسنِل AI", chat_status: "متصل الآن",
+                footer_title: "جاهز تقضي على جوعك؟", footer_subtitle: "انضم لمئات الأشخاص اللي اختصروا وقتهم وطلبوا وجبتهم المثالية في ثواني.", footer_cta: "افتح تطبيق الويب",
+                chat_msgs: [
+                    { user: true, text: "أبغى شي حار للغداء!" },
+                    { user: false, text: "يا هلا! لقيت لك كومبو رهيب:<br>1. برياني دجاج سبايسي 🔥<br>2. سلطة زبادي بالخيار 🥗<br>3. ليمون بالنعناع 🍹<br><br>الإجمالي: 35 درهم. نعتمد؟" }
+                ]
             },
             ml: {
-                nav_cta: "ചാറ്റ് ആരംഭിക്കുക",
-                hero_badge: "തിരയുന്നത് നിർത്തൂ. ഭക്ഷണം ആരംഭിക്കൂ.",
-                hero_title: "30 സെക്കൻഡിൽ <span class='text-brand'>3-ഇനം കോമ്പോ</span>.",
-                hero_desc: "നിങ്ങളുടെ AI ഭക്ഷണ ഏജന്റാണ് GoSnel. മികച്ച ലോക്കൽ സ്ഥലങ്ങളിൽ നിന്ന് പർഫക്റ്റ് മെയിൻ, സൈഡ്, ഡ്രിങ്ക് കോമ്പോ ഉടൻ നിർമ്മിച്ചുകൊണ്ട് ഞങ്ങൾ മെനു ക്ഷീണം മാറ്റുന്നു. ചാറ്റ് ചെയ്യുക, സ്ഥിരീകരിക്കുക, വാട്‌സ്ആപ്പിലൂടെ ഓർഡർ ചെയ്യുക.",
-                btn_primary: "GoSnel-മായി സംസാരിക്കുക",
-                btn_secondary: "ഇത് എങ്ങനെ പ്രവർത്തിക്കുന്നു കാണുക",
-                trust_1: "ഒളിഞ്ഞിരിക്കുന്ന ചാർജുകളില്ല", trust_2: "ഡെലിവറിയിൽ പേയ്മെന്റ്",
-                workflow_title: "GoSnel എങ്ങനെ പ്രവർത്തിക്കുന്നു", workflow_desc: "നിങ്ങളുടെ പർഫക്റ്റ് ഭക്ഷണത്തിലേക്കുള്ള മൂന്ന് ലളിതമായ ഘട്ടങ്ങൾ.",
-                step1_title: "1. AI-നോട് നിങ്ങളുടെ മൂഡ് പറയുക", step1_desc: "ഒരു ബർഗർ ആഗ്രഹിക്കുന്നുണ്ടോ? ആരോഗ്യകരമായ ഭക്ഷണം കഴിക്കുന്നുണ്ടോ? അത് ടൈപ്പ് ചെയ്യുക. ഞങ്ങളുടെ AI ഉടൻ തന്നെ സന്ദർഭം മനസ്സിലാക്കുന്നു.",
-                step_badge: "മാജിക് സംഭവിക്കുന്നു",
-                step2_title: "2. 3-ഇനം കോമ്പോ നേടുക", step2_desc: "നിങ്ങളുടെ അടുത്തുള്ള ടോപ്പ് റേറ്റ് ചെയ്ത റെസ്റ്റോറന്റുകളിൽ നിന്ന് ഞങ്ങൾ ഉടൻ തന്നെ ഒരു കോഹീസീവ് കോമ്പോ (മെയിൻ, സൈഡ്, ഡ്രിങ്ക്) നിർമ്മിക്കുന്നു.",
-                step3_title: "3. വാട്‌സ്ആപ്പിലൂടെ ഓർഡർ ചെയ്യുക", step3_desc: "ഒരു ക്ലിക്കിൽ നിങ്ങളുടെ ഫോർമാറ്റ് ചെയ്ത ഓർഡർ നേരിട്ട് റെസ്റ്റോറന്റിന്റെ വാട്‌സ്ആപ്പിലേക്ക് അയയ്ക്കുന്നു. ആപ്പുകൾ ആവശ്യമില്ല.",
-                video_title: "പ്രവർത്തനത്തിലെ AI കാണുക",
-                video_desc: "'എനിക്ക് വിശപ്പുണ്ട്' എന്നതിൽ നിന്ന് വാട്‌സ്ആപ്പിൽ നിങ്ങളുടെ ഓർഡർ സ്ഥിരീകരിക്കുന്നതിലേക്ക് എത്ര വേഗത്തിൽ പോകാമെന്ന് കാണുക. അവസാനമില്ലാത്ത സ്ക്രോളിംഗില്ല, തീരുമാനിക്കാൻ കഴിയാത്ത അവസ്ഥയില്ല. നിമിഷങ്ങൾക്കുള്ളിൽ നിങ്ങൾക്കായി ക്യൂറേറ്റ് ചെയ്ത പർഫക്റ്റ് കോമ്പോ മാത്രം.",
-                video_cta: "ഇപ്പോൾ തന്നെ പരീക്ഷിക്കുക",
-                footer_title: "നിങ്ങളുടെ വിശപ്പ് മാറ്റാൻ തയ്യാറാണോ?",
-                footer_cta: "വെബ് ആപ്പ് തുറക്കുക"
+                nav_cta: "ചാറ്റ് ആരംഭിക്കുക", hero_badge: "തിരയുന്നത് നിർത്തൂ. ഭക്ഷണം ആരംഭിക്കൂ.", hero_title: "30 സെക്കൻഡിൽ <span class='text-brand'>3-ഇനം കോമ്പോ</span>.", hero_desc: "നിങ്ങളുടെ AI ഭക്ഷണ ഏജന്റാണ് GoSnel. മികച്ച ലോക്കൽ സ്ഥലങ്ങളിൽ നിന്ന് പർഫക്റ്റ് കോമ്പോ ഉടൻ നിർമ്മിച്ചുകൊണ്ട് ഞങ്ങൾ മെനു ക്ഷീണം മാറ്റുന്നു. ചാറ്റ് ചെയ്യുക, വാട്‌സ്ആപ്പിലൂടെ ഓർഡർ ചെയ്യുക.",
+                btn_primary: "GoSnel-മായി സംസാരിക്കുക", btn_secondary: "എങ്ങനെ പ്രവർത്തിക്കുന്നു കാണുക", trust_1: "ഒളിഞ്ഞിരിക്കുന്ന ചാർജുകളില്ല", trust_2: "ഡെലിവറിയിൽ പേയ്മെന്റ്", trust_3: "യഥാർത്ഥ റെസ്റ്റോറന്റ് വിലകൾ",
+                personalized_badge: "നിങ്ങൾക്കായി പ്രത്യേകം", personalized_title: "നിങ്ങൾക്ക് മുൻഗണനകൾ പറയാം", diet_1_title: "പ്ലാന്റ്-ബേസ്ഡ്", diet_1_desc: "തിരഞ്ഞെടുത്ത ശാകാഹാര ഭക്ഷണം", diet_2_title: "വെയിറ്റ് & ഷെയ്പ്", diet_2_desc: "ബാലൻസ്ഡ് ഭക്ഷണം", diet_5_title: "സ്മാർട്ട് മുൻഗണനകൾ", tag_no_rice: "അരി ഇല്ല", tag_not_spicy: "എരിവില്ല", tag_extra_protein: "എക്സ്ട്രാ പ്രോട്ടീൻ",
+                workflow_title: "GoSnel എങ്ങനെ പ്രവർത്തിക്കുന്നു", workflow_desc: "മൂന്ന് ലളിതമായ ഘട്ടങ്ങൾ.", step1_title: "1. മൂഡ് പറയുക", step1_desc: "എന്ത് വേണമെന്ന് ടൈപ്പ് ചെയ്യുക.", step_badge: "മാജിക് സംഭവിക്കുന്നു", step2_title: "2. കോമ്പോ നേടുക", step2_desc: "ഞങ്ങൾ ഉടൻ കോമ്പോ നിർമ്മിക്കുന്നു.", step3_title: "3. വാട്‌സ്ആപ്പിലൂടെ ഓർഡർ ചെയ്യുക", step3_desc: "ഓർഡർ നേരിട്ട് അയയ്ക്കുന്നു.",
+                comparison_title: "ഗോസ്നെൽ vs ട്രാഡിഷണൽ ആപ്പുകൾ", comparison_subtitle: "കണ്ടെത്തുന്നത് ആരംഭിക്കുക.", traditional_title: "പരമ്പരാഗത ആപ്പുകൾ", traditional_1: "100 ഫലങ്ങൾ", traditional_2: "15+ മിനിറ്റ് സ്ക്രോൾ ചെയ്യുക", traditional_3: "തീരുമാനിക്കാനാകാത്ത അവസ്ഥ", gosnel_title: "ഗോസ്നെൽ", gosnel_1: "3-5 ഏറ്റവും നല്ല നിർദ്ദേശങ്ങൾ", gosnel_2: "30 സെക്കൻഡിൽ തീരുമാനിക്കുക", gosnel_3: "ആത്മവിശ്വാസവും വ്യക്തതയും",
+                chat_title: "ഗോസ്നെൽ AI", chat_status: "ഓൺലൈൻ", footer_title: "നിങ്ങളുടെ വിശപ്പ് മാറ്റാൻ തയ്യാറാണോ?", footer_subtitle: "ഉടൻ ഭക്ഷണം നേടുക.", footer_cta: "വെബ് ആപ്പ് തുറക്കുക",
+                chat_msgs: [ { user: true, text: "ഉച്ചഭക്ഷണത്തിന് എരിവുള്ള എന്തെങ്കിലും വേണം!" }, { user: false, text: "മികച്ചത്! ഒരു നല്ല കോമ്പോ ഉണ്ട്:<br>1. സ്പൈസി ചിക്കൻ ബിരിയാണി 🔥<br>2. റൈത്ത 🥗<br>3. മിന്റ് ലെമനേഡ് 🍹<br><br>ആകെ: 35 AED. ഓർഡർ ചെയ്യണോ?" } ]
             },
             hi: {
-                nav_cta: "चैट शुरू करें",
-                hero_badge: "स्क्रॉल करना बंद करें। खाना शुरू करें।",
-                hero_title: "30 सेकंड में <span class='text-brand'>3-आइटम कॉम्बो</span>।",
-                hero_desc: "GoSnel आपका AI फूड एजेंट है। हम शीर्ष स्थानीय स्थानों से सही मेन, साइड और ड्रिंक कॉम्बो तुरंत बनाकर मेनू थकान को दूर करते हैं। बस चैट करें, पुष्टि करें, और व्हाट्सएप के माध्यम से ऑर्डर करें।",
-                btn_primary: "GoSnel के साथ चैट करें",
-                btn_secondary: "देखें कि यह कैसे काम करता है",
-                trust_1: "कोई छिपी हुई फीस नहीं", trust_2: "डिलीवरी पर भुगतान",
-                workflow_title: "GoSnel कैसे काम करता है", workflow_desc: "आपके आदर्श भोजन के लिए तीन सरल चरण।",
-                step1_title: "1. AI को अपना मूड बताएं", step1_desc: "बर्गर की इच्छा हो रही है? स्वस्थ भोजन कर रहे हैं? बस टाइप करें। हमारा AI तुरंत संदर्भ समझ जाता है।",
-                step_badge: "जादू होता है",
-                step2_title: "2. 3-आइटम कॉम्बो प्राप्त करें", step2_desc: "हम आपके पास के शीर्ष रेट किए गए रेस्तरां से तुरंत एक सुसंगत कॉम्बो (मेन, साइड, ड्रिंक) बनाते हैं।",
-                step3_title: "3. व्हाट्सएप के माध्यम से ऑर्डर करें", step3_desc: "एक क्लिक आपके फ़ॉर्मेटेड ऑर्डर को सीधे रेस्तरां के व्हाट्सएप पर भेजता है। किसी ऐप की आवश्यकता नहीं।",
-                video_title: "कार्यवाई में AI देखें",
-                video_desc: "देखें कि आप 'मुझे भूख लगी है' से व्हाट्सएप पर अपना ऑर्डर पुष्टि करने तक कितनी तेजी से जा सकते हैं। कोई अंतहीन स्क्रॉलिंग नहीं, कोई निर्णय थकान नहीं। बस सेकंडों में आपके लिए क्यूरेट किया गया एकदम सही कॉम्बो।",
-                video_cta: "अभी خود试 करें",
-                footer_title: "अपनी भूख मिटाने के लिए तैयार हैं?",
-                footer_cta: "वेब ऐप खोलें"
+                nav_cta: "चैट शुरू करें", hero_badge: "स्क्रॉल करना बंद करें। खाना शुरू करें।", hero_title: "30 सेकंड में <span class='text-brand'>3-आइटम कॉम्बो</span>।", hero_desc: "GoSnel आपका AI फूड एजेंट है। बस चैट करें, पुष्टि करें, और व्हाट्सएप के माध्यम से ऑर्डर करें।",
+                btn_primary: "GoSnel के साथ चैट करें", btn_secondary: "देखें कि यह कैसे काम करता है", trust_1: "कोई छिपी हुई फीस नहीं", trust_2: "डिलीवरी पर भुगतान", trust_3: "असली रेस्टोरेंट की कीमतें",
+                personalized_badge: "आपके लिए व्यक्तिगत", personalized_title: "अपनी प्राथमिकताएं बताएं", diet_1_title: "शाकाहारी", diet_1_desc: "शाकाहारी भोजन, स्वचालित रूप से चुना गया", diet_2_title: "वजन और आकार", diet_2_desc: "संतुलित भोजन", diet_5_title: "स्मार्ट प्राथमिकताएं", tag_no_rice: "चावल नहीं", tag_not_spicy: "मसालेदार नहीं", tag_extra_protein: "अतिरिक्त प्रोटीन",
+                workflow_title: "GoSnel कैसे काम करता है", workflow_desc: "आदर्श भोजन के लिए तीन सरल चरण।", step1_title: "1. अपना मूड बताएं", step1_desc: "बस टाइप करें, हमारा AI समझता है।", step_badge: "जादू होता है", step2_title: "2. कॉम्बो प्राप्त करें", step2_desc: "हम तुरंत एक कॉम्बो बनाते हैं।", step3_title: "3. व्हाट्सएप से ऑर्डर करें", step3_desc: "सीधे व्हाट्सएप पर भेजता है।",
+                comparison_title: "GoSnel vs पारंपरिक ऐप्स", comparison_subtitle: "खोजना शुरू करो।", traditional_title: "पारंपरिक ऐप्स", traditional_1: "100 परिणाम", traditional_2: "15+ मिनट बर्बाद", traditional_3: "निर्णय न ले पाना", gosnel_title: "GoSnel", gosnel_1: "AI का सटीक सुझाव", gosnel_2: "30 सेकंड में निर्णय", gosnel_3: "स्पष्टता",
+                chat_title: "GoSnel AI", chat_status: "ऑनलाइन", footer_title: "अपनी भूख मिटाने के लिए तैयार हैं?", footer_subtitle: "तुरंत अपना मनपसंद खाना पाएं।", footer_cta: "वेब ऐप खोलें",
+                chat_msgs: [ { user: true, text: "लंच के लिए कुछ तीखा चाहिए!" }, { user: false, text: "बढ़िया! मेरे पास एक बेहतरीन कॉम्बो है:<br>1. तीखी चिकन बिरयानी 🔥<br>2. रायता 🥗<br>3. मिंट लेमोनेड 🍹<br><br>कुल: 35 AED. क्या मैं ऑर्डर कर दूं?" } ]
             },
             ur: {
-                nav_cta: "چیٹ شروع کریں",
-                hero_badge: "اسکرول کرنا بند کریں۔ کھانا شروع کریں۔",
-                hero_title: "30 سیکنڈ میں <span class='text-brand'>3-آئٹم کمبو</span>۔",
-                hero_desc: "GoSnel آپ کا AI فوڈ ایجنٹ ہے۔ ہم بہترین مقامی ریستورانوں سے کامل مین، سائیڈ، اور ڈرنک کمبو فوری طور پر بنا کر مینو تھکاوٹ کو دور کرتے ہیں۔ بس چیٹ کریں، تصدیق کریں، اور واٹس ایپ کے ذریعے آرڈر کریں۔",
-                btn_primary: "GoSnel کے ساتھ بات کریں",
-                btn_secondary: "دیکھیں کہ یہ کیسے کام کرتا ہے",
-                trust_1: "کوئی پوشیدہ فیس نہیں", trust_2: "ڈیلیوری پر ادائیگی",
-                workflow_title: "GoSnel کیسے کام کرتا ہے", workflow_desc: "آپ کے بہترین کھانے کے لیے تین آسان مراحل۔",
-                step1_title: "1. AI کو اپنا موڈ بتائیں", step1_desc: "برگر کی خواہش ہے؟ صحت مند کھا رہے ہیں؟ بس ٹائپ کریں۔ ہمارا AI فوری طور پر سیاق و سباق سمجھ جاتا ہے۔",
-                step_badge: "جادو ہوتا ہے",
-                step2_title: "2. 3-آئٹم کمبو حاصل کریں", step2_desc: "ہم آپ کے قریب بہترین ریٹ شدہ ریستورانوں سے فوری طور پر ایک مربوط کمبو (مین، سائیڈ، ڈرنک) بناتے ہیں۔",
-                step3_title: "3. واٹس ایپ کے ذریعے آرڈر کریں", step3_desc: "ایک کلک آپ کے فارمیٹڈ آرڈر کو براہ راست ریستوراں کے واٹس ایپ پر بھیجتا ہے۔ کسی ایپ کی ضرورت نہیں۔",
-                video_title: "عمل میں AI دیکھیں",
-                video_desc: "دیکھیں کہ آپ 'مجھے بھوک لگی ہے' سے واٹس ایپ پر اپنا آرڈر تصدیق کرنے تک کتنی تیزی سے جا سکتے ہیں۔ کوئی لامحدود اسکرولنگ نہیں، کوئی فیصلہ سازی کی تھکاوٹ نہیں۔ صرف سیکنڈوں میں آپ کے لیے کیوریٹ کیا گیا ایک کامل کمبو۔",
-                video_cta: "ابھی خود آزمائیں",
-                footer_title: "اپنی بھوک مٹانے کے لیے تیار ہیں؟",
-                footer_cta: "ویب ایپ کھولیں"
+                nav_cta: "چیٹ شروع کریں", hero_badge: "اسکرول کرنا بند کریں۔ کھانا شروع کریں۔", hero_title: "30 سیکنڈ میں <span class='text-brand'>3-آئٹم کمبو</span>۔", hero_desc: "GoSnel آپ کا AI فوڈ ایجنٹ ہے۔ ہم فوری طور پر بہترین مین، سائیڈ، اور ڈرنک کمبو بنا کر مینو تھکاوٹ کو دور کرتے ہیں۔ بس چیٹ کریں اور واٹس ایپ کے ذریعے آرڈر کریں۔",
+                btn_primary: "GoSnel کے ساتھ بات کریں", btn_secondary: "یہ کیسے کام کرتا ہے", trust_1: "کوئی پوشیدہ فیس نہیں", trust_2: "ڈیلیوری پر ادائیگی", trust_3: "حقیقی ریستوراں کی قیمتیں",
+                personalized_badge: "آپ کے لیے ذاتی", personalized_title: "آپ ترجیحات بتا سکتے ہیں", diet_1_title: "پودوں پر مبنی", diet_1_desc: "سبزی خور کھانا، خود بخود منتخب", diet_2_title: "وزن اور شکل", diet_2_desc: "متوازن کھانا", diet_5_title: "سمارٹ ترجیحات", tag_no_rice: "چاول نہیں", tag_not_spicy: "تیز نہیں", tag_extra_protein: "اضافی پروٹین",
+                workflow_title: "GoSnel کیسے کام کرتا ہے", workflow_desc: "بہترین کھانے کے لیے تین آسان مراحل۔", step1_title: "1. اپنا موڈ بتائیں", step1_desc: "بس ٹائپ کریں، AI سمجھتا ہے۔", step_badge: "جادو ہوتا ہے", step2_title: "2. کمبو حاصل کریں", step2_desc: "ہم فوری طور پر کمبو بناتے ہیں۔", step3_title: "3. واٹس ایپ سے آرڈر کریں", step3_desc: "براہ راست واٹس ایپ پر بھیجیں۔",
+                comparison_title: "GoSnel بمقابلہ روایتی ایپس", comparison_subtitle: "تلاش شروع کریں۔", traditional_title: "روایتی ایپس", traditional_1: "100 نتائج", traditional_2: "15+ منٹ ضائع", traditional_3: "فیصلہ کرنے میں الجھن", gosnel_title: "GoSnel", gosnel_1: "AI کا بہترین مشورہ", gosnel_2: "30 سیکنڈ میں فیصلہ", gosnel_3: "اعتماد اور وضاحت",
+                chat_title: "GoSnel AI", chat_status: "آن لائن", footer_title: "اپنی بھوک مٹانے کے لیے تیار ہیں؟", footer_subtitle: "فوری طور پر اپنا پسندیدہ کھانا حاصل کریں۔", footer_cta: "ویب ایپ کھولیں",
+                chat_msgs: [ { user: true, text: "دوپہر کے کھانے کے لیے کچھ تیز مسالہ چاہیے!" }, { user: false, text: "بہترین! میرے پاس ایک کمال کا کمبو ہے:<br>1. مسالے دار چکن بریانی 🔥<br>2. رائتہ 🥗<br>3. منٹ لیمونیڈ 🍹<br><br>کل بل: 35 درہم۔ کیا میں آرڈر کر دوں؟" } ]
             }
         };
 
-        // Language Switcher Function
         function setLang(lang) {
-            currentLang = lang;
             localStorage.setItem('gosnel_lang', lang);
+            const isRtl = ['ar', 'ur'].includes(lang);
             
-            // Update active button state
-            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-            document.getElementById(`lang-${lang}`).classList.add('active');
-            
-            // Update HTML attributes
+            // HTML Attributes
             document.documentElement.lang = lang;
-            document.documentElement.dir = (lang === 'ar' || lang === 'ur') ? 'rtl' : 'ltr';
+            document.documentElement.dir = isRtl ? 'rtl' : 'ltr';
             
-            // Update body class for font-family
-            document.body.className = `lang-${lang} selection:bg-brand selection:text-white pb-20`;
-            
-            // Update translations
+            // Body Classes (Font)
+            document.body.className = `lang-${lang} antialiased pb-20 selection:bg-brand selection:text-white`;
+
+            // Active Toggle Button
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active', 'bg-brand', 'text-white'));
+            const activeBtn = document.getElementById(`btn-${lang}`);
+            activeBtn.classList.add('active', 'bg-brand', 'text-white');
+            activeBtn.classList.remove('text-gs-gray');
+
+            // Apply Translations
             const t = translations[lang];
-            
-            const updateEl = (id, html) => {
-                const el = document.getElementById(id);
-                if(el) el.innerHTML = html;
-            };
-
-            updateEl('nav_cta', t.nav_cta);
-            document.getElementById('hero_badge').innerHTML = `<i data-lucide="zap" class="w-4 h-4"></i><span>${t.hero_badge}</span>`;
-            updateEl('hero_title', t.hero_title);
-            updateEl('hero_desc', t.hero_desc);
-            document.getElementById('btn_primary').innerText = t.btn_primary;
-            document.getElementById('btn_secondary').innerText = t.btn_secondary;
-            updateEl('trust_1', t.trust_1);
-            updateEl('trust_2', t.trust_2);
-            updateEl('workflow_title', t.workflow_title);
-            updateEl('workflow_desc', t.workflow_desc);
-            updateEl('step1_title', t.step1_title);
-            updateEl('step1_desc', t.step1_desc);
-            updateEl('step_badge', t.step_badge);
-            updateEl('step2_title', t.step2_title);
-            updateEl('step2_desc', t.step2_desc);
-            updateEl('step3_title', t.step3_title);
-            updateEl('step3_desc', t.step3_desc);
-            updateEl('video_title', t.video_title);
-            updateEl('video_desc', t.video_desc);
-            document.getElementById('video_cta').innerText = t.video_cta;
-            updateEl('footer_title', t.footer_title);
-            document.getElementById('footer_cta').innerText = t.footer_cta;
-
-            lucide.createIcons();
-            
-            // Handle RTL icons
-            const navCtaBtn = document.querySelector('a[href="https://app.gosnel.com"]');
-            if (navCtaBtn) {
-                const rightArrow = navCtaBtn.querySelector('[data-lucide="arrow-right"]');
-                const leftArrow = navCtaBtn.querySelector('[data-lucide="arrow-left"]');
-                if (lang === 'ar' || lang === 'ur') {
-                    rightArrow.classList.add('hidden');
-                    leftArrow.classList.remove('hidden');
-                } else {
-                    rightArrow.classList.remove('hidden');
-                    leftArrow.classList.add('hidden');
-                }
-            }
-        }
-
-        // Add event listeners to language buttons
-        document.getElementById('lang-en').addEventListener('click', () => setLang('en'));
-        document.getElementById('lang-ar').addEventListener('click', () => setLang('ar'));
-        document.getElementById('lang-ml').addEventListener('click', () => setLang('ml'));
-        document.getElementById('lang-hi').addEventListener('click', () => setLang('hi'));
-        document.getElementById('lang-ur').addEventListener('click', () => setLang('ur'));
-        
-        // Remove old language selector
-        const oldSelector = document.getElementById('langSelector');
-        if (oldSelector) oldSelector.parentElement.remove();
-        
-        // Initialize with saved language
-        setLang(currentLang);
-    </script>
-</body>
-</html>
-    
-    <link rel="canonical" href="https://gosnel.com">
-    <meta name="description" content="Stop scrolling endlessly through food apps. GoSnel's AI suggests personalized meals from nearby restaurants in seconds. Order via Instagram or pickup.">
-    <meta name="keywords" content="meal discovery, AI food recommendations, restaurant discovery, UAE food, GoSnel, what to eat">
-    
-    <!-- SEO -->
-    <meta name="robots" content="index, follow">
-    <meta name="language" content="English">
-    <meta name="geo.region" content="AE">
-    <meta name="geo.placename" content="United Arab Emirates">
-    <meta name="author" content="GoSnel">
-    
-    <!-- Open Graph -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="GoSnel - AI Food Discovery | Stop Scrolling, Start Eating">
-    <meta property="og:description" content="Stop scrolling endlessly through food apps. GoSnel's AI suggests personalized meals from nearby restaurants in seconds.">
-    <meta property="og:url" content="https://gosnel.com">
-    <meta property="og:site_name" content="GoSnel">
-    <meta property="og:image" content="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/gosnelicon.png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:locale" content="en_AE">
-    
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="GoSnel - AI Food Discovery">
-    <meta name="twitter:description" content="Stop scrolling. Let me pick your perfect meal in 30 seconds.">
-    <meta name="twitter:image" content="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/gosnelicon.png">
-    <meta name="twitter:site" content="@GoSnel">
-    
-    <!-- JSON-LD: WebApplication -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "GoSnel",
-      "description": "AI-powered meal discovery and restaurant recommendation platform. Get personalized food suggestions in 100+ languages.",
-      "url": "https://gosnel.com",
-      "applicationCategory": "FoodService",
-      "operatingSystem": "Web",
-      "image": "https://pub-0d4798289dad4074a3236450ba640652.r2.dev/gosnelicon.png",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "AED"
-      },
-      "areaServed": {
-        "@type": "Country",
-        "name": "United Arab Emirates"
-      },
-      "inLanguage": ["en", "ar"]
-    }
-    </script>
-    
-    <!-- JSON-LD: Organization (for Google Knowledge Panel & Favicon) -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "GoSnel",
-      "url": "https://gosnel.com",
-      "logo": "https://pub-0d4798289dad4074a3236450ba640652.r2.dev/gosnelicon.png",
-      "image": "https://pub-0d4798289dad4074a3236450ba640652.r2.dev/gosnelicon.png",
-      "description": "AI-powered meal discovery platform connecting food lovers with restaurants across the UAE.",
-      "foundingDate": "2024",
-      "areaServed": "United Arab Emirates",
-      "sameAs": [
-        "https://www.instagram.com/gosneluae",
-        "https://twitter.com/gosneluae",
-        "https://www.linkedin.com/company/gosnel"
-      ]
-    }
-    </script>
-    
-    <link rel="stylesheet" href="/shared/styles/output.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
-    <!-- Contentsquare Analytics -->
-    <script src="https://t.contentsquare.net/uxa/0dcccabc249da.js"></script>
-    
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    
-    <style>
-        * { 
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            box-sizing: border-box;
-        }
-        
-        body {
-            margin: 0;
-            padding: 0;
-            background: #ffffff;
-            color: #0f172a;
-            overflow-x: hidden;
-        }
-        
-        /* === MODERN HERO SECTION === */
-        .hero-modern {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            overflow: hidden;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%);
-        }
-        
-        .hero-bg-image {
-            position: absolute;
-            inset: 0;
-            z-index: 1;
-        }
-        
-        .hero-bg-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.9; /* 90% clear */
-        }
-        
-        .hero-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to right, rgba(15, 23, 42, 0.7) 0%, rgba(15, 23, 42, 0.1) 60%, transparent 100%);
-            z-index: 2;
-        }
-
-        /* Mobile specific overlay adjustment */
-        @media (max-width: 768px) {
-            .hero-overlay {
-                background: linear-gradient(to bottom, rgba(15, 23, 42, 0.8) 0%, rgba(15, 23, 42, 0.6) 100%);
-            }
-            .hero-bg-image img {
-                opacity: 0.6;
-            }
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 10;
-            width: 100%;
-        }
-        
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 20px;
-            background: rgba(78, 205, 196, 0.1);
-            border: 1px solid rgba(78, 205, 196, 0.3);
-            border-radius: 100px;
-            color: #4ECDC4;
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 32px;
-            backdrop-filter: blur(10px);
-        }
-        
-        .hero-pulse {
-            width: 8px;
-            height: 8px;
-            background: #4ECDC4;
-            border-radius: 50%;
-            animation: pulse 2s ease-in-out infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(1.2); }
-        }
-        
-        .hero-title {
-            font-size: clamp(40px, 7vw, 80px);
-            font-weight: 900;
-            line-height: 1.1;
-            margin: 0 0 24px 0;
-            color: #ffffff;
-            letter-spacing: -0.02em;
-        }
-        
-        .hero-title .gradient-text {
-            background: linear-gradient(135deg, #4ECDC4 0%, #2dd4bf 50%, #14b8a6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .hero-subtitle {
-            font-size: clamp(18px, 2.5vw, 24px);
-            line-height: 1.6;
-            color: rgba(255, 255, 255, 0.8);
-            margin: 0 0 48px 0;
-            max-width: 600px;
-        }
-        
-        .hero-cta-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
-            margin-bottom: 48px;
-        }
-        
-        .btn-hero-primary {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            padding: 18px 36px;
-            background: linear-gradient(135deg, #4ECDC4 0%, #2dd4bf 100%);
-            color: #0f172a;
-            font-size: 18px;
-            font-weight: 700;
-            border-radius: 12px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 24px rgba(78, 205, 196, 0.3);
-        }
-        
-        .btn-hero-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 32px rgba(78, 205, 196, 0.4);
-        }
-        
-        .btn-hero-secondary {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            padding: 18px 36px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            color: #ffffff;
-            font-size: 18px;
-            font-weight: 600;
-            border-radius: 12px;
-            text-decoration: none;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-        }
-        
-        .btn-hero-secondary:hover {
-            background: rgba(255, 255, 255, 0.15);
-            border-color: rgba(255, 255, 255, 0.3);
-        }
-        
-        .hero-stats {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 40px;
-        }
-        
-        .hero-stat {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .hero-stat-value {
-            font-size: 36px;
-            font-weight: 800;
-            color: #4ECDC4;
-            line-height: 1;
-            margin-bottom: 8px;
-        }
-        
-        .hero-stat-label {
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.6);
-            font-weight: 500;
-        }
-        
-        /* === DEMO CHAT CARD === */
-        .chat-preview-card {
-            width: 100%;
-            max-width: 620px;
-            margin: 60px auto 0;
-            background: rgba(255, 255, 255, 0.98);
-            border-radius: 24px;
-            padding: 24px;
-            box-shadow: 0 24px 48px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            z-index: 10;
-        }
-        
-        .chat-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding-bottom: 16px;
-            border-bottom: 1px solid #e5e7eb;
-            margin-bottom: 20px;
-        }
-        
-        .chat-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #4ECDC4, #2dd4bf);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            color: white;
-        }
-        
-        /* Icon styling */
-        .icon-sm { width: 16px; height: 16px; vertical-align: middle; margin-right: 4px; display: inline-block; }
-        [dir="rtl"] .icon-sm { margin-right: 0; margin-left: 4px; }
-        .icon-inline { display: inline-flex; align-items: center; gap: 8px; }
-        .chat-line { white-space: nowrap; display: block; }
-        
-        .chat-info h4 {
-            margin: 0;
-            font-size: 16px;
-            font-weight: 700;
-            color: #0f172a;
-        }
-        
-        .chat-info p {
-            margin: 0;
-            font-size: 13px;
-            color: #64748b;
-        }
-        
-        .chat-status {
-            margin-left: auto;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 12px;
-            color: #10b981;
-            font-weight: 600;
-        }
-        
-        .chat-status-dot {
-            width: 8px;
-            height: 8px;
-            background: #10b981;
-            border-radius: 50%;
-            animation: pulse 2s ease-in-out infinite;
-        }
-        
-        .chat-messages {
-            max-height: 380px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-        
-        .chat-message {
-            display: flex;
-            gap: 10px;
-            animation: messageSlide 0.4s ease;
-        }
-        
-        @keyframes messageSlide {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .chat-message.user {
-            flex-direction: row-reverse;
-        }
-        
-        .chat-bubble {
-            max-width: 98%;
-            padding: 10px 14px;
-            border-radius: 16px;
-            font-size: 13.5px;
-            line-height: 1.4;
-        }
-        
-        .chat-message.user .chat-bubble {
-            background: linear-gradient(135deg, #4ECDC4, #2dd4bf);
-            color: #ffffff;
-            border-bottom-right-radius: 4px;
-        }
-        
-        .chat-message.bot .chat-bubble {
-            background: #f1f5f9;
-            color: #0f172a;
-            border-bottom-left-radius: 4px;
-        }
-        
-        /* === LANGUAGE TOGGLE === */
-        .lang-toggle {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 100;
-            display: flex;
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(20px);
-            border-radius: 100px;
-            padding: 6px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-        
-        .lang-btn {
-            padding: 12px 28px;
-            border: none;
-            background: transparent;
-            color: #718096;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            border-radius: 100px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .lang-btn.active {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #ffffff;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-        }
-        
-        .lang-btn:hover:not(.active) {
-            color: #2d3748;
-            background: rgba(102, 126, 234, 0.1);
-        }
-        
-        /* === SECTIONS === */
-        .section {
-            padding: 120px 0;
-        }
-        
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-        
-        .section-header {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 80px;
-        }
-        
-        .section-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 16px;
-            background: rgba(78, 205, 196, 0.1);
-            border-radius: 100px;
-            color: #0d9488;
-            font-size: 13px;
-            font-weight: 600;
-            margin-bottom: 16px;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-        
-        .section-title {
-            font-size: clamp(32px, 5vw, 56px);
-            font-weight: 800;
-            line-height: 1.2;
-            margin: 0 0 20px 0;
-            color: #0f172a;
-        }
-        
-        .section-subtitle {
-            font-size: 20px;
-            line-height: 1.6;
-            color: #64748b;
-            margin: 0;
-        }
-        
-        /* === VALUE PROPS GRID === */
-        .value-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 32px;
-        }
-        
-        .value-card {
-            padding: 40px 32px;
-            background: #ffffff;
-            border: 1px solid #e5e7eb;
-            border-radius: 20px;
-            transition: all 0.3s ease;
-        }
-        
-        .value-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-            border-color: rgba(78, 205, 196, 0.3);
-        }
-        
-        .value-icon {
-            width: 56px;
-            height: 56px;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 24px;
-            background: linear-gradient(135deg, #4ECDC4 0%, #2dd4bf 100%);
-        }
-        
-        .value-card h3 {
-            font-size: 22px;
-            font-weight: 700;
-            margin: 0 0 12px 0;
-            color: #0f172a;
-        }
-        
-        .value-card p {
-            font-size: 16px;
-            line-height: 1.6;
-            color: #64748b;
-            margin: 0;
-        }
-        
-        /* === HOW IT WORKS === */
-        .how-it-works {
-            background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
-        }
-        
-        .steps-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 48px;
-            margin-top: 60px;
-        }
-        
-        .step-card {
-            text-align: center;
-            position: relative;
-        }
-        
-        .step-number {
-            width: 64px;
-            height: 64px;
-            margin: 0 auto 24px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #4ECDC4, #2dd4bf);
-            color: #ffffff;
-            font-size: 28px;
-            font-weight: 800;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 8px 24px rgba(78, 205, 196, 0.3);
-        }
-        
-        .step-card h3 {
-            font-size: 24px;
-            font-weight: 700;
-            margin: 0 0 12px 0;
-            color: #0f172a;
-        }
-        
-        .step-card p {
-            font-size: 16px;
-            line-height: 1.6;
-            color: #64748b;
-            margin: 0;
-        }
-        
-        /* === COMPARISON SECTION === */
-        .comparison {
-            background: #0f172a;
-            color: #ffffff;
-        }
-        
-        .comparison-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 48px;
-            margin-top: 60px;
-        }
-        
-        @media (max-width: 768px) {
-            .comparison-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        .comparison-card {
-            padding: 40px;
-            border-radius: 20px;
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-        }
-        
-        .comparison-card.highlight {
-            border-color: #4ECDC4;
-            background: rgba(78, 205, 196, 0.1);
-        }
-        
-        .comparison-card h3 {
-            font-size: 28px;
-            font-weight: 700;
-            margin: 0 0 24px 0;
-            color: #ffffff;
-        }
-        
-        .comparison-card.highlight h3 {
-            color: #4ECDC4;
-        }
-        
-        .comparison-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        
-        .comparison-list li {
-            padding: 12px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 16px;
-        }
-        
-        .comparison-list li:last-child {
-            border-bottom: none;
-        }
-        
-        /* === CTA SECTION === */
-        .cta-section {
-            position: relative;
-            padding: 120px 0;
-            text-align: center;
-            overflow: hidden;
-            background: #0f172a;
-        }
-        
-        .cta-bg-image {
-            position: absolute;
-            inset: 0;
-            z-index: 1;
-        }
-        
-        .cta-bg-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.9; /* 90% clear */
-        }
-        
-        .cta-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(15, 23, 42, 0.6) 0%, rgba(78, 205, 196, 0.3) 100%);
-            z-index: 2;
-        }
-        
-        .cta-section h2 {
-            font-size: clamp(36px, 5vw, 64px);
-            font-weight: 900;
-            color: #ffffff;
-            margin: 0 0 24px 0;
-        }
-        
-        .cta-section p {
-            font-size: 20px;
-            color: rgba(255, 255, 255, 0.9);
-            margin: 0 0 48px 0;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .btn-cta-large {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            padding: 16px 36px;
-            background: #4ECDC4;
-            color: #000000;
-            font-size: 18px;
-            font-weight: 700;
-            border-radius: 12px;
-            text-decoration: none;
-            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
-        }
-        
-        .btn-cta-large:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
-        }
-        
-        /* === RESPONSIVE === */
-        @media (max-width: 768px) {
-            .hero-modern {
-                min-height: auto;
-                padding: 120px 0 80px;
-            }
-            
-            .hero-cta-group {
-                flex-direction: column;
-            }
-            
-            .btn-hero-primary,
-            .btn-hero-secondary {
-                width: 100%;
-                justify-content: center;
-            }
-            
-            .hero-stats {
-                justify-content: space-between;
-            }
-            
-            .section {
-                padding: 60px 0;
-            }
-        }
-
-        /* === DIETARY PREFERENCES SECTION === */
-        .dietary-section {
-            background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
-        }
-        
-        .dietary-list {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px 0;
-        }
-        
-        .dietary-item {
-            display: flex;
-            align-items: center;
-            padding: 16px 0;
-            border-bottom: 1px solid #e2e8f0;
-        }
-        
-        .dietary-item:last-child {
-            border-bottom: none;
-        }
-        
-        .dietary-image {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin-right: 20px;
-            flex-shrink: 0;
-        }
-        
-        .dietary-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .dietary-content {
-            flex-grow: 1;
-        }
-        
-        .dietary-content h3 {
-            margin: 0 0 4px 0;
-            font-size: 18px;
-            font-weight: 700;
-            color: #0f172a;
-        }
-        
-        .dietary-content p {
-            margin: 0;
-            font-size: 15px;
-            color: #64748b;
-        }
-        
-        .dietary-card-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-        
-        .dietary-tag {
-            padding: 6px 12px;
-            background: rgba(78, 205, 196, 0.1);
-            border: 1px solid rgba(78, 205, 196, 0.3);
-            border-radius: 100px;
-            font-size: 13px;
-            color: #000000;
-            font-weight: 500;
-        }
-        
-        .dietary-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 24px;
-            margin-top: 60px;
-        }
-        
-        .dietary-card {
-            position: relative;
-            height: 320px;
-            border-radius: 24px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 1px solid #4ECDC4;
-        }
-        
-        .dietary-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 24px 48px rgba(0, 0, 0, 0.15);
-        }
-        
-        .dietary-card-image {
-            position: absolute;
-            inset: 0;
-            z-index: 1;
-        }
-        
-        .dietary-card-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .dietary-card-overlay {
-            position: absolute;
-            inset: 0;
-            background: rgba(255, 255, 255, 0.4);
-            z-index: 2;
-        }
-        
-        .dietary-card-content {
-            position: relative;
-            z-index: 3;
-            height: 100%;
-            padding: 32px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            color: #000000;
-        }
-        
-        .dietary-card-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            background: rgba(78, 205, 196, 0.2);
-            backdrop-filter: blur(10px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 16px;
-            border: 1px solid rgba(78, 205, 196, 0.3);
-        }
-        
-        .dietary-card h3 {
-            font-size: 24px;
-            font-weight: 700;
-            margin: 0 0 8px 0;
-            color: #000000;
-        }
-        
-        .dietary-card p {
-            font-size: 15px;
-            line-height: 1.5;
-            margin: 0;
-            color: #000000;
-        }
-        
-        .dietary-card-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 12px;
-        }
-        
-        .dietary-tag {
-            padding: 6px 12px;
-            background: rgba(78, 205, 196, 0.1);
-            border: 1px solid rgba(78, 205, 196, 0.3);
-            border-radius: 100px;
-            font-size: 13px;
-            color: #000000;
-            font-weight: 500;
-        }
-        
-        @media (max-width: 768px) {
-            .dietary-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
-</head>
-<body>
-    
-    <!-- TRANSITION SECTION -->
-    <section class="section-transition" style="padding: 60px 0; background: #ffffff; text-align: center; border-bottom: 1px solid #f1f5f9;">
-        <div class="container">
-            <div style="font-size: 20px; font-weight: 500; color: #64748b; margin-bottom: 4px;" id="trans_line_1">From</div>
-            <div style="font-size: clamp(24px, 4vw, 40px); font-weight: 800; color: #0f172a; margin-bottom: 32px;" id="trans_line_2">I don't know what to eat</div>
-            <div style="font-size: 20px; font-weight: 500; color: #64748b; margin-bottom: 4px;" id="trans_line_3">To</div>
-            <div style="font-size: clamp(24px, 4vw, 40px); font-weight: 800; color: #4ECDC4; margin-bottom: 0;" id="trans_line_4">"GoSnel knows what I want"</div>
-        </div>
-    </section>
-
-    <!-- PERSONALIZED TO YOU -->
-    <section class="section dietary-section">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-badge">
-                    <span id="personalized_badge">Personalized to You</span>
-                </div>
-                <h2 class="section-title" id="personalized_title">
-                    You can tell me your preferences
-                </h2>
-            </div>
-            
-            <div class="dietary-list" style="max-width: 800px; margin: 0 auto; padding: 20px 0;">
-                <div class="dietary-item" style="display: flex; align-items: center; padding: 16px 0; border-bottom: 1px solid #e2e8f0;">
-                    <div class="dietary-image" style="width: 60px; height: 60px; border-radius: 50%; overflow: hidden; margin-right: 20px; flex-shrink: 0;">
-                        <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/user_landing_preferences/Plant_Based.png" alt="Plant-Based" style="width: 100%; height: 100%; object-fit: cover;">
-                    </div>
-                    <div class="dietary-content">
-                        <h3 id="diet_1_title" style="margin: 0 0 4px 0; font-size: 18px; font-weight: 700;">Plant-Based</h3>
-                        <p id="diet_1_desc" style="margin: 0; font-size: 15px; color: #64748b;">Vegetarian or vegan meals, automatically selected</p>
-                    </div>
-                </div>
-                
-                <div class="dietary-item" style="display: flex; align-items: center; padding: 16px 0; border-bottom: 1px solid #e2e8f0;">
-                    <div class="dietary-image" style="width: 60px; height: 60px; border-radius: 50%; overflow: hidden; margin-right: 20px; flex-shrink: 0;">
-                        <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/user_landing_preferences/Weight_Shape.png" alt="Weight & Shape" style="width: 100%; height: 100%; object-fit: cover;">
-                    </div>
-                    <div class="dietary-content">
-                        <h3 id="diet_2_title" style="margin: 0 0 4px 0; font-size: 18px; font-weight: 700;">Weight & Shape</h3>
-                        <p id="diet_2_desc" style="margin: 0; font-size: 15px; color: #64748b;">Balanced meals that fit your goals</p>
-                    </div>
-                </div>
-                
-                <div class="dietary-item" style="display: flex; align-items: center; padding: 16px 0; border-bottom: 1px solid #e2e8f0;">
-                    <div class="dietary-image" style="width: 60px; height: 60px; border-radius: 50%; overflow: hidden; margin-right: 20px; flex-shrink: 0;">
-                        <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/user_landing_preferences/Performance.png" alt="Performance" style="width: 100%; height: 100%; object-fit: cover;">
-                    </div>
-                    <div class="dietary-content">
-                        <h3 id="diet_3_title" style="margin: 0 0 4px 0; font-size: 18px; font-weight: 700;">Performance</h3>
-                        <p id="diet_3_desc" style="margin: 0; font-size: 15px; color: #64748b;">High-protein or low-carb, depending on your day</p>
-                    </div>
-                </div>
-                
-                <div class="dietary-item" style="display: flex; align-items: center; padding: 16px 0; border-bottom: 1px solid #e2e8f0;">
-                    <div class="dietary-image" style="width: 60px; height: 60px; border-radius: 50%; overflow: hidden; margin-right: 20px; flex-shrink: 0;">
-                        <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/user_landing_preferences/Health_Needs.png" alt="Health Needs" style="width: 100%; height: 100%; object-fit: cover;">
-                    </div>
-                    <div class="dietary-content">
-                        <h3 id="diet_4_title" style="margin: 0 0 4px 0; font-size: 18px; font-weight: 700;">Health Needs</h3>
-                        <p id="diet_4_desc" style="margin: 0; font-size: 15px; color: #64748b;">Gluten-free and allergy-aware options</p>
-                    </div>
-                </div>
-                
-                <div class="dietary-item" style="display: flex; align-items: center; padding: 16px 0;">
-                    <div class="dietary-image" style="width: 60px; height: 60px; border-radius: 50%; overflow: hidden; margin-right: 20px; flex-shrink: 0;">
-                        <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/user_landing_preferences/Smart_Preferences.png" alt="Smart Preferences" style="width: 100%; height: 100%; object-fit: cover;">
-                    </div>
-                    <div class="dietary-content">
-                        <h3 id="diet_5_title" style="margin: 0 0 4px 0; font-size: 18px; font-weight: 700;">Smart Preferences</h3>
-                        <p id="diet_5_desc" style="margin: 0 0 8px 0; font-size: 15px; color: #64748b;">I want meal with:</p>
-                        <div class="dietary-card-tags" style="display: flex; flex-wrap: wrap; gap: 8px;">
-                            <span class="dietary-tag" style="padding: 6px 12px; background: rgba(78, 205, 196, 0.1); border: 1px solid rgba(78, 205, 196, 0.3); border-radius: 100px; font-size: 13px; color: #000000; font-weight: 500;" id="tag_no_rice">No rice</span>
-                            <span class="dietary-tag" style="padding: 6px 12px; background: rgba(78, 205, 196, 0.1); border: 1px solid rgba(78, 205, 196, 0.3); border-radius: 100px; font-size: 13px; color: #000000; font-weight: 500;" id="tag_not_spicy">Not spicy</span>
-                            <span class="dietary-tag" style="padding: 6px 12px; background: rgba(78, 205, 196, 0.1); border: 1px solid rgba(78, 205, 196, 0.3); border-radius: 100px; font-size: 13px; color: #000000; font-weight: 500;" id="tag_extra_protein">Extra protein</span>
-                            <span class="dietary-tag" style="padding: 6px 12px; background: rgba(78, 205, 196, 0.1); border: 1px solid rgba(78, 205, 196, 0.3); border-radius: 100px; font-size: 13px; color: #000000; font-weight: 500;" id="tag_no_dairy">No dairy and more</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- COMPARISON -->
-    <section class="section comparison">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title" style="color: white;" id="comparison_title">
-                    GoSnel vs Traditional Food Apps
-                </h2>
-                <p class="section-subtitle" style="color: rgba(255,255,255,0.7);" id="comparison_subtitle">
-                    Stop searching. Start discovering.
-                </p>
-            </div>
-            
-            <div class="comparison-grid">
-                <div class="comparison-card">
-                    <h3 id="traditional_title"><i data-lucide="circle-x" class="icon-sm" style="color: #ef4444;"></i> Traditional Apps</h3>
-                    <ul class="comparison-list">
-                        <li id="traditional_1"><i data-lucide="search" class="icon-sm"></i> Search "burger" → 100 results</li>
-                        <li id="traditional_2"><i data-lucide="clock" class="icon-sm"></i> Scroll for 15+ minutes</li>
-                        <li id="traditional_3"><i data-lucide="frown" class="icon-sm"></i> Decision paralysis</li>
-                        <li id="traditional_4"><i data-lucide="trending-up" class="icon-sm"></i> Prices higher than restaurant</li>
-                    </ul>
-                </div>
-                
-                <div class="comparison-card highlight">
-                    <h3 id="gosnel_title"><i data-lucide="check-circle" class="icon-sm" style="color: #4ECDC4;"></i> GoSnel</h3>
-                    <ul class="comparison-list">
-                        <li id="gosnel_1"><i data-lucide="bot" class="icon-sm"></i> AI suggests 3-5 perfect matches</li>
-                        <li id="gosnel_2"><i data-lucide="zap" class="icon-sm"></i> Decide in 30 seconds</li>
-                        <li id="gosnel_3"><i data-lucide="smile" class="icon-sm"></i> Confidence & clarity</li>
-                        <li id="gosnel_4"><i data-lucide="tag" class="icon-sm"></i> Real restaurant prices</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Demo Chat Preview -->
-            <div class="chat-preview-card">
-                <div class="chat-header">
-                    <div class="chat-avatar">
-                        <svg width="20" height="20" fill="none" stroke="white" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
-                    </div>
-                    <div class="chat-info">
-                        <h4 id="chat_title">GoSnel AI</h4>
-                        <p id="chat_subtitle">Food discovery assistant</p>
-                    </div>
-                    <div class="chat-status">
-                        <span class="chat-status-dot"></span>
-                        <span id="chat_status">Online</span>
-                    </div>
-                </div>
-                <div class="chat-messages" id="chat_messages">
-                    <!-- Messages populated by JS -->
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- HOW IT WORKS -->
-    <section class="section how-it-works">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-badge">
-                    <span id="how_badge">How it works</span>
-                </div>
-            </div>
-            
-            <div class="steps-grid">
-                <div class="step-card">
-                    <div class="step-number" style="border-radius: 50%; width: 80px; height: 80px; margin: 0 auto 24px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #4ECDC4, #2dd4bf); color: white; font-size: 24px; font-weight: 800; box-shadow: 0 8px 24px rgba(78, 205, 196, 0.3);"><i data-lucide="message-square-text" style="width: 40px; height: 40px;"></i></div>
-                    <h3 id="step_1_title">Chat with Me</h3>
-                    <p id="step_1_desc">Tell me what you're craving, your budget, or just say "I'm hungry" — I'll understand.</p>
-                </div>
-                
-                <div class="step-card">
-                    <div class="step-number" style="border-radius: 50%; width: 80px; height: 80px; margin: 0 auto 24px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #4ECDC4, #2dd4bf); color: white; font-size: 24px; font-weight: 800; box-shadow: 0 8px 24px rgba(78, 205, 196, 0.3);"><img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/gosnelicon.png" alt="GoSnel" style="width: 100%; height: 100%; border-radius: 50%; object-fit: contain; padding: 8px;"></div>
-                    <h3 id="step_2_title">Get Suggestions</h3>
-                    <p id="step_2_desc">I'll suggest 3-5 perfect meals from nearby restaurants based on your preferences.</p>
-                </div>
-                
-                <div class="step-card">
-                    <div class="step-number" style="border-radius: 50%; width: 80px; height: 80px; margin: 0 auto 24px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #4ECDC4, #2dd4bf); color: white; font-size: 24px; font-weight: 800; box-shadow: 0 8px 24px rgba(78, 205, 196, 0.3);"><svg class="w-10 h-10" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white"><path fill="white" d="M16.6 14c-.2-.1-1.5-.7-1.7-.8c-.2-.1-.4-.1-.6.1c-.2.2-.6.8-.8 1c-.1.2-.3.2-.5.1c-.7-.3-1.4-.7-2-1.2c-.5-.5-1-1.1-1.4-1.7c-.1-.2 0-.4.1-.5c.1-.1.2-.3.4-.4c.1-.1.2-.3.2-.4c.1-.1.1-.3 0-.4c-.1-.1-.6-1.3-.8-1.8c-.1-.7-.3-.7-.5-.7h-.5c-.2 0-.5.2-.6.3c-.6.6-.9 1.3-.9 2.1c.1.9.4 1.8 1 2.6c1.1 1.6 2.5 2.9 4.2 3.7c.5.2.9.4 1.4.5c.5.2 1 .2 1.6.1c.7-.1 1.3-.6 1.7-1.2c.2-.4.2-.8.1-1.2l-.4-.2m2.5-9.1C15.2 1 8.9 1 5 4.9c-3.2 3.2-3.8 8.1-1.6 12L2 22l5.3-1.4c1.5.8 3.1 1.2 4.7 1.2c5.5 0 9.9-4.4 9.9-9.9c.1-2.6-1-5.1-2.8-7m-2.7 14c-1.3.8-2.8 1.3-4.4 1.3c-1.5 0-2.9-.4-4.2-1.1l-.3-.2l-3.1.8l.8-3l-.2-.3c-2.4-4-1.2-9 2.7-11.5S16.6 3.7 19 7.5c2.4 3.9 1.3 9-2.6 11.4"/></svg></div>
-                    <h3 id="step_3_title">Order Your Way</h3>
-                    <p id="step_3_desc">Order via Instagram or pickup — however you prefer.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="cta-section">
-        <div class="cta-bg-image">
-            <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1920&q=80" alt="Restaurant Background">
-        </div>
-        <div class="cta-overlay"></div>
-        <div class="container" style="position: relative; z-index: 10;">
-            <div class="cta-card" style="padding: 40px 30px; border-radius: 24px; border: 2px solid #4ECDC4; background: rgba(78, 205, 196, 0.1); backdrop-filter: blur(10px); max-width: 600px; margin: 0 auto;">
-                <h2 id="cta_title" style="font-size: 28px; font-weight: 800; color: #4ECDC4; margin: 0 0 16px 0; text-align: center;">Why try me</h2>
-                <p id="cta_subtitle" style="font-size: 16px; font-weight: 500; color: #ffffff; margin: 0 0 30px 0; text-align: center; line-height: 1.5;"></p>
-                
-                <div style="max-width: 500px; margin: 0 auto 30px;">
-                    <div id="cta_benefit_1" style="font-size: 15px; color: rgba(255, 255, 255, 0.95); margin: 12px 0; padding: 10px 0;">
-                        <strong style="font-size: 16px; display: flex; align-items: center; gap: 6px; margin-bottom: 0;"><i data-lucide="tag" style="width: 18px; height: 18px;"></i>Same restaurant prices always</strong>
-                    </div>
-                    <div id="cta_benefit_2" style="font-size: 15px; color: rgba(255, 255, 255, 0.95); margin: 12px 0; padding: 10px 0;">
-                        <strong style="font-size: 16px; display: flex; align-items: center; gap: 6px; margin-bottom: 0;"><i data-lucide="badge-percent" style="width: 18px; height: 18px;"></i>I find the top discounts for you</strong>
-                    </div>
-                    <div id="cta_benefit_3" style="font-size: 15px; color: rgba(255, 255, 255, 0.95); margin: 12px 0; padding: 10px 0;">
-                        <strong style="font-size: 16px; display: flex; align-items: center; gap: 6px;">
-                            <svg style="width: 18px; height: 18px; fill: white; flex-shrink: 0;" viewBox="0 0 24 24"><path d="M16.6 14c-.2-.1-1.5-.7-1.7-.8c-.2-.1-.4-.1-.6.1c-.2.2-.6.8-.8 1c-.1.2-.3.2-.5.1c-.7-.3-1.4-.7-2-1.2c-.5-.5-1-1.1-1.4-1.7c-.1-.2 0-.4.1-.5c.1-.1.2-.3.4-.4c.1-.1.2-.3.2-.4c.1-.1.1-.3 0-.4c-.1-.1-.6-1.3-.8-1.8c-.1-.7-.3-.7-.5-.7h-.5c-.2 0-.5.2-.6.3c-.6.6-.9 1.3-.9 2.1c.1.9.4 1.8 1 2.6c1.1 1.6 2.5 2.9 4.2 3.7c.5.2.9.4 1.4.5c.5.2 1 .2 1.6.1c.7-.1 1.3-.6 1.7-1.2c.2-.4.2-.8.1-1.2l-.4-.2m2.5-9.1C15.2 1 8.9 1 5 4.9c-3.2 3.2-3.8 8.1-1.6 12L2 22l5.3-1.4c1.5.8 3.1 1.2 4.7 1.2c5.5 0 9.9-4.4 9.9-9.9c.1-2.6-1-5.1-2.8-7m-2.7 14c-1.3.8-2.8 1.3-4.4 1.3c-1.5 0-2.9-.4-4.2-1.1l-.3-.2l-3.1.8l.8-3l-.2-.3c-2.4-4-1.2-9 2.7-11.5S16.6 3.7 19 7.5c2.4 3.9 1.3 9-2.6 11.4"/></svg>
-                            Order on Instagram Pay on delivery
-                        </strong>
-                    </div>
-                    <div id="cta_benefit_4" style="font-size: 15px; color: rgba(255, 255, 255, 0.95); margin: 12px 0; padding: 10px 0;">
-                        <strong style="font-size: 16px; display: flex; align-items: center; gap: 6px; margin-bottom: 0;"><i data-lucide="languages" style="width: 18px; height: 18px;"></i>I speak your language</strong>
-                    </div>
-                </div>
-                
-                <div style="text-align: center;">
-                    <a href="https://app.gosnel.com/" class="btn-cta-large" style="padding: 16px 36px; font-size: 18px;">
-                        <span id="cta_button">Chat with me</span>
-                        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <!--#include file="../components/footer.html" -->
-
-    <script>
-    (function() {
-        const translations = {
-            en: {
-                hero_badge: 'AI-Powered Food Discovery',
-                hero_title_1: 'Stop scrolling.',
-                hero_title_2: 'Let me pick for you in 30 seconds',
-                hero_subtitle: "Tired of spending 15 minutes scrolling through menus? GoSnel's AI suggests the perfect meal based on your taste and budget in under a minute.",
-                stat_languages: 'Languages',
-                stat_time: 'Average time',
-                stat_cost: 'Cost to use',
-                trans_line_1: 'From',
-                trans_line_2: 'I don\'t know what to eat',
-                trans_line_3: 'To',
-                trans_line_4: 'GoSnel knows what I want',
-                chat_title: 'GoSnel AI',
-                chat_subtitle: 'Food discovery assistant',
-                chat_status: 'Online',
-                why_badge: 'Why GoSnel',
-                why_title: 'Why users love GoSnel',
-                why_subtitle: 'Smart, simple, and speaks your language',
-                feature_1_title: 'Smart Suggestions',
-                feature_1_desc: 'Get meal ideas personalized to your taste and budget in seconds.',
-                feature_2_title: '100+ Languages',
-                feature_2_desc: "Speak your language, and I'll understand perfectly.",
-                feature_3_title: 'Real Restaurants',
-                feature_3_desc: 'Browse local vendors with authentic menus and real food.',
-                feature_4_title: 'Natural Conversations',
-                feature_4_desc: "Chat with me like you're texting a friend - no confusing menus.",
-                personalized_badge: 'Personalized to You',
-                personalized_title: 'You can tell me your preferences',
-                diet_1_title: 'Plant-Based',
-                diet_1_desc: 'Vegetarian or vegan meals, automatically selected',
-                diet_2_title: 'Weight & Shape',
-                diet_2_desc: 'Balanced meals that fit your goals',
-                diet_3_title: 'Performance',
-                diet_3_desc: 'High-protein or low-carb, depending on your day',
-                diet_4_title: 'Health Needs',
-                diet_4_desc: 'Gluten-free and allergy-aware options',
-                diet_5_title: 'Smart Preferences',
-                diet_5_desc: 'I want meal with:',
-                how_badge: 'How it works',
-                how_title: 'How it works',
-                step_1_title: 'Chat with Me',
-                step_1_desc: 'Tell me what you\'re craving, your budget, or just say "I\'m hungry" - I\'ll understand.',
-                step_2_title: 'Get Suggestions',
-                step_2_desc: 'I\'ll suggest 3-5 perfect meals from nearby restaurants based on your preferences.',
-                step_3_title: 'Order Your Way',
-                step_3_desc: 'Order via Instagram or pickup - however you prefer.',
-                comparison_title: 'GoSnel vs Traditional Food Apps',
-                comparison_subtitle: 'Stop searching. Start discovering.',
-                traditional_title: '<i data-lucide="circle-x" class="icon-sm" style="color: #ef4444;"></i> Traditional Apps',
-                traditional_1: '<i data-lucide="search" class="icon-sm"></i> Search "burger" → 100 results',
-                traditional_2: '<i data-lucide="clock" class="icon-sm"></i> Scroll for 15+ minutes',
-                traditional_3: '<i data-lucide="frown" class="icon-sm"></i> Decision paralysis',
-                traditional_4: '<i data-lucide="trending-up" class="icon-sm"></i>',
-                gosnel_title: '<i data-lucide="check-circle" class="icon-sm" style="color: #4ECDC4;"></i> GoSnel',
-                gosnel_1: '<i data-lucide="bot" class="icon-sm"></i> AI suggests 3-5 perfect matches',
-                gosnel_2: '<i data-lucide="zap" class="icon-sm"></i> Decide in 30 seconds',
-                gosnel_3: '<i data-lucide="smile" class="icon-sm"></i> Confidence & clarity',
-                gosnel_4: '',
-                cta_title: 'Why try me',
-                cta_subtitle: '',
-                cta_benefit_1: '',
-                cta_benefit_2: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 8px; margin-bottom: 0;"><i data-lucide="badge-percent" style="width: 20px; height: 20px;"></i>I find the top discounts for you</strong>',
-                cta_benefit_3: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 12px;"><svg style="width: 24px; height: 24px; fill: white; flex-shrink: 0;" viewBox="0 0 24 24"><path d="M16.6 14c-.2-.1-1.5-.7-1.7-.8c-.2-.1-.4-.1-.6.1c-.2.2-.6.8-.8 1c-.1.2-.3.2-.5.1c-.7-.3-1.4-.7-2-1.2c-.5-.5-1-1.1-1.4-1.7c-.1-.2 0-.4.1-.5c.1-.1.2-.3.4-.4c.1-.1.2-.3.2-.4c.1-.1.1-.3 0-.4c-.1-.1-.6-1.3-.8-1.8c-.1-.7-.3-.7-.5-.7h-.5c-.2 0-.5.2-.6.3c-.6.6-.9 1.3-.9 2.1c.1.9.4 1.8 1 2.6c1.1 1.6 2.5 2.9 4.2 3.7c.5.2.9.4 1.4.5c.5.2 1 .2 1.6.1c.7-.1 1.3-.6 1.7-1.2c.2-.4.2-.8.1-1.2l-.4-.2m2.5-9.1C15.2 1 8.9 1 5 4.9c-3.2 3.2-3.8 8.1-1.6 12L2 22l5.3-1.4c1.5.8 3.1 1.2 4.7 1.2c5.5 0 9.9-4.4 9.9-9.9c.1-2.6-1-5.1-2.8-7m-2.7 14c-1.3.8-2.8 1.3-4.4 1.3c-1.5 0-2.9-.4-4.2-1.1l-.3-.2l-3.1.8l.8-3l-.2-.3c-2.4-4-1.2-9 2.7-11.5S16.6 3.7 19 7.5c2.4 3.9 1.3 9-2.6 11.4"/></svg>Order on Instagram Pay on delivery</strong>',
-                cta_benefit_4: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 8px; margin-bottom: 0;"><i data-lucide="languages" style="width: 20px; height: 20px;"></i>I speak your language</strong>',
-                cta_button: 'Chat with me',
-                tag_no_rice: 'No rice',
-                tag_not_spicy: 'Not spicy',
-                tag_extra_protein: 'Extra protein',
-                tag_no_dairy: 'No dairy and more'
-            },
-            ar: {
-                hero_badge: 'اكتشاف الطعام بالذكاء الاصطناعي',
-                hero_title_1: 'توقف عن التمرير',
-                hero_title_2: 'خلني اختار لك في 30 ثانية',
-                hero_subtitle: 'تعبت من قضاء 15 دقيقة في تصفح القوائم؟ انا بقترح لك الوجبة المثالية بناءً على ذوقك وميزانيتك في أقل من دقيقة.',
-                stat_languages: 'لغة',
-                stat_time: 'متوسط الوقت',
-                stat_cost: 'تكلفة الاستخدام',
-                trans_line_1: 'من',
-                trans_line_2: 'ما أعرف شو آكل',
-                trans_line_3: 'إلى',
-                trans_line_4: 'جوسنِل يعرف اللي يناسبني',
-                chat_title: 'جوسنِل AI',
-                chat_subtitle: 'مساعد اكتشاف الطعام',
-                chat_status: 'متصل',
-                why_badge: 'لماذا جوسنِل',
-                why_title: 'لماذا يحب المستخدمون جوسنِل',
-                why_subtitle: 'ذكي، بسيط، ويتحدث لغتك',
-                feature_1_title: 'اقتراحات ذكية',
-                feature_1_desc: 'احصل على أفكار وجبات مخصصة حسب ذوقك وميزانيتك في ثوانٍ.',
-                feature_2_title: 'أكثر من 100 لغة',
-                feature_2_desc: 'تحدث بلغتك، وسأفهمك تمامًا.',
-                feature_3_title: 'مطاعم حقيقية',
-                feature_3_desc: 'تصفح البائعين المحليين بقوائم أصلية وطعام حقيقي.',
-                feature_4_title: 'محادثات طبيعية',
-                feature_4_desc: 'تحدث معي كأنك تراسل صديقك - بدون قوائم معقدة.',
-                personalized_badge: 'مخصص لك',
-                personalized_title: 'يمكنك إخباري بتفضيلاتك',
-                diet_1_title: 'نباتي',
-                diet_1_desc: 'وجبات نباتية أو نباتية بالكامل، يتم اختيارها تلقائيًا',
-                diet_2_title: 'الوزن والشكل',
-                diet_2_desc: 'وجبات متوازنة تناسب أهدافك',
-                diet_3_title: 'الأداء',
-                diet_3_desc: 'عالي البروتين أو منخفض الكربوهيدرات، حسب يومك',
-                diet_4_title: 'الاحتياجات الصحية',
-                diet_4_desc: 'خيارات خالية من الغلوتين ومراعية للحساسية',
-                diet_5_title: 'التفضيلات الذكية',
-                diet_5_desc: 'أريد وجبة مع:',
-                how_badge: 'كيف يعمل',
-                how_title: 'كيف يعمل',
-                step_1_title: 'تحدث معي',
-                step_1_desc: 'أخبرني بما تشتهيه، ميزانيتك، أو قل فقط " جوعان" - سأفهم.',
-                step_2_title: 'احصل على اقتراحات',
-                step_2_desc: 'سأقترح 3-5 وجبات مثالية من المطاعم القريبة بناءً على تفضيلاتك.',
-                step_3_title: 'اطلب بطريقتك',
-                step_3_desc: 'اطلب عبر واتساب أو استلام - كما تفضل.',
-                comparison_title: 'جوسنِل مقابل تطبيقات الطعام التقليدية',
-                comparison_subtitle: 'توقف عن البحث. ابدأ الاكتشاف.',
-                traditional_title: '<i data-lucide="circle-x" class="icon-sm" style="color: #ef4444;"></i> التطبيقات التقليدية',
-                traditional_1: '<i data-lucide="search" class="icon-sm"></i> ابحث عن "برجر" → 100 نتيجة',
-                traditional_2: '<i data-lucide="clock" class="icon-sm"></i> تمرير لأكثر من 15 دقيقة',
-                traditional_3: '<i data-lucide="frown" class="icon-sm"></i> شلل اتخاذ القرار',
-                traditional_4: '<i data-lucide="trending-up" class="icon-sm"></i>',
-                gosnel_title: '<i data-lucide="check-circle" class="icon-sm" style="color: #4ECDC4;"></i> جوسنِل',
-                gosnel_1: '<i data-lucide="bot" class="icon-sm"></i>انا بقترح 3-5 خيارات مثالية',
-                gosnel_2: '<i data-lucide="zap" class="icon-sm"></i> قرر في 30 ثانية',
-                gosnel_3: '<i data-lucide="smile" class="icon-sm"></i> ثقة ووضوح',
-                gosnel_4: '',
-                cta_title: 'ليه تجربني؟',
-                cta_subtitle: '',
-                cta_benefit_1: '',
-                cta_benefit_2: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 8px; margin-bottom: 0;"><i data-lucide="badge-percent" style="width: 20px; height: 20px;"></i>بجيب لك أفضل الخصومات</strong>',
-                cta_benefit_3: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 12px;"><svg style="width: 24px; height: 24px; fill: white; flex-shrink: 0;" viewBox="0 0 24 24"><path d="M16.6 14c-.2-.1-1.5-.7-1.7-.8c-.2-.1-.4-.1-.6.1c-.2.2-.6.8-.8 1c-.1.2-.3.2-.5.1c-.7-.3-1.4-.7-2-1.2c-.5-.5-1-1.1-1.4-1.7c-.1-.2 0-.4.1-.5c.1-.1.2-.3.4-.4c.1-.1.2-.3.2-.4c.1-.1.1-.3 0-.4c-.1-.1-.6-1.3-.8-1.8c-.1-.7-.3-.7-.5-.7h-.5c-.2 0-.5.2-.6.3c-.6.6-.9 1.3-.9 2.1c.1.9.4 1.8 1 2.6c1.1 1.6 2.5 2.9 4.2 3.7c.5.2.9.4 1.4.5c.5.2 1 .2 1.6.1c.7-.1 1.3-.6 1.7-1.2c.2-.4.2-.8.1-1.2l-.4-.2m2.5-9.1C15.2 1 8.9 1 5 4.9c-3.2 3.2-3.8 8.1-1.6 12L2 22l5.3-1.4c1.5.8 3.1 1.2 4.7 1.2c5.5 0 9.9-4.4 9.9-9.9c.1-2.6-1-5.1-2.8-7m-2.7 14c-1.3.8-2.8 1.3-4.4 1.3c-1.5 0-2.9-.4-4.2-1.1l-.3-.2l-3.1.8l.8-3l-.2-.3c-2.4-4-1.2-9 2.7-11.5S16.6 3.7 19 7.5c2.4 3.9 1.3 9-2.6 11.4"/></svg>برتبلك طلبك على الواتساب  وبخلي المطعم يوصلك وجبتك وبتدفع عند الاستلام</strong>',
-                cta_benefit_4: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 8px; margin-bottom: 0;"><i data-lucide="languages" style="width: 20px; height: 20px;"></i>وبحكي لغتك</strong>',
-                cta_button: 'تحدث معي',
-                tag_no_rice: 'أرز بدون',
-                tag_not_spicy: 'غير حار',
-                tag_extra_protein: 'بروتين إضافي',
-                tag_no_dairy: 'بدون منتجات الألبان والمزيد'
-            },
-            ml: {
-                hero_badge: 'AI-അധിഷ്ഠിത ഭക്ഷണ കണ്ടെത്തൽ',
-                hero_title_1: 'തിരയുന്നത് നിർത്തൂ.',
-                hero_title_2: 'എന്നെ 30 സെക്കൻഡിനുള്ളിൽ തിരഞ്ഞെടുക്കാൻ അനുവദിക്കുക',
-                hero_subtitle: 'മെനുകളിലൂടെ 15 മിനിറ്റ് ചെലവഴിച്ച് നിങ്ങൾ വിഷമിച്ചോ? നിങ്ങളുടെ രുചിയും ബജറ്റും അടിസ്ഥാനമാക്കി ഗോസ്നെൽ എഐ ഏറ്റവും നല്ല ഭക്ഷണം നിർദ്ദേശിക്കുന്നു – ഒരു മിനിറ്റിനുള്ളിൽ.',
-                stat_languages: 'ഭാഷകൾ',
-                stat_time: 'ശരാശരി സമയം',
-                stat_cost: 'ഉപയോഗിക്കാനുള്ള ചെലവ്',
-                trans_line_1: 'നിന്ന്',
-                trans_line_2: 'എനിക്ക് എന്ത് കഴിക്കണമെന്ന് അറിയില്ല',
-                trans_line_3: 'എന്ന്',
-                trans_line_4: '"ഗോസ്നെൽ എനിക്ക് എന്താണ് വേണ്ടതെന്ന് അറിയാം"',
-                chat_title: 'ഗോസ്നെൽ AI',
-                chat_subtitle: 'ഫുഡ് ഡിസ്കവറി അസിസ്റ്റന്റ്',
-                chat_status: 'ഓൺലൈൻ',
-                why_badge: 'എന്തുകൊണ്ട് ഗോസ്നെൽ',
-                why_title: 'ഗോസ്നെൽ ഉപയോക്താക്കൾ സ്നേഹിക്കുന്നത് എന്തുകൊണ്ട്',
-                why_subtitle: 'സ്മാർട്ട്, ലളിതവും നിങ്ങളുടെ ഭാഷ സംസാരിക്കുന്നു',
-                feature_1_title: 'സ്മാർട്ട് നിർദ്ദേശങ്ങൾ',
-                feature_1_desc: 'നിങ്ങളുടെ രുചിയും ബജറ്റും അടിസ്ഥാനമാക്കി സെക്കൻഡുകൾക്കുള്ളിൽ ഭക്ഷണ ആശയങ്ങൾ നേടുക.',
-                feature_2_title: '100+ ഭാഷകൾ',
-                feature_2_desc: 'നിങ്ങളുടെ ഭാഷ സംസാരിക്കുക, ഞാൻ നിങ്ങളെ മനസ്സിലാക്കും.',
-                feature_3_title: 'യഥാർത്ഥ റെസ്റ്റോറന്റുകൾ',
-                feature_3_desc: 'യഥാർത്ഥ മെനുകളും യഥാർത്ഥ ഭക്ഷണവുമായി പ്രാദേശിക വിൽപനക്കാരെ ബ്രൗസ് ചെയ്യുക.',
-                feature_4_title: 'സ്വാഭാവിക സംഭാഷണങ്ങൾ',
-                feature_4_desc: 'നിങ്ങളുടെ സുഹൃത്തിനൊപ്പം സന്ദേശം അയയ്ക്കുന്നതുപോലെ എന്നോട് സംസാരിക്കുക - ആകുലപ്പെടുത്തുന്ന മെനുകളില്ല.',
-                personalized_badge: 'നിങ്ങൾക്കായി പ്രത്യേകം',
-                personalized_title: 'നിങ്ങൾക്ക് എന്നോട് നിങ്ങളുടെ മുൻഗണനകൾ പറയാം',
-                diet_1_title: 'പ്ലാന്റ്-ബേസ്ഡ്',
-                diet_1_desc: 'പൂർണ്ണമായും തിരഞ്ഞെടുത്ത ശാകാഹാര ഭക്ഷണം',
-                diet_2_title: 'വെയിറ്റ് & ഷെയ്പ്',
-                diet_2_desc: 'നിങ്ങളുടെ ലക്ഷ്യങ്ങൾക്കനുസൃതമായ ബാലൻസ്ഡ് ഭക്ഷണം',
-                diet_3_title: 'പെർഫോമൻസ്',
-                diet_3_desc: 'നിങ്ങളുടെ ദിവസത്തെ ആശ്രയിച്ച് ഹൈ-പ്രോട്ടീൻ അല്ലെങ്കിൽ ലോ-കാർബ്',
-                diet_4_title: 'ആരോഗ്യ ആവശ്യങ്ങൾ',
-                diet_4_desc: 'ഗ്ലൂട്ടൻ-ഫ്രീയും അലർജി അറിവുള്ള ഓപ്ഷനുകളും',
-                diet_5_title: 'സ്മാർട്ട് മുൻഗണനകൾ',
-                diet_5_desc: 'എനിക്ക് ഇതുപയോഗിച്ച് ഭക്ഷണം വേണം:',
-                how_badge: 'എങ്ങനെ പ്രവർത്തിക്കുന്നു',
-                how_title: 'എങ്ങനെ പ്രവർത്തിക്കുന്നു',
-                step_1_title: 'എന്നോട് സംസാരിക്കുക',
-                step_1_desc: 'നിങ്ങൾ ആഗ്രഹിക്കുന്നത് എന്നോട് പറയുക, നിങ്ങളുടെ ബജറ്റ്, അല്ലെങ്കിൽ കേവലം "എനിക്ക് വിശപ്പാണ്" എന്ന് പറയുക - ഞാൻ മനസ്സിലാക്കും.',
-                step_2_title: 'നിർദ്ദേശങ്ങൾ നേടുക',
-                step_2_desc: 'നിങ്ങളുടെ മുൻഗണനകൾ അടിസ്ഥാനമാക്കി അടുത്തുള്ള റെസ്റ്റോറന്റുകളിൽ നിന്ന് 3-5 ഏറ്റവും നല്ല ഭക്ഷണങ്ങൾ ഞാൻ നിർദ്ദേശിക്കും.',
-                step_3_title: 'നിങ്ങളുടെ രീതിയിൽ ഓർഡർ ചെയ്യുക',
-                step_3_desc: 'ഇൻസ്റ്റാഗ്രാം വഴി അല്ലെങ്കിൽ പിക്കപ്പ് ചെയ്യുക - നിങ്ങൾ ഇഷ്ടപ്പെടുന്നത് പോലെ.',
-                comparison_title: 'ഗോസ്നെൽ വിസ് ട്രാഡിഷണൽ ഫുഡ് ആപ്പുകൾ',
-                comparison_subtitle: 'തിരയുന്നത് നിർത്തുക. കണ്ടെത്തുന്നത് ആരംഭിക്കുക.',
-                traditional_title: '<i data-lucide="circle-x" class="icon-sm" style="color: #ef4444;"></i> പരമ്പരാഗത ആപ്പുകൾ',
-                traditional_1: '<i data-lucide="search" class="icon-sm"></i> "ബർഗർ" തിരയുക → 100 ഫലങ്ങൾ',
-                traditional_2: '<i data-lucide="clock" class="icon-sm"></i> 15+ മിനിറ്റ് സ്ക്രോൾ ചെയ്യുക',
-                traditional_3: '<i data-lucide="frown" class="icon-sm"></i> തീരുമാനിക്കാനാകാത്ത അവസ്ഥ',
-                traditional_4: '<i data-lucide="trending-up" class="icon-sm"></i>',
-                gosnel_title: '<i data-lucide="check-circle" class="icon-sm" style="color: #4ECDC4;"></i> ഗോസ്നെൽ',
-                gosnel_1: '<i data-lucide="bot" class="icon-sm"></i> എഐ 3-5 ഏറ്റവും നല്ല കളിപ്പാട്ടങ്ങൾ നിർദ്ദേശിക്കുന്നു',
-                gosnel_2: '<i data-lucide="zap" class="icon-sm"></i> 30 സെക്കൻഡിൽ തീരുമാനിക്കുക',
-                gosnel_3: '<i data-lucide="smile" class="icon-sm"></i> ആത്മവിശ്വാസവും വ്യക്തതയും',
-                gosnel_4: '<i data-lucide="tag" class="icon-sm"></i> യഥാർത്ഥ റെസ്റ്റോറന്റ് വിലകൾ',
-                cta_title: 'എന്നെ പരീക്ഷിക്കാൻ കാരണം',
-                cta_subtitle: '',
-                cta_benefit_1: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 8px; margin-bottom: 0;"><i data-lucide="tag" style="width: 20px; height: 20px;"></i>എപ്പോഴും യഥാർത്ഥ റെസ്റ്റോറന്റ് വിലകൾ</strong>',
-                cta_benefit_2: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 8px; margin-bottom: 0;"><i data-lucide="badge-percent" style="width: 20px; height: 20px;"></i>നിങ്ങൾക്കായി ഏറ്റവും മികച്ച ഡിസ്കൗണ്ടുകൾ ഞാൻ കണ്ടെത്തുന്നു</strong>',
-                cta_benefit_3: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 12px;"><svg style="width: 24px; height: 24px; fill: white; flex-shrink: 0;" viewBox="0 0 24 24"><path d="M16.6 14c-.2-.1-1.5-.7-1.7-.8c-.2-.1-.4-.1-.6.1c-.2.2-.6.8-.8 1c-.1.2-.3.2-.5.1c-.7-.3-1.4-.7-2-1.2c-.5-.5-1-1.1-1.4-1.7c-.1-.2 0-.4.1-.5c.1-.1.2-.3.4-.4c.1-.1.2-.3.2-.4c.1-.1.1-.3 0-.4c-.1-.1-.6-1.3-.8-1.8c-.1-.7-.3-.7-.5-.7h-.5c-.2 0-.5.2-.6.3c-.6.6-.9 1.3-.9 2.1c.1.9.4 1.8 1 2.6c1.1 1.6 2.5 2.9 4.2 3.7c.5.2.9.4 1.4.5c.5.2 1 .2 1.6.1c.7-.1 1.3-.6 1.7-1.2c.2-.4.2-.8.1-1.2l-.4-.2m2.5-9.1C15.2 1 8.9 1 5 4.9c-3.2 3.2-3.8 8.1-1.6 12L2 22l5.3-1.4c1.5.8 3.1 1.2 4.7 1.2c5.5 0 9.9-4.4 9.9-9.9c.1-2.6-1-5.1-2.8-7m-2.7 14c-1.3.8-2.8 1.3-4.4 1.3c-1.5 0-2.9-.4-4.2-1.1l-.3-.2l-3.1.8l.8-3l-.2-.3c-2.4-4-1.2-9 2.7-11.5S16.6 3.7 19 7.5c2.4 3.9 1.3 9-2.6 11.4"/></svg>ഇൻസ്റ്റാഗ്രാമിൽ ഓർഡർ ചെയ്യുക ഡെലിവറിയിൽ പേയ്</strong>',
-                cta_benefit_4: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 8px; margin-bottom: 0;"><i data-lucide="languages" style="width: 20px; height: 20px;"></i>എനിക്ക് നിങ്ങളുടെ ഭാഷ സംസാരിക്കാൻ കഴിയും</strong>',
-                cta_button: 'എന്നോട് സംസാരിക്കുക',
-                tag_no_rice: 'അരി ഇല്ല',
-                tag_not_spicy: 'ഉപ്പില്ല',
-                tag_extra_protein: 'എക്സ്ട്രാ പ്രോട്ടീൻ',
-                tag_no_dairy: 'പാൽ ഉൽപ്പന്നങ്ങൾ ഇല്ല കൂടുതൽ'
-            },
-            hi: {
-                hero_badge: 'AI-पावर्ड फूड डिस्कवरी',
-                hero_title_1: 'स्क्रॉल करना बंद करें.',
-                hero_title_2: 'मुझे 30 सेकंड में आपके लिए चुनने दें',
-                hero_subtitle: 'मेनू के माध्यम से 15 मिनट बर्बाद करने से थक गए? गोस्नेल का एआई आपकी पसंद और बजट के आधार पर एक शानदार भोजन का सुझाव देता है – एक मिनट से भी कम समय में.',
-                stat_languages: 'भाषाएँ',
-                stat_time: 'औसत समय',
-                stat_cost: 'उपयोग करने की लागत',
-                trans_line_1: 'से',
-                trans_line_2: 'मुझे नहीं पता कि क्या खाना है',
-                trans_line_3: 'तक',
-                trans_line_4: '"गोस्नेल जानता है कि मुझे क्या चाहिए"',
-                chat_title: 'गोस्नेल AI',
-                chat_subtitle: 'भोजन खोज असिस्टेंट',
-                chat_status: 'ऑनलाइन',
-                why_badge: 'क्यों गोस्नेल',
-                why_title: 'उपयोगकर्ताओं को गोस्नेल क्यों पसंद है',
-                why_subtitle: 'स्मार्ट, सरल और आपकी भाषा बोलता है',
-                feature_1_title: 'स्मार्ट सुझाव',
-                feature_1_desc: 'कुछ ही सेकंड में आपकी रुचि और बजट के अनुसार भोजन के विचार प्राप्त करें.',
-                feature_2_title: '100+ भाषाएँ',
-                feature_2_desc: 'अपनी भाषा बोलें, और मैं आपको समझ जाऊंगा.',
-                feature_3_title: 'वास्तविक रेस्तरां',
-                feature_3_desc: 'वास्तविक मेनू और वास्तविक भोजन के साथ स्थानीय विक्रेताओं को ब्राउज़ करें.',
-                feature_4_title: 'प्राकृतिक बातचीत',
-                feature_4_desc: 'एक दोस्त के साथ संदेश भेजने की तरह मेरे साथ बात करें - कोई भ्रमित करने वाला मेनू नहीं.',
-                personalized_badge: 'आपके लिए व्यक्तिगत',
-                personalized_title: 'आप मुझे अपनी प्राथमिकताएं बता सकते हैं',
-                diet_1_title: 'प्लांट-आधारित',
-                diet_1_desc: 'शाकाहारी या शाकाहारी भोजन, स्वचालित रूप से चुना गया',
-                diet_2_title: 'वजन और आकार',
-                diet_2_desc: 'संतुलित भोजन जो आपके लक्ष्यों को फिट करता है',
-                diet_3_title: 'प्रदर्शन',
-                diet_3_desc: 'आपके दिन के आधार पर उच्च प्रोटीन या कम कार्ब',
-                diet_4_title: 'स्वास्थ्य आवश्यकताएं',
-                diet_4_desc: 'ग्लूटेन-मुक्त और एलर्जी जागरूक विकल्प',
-                diet_5_title: 'स्मार्ट प्राथमिकताएं',
-                diet_5_desc: 'मुझे भोजन के साथ चाहिए:',
-                how_badge: 'कैसे काम करता है',
-                how_title: 'कैसे काम करता है',
-                step_1_title: 'मेरे साथ बात करें',
-                step_1_desc: 'मुझे बताएं कि आप क्या भूखे हैं, आपका बजट, या केवल कहें "मुझे भूख लगी है" - मैं समझ जाऊंगा.',
-                step_2_title: 'सुझाव प्राप्त करें',
-                step_2_desc: 'मैं आपकी प्राथमिकताओं के आधार पर आसपास के रेस्तरां से 3-5 बेहतरीन भोजन का सुझाव दूंगा.',
-                step_3_title: 'अपने तरीके से ऑर्डर करें',
-                step_3_desc: 'इंस्टाग्राम के माध्यम से या पिकअप करें - जैसा आप पसंद करें.',
-                comparison_title: 'गोस्नेल बनाम पारंपरिक भोजन ऐप्स',
-                comparison_subtitle: 'खोजना बंद करो. खोजना शुरू करो.',
-                traditional_title: '<i data-lucide="circle-x" class="icon-sm" style="color: #ef4444;"></i> पारंपरिक ऐप्स',
-                traditional_1: '<i data-lucide="search" class="icon-sm"></i> "बर्गर" खोजें → 100 परिणाम',
-                traditional_2: '<i data-lucide="clock" class="icon-sm"></i> 15+ मिनट के लिए स्क्रॉल करें',
-                traditional_3: '<i data-lucide="frown" class="icon-sm"></i> निर्णय लेने में अक्षमता',
-                traditional_4: '<i data-lucide="trending-up" class="icon-sm"></i>',
-                gosnel_title: '<i data-lucide="check-circle" class="icon-sm" style="color: #4ECDC4;"></i> गोस्नेल',
-                gosnel_1: '<i data-lucide="bot" class="icon-sm"></i> एआई 3-5 बेहतरीन मैचों का सुझाव देता है',
-                gosnel_2: '<i data-lucide="zap" class="icon-sm"></i> 30 सेकंड में निर्णय लें',
-                gosnel_3: '<i data-lucide="smile" class="icon-sm"></i> आत्मविश्वास और स्पष्टता',
-                gosnel_4: '<i data-lucide="tag" class="icon-sm"></i> वास्तविक रेस्तरां की कीमतें',
-                cta_title: 'मुझे क्यों आजमाएं',
-                cta_subtitle: '',
-                cta_benefit_1: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 8px; margin-bottom: 0;"><i data-lucide="tag" style="width: 20px; height: 20px;"></i>हमेशा वास्तविक रेस्तरां की कीमतें',
-                cta_benefit_2: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 8px; margin-bottom: 0;"><i data-lucide="badge-percent" style="width: 20px; height: 20px;"></i>मैं आपके लिए शीर्ष छूट ढूंढता हूं',
-                cta_benefit_3: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 12px;"><svg style="width: 24px; height: 24px; fill: white; flex-shrink: 0;" viewBox="0 0 24 24"><path d="M16.6 14c-.2-.1-1.5-.7-1.7-.8c-.2-.1-.4-.1-.6.1c-.2.2-.6.8-.8 1c-.1.2-.3.2-.5.1c-.7-.3-1.4-.7-2-1.2c-.5-.5-1-1.1-1.4-1.7c-.1-.2 0-.4.1-.5c.1-.1.2-.3.4-.4c.1-.1.2-.3.2-.4c.1-.1.1-.3 0-.4c-.1-.1-.6-1.3-.8-1.8c-.1-.7-.3-.7-.5-.7h-.5c-.2 0-.5.2-.6.3c-.6.6-.9 1.3-.9 2.1c.1.9.4 1.8 1 2.6c1.1 1.6 2.5 2.9 4.2 3.7c.5.2.9.4 1.4.5c.5.2 1 .2 1.6.1c.7-.1 1.3-.6 1.7-1.2c.2-.4.2-.8.1-1.2l-.4-.2m2.5-9.1C15.2 1 8.9 1 5 4.9c-3.2 3.2-3.8 8.1-1.6 12L2 22l5.3-1.4c1.5.8 3.1 1.2 4.7 1.2c5.5 0 9.9-4.4 9.9-9.9c.1-2.6-1-5.1-2.8-7m-2.7 14c-1.3.8-2.8 1.3-4.4 1.3c-1.5 0-2.9-.4-4.2-1.1l-.3-.2l-3.1.8l.8-3l-.2-.3c-2.4-4-1.2-9 2.7-11.5S16.6 3.7 19 7.5c2.4 3.9 1.3 9-2.6 11.4"/></svg>इंस्टाग्राम पर ऑर्डर करें डिलीवरी पर भुगतान करें',
-                cta_benefit_4: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 8px; margin-bottom: 0;"><i data-lucide="languages" style="width: 20px; height: 20px;"></i>मैं आपकी भाषा बोलता हूं',
-                cta_button: 'मेरे साथ बात करें',
-                tag_no_rice: 'चावल नहीं',
-                tag_not_spicy: 'मसालेदार नहीं',
-                tag_extra_protein: 'अतिरिक्त प्रोटीन',
-                tag_no_dairy: 'डेयरी नहीं और अधिक'
-            },
-            ur: {
-                hero_badge: 'AI سے لیس کھانے کی تلاش',
-                hero_title_1: 'اسکرول کرنا بند کریں.',
-                hero_title_2: 'مجھے 30 سیکنڈ میں آپ کے لیے انتخاب کرنے دیں',
-                hero_subtitle: 'مینو کے ذریعے 15 منٹ ضائع کرنے سے تنگ آ چکے ہیں؟ گوسلنل کا AI آپ کی پسند اور بجٹ کے مطابق ایک بہترین کھانا تجویز کرتا ہے – ایک منٹ سے بھی کم وقت میں.',
-                stat_languages: 'زبانیں',
-                stat_time: 'اوسط وقت',
-                stat_cost: 'استعمال کرنے کی لاگت',
-                trans_line_1: 'سے',
-                trans_line_2: 'مجھے نہیں معلوم کہ کیا کھانا ہے',
-                trans_line_3: 'تک',
-                trans_line_4: '"گوسلنل جانتا ہے کہ میں کیا چاہتا ہوں"',
-                chat_title: 'گوسلنل AI',
-                chat_subtitle: 'کھانے کی تلاش کا اسسٹنٹ',
-                chat_status: 'آن لائن',
-                why_badge: 'کیوں گوسلنل',
-                why_title: 'صارفین گوسلنل کو کیوں پسند کرتے ہیں',
-                why_subtitle: 'سمارٹ، سادہ اور آپ کی زبان بولتا ہے',
-                feature_1_title: 'سمارٹ تجاویز',
-                feature_1_desc: 'چند سیکنڈوں میں آپ کی ذائقہ اور بجٹ کے مطابق کھانے کے خیالات حاصل کریں.',
-                feature_2_title: '100+ زبانیں',
-                feature_2_desc: 'اپنی زبان بولیں، اور میں آپ کو سمجھ جاؤں گا.',
-                feature_3_title: 'حقیقی ریستوراں',
-                feature_3_desc: ' حقیقی مینو اور حقیقی کھانے کے ساتھ مقامی فروشوں کو براؤز کریں.',
-                feature_4_title: 'قدرتی گفتگو',
-                feature_4_desc: 'ایک دوست کے ساتھ پیغام بھیجنے کی طرح میرے ساتھ بات کریں - کوئی الجھن والا مینو نہیں.',
-                personalized_badge: 'آپ کے لیے ذاتی',
-                personalized_title: 'آپ مجھے اپنی ترجیحات بتا سکتے ہیں',
-                diet_1_title: 'پودوں پر مبنی',
-                diet_1_desc: 'سبزی خور یا سبزی خور کھانا، خود بخود منتخب',
-                diet_2_title: 'وزن اور شکل',
-                diet_2_desc: 'متوازن کھانا جو آپ کے اہداف کے مطابق ہو',
-                diet_3_title: 'کارکردگی',
-                diet_3_desc: 'آپ کے دن کے مطابق زیادہ پروٹین یا کم کاربوہائیڈریٹ',
-                diet_4_title: 'صحت کی ضرورتیں',
-                diet_4_desc: 'گلوٹین فری اور الرجی کا خیال رکھنے والے اختیارات',
-                diet_5_title: 'سمارٹ ترجیحات',
-                diet_5_desc: 'مجھے کھانے کے ساتھ چاہیے:',
-                how_badge: 'کیسے کام کرتا ہے',
-                how_title: 'کیسے کام کرتا ہے',
-                step_1_title: 'مجھ سے بات کریں',
-                step_1_desc: 'مجھے بتائیں کہ آپ کیا بھوک لگی ہے، آپ کا بجٹ، یا صرف کہیں "مجھے بھوک لگی ہے" - میں سمجھ جاؤں گا.',
-                step_2_title: 'تجاویز حاصل کریں',
-                step_2_desc: 'میں آپ کی ترجیحات کے مطابق قریبی ریستوراں سے 3-5 بہترین کھانوں کی تجویز دوں گا.',
-                step_3_title: 'اپنے انداز میں آرڈر کریں',
-                step_3_desc: 'انسٹاگرام کے ذریعے یا پک اپ کریں - جیسا آپ چاہیں.',
-                comparison_title: 'گوسلنل بمقابلہ روایتی کھانے کی ایپس',
-                comparison_subtitle: 'تلاش کرنا بند کریں. تلاش شروع کریں.',
-                traditional_title: '<i data-lucide="circle-x" class="icon-sm" style="color: #ef4444;"></i> روایتی ایپس',
-                traditional_1: '<i data-lucide="search" class="icon-sm"></i> "برگر" تلاش کریں → 100 نتائج',
-                traditional_2: '<i data-lucide="clock" class="icon-sm"></i> 15+ منٹ تک اسکرول کریں',
-                traditional_3: '<i data-lucide="frown" class="icon-sm"></i> فیصلہ کرنے کی اہلیت',
-                traditional_4: '<i data-lucide="trending-up" class="icon-sm"></i>',
-                gosnel_title: '<i data-lucide="check-circle" class="icon-sm" style="color: #4ECDC4;"></i> گوسلنل',
-                gosnel_1: '<i data-lucide="bot" class="icon-sm"></i> AI 3-5 بہترین میچوں کی تجویز دیتا ہے',
-                gosnel_2: '<i data-lucide="zap" class="icon-sm"></i> 30 سیکنڈ میں فیصلہ کریں',
-                gosnel_3: '<i data-lucide="smile" class="icon-sm"></i> اعتماد اور وضاحت',
-                gosnel_4: '<i data-lucide="tag" class="icon-sm"></i> حقیقی ریستوراں کی قیمتیں',
-                cta_title: 'مجھے کیوں آزمانا چاہیے',
-                cta_subtitle: '',
-                cta_benefit_1: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 8px; margin-bottom: 0;"><i data-lucide="tag" style="width: 20px; height: 20px;"></i>ہمیشہ حقیقی ریستوراں کی قیمتیں',
-                cta_benefit_2: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 8px; margin-bottom: 0;"><i data-lucide="badge-percent" style="width: 20px; height: 20px;"></i>میں آپ کے لیے بہترین ڈسکاؤنٹ تلاش کرتا ہوں',
-                cta_benefit_3: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 12px;"><svg style="width: 24px; height: 24px; fill: white; flex-shrink: 0;" viewBox="0 0 24 24"><path d="M16.6 14c-.2-.1-1.5-.7-1.7-.8c-.2-.1-.4-.1-.6.1c-.2.2-.6.8-.8 1c-.1.2-.3.2-.5.1c-.7-.3-1.4-.7-2-1.2c-.5-.5-1-1.1-1.4-1.7c-.1-.2 0-.4.1-.5c.1-.1.2-.3.4-.4c.1-.1.2-.3.2-.4c.1-.1.1-.3 0-.4c-.1-.1-.6-1.3-.8-1.8c-.1-.7-.3-.7-.5-.7h-.5c-.2 0-.5.2-.6.3c-.6.6-.9 1.3-.9 2.1c.1.9.4 1.8 1 2.6c1.1 1.6 2.5 2.9 4.2 3.7c.5.2.9.4 1.4.5c.5.2 1 .2 1.6.1c.7-.1 1.3-.6 1.7-1.2c.2-.4.2-.8.1-1.2l-.4-.2m2.5-9.1C15.2 1 8.9 1 5 4.9c-3.2 3.2-3.8 8.1-1.6 12L2 22l5.3-1.4c1.5.8 3.1 1.2 4.7 1.2c5.5 0 9.9-4.4 9.9-9.9c.1-2.6-1-5.1-2.8-7m-2.7 14c-1.3.8-2.8 1.3-4.4 1.3c-1.5 0-2.9-.4-4.2-1.1l-.3-.2l-3.1.8l.8-3l-.2-.3c-2.4-4-1.2-9 2.7-11.5S16.6 3.7 19 7.5c2.4 3.9 1.3 9-2.6 11.4"/></svg>انسٹاگرام پر آرڈر کریں ڈیلیوری پر ادائیگی کریں',
-                cta_benefit_4: '<strong style="font-size: 18px; display: flex; align-items: center; gap: 8px; margin-bottom: 0;"><i data-lucide="languages" style="width: 20px; height: 20px;"></i>میں آپ کی زبان بولتا ہوں',
-                cta_button: 'مجھ سے بات کریں',
-                tag_no_rice: 'چاول نہیں',
-                tag_not_spicy: 'تیز نہیں',
-                tag_extra_protein: 'اضافی پروٹین',
-                tag_no_dairy: 'ڈیری نہیں اور مزید'
-            },
-        };
-        
-        const chatMessages = {
-            en: [
-                { user: true, text: 'Hey' },
-                { user: false, text: 'Yo, foodie! Hope you\'re hungry today!' },
-                { user: true, text: 'I want something spicy for lunch' },
-                { user: false, text: `Perfect! I've got 3 amazing spicy options for you:
-
-1. Spicy Chicken Biryani – 35 AED <i data-lucide="flame" class="icon-sm" style="color:#f97316;"></i>
-2. Thai Red Curry – 38 AED <i data-lucide="flame" class="icon-sm" style="color:#ef4444;"></i>
-3. Mexican Tacos – 28 AED <i data-lucide="utensils" class="icon-sm"></i>
-
-Which one sounds good?` }
-            ],
-            ar: [
-                { user: true, text: 'السلام عليكم' },
-                { user: false, text: 'هلا! جوعان اليوم؟' },
-                { user: true, text: 'أبغى شي حار للغداء' },
-                { user: false, text: `تمام! عندي 3 خيارات حارة رهيبة:
-
-1. برياني دجاج حار – 35 درهم <i data-lucide="flame" class="icon-sm" style="color:#f97316;"></i>
-2. كاري تايلندي أحمر – 38 درهم <i data-lucide="flame" class="icon-sm" style="color:#ef4444;"></i>
-3. تاكو مكسيكي – 28 درهم <i data-lucide="utensils" class="icon-sm"></i>
-
-أي وحدة تعجبك؟` }
-            ],
-            ml: [
-                { user: true, text: 'ഹായ്' },
-                { user: false, text: 'ഹായ്, ഫുഡി! ഇന്ന് നിങ്ങൾ വിശന്നിട്ടുണ്ടോ?' },
-                { user: true, text: 'ഞാൻ ഉച്ചഭക്ഷണത്തിന് എന്തെങ്കിലും മസാല ആഗ്രഹിക്കുന്നു' },
-                { user: false, text: `മികച്ചത്! നിങ്ങൾക്കായി 3 അത്ഭുതമായ മസാല ഓപ്ഷനുകൾ എനിക്ക് ലഭിച്ചിട്ടുണ്ട്:
-
-1. മസാല ചിക്കൻ ബിരിയാണി – 35 AED <i data-lucide="flame" class="icon-sm" style="color:#f97316;"></i>
-2. തായ് റെഡ് കറി – 38 AED <i data-lucide="flame" class="icon-sm" style="color:#ef4444;"></i>
-3. മെക്സിക്കൻ ടാകോസ് – 28 AED <i data-lucide="utensils" class="icon-sm"></i>
-
-ഏതാണ് നല്ലതെന്ന് തോന്നുന്നത്?` }
-            ],
-            hi: [
-                { user: true, text: 'नमस्ते' },
-                { user: false, text: 'नमस्ते, फूडी! आज आप भूखे हैं?' },
-                { user: true, text: 'मैं दोपहर के भोजन के लिए कुछ मसालेदार चाहता हूं' },
-                { user: false, text: `बढ़िया! आपके लिए 3 शानदार मसालेदार विकल्प मिल गए हैं:
-
-1. मसालेदार चिकन बिरयानी – 35 AED <i data-lucide="flame" class="icon-sm" style="color:#f97316;"></i>
-2. थाई रेड करी – 38 AED <i data-lucide="flame" class="icon-sm" style="color:#ef4444;"></i>
-3. मेक्सिकन टैकोस – 28 AED <i data-lucide="utensils" class="icon-sm"></i>
-
-कौन सा अच्छा लग रहा है?` }
-            ],
-            ur: [
-                { user: true, text: 'ہیلو' },
-                { user: false, text: 'ہیلو، فوڈی! کیا آج آپ بھوکے ہیں؟' },
-                { user: true, text: 'میں دوپہر کے کھانے کے لیے کچھ تیز مسالہ چاہتا ہوں' },
-                { user: false, text: `perfect! آپ کے لیے 3 حیرت انگیز تیز مسالہ اختیارات مل گئے ہیں:
-
-1. تیز مسالہ چکن بیریانی – 35 AED <i data-lucide="flame" class="icon-sm" style="color:#f97316;"></i>
-2. تھائی ریڈ کری – 38 AED <i data-lucide="flame" class="icon-sm" style="color:#ef4444;"></i>
-3. میکسیکن ٹیکوس – 28 AED <i data-lucide="utensils" class="icon-sm"></i>
-
-کون سا اچھا لگ رہا ہے؟` }
-            ]
-        };
-        
-        let currentLang = localStorage.getItem('gosnel_lang') || 'en';
-        
-        function applyTranslations() {
-            const t = translations[currentLang];
             Object.keys(t).forEach(key => {
                 const el = document.getElementById(key);
-                if (el) {
-                    if (key.includes('subtitle') || key.includes('desc') || key.includes('title') || key.includes('gosnel_') || key.includes('traditional_') || key.includes('benefit')) {
-                        el.innerHTML = t[key].replace(/\n/g, '<br>');
-                    } else {
-                        el.textContent = t[key];
-                    }
+                if (el && key !== 'chat_msgs') {
+                    el.innerHTML = t[key];
                 }
             });
+
+            // Re-render chat
+            renderChat(t.chat_msgs);
             
-            document.documentElement.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
-            renderChat();
+            // Re-initialize Icons
             if (window.lucide) { lucide.createIcons(); }
         }
-        
-        function renderChat() {
-            const container = document.getElementById('chat_messages');
-            if (!container) return;
+
+        function renderChat(messages) {
+            const chatBox = document.getElementById('chat_box');
+            chatBox.innerHTML = '';
             
-            container.innerHTML = '';
-            const messages = chatMessages[currentLang];
-            
-            messages.forEach((msg, i) => {
+            messages.forEach((msg, idx) => {
                 setTimeout(() => {
                     const div = document.createElement('div');
-                    div.className = `chat-message ${msg.user ? 'user' : 'bot'}`;
-                    div.innerHTML = `<div class="chat-bubble">${msg.text.split('\n').map(line => line.trim() ? `<div class="chat-line">${line}</div>` : '<br>').join('')}</div>`;
-                    container.appendChild(div);
-                    container.scrollTop = container.scrollHeight;
-                    if (window.lucide) { lucide.createIcons(); }
-                }, i * 300);
+                    // align based on sender
+                    const align = msg.user ? 'self-end bg-brand text-white' : 'self-start bg-white border border-gray-100 text-gs-dark';
+                    const radius = msg.user ? 'rounded-2xl rounded-tr-sm' : 'rounded-2xl rounded-tl-sm shadow-sm';
+                    
+                    div.className = `max-w-[85%] px-4 py-3 text-sm ${align} ${radius} transform transition-all duration-300 translate-y-0 opacity-100`;
+                    div.innerHTML = msg.text;
+                    chatBox.appendChild(div);
+                    chatBox.scrollTop = chatBox.scrollHeight;
+                }, idx * 600); // slight delay for realistic feel
             });
         }
-        
-        function setLang(lang) {
-            currentLang = lang;
-            localStorage.setItem('gosnel_lang', lang);
-            
-            document.getElementById('lang-en').classList.toggle('active', lang === 'en');
-            document.getElementById('lang-ar').classList.toggle('active', lang === 'ar');
-            document.getElementById('lang-ml').classList.toggle('active', lang === 'ml');
-            document.getElementById('lang-hi').classList.toggle('active', lang === 'hi');
-            document.getElementById('lang-ur').classList.toggle('active', lang === 'ur');
-            
-            applyTranslations();
-        }
-        
-        document.getElementById('lang-en').addEventListener('click', () => setLang('en'));
-        document.getElementById('lang-ar').addEventListener('click', () => setLang('ar'));
-        document.getElementById('lang-ml').addEventListener('click', () => setLang('ml'));
-        document.getElementById('lang-hi').addEventListener('click', () => setLang('hi'));
-        document.getElementById('lang-ur').addEventListener('click', () => setLang('ur'));
-        
-        applyTranslations();
-        
-        if (typeof fbq !== 'undefined') {
-            fbq('track', 'ViewContent', { content_category: 'user_landing' });
-        }
-    })();
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            const savedLang = localStorage.getItem('gosnel_lang') || 'en';
+            setLang(savedLang);
+        });
     </script>
 </body>
 </html>
