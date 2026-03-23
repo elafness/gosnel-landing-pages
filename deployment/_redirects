@@ -1,40 +1,44 @@
-# Cloudflare Pages Redirects - Clean Multi-App Architecture
+# ============================================
+# 1. SHARED & ASSETS (SERVE DIRECTLY)
+# ============================================
+/shared/* /shared/:splat  200
+/assets/* /shared/assets/:splat  200
 
 # ============================================
-# SHARED RESOURCES (SERVE DIRECTLY)
+# 2. CAREERS SUBDOMAIN (careers.gosnel.com)
 # ============================================
-/shared/* /shared/:splat 200
-/assets/* /shared/assets/:splat 200
+# ملاحظة: يجب أن يكون الدومين الفرعي مربوطاً في إعدادات Custom Domains في Cloudflare Pages
+https://careers.gosnel.com/* /careers/:splat  200
+https://careers.gosnel.com/   /careers/index.html  200
 
 # ============================================
-# CAREERS SUBDOMAIN (careers.gosnel.com)
+# 3. RESTAURANTS SUBDOMAIN (restaurants.gosnel.com)
 # ============================================
-https://careers.gosnel.com/* /careers/:splat 200
-https://careers.gosnel.com/ /careers/ 200
+https://restaurants.gosnel.com/* https://gosnel.com/partner/  301
+https://restaurants.gosnel.com/   https://gosnel.com/partner/  301
 
 # ============================================
-# RESTAURANTS SUBDOMAIN (restaurants.gosnel.com)
+# 4. MAIN DOMAIN PATHS (gosnel.com/...)
 # ============================================
-https://restaurants.gosnel.com/* https://gosnel.com/partner/ 301
-https://restaurants.gosnel.com/ https://gosnel.com/partner/ 301
+# توجيه المسار المباشر للوظائف من الدومين الرئيسي
+/careers      /careers/index.html  200
+/careers/* /careers/:splat  200
+
+/about-us     /about.html  200
+/blog/* /apps/user-app/blog/:splat  200
 
 # ============================================
-# MAIN DOMAIN ROUTING (gosnel.com)
+# 5. SITEMAPS & ROBOTS
 # ============================================
-# Note: Cloudflare Pages automatically serves .html files without extension
-# Only adding specific rewrites where needed
-
-/about-us /about.html 200
-/blog/* /apps/user-app/blog/:splat 200
-/careers /careers/index.html 200
+/sitemap.xml         /sitemap.xml  200
+/user-sitemap.xml    /user-sitemap.xml  200
+/vendor-sitemap.xml  /vendor-sitemap.xml  200
+/drivers-sitemap.xml /drivers-sitemap.xml  200
+/promo-sitemap.xml   /promo-sitemap.xml  200
+/robots.txt          /robots.txt  200
 
 # ============================================
-# SITEMAPS (SERVE DIRECTLY)
+# 6. SPA FALLBACK (OPTIONAL)
 # ============================================
-/sitemap.xml /sitemap.xml 200
-/user-sitemap.xml /user-sitemap.xml 200
-/vendor-sitemap.xml /vendor-sitemap.xml 200
-/drivers-sitemap.xml /drivers-sitemap.xml 200
-/promo-sitemap.xml /promo-sitemap.xml 200
-/robots.txt /robots.txt 200
-
+# إذا كان التطبيق SPA (React/Vue)، أضف السطر التالي في النهاية فقط لضمان عمل الـ Refresh
+# /* /index.html  200
