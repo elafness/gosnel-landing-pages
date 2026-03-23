@@ -1,23 +1,24 @@
 # ============================================
-# CAREERS (Subdomain & Path)
+# 1. CAREERS SUBDOMAIN (إجبار التوجيه للمجلد)
 # ============================================
+# أي طلب يأتي لـ careers.gosnel.com يذهب لمجلد careers داخلياً
 https://careers.gosnel.com/* /careers/:splat 200
-https://careers.gosnel.com/ /careers/index.html 200
-/careers /careers/index.html 200
+
+# ============================================
+# 2. MAIN DOMAIN PATHS (gosnel.com/careers)
+# ============================================
+/careers  /careers/index.html 200
+/careers/ /careers/index.html 200
 /careers/* /careers/:splat 200
 
 # ============================================
-# RESTAURANTS (Subdomain & Alias)
+# 3. RESTAURANTS & OTHERS
 # ============================================
 https://restaurants.gosnel.com/* https://gosnel.com/partner/ 301
-https://restaurants.gosnel.com/ https://gosnel.com/partner/ 301
 /vendor/* /partner/:splat 301
-/vendor /partner/index.html 301
-
-# ============================================
-# BLOG & PAGES
-# ============================================
 /about-us /about.html 200
+
+# Blog Rewrites
 /blog/ai-food-recommendations-uae /user-blog-ai-food-recommendations-uae.html 200
 /blog/restaurant-technology-trends-2026 /user-blog-restaurant-technology-trends-2026.html 200
 /blog/uae-food-delivery-evolution /user-blog-uae-food-delivery-evolution.html 200
