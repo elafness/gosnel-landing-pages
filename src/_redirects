@@ -1,5 +1,5 @@
 # ============================================
-# 1. CAREERS (Subdomain & Path)
+# CAREERS (Subdomain & Path)
 # ============================================
 https://careers.gosnel.com/* /careers/:splat 200
 https://careers.gosnel.com/ /careers/index.html 200
@@ -7,7 +7,7 @@ https://careers.gosnel.com/ /careers/index.html 200
 /careers/* /careers/:splat 200
 
 # ============================================
-# 2. RESTAURANTS (Subdomain & Alias)
+# RESTAURANTS (Subdomain & Alias)
 # ============================================
 https://restaurants.gosnel.com/* https://gosnel.com/partner/ 301
 https://restaurants.gosnel.com/ https://gosnel.com/partner/ 301
@@ -15,7 +15,7 @@ https://restaurants.gosnel.com/ https://gosnel.com/partner/ 301
 /vendor /partner/index.html 301
 
 # ============================================
-# 3. BLOG & PAGES
+# BLOG & PAGES
 # ============================================
 /about-us /about.html 200
 /blog/ai-food-recommendations-uae /user-blog-ai-food-recommendations-uae.html 200
