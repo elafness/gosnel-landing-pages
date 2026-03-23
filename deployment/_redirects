@@ -7,6 +7,12 @@
 /assets/* /shared/assets/:splat 200
 
 # ============================================
+# CAREERS SUBDOMAIN (careers.gosnel.com)
+# ============================================
+https://careers.gosnel.com/* /careers/:splat 200
+https://careers.gosnel.com/ /careers/ 200
+
+# ============================================
 # RESTAURANTS SUBDOMAIN (restaurants.gosnel.com)
 # ============================================
 https://restaurants.gosnel.com/* https://gosnel.com/partner/ 301
