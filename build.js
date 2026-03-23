@@ -13,8 +13,8 @@ const buildPages = () => {
 
   // Function to process HTML includes
   const processIncludes = (htmlContent, basePath = srcDir) => {
-    // Replace <!--#include file="path" --> with actual file content
-    const includeRegex = /<!--\s*#include\s+file="([^"]+)"\s*-->/g;
+    // Replace with actual file content
+    const includeRegex = //g;
     return htmlContent.replace(includeRegex, (match, filePath) => {
       // Try multiple possible paths for includes
       const possiblePaths = [
@@ -34,7 +34,7 @@ const buildPages = () => {
       }
       
       console.warn(`⚠️  Include file not found: ${filePath}`);
-      return `<!-- Include not found: ${filePath} -->`;
+      return ``;
     });
   };
 
@@ -150,7 +150,8 @@ const buildPages = () => {
   }
 
   // Copy subdirectory static pages with include processing
-  const subdomains = ['user', 'vendor', 'drivers', 'promo', 'footer'];
+  // تم إضافة careers و restaurants هنا ليتم نقل المجلدات للنسخة النهائية
+  const subdomains = ['user', 'vendor', 'drivers', 'promo', 'footer', 'careers', 'restaurants'];
   
   subdomains.forEach(subdomain => {
     const srcSubdomainDir = path.join(srcDir, subdomain);
@@ -178,6 +179,17 @@ const buildPages = () => {
             // Process HTML files with includes
             let htmlContent = fs.readFileSync(srcPath, "utf8");
             htmlContent = processIncludes(htmlContent);
+            
+            // Fix CSS path in case the internal folder uses relative paths
+            htmlContent = htmlContent.replace(
+              /\.\.\/\.\.\/dist\/output\.css/g,
+              "/output.css"
+            );
+            htmlContent = htmlContent.replace(
+              /href="\.\.\/output\.css"/g,
+              'href="/output.css"'
+            );
+
             fs.writeFileSync(destPath, htmlContent);
           } else {
             fs.copyFileSync(srcPath, destPath);
@@ -189,7 +201,7 @@ const buildPages = () => {
     }
   });
   
-  console.log("✅ Copied subdirectory pages");
+  console.log("✅ Copied subdirectory pages (including careers & restaurants)");
 
   // Create /partner/ directory with partner pages (clean URLs)
   const partnerDir = path.join(distDir, 'partner');
@@ -265,10 +277,6 @@ const buildPages = () => {
       console.log(`⚠️  User page not found: ${src}`);
     }
   });
-
-  // NOTE: Clean URL architecture for SEO
-  // User pages at root: gosnel.com/pricing, gosnel.com/faq, etc.
-  // Partner pages in subdirectory: gosnel.com/partner/pricing, gosnel.com/partner/how-it-works, etc.
 
   // Create root-level footer pages (universal pages)
   const footerPages = ['about-us', 'legal'];
@@ -381,27 +389,20 @@ const buildPages = () => {
   });
   console.log("✅ Created localhost development files");
 
-  // NOTE: Old user-* and partner-* files removed - now using clean URLs
-  // User pages at root: /pricing.html, /faq.html, /about.html
-  // Partner pages in subdirectory: /partner/pricing.html, /partner/how-it-works.html
-
   // Copy app directories to dist for deployment with include processing
   // Copy partner-app
   const partnerSourcePath = path.join(__dirname, "src", "partner-app");
   const partnerDestPath = path.join(distDir, "apps", "partner-app");
   
   if (fs.existsSync(partnerSourcePath)) {
-    // Ensure apps directory exists
     const appsDestDir = path.join(distDir, "apps");
     if (!fs.existsSync(appsDestDir)) {
       fs.mkdirSync(appsDestDir, { recursive: true });
     }
-    // Remove existing partner-app directory if it exists
     if (fs.existsSync(partnerDestPath)) {
       fs.rmSync(partnerDestPath, { recursive: true, force: true });
     }
     
-    // Recursive copy function with HTML include processing
     const copyDirectoryWithIncludes = (src, dest) => {
       if (!fs.existsSync(dest)) {
         fs.mkdirSync(dest, { recursive: true });
@@ -414,7 +415,6 @@ const buildPages = () => {
         if (entry.isDirectory()) {
           copyDirectoryWithIncludes(srcPath, destPath);
         } else if (entry.name.endsWith('.html')) {
-          // Process HTML files with includes
           let htmlContent = fs.readFileSync(srcPath, "utf8");
           const fileDir = path.dirname(srcPath);
           htmlContent = processIncludes(htmlContent, fileDir);
@@ -425,7 +425,6 @@ const buildPages = () => {
       });
     };
     
-    // Copy with include processing
     copyDirectoryWithIncludes(partnerSourcePath, partnerDestPath);
     console.log("✅ Copied partner-app directory with includes processed");
   }
@@ -435,17 +434,14 @@ const buildPages = () => {
   const userDestPath = path.join(distDir, "apps", "user-app");
   
   if (fs.existsSync(userSourcePath)) {
-    // Ensure apps directory exists
     const appsDestDir = path.join(distDir, "apps");
     if (!fs.existsSync(appsDestDir)) {
       fs.mkdirSync(appsDestDir, { recursive: true });
     }
-    // Remove existing user-app directory if it exists
     if (fs.existsSync(userDestPath)) {
       fs.rmSync(userDestPath, { recursive: true, force: true });
     }
     
-    // Recursive copy function with HTML include processing (defined above)
     const copyDirectoryWithIncludes = (src, dest) => {
       if (!fs.existsSync(dest)) {
         fs.mkdirSync(dest, { recursive: true });
@@ -458,7 +454,6 @@ const buildPages = () => {
         if (entry.isDirectory()) {
           copyDirectoryWithIncludes(srcPath, destPath);
         } else if (entry.name.endsWith('.html')) {
-          // Process HTML files with includes
           let htmlContent = fs.readFileSync(srcPath, "utf8");
           const fileDir = path.dirname(srcPath);
           htmlContent = processIncludes(htmlContent, fileDir);
@@ -469,7 +464,6 @@ const buildPages = () => {
       });
     };
     
-    // Copy with include processing
     copyDirectoryWithIncludes(userSourcePath, userDestPath);
     console.log("✅ Copied user-app directory with includes processed");
   }
@@ -478,11 +472,9 @@ const buildPages = () => {
   const sharedDestPath = path.join(distDir, "shared");
   
   if (fs.existsSync(sharedSourcePath)) {
-    // Remove existing shared directory if it exists
     if (fs.existsSync(sharedDestPath)) {
       fs.rmSync(sharedDestPath, { recursive: true, force: true });
     }
-    // Copy fresh shared directory
     fs.cpSync(sharedSourcePath, sharedDestPath, { recursive: true });
     console.log("✅ Copied shared directory");
   }

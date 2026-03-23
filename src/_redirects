@@ -1,14 +1,16 @@
-# Restaurants Domain - Redirect to Partner Hub
+# توجيهات الوظائف
+https://careers.gosnel.com/* /careers/:splat 200
+https://careers.gosnel.com/ /careers/index.html 200
+/careers /careers/index.html 200
+/careers/* /careers/:splat 200
+
+# توجيهات المطاعم
 https://restaurants.gosnel.com/* https://gosnel.com/partner/ 301
 https://restaurants.gosnel.com/ https://gosnel.com/partner/ 301
-
-# Vendor alias routes (vendor and partner are the same)
 /vendor/* /partner/:splat 301
 
-# Alias routes (for backwards compatibility)
+# صفحات عامة والمقالات
 /about-us /about.html 200
-
-# Blog article rewrites
 /blog/ai-food-recommendations-uae /user-blog-ai-food-recommendations-uae.html 200
 /blog/restaurant-technology-trends-2026 /user-blog-restaurant-technology-trends-2026.html 200
 /blog/uae-food-delivery-evolution /user-blog-uae-food-delivery-evolution.html 200

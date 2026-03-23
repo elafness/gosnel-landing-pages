@@ -4,6 +4,7 @@
   "exclude": [
     "/shared/*",
     "/assets/*",
+    "/careers/*", 
     "/*.css",
     "/*.js", 
     "/*.png",
