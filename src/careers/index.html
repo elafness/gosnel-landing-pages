@@ -24,7 +24,7 @@
         body { background-color: #f8fafc; color: #0f172a; margin: 0; line-height: 1.6; overflow-x: hidden; }
         .modal { display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.6); z-index: 100; align-items: center; justify-content: center; padding: 1rem; backdrop-filter: blur(4px); }
         .modal.active { display: flex; animation: fadeIn 0.2s ease-out; }
-        .modal-content { animation: slideUp 0.3s ease-out; }
+        .modal-content { animation: slideUp 0.3s ease-out; max-height: 90vh; overflow-y: auto; }
         .btn-whatsapp { background-color: #25D366; transition: all 0.2s; }
         .btn-whatsapp:hover { background-color: #20ba5a; transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(37, 211, 102, 0.3); }
         [dir="rtl"] { font-family: 'Noto Sans Arabic', 'Inter', sans-serif; }
@@ -38,7 +38,7 @@
     <header class="bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <a href="/" class="flex items-center group">
+                <a href="https://gosnel.com" class="flex items-center group">
                     <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/gosnelicon.png" alt="GoSnel Logo" class="h-10 w-auto group-hover:scale-105 transition-transform">
                     <span class="ms-3 text-2xl font-extrabold tracking-tight text-slate-900" data-translate="brand">GoSnel</span>
                 </a>
@@ -52,7 +52,7 @@
 
     <section class="relative bg-slate-900 py-32 overflow-hidden">
         <div class="absolute inset-0 opacity-40">
-            <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/heroimage.webp" alt="GoSnel Team" class="w-full h-full object-cover">
+            <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/career-Hero-Image.png" alt="GoSnel Team" class="w-full h-full object-cover">
         </div>
         <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-80"></div>
         <div class="relative max-w-4xl mx-auto px-4 text-center">
@@ -93,63 +93,136 @@
                 <span id="modal-loc" class="px-3 py-1 rounded-md bg-emerald-50 text-emerald-700 text-xs font-bold uppercase tracking-wider"></span>
             </div>
 
-            <h3 id="modal-title" class="text-2xl font-extrabold mb-3 text-slate-900"></h3>
-            <p id="modal-desc" class="text-slate-600 mb-8 leading-relaxed"></p>
+            <h3 id="modal-title" class="text-2xl font-extrabold mb-5 text-slate-900"></h3>
             
-            <a id="modal-wa-link" href="#" target="_blank" class="w-full py-4 rounded-xl btn-whatsapp text-white font-bold flex items-center justify-center text-lg">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="me-2 fill-current">
-                    <path d="M16.6 14c-.2-.1-1.5-.7-1.7-.8c-.2-.1-.4-.1-.6.1c-.2.2-.6.8-.8 1c-.1.2-.3.2-.5.1c-.7-.3-1.4-.7-2-1.2c-.5-.5-1-1.1-1.4-1.7c-.1-.2 0-.4.1-.5c.1-.1.2-.3.4-.4c.1-.1.2-.3.2-.4c.1-.1.1-.3 0-.4c-.1-.1-.6-1.3-.8-1.8c-.1-.7-.3-.7-.5-.7h-.5c-.2 0-.5.2-.6.3c-.6.6-.9 1.3-.9 2.1c.1.9.4 1.8 1 2.6c1.1 1.6 2.5 2.9 4.2 3.7c.5.2.9.4 1.4.5c.5.2 1 .2 1.6.1c.7-.1 1.3-.6 1.7-1.2c.2-.4.2-.8.1-1.2l-.4-.2m2.5-9.1C15.2 1 8.9 1 5 4.9c-3.2 3.2-3.8 8.1-1.6 12L2 22l5.3-1.4c1.5.8 3.1 1.2 4.7 1.2c5.5 0 9.9-4.4 9.9-9.9c.1-2.6-1-5.1-2.8-7m-2.7 14c-1.3.8-2.8 1.3-4.4 1.3c-1.5 0-2.9-.4-4.2-1.1l-.3-.2l-3.1.8l.8-3l-.2-.3c-2.4-4-1.2-9 2.7-11.5S16.6 3.7 19 7.5c2.4 3.9 1.3 9-2.6 11.4"/>
-                </svg>
-                <span data-translate="applyNow">Apply via WhatsApp</span>
-            </a>
+            <div id="modal-details" class="text-slate-600 mb-8 text-sm leading-relaxed"></div>
+            
+            <div class="flex flex-col gap-3">
+                <a id="modal-wa-link" href="#" target="_blank" class="w-full py-3.5 rounded-xl btn-whatsapp text-white font-bold flex items-center justify-center text-md">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="me-2 fill-current">
+                        <path d="M16.6 14c-.2-.1-1.5-.7-1.7-.8c-.2-.1-.4-.1-.6.1c-.2.2-.6.8-.8 1c-.1.2-.3.2-.5.1c-.7-.3-1.4-.7-2-1.2c-.5-.5-1-1.1-1.4-1.7c-.1-.2 0-.4.1-.5c.1-.1.2-.3.4-.4c.1-.1.2-.3.2-.4c.1-.1.1-.3 0-.4c-.1-.1-.6-1.3-.8-1.8c-.1-.7-.3-.7-.5-.7h-.5c-.2 0-.5.2-.6.3c-.6.6-.9 1.3-.9 2.1c.1.9.4 1.8 1 2.6c1.1 1.6 2.5 2.9 4.2 3.7c.5.2.9.4 1.4.5c.5.2 1 .2 1.6.1c.7-.1 1.3-.6 1.7-1.2c.2-.4.2-.8.1-1.2l-.4-.2m2.5-9.1C15.2 1 8.9 1 5 4.9c-3.2 3.2-3.8 8.1-1.6 12L2 22l5.3-1.4c1.5.8 3.1 1.2 4.7 1.2c5.5 0 9.9-4.4 9.9-9.9c.1-2.6-1-5.1-2.8-7m-2.7 14c-1.3.8-2.8 1.3-4.4 1.3c-1.5 0-2.9-.4-4.2-1.1l-.3-.2l-3.1.8l.8-3l-.2-.3c-2.4-4-1.2-9 2.7-11.5S16.6 3.7 19 7.5c2.4 3.9 1.3 9-2.6 11.4"/>
+                    </svg>
+                    <span data-translate="applyNowWa">Apply via WhatsApp</span>
+                </a>
+                
+                <a id="modal-email-link" href="#" class="w-full py-3.5 rounded-xl border-2 border-slate-200 text-slate-700 hover:bg-slate-50 font-bold flex items-center justify-center text-md transition-colors">
+                    <i data-lucide="mail" class="me-2 w-5 h-5"></i>
+                    <span data-translate="applyNowEmail">Apply via Email</span>
+                </a>
+            </div>
         </div>
     </div>
 
     <script>
-        // --- 1. قاعدة بيانات الوظائف والنصوص ---
         const translations = {
             en: {
                 brand: "GoSnel", langName: "العربية",
                 heroTitle: "Join the GoSnel Team",
                 heroSubtitle: "We're building the future of food discovery. Help us change how people find and order meals.",
-                viewOpenings: "View Openings", openPositions: "Open Positions", applyNow: "Apply via WhatsApp", footerText: "© 2026 GoSnel AI. All rights reserved.",
+                viewOpenings: "View Openings", openPositions: "Open Positions", 
+                applyNowWa: "Apply via WhatsApp", applyNowEmail: "Apply via Email", 
+                footerText: "© 2026 GoSnel AI. All rights reserved.",
                 viewDetails: "View Details & Apply",
                 
-                // الوظائف
+                // العناوين الفرعية
+                systemLabel: "Work System", tasksLabel: "Responsibilities", reqsLabel: "Requirements",
+                
                 jobs: [
-                    { id: 1, title: "Sales Coordinator", type: "Full-time", loc: "Remote", desc: "Support our sales team and drive customer acquisition..." },
-                    { id: 2, title: "Field Sales Representative", type: "Part-time", loc: "On-site", desc: "Build relationships with restaurant partners and expand our network..." },
-                    { id: 3, title: "Operations Coordinator", type: "Full-time", loc: "On-site", desc: "Manage day-to-day operations and ensure smooth business processes..." },
-                    { id: 4, title: "Marketing Assistant", type: "Part-time", loc: "Remote", desc: "Create compelling content and campaigns to grow our brand..." },
-                    { id: 5, title: "Admin Executive", type: "Full-time", loc: "On-site", desc: "Manage administrative tasks and support the executive team..." },
-                    { id: 6, title: "Data Entry Specialist", type: "Full-time", loc: "Remote", desc: "Accurately input and manage data to support business operations..." }
+                    { 
+                        id: 1, title: "Administrative Marketer / Coordinator", type: "Part-time", loc: "Remote", shortDesc: "Communicate with clients, coordinate appointments, and manage tasks.",
+                        system: "Highly rewarding commissions + performance bonuses (No fixed salary).",
+                        tasks: ["Communicate with clients.", "Coordinate appointments for field agents.", "Manage tasks via Notion platform."],
+                        reqs: ["Presence in Ajman.", "Own a laptop or PC.", "Strong persuasion skills.", "Follow up with clients and coordinate with the team."]
+                    },
+                    { 
+                        id: 2, title: "Field Sales Consultant", type: "Part-time", loc: "Ajman - Field", shortDesc: "Visit clients, gather data, and expand our restaurant network in Ajman.",
+                        system: "Highly rewarding commissions + performance bonuses (No fixed salary).",
+                        tasks: ["Visit clients and restaurants.", "Follow up with clients and gather necessary data."],
+                        reqs: ["Persuasion and direct customer handling skills.", "Own a tablet/iPad or your own laptop.", "Based in Ajman."]
+                    },
+                    { 
+                        id: 3, title: "Operations Coordinator", type: "Full-time", loc: "On-site", shortDesc: "Manage day-to-day operations and ensure smooth business processes.",
+                        system: "Fixed Salary + Bonuses.",
+                        tasks: ["Manage restaurant accounts.", "Monitor orders and resolve customer issues.", "Coordinate between departments."],
+                        reqs: ["Previous operations experience.", "Excellent communication skills.", "Based in Ajman."]
+                    },
+                    { 
+                        id: 4, title: "Marketing Assistant", type: "Part-time", loc: "Remote", shortDesc: "Create compelling content and campaigns to grow our brand.",
+                        system: "Fixed Salary.",
+                        tasks: ["Write engaging content.", "Manage social media channels.", "Prepare performance reports."],
+                        reqs: ["Digital marketing experience.", "Basic design skills.", "Creative thinking."]
+                    },
+                    { 
+                        id: 5, title: "Admin Executive", type: "Full-time", loc: "On-site", shortDesc: "Manage administrative tasks and support the executive team.",
+                        system: "Fixed Salary.",
+                        tasks: ["Manage digital and physical files.", "Organize meetings and schedules.", "Support the executive team."],
+                        reqs: ["Proficiency in MS Office.", "High organizational skills.", "Attention to detail."]
+                    },
+                    { 
+                        id: 6, title: "Data Entry Specialist", type: "Part-time", loc: "Remote", shortDesc: "Accurately input and manage data to support business operations.",
+                        system: "Task-based compensation.",
+                        tasks: ["Enter restaurant menus and data.", "Update existing listings.", "Verify data accuracy."],
+                        reqs: ["Fast and accurate typing skills.", "Stable internet connection.", "High focus and discipline."]
+                    }
                 ]
             },
             ar: {
                 brand: "جوسنل", langName: "English",
                 heroTitle: "انضم إلى فريق جوسنل",
                 heroSubtitle: "نحن نبني مستقبل اكتشاف الطعام. ساعدنا في تغيير طريقة بحث وطلب الناس للوجبات.",
-                viewOpenings: "استعرض الوظائف", openPositions: "الوظائف المتاحة", applyNow: "قدم عبر الواتساب", footerText: "© 2026 جوسنل للذكاء الاصطناعي. جميع الحقوق محفوظة.",
+                viewOpenings: "استعرض الوظائف", openPositions: "الوظائف المتاحة", 
+                applyNowWa: "قدم عبر الواتساب", applyNowEmail: "قدم عبر الإيميل", 
+                footerText: "© 2026 جوسنل للذكاء الاصطناعي. جميع الحقوق محفوظة.",
                 viewDetails: "التفاصيل والتقديم",
 
-                // الوظائف باللغة العربية
+                systemLabel: "نظام العمل", tasksLabel: "المهام", reqsLabel: "الشروط",
+
                 jobs: [
-                    { id: 1, title: "منسق مبيعات", type: "دوام كامل", loc: "عن بعد", desc: "دعم فريق المبيعات لدينا ودفع عملية اكتساب العملاء..." },
-                    { id: 2, title: "مندوب مبيعات ميداني", type: "دوام جزئي", loc: "حضوري", desc: "بناء علاقات مع شركائنا من المطاعم وتوسيع شبكتنا..." },
-                    { id: 3, title: "منسق عمليات", type: "دوام كامل", loc: "حضوري", desc: "إدارة العمليات اليومية وضمان سير إجراءات العمل بسلاسة..." },
-                    { id: 4, title: "مساعد تسويق", type: "دوام جزئي", loc: "عن بعد", desc: "إنشاء محتوى وحملات جذابة لتنمية علامتنا التجارية..." },
-                    { id: 5, title: "مسؤول إداري", type: "دوام كامل", loc: "حضوري", desc: "إدارة المهام الإدارية ودعم الفريق التنفيذي..." },
-                    { id: 6, title: "أخصائي إدخال بيانات", type: "دوام كامل", loc: "عن بعد", desc: "إدخال وإدارة البيانات بدقة لدعم العمليات التجارية..." }
+                    { 
+                        id: 1, title: "مسوقة إدارية / منسقة", type: "دوام جزئي", loc: "عن بُعد", shortDesc: "التواصل مع العملاء، تنسيق المواعيد، وإدارة المهام التنظيمية.",
+                        system: "عمولات مجزية + مكافآت أداء (بدون راتب ثابت).",
+                        tasks: ["التواصل مع العملاء.", "تنسيق المواعيد للمندوبين الميدانيين.", "إدارة المهام عبر منصة Notion."],
+                        reqs: ["التواجد في إمارة عجمان.", "لديك لابتوب أو جهاز كمبيوتر.", "مهارة القدرة على الإقناع.", "متابعة العملاء والتنسيق مع الفريق."]
+                    },
+                    { 
+                        id: 2, title: "مستشار مبيعات ميداني", type: "دوام جزئي", loc: "عجمان", shortDesc: "زيارة العملاء وبناء شبكة علاقات قوية مع شركائنا من المطاعم.",
+                        system: "عمولات مجزية + مكافآت أداء (بدون راتب ثابت).",
+                        tasks: ["زيارة العملاء.", "متابعة العملاء وجمع البيانات اللازمة."],
+                        reqs: ["مهارة الإقناع والتعامل المباشر مع العملاء.", "لديك تابلت أو ايباد / لابتوب الخاص بك.", "متواجد في عجمان."]
+                    },
+                    { 
+                        id: 3, title: "منسق عمليات", type: "دوام كامل", loc: "حضوري", shortDesc: "إدارة العمليات اليومية وضمان سير إجراءات العمل بسلاسة.",
+                        system: "راتب ثابت + حوافز.",
+                        tasks: ["إدارة حسابات المطاعم.", "متابعة الطلبات وحل مشاكل العملاء.", "التنسيق المستمر بين أقسام الشركة."],
+                        reqs: ["خبرة سابقة في العمليات أو خدمة العملاء.", "مهارات تواصل ممتازة.", "التواجد في عجمان."]
+                    },
+                    { 
+                        id: 4, title: "مساعد تسويق", type: "دوام جزئي", loc: "عن بُعد", shortDesc: "إنشاء محتوى وحملات جذابة لتنمية علامتنا التجارية.",
+                        system: "راتب ثابت.",
+                        tasks: ["كتابة محتوى إبداعي.", "إدارة منصات التواصل الاجتماعي.", "إعداد تقارير الأداء للحملات."],
+                        reqs: ["خبرة في التسويق الرقمي.", "مهارات تصميم أساسية.", "تفكير إبداعي ومتجدد."]
+                    },
+                    { 
+                        id: 5, title: "مسؤول إداري", type: "دوام كامل", loc: "حضوري", shortDesc: "إدارة المهام الإدارية ودعم الفريق التنفيذي بفعالية.",
+                        system: "راتب ثابت.",
+                        tasks: ["إدارة الملفات الرقمية والورقية.", "تنظيم الاجتماعات والجداول الزمنية.", "تقديم الدعم المباشر للفريق التنفيذي."],
+                        reqs: ["إجادة استخدام برامج مايكروسوفت أوفيس.", "قدرة عالية على التنظيم.", "الاهتمام بالتفاصيل."]
+                    },
+                    { 
+                        id: 6, title: "أخصائي إدخال بيانات", type: "دوام جزئي", loc: "عن بُعد", shortDesc: "إدخال وإدارة البيانات بدقة لدعم العمليات التجارية.",
+                        system: "مكافآت بناءً على حجم المهام المنجزة.",
+                        tasks: ["إدخال بيانات وقوائم المطاعم.", "تحديث القوائم الحالية بانتظام.", "التحقق من دقة البيانات المدخلة."],
+                        reqs: ["سرعة ودقة عالية في الكتابة.", "اتصال انترنت مستقر وموثوق.", "انضباط عالٍ وقدرة على التركيز."]
+                    }
                 ]
             }
         };
 
         let currentLang = 'en';
 
-        // --- 2. دالة توليد البطاقات ديناميكياً ---
         function renderJobs() {
             const container = document.getElementById('jobs-container');
-            container.innerHTML = ''; // مسح القديم
+            container.innerHTML = ''; 
             
             const currentJobs = translations[currentLang].jobs;
             const btnText = translations[currentLang].viewDetails;
@@ -165,7 +238,7 @@
                         <span class="px-3 py-1 rounded-md bg-emerald-50 text-emerald-700 text-xs font-bold uppercase tracking-wider">${job.loc}</span>
                     </div>
                     <h3 class="text-xl font-bold mb-3 text-slate-900 group-hover:text-brand transition-colors">${job.title}</h3>
-                    <p class="text-slate-500 mb-6 text-sm flex-grow">${job.desc}</p>
+                    <p class="text-slate-500 mb-6 text-sm flex-grow">${job.shortDesc}</p>
                     <div class="pt-4 border-t border-slate-100 mt-auto flex items-center justify-between text-brand font-semibold text-sm">
                         ${btnText} <i data-lucide="arrow-${currentLang === 'en' ? 'right' : 'left'}" class="w-4 h-4"></i>
                     </div>
@@ -176,7 +249,6 @@
             lucide.createIcons();
         }
 
-        // --- 3. دوال الترجمة والتحكم ---
         function toggleLanguage() {
             currentLang = currentLang === 'en' ? 'ar' : 'en';
             document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
@@ -184,33 +256,49 @@
             
             document.getElementById('langText').textContent = translations[currentLang].langName;
             
-            // ترجمة النصوص الثابتة
             document.querySelectorAll('[data-translate]').forEach(el => {
                 const key = el.getAttribute('data-translate');
                 if (translations[currentLang][key]) el.textContent = translations[currentLang][key];
             });
             
-            // إعادة رسم بطاقات الوظائف باللغة الجديدة
             renderJobs();
         }
 
-        // --- 4. دوال النافذة المنبثقة (Modal) ---
         function openModal(jobIndex) {
             const job = translations[currentLang].jobs[jobIndex];
+            const t = translations[currentLang];
             
-            // تعبئة البيانات
             document.getElementById('modal-title').textContent = job.title;
             document.getElementById('modal-type').textContent = job.type;
             document.getElementById('modal-loc').textContent = job.loc;
-            document.getElementById('modal-desc').textContent = job.desc;
             
-            // تجهيز رابط الواتساب (تشفير النص ليكون جاهز للواتساب)
-            const waMessage = encodeURIComponent(`Hi GoSnel team, I'm interested in the ${translations['en'].jobs[jobIndex].title} position.`);
-            document.getElementById('modal-wa-link').href = `https://wa.me/971500000000?text=${waMessage}`; // ضع رقمك الحقيقي هنا
+            // توليد الـ HTML للتفاصيل (نظام العمل، المهام، الشروط)
+            const tasksHtml = job.tasks.map(task => `<li>${task}</li>`).join('');
+            const reqsHtml = job.reqs.map(req => `<li>${req}</li>`).join('');
+            
+            document.getElementById('modal-details').innerHTML = `
+                ${job.system ? `<div class="mb-5"><h4 class="font-bold text-slate-900 mb-1">${t.systemLabel}:</h4><p class="text-brand font-semibold bg-brand/10 inline-block px-3 py-1 rounded-lg">${job.system}</p></div>` : ''}
+                <div class="mb-5">
+                    <h4 class="font-bold text-slate-900 mb-2">${t.tasksLabel}:</h4>
+                    <ul class="list-disc ms-5 space-y-1">${tasksHtml}</ul>
+                </div>
+                <div class="mb-2">
+                    <h4 class="font-bold text-slate-900 mb-2">${t.reqsLabel}:</h4>
+                    <ul class="list-disc ms-5 space-y-1">${reqsHtml}</ul>
+                </div>
+            `;
+            
+            // روابط التقديم
+            const englishTitle = translations['en'].jobs[jobIndex].title;
+            const waMessage = encodeURIComponent(`Hi GoSnel team, I'm interested in the ${englishTitle} position.`);
+            document.getElementById('modal-wa-link').href = `https://wa.me/971542503729?text=${waMessage}`; // ضع رقم هاتفك الحقيقي هنا
+            
+            const emailSubject = encodeURIComponent(`Application for ${englishTitle}`);
+            document.getElementById('modal-email-link').href = `mailto:careers@gosnel.com?subject=${emailSubject}`;
 
-            // إظهار النافذة
             document.getElementById('job-modal').classList.add('active');
             document.body.style.overflow = 'hidden';
+            lucide.createIcons();
         }
 
         function closeModal(event, force = false) {
@@ -222,8 +310,13 @@
 
         document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(null, true); });
 
-        // تهيئة الصفحة عند التحميل
+        // تهيئة الصفحة
         renderJobs();
+        // إعطاء القيم الأولية للنصوص الثابتة
+        document.querySelectorAll('[data-translate]').forEach(el => {
+            const key = el.getAttribute('data-translate');
+            if (translations[currentLang][key]) el.textContent = translations[currentLang][key];
+        });
     </script>
 </body>
 </html>
