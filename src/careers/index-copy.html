@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers at GoSnel - Join Our Team</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            DEFAULT: '#4ecdc4',
+                            light: '#e6f9f8',
+                            dark: '#3db5ac'
+                        },
+                        gs: {
+                            dark: '#0f172a',
+                            light: '#f8fafc',
+                            gray: '#64748b'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #f8fafc;
+            color: #0f172a;
+            margin: 0;
+            padding: 0;
+            line-height: 1.7;
+            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #4ecdc4 0%, #44a39a 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: clamp(32px, 5vw, 56px);
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .jobs-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .job-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .job-card:hover {
+            border-color: #4ecdc4;
+            box-shadow: 0 8px 24px rgba(78, 205, 196, 0.15);
+            transform: translateY(-4px);
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .job-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 8px;
+        }
+
+        .job-type {
+            display: inline-block;
+            background: #4ecdc4;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .job-meta {
+            display: flex;
+            gap: 16px;
+            margin-top: 12px;
+            font-size: 14px;
+            color: #64748b;
+            flex-wrap: wrap;
+        }
+
+        .job-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .modal-content {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 16px;
+            max-width: 700px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: slideIn 0.3s ease;
+            position: relative;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: #64748b;
+            transition: color 0.3s ease;
+        }
+
+        .close-btn:hover {
+            color: #0f172a;
+        }
+
+        .modal-title {
+            font-size: 28px;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 8px;
+        }
+
+        .modal-subtitle {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .job-description {
+            margin: 24px 0;
+            color: #64748b;
+            line-height: 1.8;
+        }
+
+        .job-description h3 {
+            color: #0f172a;
+            font-weight: 700;
+            margin-top: 20px;
+            margin-bottom: 12px;
+        }
+
+        .job-description ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 12px 0;
+        }
+
+        .job-description li {
+            padding-left: 24px;
+            margin-bottom: 8px;
+            position: relative;
+        }
+
+        .job-description li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #4ecdc4;
+            font-weight: bold;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: 8px;
+            border: none;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background: #4ecdc4;
+            color: white;
+            flex: 1;
+        }
+
+        .btn-primary:hover {
+            background: #3db5ac;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: #f1f5f9;
+            color: #0f172a;
+            border: 1px solid #e2e8f0;
+            flex: 1;
+        }
+
+        .btn-secondary:hover {
+            background: #e2e8f0;
+        }
+
+        .footer-section {
+            background: #0f172a;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+        }
+
+        .footer-text {
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 32px;
+            }
+
+            .modal-content {
+                padding: 24px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+            <div class="flex-shrink-0 flex items-center">
+                <a href="/" class="flex items-center">
+                    <img class="h-10 w-auto" src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/gosnelicon.png" alt="GoSnel Logo">
+                    <span class="ml-3 text-xl font-bold text-gray-900" data-translate="brandName">GoSnel Careers</span>
+                </a>
+            </div>
+            
+            <div>
+                <button onclick="toggleLanguage()" class="flex items-center space-x-2 text-gray-600 hover:text-green-600 transition-colors font-medium focus:outline-none">
+                    <i data-lucide="globe" class="w-5 h-5"></i>
+                    <span id="langText">العربية</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+    <!-- Hero Section -->
+    <div class="relative bg-slate-900 py-32 overflow-hidden">
+    <div class="absolute inset-0 opacity-40">
+        <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/career-Hero-Image.png" 
+             alt="GoSnel Team Background" 
+             class="w-full h-full object-cover">
+    </div>
+    
+    <div class="relative text-center" style="max-width: 900px; margin: 0 auto; padding: 20px;">
+        <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-6 leading-tight">Join the GoSnel Team</h1>
+        <p class="text-xl text-slate-200">We're building the future of food discovery. Help us change how people find and order meals.</p>
+    </div>
+</div>
+
+    <!-- Jobs Listing -->
+    <div class="jobs-container">
+        <!-- Job 1: Sales Coordinator -->
+        <div class="job-card" onclick="openJobModal('job-1')">
+            <div class="job-header">
+                <div>
+                    <h3 class="job-title">Sales Coordinator</h3>
+                    <span class="job-type">Remote</span>
+                </div>
+            </div>
+            <div class="job-meta">
+                <div class="job-meta-item">
+                    <i data-lucide="map-pin" style="width: 16px; height: 16px;"></i>
+                    <span>Remote</span>
+                </div>
+                <div class="job-meta-item">
+                    <i data-lucide="briefcase" style="width: 16px; height: 16px;"></i>
+                    <span>Full-time</span>
+                </div>
+            </div>
+            <p style="margin-top: 12px; color: #64748b; font-size: 14px;">Support our sales team and drive customer acquisition...</p>
+        </div>
+
+        <!-- Job 2: Field Sales Representative -->
+        <div class="job-card" onclick="openJobModal('job-2')">
+            <div class="job-header">
+                <div>
+                    <h3 class="job-title">Field Sales Representative</h3>
+                    <span class="job-type">Part-time</span>
+                </div>
+            </div>
+            <div class="job-meta">
+                <div class="job-meta-item">
+                    <i data-lucide="map-pin" style="width: 16px; height: 16px;"></i>
+                    <span>On-site</span>
+                </div>
+                <div class="job-meta-item">
+                    <i data-lucide="briefcase" style="width: 16px; height: 16px;"></i>
+                    <span>Part-time</span>
+                </div>
+            </div>
+            <p style="margin-top: 12px; color: #64748b; font-size: 14px;">Build relationships with restaurant partners and expand our network...</p>
+        </div>
+
+        <!-- Job 3: Operations Coordinator -->
+        <div class="job-card" onclick="openJobModal('job-3')">
+            <div class="job-header">
+                <div>
+                    <h3 class="job-title">Operations Coordinator</h3>
+                    <span class="job-type">Full-time</span>
+                </div>
+            </div>
+            <div class="job-meta">
+                <div class="job-meta-item">
+                    <i data-lucide="map-pin" style="width: 16px; height: 16px;"></i>
+                    <span>On-site</span>
+                </div>
+                <div class="job-meta-item">
+                    <i data-lucide="briefcase" style="width: 16px; height: 16px;"></i>
+                    <span>Full-time</span>
+                </div>
+            </div>
+            <p style="margin-top: 12px; color: #64748b; font-size: 14px;">Manage day-to-day operations and ensure smooth business processes...</p>
+        </div>
+
+        <!-- Job 4: Marketing Assistant -->
+        <div class="job-card" onclick="openJobModal('job-4')">
+            <div class="job-header">
+                <div>
+                    <h3 class="job-title">Marketing Assistant</h3>
+                    <span class="job-type">Part-time</span>
+                </div>
+            </div>
+            <div class="job-meta">
+                <div class="job-meta-item">
+                    <i data-lucide="map-pin" style="width: 16px; height: 16px;"></i>
+                    <span>Remote</span>
+                </div>
+                <div class="job-meta-item">
+                    <i data-lucide="briefcase" style="width: 16px; height: 16px;"></i>
+                    <span>Part-time</span>
+                </div>
+            </div>
+            <p style="margin-top: 12px; color: #64748b; font-size: 14px;">Create compelling content and campaigns to grow our brand...</p>
+        </div>
+
+        <!-- Job 5: Admin Executive -->
+        <div class="job-card" onclick="openJobModal('job-5')">
+            <div class="job-header">
+                <div>
+                    <h3 class="job-title">Admin Executive</h3>
+                    <span class="job-type">Full-time</span>
+                </div>
+            </div>
+            <div class="job-meta">
+                <div class="job-meta-item">
+                    <i data-lucide="map-pin" style="width: 16px; height: 16px;"></i>
+                    <span>On-site</span>
+                </div>
+                <div class="job-meta-item">
+                    <i data-lucide="briefcase" style="width: 16px; height: 16px;"></i>
+                    <span>Full-time</span>
+                </div>
+            </div>
+            <p style="margin-top: 12px; color: #64748b; font-size: 14px;">Manage administrative tasks and support the executive team...</p>
+        </div>
+
+        <!-- Job 6: Data Entry -->
+        <div class="job-card" onclick="openJobModal('job-6')">
+            <div class="job-header">
+                <div>
+                    <h3 class="job-title">Data Entry Specialist</h3>
+                    <span class="job-type">Remote</span>
+                </div>
+            </div>
+            <div class="job-meta">
+                <div class="job-meta-item">
+                    <i data-lucide="map-pin" style="width: 16px; height: 16px;"></i>
+                    <span>Remote</span>
+                </div>
+                <div class="job-meta-item">
+                    <i data-lucide="briefcase" style="width: 16px; height: 16px;"></i>
+                    <span>Full-time</span>
+                </div>
+            </div>
+            <p style="margin-top: 12px; color: #64748b; font-size: 14px;">Accurately input and manage data to support business operations...</p>
+        </div>
+    </div>
+
+    <!-- Job Detail Modals -->
+
+    <!-- Job 1 Modal -->
+    <div id="job-1" class="modal" onclick="closeJobModal(event, 'job-1')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="close-btn" onclick="closeJobModal(null, 'job-1')">×</button>
+            <h2 class="modal-title">Sales Coordinator</h2>
+            <div class="modal-subtitle">
+                <span class="job-type">Remote</span>
+                <span style="display: flex; align-items: center; gap: 6px; color: #64748b; font-size: 14px;">
+                    <i data-lucide="briefcase" style="width: 16px; height: 16px;"></i>
+                    Full-time
+                </span>
+            </div>
+
+            <div class="job-description">
+                <p>We're looking for a dynamic Sales Coordinator to join our growing team. You'll be supporting our sales efforts and helping us build strong relationships with our partners and customers.</p>
+
+                <h3>Key Responsibilities:</h3>
+                <ul>
+                    <li>Support the sales team in customer outreach and relationship management</li>
+                    <li>Prepare sales reports and track customer interactions</li>
+                    <li>Coordinate with internal teams to ensure customer satisfaction</li>
+                    <li>Assist in developing sales strategies and campaigns</li>
+                    <li>Maintain accurate customer database and CRM records</li>
+                </ul>
+
+                <h3>Requirements:</h3>
+                <ul>
+                    <li>Bachelor's degree in Business, Marketing, or related field</li>
+                    <li>1-2 years of sales support experience</li>
+                    <li>Excellent communication and organizational skills</li>
+                    <li>Proficiency in Microsoft Office and CRM software</li>
+                    <li>Ability to work independently and meet targets</li>
+                </ul>
+
+                <p style="margin-top: 20px; color: #4ecdc4; font-weight: 600;">Interested? Get in touch with us!</p>
+            </div>
+
+            <div class="cta-buttons">
+                <a href="https://wa.me/971542503729?text=Hi%20GoSnel%20team%2C%20I%27m%20interested%20in%20the%20Sales%20Coordinator%20position" target="_blank" class="btn btn-primary">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="w-5 h-5 mr-2">
+    <path fill="#ffffff" d="M16.6 14c-.2-.1-1.5-.7-1.7-.8c-.2-.1-.4-.1-.6.1c-.2.2-.6.8-.8 1c-.1.2-.3.2-.5.1c-.7-.3-1.4-.7-2-1.2c-.5-.5-1-1.1-1.4-1.7c-.1-.2 0-.4.1-.5c.1-.1.2-.3.4-.4c.1-.1.2-.3.2-.4c.1-.1.1-.3 0-.4c-.1-.1-.6-1.3-.8-1.8c-.1-.7-.3-.7-.5-.7h-.5c-.2 0-.5.2-.6.3c-.6.6-.9 1.3-.9 2.1c.1.9.4 1.8 1 2.6c1.1 1.6 2.5 2.9 4.2 3.7c.5.2.9.4 1.4.5c.5.2 1 .2 1.6.1c.7-.1 1.3-.6 1.7-1.2c.2-.4.2-.8.1-1.2l-.4-.2m2.5-9.1C15.2 1 8.9 1 5 4.9c-3.2 3.2-3.8 8.1-1.6 12L2 22l5.3-1.4c1.5.8 3.1 1.2 4.7 1.2c5.5 0 9.9-4.4 9.9-9.9c.1-2.6-1-5.1-2.8-7m-2.7 14c-1.3.8-2.8 1.3-4.4 1.3c-1.5 0-2.9-.4-4.2-1.1l-.3-.2l-3.1.8l.8-3l-.2-.3c-2.4-4-1.2-9 2.7-11.5S16.6 3.7 19 7.5c2.4 3.9 1.3 9-2.6 11.4"/>
+</svg>                    Apply via WhatsApp
+                </a>
+                <a href="mailto:careers@gosnel.com?subject=Application%20for%20Sales%20Coordinator" class="btn btn-secondary">
+                    <i data-lucide="mail" style="width: 20px; height: 20px;"></i>
+                    Apply via Email
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Job 2 Modal -->
+    <div id="job-2" class="modal" onclick="closeJobModal(event, 'job-2')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="close-btn" onclick="closeJobModal(null, 'job-2')">×</button>
+            <h2 class="modal-title">Field Sales Representative</h2>
+            <div class="modal-subtitle">
+                <span class="job-type">Part-time</span>
+                <span style="display: flex; align-items: center; gap: 6px; color: #64748b; font-size: 14px;">
+                    <i data-lucide="map-pin" style="width: 16px; height: 16px;"></i>
+                    On-site
+                </span>
+            </div>
+
+            <div class="job-description">
+                <p>Join our field sales team and be the face of GoSnel! You'll be visiting restaurants, building partnerships, and expanding our network across the region.</p>
+
+                <h3>Key Responsibilities:</h3>
+                <ul>
+                    <li>Conduct face-to-face meetings with restaurant partners</li>
+                    <li>Present GoSnel platform benefits and features</li>
+                    <li>Close partnership deals and onboard new restaurants</li>
+                    <li>Gather market feedback and competitor insights</li>
+                    <li>Meet weekly/monthly sales targets</li>
+                </ul>
+
+                <h3>Requirements:</h3>
+                <ul>
+                    <li>High school diploma or equivalent; Bachelor's preferred</li>
+                    <li>1+ years of sales or business development experience</li>
+                    <li>Strong interpersonal and negotiation skills</li>
+                    <li>Ability to work independently with flexible hours</li>
+                    <li>Valid driver's license and reliable transportation</li>
+                </ul>
+
+                <p style="margin-top: 20px; color: #4ecdc4; font-weight: 600;">Ready to hit the road? Apply now!</p>
+            </div>
+
+            <div class="cta-buttons">
+                <a href="https://wa.me/971542503729?text=Hi%20GoSnel%20team%2C%20I%27m%20interested%20in%20the%20Field%20Sales%20Representative%20position" target="_blank" class="btn btn-primary">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="w-5 h-5 mr-2">
+    <path fill="#ffffff" d="M16.6 14c-.2-.1-1.5-.7-1.7-.8c-.2-.1-.4-.1-.6.1c-.2.2-.6.8-.8 1c-.1.2-.3.2-.5.1c-.7-.3-1.4-.7-2-1.2c-.5-.5-1-1.1-1.4-1.7c-.1-.2 0-.4.1-.5c.1-.1.2-.3.4-.4c.1-.1.2-.3.2-.4c.1-.1.1-.3 0-.4c-.1-.1-.6-1.3-.8-1.8c-.1-.7-.3-.7-.5-.7h-.5c-.2 0-.5.2-.6.3c-.6.6-.9 1.3-.9 2.1c.1.9.4 1.8 1 2.6c1.1 1.6 2.5 2.9 4.2 3.7c.5.2.9.4 1.4.5c.5.2 1 .2 1.6.1c.7-.1 1.3-.6 1.7-1.2c.2-.4.2-.8.1-1.2l-.4-.2m2.5-9.1C15.2 1 8.9 1 5 4.9c-3.2 3.2-3.8 8.1-1.6 12L2 22l5.3-1.4c1.5.8 3.1 1.2 4.7 1.2c5.5 0 9.9-4.4 9.9-9.9c.1-2.6-1-5.1-2.8-7m-2.7 14c-1.3.8-2.8 1.3-4.4 1.3c-1.5 0-2.9-.4-4.2-1.1l-.3-.2l-3.1.8l.8-3l-.2-.3c-2.4-4-1.2-9 2.7-11.5S16.6 3.7 19 7.5c2.4 3.9 1.3 9-2.6 11.4"/>
+</svg>                    Apply via WhatsApp
+                </a>
+                <a href="mailto:careers@gosnel.com?subject=Application%20for%20Field%20Sales%20Representative" class="btn btn-secondary">
+                    <i data-lucide="mail" style="width: 20px; height: 20px;"></i>
+                    Apply via Email
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Job 3 Modal -->
+    <div id="job-3" class="modal" onclick="closeJobModal(event, 'job-3')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="close-btn" onclick="closeJobModal(null, 'job-3')">×</button>
+            <h2 class="modal-title">Operations Coordinator</h2>
+            <div class="modal-subtitle">
+                <span class="job-type">Full-time</span>
+                <span style="display: flex; align-items: center; gap: 6px; color: #64748b; font-size: 14px;">
+                    <i data-lucide="briefcase" style="width: 16px; height: 16px;"></i>
+                    On-site
+                </span>
+            </div>
+
+            <div class="job-description">
+                <p>Help us run GoSnel smoothly! As an Operations Coordinator, you'll ensure all our processes are efficient and our team is supported to do their best work.</p>
+
+                <h3>Key Responsibilities:</h3>
+                <ul>
+                    <li>Coordinate daily operations and manage schedules</li>
+                    <li>Process orders, invoices, and payment documentation</li>
+                    <li>Communicate with vendors and service providers</li>
+                    <li>Monitor inventory and supply levels</li>
+                    <li>Prepare operational reports and identify improvement areas</li>
+                </ul>
+
+                <h3>Requirements:</h3>
+                <ul>
+                    <li>Bachelor's degree in Business Administration or related field</li>
+                    <li>2+ years of operations or administrative experience</li>
+                    <li>Strong attention to detail and organizational skills</li>
+                    <li>Experience with ERP or operational management systems</li>
+                    <li>Excellent problem-solving abilities</li>
+                </ul>
+
+                <p style="margin-top: 20px; color: #4ecdc4; font-weight: 600;">Help us build efficient processes!</p>
+            </div>
+
+            <div class="cta-buttons">
+                <a href="https://wa.me/971542503729?text=Hi%20GoSnel%20team%2C%20I%27m%20interested%20in%20the%20Operations%20Coordinator%20position" target="_blank" class="btn btn-primary">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="w-5 h-5 mr-2">
+    <path fill="#ffffff" d="M16.6 14c-.2-.1-1.5-.7-1.7-.8c-.2-.1-.4-.1-.6.1c-.2.2-.6.8-.8 1c-.1.2-.3.2-.5.1c-.7-.3-1.4-.7-2-1.2c-.5-.5-1-1.1-1.4-1.7c-.1-.2 0-.4.1-.5c.1-.1.2-.3.4-.4c.1-.1.2-.3.2-.4c.1-.1.1-.3 0-.4c-.1-.1-.6-1.3-.8-1.8c-.1-.7-.3-.7-.5-.7h-.5c-.2 0-.5.2-.6.3c-.6.6-.9 1.3-.9 2.1c.1.9.4 1.8 1 2.6c1.1 1.6 2.5 2.9 4.2 3.7c.5.2.9.4 1.4.5c.5.2 1 .2 1.6.1c.7-.1 1.3-.6 1.7-1.2c.2-.4.2-.8.1-1.2l-.4-.2m2.5-9.1C15.2 1 8.9 1 5 4.9c-3.2 3.2-3.8 8.1-1.6 12L2 22l5.3-1.4c1.5.8 3.1 1.2 4.7 1.2c5.5 0 9.9-4.4 9.9-9.9c.1-2.6-1-5.1-2.8-7m-2.7 14c-1.3.8-2.8 1.3-4.4 1.3c-1.5 0-2.9-.4-4.2-1.1l-.3-.2l-3.1.8l.8-3l-.2-.3c-2.4-4-1.2-9 2.7-11.5S16.6 3.7 19 7.5c2.4 3.9 1.3 9-2.6 11.4"/>
+</svg>                    Apply via WhatsApp
+                </a>
+                <a href="mailto:careers@gosnel.com?subject=Application%20for%20Operations%20Coordinator" class="btn btn-secondary">
+                    <i data-lucide="mail" style="width: 20px; height: 20px;"></i>
+                    Apply via Email
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Job 4 Modal -->
+    <div id="job-4" class="modal" onclick="closeJobModal(event, 'job-4')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="close-btn" onclick="closeJobModal(null, 'job-4')">×</button>
+            <h2 class="modal-title">Marketing Assistant</h2>
+            <div class="modal-subtitle">
+                <span class="job-type">Part-time</span>
+                <span style="display: flex; align-items: center; gap: 6px; color: #64748b; font-size: 14px;">
+                    <i data-lucide="globe" style="width: 16px; height: 16px;"></i>
+                    Remote
+                </span>
+            </div>
+
+            <div class="job-description">
+                <p>Love creating content and engaging with people? Join our marketing team and help us grow GoSnel's brand presence across multiple platforms.</p>
+
+                <h3>Key Responsibilities:</h3>
+                <ul>
+                    <li>Create engaging social media content and posts</li>
+                    <li>Assist in planning and executing marketing campaigns</li>
+                    <li>Monitor social media accounts and respond to comments</li>
+                    <li>Analyze marketing metrics and report on campaign performance</li>
+                    <li>Collaborate with design and content teams</li>
+                </ul>
+
+                <h3>Requirements:</h3>
+                <ul>
+                    <li>High school diploma or equivalent; Bachelor's preferred</li>
+                    <li>6+ months of marketing or social media experience</li>
+                    <li>Strong creative writing and communication skills</li>
+                    <li>Familiarity with social media platforms and basic analytics</li>
+                    <li>Ability to work with design tools (Canva, Adobe, etc.)</li>
+                </ul>
+
+                <p style="margin-top: 20px; color: #4ecdc4; font-weight: 600;">Let's tell the GoSnel story!</p>
+            </div>
+
+            <div class="cta-buttons">
+                <a href="https://wa.me/971542503729?text=Hi%20GoSnel%20team%2C%20I%27m%20interested%20in%20the%20Marketing%20Assistant%20position" target="_blank" class="btn btn-primary">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="w-5 h-5 mr-2">
+    <path fill="#ffffff" d="M16.6 14c-.2-.1-1.5-.7-1.7-.8c-.2-.1-.4-.1-.6.1c-.2.2-.6.8-.8 1c-.1.2-.3.2-.5.1c-.7-.3-1.4-.7-2-1.2c-.5-.5-1-1.1-1.4-1.7c-.1-.2 0-.4.1-.5c.1-.1.2-.3.4-.4c.1-.1.2-.3.2-.4c.1-.1.1-.3 0-.4c-.1-.1-.6-1.3-.8-1.8c-.1-.7-.3-.7-.5-.7h-.5c-.2 0-.5.2-.6.3c-.6.6-.9 1.3-.9 2.1c.1.9.4 1.8 1 2.6c1.1 1.6 2.5 2.9 4.2 3.7c.5.2.9.4 1.4.5c.5.2 1 .2 1.6.1c.7-.1 1.3-.6 1.7-1.2c.2-.4.2-.8.1-1.2l-.4-.2m2.5-9.1C15.2 1 8.9 1 5 4.9c-3.2 3.2-3.8 8.1-1.6 12L2 22l5.3-1.4c1.5.8 3.1 1.2 4.7 1.2c5.5 0 9.9-4.4 9.9-9.9c.1-2.6-1-5.1-2.8-7m-2.7 14c-1.3.8-2.8 1.3-4.4 1.3c-1.5 0-2.9-.4-4.2-1.1l-.3-.2l-3.1.8l.8-3l-.2-.3c-2.4-4-1.2-9 2.7-11.5S16.6 3.7 19 7.5c2.4 3.9 1.3 9-2.6 11.4"/>
+</svg>                    Apply via WhatsApp
+                </a>
+                <a href="mailto:careers@gosnel.com?subject=Application%20for%20Marketing%20Assistant" class="btn btn-secondary">
+                    <i data-lucide="mail" style="width: 20px; height: 20px;"></i>
+                    Apply via Email
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Job 5 Modal -->
+    <div id="job-5" class="modal" onclick="closeJobModal(event, 'job-5')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="close-btn" onclick="closeJobModal(null, 'job-5')">×</button>
+            <h2 class="modal-title">Admin Executive</h2>
+            <div class="modal-subtitle">
+                <span class="job-type">Full-time</span>
+                <span style="display: flex; align-items: center; gap: 6px; color: #64748b; font-size: 14px;">
+                    <i data-lucide="briefcase" style="width: 16px; height: 16px;"></i>
+                    On-site
+                </span>
+            </div>
+
+            <div class="job-description">
+                <p>Be the backbone of our organization! As an Admin Executive, you'll manage critical administrative functions and ensure the team has everything they need to succeed.</p>
+
+                <h3>Key Responsibilities:</h3>
+                <ul>
+                    <li>Manage executive calendars and schedule meetings</li>
+                    <li>Handle document preparation and filing systems</li>
+                    <li>Manage office supplies and equipment procurement</li>
+                    <li>Coordinate travel arrangements and logistics</li>
+                    <li>Maintain confidential records and databases</li>
+                </ul>
+
+                <h3>Requirements:</h3>
+                <ul>
+                    <li>Bachelor's degree in Administration, Business, or related field</li>
+                    <li>3+ years of executive or administrative assistant experience</li>
+                    <li>Excellent communication and interpersonal skills</li>
+                    <li>Proficiency in Microsoft Office and document management</li>
+                    <li>Ability to manage multiple priorities and deadlines</li>
+                </ul>
+
+                <p style="margin-top: 20px; color: #4ecdc4; font-weight: 600;">Help us stay organized and efficient!</p>
+            </div>
+
+            <div class="cta-buttons">
+                <a href="https://wa.me/971542503729?text=Hi%20GoSnel%20team%2C%20I%27m%20interested%20in%20the%20Admin%20Executive%20position" target="_blank" class="btn btn-primary">
+                    <i data-lucide="message-circle" style="width: 20px; height: 20px;"></i>
+                    Apply via WhatsApp
+                </a>
+                <a href="mailto:careers@gosnel.com?subject=Application%20for%20Admin%20Executive" class="btn btn-secondary">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="w-5 h-5 mr-2">
+    <path fill="#ffffff" d="M16.6 14c-.2-.1-1.5-.7-1.7-.8c-.2-.1-.4-.1-.6.1c-.2.2-.6.8-.8 1c-.1.2-.3.2-.5.1c-.7-.3-1.4-.7-2-1.2c-.5-.5-1-1.1-1.4-1.7c-.1-.2 0-.4.1-.5c.1-.1.2-.3.4-.4c.1-.1.2-.3.2-.4c.1-.1.1-.3 0-.4c-.1-.1-.6-1.3-.8-1.8c-.1-.7-.3-.7-.5-.7h-.5c-.2 0-.5.2-.6.3c-.6.6-.9 1.3-.9 2.1c.1.9.4 1.8 1 2.6c1.1 1.6 2.5 2.9 4.2 3.7c.5.2.9.4 1.4.5c.5.2 1 .2 1.6.1c.7-.1 1.3-.6 1.7-1.2c.2-.4.2-.8.1-1.2l-.4-.2m2.5-9.1C15.2 1 8.9 1 5 4.9c-3.2 3.2-3.8 8.1-1.6 12L2 22l5.3-1.4c1.5.8 3.1 1.2 4.7 1.2c5.5 0 9.9-4.4 9.9-9.9c.1-2.6-1-5.1-2.8-7m-2.7 14c-1.3.8-2.8 1.3-4.4 1.3c-1.5 0-2.9-.4-4.2-1.1l-.3-.2l-3.1.8l.8-3l-.2-.3c-2.4-4-1.2-9 2.7-11.5S16.6 3.7 19 7.5c2.4 3.9 1.3 9-2.6 11.4"/>
+</svg>                    Apply via Email
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Job 6 Modal -->
+    <div id="job-6" class="modal" onclick="closeJobModal(event, 'job-6')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="close-btn" onclick="closeJobModal(null, 'job-6')">×</button>
+            <h2 class="modal-title">Data Entry Specialist</h2>
+            <div class="modal-subtitle">
+                <span class="job-type">Full-time</span>
+                <span style="display: flex; align-items: center; gap: 6px; color: #64748b; font-size: 14px;">
+                    <i data-lucide="globe" style="width: 16px; height: 16px;"></i>
+                    Remote
+                </span>
+            </div>
+
+            <div class="job-description">
+                <p>Help us maintain accurate data! As a Data Entry Specialist, you'll play a crucial role in keeping our systems organized and error-free.</p>
+
+                <h3>Key Responsibilities:</h3>
+                <ul>
+                    <li>Accurately input data into company databases and systems</li>
+                    <li>Verify and validate information for accuracy and completeness</li>
+                    <li>Organize and maintain data files and records</li>
+                    <li>Prepare data reports and summaries</li>
+                    <li>Meet daily data entry targets and quality standards</li>
+                </ul>
+
+                <h3>Requirements:</h3>
+                <ul>
+                    <li>High school diploma or equivalent</li>
+                    <li>1+ year of data entry experience</li>
+                    <li>Typing speed of at least 50 WPM with high accuracy</li>
+                    <li>Proficiency in Microsoft Excel and database software</li>
+                    <li>Strong attention to detail and time management</li>
+                </ul>
+
+                <p style="margin-top: 20px; color: #4ecdc4; font-weight: 600;">Let's get organized together!</p>
+            </div>
+
+            <div class="cta-buttons">
+                <a href="https://wa.me/971542503729?text=Hi%20GoSnel%20team%2C%20I%27m%20interested%20in%20the%20Data%20Entry%20Specialist%20position" target="_blank" class="btn btn-primary">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="w-5 h-5 mr-2">
+    <path fill="#ffffff" d="M16.6 14c-.2-.1-1.5-.7-1.7-.8c-.2-.1-.4-.1-.6.1c-.2.2-.6.8-.8 1c-.1.2-.3.2-.5.1c-.7-.3-1.4-.7-2-1.2c-.5-.5-1-1.1-1.4-1.7c-.1-.2 0-.4.1-.5c.1-.1.2-.3.4-.4c.1-.1.2-.3.2-.4c.1-.1.1-.3 0-.4c-.1-.1-.6-1.3-.8-1.8c-.1-.7-.3-.7-.5-.7h-.5c-.2 0-.5.2-.6.3c-.6.6-.9 1.3-.9 2.1c.1.9.4 1.8 1 2.6c1.1 1.6 2.5 2.9 4.2 3.7c.5.2.9.4 1.4.5c.5.2 1 .2 1.6.1c.7-.1 1.3-.6 1.7-1.2c.2-.4.2-.8.1-1.2l-.4-.2m2.5-9.1C15.2 1 8.9 1 5 4.9c-3.2 3.2-3.8 8.1-1.6 12L2 22l5.3-1.4c1.5.8 3.1 1.2 4.7 1.2c5.5 0 9.9-4.4 9.9-9.9c.1-2.6-1-5.1-2.8-7m-2.7 14c-1.3.8-2.8 1.3-4.4 1.3c-1.5 0-2.9-.4-4.2-1.1l-.3-.2l-3.1.8l.8-3l-.2-.3c-2.4-4-1.2-9 2.7-11.5S16.6 3.7 19 7.5c2.4 3.9 1.3 9-2.6 11.4"/>
+</svg>                    Apply via WhatsApp
+                </a>
+                <a href="mailto:careers@gosnel.com?subject=Application%20for%20Data%20Entry%20Specialist" class="btn btn-secondary">
+                    <i data-lucide="mail" style="width: 20px; height: 20px;"></i>
+                    Apply via Email
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer-section">
+        <div class="footer-text">
+            <h3 style="margin-top: 0; font-size: 20px; font-weight: 700; margin-bottom: 16px;">Work with us</h3>
+            <p>Don't see a position that fits? We're always open to exceptional talent. Send us your resume at <strong>careers@gosnel.com</strong></p>
+            <p style="margin-top: 24px; font-size: 14px; opacity: 0.7;">© 2026 GoSnel AI. All rights reserved.</p>
+        </div>
+    </div>
+
+    <script>
+        function openJobModal(jobId) {
+            const modal = document.getElementById(jobId);
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+            if (window.lucide) {
+                lucide.createIcons();
+            }
+        }
+
+        function closeJobModal(event, jobId) {
+            const modal = document.getElementById(jobId);
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Initialize lucide icons
+        if (window.lucide) {
+            lucide.createIcons();
+        }
+
+        // Handle Escape key to close modal
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const modals = document.querySelectorAll('.modal.active');
+                modals.forEach(modal => {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
+            }
+        });
+    </script>
+    <script>
+    // 1. قاموس الترجمة
+    const translations = {
+        en: {
+            langName: "العربية",
+            brandName: "GoSnel Careers",
+            // أضف باقي نصوص صفحتك هنا، مثال:
+            // pageTitle: "Join Our Team",
+            // applyBtn: "Apply via WhatsApp"
+        },
+        ar: {
+            langName: "English",
+            brandName: "وظائف جوسنل",
+            // الترجمة المقابلة:
+            // pageTitle: "انضم لفريقنا",
+            // applyBtn: "قدم عبر الواتساب"
+        }
+    };
+
+    let currentLang = 'en';
+
+    // 2. دالة تبديل اللغة
+    function toggleLanguage() {
+        currentLang = currentLang === 'en' ? 'ar' : 'en';
+        
+        // تغيير اتجاه الصفحة ليدعم العربية من اليمين لليسار
+        document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+        document.documentElement.lang = currentLang;
+
+        // تحديث النص داخل زر الترجمة
+        document.getElementById('langText').textContent = translations[currentLang].langName;
+
+        // تحديث كل عنصر يحتوي على خاصية data-translate
+        const elementsToTranslate = document.querySelectorAll('[data-translate]');
+        elementsToTranslate.forEach(el => {
+            const key = el.getAttribute('data-translate');
+            if (translations[currentLang][key]) {
+                el.textContent = translations[currentLang][key];
+            }
+        });
+    }
+</script>
+</body>
+</html>
