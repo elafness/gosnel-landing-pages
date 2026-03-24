@@ -2,6 +2,7 @@
 # 1. CAREERS SUBDOMAIN (إجبار التوجيه للمجلد)
 # ============================================
 # أي طلب يأتي لـ careers.gosnel.com يذهب لمجلد careers داخلياً
+https://careers.gosnel.com/ /careers/index.html 200
 https://careers.gosnel.com/* /careers/:splat 200
 
 # ============================================
