@@ -834,5 +834,47 @@
             }
         });
     </script>
+    <script>
+    // 1. قاموس الترجمة
+    const translations = {
+        en: {
+            langName: "العربية",
+            brandName: "GoSnel Careers",
+            // أضف باقي نصوص صفحتك هنا، مثال:
+            // pageTitle: "Join Our Team",
+            // applyBtn: "Apply via WhatsApp"
+        },
+        ar: {
+            langName: "English",
+            brandName: "وظائف جوسنل",
+            // الترجمة المقابلة:
+            // pageTitle: "انضم لفريقنا",
+            // applyBtn: "قدم عبر الواتساب"
+        }
+    };
+
+    let currentLang = 'en';
+
+    // 2. دالة تبديل اللغة
+    function toggleLanguage() {
+        currentLang = currentLang === 'en' ? 'ar' : 'en';
+        
+        // تغيير اتجاه الصفحة ليدعم العربية من اليمين لليسار
+        document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+        document.documentElement.lang = currentLang;
+
+        // تحديث النص داخل زر الترجمة
+        document.getElementById('langText').textContent = translations[currentLang].langName;
+
+        // تحديث كل عنصر يحتوي على خاصية data-translate
+        const elementsToTranslate = document.querySelectorAll('[data-translate]');
+        elementsToTranslate.forEach(el => {
+            const key = el.getAttribute('data-translate');
+            if (translations[currentLang][key]) {
+                el.textContent = translations[currentLang][key];
+            }
+        });
+    }
+</script>
 </body>
 </html>
