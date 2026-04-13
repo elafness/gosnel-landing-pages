@@ -32,15 +32,10 @@
 
     <style>
         body { background-color: #f8fafc; color: #0f172a; margin: 0; line-height: 1.6; overflow-x: hidden; }
-        .modal { display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.6); z-index: 100; align-items: center; justify-content: center; padding: 1rem; backdrop-filter: blur(4px); }
-        .modal.active { display: flex; animation: fadeIn 0.2s ease-out; }
-        .modal-content { animation: slideUp 0.3s ease-out; max-height: 90vh; overflow-y: auto; }
         .btn-whatsapp { background-color: #25D366; transition: all 0.2s; }
         .btn-whatsapp:hover { background-color: #20ba5a; transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(37, 211, 102, 0.3); }
         [dir="rtl"] { font-family: 'Noto Sans Arabic', 'Inter', sans-serif; }
         .text-gradient-teal { background: linear-gradient(90deg, #4ECDC4, #1A9A93); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body class="font-sans antialiased">
@@ -76,48 +71,51 @@
     </section>
 
     <section id="jobs" class="max-w-7xl mx-auto px-4 py-24">
-        <div class="flex items-center justify-between mb-12">
-            <h2 class="text-3xl font-bold flex items-center text-slate-900" data-translate="openPositions">
-                <i data-lucide="briefcase" class="me-3 text-brand w-8 h-8"></i> Open Positions.
-            </h2>
-            <span class="bg-brand/10 text-brand-hover px-4 py-1 rounded-full font-bold text-sm">2 Roles</span>
+        <div id="jobs-list-view">
+            <div class="flex items-center justify-between mb-12">
+                <h2 class="text-3xl font-bold flex items-center text-slate-900" data-translate="openPositions">
+                    <i data-lucide="briefcase" class="me-3 text-brand w-8 h-8"></i> Open Positions.
+                </h2>
+                <span class="bg-brand/10 text-brand-hover px-4 py-1 rounded-full font-bold text-sm">2 Roles</span>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div id="jobs-container" class="contents"></div>
+            </div>
         </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div id="jobs-container" class="contents"></div>
-        </div>
-    </section>
 
-    <div id="job-modal" class="modal" onclick="closeModal(event)">
-        <div class="modal-content bg-white rounded-3xl p-8 max-w-lg w-full relative shadow-2xl" onclick="event.stopPropagation()">
-            <button onclick="closeModal(null, true)" class="absolute top-5 end-5 text-slate-400 hover:text-red-500 transition-colors bg-slate-100 hover:bg-red-50 rounded-full p-2">
-                <i data-lucide="x" class="w-5 h-5"></i>
+        <div id="job-detail-view" class="hidden">
+            <button onclick="backToJobs()" class="mb-6 flex items-center gap-2 text-slate-600 hover:text-brand transition-colors font-semibold">
+                <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                <span data-translate="backToJobs">Back to Jobs</span>
             </button>
             
-            <div class="flex gap-2 mb-4">
-                <span id="modal-type" class="px-3 py-1 rounded-md bg-blue-50 text-blue-700 text-xs font-bold uppercase tracking-wider"></span>
-                <span id="modal-loc" class="px-3 py-1 rounded-md bg-emerald-50 text-emerald-700 text-xs font-bold uppercase tracking-wider"></span>
-            </div>
+            <div class="bg-white rounded-3xl p-8 md:p-12 shadow-lg max-w-4xl mx-auto">
+                <div class="flex gap-2 mb-4">
+                    <span id="detail-type" class="px-3 py-1 rounded-md bg-blue-50 text-blue-700 text-xs font-bold uppercase tracking-wider"></span>
+                    <span id="detail-loc" class="px-3 py-1 rounded-md bg-emerald-50 text-emerald-700 text-xs font-bold uppercase tracking-wider"></span>
+                </div>
 
-            <h3 id="modal-title" class="text-2xl font-extrabold mb-5 text-slate-900"></h3>
-            
-            <div id="modal-details" class="text-slate-600 mb-6 text-sm leading-relaxed"></div>
-            
-            <div class="flex flex-col gap-3">
-                <a id="modal-wa-link" href="#" target="_blank" class="w-full py-3.5 rounded-xl btn-whatsapp text-white font-bold flex items-center justify-center text-md">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="me-2 fill-current">
-                        <path d="M16.6 14c-.2-.1-1.5-.7-1.7-.8c-.2-.1-.4-.1-.6.1c-.2.2-.6.8-.8 1c-.1.2-.3.2-.5.1c-.7-.3-1.4-.7-2-1.2c-.5-.5-1-1.1-1.4-1.7c-.1-.2 0-.4.1-.5c.1-.1.2-.3.4-.4c.1-.1.2-.3.2-.4c.1-.1.1-.3 0-.4c-.1-.1-.6-1.3-.8-1.8c-.1-.7-.3-.7-.5-.7h-.5c-.2 0-.5.2-.6.3c-.6.6-.9 1.3-.9 2.1c.1.9.4 1.8 1 2.6c1.1 1.6 2.5 2.9 4.2 3.7c.5.2.9.4 1.4.5c.5.2 1 .2 1.6.1c.7-.1 1.3-.6 1.7-1.2c.2-.4.2-.8.1-1.2l-.4-.2m2.5-9.1C15.2 1 8.9 1 5 4.9c-3.2 3.2-3.8 8.1-1.6 12L2 22l5.3-1.4c1.5.8 3.1 1.2 4.7 1.2c5.5 0 9.9-4.4 9.9-9.9c.1-2.6-1-5.1-2.8-7m-2.7 14c-1.3.8-2.8 1.3-4.4 1.3c-1.5 0-2.9-.4-4.2-1.1l-.3-.2l-3.1.8l.8-3l-.2-.3c-2.4-4-1.2-9 2.7-11.5S16.6 3.7 19 7.5c2.4 3.9 1.3 9-2.6 11.4"/>
-                    </svg>
-                    <span data-translate="applyNowWa">Apply via WhatsApp</span>
-                </a>
+                <h3 id="detail-title" class="text-3xl font-extrabold mb-6 text-slate-900"></h3>
                 
-                <a id="modal-email-link" href="#" class="w-full py-3.5 rounded-xl border-2 border-slate-200 text-slate-700 hover:bg-slate-50 font-bold flex items-center justify-center text-md transition-colors">
-                    <i data-lucide="mail" class="me-2 w-5 h-5"></i>
-                    <span data-translate="applyNowEmail">Apply via Email</span>
-                </a>
+                <div id="detail-details" class="text-slate-600 text-base leading-relaxed"></div>
+                
+                <div class="flex flex-col gap-3 mt-8 pt-6 border-t border-slate-200">
+                    <a id="detail-wa-link" href="#" target="_blank" class="w-full py-4 rounded-xl btn-whatsapp text-white font-bold flex items-center justify-center text-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" class="me-2 fill-current">
+                            <path d="M16.6 14c-.2-.1-1.5-.7-1.7-.8c-.2-.1-.4-.1-.6.1c-.2.2-.6.8-.8 1c-.1.2-.3.2-.5.1c-.7-.3-1.4-.7-2-1.2c-.5-.5-1-1.1-1.4-1.7c-.1-.2 0-.4.1-.5c.1-.1.2-.3.4-.4c.1-.1.2-.3.2-.4c.1-.1.1-.3 0-.4c-.1-.1-.6-1.3-.8-1.8c-.1-.7-.3-.7-.5-.7h-.5c-.2 0-.5.2-.6.3c-.6.6-.9 1.3-.9 2.1c.1.9.4 1.8 1 2.6c1.1 1.6 2.5 2.9 4.2 3.7c.5.2.9.4 1.4.5c.5.2 1 .2 1.6.1c.7-.1 1.3-.6 1.7-1.2c.2-.4.2-.8.1-1.2l-.4-.2m2.5-9.1C15.2 1 8.9 1 5 4.9c-3.2 3.2-3.8 8.1-1.6 12L2 22l5.3-1.4c1.5.8 3.1 1.2 4.7 1.2c5.5 0 9.9-4.4 9.9-9.9c.1-2.6-1-5.1-2.8-7m-2.7 14c-1.3.8-2.8 1.3-4.4 1.3c-1.5 0-2.9-.4-4.2-1.1l-.3-.2l-3.1.8l.8-3l-.2-.3c-2.4-4-1.2-9 2.7-11.5S16.6 3.7 19 7.5c2.4 3.9 1.3 9-2.6 11.4"/>
+                        </svg>
+                        <span data-translate="applyNowWa">Apply via WhatsApp</span>
+                    </a>
+                    
+                    <a id="detail-email-link" href="#" class="w-full py-4 rounded-xl border-2 border-slate-200 text-slate-700 hover:bg-slate-50 font-bold flex items-center justify-center text-lg transition-colors">
+                        <i data-lucide="mail" class="me-2 w-5 h-5"></i>
+                        <span data-translate="applyNowEmail">Apply via Email</span>
+                    </a>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <script>
         const translations = {
@@ -129,6 +127,7 @@
                 applyNowWa: "Apply via WhatsApp", applyNowEmail: "Apply via Email", 
                 footerText: "© 2026 GoSnel AI. All rights reserved.",
                 viewDetails: "View Details & Apply",
+                backToJobs: "Back to Jobs",
                 
                 incomeLabel: "Income", tasksLabel: "Responsibilities", reqsLabel: "Requirements", hoursLabel: "Work Benefits",
                 commissionNote: "Note: Commission-based only (No fixed salary)",
@@ -195,6 +194,7 @@
                 applyNowWa: "قدم عبر الواتساب", applyNowEmail: "قدم عبر الإيميل", 
                 footerText: "© 2026 جوسنل للذكاء الاصطناعي. جميع الحقوق محفوظة.",
                 viewDetails: "التفاصيل والتقديم",
+                backToJobs: "العودة للوظائف",
 
                 incomeLabel: "الدخل", tasksLabel: "المهام", reqsLabel: "المتطلبات", hoursLabel: "مزايا العمل",
                 commissionNote: "ملاحظة: العمل بنظام العمولة (لا يوجد راتب ثابت)",
@@ -302,12 +302,20 @@
         }
 
         function openModal(jobIndex) {
+            showJobDetail(jobIndex);
+        }
+
+        function showJobDetail(jobIndex) {
             const job = translations[currentLang].jobs[jobIndex];
             const t = translations[currentLang];
             
-            document.getElementById('modal-title').textContent = job.title;
-            document.getElementById('modal-type').textContent = job.type;
-            document.getElementById('modal-loc').textContent = job.loc;
+            // Hide jobs list, show job detail
+            document.getElementById('jobs-list-view').classList.add('hidden');
+            document.getElementById('job-detail-view').classList.remove('hidden');
+            
+            document.getElementById('detail-title').textContent = job.title;
+            document.getElementById('detail-type').textContent = job.type;
+            document.getElementById('detail-loc').textContent = job.loc;
             
             const incomeHtml = job.income.map(item => `<li>${item}</li>`).join('');
             const tasksHtml = job.tasks.map(task => `<li>${task}</li>`).join('');
@@ -397,13 +405,21 @@
             
             const englishTitle = translations['en'].jobs[jobIndex].title;
             const waMessage = encodeURIComponent(`Hi GoSnel team, I'm interested in the ${englishTitle} position.`);
-            document.getElementById('modal-wa-link').href = `https://wa.me/971542503729?text=${waMessage}`; 
+            document.getElementById('detail-wa-link').href = `https://wa.me/971542503729?text=${waMessage}`; 
             
             const emailSubject = encodeURIComponent(`Application for ${englishTitle}`);
-            document.getElementById('modal-email-link').href = `mailto:careers@gosnel.com?subject=${emailSubject}`;
+            document.getElementById('detail-email-link').href = `mailto:careers@gosnel.com?subject=${emailSubject}`;
 
-            document.getElementById('job-modal').classList.add('active');
-            document.body.style.overflow = 'hidden';
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            lucide.createIcons();
+        }
+
+        function backToJobs() {
+            document.getElementById('job-detail-view').classList.add('hidden');
+            document.getElementById('jobs-list-view').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
             lucide.createIcons();
         }
 
@@ -432,14 +448,6 @@
             window.open(waLink, '_blank');
         }
 
-        function closeModal(event, force = false) {
-            if (force || event.target.classList.contains('modal')) {
-                document.getElementById('job-modal').classList.remove('active');
-                document.body.style.overflow = 'auto';
-            }
-        }
-
-        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(null, true); });
 
         renderJobs();
         document.querySelectorAll('[data-translate]').forEach(el => {
