@@ -86,7 +86,7 @@
 
         <div id="job-detail-view" class="hidden">
             <button onclick="backToJobs()" class="mb-6 flex items-center gap-2 text-slate-600 hover:text-brand transition-colors font-semibold">
-                <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                <i id="back-arrow" data-lucide="arrow-left" class="w-5 h-5"></i>
                 <span data-translate="backToJobs">Back to Jobs</span>
             </button>
             
@@ -313,6 +313,11 @@
             document.getElementById('jobs-list-view').classList.add('hidden');
             document.getElementById('job-detail-view').classList.remove('hidden');
             
+            // Update URL with job slug
+            const jobSlug = job.title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+            const newUrl = `${window.location.pathname}#job-${jobSlug}`;
+            history.pushState({ jobIndex }, '', newUrl);
+            
             document.getElementById('detail-title').textContent = job.title;
             document.getElementById('detail-type').textContent = job.type;
             document.getElementById('detail-loc').textContent = job.loc;
@@ -419,8 +424,48 @@
         function backToJobs() {
             document.getElementById('job-detail-view').classList.add('hidden');
             document.getElementById('jobs-list-view').classList.remove('hidden');
+            
+            // Clear hash from URL
+            history.pushState({}, '', window.location.pathname);
+            
             window.scrollTo({ top: 0, behavior: 'smooth' });
             lucide.createIcons();
+        }
+
+        // Handle browser back/forward buttons
+        window.addEventListener('popstate', function(event) {
+            const hash = window.location.hash;
+            if (hash && hash.startsWith('#job-')) {
+                const jobSlug = hash.replace('#job-', '');
+                const currentJobs = translations[currentLang].jobs;
+                const jobIndex = currentJobs.findIndex(job => {
+                    const slug = job.title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+                    return slug === jobSlug;
+                });
+                if (jobIndex !== -1) {
+                    showJobDetail(jobIndex);
+                } else {
+                    backToJobs();
+                }
+            } else {
+                backToJobs();
+            }
+        });
+
+        // Check if page loaded with a job hash
+        function checkInitialHash() {
+            const hash = window.location.hash;
+            if (hash && hash.startsWith('#job-')) {
+                const jobSlug = hash.replace('#job-', '');
+                const currentJobs = translations[currentLang].jobs;
+                const jobIndex = currentJobs.findIndex(job => {
+                    const slug = job.title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+                    return slug === jobSlug;
+                });
+                if (jobIndex !== -1) {
+                    setTimeout(() => showJobDetail(jobIndex), 100);
+                }
+            }
         }
 
         function submitApplication(jobIndex) {
@@ -454,6 +499,9 @@
             const key = el.getAttribute('data-translate');
             if (translations[currentLang][key]) el.textContent = translations[currentLang][key];
         });
+        
+        // Check for job hash on page load
+        checkInitialHash();
     </script>
     
 <footer class="bg-gray-50 border-t border-gray-200 pt-16 pb-8">
