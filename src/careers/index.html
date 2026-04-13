@@ -155,7 +155,7 @@
                         tasks: [
                             "Call restaurants via phone (personal number week 1 only, covered by company)",
                             "Explain the service clearly and quickly",
-                            "Convince restaurant to pay 150 AED setup fee (one-time only)",
+                            "Convince restaurant to register",
                             "Collect basic data (menu, logo, contact)",
                             "Coordinate appointment with field representative"
                         ],
@@ -169,14 +169,12 @@
                         trial: [
                             "Work using your personal number (we transfer sufficient call credits)",
                             "We provide restaurant data & CRM system",
-                            "Immediate reward: 20 AED for each restaurant during week 1",
                             "After 1 month of continuity: Work phone + unlimited SIM card"
                         ],
                         applyQuestions: [
-                            "Have you reviewed our full business model at careers.gosnel.com?",
-                            "Brief summary of your phone sales experience (for which services/products)?",
-                            "Are you ready to start immediately and commit to 4 hours daily?",
-                            "How do you see your ability to convince a restaurant to pay 150 AED setup fee (knowing competitors charge 1500-2500)?"
+                            { label: "Have you reviewed our full business model at careers.gosnel.com?", type: "radio", options: ["Yes", "No"] },
+                            { label: "Brief summary of your phone sales experience (for which services/products)?", type: "textarea" },
+                            { label: "Are you ready to start immediately and commit to 4 hours daily?", type: "radio", options: ["Yes, ready to start immediately", "I need a few days"] }
                         ]
                     },
                     { 
@@ -223,7 +221,7 @@
                         tasks: [
                             "الاتصال الهاتفي بالمطاعم (عبر رقمك الشخصي في الأسبوع الأول فقط، على حساب الشركة)",
                             "شرح الخدمة بصورة واضحة وسريعة",
-                            "إقناع المطعم بدفع 150 درهماً رسوم تأسيس (مرة واحدة فقط)",
+                            "إقناع المطعم بالتسجيل",
                             "جمع البيانات الأساسية (القائمة، الشعار، التواصل)",
                             "تنسيق موعد مع مندوب الشركة الميداني"
                         ],
@@ -237,14 +235,12 @@
                         trial: [
                             "العمل برقمك الشخصي (نقوم بتحويل رصيد كافٍ للمكالمات)",
                             "نحن نزوّدك ببيانات المطاعم ونظام CRM",
-                            "المكافأة الفورية: 20 درهماً عن كل مطعم يتعاقد خلال الأسبوع الأول",
                             "بعد شهر من الاستمرارية وتحقيق الأهداف: يتم تسليمك جوال عمل + شريحة اتصال مفتوحة"
                         ],
                         applyQuestions: [
-                            "هل اطلعتِ على نموذج عملنا بالكامل عبر موقعنا careers.gosnel.com؟",
-                            "ملخص سريع عن خبرتك في المبيعات الهاتفية (لأي خدمات ومنتجات؟)",
-                            "هل أنتِ مستعدة للبدء فوراً والالتزام بـ 4 ساعات يومياً؟",
-                            "كيف ترين قدرتك على إقناع مطعم بدفع 150 درهماً رسوم تأسيس (مع العلم أن المنافسين يطلبون 1500-2500)؟"
+                            { label: "هل اطلعتِ على نموذج عملنا بالكامل عبر موقعنا careers.gosnel.com؟", type: "radio", options: ["نعم", "لا"] },
+                            { label: "ملخص سريع عن خبرتك في المبيعات الهاتفية (لأي خدمات ومنتجات؟)", type: "textarea" },
+                            { label: "هل أنتِ مستعدة للبدء فوراً والالتزام بـ 4 ساعات يومياً؟", type: "radio", options: ["نعم، مستعدة للبدء فوراً", "أحتاج بضعة أيام"] }
                         ]
                     },
                     { 
@@ -318,7 +314,50 @@
             const reqsHtml = job.reqs.map(req => `<li>${req}</li>`).join('');
             const hoursHtml = job.hours ? job.hours.map(h => `<li>${h}</li>`).join('') : '';
             const trialHtml = job.trial ? job.trial.map(item => `<li>${item}</li>`).join('') : '';
-            const questionsHtml = job.applyQuestions ? job.applyQuestions.map((q, i) => `<li><strong>${i + 1}.</strong> ${q}</li>`).join('') : '';
+            
+            // Generate form HTML for application questions
+            let questionsFormHtml = '';
+            if (job.applyQuestions && job.applyQuestions.length > 0) {
+                questionsFormHtml = `
+                <div class="mt-6 p-5 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl border border-blue-200">
+                    <h4 class="font-bold text-slate-900 mb-4 flex items-center text-lg">
+                        <i data-lucide="clipboard-list" class="w-5 h-5 me-2 text-brand"></i>${t.applyLabel}
+                    </h4>
+                    <form id="application-form" class="space-y-4">
+                        ${job.applyQuestions.map((q, i) => {
+                            if (q.type === 'radio') {
+                                return `
+                                    <div class="bg-white p-4 rounded-lg border border-slate-200">
+                                        <p class="font-semibold text-slate-800 mb-3 text-sm"><span class="text-brand font-bold">${i + 1}.</span> ${q.label}</p>
+                                        <div class="flex flex-wrap gap-3">
+                                            ${q.options.map((opt, j) => `
+                                                <label class="flex items-center gap-2 cursor-pointer hover:bg-slate-50 p-2 rounded transition-colors">
+                                                    <input type="radio" name="q${i}" value="${opt}" required class="w-4 h-4 text-brand focus:ring-brand">
+                                                    <span class="text-sm text-slate-700">${opt}</span>
+                                                </label>
+                                            `).join('')}
+                                        </div>
+                                    </div>
+                                `;
+                            } else if (q.type === 'textarea') {
+                                return `
+                                    <div class="bg-white p-4 rounded-lg border border-slate-200">
+                                        <p class="font-semibold text-slate-800 mb-2 text-sm"><span class="text-brand font-bold">${i + 1}.</span> ${q.label}</p>
+                                        <textarea name="q${i}" rows="3" required class="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent text-sm" placeholder="${currentLang === 'en' ? 'Type your answer here...' : 'اكتبي إجابتك هنا...'}"></textarea>
+                                    </div>
+                                `;
+                            }
+                            return '';
+                        }).join('')}
+                        <button type="button" onclick="submitApplication(${jobIndex})" class="w-full py-3.5 rounded-xl btn-whatsapp text-white font-bold flex items-center justify-center text-md mt-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="me-2 fill-current">
+                                <path d="M16.6 14c-.2-.1-1.5-.7-1.7-.8c-.2-.1-.4-.1-.6.1c-.2.2-.6.8-.8 1c-.1.2-.3.2-.5.1c-.7-.3-1.4-.7-2-1.2c-.5-.5-1-1.1-1.4-1.7c-.1-.2 0-.4.1-.5c.1-.1.2-.3.4-.4c.1-.1.2-.3.2-.4c.1-.1.1-.3 0-.4c-.1-.1-.6-1.3-.8-1.8c-.1-.7-.3-.7-.5-.7h-.5c-.2 0-.5.2-.6.3c-.6.6-.9 1.3-.9 2.1c.1.9.4 1.8 1 2.6c1.1 1.6 2.5 2.9 4.2 3.7c.5.2.9.4 1.4.5c.5.2 1 .2 1.6.1c.7-.1 1.3-.6 1.7-1.2c.2-.4.2-.8.1-1.2l-.4-.2m2.5-9.1C15.2 1 8.9 1 5 4.9c-3.2 3.2-3.8 8.1-1.6 12L2 22l5.3-1.4c1.5.8 3.1 1.2 4.7 1.2c5.5 0 9.9-4.4 9.9-9.9c.1-2.6-1-5.1-2.8-7m-2.7 14c-1.3.8-2.8 1.3-4.4 1.3c-1.5 0-2.9-.4-4.2-1.1l-.3-.2l-3.1.8l.8-3l-.2-.3c-2.4-4-1.2-9 2.7-11.5S16.6 3.7 19 7.5c2.4 3.9 1.3 9-2.6 11.4"/>
+                            </svg>
+                            ${currentLang === 'en' ? 'Submit Application via WhatsApp' : 'إرسال الطلب عبر واتساب'}
+                        </button>
+                    </form>
+                </div>`;
+            }
             
             document.getElementById('modal-details').innerHTML = `
                 <div class="bg-amber-50 border-l-4 border-amber-500 p-4 mb-6 rounded-r-lg flex items-start">
@@ -353,11 +392,7 @@
                     <ul class="list-disc ms-6 space-y-1 text-slate-600">${reqsHtml}</ul>
                 </div>
 
-                ${job.applyQuestions ? `
-                <div class="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
-                    <h4 class="font-bold text-slate-900 mb-3 flex items-center"><i data-lucide="message-square" class="w-4 h-4 me-2 text-brand"></i>${t.applyLabel}</h4>
-                    <ol class="list-decimal ms-6 space-y-2 text-slate-700 text-sm">${questionsHtml}</ol>
-                </div>` : ''}
+                ${questionsFormHtml}
             `;
             
             const englishTitle = translations['en'].jobs[jobIndex].title;
@@ -370,6 +405,31 @@
             document.getElementById('job-modal').classList.add('active');
             document.body.style.overflow = 'hidden';
             lucide.createIcons();
+        }
+
+        function submitApplication(jobIndex) {
+            const job = translations[currentLang].jobs[jobIndex];
+            const englishTitle = translations['en'].jobs[jobIndex].title;
+            
+            // Collect form data
+            const form = document.getElementById('application-form');
+            const formData = new FormData(form);
+            
+            // Build WhatsApp message
+            let message = currentLang === 'en' 
+                ? `Application for ${englishTitle}\n\n`
+                : `تقديم لوظيفة ${job.title}\n\n`;
+            
+            job.applyQuestions.forEach((q, i) => {
+                const answer = formData.get(`q${i}`);
+                message += `${i + 1}. ${q.label}\n${currentLang === 'en' ? 'Answer' : 'الإجابة'}: ${answer || 'Not provided'}\n\n`;
+            });
+            
+            const encodedMessage = encodeURIComponent(message);
+            const waLink = `https://wa.me/971542503729?text=${encodedMessage}`;
+            
+            // Open WhatsApp
+            window.open(waLink, '_blank');
         }
 
         function closeModal(event, force = false) {
