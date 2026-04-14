@@ -312,12 +312,30 @@
         function getCurrentJobIndexFromHash() {
             const hash = window.location.hash;
             if (hash && hash.startsWith('#job-')) {
-                const jobSlug = hash.replace('#job-', '');
-                const currentJobs = translations[currentLang].jobs;
-                return currentJobs.findIndex(job => {
-                    const slug = job.title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-\u0600-\u06FF]/g, '');
+                let jobSlug = hash.replace('#job-', '');
+                
+                // Check if it's Arabic version
+                const isArabic = jobSlug.endsWith('-ar');
+                if (isArabic) {
+                    jobSlug = jobSlug.replace(/-ar$/, '');
+                }
+                
+                // Find job by English slug
+                const englishJobs = translations['en'].jobs;
+                const jobIndex = englishJobs.findIndex(job => {
+                    const slug = job.title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
                     return slug === jobSlug;
                 });
+                
+                // If Arabic version, switch language
+                if (isArabic && jobIndex !== -1 && currentLang !== 'ar') {
+                    currentLang = 'ar';
+                    document.documentElement.dir = 'rtl';
+                    document.documentElement.lang = 'ar';
+                    document.getElementById('langText').textContent = translations['ar'].langName;
+                }
+                
+                return jobIndex;
             }
             return -1;
         }
@@ -334,9 +352,11 @@
             document.getElementById('jobs-list-view').classList.add('hidden');
             document.getElementById('job-detail-view').classList.remove('hidden');
             
-            // Update URL with job slug (handle both English and Arabic characters)
-            const jobSlug = job.title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-\u0600-\u06FF]/g, '');
-            const newUrl = `${window.location.pathname}#job-${jobSlug}`;
+            // Update URL with job slug (always use English title for URL)
+            const englishJob = translations['en'].jobs[jobIndex];
+            const jobSlug = englishJob.title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+            const langSuffix = currentLang === 'ar' ? '-ar' : '';
+            const newUrl = `${window.location.pathname}#job-${jobSlug}${langSuffix}`;
             history.pushState({ jobIndex }, '', newUrl);
             
             document.getElementById('detail-title').textContent = job.title;
@@ -457,13 +477,37 @@
         window.addEventListener('popstate', function(event) {
             const hash = window.location.hash;
             if (hash && hash.startsWith('#job-')) {
-                const jobSlug = hash.replace('#job-', '');
-                const currentJobs = translations[currentLang].jobs;
-                const jobIndex = currentJobs.findIndex(job => {
-                    const slug = job.title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-\u0600-\u06FF]/g, '');
+                let jobSlug = hash.replace('#job-', '');
+                
+                // Check if it's Arabic version
+                const isArabic = jobSlug.endsWith('-ar');
+                if (isArabic) {
+                    jobSlug = jobSlug.replace(/-ar$/, '');
+                }
+                
+                // Find job by English slug
+                const englishJobs = translations['en'].jobs;
+                const jobIndex = englishJobs.findIndex(job => {
+                    const slug = job.title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
                     return slug === jobSlug;
                 });
+                
                 if (jobIndex !== -1) {
+                    // If Arabic version, switch language
+                    if (isArabic && currentLang !== 'ar') {
+                        currentLang = 'ar';
+                        document.documentElement.dir = 'rtl';
+                        document.documentElement.lang = 'ar';
+                        document.getElementById('langText').textContent = translations['ar'].langName;
+                        
+                        document.querySelectorAll('[data-translate]').forEach(el => {
+                            const key = el.getAttribute('data-translate');
+                            if (translations['ar'][key]) el.textContent = translations['ar'][key];
+                        });
+                        
+                        renderJobs();
+                    }
+                    
                     showJobDetail(jobIndex);
                 } else {
                     backToJobs();
@@ -477,13 +521,38 @@
         function checkInitialHash() {
             const hash = window.location.hash;
             if (hash && hash.startsWith('#job-')) {
-                const jobSlug = hash.replace('#job-', '');
-                const currentJobs = translations[currentLang].jobs;
-                const jobIndex = currentJobs.findIndex(job => {
-                    const slug = job.title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-\u0600-\u06FF]/g, '');
+                let jobSlug = hash.replace('#job-', '');
+                
+                // Check if it's Arabic version
+                const isArabic = jobSlug.endsWith('-ar');
+                if (isArabic) {
+                    jobSlug = jobSlug.replace(/-ar$/, '');
+                }
+                
+                // Find job by English slug
+                const englishJobs = translations['en'].jobs;
+                const jobIndex = englishJobs.findIndex(job => {
+                    const slug = job.title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
                     return slug === jobSlug;
                 });
+                
                 if (jobIndex !== -1) {
+                    // If Arabic version, switch language before rendering
+                    if (isArabic && currentLang !== 'ar') {
+                        currentLang = 'ar';
+                        document.documentElement.dir = 'rtl';
+                        document.documentElement.lang = 'ar';
+                        document.getElementById('langText').textContent = translations['ar'].langName;
+                        
+                        // Update all translations
+                        document.querySelectorAll('[data-translate]').forEach(el => {
+                            const key = el.getAttribute('data-translate');
+                            if (translations['ar'][key]) el.textContent = translations['ar'][key];
+                        });
+                        
+                        renderJobs();
+                    }
+                    
                     // Hide jobs list and show job detail immediately
                     document.getElementById('jobs-list-view').classList.add('hidden');
                     document.getElementById('job-detail-view').classList.remove('hidden');
