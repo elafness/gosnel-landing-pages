@@ -165,7 +165,7 @@
                         ],
                         applyQuestions: [
                             { label: "Are you a resident in UAE?", type: "radio", options: ["Yes", "No"] },
-                            { label: "Are you fluent in Arabic and English (conversational)?", type: "radio", options: ["Yes", "No"] },
+                            { label: "What languages do you speak? (Select all that apply)", type: "checkbox", options: ["العربية (Arabic)", "English", "हिंदी (Hindi)", "اردو (Urdu)", "മലയാളം (Malayalam)", "Tagalog"] },
                             { label: "Do you have phone sales experience or strong willingness (Cold Calling)?", type: "radio", options: ["Yes, I have experience", "Yes, I'm willing to learn", "No"] },
                             { label: "Can you commit to 3-4 hours daily in the evening?", type: "radio", options: ["Yes", "No"] },
                             { label: "This position is commission-based only (no fixed salary) - 20 AED per closed deal. Do you agree?", type: "radio", options: ["Yes, I agree", "No"] },
@@ -190,7 +190,7 @@
                             { label: "Do you live in Ajman?", type: "radio", options: ["Yes", "No"] },
                             { label: "Do you have your own transportation?", type: "radio", options: ["Yes", "No"] },
                             { label: "Do you have a laptop or tablet?", type: "radio", options: ["Yes", "No"] },
-                            { label: "Are you fluent in Arabic and English?", type: "radio", options: ["Yes", "No"] },
+                            { label: "What languages do you speak? (Select all that apply)", type: "checkbox", options: ["العربية (Arabic)", "English", "हिंदी (Hindi)", "اردو (Urdu)", "മലയാളം (Malayalam)", "Tagalog"] },
                             { label: "This position is commission-based only (no fixed salary) - 35 AED per closed deal. Do you agree?", type: "radio", options: ["Yes, I agree", "No"] },
                             { label: "Brief summary of your sales experience (for which services/products)?", type: "textarea" },
                             { label: "Are you ready to start immediately?", type: "radio", options: ["Yes, ready to start immediately", "I need a few days"] }
@@ -249,7 +249,7 @@
                         ],
                         applyQuestions: [
                             { label: "هل تقيمين في الامارات؟", type: "radio", options: ["نعم", "لا"] },
-                            { label: "هل تجيدين العربية والإنجليزية (محادثة)؟", type: "radio", options: ["نعم", "لا"] },
+                            { label: "ما هي اللغات التي تتحدثينها؟ (اختيار متعدد)", type: "checkbox", options: ["العربية", "English (الإنجليزية)", "हिंदी (الهندية)", "اردو (الأردية)", "മലയാളം (المالايالامية)", "Tagalog (التاغالوغ)"] },
                             { label: "هل لديكِ خبرة أو استعداد قوي للمبيعات الهاتفية (Cold Calling)؟", type: "radio", options: ["نعم، لدي خبرة", "نعم، مستعدة للتعلم", "لا"] },
                             { label: "هل تستطيعين الالتزام بـ 3-4 ساعات يومياً مساءً؟", type: "radio", options: ["نعم", "لا"] },
                             { label: "العمل بنظام العمولة (لا يوجد راتب ثابت) - عمولة ٢٠ درهم على إتمام كل صفقة. هل أنت موافقة؟", type: "radio", options: ["نعم، أوافق", "لا"] },
@@ -274,7 +274,7 @@
                             { label: "هل تقيم في عجمان؟", type: "radio", options: ["نعم", "لا"] },
                             { label: "هل لديك وسيلة تنقل؟", type: "radio", options: ["نعم", "لا"] },
                             { label: "هل لديك لابتوب أو تابلت؟", type: "radio", options: ["نعم", "لا"] },
-                            { label: "هل تجيد اللغتين العربية والإنجليزية؟", type: "radio", options: ["نعم", "لا"] },
+                            { label: "ما هي اللغات التي تتحدثها؟ (اختيار متعدد)", type: "checkbox", options: ["العربية", "English (الإنجليزية)", "हिंदी (الهندية)", "اردو (الأردية)", "മലയാളം (المالايالامية)", "Tagalog (التاغالوغ)"] },
                             { label: "العمل بنظام العمولة (لا يوجد راتب ثابت) - عمولة ٣٥ درهم على إتمام كل صفقة. هل أنت موافق؟", type: "radio", options: ["نعم، أوافق", "لا"] },
                             { label: "ملخص سريع عن خبرتك في المبيعات (لأي خدمات ومنتجات؟)", type: "textarea" },
                             { label: "هل أنت مستعد للبدء فوراً؟", type: "radio", options: ["نعم، مستعد للبدء فوراً", "أحتاج بضعة أيام"] }
@@ -416,6 +416,20 @@
                                             ${q.options.map((opt, j) => `
                                                 <label class="flex items-center gap-2 cursor-pointer hover:bg-slate-50 p-2 rounded transition-colors">
                                                     <input type="radio" name="q${i}" value="${opt}" required class="w-4 h-4 text-brand focus:ring-brand">
+                                                    <span class="text-sm text-slate-700">${opt}</span>
+                                                </label>
+                                            `).join('')}
+                                        </div>
+                                    </div>
+                                `;
+                            } else if (q.type === 'checkbox') {
+                                return `
+                                    <div class="bg-white p-4 rounded-lg border border-slate-200">
+                                        <p class="font-semibold text-slate-800 mb-3 text-sm"><span class="text-brand font-bold">${i + 1}.</span> ${q.label}</p>
+                                        <div class="flex flex-wrap gap-3">
+                                            ${q.options.map((opt, j) => `
+                                                <label class="flex items-center gap-2 cursor-pointer hover:bg-slate-50 p-2 rounded transition-colors">
+                                                    <input type="checkbox" name="q${i}" value="${opt}" class="w-4 h-4 text-brand focus:ring-brand rounded">
                                                     <span class="text-sm text-slate-700">${opt}</span>
                                                 </label>
                                             `).join('')}
@@ -604,8 +618,16 @@
                 : `تقديم لوظيفة ${job.title}\n\n`;
             
             job.applyQuestions.forEach((q, i) => {
-                const answer = formData.get(`q${i}`);
-                message += `${i + 1}. ${q.label}\n${currentLang === 'en' ? 'Answer' : 'الإجابة'}: ${answer || 'Not provided'}\n\n`;
+                if (q.type === 'checkbox') {
+                    // Get all selected checkboxes
+                    const checkboxes = form.querySelectorAll(`input[name="q${i}"]:checked`);
+                    const answers = Array.from(checkboxes).map(cb => cb.value);
+                    const answerText = answers.length > 0 ? answers.join(', ') : (currentLang === 'en' ? 'None selected' : 'لم يتم الاختيار');
+                    message += `${i + 1}. ${q.label}\n${currentLang === 'en' ? 'Answer' : 'الإجابة'}: ${answerText}\n\n`;
+                } else {
+                    const answer = formData.get(`q${i}`);
+                    message += `${i + 1}. ${q.label}\n${currentLang === 'en' ? 'Answer' : 'الإجابة'}: ${answer || 'Not provided'}\n\n`;
+                }
             });
             
             const encodedMessage = encodeURIComponent(message);
