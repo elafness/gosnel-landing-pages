@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | GoSnel</title>
+    <meta name="description" content="Get in touch with GoSnel. We're here to help with any questions about our AI food discovery platform.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        arabic: ['Cairo', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            DEFAULT: '#4ecdc4',
+                            light: '#e6f9f8',
+                            dark: '#3db5ac'
+                        },
+                        gs: {
+                            dark: '#0f172a',
+                            light: '#f8fafc',
+                            gray: '#64748b'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        html { scroll-behavior: smooth; }
+        body { background-color: #f8fafc; color: #0f172a; }
+        body.lang-ar { font-family: 'Cairo', sans-serif; direction: rtl; }
+        body.lang-en { font-family: 'Inter', sans-serif; direction: ltr; }
+        
+        .lang-toggle {
+            position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+            z-index: 100; display: flex; gap: 4px;
+            background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px);
+            border-radius: 100px; padding: 6px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        .lang-btn {
+            padding: 8px 20px; border-radius: 100px; font-weight: 600; font-size: 14px;
+            color: #64748b; transition: all 0.3s ease; cursor: pointer; border: none; background: transparent;
+        }
+        .lang-btn.active { background: #4ecdc4; color: white; box-shadow: 0 4px 12px rgba(78, 205, 196, 0.3); }
+        .lang-btn:hover:not(.active) { background: rgba(78, 205, 196, 0.1); color: #0f172a; }
+        
+        [lang="ar"] { display: none; }
+        body.lang-ar [lang="en"] { display: none; }
+        body.lang-ar [lang="ar"] { display: block; }
+    </style>
+</head>
+<body class="lang-en antialiased">
+
+    <div class="lang-toggle">
+        <button onclick="setLang('en')" id="btn-en" class="lang-btn active">English</button>
+        <button onclick="setLang('ar')" id="btn-ar" class="lang-btn">العربية</button>
+    </div>
+
+    <nav class="fixed w-full z-40 bg-white/80 backdrop-blur-md border-b border-gray-100 top-0 pt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="/" class="flex items-center gap-3">
+                    <img src="https://pub-36067fecb2654f06ab5b13fe9340062d.r2.dev/GosnelPersonality.png" alt="GoSnel Logo" class="w-10 h-10 rounded-full shadow-sm">
+                    <span class="font-bold text-2xl tracking-tight text-gs-dark">GoSnel</span>
+                </a>
+                <a href="/" class="text-gs-gray hover:text-brand transition-colors font-medium">
+                    <span lang="en">Back to Home</span>
+                    <span lang="ar">العودة للرئيسية</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="pt-32 pb-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h1 class="text-4xl md:text-5xl font-extrabold text-gs-dark mb-4">
+                    <span lang="en">Get in Touch</span>
+                    <span lang="ar">تواصل معنا</span>
+                </h1>
+                <p class="text-lg text-gs-gray max-w-2xl mx-auto">
+                    <span lang="en">Have questions about GoSnel? We're here to help. Send us a message and we'll respond as soon as possible.</span>
+                    <span lang="ar">لديك أسئلة حول جوسنل؟ نحن هنا للمساعدة. أرسل لنا رسالة وسنرد في أقرب وقت ممكن.</span>
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Contact Form -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg">
+                    <h2 class="text-2xl font-bold text-gs-dark mb-6">
+                        <span lang="en">Send us a Message</span>
+                        <span lang="ar">أرسل لنا رسالة</span>
+                    </h2>
+                    
+                    <form id="contact-form" class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-semibold text-gs-dark mb-2">
+                                <span lang="en">Full Name</span>
+                                <span lang="ar">الاسم الكامل</span>
+                            </label>
+                            <input type="text" id="name" required 
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent transition-all"
+                                placeholder="">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-gs-dark mb-2">
+                                <span lang="en">Email Address</span>
+                                <span lang="ar">البريد الإلكتروني</span>
+                            </label>
+                            <input type="email" id="email" required 
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent transition-all"
+                                placeholder="">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-gs-dark mb-2">
+                                <span lang="en">Subject</span>
+                                <span lang="ar">الموضوع</span>
+                            </label>
+                            <input type="text" id="subject" required 
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent transition-all"
+                                placeholder="">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-gs-dark mb-2">
+                                <span lang="en">Message</span>
+                                <span lang="ar">الرسالة</span>
+                            </label>
+                            <textarea id="message" rows="5" required 
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent transition-all resize-none"
+                                placeholder=""></textarea>
+                        </div>
+
+                        <button type="submit" 
+                            class="w-full bg-brand hover:bg-brand-dark text-white font-bold py-4 rounded-lg transition-all transform hover:scale-[1.02] shadow-lg hover:shadow-xl">
+                            <span lang="en">Send Message</span>
+                            <span lang="ar">إرسال الرسالة</span>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="space-y-8">
+                    <div class="bg-white rounded-2xl p-8 shadow-lg">
+                        <h2 class="text-2xl font-bold text-gs-dark mb-6">
+                            <span lang="en">Contact Information</span>
+                            <span lang="ar">معلومات الاتصال</span>
+                        </h2>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start gap-4">
+                                <div class="bg-brand-light p-3 rounded-lg">
+                                    <i data-lucide="mail" class="w-6 h-6 text-brand"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-gs-dark mb-1">
+                                        <span lang="en">Email</span>
+                                        <span lang="ar">البريد الإلكتروني</span>
+                                    </h3>
+                                    <a href="mailto:info@gosnel.com" class="text-brand hover:text-brand-dark transition-colors">
+                                        info@gosnel.com
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="bg-brand-light p-3 rounded-lg">
+                                    <i data-lucide="clock" class="w-6 h-6 text-brand"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-gs-dark mb-1">
+                                        <span lang="en">Business Hours</span>
+                                        <span lang="ar">ساعات العمل</span>
+                                    </h3>
+                                    <p class="text-gs-gray">
+                                        <span lang="en">Sunday - Thursday: 9:00 AM - 6:00 PM (GST)</span>
+                                        <span lang="ar">الأحد - الخميس: 9:00 ص - 6:00 م (بتوقيت الإمارات)</span>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="bg-brand-light p-3 rounded-lg">
+                                    <i data-lucide="map-pin" class="w-6 h-6 text-brand"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-gs-dark mb-1">
+                                        <span lang="en">Location</span>
+                                        <span lang="ar">الموقع</span>
+                                    </h3>
+                                    <p class="text-gs-gray">
+                                        <span lang="en">United Arab Emirates</span>
+                                        <span lang="ar">الإمارات العربية المتحدة</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-brand to-brand-dark rounded-2xl p-8 shadow-lg text-white">
+                        <h3 class="text-xl font-bold mb-3">
+                            <span lang="en">Quick Response via WhatsApp</span>
+                            <span lang="ar">رد سريع عبر واتساب</span>
+                        </h3>
+                        <p class="mb-4 opacity-90">
+                            <span lang="en">For faster response, reach out to us on WhatsApp</span>
+                            <span lang="ar">للحصول على رد أسرع، تواصل معنا عبر واتساب</span>
+                        </p>
+                        <a href="https://wa.me/971542503729" target="_blank" 
+                            class="inline-flex items-center gap-2 bg-white text-brand-dark px-6 py-3 rounded-lg font-bold hover:bg-gray-100 transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="fill-current">
+                                <path d="M16.6 14c-.2-.1-1.5-.7-1.7-.8c-.2-.1-.4-.1-.6.1c-.2.2-.6.8-.8 1c-.1.2-.3.2-.5.1c-.7-.3-1.4-.7-2-1.2c-.5-.5-1-1.1-1.4-1.7c-.1-.2 0-.4.1-.5c.1-.1.2-.3.4-.4c.1-.1.2-.3.2-.4c.1-.1.1-.3 0-.4c-.1-.1-.6-1.3-.8-1.8c-.1-.7-.3-.7-.5-.7h-.5c-.2 0-.5.2-.6.3c-.6.6-.9 1.3-.9 2.1c.1.9.4 1.8 1 2.6c1.1 1.6 2.5 2.9 4.2 3.7c.5.2.9.4 1.4.5c.5.2 1 .2 1.6.1c.7-.1 1.3-.6 1.7-1.2c.2-.4.2-.8.1-1.2l-.4-.2m2.5-9.1C15.2 1 8.9 1 5 4.9c-3.2 3.2-3.8 8.1-1.6 12L2 22l5.3-1.4c1.5.8 3.1 1.2 4.7 1.2c5.5 0 9.9-4.4 9.9-9.9c.1-2.6-1-5.1-2.8-7m-2.7 14c-1.3.8-2.8 1.3-4.4 1.3c-1.5 0-2.9-.4-4.2-1.1l-.3-.2l-3.1.8l.8-3l-.2-.3c-2.4-4-1.2-9 2.7-11.5S16.6 3.7 19 7.5c2.4 3.9 1.3 9-2.6 11.4"/>
+                            </svg>
+                            <span lang="en">Chat on WhatsApp</span>
+                            <span lang="ar">محادثة عبر واتساب</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gs-dark text-white py-12">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <p class="text-gray-400">
+                <span lang="en">© 2026 GoSnel AI. All rights reserved.</span>
+                <span lang="ar">© 2026 جوسنل للذكاء الاصطناعي. جميع الحقوق محفوظة.</span>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        function setLang(lang) {
+            document.body.className = `lang-${lang} antialiased`;
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(`btn-${lang}`).classList.add('active');
+            localStorage.setItem('preferredLang', lang);
+            lucide.createIcons();
+        }
+
+        // Load saved language
+        const savedLang = localStorage.getItem('preferredLang') || 'en';
+        setLang(savedLang);
+
+        // Handle form submission
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            const currentLang = document.body.className.includes('lang-ar') ? 'ar' : 'en';
+            
+            const waMessage = currentLang === 'en'
+                ? `New Contact Form Submission\n\nName: ${name}\nEmail: ${email}\nSubject: ${subject}\nMessage: ${message}`
+                : `تقديم نموذج اتصال جديد\n\nالاسم: ${name}\nالبريد الإلكتروني: ${email}\nالموضوع: ${subject}\nالرسالة: ${message}`;
+            
+            const encodedMessage = encodeURIComponent(waMessage);
+            window.open(`https://wa.me/971542503729?text=${encodedMessage}`, '_blank');
+            
+            // Reset form
+            this.reset();
+            
+            // Show success message
+            const successMsg = currentLang === 'en' 
+                ? "Message sent successfully! We'll get back to you soon."
+                : 'تم إرسال الرسالة بنجاح! سنعود إليك قريباً.';
+            alert(successMsg);
+        });
+
+        // Initialize icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
