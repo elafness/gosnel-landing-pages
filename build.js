@@ -251,7 +251,8 @@ const buildPages = () => {
     { src: 'user-app/about-gosnel.html', dest: 'about.html' },
     { src: 'user-app/blog.html', dest: 'blog.html' },
     { src: 'user-app/new-faq.html', dest: 'faq.html' },
-    { src: 'user-app/account-soon.html', dest: 'account-soon.html' }
+    { src: 'user-app/account-soon.html', dest: 'account-soon.html' },
+    { src: 'user-app/contact.html', dest: 'contact.html' }
   ];
   
   userPages.forEach(({ src, dest }) => {
