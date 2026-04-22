@@ -19,6 +19,14 @@ https://restaurants.gosnel.com/* https://gosnel.com/partner/ 301
 https://restaurants.gosnel.com/ https://gosnel.com/partner/ 301
 
 # ============================================
+# USER SUBDOMAIN (user.gosnel.com)
+# ============================================
+# Shared pages that work on both main domain and user subdomain
+https://user.gosnel.com/legal /legal.html 200
+https://user.gosnel.com/about /about.html 200
+https://user.gosnel.com/faq /faq.html 200
+
+# ============================================
 # MAIN DOMAIN ROUTING (gosnel.com)
 # ============================================
 # Note: Cloudflare Pages automatically serves .html files without extension

@@ -13,7 +13,15 @@ https://careers.gosnel.com/* /careers/:splat 200
 /careers/* /careers/:splat 200
 
 # ============================================
-# 3. RESTAURANTS & OTHERS
+# 3. USER SUBDOMAIN (user.gosnel.com)
+# ============================================
+# Shared pages that work on both main domain and user subdomain
+https://user.gosnel.com/legal /legal.html 200
+https://user.gosnel.com/about /about.html 200
+https://user.gosnel.com/faq /faq.html 200
+
+# ============================================
+# 4. RESTAURANTS & OTHERS
 # ============================================
 https://restaurants.gosnel.com/* https://gosnel.com/partner/ 301
 /vendor/* /partner/:splat 301
