@@ -177,7 +177,7 @@
                         <option value="en" selected>EN</option>
                         <option value="ar">AR</option>
                     </select>
-                    <a href="https://app.gosnel.com" class="hidden sm:flex items-center gap-2 bg-gs-dark text-white px-5 py-2 rounded-full font-semibold hover:bg-gray-800 transition text-sm">
+                    <a href="https://user.gosnel.com" class="hidden sm:flex items-center gap-2 bg-gs-dark text-white px-5 py-2 rounded-full font-semibold hover:bg-gray-800 transition text-sm">
                         <span id="nav_cta">Start Chat</span>
                         <i data-lucide="arrow-right" class="w-4 h-4 rtl:hidden"></i>
                         <i data-lucide="arrow-left" class="w-4 h-4 hidden rtl:block"></i>
@@ -205,7 +205,7 @@
             </p>
             
             <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start rtl:lg:justify-end">
-                <a href="https://app.gosnel.com" class="btn-pulse bg-brand text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-brand-dark transition shadow-lg flex items-center justify-center gap-3 w-full sm:w-auto">
+                <a href="https://user.gosnel.com" class="btn-pulse bg-brand text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-brand-dark transition shadow-lg flex items-center justify-center gap-3 w-full sm:w-auto">
                     <i data-lucide="message-square" class="w-5 h-5"></i>
                     <span id="btn_primary">Chat with GoSnel</span>
                 </a>
@@ -302,7 +302,7 @@
                     Watch how fast you can go from "I'm hungry" to confirming your order on WhatsApp. No endless scrolling, no decision fatigue. Just a perfect combo curated for you in seconds.
                 </p>
                 
-                <a href="https://app.gosnel.com" class="inline-flex items-center justify-center gap-2 bg-brand text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-brand-dark transition shadow-lg shadow-brand/20">
+                <a href="https://user.gosnel.com" class="inline-flex items-center justify-center gap-2 bg-brand text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-brand-dark transition shadow-lg shadow-brand/20">
                     <i data-lucide="external-link" class="w-5 h-5"></i>
                     <span id="video_cta">Try it yourself now</span>
                 </a>
@@ -478,7 +478,7 @@
             lucide.createIcons();
             
             // Handle RTL icons
-            const navCtaBtn = document.querySelector('a[href="https://app.gosnel.com"]');
+            const navCtaBtn = document.querySelector('a[href="https://user.gosnel.com"]');
             if (navCtaBtn) {
                 const rightArrow = navCtaBtn.querySelector('[data-lucide="arrow-right"]');
                 const leftArrow = navCtaBtn.querySelector('[data-lucide="arrow-left"]');
