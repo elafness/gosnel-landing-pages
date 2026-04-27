@@ -35,7 +35,7 @@
         .btn-whatsapp { background-color: #25D366; transition: all 0.2s; }
         .btn-whatsapp:hover { background-color: #20ba5a; transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(37, 211, 102, 0.3); }
         [dir="rtl"] { font-family: 'Noto Sans Arabic', 'Inter', sans-serif; }
-        .text-gradient-teal { background: linear-gradient(90deg, #4ECDC4, #1A9A93); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .text-gradient-teal { background: linear-gradient(90deg, #4ECDC4, #1A9A93); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
     </style>
 </head>
 <body class="font-sans antialiased">
@@ -158,6 +158,7 @@
                             "⏰ Able to commit 3-4 hours daily evening",
                             "💡 Strong persuasion skills & patience with rejection"
                         ],
+                        trial: [
                             "Work using your personal number during the trial period (7 days), (we transfer sufficient call credits) for up to 100 calls",
                             "We provide restaurant data & CRM system",
                             "After 1 month of continuity: Work phone + unlimited SIM card"
@@ -718,27 +719,18 @@
             </div>
         </div>
         
-        <div class="border-t border-gray-200 pt-6 text-center">
-            <p class="text-xs text-gray-500">© 2026 GoSnel. All rights reserved. | Made with ❤️ in UAE</p>
-        </div>
-    </div>
-</footer>
-
-<style>
-.text-gradient-teal {
-    background: linear-gradient(90deg, #4ECDC4, #1A9A93);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-</style>
-
-</body>
-</html>             
-                    <a href="https://www.youtube.com/channel/UCKOG_phzLcbsNj0MVXCEAfA" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full bg-teal-500/10 border border-teal-500/30 flex items-center justify-center hover:bg-teal-500/30 hover:border-teal-500 transition" aria-label="YouTube">
-                        <svg class="w-4 h-4 text-teal-500" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                    </a>
-                </div>
+        <!-- Download Our App -->
+        <div class="border-t border-gray-200 pt-8 pb-8">
+            <div class="text-center">
+                <h3 class="text-lg font-bold text-gray-800 mb-4">Download Our Android App</h3>
+                <a href="https://play.google.com/store/apps/details?id=com.gosnel.user&pcampaignid=web_share" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="inline-block transition-transform hover:scale-105">
+                    <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" 
+                         alt="Get it on Google Play" 
+                         class="h-16 w-auto mx-auto">
+                </a>
             </div>
         </div>
         
