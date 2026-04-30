@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GoSnel Vendor Partner Program | Restaurant Partnership UAE | GoSnel for Restaurants</title>
+    <title>GoSnel Partner Program | Join the UAE Restaurant Platform</title>
     
     <!-- RealFaviconGenerator Recommended Favicon System -->
     <link rel="icon" type="image/png" href="/shared/assets/favicon-96x96.png" sizes="96x96" />
@@ -11,654 +11,714 @@
     <link rel="shortcut icon" href="/shared/assets/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/shared/assets/apple-touch-icon.png" />
     <link rel="manifest" href="/shared/assets/site.webmanifest" />
-    <meta name="theme-color" content="#14b8a6">
+    <meta name="theme-color" content="#4ECDC4">
     
-    <link rel="canonical" href="https://gosnel.com/uae/vendor/">
-    <meta name="description" content="GoSnel vendor partner program for restaurants in UAE. Join GoSnel restaurant platform, become a GoSnel partner, register your restaurant with GoSnel. Launching February 2026 - First 50 restaurants get 80% lifetime discount.">
-    <meta name="keywords" content="GoSnel vendor, gosnel partner, gosnel restaurant, GoSnel for restaurants, restaurant partnership UAE, vendor program GoSnel, join gosnel, restaurant platform UAE, food delivery partnership, restaurant registration UAE, gosnel vendor signup">
-    
-    <!-- Arabic SEO -->
-    <meta name="keywords" lang="ar" content="بائع قوسنل, شريك قوسنل, مطعم قوسنل, قوسنل للمطاعم, شراكة مطاعم الإمارات, برنامج بائع قوسنل, انضم قوسنل">
+    <link rel="canonical" href="https://gosnel.com/partner/">
+    <meta name="description" content="Join GoSnel and grow your restaurant with 50% lower commissions, instant WhatsApp orders, and same-day payments. The smartest way to reach customers in UAE.">
+    <meta name="keywords" content="GoSnel, restaurant partner UAE, food delivery UAE, low commission delivery, WhatsApp orders, Ajman restaurants">
     
     <meta property="og:type" content="website">
-    <meta property="og:title" content="GoSnel Vendor Partner | Restaurant Partnership UAE">
-    <meta property="og:description" content="Join GoSnel restaurant platform. Become a GoSnel vendor partner and grow your restaurant business in UAE.">
+    <meta property="og:title" content="GoSnel Partner Program | Join the UAE Restaurant Platform">
+    <meta property="og:description" content="Join GoSnel and grow your restaurant with 50% lower commissions, instant WhatsApp orders, and same-day payments.">
     <link rel="stylesheet" href="/shared/styles/output.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     <style>
         * { font-family: 'Inter', system-ui, sans-serif; margin: 0; padding: 0; box-sizing: border-box; }
-        [lang="ar"] * { font-family: 'Cairo', system-ui, sans-serif; }
         :root { --container-max: 72rem; }
         .container-pro { max-width: var(--container-max); margin: 0 auto; }
-        .section-pad { padding: 5rem 0; }
-        @media (min-width: 768px) { .section-pad { padding: 6rem 0; } }
         
-        .gradient-teal { background: linear-gradient(135deg, #4ECDC4, #1A9A93); }
-        .btn-primary { transition: all 0.3s ease; box-shadow: 0 8px 24px rgba(78, 205, 196, 0.3); }
-        .btn-primary:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(78, 205, 196, 0.5); }
+        .text-balance { text-wrap: balance; }
         
-        .icon { width: 64px; height: 64px; display: inline-flex; align-items: center; justify-content: center; 
-                border-radius: 0.75rem; background: transparent; color: #0f766e; }
-        .icon svg { width: 108px; height: 108px; stroke: currentColor; stroke-width: 1.8; fill: none; }
-
-        /* Step circle for "Setup in 3 simple steps" - empty with thin brand green border */
-        .step-circle {
-            width: 4rem; height: 4rem; border-radius: 9999px; display: flex; align-items: center; justify-content: center;
-            background: transparent; border: 2px solid #4ECDC4; color: #4ECDC4; font-weight: 700;
+        /* Header scroll effect */
+        .header-scrolled {
+            background-color: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            padding-top: 0.75rem !important;
+            padding-bottom: 0.75rem !important;
         }
         
-        /* Pre-Launch Specific Styles */
-        .prelaunch-badge {
-            display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
-            color: white; padding: 8px 20px; border-radius: 50px; font-weight: 700;
-            font-size: 0.9rem; letter-spacing: 0.5px; margin-bottom: 1rem;
-            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
-            animation: pulse-badge 2s infinite;
+        /* Hero section */
+        .hero-section {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
         }
-        .highlight {
-            display: block;
-            color: #4ECDC4;
-            font-weight: 800;
-            /* font-size removed so Tailwind utility classes control responsive sizing */
-            margin-top: 0.5rem;
+        .hero-bg {
+            position: absolute;
+            inset: 0;
         }
-        @keyframes pulse-badge { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
-        
-        .urgency-counter {
-            background: rgba(255, 107, 107, 0.12); border: 2px solid #ff6b6b;
-            padding: 8px 14px; border-radius: 10px; display: inline-flex; align-items: center;
-            font-weight: 700; font-size: 0.95rem; line-height: 1; margin-top: 0.75rem;
+        .hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
-        .urgency-counter .number { color: #ff6b6b; font-size: 0.95rem; font-weight: 700; display: inline-block; margin-inline-start: 0.4rem; }
-        /* ensure any .number span (used elsewhere) uses the same red for consistency across languages */
-        .number { color: #ff6b6b; }
-        
-        .founding-section {
-            position: relative; overflow: hidden;
-            /* background image from Cloudflare R2 with a subtle dark overlay for text legibility */
-            background-image: linear-gradient(180deg, rgba(8,10,10,0.55), rgba(8,10,10,0.18)), url('https://pub-0d4798289dad4074a3236450ba640652.r2.dev/restaurant.webp');
-            background-size: cover; background-position: center; background-repeat: no-repeat;
-            color: white;
-        }
-        .founding-section::before {
-            content: ''; position: absolute; top: -50%; right: -10%;
-            width: 500px; height: 500px; background: rgba(0,0,0,0.12); border-radius: 50%; mix-blend-mode: overlay;
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.6), rgba(0,0,0,0.4));
         }
         
-        .benefit-card-premium {
-            background: rgba(255,255,255,0.95); border-radius: 16px; padding: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2); transition: transform 0.3s; position: relative;
+        /* Scroll indicator animation */
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(8px); }
         }
-        .benefit-card-premium:hover { transform: translateY(-8px); }
-    .benefit-card-premium .icon-premium { font-size: 3rem; margin-bottom: 1rem; }
-    /* Ensure Lucide injected SVGs match the previous emoji sizing */
-    .benefit-card-premium .icon-premium svg { width: 3rem; height: 3rem; display: inline-block; stroke: currentColor; stroke-width: 1.8; fill: none; }
-    /* Founding section icons should be black for contrast against the background image */
-    .founding-section .icon-premium,
-    .founding-section .icon-premium svg,
-    .founding-section i[data-lucide] svg {
-        color: #000000 !important;
-        stroke: #000000 !important;
-        fill: none !important;
-    }
-        .limited-badge {
-            position: absolute; top: -10px; right: -10px; background: #ff6b6b;
-            color: white; padding: 8px 16px; border-radius: 20px; font-size: 0.75rem;
-            font-weight: 700; box-shadow: 0 4px 12px rgba(255,107,107,0.4);
+        .scroll-indicator {
+            animation: bounce 2s infinite;
         }
         
-        .faq-item {
-            background: white; border-radius: 12px; padding: 24px; margin-bottom: 16px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: box-shadow 0.3s;
+        /* Stats hover effect */
+        .stat-card:hover {
+            border-color: rgba(78, 205, 196, 0.3);
+            box-shadow: 0 20px 40px rgba(78, 205, 196, 0.1);
+            transform: translateY(-4px);
         }
-        .faq-item:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.12); }
-        .faq-question {
-            font-weight: 700; font-size: 1.15rem; color: #0f766e; margin-bottom: 12px;
-            display: flex; align-items: center; gap: 10px;
-        }
-        .faq-question::before {
-            content: "Q"; background: #4ECDC4; color: white; width: 32px; height: 32px;
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            font-size: 0.9rem; flex-shrink: 0;
-        }
-        .faq-answer { color: #374151; line-height: 1.7; padding-left: 42px; }
         
-        /* Language Toggle */
-        .lang-toggle {
-            position: fixed; top: 0.85rem; left: 50%; transform: translateX(-50%); z-index: 60;
-            display: flex; gap: 0; border-radius: 9999px; padding: 4px;
-            background: rgba(15, 23, 42, 0.50); backdrop-filter: blur(14px);
-            border: 1px solid rgba(255, 255, 255, 0.18); box-shadow: 0 12px 30px rgba(0, 0, 0, 0.20);
+        /* Benefits section */
+        .benefit-card:hover {
+            border-color: rgba(78, 205, 196, 0.3);
+            box-shadow: 0 20px 40px rgba(78, 205, 196, 0.05);
         }
-        .lang-btn {
-            padding: 8px 14px; border: none; background: transparent; color: white;
-            cursor: pointer; font-weight: 600; transition: all 0.3s; border-radius: 9999px;
-            font-size: 0.95rem; line-height: 1;
+        
+        /* How it works hover */
+        .step-card:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-8px);
         }
-        .lang-btn.active { background: rgba(255, 255, 255, 0.92); color: #0f172a; }
         
-        [lang="en"] { display: block; }
-        [lang="ar"] { display: none; }
-        body.lang-ar [lang="en"] { display: none; }
-        body.lang-ar [lang="ar"] { display: block; }
-        [lang="ar"] { direction: rtl; text-align: right; }
-        [lang="en"] { direction: ltr; text-align: left; }
+        /* Testimonials hover */
+        .testimonial-card:hover {
+            border-color: rgba(78, 205, 196, 0.3);
+            box-shadow: 0 20px 40px rgba(78, 205, 196, 0.05);
+            transform: translateY(-4px);
+        }
         
-        .roi-section { color: #0f172a; }
-        .roi-section .card { background: rgba(255, 255, 255, 0.92); border: 1px solid rgba(15, 23, 42, 0.08); }
-        
-        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        .logo-marquee { animation: marquee 12s linear infinite; }
-        /* Why-now icons sizing */
-    .why-icon svg { width: 2.5rem; height: 2.5rem; display: inline-block; stroke: currentColor; }
-    /* Prelaunch badge icon sizing and spacing for lucide-injected SVGs */
-    .prelaunch-badge i { display: inline-flex; align-items: center; justify-content: center; margin-inline-end: 0.5rem; }
-    .prelaunch-badge i svg { width: 1.1rem; height: 1.1rem; display: inline-block; stroke: currentColor; }
-    /* Urgency/clock icon used with lucide placeholders */
-    .urgency-icon { display: inline-flex; vertical-align: middle; margin-inline-end: 0.5rem; color: #ff6b6b; }
-    .urgency-icon svg { width: 1.25rem; height: 1.25rem; display: inline-block; stroke: currentColor; }
-    /* Force correct icon/text order for Arabic CTAs regardless of flex direction */
-    a[dir="rtl"].btn-primary { display: inline-flex; align-items: center; }
-    a[dir="rtl"].btn-primary .cta-icon { order: 1; margin-left: 0.75rem; margin-right: 0; display: inline-flex; align-items:center; }
-    a[dir="rtl"].btn-primary .cta-text { order: 2; }
+        /* CTA section background */
+        .cta-section {
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-bg {
+            position: absolute;
+            inset: 0;
+        }
+        .cta-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .cta-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(78, 205, 196, 0.95), rgba(26, 154, 147, 0.95));
+        }
     </style>
 </head>
-<body class="bg-white text-black min-h-screen">
-    <!-- Vendor Header -->
-    <nav class="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <a href="/" class="flex items-center gap-4">
-                    <div class="flex items-center gap-3">
-                        <img src="/shared/assets/images/gosnelLogoTransparate.png" alt="GoSnel Logo" class="w-10 h-10 object-contain">
-                        <div class="flex flex-col">
-                            <span class="text-xl font-bold text-gray-900">GoSnel</span>
-                            <span class="text-xs text-gray-600 hidden sm:block">Get Selected Not Listed</span>
+<body class="bg-white text-gray-900 min-h-screen">
+    <!-- Header -->
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent py-5">
+        <div class="container-pro px-4 flex items-center justify-between">
+            <a href="/" class="flex items-center gap-2">
+                <div class="w-10 h-10 rounded-xl bg-[#4ECDC4] flex items-center justify-center">
+                    <span class="text-white font-bold text-lg">G</span>
+                </div>
+                <span id="header-title" class="font-bold text-xl text-white">GoSnel</span>
+            </a>
+            
+            <a
+                href="https://wa.me/971542503729?text=Hi%20I%20want%20to%20join%20as%20a%20partner"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20BD5A] text-white px-5 py-2.5 rounded-full font-semibold text-sm transition-all hover:scale-105 shadow-lg"
+            >
+                <i data-lucide="message-circle" class="w-4 h-4"></i>
+                <span>Join Now</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <!-- Background Image -->
+        <div class="hero-bg">
+            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2070" alt="Modern restaurant interior" />
+            <div class="hero-overlay"></div>
+        </div>
+
+        <!-- Content -->
+        <div class="relative z-10 container-pro px-4 pt-24 pb-16">
+            <div class="max-w-3xl">
+                <!-- Badge -->
+                <div class="inline-flex items-center gap-2 bg-[#4ECDC4]/20 backdrop-blur-sm border border-[#4ECDC4]/40 text-[#4ECDC4] px-4 py-2 rounded-full text-sm font-medium mb-6">
+                    <span class="w-2 h-2 bg-[#4ECDC4] rounded-full animate-pulse"></span>
+                    Now Available in Ajman
+                </div>
+
+                <!-- Main Headline -->
+                <h1 class="text-4xl md:text-5xl lg:text-7xl font-extrabold text-white leading-tight mb-6">
+                    Stop Losing Your 
+                    <span class="text-[#4ECDC4]">Profits</span> to Delivery Apps
+                </h1>
+
+                <!-- Subheadline -->
+                <p class="text-xl md:text-2xl text-white/90 font-medium mb-8 leading-relaxed max-w-2xl">
+                    GoSnel delivers customers directly to you with 
+                    <span class="text-[#4ECDC4] font-bold">50% lower commissions</span>.
+                    Get paid the same day. Keep your money.
+                </p>
+
+                <!-- Quick Stats Row -->
+                <div class="flex flex-wrap gap-4 mb-10">
+                    <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl px-6 py-4">
+                        <p class="text-3xl font-bold text-[#4ECDC4]">50%</p>
+                        <p class="text-white/80 text-sm font-medium">Lower Commission</p>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl px-6 py-4">
+                        <p class="text-3xl font-bold text-emerald-400">Instant</p>
+                        <p class="text-white/80 text-sm font-medium">WhatsApp Orders</p>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl px-6 py-4">
+                        <p class="text-3xl font-bold text-amber-400">Same Day</p>
+                        <p class="text-white/80 text-sm font-medium">Payments</p>
+                    </div>
+                </div>
+
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a
+                        href="https://wa.me/971542503729?text=Hi%20I%20want%20to%20join%20as%20a%20partner"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="inline-flex items-center justify-center gap-3 bg-[#25D366] hover:bg-[#20BD5A] text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all hover:scale-105 shadow-xl shadow-[#25D366]/30"
+                    >
+                        <i data-lucide="message-circle" class="w-6 h-6"></i>
+                        Chat on WhatsApp
+                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </a>
+                    <a
+                        href="tel:+971542503729"
+                        class="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all"
+                    >
+                        <i data-lucide="phone" class="w-5 h-5"></i>
+                        Call Us Now
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/60">
+            <span class="text-sm font-medium">Scroll to learn more</span>
+            <div class="w-6 h-10 rounded-full border-2 border-white/30 flex items-start justify-center p-1">
+                <div class="w-1.5 h-3 bg-white/60 rounded-full scroll-indicator"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-16 bg-white">
+        <div class="container-pro px-4">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+                <!-- Stat 1 -->
+                <div class="stat-card group relative bg-gradient-to-br from-gray-50 to-white rounded-3xl p-6 lg:p-8 border border-gray-200/50 hover:border-[#4ECDC4]/30 transition-all hover:shadow-xl hover:shadow-[#4ECDC4]/10 hover:-translate-y-1">
+                    <div class="w-12 h-12 rounded-2xl bg-[#4ECDC4]/10 flex items-center justify-center mb-4 group-hover:bg-[#4ECDC4]/20 transition-colors">
+                        <i data-lucide="trending-up" class="w-6 h-6 text-[#4ECDC4]"></i>
+                    </div>
+                    <p class="text-3xl lg:text-4xl font-bold text-gray-900 mb-1">50%</p>
+                    <p class="text-lg font-semibold text-gray-900 mb-1">Lower Commission</p>
+                    <p class="text-sm text-gray-500">Save more on every order</p>
+                </div>
+                
+                <!-- Stat 2 -->
+                <div class="stat-card group relative bg-gradient-to-br from-gray-50 to-white rounded-3xl p-6 lg:p-8 border border-gray-200/50 hover:border-[#4ECDC4]/30 transition-all hover:shadow-xl hover:shadow-[#4ECDC4]/10 hover:-translate-y-1">
+                    <div class="w-12 h-12 rounded-2xl bg-[#4ECDC4]/10 flex items-center justify-center mb-4 group-hover:bg-[#4ECDC4]/20 transition-colors">
+                        <i data-lucide="clock" class="w-6 h-6 text-[#4ECDC4]"></i>
+                    </div>
+                    <p class="text-3xl lg:text-4xl font-bold text-gray-900 mb-1">Instant</p>
+                    <p class="text-lg font-semibold text-gray-900 mb-1">Order Delivery</p>
+                    <p class="text-sm text-gray-500">Direct to your WhatsApp</p>
+                </div>
+                
+                <!-- Stat 3 -->
+                <div class="stat-card group relative bg-gradient-to-br from-gray-50 to-white rounded-3xl p-6 lg:p-8 border border-gray-200/50 hover:border-[#4ECDC4]/30 transition-all hover:shadow-xl hover:shadow-[#4ECDC4]/10 hover:-translate-y-1">
+                    <div class="w-12 h-12 rounded-2xl bg-[#4ECDC4]/10 flex items-center justify-center mb-4 group-hover:bg-[#4ECDC4]/20 transition-colors">
+                        <i data-lucide="wallet" class="w-6 h-6 text-[#4ECDC4]"></i>
+                    </div>
+                    <p class="text-3xl lg:text-4xl font-bold text-gray-900 mb-1">Same Day</p>
+                    <p class="text-lg font-semibold text-gray-900 mb-1">Payments</p>
+                    <p class="text-sm text-gray-500">Cash in hand immediately</p>
+                </div>
+                
+                <!-- Stat 4 -->
+                <div class="stat-card group relative bg-gradient-to-br from-gray-50 to-white rounded-3xl p-6 lg:p-8 border border-gray-200/50 hover:border-[#4ECDC4]/30 transition-all hover:shadow-xl hover:shadow-[#4ECDC4]/10 hover:-translate-y-1">
+                    <div class="w-12 h-12 rounded-2xl bg-[#4ECDC4]/10 flex items-center justify-center mb-4 group-hover:bg-[#4ECDC4]/20 transition-colors">
+                        <i data-lucide="users" class="w-6 h-6 text-[#4ECDC4]"></i>
+                    </div>
+                    <p class="text-3xl lg:text-4xl font-bold text-gray-900 mb-1">100%</p>
+                    <p class="text-lg font-semibold text-gray-900 mb-1">Customer Data</p>
+                    <p class="text-sm text-gray-500">Own your relationships</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="py-20 lg:py-28 bg-gray-50">
+        <div class="container-pro px-4">
+            <!-- Section Header -->
+            <div class="text-center mb-16">
+                <span class="inline-block text-[#4ECDC4] font-semibold text-sm uppercase tracking-wider mb-3">
+                    Why Choose GoSnel
+                </span>
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 text-balance">
+                    Everything Your Restaurant Needs
+                </h2>
+                <p class="text-lg text-gray-500 max-w-2xl mx-auto">
+                    Simple, profitable, and designed for busy restaurant owners in UAE
+                </p>
+            </div>
+
+            <!-- Benefits Grid -->
+            <div class="space-y-16 lg:space-y-24">
+                <!-- Benefit 1 -->
+                <div class="flex flex-col lg:flex-row gap-8 lg:gap-16 items-center">
+                    <!-- Image -->
+                    <div class="w-full lg:w-1/2">
+                        <div class="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl shadow-black/10">
+                            <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=800" alt="WhatsApp Orders" class="w-full h-full object-cover" />
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
                         </div>
                     </div>
-                </a>
 
-                <div class="hidden md:flex items-center gap-8">
-                    <a href="/" class="text-gray-900 hover:text-teal-600 font-medium transition">Home</a>
-                    <a href="/vendor/how-it-works" class="text-gray-900 hover:text-teal-600 font-medium transition">How It Works</a>
-                    <a href="/pricing" class="text-gray-900 hover:text-teal-600 font-medium transition">Pricing</a>
-                    <a href="/why-partner" class="text-gray-900 hover:text-teal-600 font-medium transition">Why Partner</a>
-                    <a href="/vendor/faq" class="text-gray-900 hover:text-teal-600 font-medium transition">FAQ</a>
-                </div>
-
-                <div class="hidden md:flex items-center gap-3">
-                    <a href="/login" class="text-gray-900 hover:text-teal-600 font-medium transition">Login</a>
-                    <a href="https://wa.me/971542503729" aria-label="Chat on WhatsApp" title="Chat on WhatsApp" class="flex items-center gap-2 text-white px-3 py-2 rounded-lg text-sm transition" style="background: linear-gradient(90deg, #25D366, #1ea952);">
-                        <img src="/References/SocialmediaSVG/whatsapp.svg" alt="WhatsApp" class="w-4 h-4 flex-shrink-0">
-                        <span class="whitespace-nowrap">WhatsApp</span>
-                    </a>
-                    <a href="/signup" class="bg-teal-500 text-white px-4 py-2 rounded-lg font-medium text-sm hover:bg-teal-600 transition">Get Started</a>
-                </div>
-
-                <button id="mobile-menu-btn" class="md:hidden flex items-center justify-center w-10 h-10 rounded-lg hover:bg-gray-100 transition">
-                    <svg class="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-                    </svg>
-                </button>
-            </div>
-
-            <div id="mobile-menu" class="md:hidden fixed inset-y-0 left-0 top-16 bottom-0 w-80 max-w-sm z-40 bg-white transform -translate-x-full transition-transform duration-300 shadow-xl">
-                <div class="p-6 space-y-6">
-                    <div class="space-y-4">
-                        <a href="/" class="block text-lg font-medium text-gray-900 hover:text-teal-600 transition">Home</a>
-                        <a href="/vendor/how-it-works" class="block text-lg font-medium text-gray-900 hover:text-teal-600 transition">How It Works</a>
-                        <a href="/pricing" class="block text-lg font-medium text-gray-900 hover:text-teal-600 transition">Pricing</a>
-                        <a href="/why-partner" class="block text-lg font-medium text-gray-900 hover:text-teal-600 transition">Why Partner</a>
-                        <a href="/vendor/faq" class="block text-lg font-medium text-gray-900 hover:text-teal-600 transition">FAQ</a>
-                    </div>
-
-                    <div class="pt-4 border-t border-gray-200 space-y-4">
-                        <a href="/login" class="block text-center py-2 text-sm text-gray-900 hover:text-teal-600 font-medium border border-gray-300 rounded-lg transition">Login</a>
-                        <a href="https://wa.me/971542503729" aria-label="Follow on WhatsApp" title="Chat on WhatsApp" class="flex items-center justify-center gap-2 py-2 text-white rounded-lg font-medium text-sm transition" style="background: linear-gradient(90deg, #25D366, #1ea952);">
-                            <img src="/References/SocialmediaSVG/whatsapp.svg" alt="WhatsApp" class="w-4 h-4">
-                            Follow on WhatsApp
-                        </a>
-                        <a href="/signup" class="block text-center py-2 text-sm bg-teal-500 text-white rounded-lg font-medium hover:bg-teal-600 transition">Get Started</a>
+                    <!-- Content -->
+                    <div class="w-full lg:w-1/2">
+                        <div class="benefit-card bg-white rounded-3xl p-8 lg:p-10 border border-gray-200/50 shadow-lg">
+                            <h3 class="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">WhatsApp Orders</h3>
+                            <p class="text-lg text-gray-500 mb-6 leading-relaxed">Orders come directly to your WhatsApp. No complex apps to learn.</p>
+                            <ul class="space-y-3">
+                                <li class="flex items-center gap-3">
+                                    <div class="w-6 h-6 rounded-full bg-[#4ECDC4]/20 flex items-center justify-center flex-shrink-0">
+                                        <i data-lucide="check" class="w-4 h-4 text-[#4ECDC4]"></i>
+                                    </div>
+                                    <span class="text-gray-900 font-medium">Instant notifications</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <div class="w-6 h-6 rounded-full bg-[#4ECDC4]/20 flex items-center justify-center flex-shrink-0">
+                                        <i data-lucide="check" class="w-4 h-4 text-[#4ECDC4]"></i>
+                                    </div>
+                                    <span class="text-gray-900 font-medium">Easy to manage</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <div class="w-6 h-6 rounded-full bg-[#4ECDC4]/20 flex items-center justify-center flex-shrink-0">
+                                        <i data-lucide="check" class="w-4 h-4 text-[#4ECDC4]"></i>
+                                    </div>
+                                    <span class="text-gray-900 font-medium">No training needed</span>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div id="mobile-menu-overlay" class="md:hidden fixed inset-0 bg-black bg-opacity-50 z-30 opacity-0 pointer-events-none transition-opacity duration-300"></div>
-        </div>
-    </nav>
+                <!-- Benefit 2 -->
+                <div class="flex flex-col lg:flex-row-reverse gap-8 lg:gap-16 items-center">
+                    <!-- Image -->
+                    <div class="w-full lg:w-1/2">
+                        <div class="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl shadow-black/10">
+                            <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=800" alt="Keep Your Profits" class="w-full h-full object-cover" />
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+                        </div>
+                    </div>
 
-    <style>
-    .text-gradient-teal {
-        background: linear-gradient(90deg, #14b8a6, #0d9488);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
-    </style>
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
-
-        function toggleMobileMenu() {
-            const isOpen = !mobileMenu.classList.contains('-translate-x-full');
-            if (isOpen) {
-                mobileMenu.classList.add('-translate-x-full');
-                mobileMenuOverlay.classList.add('opacity-0', 'pointer-events-none');
-                document.body.style.overflow = '';
-            } else {
-                mobileMenu.classList.remove('-translate-x-full');
-                mobileMenuOverlay.classList.remove('opacity-0', 'pointer-events-none');
-                document.body.style.overflow = 'hidden';
-            }
-        }
-
-        if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', toggleMobileMenu);
-        if (mobileMenuOverlay) mobileMenuOverlay.addEventListener('click', toggleMobileMenu);
-        const mobileNavLinks = mobileMenu?.querySelectorAll('a');
-        if (mobileNavLinks) mobileNavLinks.forEach(link => link.addEventListener('click', () => { mobileMenu.classList.add('-translate-x-full'); mobileMenuOverlay.classList.add('opacity-0', 'pointer-events-none'); document.body.style.overflow = ''; }));
-    });
-    </script>
-
-    <!-- Language Toggle -->
-    <div class="lang-toggle">
-        <button class="lang-btn active" data-lang="en">English</button>
-        <button class="lang-btn" data-lang="ar">العربية</button>
-    </div>
-
-    <!-- ========== ENGLISH VERSION ========== -->
-    <div lang="en">
-
-    <!-- HERO SECTION -->
-    <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-20">
-        <div class="absolute inset-0 -z-10">
-            <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/heroimage.webp" alt="Restaurant owner" class="w-full h-full object-cover object-left" style="object-position: 60% 20%;">
-            <div class="absolute inset-0 bg-gradient-to-r from-black/45 via-black/35 to-black/20"></div>
-        </div>
-
-        <div class="container-pro px-4 sm:px-6 lg:px-8 w-full">
-            <div class="max-w-3xl text-white z-10 text-left" dir="ltr">
-                <!-- prelaunch-badge moved below (above final CTA section) -->
-
-                <h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-4">
-                    Stop losing 30% to delivery commissions
-                </h2>
-                <h4 class="highlight text-4xl md:text-5xl font-extrabold mb-6">Save 600–1,000 AED per month</h4>
-
-                <h3 class="text-xl md:text-2xl font-semibold text-gray-100 mb-8 leading-snug">GoSnel is an AI-powered meal discovery app</h3>
-
-                <div class="mb-8">
-                    <a href="https://wa.me/971542503729" aria-label="Chat on WhatsApp" title="Chat on WhatsApp" class="btn-primary inline-flex items-center justify-center gap-3 text-white px-10 py-4 rounded-xl font-bold text-lg w-full sm:w-auto" style="background: linear-gradient(90deg, #25D366, #1ea952);">
-                        <img src="/References/SocialmediaSVG/whatsapp.svg" alt="WhatsApp" class="w-5 h-5 flex-shrink-0">
-                        Chat on WhatsApp
-                    </a>
+                    <!-- Content -->
+                    <div class="w-full lg:w-1/2">
+                        <div class="benefit-card bg-white rounded-3xl p-8 lg:p-10 border border-gray-200/50 shadow-lg">
+                            <h3 class="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">Keep Your Profits</h3>
+                            <p class="text-lg text-gray-500 mb-6 leading-relaxed">Pay only 15% commission compared to 30%+ on other platforms.</p>
+                            <ul class="space-y-3">
+                                <li class="flex items-center gap-3">
+                                    <div class="w-6 h-6 rounded-full bg-[#4ECDC4]/20 flex items-center justify-center flex-shrink-0">
+                                        <i data-lucide="check" class="w-4 h-4 text-[#4ECDC4]"></i>
+                                    </div>
+                                    <span class="text-gray-900 font-medium">50% lower fees</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <div class="w-6 h-6 rounded-full bg-[#4ECDC4]/20 flex items-center justify-center flex-shrink-0">
+                                        <i data-lucide="check" class="w-4 h-4 text-[#4ECDC4]"></i>
+                                    </div>
+                                    <span class="text-gray-900 font-medium">Same-day payments</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <div class="w-6 h-6 rounded-full bg-[#4ECDC4]/20 flex items-center justify-center flex-shrink-0">
+                                        <i data-lucide="check" class="w-4 h-4 text-[#4ECDC4]"></i>
+                                    </div>
+                                    <span class="text-gray-900 font-medium">No hidden charges</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
 
-            </div>
-        </div>
-    </section>
+                <!-- Benefit 3 -->
+                <div class="flex flex-col lg:flex-row gap-8 lg:gap-16 items-center">
+                    <!-- Image -->
+                    <div class="w-full lg:w-1/2">
+                        <div class="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl shadow-black/10">
+                            <img src="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?q=80&w=800" alt="Full Control" class="w-full h-full object-cover" />
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+                        </div>
+                    </div>
 
-    <!-- analytics removed from this English area to avoid duplication -->
-
-    <!-- analytics removed here to avoid duplicate; kept the later analytics block for English -->
-
-   
-    <!-- HOW ORDERS WORK -->
-    <section class="section-pad bg-gray-50 border-y border-gray-200">
-        <div class="container-pro px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">How orders will work</h2>
-                <p class="text-gray-600 text-lg">Customers order through our AI app → You receive orders directly</p>
-            </div>
-            <div class="grid md:grid-cols-3 gap-8 items-center">
-                <div class="bg-white p-8 rounded-xl border border-gray-200 text-center">
-                    <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/gosnelicon.png" alt="GoSnel" class="w-16 h-16 mx-auto mb-4 object-contain rounded-full">
-                    <h3 class="font-bold text-lg mb-2">Receive Orders on GoSnel Platform</h3>
-                    <p class="text-gray-600">Direct to your GoSnel Platform. You confirm & fulfill.</p>
-                </div>
-                
-                <!-- OR Divider -->
-                <div class="hidden md:flex flex-col items-center justify-center">
-                    <div class="w-full h-px bg-gray-300 mb-2"></div>
-                    <span class="text-2xl font-bold text-gray-400 px-4">OR</span>
-                    <div class="w-full h-px bg-gray-300 mt-2"></div>
-                </div>
-                <div class="md:hidden flex items-center justify-center my-4">
-                    <div class="flex-1 h-px bg-gray-300"></div>
-                    <span class="text-xl font-bold text-gray-400 px-4">OR</span>
-                    <div class="flex-1 h-px bg-gray-300"></div>
-                </div>
-                
-                <div class="bg-white p-8 rounded-xl border border-gray-200 text-center">
-                    <img src="/References/SocialmediaSVG/whatsapp.svg" alt="WhatsApp" class="w-16 h-16 mx-auto mb-4 object-contain rounded-full">
-                    <h3 class="font-bold text-lg mb-2">Chat on WhatsApp</h3>
-                    <p class="text-gray-600">Get updates and announcements directly.</p>
+                    <!-- Content -->
+                    <div class="w-full lg:w-1/2">
+                        <div class="benefit-card bg-white rounded-3xl p-8 lg:p-10 border border-gray-200/50 shadow-lg">
+                            <h3 class="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">Full Control</h3>
+                            <p class="text-lg text-gray-500 mb-6 leading-relaxed">Set your delivery radius from 1-7km. You decide where to deliver.</p>
+                            <ul class="space-y-3">
+                                <li class="flex items-center gap-3">
+                                    <div class="w-6 h-6 rounded-full bg-[#4ECDC4]/20 flex items-center justify-center flex-shrink-0">
+                                        <i data-lucide="check" class="w-4 h-4 text-[#4ECDC4]"></i>
+                                    </div>
+                                    <span class="text-gray-900 font-medium">Custom delivery zone</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <div class="w-6 h-6 rounded-full bg-[#4ECDC4]/20 flex items-center justify-center flex-shrink-0">
+                                        <i data-lucide="check" class="w-4 h-4 text-[#4ECDC4]"></i>
+                                    </div>
+                                    <span class="text-gray-900 font-medium">Own your customers</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <div class="w-6 h-6 rounded-full bg-[#4ECDC4]/20 flex items-center justify-center flex-shrink-0">
+                                        <i data-lucide="check" class="w-4 h-4 text-[#4ECDC4]"></i>
+                                    </div>
+                                    <span class="text-gray-900 font-medium">Build loyalty</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
-            
-            <!-- Payment Section Below -->
-            <div class="mt-8 max-w-md mx-auto">
-                <div class="bg-white p-8 rounded-xl border border-gray-200 text-center">
-                    <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/DeliveryOnCash.png" alt="Direct Payment" class="w-16 h-16 mx-auto mb-4 object-contain rounded-full">
-                    <h3 class="font-bold text-lg mb-2">Direct Payment</h3>
-                    <p class="text-gray-600">Customers pay the restaurant directly</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- DELIVERY DISTANCE SECTION -->
-    <section class="section-pad bg-white">
-        <div class="container-pro px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-8">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Choose Your Delivery Distance</h2>
-                <p class="text-xl text-gray-600">1km • 3km • 7km</p>
-            </div>
-            <div class="max-w-4xl mx-auto">
-                <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/DeliveryDistance4.png" alt="Delivery Distance Options" class="w-full h-auto rounded-xl shadow-lg">
-            </div>
-        </div>
-    </section>
-
-    <!-- ANALYTICS DASHBOARD SECTION -->
-    <section class="section-pad bg-white">
-        <div class="container-pro px-4 sm:px-6 lg:px-8">
-            <div class="max-w-4xl mx-auto">
-                <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/Advanced_analytic_dashboard.webp" alt="Analytics Dashboard" class="w-full h-auto rounded-xl shadow-lg">
-                <p class="text-lg text-gray-700 mt-6 text-center">GoSnel is an AI-powered meal discovery app launching in UAE.</p>
-            </div>
-        </div>
-    </section>
-
+            <!-- CTA -->
             <div class="text-center mt-16">
-                <a href="https://wa.me/971542503729" aria-label="Chat on WhatsApp" title="Chat on WhatsApp" class="btn-primary inline-block text-white px-12 py-5 rounded-xl font-bold text-xl" style="background: linear-gradient(90deg, #25D366, #1ea952);">
-                    Chat on WhatsApp →
+                <a
+                    href="https://wa.me/971542503729?text=Hi%20I%20want%20to%20join%20as%20a%20partner"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-3 bg-[#4ECDC4] hover:bg-[#3DBDB5] text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all hover:scale-105 shadow-xl shadow-[#4ECDC4]/30"
+                >
+                    <i data-lucide="message-circle" class="w-5 h-5"></i>
+                    Start Growing Your Business
                 </a>
             </div>
         </div>
     </section>
 
-   
-     <!-- HOW IT WORKS -->
-    <section class="section-pad bg-white">
-        <div class="container-pro px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Setup in 3 simple steps</h2>
-            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                <div class="text-center">
-                    <div class="step-circle text-2xl font-bold mx-auto mb-4">1</div>
-                    <h3 class="font-bold text-xl mb-3">Register (5 min)</h3>
-                    <p class="text-gray-600">Restaurant name, location, WhatsApp contact</p>
-                </div>
-                <div class="text-center">
-                    <div class="step-circle text-2xl font-bold mx-auto mb-4">2</div>
-                    <h3 class="font-bold text-xl mb-3">Add menu (10 min)</h3>
-                    <p class="text-gray-600">Your best dishes we help optimize them</p>
-                </div>
-                <div class="text-center">
-                    <div class="step-circle text-2xl font-bold mx-auto mb-4">3</div>
-                    <h3 class="font-bold text-xl mb-3">Ready for launch</h3>
-                    <p class="text-gray-600">We notify you 1 week before go-live</p>
-                </div>
-            </div>
-                <div class="text-center mt-12">
-                <p class="text-lg font-semibold text-teal-700">💳 No payment now. Only pay if you upgrade (optional).</p>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- FINAL CTA -->
-    <!-- Compatible with Section -->
-    <section class="pt-6 pb-20 md:pt-8 md:pb-24 bg-white border-b border-gray-100">
-        <div class="container-pro px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-10">Compatible with</h2>
-            <div class="overflow-hidden w-full">
-                <div class="logo-marquee flex items-center gap-8 md:gap-12" style="white-space:nowrap; animation: marquee 12s linear infinite;">
-                    <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/visa.png" alt="Visa" class="h-16 w-16 object-contain rounded-full bg-gray-100 transition duration-300 shadow inline-block">
-                    <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/mastercard.png" alt="Mastercard" class="h-16 w-16 object-contain rounded-full bg-gray-100 transition duration-300 shadow inline-block">
-                    <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/applePay.png" alt="Apple Pay" class="h-16 w-16 object-contain rounded-full bg-gray-100 transition duration-300 shadow inline-block">
-                    <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/googlePay.png" alt="Google Pay" class="h-16 w-16 object-contain rounded-full bg-gray-100 transition duration-300 shadow inline-block">
-                    <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/stripe.png" alt="Stripe" class="h-16 w-16 object-contain rounded-full bg-gray-100 transition duration-300 shadow inline-block">
-                    <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/maestro.png" alt="Maestro" class="h-16 w-16 object-contain rounded-full bg-gray-100 transition duration-300 shadow inline-block">
-
-                    <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/uaeFlag.png" alt="UAE Flag" class="h-16 w-16 object-contain rounded-full bg-gray-100 transition duration-300 shadow inline-block">
-
-                    <!-- Repeat logos for infinite effect -->
-                    <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/visa.png" alt="Visa" class="h-16 w-16 object-contain rounded-full bg-gray-100 transition duration-300 shadow inline-block">
-                    <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/mastercard.png" alt="Mastercard" class="h-16 w-16 object-contain rounded-full bg-gray-100 transition duration-300 shadow inline-block">
-                    <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/applePay.png" alt="Apple Pay" class="h-16 w-16 object-contain rounded-full bg-gray-100 transition duration-300 shadow inline-block">
-                    <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/googlePay.png" alt="Google Pay" class="h-16 w-16 object-contain rounded-full bg-gray-100 transition duration-300 shadow inline-block">
-                    <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/stripe.png" alt="Stripe" class="h-16 w-16 object-contain rounded-full bg-gray-100 transition duration-300 shadow inline-block">
-                    <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/maestro.png" alt="Maestro" class="h-16 w-16 object-contain rounded-full bg-gray-100 transition duration-300 shadow inline-block">
-
-                    <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/uaeFlag.png" alt="UAE Flag" class="h-16 w-16 object-contain rounded-full bg-gray-100 transition duration-300 shadow inline-block">
-
-                </div>
-            </div>
-            <style>
-                @keyframes marquee {
-                    0% { transform: translateX(0); }
-                    100% { transform: translateX(-50%); }
-                }
-                .logo-marquee { animation-duration: 12s !important; }
-            </style>
-        </div>
-    </section>
-    <section class="section-pad text-white" style="background-color: #333132;">
-        <div class="container-pro px-4 sm:px-6 lg:px-8 text-center">
-        </div>
-        <div class="container-pro px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-6">Join the first 25 restaurants in UAE</h2>
-                    <a href="https://www.instagram.com/gosnelai" 
-                    class="btn-primary inline-flex items-center gap-3 bg-green-500 hover:bg-green-600 text-white px-10 py-3 rounded-xl font-bold text-base" aria-label="Join as Founding Partner">
-                Join as a Restaurant
-                <svg class="w-6 h-6 flex-shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 24 24" fill="#ffffff"><path fill="#ffffff" d="M16.6 14c-.2-.1-1.5-.7-1.7-.8c-.2-.1-.4-.1-.6.1c-.2.2-.6.8-.8 1c-.1.2-.3.2-.5.1c-.7-.3-1.4-.7-2-1.2c-.5-.5-1-1.1-1.4-1.7c-.1-.2 0-.4.1-.5c.1-.1.2-.3.4-.4c.1-.1.2-.3.2-.4c.1-.1.1-.3 0-.4c-.1-.1-.6-1.3-.8-1.8c-.1-.7-.3-.7-.5-.7h-.5c-.2 0-.5.2-.6.3c-.6.6-.9 1.3-.9 2.1c.1.9.4 1.8 1 2.6c1.1 1.6 2.5 2.9 4.2 3.7c.5.2.9.4 1.4.5c.5.2 1 .2 1.6.1c.7-.1 1.3-.6 1.7-1.2c.2-.4.2-.8.1-1.2l-.4-.2m2.5-9.1C15.2 1 8.9 1 5 4.9c-3.2 3.2-3.8 8.1-1.6 12L2 22l5.3-1.4c1.5.8 3.1 1.2 4.7 1.2c5.5 0 9.9-4.4 9.9-9.9c.1-2.6-1-5.1-2.8-7m-2.7 14c-1.3.8-2.8 1.3-4.4 1.3c-1.5 0-2.9-.4-4.2-1.1l-.3-.2l-3.1.8l.8-3l-.2-.3c-2.4-4-1.2-9 2.7-11.5S16.6 3.7 19 7.5c2.4 3.9 1.3 9-2.6 11.4"/></svg>
-            </a>
-            <p class="text-lg italic mt-4" style="color: #4ECDC4;">No contracts. No commissions.</p>
-        </div>
-    </section>
-
-    </div>
-
-    <!-- ========== ARABIC VERSION ========== -->
-    <div lang="ar">
-
-    <!-- HERO -->
-    <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-20">
-        <div class="absolute inset-0 -z-10">
-            <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/heroimage.webp" alt="مالك مطعم" class="w-full h-full object-cover" style="object-position: 90% 10%;">
-            <div class="absolute inset-0 bg-gradient-to-r from-black/45 via-black/35 to-black/20"></div>
-        </div>
-
-        <div class="container-pro px-4 sm:px-6 lg:px-8 w-full">
-            <div class="max-w-3xl text-white z-10">
-                <!-- prelaunch-badge moved below (above final CTA section) -->
-
-                <h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-4">
-                    توقف عن خسارة 30% في عمولات التوصيل
+    <!-- How It Works Section -->
+    <section class="py-20 lg:py-28 bg-gray-900 text-white overflow-hidden">
+        <div class="container-pro px-4">
+            <!-- Section Header -->
+            <div class="text-center mb-16">
+                <span class="inline-block text-[#4ECDC4] font-semibold text-sm uppercase tracking-wider mb-3">
+                    Simple Process
+                </span>
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 text-balance">
+                    Get Started in Minutes
                 </h2>
-                <h4 class="highlight text-4xl md:text-5xl font-extrabold mb-6">وفر 600–1,000 درهم في الشهر</h4>
+                <p class="text-lg text-white/70 max-w-2xl mx-auto">
+                    No complicated setup. No app to download. Just WhatsApp.
+                </p>
+            </div>
 
-                <h2 class="text-xl md:text-2xl font-semibold text-gray-100 mb-8 leading-snug">جوسنِل تطبيق اكتشاف الوجبات بالذكاء الاصطناعي</h2>
+            <!-- Steps Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Step 1 -->
+                <div class="step-card relative group">
+                    <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 hover:bg-white/10 transition-all hover:-translate-y-2 h-full">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-14 h-14 rounded-2xl bg-[#4ECDC4]/20 flex items-center justify-center">
+                                <i data-lucide="message-circle" class="w-7 h-7 text-[#4ECDC4]"></i>
+                            </div>
+                            <span class="text-5xl font-bold text-white/10 group-hover:text-[#4ECDC4]/20 transition-colors">01</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Join on WhatsApp</h3>
+                        <p class="text-white/70 leading-relaxed">Quick 5-minute setup. Just send us your menu and restaurant details.</p>
+                    </div>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="step-card relative group">
+                    <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 hover:bg-white/10 transition-all hover:-translate-y-2 h-full">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-14 h-14 rounded-2xl bg-[#4ECDC4]/20 flex items-center justify-center">
+                                <i data-lucide="clipboard-check" class="w-7 h-7 text-[#4ECDC4]"></i>
+                            </div>
+                            <span class="text-5xl font-bold text-white/10 group-hover:text-[#4ECDC4]/20 transition-colors">02</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">We List Your Menu</h3>
+                        <p class="text-white/70 leading-relaxed">Our AI creates beautiful meal combos from your dishes automatically.</p>
+                    </div>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="step-card relative group">
+                    <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 hover:bg-white/10 transition-all hover:-translate-y-2 h-full">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-14 h-14 rounded-2xl bg-[#4ECDC4]/20 flex items-center justify-center">
+                                <i data-lucide="truck" class="w-7 h-7 text-[#4ECDC4]"></i>
+                            </div>
+                            <span class="text-5xl font-bold text-white/10 group-hover:text-[#4ECDC4]/20 transition-colors">03</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Receive Orders</h3>
+                        <p class="text-white/70 leading-relaxed">Customers find you, order through our AI, and you get a WhatsApp message.</p>
+                    </div>
+                </div>
+                
+                <!-- Step 4 -->
+                <div class="step-card relative group">
+                    <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 hover:bg-white/10 transition-all hover:-translate-y-2 h-full">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-14 h-14 rounded-2xl bg-[#4ECDC4]/20 flex items-center justify-center">
+                                <i data-lucide="banknote" class="w-7 h-7 text-[#4ECDC4]"></i>
+                            </div>
+                            <span class="text-5xl font-bold text-white/10 group-hover:text-[#4ECDC4]/20 transition-colors">04</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Get Paid Instantly</h3>
+                        <p class="text-white/70 leading-relaxed">Cash or card on delivery. The money is yours the same day.</p>
+                    </div>
+                </div>
+            </div>
 
-                <div class="mb-8 flex justify-center">
-              <a href="https://wa.me/971542503729"
-                  dir="rtl" aria-label="انضم معنا عبر واتساب" title="انضم عبر واتساب" class="btn-primary inline-flex items-center gap-3 text-right text-white px-8 py-3 rounded-xl font-bold text-base w-full sm:w-auto" style="flex-direction: row-reverse !important; background: linear-gradient(90deg, #25D366, #1ea952);">
-                        <span class="cta-text">انضم معنا كمطعم</span>
-                        <span class="cta-icon"><svg class="w-5 h-5 flex-shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 24 24" fill="#ffffff"><path fill="#ffffff" d="M16.6 14c-.2-.1-1.5-.7-1.7-.8c-.2-.1-.4-.1-.6.1c-.2.2-.6.8-.8 1c-.1.2-.3.2-.5.1c-.7-.3-1.4-.7-2-1.2c-.5-.5-1-1.1-1.4-1.7c-.1-.2 0-.4.1-.5c.1-.1.2-.3.4-.4c.1-.1.2-.3.2-.4c.1-.1.1-.3 0-.4c-.1-.1-.6-1.3-.8-1.8c-.1-.7-.3-.7-.5-.7h-.5c-.2 0-.5.2-.6.3c-.6.6-.9 1.3-.9 2.1c.1.9.4 1.8 1 2.6c1.1 1.6 2.5 2.9 4.2 3.7c.5.2.9.4 1.4.5c.5.2 1 .2 1.6.1c.7-.1 1.3-.6 1.7-1.2c.2-.4.2-.8.1-1.2l-.4-.2m2.5-9.1C15.2 1 8.9 1 5 4.9c-3.2 3.2-3.8 8.1-1.6 12L2 22l5.3-1.4c1.5.8 3.1 1.2 4.7 1.2c5.5 0 9.9-4.4 9.9-9.9c.1-2.6-1-5.1-2.8-7m-2.7 14c-1.3.8-2.8 1.3-4.4 1.3c-1.5 0-2.9-.4-4.2-1.1l-.3-.2l-3.1.8l.8-3l-.2-.3c-2.4-4-1.2-9 2.7-11.5S16.6 3.7 19 7.5c2.4 3.9 1.3 9-2.6 11.4"/></svg></span>
+            <!-- CTA -->
+            <div class="text-center mt-16">
+                <a
+                    href="https://wa.me/971542503729?text=Hi%20I%20want%20to%20join%20as%20a%20partner"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-3 bg-[#25D366] hover:bg-[#20BD5A] text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all hover:scale-105 shadow-xl shadow-[#25D366]/30"
+                >
+                    <i data-lucide="message-circle" class="w-5 h-5"></i>
+                    Start Now on WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 lg:py-28 bg-white">
+        <div class="container-pro px-4">
+            <!-- Section Header -->
+            <div class="text-center mb-16">
+                <span class="inline-block text-[#4ECDC4] font-semibold text-sm uppercase tracking-wider mb-3">
+                    Partner Stories
+                </span>
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 text-balance">
+                    Trusted by Restaurant Owners
+                </h2>
+                <p class="text-lg text-gray-500 max-w-2xl mx-auto">
+                    Join the growing community of successful restaurants in UAE
+                </p>
+            </div>
+
+            <!-- Testimonials Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card bg-gray-50 rounded-3xl p-8 border border-gray-200/50 hover:border-[#4ECDC4]/30 transition-all hover:shadow-xl hover:shadow-[#4ECDC4]/5 hover:-translate-y-1">
+                    <div class="w-12 h-12 rounded-2xl bg-[#4ECDC4]/10 flex items-center justify-center mb-6">
+                        <i data-lucide="quote" class="w-6 h-6 text-[#4ECDC4]"></i>
+                    </div>
+
+                    <!-- Rating -->
+                    <div class="flex gap-1 mb-4">
+                        <i data-lucide="star" class="w-5 h-5 fill-amber-400 text-amber-400"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-amber-400 text-amber-400"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-amber-400 text-amber-400"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-amber-400 text-amber-400"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-amber-400 text-amber-400"></i>
+                    </div>
+
+                    <!-- Quote -->
+                    <p class="text-gray-900 text-lg leading-relaxed mb-6">
+                        "Finally, a platform that understands restaurant owners. The WhatsApp integration is genius."
+                    </p>
+
+                    <!-- Author -->
+                    <div class="flex items-center gap-4">
+                        <div class="relative w-14 h-14 rounded-full overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200" alt="Ahmed Al Rashid" class="w-full h-full object-cover" />
+                        </div>
+                        <div>
+                            <p class="font-bold text-gray-900">Ahmed Al Rashid</p>
+                            <p class="text-sm text-gray-500">Spice Garden Restaurant, Ajman</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card bg-gray-50 rounded-3xl p-8 border border-gray-200/50 hover:border-[#4ECDC4]/30 transition-all hover:shadow-xl hover:shadow-[#4ECDC4]/5 hover:-translate-y-1">
+                    <div class="w-12 h-12 rounded-2xl bg-[#4ECDC4]/10 flex items-center justify-center mb-6">
+                        <i data-lucide="quote" class="w-6 h-6 text-[#4ECDC4]"></i>
+                    </div>
+
+                    <!-- Rating -->
+                    <div class="flex gap-1 mb-4">
+                        <i data-lucide="star" class="w-5 h-5 fill-amber-400 text-amber-400"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-amber-400 text-amber-400"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-amber-400 text-amber-400"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-amber-400 text-amber-400"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-amber-400 text-amber-400"></i>
+                    </div>
+
+                    <!-- Quote -->
+                    <p class="text-gray-900 text-lg leading-relaxed mb-6">
+                        "We save so much on commissions now. The same-day payments make cash flow so much easier."
+                    </p>
+
+                    <!-- Author -->
+                    <div class="flex items-center gap-4">
+                        <div class="relative w-14 h-14 rounded-full overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200" alt="Fatima Hassan" class="w-full h-full object-cover" />
+                        </div>
+                        <div>
+                            <p class="font-bold text-gray-900">Fatima Hassan</p>
+                            <p class="text-sm text-gray-500">Golden Biryani House, Ajman</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card bg-gray-50 rounded-3xl p-8 border border-gray-200/50 hover:border-[#4ECDC4]/30 transition-all hover:shadow-xl hover:shadow-[#4ECDC4]/5 hover:-translate-y-1">
+                    <div class="w-12 h-12 rounded-2xl bg-[#4ECDC4]/10 flex items-center justify-center mb-6">
+                        <i data-lucide="quote" class="w-6 h-6 text-[#4ECDC4]"></i>
+                    </div>
+
+                    <!-- Rating -->
+                    <div class="flex gap-1 mb-4">
+                        <i data-lucide="star" class="w-5 h-5 fill-amber-400 text-amber-400"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-amber-400 text-amber-400"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-amber-400 text-amber-400"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-amber-400 text-amber-400"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-amber-400 text-amber-400"></i>
+                    </div>
+
+                    <!-- Quote -->
+                    <p class="text-gray-900 text-lg leading-relaxed mb-6">
+                        "Setup took 5 minutes. Orders started coming the same day. Best decision for my business."
+                    </p>
+
+                    <!-- Author -->
+                    <div class="flex items-center gap-4">
+                        <div class="relative w-14 h-14 rounded-full overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=200" alt="Mohammed Iqbal" class="w-full h-full object-cover" />
+                        </div>
+                        <div>
+                            <p class="font-bold text-gray-900">Mohammed Iqbal</p>
+                            <p class="text-sm text-gray-500">Fresh Bites Cafe, Ajman</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section py-20 lg:py-28 overflow-hidden">
+        <!-- Background -->
+        <div class="cta-bg">
+            <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=2070" alt="Restaurant food" />
+            <div class="cta-overlay"></div>
+        </div>
+
+        <!-- Content -->
+        <div class="relative z-10 container-pro px-4">
+            <div class="max-w-3xl mx-auto text-center">
+                <!-- Limited Offer Badge -->
+                <div class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold mb-6">
+                    <i data-lucide="sparkles" class="w-4 h-4"></i>
+                    Limited Time: Get 70% Discount
+                </div>
+
+                <!-- Headline -->
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 text-balance">
+                    Ready to Start Receiving Orders Today?
+                </h2>
+
+                <!-- Subtext -->
+                <p class="text-xl text-white/90 mb-10 max-w-xl mx-auto">
+                    Join GoSnel now and get your first orders by tomorrow. 
+                    Quick 5-minute setup via WhatsApp.
+                </p>
+
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a
+                        href="https://wa.me/971542503729?text=Hi%20I%20want%20to%20join%20as%20a%20partner"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="inline-flex items-center justify-center gap-3 bg-[#25D366] hover:bg-[#20BD5A] text-white px-10 py-5 rounded-2xl font-bold text-lg transition-all hover:scale-105 shadow-2xl shadow-black/20"
+                    >
+                        <i data-lucide="message-circle" class="w-6 h-6"></i>
+                        Chat on WhatsApp
+                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </a>
+                    <a
+                        href="tel:+971542503729"
+                        class="inline-flex items-center justify-center gap-3 bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/30 text-white px-10 py-5 rounded-2xl font-bold text-lg transition-all"
+                    >
+                        <i data-lucide="phone" class="w-5 h-5"></i>
+                        Call Us Now
                     </a>
                 </div>
 
-            </div>
-        </div>
-    </section>
-
-    <!-- ANALYTICS DASHBOARD SECTION (Arabic) -->
-    <section class="section-pad bg-white">
-        <div class="container-pro px-4 sm:px-6 lg:px-8">
-            <div class="max-w-4xl mx-auto">
-                <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/Advanced_analytic_dashboard.webp" alt="لوحة التحليلات" class="w-full h-auto rounded-xl shadow-lg">
-            </div>
-        </div>
-    </section>
-
-    
-
-  <!-- Compatible with Section (Arabic) -->
-    <section class="pt-6 pb-20 md:pt-8 md:pb-24 bg-white border-b border-gray-100">
-        <div class="container-pro px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-10">متوافق مع</h2>
-            <div class="overflow-hidden w-full">
-                <div class="logo-marquee flex items-center gap-8 md:gap-12" style="white-space:nowrap; animation: marquee 12s linear infinite;">
-                    <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/visa.png" alt="Visa" class="h-16 w-16 object-contain rounded-full bg-gray-100 transition duration-300 shadow inline-block">
-                    <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/mastercard.png" alt="Mastercard" class="h-16 w-16 object-contain rounded-full bg-gray-100 transition duration-300 shadow inline-block">
-                    <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/applePay.png" alt="Apple Pay" class="h-16 w-16 object-contain rounded-full bg-gray-100 transition duration-300 shadow inline-block">
-                    <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/googlePay.png" alt="Google Pay" class="h-16 w-16 object-contain rounded-full bg-gray-100 transition duration-300 shadow inline-block">
-                    <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/stripe.png" alt="Stripe" class="h-16 w-16 object-contain rounded-full bg-gray-100 transition duration-300 shadow inline-block">
-                    <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/maestro.png" alt="Maestro" class="h-16 w-16 object-contain rounded-full bg-gray-100 transition duration-300 shadow inline-block">
-
-                    <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/uaeFlag.png" alt="UAE Flag" class="h-16 w-16 object-contain rounded-full bg-gray-100 transition duration-300 shadow inline-block">
-
-                    <!-- Repeat logos for infinite effect -->
-                    <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/visa.png" alt="Visa" class="h-16 w-16 object-contain rounded-full bg-gray-100 transition duration-300 shadow inline-block">
-                    <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/mastercard.png" alt="Mastercard" class="h-16 w-16 object-contain rounded-full bg-gray-100 transition duration-300 shadow inline-block">
-                    <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/applePay.png" alt="Apple Pay" class="h-16 w-16 object-contain rounded-full bg-gray-100 transition duration-300 shadow inline-block">
-                    <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/googlePay.png" alt="Google Pay" class="h-16 w-16 object-contain rounded-full bg-gray-100 transition duration-300 shadow inline-block">
-                    <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/stripe.png" alt="Stripe" class="h-16 w-16 object-contain rounded-full bg-gray-100 transition duration-300 shadow inline-block">
-                    <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/maestro.png" alt="Maestro" class="h-16 w-16 object-contain rounded-full bg-gray-100 transition duration-300 shadow inline-block">
-
-                    <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/uaeFlag.png" alt="UAE Flag" class="h-16 w-16 object-contain rounded-full bg-gray-100 transition duration-300 shadow inline-block">
-
+                <!-- Trust Indicators -->
+                <div class="mt-12 flex flex-wrap justify-center gap-8 text-white/80 text-sm">
+                    <div class="flex items-center gap-2">
+                        <div class="w-2 h-2 rounded-full bg-white/60"></div>
+                        No Setup Fee
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div class="w-2 h-2 rounded-full bg-white/60"></div>
+                        Cancel Anytime
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div class="w-2 h-2 rounded-full bg-white/60"></div>
+                        24/7 Support
+                    </div>
                 </div>
             </div>
-            <style>
-                @keyframes marquee {
-                    0% { transform: translateX(0); }
-                    100% { transform: translateX(-50%); }
-                }
-                .logo-marquee { animation-duration: 12s !important; }
-            </style>
         </div>
     </section>
 
-    <!-- HOW IT WORKS (Arabic) -->
-    <section class="section-pad bg-white">
-        <div class="container-pro px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">الإعداد في 3 خطوات بسيطة</h2>
-            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                <div class="text-center">
-                    <div class="step-circle text-2xl font-bold mx-auto mb-4">1</div>
-                    <h3 class="font-bold text-xl mb-3">التسجيل (5 دقائق)</h3>
-                    <p class="text-gray-600">اسم المطعم، الموقع، جهة اتصال واتساب</p>
-                </div>
-                <div class="text-center">
-                    <div class="step-circle text-2xl font-bold mx-auto mb-4">2</div>
-                    <h3 class="font-bold text-xl mb-3">أضف القائمة (10 دقائق)</h3>
-                    <p class="text-gray-600">أشهر أطباقك  نساعد في تحسينها</p>
-                </div>
-                <div class="text-center">
-                    <div class="step-circle text-2xl font-bold mx-auto mb-4">3</div>
-                    <h3 class="font-bold text-xl mb-3">جاهز للإطلاق</h3>
-                    <p class="text-gray-600">نخطرك قبل الإطلاق بأسبوع</p>
-                </div>
-            </div>
-            <div class="text-center mt-12">
-                <p class="text-lg font-semibold text-teal-700">💳 لا دفع الآن. ادفع فقط إذا قررت الترقية (اختياري).</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- FINAL CTA AR -->
-    <section class="section-pad text-white" style="background-image: linear-gradient(rgba(51,49,50,0.78), rgba(51,49,50,0.78)), url('https://pub-0d4798289dad4074a3236450ba640652.r2.dev/signupImageWeb1.webp'); background-size: cover; background-position: center; background-repeat: no-repeat;">
-        <div class="container-pro px-4 sm:px-6 lg:px-8 text-center">
-            <div class="prelaunch-badge inline-flex items-center justify-center gap-2"><i data-lucide="rocket" aria-hidden="true"></i>الإطلاق في فبراير 2026  انضم كشريك مؤسس</div>
-            <h2 class="text-3xl md:text-4xl font-bold mb-6">انضم لأول 50 مطعم في الإمارات</h2>
-                <a href="https://wa.me/971542503729"
-                    dir="rtl" aria-label="انضم كشريك مؤسس عبر واتساب" title="انضم عبر واتساب" class="btn-primary inline-flex items-center gap-3 text-right text-white px-12 py-5 rounded-xl font-bold text-lg" style="flex-direction: row-reverse !important; background: linear-gradient(90deg, #25D366, #1ea952);">
-                <span class="cta-text">انضم كشريك مؤسس</span>
-                <span class="cta-icon"><svg class="w-6 h-6 flex-shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 24 24" fill="#ffffff"><path fill="#ffffff" d="M16.6 14c-.2-.1-1.5-.7-1.7-.8c-.2-.1-.4-.1-.6.1c-.2.2-.6.8-.8 1c-.1.2-.3.2-.5.1c-.7-.3-1.4-.7-2-1.2c-.5-.5-1-1.1-1.4-1.7c-.1-.2 0-.4.1-.5c.1-.1.2-.3.4-.4c.1-.1.2-.3.2-.4c.1-.1.1-.3 0-.4c-.1-.1-.6-1.3-.8-1.8c-.1-.7-.3-.7-.5-.7h-.5c-.2 0-.5.2-.6.3c-.6.6-.9 1.3-.9 2.1c.1.9.4 1.8 1 2.6c1.1 1.6 2.5 2.9 4.2 3.7c.5.2.9.4 1.4.5c.5.2 1 .2 1.6.1c.7-.1 1.3-.6 1.7-1.2c.2-.4.2-.8.1-1.2l-.4-.2m2.5-9.1C15.2 1 8.9 1 5 4.9c-3.2 3.2-3.8 8.1-1.6 12L2 22l5.3-1.4c1.5.8 3.1 1.2 4.7 1.2c5.5 0 9.9-4.4 9.9-9.9c.1-2.6-1-5.1-2.8-7m-2.7 14c-1.3.8-2.8 1.3-4.4 1.3c-1.5 0-2.9-.4-4.2-1.1l-.3-.2l-3.1.8l.8-3l-.2-.3c-2.4-4-1.2-9 2.7-11.5S16.6 3.7 19 7.5c2.4 3.9 1.3 9-2.6 11.4"/></svg></span>
-            </a>
-            <p class="text-lg italic mt-4" style="color: #4ECDC4;"> لا عقود. لا عمولات.</p>
-        </div>
-    </section>
-
-    </div>
-
+    <!-- Footer (keeping existing footer) -->
     <!--#include file="../components/footer.html" -->
-    <style>
-    .text-gradient-teal {
-        background: linear-gradient(90deg, #4ECDC4, #1A9A93);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
-    </style>
 
-    <!-- WhatsApp Corner Icon -->
-        <a href="https://wa.me/971542503729"
-       class="fixed bottom-6 right-6 z-40 w-12 h-12 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 text-white flex items-center justify-center"
-       aria-label="Chat on WhatsApp" title="Chat on WhatsApp" style="background: linear-gradient(90deg, #25D366, #1ea952);">
-        <img src="/References/SocialmediaSVG/whatsapp.svg" alt="WhatsApp" class="w-6 h-6">
-    </a>
-
-    <!-- Language Toggle Script -->
+    <!-- Scripts -->
     <script>
-        const langButtons = document.querySelectorAll('.lang-btn');
-        const body = document.body;
-        const savedLang = localStorage.getItem('vendor-lang') || 'en';
-        if (savedLang === 'ar') {
-            body.classList.add('lang-ar');
-            langButtons.forEach(btn => btn.classList.remove('active'));
-            document.querySelector('[data-lang="ar"]').classList.add('active');
-        }
-        langButtons.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const lang = btn.dataset.lang;
-                localStorage.setItem('vendor-lang', lang);
-                langButtons.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                if (lang === 'ar') { body.classList.add('lang-ar'); } 
-                else { body.classList.remove('lang-ar'); }
+        // Initialize Lucide icons
+        document.addEventListener('DOMContentLoaded', function() {
+            lucide.createIcons();
+            
+            // Header scroll effect
+            const header = document.getElementById('main-header');
+            const headerTitle = document.getElementById('header-title');
+            
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 20) {
+                    header.classList.add('header-scrolled');
+                    headerTitle.classList.remove('text-white');
+                    headerTitle.classList.add('text-gray-900');
+                } else {
+                    header.classList.remove('header-scrolled');
+                    headerTitle.classList.add('text-white');
+                    headerTitle.classList.remove('text-gray-900');
+                }
             });
         });
-    </script>
-    <script>
-        // Robust lucide initializer: try replace on DOMContentLoaded and poll until lucide is available.
-        (function initLucide() {
-            function tryReplace() {
-                try {
-                    if (window.lucide) {
-                        if (typeof lucide.replace === 'function') {
-                            lucide.replace();
-                        }
-                        if (typeof lucide.createIcons === 'function') {
-                            // newer API
-                            lucide.createIcons();
-                        }
-                        return true;
-                    }
-                } catch (e) {
-                    console.warn('lucide replace error', e);
-                }
-                return false;
-            }
-
-            document.addEventListener('DOMContentLoaded', function () {
-                if (tryReplace()) return;
-                // Poll for lucide to become available (max 10 attempts)
-                let attempts = 0;
-                const id = setInterval(() => {
-                    attempts += 1;
-                    if (tryReplace() || attempts >= 10) {
-                        clearInterval(id);
-                    }
-                }, 300);
-            });
-        })();
     </script>
 </body>
 </html>
