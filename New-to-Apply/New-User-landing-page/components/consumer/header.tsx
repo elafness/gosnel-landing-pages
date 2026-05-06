@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button"
 export function ConsumerHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
-  const whatsappUrl = "https://wa.me/971565651133?text=Hi%20GoSnel!%20I%20want%20to%20order%20food"
+  const whatsappUrl = "https://wa.me/971542503729?text=Hi%20GoSnel!%20I%20want%20to%20order%20food"
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border/50">

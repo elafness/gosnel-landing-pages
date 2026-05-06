@@ -2,7 +2,7 @@ import Link from "next/link"
 import { MessageCircle, Instagram, Phone, MapPin } from "lucide-react"
 
 export function ConsumerFooter() {
-  const whatsappUrl = "https://wa.me/971565651133?text=Hi%20GoSnel!%20I%20want%20to%20order%20food"
+  const whatsappUrl = "https://wa.me/971542503729?text=Hi%20GoSnel!%20I%20want%20to%20order%20food"
 
   return (
     <footer className="bg-foreground text-background py-16">

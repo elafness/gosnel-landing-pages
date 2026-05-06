@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import Image from "next/image"
 
 export function ConsumerHero() {
-  const whatsappUrl = "https://wa.me/971565651133?text=Hi%20GoSnel!%20I%20want%20to%20order%20food"
+  const whatsappUrl = "https://wa.me/971542503729?text=Hi%20GoSnel!%20I%20want%20to%20order%20food"
 
   return (
     <section className="relative min-h-screen flex items-center pt-16 overflow-hidden bg-gradient-to-b from-background via-background to-muted/30">

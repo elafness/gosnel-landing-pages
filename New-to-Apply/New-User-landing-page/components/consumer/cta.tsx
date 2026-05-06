@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button"
 import Image from "next/image"
 
 export function ConsumerCta() {
-  const whatsappUrl = "https://wa.me/971565651133?text=Hi%20GoSnel!%20I%20want%20to%20order%20food"
+  const whatsappUrl = "https://wa.me/971542503729?text=Hi%20GoSnel!%20I%20want%20to%20order%20food"
 
   return (
     <section className="py-20 lg:py-32 relative overflow-hidden">
