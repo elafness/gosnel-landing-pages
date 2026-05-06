@@ -2,7 +2,7 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5175;
 const DIST_DIR = path.join(__dirname, 'dist');
 
 // Route mappings
@@ -21,6 +21,8 @@ const routeMap = {
   '/blog': '/blog.html',
   '/faq': '/faq.html',
   '/account-soon': '/account-soon.html',
+  '/contact': '/contact.html',
+  '/contacts': '/contact.html',
   // Partner pages in /partner/ subdirectory
   '/partner': '/partner/index.html',
   '/partner/landing': '/partner/landing.html',
