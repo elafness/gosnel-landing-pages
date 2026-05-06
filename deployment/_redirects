@@ -33,11 +33,11 @@ https://user.gosnel.com/faq /faq.html 200
 # Only adding specific rewrites where needed
 
 /about-us /about.html 200
-/contact /user-app/contact.html 200
-/contact/ /user-app/contact.html 200
-/partner /partner-app/features/partner-landing.html 200
-/partner/ /partner-app/features/partner-landing.html 200
-/partner/* /partner-app/:splat 200
+/contact /contact.html 200
+/contact/ /contact.html 200
+/partner /partner/index.html 200
+/partner/ /partner/index.html 200
+/partner/* /partner/:splat 200
 /blog/* /apps/user-app/blog/:splat 200
 
 # ============================================

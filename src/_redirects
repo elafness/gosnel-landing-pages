@@ -26,8 +26,8 @@ https://user.gosnel.com/faq /faq.html 200
 https://restaurants.gosnel.com/* https://gosnel.com/partner/ 301
 /vendor/* /partner/:splat 301
 /about-us /about.html 200
-/contact /user-app/contact.html 200
-/contact/ /user-app/contact.html 200
+/contact /contact.html 200
+/contact/ /contact.html 200
 
 # Blog Rewrites
 /blog/ai-food-recommendations-uae /user-blog-ai-food-recommendations-uae.html 200
