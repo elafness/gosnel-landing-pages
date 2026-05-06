@@ -83,54 +83,60 @@
         * { font-family: 'Inter', system-ui, sans-serif; margin: 0; padding: 0; box-sizing: border-box; }
         [lang="ar"] * { font-family: 'Cairo', system-ui, sans-serif; }
         :root { --container-max: 72rem; }
-        .container-pro { max-width: var(--container-max); margin: 0 auto; }
-        .section-pad { padding: 5rem 0; }
-        @media (min-width: 768px) { .section-pad { padding: 6rem 0; } }
+        .container-pro { max-width: var(--container-max); margin: 0 auto; padding-left: 1rem; padding-right: 1rem; }
+        @media (min-width: 640px) { .container-pro { padding-left: 1.5rem; padding-right: 1.5rem; } }
+        @media (min-width: 1024px) { .container-pro { padding-left: 2rem; padding-right: 2rem; } }
+        .section-pad { padding: 3rem 0; }
+        @media (min-width: 768px) { .section-pad { padding: 5rem 0; } }
         
         .gradient-teal { background: linear-gradient(135deg, #4ECDC4, #1A9A93); }
         .btn-primary { transition: all 0.3s ease; box-shadow: 0 8px 24px rgba(78, 205, 196, 0.3); }
         .btn-primary:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(78, 205, 196, 0.5); }
         
-        .icon { width: 64px; height: 64px; display: inline-flex; align-items: center; justify-content: center; 
+        .icon { width: 48px; height: 48px; display: inline-flex; align-items: center; justify-content: center; 
                 border-radius: 0.75rem; background: transparent; color: #0f766e; }
-        .icon svg { width: 108px; height: 108px; stroke: currentColor; stroke-width: 1.8; fill: none; }
+        @media (min-width: 768px) { .icon { width: 64px; height: 64px; } }
+        .icon svg { width: 32px; height: 32px; stroke: currentColor; stroke-width: 1.8; fill: none; }
+        @media (min-width: 768px) { .icon svg { width: 40px; height: 40px; } }
 
         /* Step circle for "Setup in 3 simple steps" - empty with thin brand green border */
         .step-circle {
-            width: 4rem; height: 4rem; border-radius: 9999px; display: flex; align-items: center; justify-content: center;
-            background: transparent; border: 2px solid #4ECDC4; color: #4ECDC4; font-weight: 700;
+            width: 3rem; height: 3rem; border-radius: 9999px; display: flex; align-items: center; justify-content: center;
+            background: transparent; border: 2px solid #4ECDC4; color: #4ECDC4; font-weight: 700; font-size: 1rem;
         }
+        @media (min-width: 768px) { .step-circle { width: 4rem; height: 4rem; font-size: 1.25rem; } }
         
         /* Pre-Launch Specific Styles */
         .prelaunch-badge {
             display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
-            color: white; padding: 8px 20px; border-radius: 50px; font-weight: 700;
-            font-size: 0.9rem; letter-spacing: 0.5px; margin-bottom: 1rem;
+            color: white; padding: 6px 12px; border-radius: 50px; font-weight: 700;
+            font-size: 0.7rem; letter-spacing: 0.5px; margin-bottom: 0.75rem;
             box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
             animation: pulse-badge 2s infinite;
         }
+        @media (min-width: 768px) { .prelaunch-badge { padding: 8px 20px; font-size: 0.9rem; } }
         .highlight {
             display: block;
             color: #4ECDC4 !important;
             font-weight: 800 !important;
             text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7) !important;
-            /* font-size removed so Tailwind utility classes control responsive sizing */
             margin-top: 0.5rem;
         }
         @keyframes pulse-badge { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
         
         .urgency-counter {
             background: rgba(255, 107, 107, 0.12); border: 2px solid #ff6b6b;
-            padding: 8px 14px; border-radius: 10px; display: inline-flex; align-items: center;
-            font-weight: 700; font-size: 0.95rem; line-height: 1; margin-top: 0.75rem;
+            padding: 6px 10px; border-radius: 10px; display: inline-flex; align-items: center;
+            font-weight: 700; font-size: 0.75rem; line-height: 1.2; margin-top: 0.75rem;
         }
-        .urgency-counter .number { color: #ff6b6b; font-size: 0.95rem; font-weight: 700; display: inline-block; margin-inline-start: 0.4rem; }
+        @media (min-width: 768px) { .urgency-counter { padding: 8px 14px; font-size: 0.95rem; } }
+        .urgency-counter .number { color: #ff6b6b; font-size: 0.75rem; font-weight: 700; display: inline-block; margin-inline-start: 0.4rem; }
+        @media (min-width: 768px) { .urgency-counter .number { font-size: 0.95rem; } }
         /* ensure any .number span (used elsewhere) uses the same red for consistency across languages */
         .number { color: #ff6b6b; }
         
         .founding-section {
             position: relative; overflow: hidden;
-            /* background image from Cloudflare R2 with a subtle dark overlay for text legibility */
             background-image: linear-gradient(180deg, rgba(8,10,10,0.55), rgba(8,10,10,0.18)), url('https://pub-0d4798289dad4074a3236450ba640652.r2.dev/restaurant.webp');
             background-size: cover; background-position: center; background-repeat: no-repeat;
             color: white;
@@ -141,21 +147,24 @@
         }
         
         .benefit-card-premium {
-            background: rgba(255,255,255,0.95); border-radius: 16px; padding: 30px;
+            background: rgba(255,255,255,0.95); border-radius: 16px; padding: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2); transition: transform 0.3s; position: relative;
         }
+        @media (min-width: 768px) { .benefit-card-premium { padding: 30px; } }
         .benefit-card-premium:hover { transform: translateY(-8px); }
-    .benefit-card-premium .icon-premium { font-size: 3rem; margin-bottom: 1rem; }
-    /* Ensure Lucide injected SVGs match the previous emoji sizing */
-    .benefit-card-premium .icon-premium svg { width: 3rem; height: 3rem; display: inline-block; stroke: currentColor; stroke-width: 1.8; fill: none; }
-    /* Founding section icons should be black for contrast against the background image */
-    .founding-section .icon-premium,
-    .founding-section .icon-premium svg,
-    .founding-section i[data-lucide] svg {
-        color: #000000 !important;
-        stroke: #000000 !important;
-        fill: none !important;
-    }
+        .benefit-card-premium .icon-premium { font-size: 2rem; margin-bottom: 1rem; }
+        @media (min-width: 768px) { .benefit-card-premium .icon-premium { font-size: 3rem; } }
+        /* Ensure Lucide injected SVGs match the previous emoji sizing */
+        .benefit-card-premium .icon-premium svg { width: 2rem; height: 2rem; display: inline-block; stroke: currentColor; stroke-width: 1.8; fill: none; }
+        @media (min-width: 768px) { .benefit-card-premium .icon-premium svg { width: 3rem; height: 3rem; } }
+        /* Founding section icons should be black for contrast against the background image */
+        .founding-section .icon-premium,
+        .founding-section .icon-premium svg,
+        .founding-section i[data-lucide] svg {
+            color: #000000 !important;
+            stroke: #000000 !important;
+            fill: none !important;
+        }
         .limited-badge {
             position: absolute; top: -10px; right: -10px; background: #ff6b6b;
             color: white; padding: 8px 16px; border-radius: 20px; font-size: 0.75rem;
@@ -163,33 +172,37 @@
         }
         
         .faq-item {
-            background: white; border-radius: 12px; padding: 24px; margin-bottom: 16px;
+            background: white; border-radius: 12px; padding: 16px; margin-bottom: 16px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: box-shadow 0.3s;
         }
+        @media (min-width: 768px) { .faq-item { padding: 24px; } }
         .faq-item:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.12); }
         .faq-question {
-            font-weight: 700; font-size: 1.15rem; color: #0f766e; margin-bottom: 12px;
+            font-weight: 700; font-size: 1rem; color: #0f766e; margin-bottom: 12px;
             display: flex; align-items: center; gap: 10px;
         }
+        @media (min-width: 768px) { .faq-question { font-size: 1.15rem; } }
         .faq-question::before {
-            content: "Q"; background: #4ECDC4; color: white; width: 32px; height: 32px;
+            content: "Q"; background: #4ECDC4; color: white; width: 28px; height: 28px;
             border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            font-size: 0.9rem; flex-shrink: 0;
+            font-size: 0.8rem; flex-shrink: 0;
         }
-        .faq-answer { color: #374151; line-height: 1.7; padding-left: 42px; }
+        .faq-answer { color: #374151; line-height: 1.6; padding-left: 38px; }
+        @media (min-width: 768px) { .faq-answer { padding-left: 42px; line-height: 1.7; } }
         
         /* Language Toggle */
         .lang-toggle {
-            position: fixed; top: 0.85rem; left: 50%; transform: translateX(-50%); z-index: 60;
-            display: flex; gap: 0; border-radius: 9999px; padding: 4px;
+            position: fixed; top: 0.75rem; left: 50%; transform: translateX(-50%); z-index: 60;
+            display: flex; gap: 0; border-radius: 9999px; padding: 3px;
             background: rgba(15, 23, 42, 0.50); backdrop-filter: blur(14px);
             border: 1px solid rgba(255, 255, 255, 0.18); box-shadow: 0 12px 30px rgba(0, 0, 0, 0.20);
         }
         .lang-btn {
-            padding: 8px 14px; border: none; background: transparent; color: white;
+            padding: 6px 10px; border: none; background: transparent; color: white;
             cursor: pointer; font-weight: 600; transition: all 0.3s; border-radius: 9999px;
-            font-size: 0.95rem; line-height: 1;
+            font-size: 0.75rem; line-height: 1;
         }
+        @media (min-width: 768px) { .lang-btn { padding: 8px 14px; font-size: 0.95rem; } }
         .lang-btn.active { background: rgba(255, 255, 255, 0.92); color: #0f172a; }
         
         [lang="en"] { display: block; }
@@ -205,17 +218,32 @@
         @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
         .logo-marquee { animation: marquee 12s linear infinite; }
         /* Why-now icons sizing */
-    .why-icon svg { width: 2.5rem; height: 2.5rem; display: inline-block; stroke: currentColor; }
-    /* Prelaunch badge icon sizing and spacing for lucide-injected SVGs */
-    .prelaunch-badge i { display: inline-flex; align-items: center; justify-content: center; margin-inline-end: 0.5rem; }
-    .prelaunch-badge i svg { width: 1.1rem; height: 1.1rem; display: inline-block; stroke: currentColor; }
-    /* Urgency/clock icon used with lucide placeholders */
-    .urgency-icon { display: inline-flex; vertical-align: middle; margin-inline-end: 0.5rem; color: #ff6b6b; }
-    .urgency-icon svg { width: 1.25rem; height: 1.25rem; display: inline-block; stroke: currentColor; }
-    /* Force correct icon/text order for Arabic CTAs regardless of flex direction */
-    a[dir="rtl"].btn-primary { display: inline-flex; align-items: center; }
-    a[dir="rtl"].btn-primary .cta-icon { order: 1; margin-left: 0.75rem; margin-right: 0; display: inline-flex; align-items:center; }
-    a[dir="rtl"].btn-primary .cta-text { order: 2; }
+        .why-icon svg { width: 2rem; height: 2rem; display: inline-block; stroke: currentColor; }
+        @media (min-width: 768px) { .why-icon svg { width: 2.5rem; height: 2.5rem; } }
+        /* Prelaunch badge icon sizing and spacing for lucide-injected SVGs */
+        .prelaunch-badge i { display: inline-flex; align-items: center; justify-content: center; margin-inline-end: 0.5rem; }
+        .prelaunch-badge i svg { width: 1rem; height: 1rem; display: inline-block; stroke: currentColor; }
+        @media (min-width: 768px) { .prelaunch-badge i svg { width: 1.1rem; height: 1.1rem; } }
+        /* Urgency/clock icon used with lucide placeholders */
+        .urgency-icon { display: inline-flex; vertical-align: middle; margin-inline-end: 0.5rem; color: #ff6b6b; }
+        .urgency-icon svg { width: 1rem; height: 1rem; display: inline-block; stroke: currentColor; }
+        @media (min-width: 768px) { .urgency-icon svg { width: 1.25rem; height: 1.25rem; } }
+        /* Force correct icon/text order for Arabic CTAs regardless of flex direction */
+        a[dir="rtl"].btn-primary { display: inline-flex; align-items: center; }
+        a[dir="rtl"].btn-primary .cta-icon { order: 1; margin-left: 0.75rem; margin-right: 0; display: inline-flex; align-items:center; }
+        a[dir="rtl"].btn-primary .cta-text { order: 2; }
+        
+        /* ===== RESPONSIVE IMPROVEMENTS ===== */
+        /* Hero Section Responsive */
+        @media (max-width: 768px) {
+            .hero-section-mobile { min-height: auto; padding-top: 6rem; padding-bottom: 3rem; }
+        }
+        
+        /* WhatsApp Button Responsive */
+        @media (max-width: 768px) {
+            .whatsapp-corner { bottom: 1rem; right: 1rem; width: 2.5rem; height: 2.5rem; }
+            .whatsapp-corner svg { width: 1.25rem; height: 1.25rem; }
+        }
     </style>
 </head>
 <body class="bg-white text-black min-h-screen">
@@ -241,7 +269,7 @@
     <div lang="en">
 
     <!-- HERO SECTION -->
-    <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-20">
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-16 md:pt-24 md:pb-20 hero-section-mobile">
         <div class="absolute inset-0 -z-10">
             <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/heroimage.webp" alt="Restaurant owner" class="w-full h-full object-cover object-left" style="object-position: 60% 20%;">
             <div class="absolute inset-0 bg-gradient-to-r from-black/45 via-black/35 to-black/20"></div>
@@ -251,32 +279,32 @@
             <div class="max-w-3xl text-white z-10 text-left" dir="ltr" style="text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8); position: relative; z-index: 20;">
                 <!-- prelaunch-badge moved below (above final CTA section) -->
 
-                <h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-4" style="color: white !important;">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-tight mb-3 md:mb-4" style="color: white !important;">
                     Stop losing 30% to delivery commissions
                 </h2>
-                <h4 class="highlight text-4xl md:text-5xl font-extrabold mb-6">Save 600–1,000 AED per month</h4>
+                <h4 class="highlight text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4 md:mb-6">Save 600–1,000 AED per month</h4>
 
-                <h3 class="text-xl md:text-2xl font-semibold text-gray-100 mb-8 leading-snug">GoSnel is an AI-powered meal discovery app</h3>
+                <h3 class="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold text-gray-100 mb-6 md:mb-8 leading-snug">GoSnel is an AI-powered meal discovery app</h3>
 
-                <div class="space-y-4 text-lg mb-6">
-                    <div class="flex items-start gap-4">
-                        <span class="text-2xl font-bold text-teal-400">✓</span>
+                <div class="space-y-3 md:space-y-4 text-sm sm:text-base md:text-lg mb-6">
+                    <div class="flex items-start gap-3 md:gap-4">
+                        <span class="text-xl md:text-2xl font-bold text-teal-400">✓</span>
                         <div>Lifetime 80% discount.</div>
                     </div>
-                    <div class="flex items-start gap-4">
-                        <span class="text-2xl font-bold text-teal-400">✓</span>
+                    <div class="flex items-start gap-3 md:gap-4">
+                        <span class="text-xl md:text-2xl font-bold text-teal-400">✓</span>
                         <div>Featured placement.</div>
                     </div>
-                    <div class="flex items-start gap-4">
-                        <span class="text-2xl font-bold text-teal-400">✓</span>
+                    <div class="flex items-start gap-3 md:gap-4">
+                        <span class="text-xl md:text-2xl font-bold text-teal-400">✓</span>
                         <div>Your restaurant logo on GoSnel page</div>
                     </div>
                 </div>
 
-                <div class="mb-8">
+                <div class="mb-6 md:mb-8">
                     <a href="https://www.instagram.com/gosnelai" 
-                       class="btn-primary inline-flex items-center justify-center gap-3 bg-green-500 hover:bg-green-600 text-white px-10 py-4 rounded-xl font-bold text-lg w-full sm:w-auto">
-                        <svg class="w-5 h-5 flex-shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 24 24" fill="#ffffff"><path fill="#ffffff" d="M16.6 14c-.2-.1-1.5-.7-1.7-.8c-.2-.1-.4-.1-.6.1c-.2.2-.6.8-.8 1c-.1.2-.3.2-.5.1c-.7-.3-1.4-.7-2-1.2c-.5-.5-1-1.1-1.4-1.7c-.1-.2 0-.4.1-.5c.1-.1.2-.3.4-.4c.1-.1.2-.3.2-.4c.1-.1.1-.3 0-.4c-.1-.1-.6-1.3-.8-1.8c-.1-.7-.3-.7-.5-.7h-.5c-.2 0-.5.2-.6.3c-.6.6-.9 1.3-.9 2.1c.1.9.4 1.8 1 2.6c1.1 1.6 2.5 2.9 4.2 3.7c.5.2.9.4 1.4.5c.5.2 1 .2 1.6.1c.7-.1 1.3-.6 1.7-1.2c.2-.4.2-.8.1-1.2l-.4-.2m2.5-9.1C15.2 1 8.9 1 5 4.9c-3.2 3.2-3.8 8.1-1.6 12L2 22l5.3-1.4c1.5.8 3.1 1.2 4.7 1.2c5.5 0 9.9-4.4 9.9-9.9c.1-2.6-1-5.1-2.8-7m-2.7 14c-1.3.8-2.8 1.3-4.4 1.3c-1.5 0-2.9-.4-4.2-1.1l-.3-.2l-3.1.8l.8-3l-.2-.3c-2.4-4-1.2-9 2.7-11.5S16.6 3.7 19 7.5c2.4 3.9 1.3 9-2.6 11.4"/></svg>
+                       class="btn-primary inline-flex items-center justify-center gap-2 md:gap-3 bg-green-500 hover:bg-green-600 text-white px-6 py-3 sm:px-8 sm:py-3 md:px-10 md:py-4 rounded-xl font-bold text-base md:text-lg w-full sm:w-auto">
+                        <svg class="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 24 24" fill="#ffffff"><path fill="#ffffff" d="M16.6 14c-.2-.1-1.5-.7-1.7-.8c-.2-.1-.4-.1-.6.1c-.2.2-.6.8-.8 1c-.1.2-.3.2-.5.1c-.7-.3-1.4-.7-2-1.2c-.5-.5-1-1.1-1.4-1.7c-.1-.2 0-.4.1-.5c.1-.1.2-.3.4-.4c.1-.1.2-.3.2-.4c.1-.1.1-.3 0-.4c-.1-.1-.6-1.3-.8-1.8c-.1-.7-.3-.7-.5-.7h-.5c-.2 0-.5.2-.6.3c-.6.6-.9 1.3-.9 2.1c.1.9.4 1.8 1 2.6c1.1 1.6 2.5 2.9 4.2 3.7c.5.2.9.4 1.4.5c.5.2 1 .2 1.6.1c.7-.1 1.3-.6 1.7-1.2c.2-.4.2-.8.1-1.2l-.4-.2m2.5-9.1C15.2 1 8.9 1 5 4.9c-3.2 3.2-3.8 8.1-1.6 12L2 22l5.3-1.4c1.5.8 3.1 1.2 4.7 1.2c5.5 0 9.9-4.4 9.9-9.9c.1-2.6-1-5.1-2.8-7m-2.7 14c-1.3.8-2.8 1.3-4.4 1.3c-1.5 0-2.9-.4-4.2-1.1l-.3-.2l-3.1.8l.8-3l-.2-.3c-2.4-4-1.2-9 2.7-11.5S16.6 3.7 19 7.5c2.4 3.9 1.3 9-2.6 11.4"/></svg>
                         Join as Founding Partner
                     </a>
                 </div>
@@ -293,20 +321,20 @@
     <!-- WHY NOW -->
     <section class="section-pad">
         <div class="container-pro px-4 sm:px-6 lg:px-8">
-            <div class="bg-gradient-to-br from-teal-500/10 to-teal-600/5 border border-teal-500/30 rounded-2xl p-6 glow-teal">
+            <div class="bg-gradient-to-br from-teal-500/10 to-teal-600/5 border border-teal-500/30 rounded-2xl p-4 sm:p-6 glow-teal">
                 <div class="max-w-4xl mx-auto text-center">
-                <h2 class="text-3xl md:text-4xl font-bold mb-6">Why join before we launch?</h2>
-                <p class="text-xl text-gray-700 mb-8">After february 2026, all new restaurants pay <strong>full price (499 AED/month)</strong> without lifetime discounts.</p>
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div class="bg-white p-6 rounded-xl shadow-md">
-                        <div class="text-4xl mb-3 why-icon"><i data-lucide="zap"></i></div>
-                        <h3 class="font-bold text-lg mb-2">Founding Partners 80% off forever</h3>
-                        <p class="text-gray-600">Free or 99 AED/month forever + VIP benefits</p>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 md:mb-6">Why join before we launch?</h2>
+                <p class="text-base sm:text-lg md:text-xl text-gray-700 mb-6 md:mb-8">After february 2026, all new restaurants pay <strong>full price (499 AED/month)</strong> without lifetime discounts.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                    <div class="bg-white p-4 sm:p-6 rounded-xl shadow-md">
+                        <div class="text-3xl sm:text-4xl mb-3 why-icon"><i data-lucide="zap"></i></div>
+                        <h3 class="font-bold text-base sm:text-lg mb-2">Founding Partners 80% off forever</h3>
+                        <p class="text-sm sm:text-base text-gray-600">Free or 99 AED/month forever + VIP benefits</p>
                     </div>
-                    <div class="bg-white p-6 rounded-xl shadow-md opacity-60">
-                        <div class="text-4xl mb-3 why-icon"><i data-lucide="credit-card"></i></div>
-                        <h3 class="font-bold text-lg mb-2">After Launch (feb 2026)</h3>
-                        <p class="text-gray-600">499 AED/month</p>
+                    <div class="bg-white p-4 sm:p-6 rounded-xl shadow-md opacity-60">
+                        <div class="text-3xl sm:text-4xl mb-3 why-icon"><i data-lucide="credit-card"></i></div>
+                        <h3 class="font-bold text-base sm:text-lg mb-2">After Launch (feb 2026)</h3>
+                        <p class="text-sm sm:text-base text-gray-600">499 AED/month</p>
                     </div>
                 </div>
             </div>
