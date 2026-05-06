@@ -23,11 +23,13 @@ const routeMap = {
   '/account-soon': '/account-soon.html',
   // Partner pages in /partner/ subdirectory
   '/partner': '/partner/index.html',
+  '/partner/landing': '/partner/landing.html',
   '/partner/how-it-works': '/partner/how-it-works.html',
   '/partner/why-partner': '/partner/why-partner.html',
   '/partner/pricing': '/partner/pricing.html',
   '/partner/guidelines': '/partner/guidelines.html',
   '/partner/insights': '/partner/insights.html',
+  '/partner/investors': '/partner/investors.html',
   // Driver pages
   '/driver/how-it-works': '/pages/driver/how-it-works.html',
   '/driver/requirements': '/pages/driver/requirements.html',

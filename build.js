@@ -40,7 +40,8 @@ const buildPages = () => {
 
   // Landing page files configuration
   const landingPages = [
-    { subdomain: "user", filename: "src/user-app/features/landing.html" },
+    { subdomain: "user", filename: "src/user-app/user-landing.html" },
+    { subdomain: "partner", filename: "src/partner-app/features/partner-landing.html" },
     { subdomain: "drivers", filename: "src/drivers/drivers-landing.html" },
     { subdomain: "promo", filename: "src/promo/promo-landing.html" },
     { subdomain: "restaurants", filename: "src/restaurants/index.html" }
@@ -210,12 +211,14 @@ const buildPages = () => {
   }
   
   const partnerPages = [
-    { src: 'partner-app/index.html', dest: 'index.html' },
+    { src: 'partner-app/features/partner-landing.html', dest: 'index.html' },
+    { src: 'partner-app/features/partner-landing.html', dest: 'landing.html' },
     { src: 'partner-app/features/how-it-works.html', dest: 'how-it-works.html' },
     { src: 'partner-app/features/why-partner.html', dest: 'why-partner.html' },
     { src: 'partner-app/features/pricing.html', dest: 'pricing.html' },
     { src: 'partner-app/features/guidelines.html', dest: 'guidelines.html' },
     { src: 'partner-app/features/insights.html', dest: 'insights.html' },
+    { src: 'partner-app/features/investor-pitch.html', dest: 'investors.html' },
     { src: 'partner-app/instructions.html', dest: 'instructions.html' },
     { src: 'partner-app/pdf.html', dest: 'pdf.html' }
   ];
@@ -246,7 +249,7 @@ const buildPages = () => {
 
   // Create user pages at ROOT level (for SEO - main domain content)
   const userPages = [
-    { src: 'user-app/features/landing.html', dest: 'index.html' },
+    { src: 'user-app/user-landing.html', dest: 'index.html' },
     { src: 'user-app/features/how-it-works.html', dest: 'how-it-works.html' },
     { src: 'user-app/food.html', dest: 'food.html' },
     { src: 'user-app/about-gosnel.html', dest: 'about.html' },
