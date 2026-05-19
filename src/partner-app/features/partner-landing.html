@@ -26,16 +26,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <meta property="og:type" content="website">
     <meta property="og:title" content="GoSnel Partner Program | Get Cash on Delivery. Not Next Week.">
     <meta property="og:description" content="Join GoSnel and Get Cash on Delivery, not next week. Collect cash from customers, keep 85% instantly.">
-    <link rel="stylesheet" href="/shared/styles/output.css">
+    
+    <!-- Preconnect to third-party origins for faster resource loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://images.unsplash.com">
+    <link rel="preconnect" href="https://unpkg.com">
+    <link rel="preconnect" href="https://pub-0d4798289dad4074a3236450ba640652.r2.dev">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
     
     <!-- Preload critical above-the-fold images for faster LCP -->
     <link rel="preload" as="image" href="/shared/assets/images/GoSnelLogoText.png" fetchpriority="high">
-    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2070" fetchpriority="high">
+    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2070&auto=format&fit=crop&w=1920" fetchpriority="high">
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Optimized font loading - only preload the weights we actually use -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <link rel="stylesheet" href="/shared/styles/output.css">
+    
+    <!-- Defer non-critical Lucide icons library -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
     <style>
         * { font-family: 'Inter', system-ui, sans-serif; margin: 0; padding: 0; box-sizing: border-box; }
         :root { --container-max: 72rem; }
@@ -181,7 +192,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="container-pro px-4 flex items-center justify-between">
             <a href="https://gosnel.com/" class="flex flex-col items-start">
                 <div class="flex items-center gap-2 md:gap-3">
-                    <img src="/shared/assets/images/GoSnelLogoText.png" alt="GoSnel" class="w-8 h-8 md:w-10 md:h-10 rounded-full object-contain" />
+                    <img src="/shared/assets/images/GoSnelLogoText.png" alt="GoSnel" class="w-8 h-8 md:w-10 md:h-10 rounded-full object-contain" width="40" height="40" />
                     <span id="header-title" class="font-bold text-lg md:text-xl text-white">GoSnel</span>
                 </div>
                 <span class="text-[10px] md:text-xs text-white/80 font-medium -mt-1 ml-12 md:ml-14">Meal Discovery</span>
@@ -202,7 +213,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- Hero Section -->
     <section class="hero-section">
         <div class="hero-bg">
-            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2070" alt="Restaurant interior" />
+            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2070&auto=format&fit=crop&w=1920" alt="Restaurant interior" width="1920" height="1080" fetchpriority="high" />
             <div class="hero-overlay"></div>
         </div>
 
@@ -811,7 +822,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- Final CTA -->
     <section class="cta-section py-12 md:py-20 overflow-hidden">
         <div class="cta-bg">
-            <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=2070" alt="Restaurant food" />
+            <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=2070&auto=format&fit=crop&w=1920" alt="Restaurant food" width="1920" height="1280" loading="lazy" />
             <div class="cta-overlay"></div>
         </div>
 
@@ -876,7 +887,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             rel="noopener noreferrer"
             class="flex items-center gap-2 bg-black hover:bg-gray-900 text-white px-4 py-2 rounded-lg transition-all hover:scale-105 border border-white/10"
         >
-            <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/apps_store_images/Apple_-removebg-preview.png" alt="App Store" class="w-6 h-6 object-contain" />
+            <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/apps_store_images/Apple_-removebg-preview.png" alt="App Store" class="w-6 h-6 object-contain" width="24" height="24" loading="lazy" />
             <div class="text-left">
                 <p class="text-[10px] text-white/60 leading-none">GET IT ON</p>
                 <p class="text-sm font-bold leading-tight">App Store</p>
@@ -891,7 +902,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             rel="noopener noreferrer"
             class="flex items-center gap-2 bg-black hover:bg-gray-900 text-white px-4 py-2 rounded-lg transition-all hover:scale-105 border border-white/10"
         >
-            <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/apps_store_images/googlePlayStore-removebg-preview.png" alt="Google Play" class="w-6 h-6 object-contain" />
+            <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/apps_store_images/googlePlayStore-removebg-preview.png" alt="Google Play" class="w-6 h-6 object-contain" width="24" height="24" loading="lazy" />
             <div class="text-left">
                 <p class="text-[10px] text-white/60 leading-none">GET IT ON</p>
                 <p class="text-sm font-bold leading-tight">Google Play</p>
@@ -905,7 +916,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             rel="noopener noreferrer"
             class="flex items-center gap-2 bg-black hover:bg-gray-900 text-white px-4 py-2 rounded-lg transition-all hover:scale-105 border border-white/10"
         >
-            <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/apps_store_images/HuaweiApp-removebg-preview.png" alt="AppGallery" class="w-6 h-6 object-contain" />
+            <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/apps_store_images/HuaweiApp-removebg-preview.png" alt="AppGallery" class="w-6 h-6 object-contain" width="24" height="24" loading="lazy" />
             <div class="text-left">
                 <p class="text-[10px] text-white/60 leading-none">GET IT ON</p>
                 <p class="text-sm font-bold leading-tight">AppGallery</p>
@@ -921,7 +932,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 md:gap-12 mb-8 md:mb-12">
                 <div class="lg:col-span-1">
                     <a href="https://gosnel.com/" class="flex items-center gap-2 md:gap-3 mb-3 md:mb-4">
-                        <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/gosnelicon.png" alt="GoSnel Logo" class="w-8 h-8 md:w-10 md:h-10 object-contain">
+                        <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/gosnelicon.png" alt="GoSnel Logo" class="w-8 h-8 md:w-10 md:h-10 object-contain" width="40" height="40" loading="lazy">
                         <span class="text-lg md:text-xl font-bold text-gradient-teal">GoSnel</span>
                     </a>
                     <p class="text-gray-600 text-xs md:text-sm leading-relaxed">Meal Discovery AI Agent — Connecting you with the perfect meal in UAE, every time.</p>
@@ -1019,26 +1030,50 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         // Set current year
         document.getElementById('year').textContent = new Date().getFullYear();
         
-        // Initialize Lucide icons
-        document.addEventListener('DOMContentLoaded', function() {
-            lucide.createIcons();
-            
-            // Header scroll effect
-            const header = document.getElementById('main-header');
-            const headerTitle = document.getElementById('header-title');
-            
-            window.addEventListener('scroll', function() {
-                if (window.scrollY > 20) {
-                    header.classList.add('header-scrolled');
-                    headerTitle.classList.remove('text-white');
-                    headerTitle.classList.add('text-gray-900');
+        // Initialize Lucide icons after page load to avoid blocking main thread
+        function initLucideIcons() {
+            if (typeof lucide !== 'undefined' && lucide.createIcons) {
+                lucide.createIcons();
+            }
+        }
+        
+        // Try to init icons when DOM is ready, but defer if library not loaded yet
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function() {
+                // Check if lucide is already loaded
+                if (typeof lucide !== 'undefined') {
+                    lucide.createIcons();
                 } else {
-                    header.classList.remove('header-scrolled');
-                    headerTitle.classList.add('text-white');
-                    headerTitle.classList.remove('text-gray-900');
+                    // Wait for the deferred script to load
+                    document.querySelector('script[src*="lucide"]').addEventListener('load', initLucideIcons);
                 }
             });
-        });
+        } else {
+            initLucideIcons();
+        }
+        
+        // Header scroll effect - use requestAnimationFrame for better performance
+        const header = document.getElementById('main-header');
+        const headerTitle = document.getElementById('header-title');
+        let ticking = false;
+        
+        window.addEventListener('scroll', function() {
+            if (!ticking) {
+                window.requestAnimationFrame(function() {
+                    if (window.scrollY > 20) {
+                        header.classList.add('header-scrolled');
+                        headerTitle.classList.remove('text-white');
+                        headerTitle.classList.add('text-gray-900');
+                    } else {
+                        header.classList.remove('header-scrolled');
+                        headerTitle.classList.add('text-white');
+                        headerTitle.classList.remove('text-gray-900');
+                    }
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }, { passive: true });
     </script>
 </body>
 </html>
