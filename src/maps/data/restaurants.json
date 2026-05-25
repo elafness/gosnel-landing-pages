@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "name": "Al Fanar Restaurant",
+    "lat": 25.3969,
+    "lng": 55.4731,
+    "logo": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=100&h=100&fit=crop",
+    "combos": 3,
+    "whatsapp": "+971501234567",
+    "address": "Ajman Corniche, Ajman"
+  },
+  {
+    "id": 2,
+    "name": "Sharjah Food House",
+    "lat": 25.3463,
+    "lng": 55.4211,
+    "logo": "https://images.unsplash.com/photo-1552566626-5e1f7f9e0b47?w=100&h=100&fit=crop",
+    "combos": 5,
+    "whatsapp": "+971502345678",
+    "address": "Al Khan, Sharjah"
+  },
+  {
+    "id": 3,
+    "name": "Majlis Restaurant",
+    "lat": 25.4110,
+    "lng": 55.5060,
+    "logo": "https://images.unsplash.com/photo-1544148172-0dd9730e0f20?w=100&h=100&fit=crop",
+    "combos": 4,
+    "whatsapp": "+971503456789",
+    "address": "Ajman Downtown, Ajman"
+  },
+  {
+    "id": 4,
+    "name": "Al Ijaza Restaurant",
+    "lat": 25.3590,
+    "lng": 55.3740,
+    "logo": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=100&h=100&fit=crop",
+    "combos": 2,
+    "whatsapp": "+971504567890",
+    "address": "Al Qasimia, Sharjah"
+  },
+  {
+    "id": 5,
+    "name": "GoSnel Kitchen",
+    "lat": 25.4000,
+    "lng": 55.4500,
+    "logo": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=100&h=100&fit=crop",
+    "combos": 6,
+    "whatsapp": "+971505678901",
+    "address": "Al Bustan, Ajman"
+  }
+]

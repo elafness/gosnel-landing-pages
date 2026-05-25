@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>GoSnel Maps - Find Restaurants Near You</title>
+    <meta name="description" content="Find GoSnel partner restaurants in Ajman and Sharjah. View delivery zones and order via WhatsApp.">
+    
+    <link rel="stylesheet" href="/output.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <style>
+        * { font-family: 'Inter', system-ui, sans-serif; margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --gosnel-green: #4ECDC4; --gosnel-dark: #1a1a1a; }
+        
+        /* Map container */
+        #map {
+            height: 100vh;
+            width: 100%;
+        }
+        
+        /* Custom marker styling */
+        .custom-marker {
+            cursor: pointer;
+        }
+        
+        /* Bottom sheet for mobile */
+        .bottom-sheet {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            border-radius: 20px 20px 0 0;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
+            transform: translateY(100%);
+            transition: transform 0.3s ease-out;
+            z-index: 1000;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+        
+        .bottom-sheet.active {
+            transform: translateY(0);
+        }
+        
+        .sheet-handle {
+            width: 40px;
+            height: 4px;
+            background: #ddd;
+            border-radius: 2px;
+            margin: 12px auto;
+        }
+        
+        /* Sidebar for desktop */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 400px;
+            height: 100vh;
+            background: white;
+            box-shadow: -4px 0 20px rgba(0,0,0,0.1);
+            transform: translateX(100%);
+            transition: transform 0.3s ease-out;
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        
+        .sidebar.active {
+            transform: translateX(0);
+        }
+        
+        /* Overlay */
+        .overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease;
+            z-index: 999;
+        }
+        
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Pulsing animation for active status */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+        
+        .pulse-dot {
+            animation: pulse 2s infinite;
+        }
+        
+        /* Responsive adjustments */
+        @media (min-width: 768px) {
+            .bottom-sheet {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .sidebar {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-900">
+    <!-- Map Container -->
+    <div id="map"></div>
+    
+    <!-- Bottom Sheet (Mobile) -->
+    <div id="bottomSheet" class="bottom-sheet md:hidden">
+        <div class="sheet-handle"></div>
+        <div class="p-4">
+            <div id="restaurantDetailsMobile"></div>
+        </div>
+    </div>
+    
+    <!-- Sidebar (Desktop) -->
+    <div id="sidebar" class="sidebar hidden md:block">
+        <div class="p-6 border-b border-gray-200">
+            <button id="closeSidebar" class="absolute top-4 right-4 p-2 hover:bg-gray-100 rounded-full">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <div id="restaurantDetailsDesktop"></div>
+        </div>
+    </div>
+    
+    <!-- Overlay -->
+    <div id="overlay" class="overlay"></div>
+    
+    <!-- Google Maps API -->
+    <script>
+        // Restaurant data - in production, this would come from an API
+        const restaurants = [
+            {
+                id: 1,
+                name: "Al Fanar Restaurant",
+                lat: 25.3969,
+                lng: 55.4731,
+                logo: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=100&h=100&fit=crop",
+                combos: 3,
+                whatsapp: "+971501234567",
+                address: "Ajman Corniche, Ajman"
+            },
+            {
+                id: 2,
+                name: "Sharjah Food House",
+                lat: 25.3463,
+                lng: 55.4211,
+                logo: "https://images.unsplash.com/photo-1552566626-5e1f7f9e0b47?w=100&h=100&fit=crop",
+                combos: 5,
+                whatsapp: "+971502345678",
+                address: "Al Khan, Sharjah"
+            },
+            {
+                id: 3,
+                name: "Majlis Restaurant",
+                lat: 25.4110,
+                lng: 55.5060,
+                logo: "https://images.unsplash.com/photo-1544148172-0dd9730e0f20?w=100&h=100&fit=crop",
+                combos: 4,
+                whatsapp: "+971503456789",
+                address: "Ajman Downtown, Ajman"
+            },
+            {
+                id: 4,
+                name: "Al Ijaza Restaurant",
+                lat: 25.3590,
+                lng: 55.3740,
+                logo: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=100&h=100&fit=crop",
+                combos: 2,
+                whatsapp: "+971504567890",
+                address: "Al Qasimia, Sharjah"
+            },
+            {
+                id: 5,
+                name: "GoSnel Kitchen",
+                lat: 25.4000,
+                lng: 55.4500,
+                logo: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=100&h=100&fit=crop",
+                combos: 6,
+                whatsapp: "+971505678901",
+                address: "Al Bustan, Ajman"
+            }
+        ];
+        
+        let map;
+        let markers = [];
+        let circles = [];
+        let activeInfoWindow = null;
+        
+        // Initialize Google Maps
+        function initMap() {
+            // Default center (Ajman/Sharjah area)
+            const defaultCenter = { lat: 25.3750, lng: 55.4200 };
+            
+            map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 11,
+                center: defaultCenter,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                styles: [
+                    {
+                        "featureType": "poi",
+                        "elementType": "labels",
+                        "stylers": [{"visibility": "off"}]
+                    }
+                ]
+            });
+            
+            // Check for restaurant_id in URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const restaurantId = urlParams.get('restaurant_id');
+            
+            // Add restaurant markers
+            restaurants.forEach(restaurant => {
+                addRestaurantMarker(restaurant);
+            });
+            
+            // If restaurant_id is provided, center on that restaurant
+            if (restaurantId) {
+                const selectedRestaurant = restaurants.find(r => r.id == restaurantId);
+                if (selectedRestaurant) {
+                    setTimeout(() => {
+                        const marker = markers.find(m => m.restaurant.id == selectedRestaurant.id);
+                        if (marker) {
+                            google.maps.event.trigger(marker, 'click');
+                        }
+                    }, 500);
+                }
+            }
+        }
+        
+        function addRestaurantMarker(restaurant) {
+            // Create custom marker icon
+            const markerIcon = {
+                path: google.maps.SymbolPath.CIRCLE,
+                fillColor: '#4ECDC4',
+                fillOpacity: 1,
+                strokeColor: '#fff',
+                strokeWeight: 2,
+                scale: 12
+            };
+            
+            const marker = new google.maps.Marker({
+                position: { lat: restaurant.lat, lng: restaurant.lng },
+                map: map,
+                icon: markerIcon,
+                title: restaurant.name,
+                restaurant: restaurant
+            });
+            
+            // Add click event
+            marker.addListener('click', () => {
+                showRestaurantDetails(restaurant);
+                // Center map on marker
+                map.setCenter(marker.getPosition());
+                map.setZoom(15);
+            });
+            
+            markers.push(marker);
+            
+            // Add 1KM radius circle
+            const circle = new google.maps.Circle({
+                strokeColor: '#4ECDC4',
+                strokeOpacity: 0.3,
+                strokeWeight: 1,
+                fillColor: '#4ECDC4',
+                fillOpacity: 0.1,
+                map: map,
+                center: { lat: restaurant.lat, lng: restaurant.lng },
+                radius: 1000 // 1KM in meters
+            });
+            
+            circles.push(circle);
+        }
+        
+        function showRestaurantDetails(restaurant) {
+            const detailsHtml = `
+                <div class="space-y-4">
+                    <div class="flex items-center gap-4">
+                        <img src="${restaurant.logo}" alt="${restaurant.name}" class="w-16 h-16 rounded-xl object-cover" />
+                        <div>
+                            <h2 class="text-xl font-bold text-gray-900">${restaurant.name}</h2>
+                            <div class="flex items-center gap-2 mt-1">
+                                <span class="w-2 h-2 bg-green-500 rounded-full pulse-dot"></span>
+                                <span class="text-sm text-gray-600">Active & Receiving Orders</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-2">
+                            <span class="text-green-600">🟢</span>
+                            <span class="text-sm font-medium">Free Delivery (Within 1-KM Radius)</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span>💵</span>
+                            <span class="text-sm font-medium">Cash on Delivery (COD)</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="package" class="w-4 h-4 text-gray-500"></i>
+                            <span class="text-sm text-gray-600">${restaurant.combos} Combos Available</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="map-pin" class="w-4 h-4 text-gray-500"></i>
+                            <span class="text-sm text-gray-600">${restaurant.address}</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="phone" class="w-4 h-4 text-gray-500"></i>
+                            <span class="text-sm text-gray-600">WhatsApp: ${restaurant.whatsapp}</span>
+                        </div>
+                    </div>
+                    
+                    <a href="https://wa.me/${restaurant.whatsapp.replace('+', '')}?text=Hi%20GoSnel!%20I%20want%20to%20order%20from%20${encodeURIComponent(restaurant.name)}" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       class="block w-full text-center bg-[#4ECDC4] hover:bg-[#3DBDB5] text-white py-3 rounded-xl font-semibold transition-colors">
+                        Order via GoSnel AI
+                    </a>
+                </div>
+            `;
+            
+            // Update mobile bottom sheet
+            document.getElementById('restaurantDetailsMobile').innerHTML = detailsHtml;
+            
+            // Update desktop sidebar
+            document.getElementById('restaurantDetailsDesktop').innerHTML = detailsHtml;
+            
+            // Show appropriate panel based on screen size
+            if (window.innerWidth < 768) {
+                document.getElementById('bottomSheet').classList.add('active');
+            } else {
+                document.getElementById('sidebar').classList.add('active');
+            }
+            document.getElementById('overlay').classList.add('active');
+            
+            // Re-initialize lucide icons
+            lucide.createIcons();
+        }
+        
+        // Close handlers
+        document.getElementById('closeSidebar').addEventListener('click', closePanel);
+        document.getElementById('overlay').addEventListener('click', closePanel);
+        
+        function closePanel() {
+            document.getElementById('bottomSheet').classList.remove('active');
+            document.getElementById('sidebar').classList.remove('active');
+            document.getElementById('overlay').classList.remove('active');
+            
+            // Reset map view to show all restaurants
+            if (map) {
+                const bounds = new google.maps.LatLngBounds();
+                markers.forEach(marker => bounds.extend(marker.getPosition()));
+                map.fitBounds(bounds);
+            }
+        }
+        
+        // Initialize on load
+        window.addEventListener('load', () => {
+            if (typeof google !== 'undefined' && google.maps) {
+                initMap();
+            }
+        });
+    </script>
+    
+    <!-- Google Maps API - Replace YOUR_API_KEY with actual key -->
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
+    </script>
+</body>
+</html>

@@ -44,7 +44,8 @@ const buildPages = () => {
     { subdomain: "partner", filename: "src/partner-app/features/partner-landing.html" },
     { subdomain: "drivers", filename: "src/drivers/drivers-landing.html" },
     { subdomain: "promo", filename: "src/promo/promo-landing.html" },
-    { subdomain: "restaurants", filename: "src/restaurants/index.html" }
+    { subdomain: "restaurants", filename: "src/restaurants/index.html" },
+    { subdomain: "maps", filename: "src/maps/index.html" }
   ];
 
   landingPages.forEach(({ subdomain, filename }) => {
@@ -152,7 +153,7 @@ const buildPages = () => {
 
   // Copy subdirectory static pages with include processing
   // تم إضافة careers و restaurants هنا ليتم نقل المجلدات للنسخة النهائية
-  const subdomains = ['user', 'vendor', 'partner-app', 'drivers', 'promo', 'footer', 'careers', 'restaurants'];
+  const subdomains = ['user', 'vendor', 'partner-app', 'drivers', 'promo', 'footer', 'careers', 'restaurants', 'maps'];
   
   subdomains.forEach(subdomain => {
     const srcSubdomainDir = path.join(srcDir, subdomain);

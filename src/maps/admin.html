@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoSnel Maps Admin - Manage Restaurants</title>
+    <meta name="description" content="Admin panel for managing GoSnel partner restaurants">
+    
+    <link rel="stylesheet" href="/output.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <style>
+        * { font-family: 'Inter', system-ui, sans-serif; margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --gosnel-green: #4ECDC4; --gosnel-dark: #1a1a1a; }
+        
+        .admin-header {
+            background: linear-gradient(135deg, #4ECDC4, #3DBDB5);
+        }
+        
+        .form-input {
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        
+        .form-input:focus {
+            border-color: #4ECDC4;
+            box-shadow: 0 0 0 3px rgba(78, 205, 196, 0.1);
+        }
+        
+        .restaurant-card {
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .restaurant-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        
+        .pulse-dot {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 min-h-screen">
+    <!-- Header -->
+    <header class="admin-header text-white py-4 px-4 md:px-6">
+        <div class="max-w-6xl mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center">
+                    <i data-lucide="map-pin" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold">GoSnel Maps Admin</h1>
+                    <p class="text-sm text-white/80">Manage Partner Restaurants</p>
+                </div>
+            </div>
+            <a href="/maps/" class="px-4 py-2 bg-white/20 hover:bg-white/30 rounded-lg text-sm font-medium transition-colors">
+                View Map
+            </a>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-8">
+        <!-- Add Restaurant Form -->
+        <section class="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-gray-200 mb-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">Add New Restaurant</h2>
+            
+            <form id="restaurantForm" class="space-y-6">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <!-- Restaurant Name -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Restaurant Name *</label>
+                        <input type="text" id="name" required
+                            class="form-input w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none"
+                            placeholder="e.g., Al Fanar Restaurant">
+                    </div>
+                    
+                    <!-- WhatsApp Number -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">WhatsApp Number *</label>
+                        <input type="tel" id="whatsapp" required
+                            class="form-input w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none"
+                            placeholder="e.g., +971501234567">
+                    </div>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <!-- Latitude -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Latitude *</label>
+                        <input type="number" id="lat" step="0.0001" required
+                            class="form-input w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none"
+                            placeholder="e.g., 25.3969">
+                    </div>
+                    
+                    <!-- Longitude -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Longitude *</label>
+                        <input type="number" id="lng" step="0.0001" required
+                            class="form-input w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none"
+                            placeholder="e.g., 55.4731">
+                    </div>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <!-- Logo URL -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Logo URL</label>
+                        <input type="url" id="logo"
+                            class="form-input w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none"
+                            placeholder="https://example.com/logo.jpg">
+                    </div>
+                    
+                    <!-- Number of Combos -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Combos Available</label>
+                        <input type="number" id="combos" min="0" value="0"
+                            class="form-input w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none"
+                            placeholder="e.g., 3">
+                    </div>
+                </div>
+                
+                <!-- Address -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Address</label>
+                    <textarea id="address" rows="2"
+                        class="form-input w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none resize-none"
+                        placeholder="Full restaurant address"></textarea>
+                </div>
+                
+                <!-- Submit Button -->
+                <div class="flex justify-end">
+                    <button type="submit" 
+                        class="px-8 py-3 bg-[#4ECDC4] hover:bg-[#3DBDB5] text-white font-semibold rounded-xl transition-colors flex items-center gap-2">
+                        <i data-lucide="plus" class="w-5 h-5"></i>
+                        Add Restaurant
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Restaurants List -->
+        <section>
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-2xl font-bold text-gray-900">All Restaurants</h2>
+                <span id="restaurantCount" class="text-sm text-gray-500">0 restaurants</span>
+            </div>
+            
+            <div id="restaurantsList" class="space-y-4">
+                <!-- Restaurants will be listed here -->
+                <div class="text-center py-12 text-gray-500">
+                    <i data-lucide="map-pin" class="w-12 h-12 mx-auto mb-3 text-gray-300"></i>
+                    <p>No restaurants added yet</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Success Toast -->
+    <div id="toast" class="fixed bottom-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg transform translate-y-full opacity-0 transition-all duration-300">
+        <div class="flex items-center gap-2">
+            <i data-lucide="check-circle" class="w-5 h-5"></i>
+            <span>Restaurant added successfully!</span>
+        </div>
+    </div>
+
+    <script>
+        // Load restaurants from localStorage or use defaults
+        let restaurants = JSON.parse(localStorage.getItem('gosnelRestaurants') || '[]');
+        
+        // If no restaurants exist, add sample data
+        if (restaurants.length === 0) {
+            restaurants = [
+                {
+                    id: 1,
+                    name: "Al Fanar Restaurant",
+                    lat: 25.3969,
+                    lng: 55.4731,
+                    logo: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=100&h=100&fit=crop",
+                    combos: 3,
+                    whatsapp: "+971501234567",
+                    address: "Ajman Corniche, Ajman"
+                },
+                {
+                    id: 2,
+                    name: "Sharjah Food House",
+                    lat: 25.3463,
+                    lng: 55.4211,
+                    logo: "https://images.unsplash.com/photo-1552566626-5e1f7f9e0b47?w=100&h=100&fit=crop",
+                    combos: 5,
+                    whatsapp: "+971502345678",
+                    address: "Al Khan, Sharjah"
+                }
+            ];
+            saveRestaurants();
+        }
+        
+        // Form submission
+        document.getElementById('restaurantForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const newRestaurant = {
+                id: Date.now(),
+                name: document.getElementById('name').value,
+                lat: parseFloat(document.getElementById('lat').value),
+                lng: parseFloat(document.getElementById('lng').value),
+                logo: document.getElementById('logo').value || 'https://via.placeholder.com/100',
+                combos: parseInt(document.getElementById('combos').value) || 0,
+                whatsapp: document.getElementById('whatsapp').value,
+                address: document.getElementById('address').value
+            };
+            
+            restaurants.push(newRestaurant);
+            saveRestaurants();
+            renderRestaurants();
+            this.reset();
+            showToast();
+        });
+        
+        // Save to localStorage
+        function saveRestaurants() {
+            localStorage.setItem('gosnelRestaurants', JSON.stringify(restaurants));
+        }
+        
+        // Render restaurants list
+        function renderRestaurants() {
+            const list = document.getElementById('restaurantsList');
+            const count = document.getElementById('restaurantCount');
+            
+            count.textContent = `${restaurants.length} ${restaurants.length === 1 ? 'restaurant' : 'restaurants'}`;
+            
+            if (restaurants.length === 0) {
+                list.innerHTML = `
+                    <div class="text-center py-12 text-gray-500">
+                        <i data-lucide="map-pin" class="w-12 h-12 mx-auto mb-3 text-gray-300"></i>
+                        <p>No restaurants added yet</p>
+                    </div>
+                `;
+                lucide.createIcons();
+                return;
+            }
+            
+            list.innerHTML = restaurants.map(r => `
+                <div class="restaurant-card bg-white rounded-xl p-5 border border-gray-200">
+                    <div class="flex items-start justify-between">
+                        <div class="flex items-center gap-4">
+                            <img src="${r.logo}" alt="${r.name}" class="w-16 h-16 rounded-xl object-cover" />
+                            <div>
+                                <h3 class="font-bold text-gray-900">${r.name}</h3>
+                                <div class="flex items-center gap-2 mt-1">
+                                    <span class="w-2 h-2 bg-green-500 rounded-full pulse-dot"></span>
+                                    <span class="text-sm text-gray-600">Active</span>
+                                </div>
+                                <p class="text-sm text-gray-500 mt-1">${r.address || 'No address'}</p>
+                            </div>
+                        </div>
+                        <button onclick="deleteRestaurant(${r.id})" class="p-2 text-red-500 hover:bg-red-50 rounded-lg transition-colors">
+                            <i data-lucide="trash-2" class="w-5 h-5"></i>
+                        </button>
+                    </div>
+                    <div class="grid grid-cols-3 gap-4 mt-4 pt-4 border-t border-gray-100">
+                        <div>
+                            <p class="text-xs text-gray-500">Combos</p>
+                            <p class="font-semibold">${r.combos}</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500">WhatsApp</p>
+                            <p class="font-semibold text-sm">${r.whatsapp}</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500">Location</p>
+                            <p class="font-semibold text-sm">${r.lat.toFixed(4)}, ${r.lng.toFixed(4)}</p>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+            
+            lucide.createIcons();
+        }
+        
+        // Delete restaurant
+        window.deleteRestaurant = function(id) {
+            if (confirm('Are you sure you want to delete this restaurant?')) {
+                restaurants = restaurants.filter(r => r.id !== id);
+                saveRestaurants();
+                renderRestaurants();
+            }
+        };
+        
+        // Show toast
+        function showToast() {
+            const toast = document.getElementById('toast');
+            toast.classList.remove('translate-y-full', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-full', 'opacity-0');
+            }, 3000);
+        }
+        
+        // Initial render
+        renderRestaurants();
+        lucide.createIcons();
+    </script>
+</body>
+</html>
