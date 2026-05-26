@@ -1,10 +1,11 @@
 # Cloudflare Pages Redirects - Clean Multi-App Architecture
 
 # ============================================
-# SHARED RESOURCES (SERVE DIRECTLY)
+# MAPS SUBDOMAIN (maps.gosnel.com) - MUST BE FIRST
 # ============================================
-/shared/* /shared/:splat 200
-/assets/* /shared/assets/:splat 200
+https://maps.gosnel.com/ /maps/index.html 200
+https://maps.gosnel.com/admin /maps/admin.html 200
+https://maps.gosnel.com/* /maps/:splat 200
 
 # ============================================
 # CAREERS SUBDOMAIN (careers.gosnel.com)
@@ -27,11 +28,10 @@ https://user.gosnel.com/about /about.html 200
 https://user.gosnel.com/faq /faq.html 200
 
 # ============================================
-# MAPS SUBDOMAIN (maps.gosnel.com)
+# SHARED RESOURCES (SERVE DIRECTLY)
 # ============================================
-https://maps.gosnel.com/ /maps/index.html 200
-https://maps.gosnel.com/admin /maps/admin.html 200
-https://maps.gosnel.com/* /maps/:splat 200
+/shared/* /shared/:splat 200
+/assets/* /shared/assets/:splat 200
 
 # ============================================
 # MAIN DOMAIN ROUTING (gosnel.com)
