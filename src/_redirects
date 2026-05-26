@@ -21,7 +21,14 @@ https://user.gosnel.com/about /about.html 200
 https://user.gosnel.com/faq /faq.html 200
 
 # ============================================
-# 4. RESTAURANTS & OTHERS
+# 4. MAPS SUBDOMAIN (maps.gosnel.com)
+# ============================================
+https://maps.gosnel.com/ /maps/index.html 200
+https://maps.gosnel.com/admin /maps/admin.html 200
+https://maps.gosnel.com/* /maps/:splat 200
+
+# ============================================
+# 5. RESTAURANTS & OTHERS
 # ============================================
 https://restaurants.gosnel.com/* https://gosnel.com/partner/ 301
 /vendor/* /partner/:splat 301
