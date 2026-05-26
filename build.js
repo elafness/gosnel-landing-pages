@@ -143,12 +143,12 @@ const buildPages = () => {
   }
 
   // Copy unified sitemap.xml (contains all URLs for both domains)
-  const mainSitemapPath = path.join(srcDir, "sitemap.xml");
+  const mainSitemapPath = path.join(__dirname, "deployment", "sitemap.xml");
   const distMainSitemapPath = path.join(distDir, "sitemap.xml");
 
   if (fs.existsSync(mainSitemapPath)) {
     fs.copyFileSync(mainSitemapPath, distMainSitemapPath);
-    console.log("✅ Copied sitemap.xml");
+    console.log("✅ Copied sitemap.xml from deployment/");
   }
 
   // Copy subdirectory static pages with include processing
@@ -353,30 +353,30 @@ const buildPages = () => {
   }
 
   // Copy _redirects file for Cloudflare Pages routing
-  const redirectsPath = path.join(srcDir, "_redirects");
+  const redirectsPath = path.join(__dirname, "deployment", "_redirects");
   const distRedirectsPath = path.join(distDir, "_redirects");
 
   if (fs.existsSync(redirectsPath)) {
     fs.copyFileSync(redirectsPath, distRedirectsPath);
-    console.log("✅ Copied _redirects file");
+    console.log("✅ Copied _redirects file from deployment/");
   }
 
   // Copy _routes.json file for Cloudflare Pages Functions routing
-  const routesPath = path.join(srcDir, "_routes.json");
+  const routesPath = path.join(__dirname, "deployment", "_routes.json");
   const distRoutesPath = path.join(distDir, "_routes.json");
 
   if (fs.existsSync(routesPath)) {
     fs.copyFileSync(routesPath, distRoutesPath);
-    console.log("✅ Copied _routes.json file");
+    console.log("✅ Copied _routes.json file from deployment/");
   }
 
   // Copy _headers file for Cloudflare Pages headers
-  const headersPath = path.join(srcDir, "_headers");
+  const headersPath = path.join(__dirname, "deployment", "_headers");
   const distHeadersPath = path.join(distDir, "_headers");
 
   if (fs.existsSync(headersPath)) {
     fs.copyFileSync(headersPath, distHeadersPath);
-    console.log("✅ Copied _headers file");
+    console.log("✅ Copied _headers file from deployment/");
   }
 
   // Create localhost development files for 404-free routing
