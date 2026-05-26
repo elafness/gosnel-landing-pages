@@ -94,16 +94,16 @@
                 <div class="grid md:grid-cols-2 gap-6">
                     <!-- Latitude -->
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Latitude *</label>
-                        <input type="number" id="lat" step="0.0001" required
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Latitude</label>
+                        <input type="number" id="lat" step="0.0001"
                             class="form-input w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none"
                             placeholder="e.g., 25.3969">
                     </div>
                     
                     <!-- Longitude -->
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Longitude *</label>
-                        <input type="number" id="lng" step="0.0001" required
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Longitude</label>
+                        <input type="number" id="lng" step="0.0001"
                             class="form-input w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none"
                             placeholder="e.g., 55.4731">
                     </div>
@@ -129,10 +129,11 @@
                 
                 <!-- Google Maps Link -->
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Google Maps Link</label>
-                    <input type="url" id="googleMapsLink"
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Google Maps Link *</label>
+                    <input type="url" id="googleMapsLink" required
                         class="form-input w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none"
                         placeholder="https://maps.app.goo.gl/fV2Gvrix2hhATcT69">
+                    <p class="text-xs text-gray-500 mt-1">Paste the restaurant's Google Maps share link to auto-extract coordinates</p>
                 </div>
                 
                 <!-- Address -->
@@ -212,20 +213,64 @@
             saveRestaurants();
         }
         
+        // Extract coordinates from Google Maps URL
+        function extractCoordinatesFromGoogleMapsUrl(url) {
+            // Pattern 1: @lat,lng,zoom
+            const pattern1 = /@(-?\d+\.\d+),(-?\d+\.\d+)/;
+            const match1 = url.match(pattern1);
+            if (match1) {
+                return { lat: parseFloat(match1[1]), lng: parseFloat(match1[2]) };
+            }
+            
+            // Pattern 2: !3d(lat)!4d(lng)
+            const pattern2 = /!3d(-?\d+\.\d+)!4d(-?\d+\.\d+)/;
+            const match2 = url.match(pattern2);
+            if (match2) {
+                return { lat: parseFloat(match2[1]), lng: parseFloat(match2[2]) };
+            }
+            
+            // Pattern 3: q=lat,lng
+            const pattern3 = /q=(-?\d+\.\d+),(-?\d+\.\d+)/;
+            const match3 = url.match(pattern3);
+            if (match3) {
+                return { lat: parseFloat(match3[1]), lng: parseFloat(match3[2]) };
+            }
+            
+            return null;
+        }
+        
         // Form submission
         document.getElementById('restaurantForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
+            const googleMapsLink = document.getElementById('googleMapsLink').value;
+            let lat = parseFloat(document.getElementById('lat').value);
+            let lng = parseFloat(document.getElementById('lng').value);
+            
+            // Try to extract coordinates from Google Maps URL
+            if (googleMapsLink) {
+                const coords = extractCoordinatesFromGoogleMapsUrl(googleMapsLink);
+                if (coords) {
+                    lat = coords.lat;
+                    lng = coords.lng;
+                }
+            }
+            
+            if (!lat || !lng) {
+                alert('Please provide either a valid Google Maps URL with coordinates, or enter Latitude and Longitude manually.');
+                return;
+            }
+            
             const newRestaurant = {
                 id: Date.now(),
                 name: document.getElementById('name').value,
-                lat: parseFloat(document.getElementById('lat').value),
-                lng: parseFloat(document.getElementById('lng').value),
+                lat: lat,
+                lng: lng,
                 logo: document.getElementById('logo').value || 'https://via.placeholder.com/100',
                 combos: parseInt(document.getElementById('combos').value) || 0,
                 whatsapp: document.getElementById('whatsapp').value,
                 address: document.getElementById('address').value,
-                googleMapsLink: document.getElementById('googleMapsLink').value || ''
+                googleMapsLink: googleMapsLink || ''
             };
             
             restaurants.push(newRestaurant);
