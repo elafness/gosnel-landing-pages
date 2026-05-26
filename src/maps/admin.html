@@ -127,6 +127,14 @@
                     </div>
                 </div>
                 
+                <!-- Google Maps Link -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Google Maps Link</label>
+                    <input type="url" id="googleMapsLink"
+                        class="form-input w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none"
+                        placeholder="https://maps.app.goo.gl/fV2Gvrix2hhATcT69">
+                </div>
+                
                 <!-- Address -->
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">Address</label>
@@ -186,7 +194,8 @@
                     logo: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=100&h=100&fit=crop",
                     combos: 3,
                     whatsapp: "+971501234567",
-                    address: "Ajman Corniche, Ajman"
+                    address: "Ajman Corniche, Ajman",
+                    googleMapsLink: "https://maps.app.goo.gl/fV2Gvrix2hhATcT69"
                 },
                 {
                     id: 2,
@@ -196,7 +205,8 @@
                     logo: "https://images.unsplash.com/photo-1552566626-5e1f7f9e0b47?w=100&h=100&fit=crop",
                     combos: 5,
                     whatsapp: "+971502345678",
-                    address: "Al Khan, Sharjah"
+                    address: "Al Khan, Sharjah",
+                    googleMapsLink: ""
                 }
             ];
             saveRestaurants();
@@ -214,7 +224,8 @@
                 logo: document.getElementById('logo').value || 'https://via.placeholder.com/100',
                 combos: parseInt(document.getElementById('combos').value) || 0,
                 whatsapp: document.getElementById('whatsapp').value,
-                address: document.getElementById('address').value
+                address: document.getElementById('address').value,
+                googleMapsLink: document.getElementById('googleMapsLink').value || ''
             };
             
             restaurants.push(newRestaurant);
@@ -265,7 +276,7 @@
                             <i data-lucide="trash-2" class="w-5 h-5"></i>
                         </button>
                     </div>
-                    <div class="grid grid-cols-3 gap-4 mt-4 pt-4 border-t border-gray-100">
+                    <div class="grid grid-cols-4 gap-4 mt-4 pt-4 border-t border-gray-100">
                         <div>
                             <p class="text-xs text-gray-500">Combos</p>
                             <p class="font-semibold">${r.combos}</p>
@@ -277,6 +288,10 @@
                         <div>
                             <p class="text-xs text-gray-500">Location</p>
                             <p class="font-semibold text-sm">${r.lat.toFixed(4)}, ${r.lng.toFixed(4)}</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500">Maps Link</p>
+                            ${r.googleMapsLink ? `<a href="${r.googleMapsLink}" target="_blank" class="text-[#4ECDC4] hover:underline text-sm">Open ↗</a>` : '<span class="text-gray-400 text-sm">N/A</span>'}
                         </div>
                     </div>
                 </div>

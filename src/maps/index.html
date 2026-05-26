@@ -210,7 +210,8 @@
                 logo: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=100&h=100&fit=crop",
                 combos: 3,
                 whatsapp: "+971501234567",
-                address: "Ajman Corniche, Ajman"
+                address: "Ajman Corniche, Ajman",
+                googleMapsLink: "https://maps.app.goo.gl/fV2Gvrix2hhATcT69"
             },
             {
                 id: 2,
@@ -220,7 +221,8 @@
                 logo: "https://images.unsplash.com/photo-1552566626-5e1f7f9e0b47?w=100&h=100&fit=crop",
                 combos: 5,
                 whatsapp: "+971502345678",
-                address: "Al Khan, Sharjah"
+                address: "Al Khan, Sharjah",
+                googleMapsLink: ""
             },
             {
                 id: 3,
@@ -230,7 +232,8 @@
                 logo: "https://images.unsplash.com/photo-1544148172-0dd9730e0f20?w=100&h=100&fit=crop",
                 combos: 4,
                 whatsapp: "+971503456789",
-                address: "Ajman Downtown, Ajman"
+                address: "Ajman Downtown, Ajman",
+                googleMapsLink: ""
             },
             {
                 id: 4,
@@ -240,7 +243,8 @@
                 logo: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=100&h=100&fit=crop",
                 combos: 2,
                 whatsapp: "+971504567890",
-                address: "Al Qasimia, Sharjah"
+                address: "Al Qasimia, Sharjah",
+                googleMapsLink: ""
             },
             {
                 id: 5,
@@ -250,7 +254,8 @@
                 logo: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=100&h=100&fit=crop",
                 combos: 6,
                 whatsapp: "+971505678901",
-                address: "Al Bustan, Ajman"
+                address: "Al Bustan, Ajman",
+                googleMapsLink: ""
             }
         ];
         
@@ -359,7 +364,7 @@
                 strokeColor: '#4ECDC4',
                 strokeOpacity: 0.3,
                 strokeWeight: 1,
-                fillColor: '##3d85c6',
+                fillColor: '#4ECDC4',
                 fillOpacity: 0.1,
                 map: map,
                 center: { lat: restaurant.lat, lng: restaurant.lng },
@@ -404,6 +409,12 @@
                             <i data-lucide="phone" class="w-4 h-4 text-gray-500"></i>
                             <span class="text-sm text-gray-600">WhatsApp: ${restaurant.whatsapp}</span>
                         </div>
+                        ${restaurant.googleMapsLink ? `
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="external-link" class="w-4 h-4 text-gray-500"></i>
+                            <a href="${restaurant.googleMapsLink}" target="_blank" rel="noopener noreferrer" class="text-sm text-[#4ECDC4] hover:underline">View on Google Maps ↗</a>
+                        </div>
+                        ` : ''}
                     </div>
                     
                     <a href="https://wa.me/${restaurant.whatsapp.replace('+', '')}?text=Hi%20GoSnel!%20I%20want%20to%20order%20from%20${encodeURIComponent(restaurant.name)}" 
@@ -412,6 +423,12 @@
                        class="block w-full text-center bg-[#4ECDC4] hover:bg-[#3DBDB5] text-white py-3 rounded-xl font-semibold transition-colors">
                         Order via GoSnel AI
                     </a>
+                    
+                    <!-- Powered by GoSnel -->
+                    <div class="flex items-center justify-center gap-2 pt-4 border-t border-gray-200">
+                        <span class="text-xs text-gray-500">Powered by</span>
+                        <img src="/shared/assets/images/GoSnelLogoText.png" alt="GoSnel" class="h-6 w-auto rounded-full object-contain" />
+                    </div>
                 </div>
             `;
             
