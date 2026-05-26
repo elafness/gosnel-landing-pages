@@ -8,6 +8,8 @@ const DIST_DIR = path.join(__dirname, 'dist');
 // Route mappings
 const routeMap = {
   '/': '/index.html',
+  '/maps': '/maps/index.html',
+  '/maps/admin': '/maps/admin.html',
   '/drivers': '/index-drivers.html',
   '/promo': '/index-promo.html',
   '/restaurants': '/index-restaurants.html',
@@ -110,5 +112,7 @@ server.listen(PORT, () => {
   console.log(`   http://localhost:${PORT}/vendor`);
   console.log(`   http://localhost:${PORT}/drivers`);
   console.log(`   http://localhost:${PORT}/promo`);
-  console.log(`   http://localhost:${PORT}/restaurants\n`);
+  console.log(`   http://localhost:${PORT}/restaurants`);
+  console.log(`   http://localhost:${PORT}/maps`);
+  console.log(`   http://localhost:${PORT}/maps/admin\n`);
 });
