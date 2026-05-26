@@ -370,13 +370,16 @@
         window.addEventListener('load', () => {
             if (typeof google !== 'undefined' && google.maps) {
                 initMap();
+            } else {
+                console.error('Google Maps API failed to load');
+                document.getElementById('map').innerHTML = '<div class="flex items-center justify-center h-screen"><p class="text-lg text-gray-600">Loading map...</p></div>';
             }
         });
     </script>
     
     <!-- Google Maps API -->
     <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhiiu5qHQcZEr-nHzqMe3Ga5NyXWCFZKI&callback=initMap">
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhiiu5qHQcZEr-nHzqMe3Ga5NyXWCFZKI&callback=initMap&libraries=places">
     </script>
 </body>
 </html>

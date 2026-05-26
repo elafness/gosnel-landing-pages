@@ -1,6 +1,14 @@
 # Cloudflare Pages headers - NOT YAML format
 # See: https://developers.cloudflare.com/pages/platform/headers/
 
+# Maps page - allow Google Maps API
+/maps/index.html
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://maps.googleapis.com https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; connect-src 'self' https://maps.googleapis.com;
+
+# Maps admin page
+/maps/admin.html
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:;
+
 /vendor/sitemap.xml
   Content-Type: application/xml
   X-Robots-Tag: noindex
