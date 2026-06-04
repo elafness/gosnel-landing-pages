@@ -64,31 +64,72 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     
     <link rel="canonical" href="https://gosnel.com/partner/">
     
-    <!-- Structured Data - Organization -->
+    <!-- Structured Data - LocalBusiness -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Organization",
+      "@type": "LocalBusiness",
       "name": "GoSnel",
-      "url": "https://gosnel.com",
+      "image": "https://pub-36067fecb2654f06ab5b13fe9340062d.r2.dev/GoSnelLogoText.png",
       "logo": "https://pub-36067fecb2654f06ab5b13fe9340062d.r2.dev/GoSnelLogoText.png",
-      "description": "AI-powered food discovery and delivery platform in UAE",
+      "url": "https://gosnel.com",
+      "telephone": "+971-54-250-3729",
+      "description": "AI-powered food discovery and restaurant delivery platform serving UAE. Partner with GoSnel for Cash on Delivery payments with zero commission on COD orders.",
       "address": {
         "@type": "PostalAddress",
         "addressCountry": "AE",
         "addressRegion": "Dubai",
-        "addressLocality": "Dubai"
+        "addressLocality": "Dubai",
+        "streetAddress": "Dubai"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 25.2048,
+        "longitude": 55.2708
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "United Arab Emirates"
+      },
+      "servesCuisine": ["Restaurant Delivery", "Food Technology"],
+      "priceRange": "$$",
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Sunday",
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday"
+        ],
+        "opens": "09:00",
+        "closes": "18:00"
       },
       "contactPoint": {
         "@type": "ContactPoint",
         "telephone": "+971-54-250-3729",
         "contactType": "partner support",
-        "availableLanguage": ["English", "Arabic"]
+        "availableLanguage": ["English", "Arabic"],
+        "areaServed": "AE"
       },
       "sameAs": [
         "https://www.instagram.com/gosnelai",
         "https://t.me/gosnel_meal_discovery"
-      ]
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Restaurant Partnership Programs",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Cash on Delivery Partnership",
+              "description": "Zero commission on COD orders. Keep 85% of every order instantly."
+            }
+          }
+        ]
+      }
     }
     </script>
     
@@ -117,6 +158,44 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
     </script>
     
+    <!-- Structured Data - Product (15% Commission Plan) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "GoSnel Restaurant Partnership – 15% Commission Plan",
+      "description": "Flat 15% commission on food value only. No commission on delivery fees. Restaurants keep 100% cash on delivery. Commission deducted from prepaid wallet after order completion.",
+      "brand": {
+        "@type": "Brand",
+        "name": "GoSnel"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "AED",
+        "description": "Zero setup fee, zero monthly fee. Only 15% commission from prepaid wallet.",
+        "availability": "https://schema.org/InStock",
+        "areaServed": "United Arab Emirates"
+      }
+    }
+    </script>
+    
+    <!-- Structured Data - WebSite -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "GoSnel",
+      "url": "https://gosnel.com",
+      "description": "Restaurant delivery partnership platform in UAE with AI meal suggestions and direct WhatsApp ordering.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://gosnel.com/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+    
     <!-- Structured Data - BreadcrumbList -->
     <script type="application/ld+json">
     {
@@ -134,6 +213,56 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           "position": 2,
           "name": "Partner Program",
           "item": "https://gosnel.com/partner/"
+        }
+      ]
+    }
+    </script>
+    
+    <!-- Structured Data - FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the commission rate for GoSnel?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "GoSnel charges a flat 15% commission on food and drink value only. We do not charge commission on delivery fees. The 15% is deducted automatically from your prepaid wallet after each order, not from your cash."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I get paid?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Your driver collects 100% cash or card payment directly from the customer upon delivery. You keep the entire delivery fee. You receive your profit instantly — no waiting 7-14 days like traditional apps."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the prepaid wallet?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You top up your GoSnel wallet with any amount. After each successful delivery, we deduct the 15% commission from your wallet balance. If your wallet runs low, your restaurant stops appearing as 'Open' until you top up again."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does GoSnel compare to Talabat or Deliveroo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Traditional apps take 25-30%+ commission and hold your money for 7-14 days. GoSnel charges only 15%, gives you 100% cash instantly, and lets you keep the full delivery fee with direct customer WhatsApp access."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use my own delivery drivers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. You deliver within your chosen radius of 1-7 km using your own drivers. No third-party drivers are required. You keep 100% of the delivery fee."
+          }
         }
       ]
     }
@@ -1037,6 +1166,72 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 </div>
 
+
+    <!-- FAQ Section -->
+    <section class="py-16 md:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 md:mb-16">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+                    Frequently Asked Questions for Restaurant Partners
+                </h2>
+                <p class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
+                    Everything you need to know about partnering with GoSnel
+                </p>
+            </div>
+
+            <div class="max-w-4xl mx-auto space-y-6">
+                <!-- FAQ Item 1 -->
+                <div class="bg-gray-50 rounded-2xl p-6 md:p-8">
+                    <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-4">
+                        What is the commission rate for GoSnel?
+                    </h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        GoSnel charges a flat 15% commission on food and drink value only. We do not charge commission on delivery fees. The 15% is deducted automatically from your prepaid wallet after each order, not from your cash.
+                    </p>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="bg-gray-50 rounded-2xl p-6 md:p-8">
+                    <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-4">
+                        How do I get paid?
+                    </h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        Your driver collects 100% cash or card payment directly from the customer upon delivery. You keep the entire delivery fee. You receive your profit instantly — no waiting 7-14 days like traditional apps.
+                    </p>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="bg-gray-50 rounded-2xl p-6 md:p-8">
+                    <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-4">
+                        What is the prepaid wallet?
+                    </h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        You top up your GoSnel wallet with any amount. After each successful delivery, we deduct the 15% commission from your wallet balance. If your wallet runs low, your restaurant stops appearing as "Open" until you top up again — you stay in complete control.
+                    </p>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="bg-gray-50 rounded-2xl p-6 md:p-8">
+                    <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-4">
+                        How does GoSnel compare to Talabat or Deliveroo?
+                    </h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        Traditional apps take 25-30%+ commission and hold your money for 7-14 days. GoSnel charges only 15%, gives you 100% cash instantly, and lets you keep the full delivery fee. You also get direct customer WhatsApp access — no hidden customer data.
+                    </p>
+                </div>
+
+                <!-- FAQ Item 5 -->
+                <div class="bg-gray-50 rounded-2xl p-6 md:p-8">
+                    <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-4">
+                        Can I use my own delivery drivers?
+                    </h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        Yes. You deliver within your chosen radius of 1-7 km using your own drivers. No third-party drivers are required. You keep 100% of the delivery fee.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="bg-gray-50 border-t border-gray-200 pt-10 md:pt-16 pb-6 md:pb-8">

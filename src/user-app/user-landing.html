@@ -65,26 +65,53 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <!-- Canonical URL -->
     <link rel="canonical" href="https://gosnel.com/">
     
-    <!-- Structured Data - Organization -->
+    <!-- Structured Data - LocalBusiness -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Organization",
+      "@type": "LocalBusiness",
       "name": "GoSnel",
-      "url": "https://gosnel.com",
+      "image": "https://pub-36067fecb2654f06ab5b13fe9340062d.r2.dev/GoSnelLogoText.png",
       "logo": "https://pub-36067fecb2654f06ab5b13fe9340062d.r2.dev/GoSnelLogoText.png",
-      "description": "AI-powered food discovery and ordering platform in UAE",
+      "url": "https://gosnel.com",
+      "telephone": "+971-54-250-3729",
+      "description": "AI-powered food discovery and ordering platform in UAE. Get personalized meal recommendations and order via WhatsApp in 30 seconds.",
       "address": {
         "@type": "PostalAddress",
         "addressCountry": "AE",
         "addressRegion": "Dubai",
-        "addressLocality": "Dubai"
+        "addressLocality": "Dubai",
+        "streetAddress": "Dubai"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 25.2048,
+        "longitude": 55.2708
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "United Arab Emirates"
+      },
+      "servesCuisine": ["AI Food Recommendations", "Food Discovery"],
+      "priceRange": "$$",
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Sunday",
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday"
+        ],
+        "opens": "09:00",
+        "closes": "18:00"
       },
       "contactPoint": {
         "@type": "ContactPoint",
         "telephone": "+971-54-250-3729",
         "contactType": "customer support",
-        "availableLanguage": ["English", "Arabic"]
+        "availableLanguage": ["English", "Arabic"],
+        "areaServed": "AE"
       },
       "sameAs": [
         "https://www.instagram.com/gosnelai",
@@ -130,12 +157,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "@context": "https://schema.org",
       "@type": "WebSite",
       "name": "GoSnel",
-      "url": "https://gosnel.com/",
-      "description": "AI-powered food discovery and ordering platform in UAE",
+      "url": "https://gosnel.com",
+      "description": "Restaurant delivery partnership platform in UAE with AI meal suggestions and direct WhatsApp ordering.",
       "inLanguage": ["en", "ar"],
       "potentialAction": {
         "@type": "SearchAction",
-        "target": "https://gosnel.com/?q={search_term_string}",
+        "target": "https://gosnel.com/search?q={search_term_string}",
         "query-input": "required name=search_term_string"
       }
     }
