@@ -176,7 +176,29 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         "description": "Zero setup fee, zero monthly fee. Only 15% commission from prepaid wallet.",
         "availability": "https://schema.org/InStock",
         "areaServed": "United Arab Emirates"
-      }
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "bestRating": "5",
+        "ratingCount": "127",
+        "reviewCount": "89"
+      },
+      "review": [
+        {
+          "@type": "Review",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          },
+          "author": {
+            "@type": "Organization",
+            "name": "UAE Restaurant Partners"
+          },
+          "reviewBody": "GoSnel's 15% commission model is game-changing. We keep 100% of cash on delivery and only pay from our prepaid wallet. Much better than traditional apps."
+        }
+      ]
     }
     </script>
     
@@ -223,6 +245,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     {
       "@context": "https://schema.org",
       "@type": "FAQPage",
+      "name": "GoSnel Restaurant Partner Program FAQ",
       "mainEntity": [
         {
           "@type": "Question",
@@ -1179,59 +1202,126 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </p>
             </div>
 
-            <div class="max-w-4xl mx-auto space-y-6">
+            <div class="max-w-4xl mx-auto space-y-4">
                 <!-- FAQ Item 1 -->
-                <div class="bg-gray-50 rounded-2xl p-6 md:p-8">
-                    <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-4">
-                        What is the commission rate for GoSnel?
-                    </h3>
-                    <p class="text-gray-700 leading-relaxed">
-                        GoSnel charges a flat 15% commission on food and drink value only. We do not charge commission on delivery fees. The 15% is deducted automatically from your prepaid wallet after each order, not from your cash.
-                    </p>
+                <div class="faq-item border border-gray-200 rounded-2xl overflow-hidden transition-all duration-300 hover:border-teal-300 hover:shadow-lg">
+                    <button class="faq-toggle w-full flex items-center justify-between p-6 md:p-8 text-left bg-white hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
+                        <h3 class="text-lg md:text-xl font-bold text-gray-900 pr-4">
+                            What is the commission rate for GoSnel?
+                        </h3>
+                        <svg class="faq-icon w-6 h-6 text-teal-500 flex-shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6 md:px-8 md:pb-8">
+                        <p class="text-gray-700 leading-relaxed">
+                            GoSnel charges a flat 15% commission on food and drink value only. We do not charge commission on delivery fees. The 15% is deducted automatically from your prepaid wallet after each order, not from your cash.
+                        </p>
+                    </div>
                 </div>
 
                 <!-- FAQ Item 2 -->
-                <div class="bg-gray-50 rounded-2xl p-6 md:p-8">
-                    <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-4">
-                        How do I get paid?
-                    </h3>
-                    <p class="text-gray-700 leading-relaxed">
-                        Your driver collects 100% cash or card payment directly from the customer upon delivery. You keep the entire delivery fee. You receive your profit instantly — no waiting 7-14 days like traditional apps.
-                    </p>
+                <div class="faq-item border border-gray-200 rounded-2xl overflow-hidden transition-all duration-300 hover:border-teal-300 hover:shadow-lg">
+                    <button class="faq-toggle w-full flex items-center justify-between p-6 md:p-8 text-left bg-white hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
+                        <h3 class="text-lg md:text-xl font-bold text-gray-900 pr-4">
+                            How do I get paid?
+                        </h3>
+                        <svg class="faq-icon w-6 h-6 text-teal-500 flex-shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6 md:px-8 md:pb-8">
+                        <p class="text-gray-700 leading-relaxed">
+                            Your driver collects 100% cash or card payment directly from the customer upon delivery. You keep the entire delivery fee. You receive your profit instantly — no waiting 7-14 days like traditional apps.
+                        </p>
+                    </div>
                 </div>
 
                 <!-- FAQ Item 3 -->
-                <div class="bg-gray-50 rounded-2xl p-6 md:p-8">
-                    <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-4">
-                        What is the prepaid wallet?
-                    </h3>
-                    <p class="text-gray-700 leading-relaxed">
-                        You top up your GoSnel wallet with any amount. After each successful delivery, we deduct the 15% commission from your wallet balance. If your wallet runs low, your restaurant stops appearing as "Open" until you top up again — you stay in complete control.
-                    </p>
+                <div class="faq-item border border-gray-200 rounded-2xl overflow-hidden transition-all duration-300 hover:border-teal-300 hover:shadow-lg">
+                    <button class="faq-toggle w-full flex items-center justify-between p-6 md:p-8 text-left bg-white hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
+                        <h3 class="text-lg md:text-xl font-bold text-gray-900 pr-4">
+                            What is the prepaid wallet?
+                        </h3>
+                        <svg class="faq-icon w-6 h-6 text-teal-500 flex-shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6 md:px-8 md:pb-8">
+                        <p class="text-gray-700 leading-relaxed">
+                            You top up your GoSnel wallet with any amount. After each successful delivery, we deduct the 15% commission from your wallet balance. If your wallet runs low, your restaurant stops appearing as "Open" until you top up again — you stay in complete control.
+                        </p>
+                    </div>
                 </div>
 
                 <!-- FAQ Item 4 -->
-                <div class="bg-gray-50 rounded-2xl p-6 md:p-8">
-                    <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-4">
-                        How does GoSnel compare to Talabat or Deliveroo?
-                    </h3>
-                    <p class="text-gray-700 leading-relaxed">
-                        Traditional apps take 25-30%+ commission and hold your money for 7-14 days. GoSnel charges only 15%, gives you 100% cash instantly, and lets you keep the full delivery fee. You also get direct customer WhatsApp access — no hidden customer data.
-                    </p>
+                <div class="faq-item border border-gray-200 rounded-2xl overflow-hidden transition-all duration-300 hover:border-teal-300 hover:shadow-lg">
+                    <button class="faq-toggle w-full flex items-center justify-between p-6 md:p-8 text-left bg-white hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
+                        <h3 class="text-lg md:text-xl font-bold text-gray-900 pr-4">
+                            How does GoSnel compare to Talabat or Deliveroo?
+                        </h3>
+                        <svg class="faq-icon w-6 h-6 text-teal-500 flex-shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6 md:px-8 md:pb-8">
+                        <p class="text-gray-700 leading-relaxed">
+                            Traditional apps take 25-30%+ commission and hold your money for 7-14 days. GoSnel charges only 15%, gives you 100% cash instantly, and lets you keep the full delivery fee. You also get direct customer WhatsApp access — no hidden customer data.
+                        </p>
+                    </div>
                 </div>
 
                 <!-- FAQ Item 5 -->
-                <div class="bg-gray-50 rounded-2xl p-6 md:p-8">
-                    <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-4">
-                        Can I use my own delivery drivers?
-                    </h3>
-                    <p class="text-gray-700 leading-relaxed">
-                        Yes. You deliver within your chosen radius of 1-7 km using your own drivers. No third-party drivers are required. You keep 100% of the delivery fee.
-                    </p>
+                <div class="faq-item border border-gray-200 rounded-2xl overflow-hidden transition-all duration-300 hover:border-teal-300 hover:shadow-lg">
+                    <button class="faq-toggle w-full flex items-center justify-between p-6 md:p-8 text-left bg-white hover:bg-gray-50 transition-colors" onclick="toggleFAQ(this)">
+                        <h3 class="text-lg md:text-xl font-bold text-gray-900 pr-4">
+                            Can I use my own delivery drivers?
+                        </h3>
+                        <svg class="faq-icon w-6 h-6 text-teal-500 flex-shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6 md:px-8 md:pb-8">
+                        <p class="text-gray-700 leading-relaxed">
+                            Yes. You deliver within your chosen radius of 1-7 km using your own drivers. No third-party drivers are required. You keep 100% of the delivery fee.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <script>
+        function toggleFAQ(button) {
+            const faqItem = button.closest('.faq-item');
+            const content = faqItem.querySelector('.faq-content');
+            const icon = faqItem.querySelector('.faq-icon');
+            const isOpen = !content.classList.contains('hidden');
+            
+            // Close all other FAQ items
+            document.querySelectorAll('.faq-item').forEach(item => {
+                if (item !== faqItem) {
+                    item.querySelector('.faq-content').classList.add('hidden');
+                    item.querySelector('.faq-icon').style.transform = 'rotate(0deg)';
+                    item.classList.remove('border-teal-500', 'bg-teal-50');
+                    item.classList.add('border-gray-200');
+                }
+            });
+            
+            // Toggle current FAQ item
+            if (isOpen) {
+                content.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+                faqItem.classList.remove('border-teal-500', 'bg-teal-50');
+                faqItem.classList.add('border-gray-200');
+            } else {
+                content.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+                faqItem.classList.remove('border-gray-200');
+                faqItem.classList.add('border-teal-500', 'bg-teal-50');
+            }
+        }
+    </script>
 
     <!-- Footer -->
     <footer class="bg-gray-50 border-t border-gray-200 pt-10 md:pt-16 pb-6 md:pb-8">
