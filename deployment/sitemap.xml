@@ -48,6 +48,14 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Hotels Digital Concierge -->
+  <url>
+    <loc>https://gosnel.com/hotels/</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
   <url>
     <loc>https://gosnel.com/how-it-works</loc>
     <lastmod>2024-01-15</lastmod>
