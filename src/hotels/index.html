@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoSnel Digital Concierge | Turn Every Room Into a 5-Star Experience</title>
+    
+    <!-- Primary SEO Meta Tags -->
+    <meta name="description" content="Transform every guest room into a digital concierge. White-label hotel guest platform for service requests, dining, local discovery & feedback. 37+ languages. No app required. Setup in minutes.">
+    <meta name="keywords" content="hotel digital concierge, white label hotel app, guest request system UAE, hotel guest platform, in-room concierge, hotel service requests, luxury hotel technology, GoSnel hotels, UAE hospitality tech">
+    <meta name="author" content="GoSnel">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    
+    <!-- Geo / UAE SEO -->
+    <meta name="geo.region" content="AE">
+    <meta name="geo.placename" content="United Arab Emirates">
+    <meta name="geo.position" content="25.2048;55.2708">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://gosnel.com/hotels/">
+    <meta property="og:site_name" content="GoSnel">
+    <meta property="og:title" content="GoSnel Digital Concierge | Luxury Hotels">
+    <meta property="og:description" content="Turn every guest room into a fully branded digital concierge. Reduce reception workload, delight guests, and unlock new revenue — in 37+ languages.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1920&auto=format&fit=crop">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Luxury hotel suite with elegant digital concierge experience">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="ar_AE">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@gosnelai">
+    <meta name="twitter:title" content="GoSnel Digital Concierge for Luxury Hotels">
+    <meta name="twitter:description" content="White-label platform that turns every room into a personal concierge. Instant service requests, dining, local discovery — fully branded.">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1920&auto=format&fit=crop">
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" href="/shared/assets/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/shared/assets/favicon-circular.svg" />
+    <link rel="shortcut icon" href="/shared/assets/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/shared/assets/apple-touch-icon.png" />
+    <link rel="manifest" href="/shared/assets/site.webmanifest" />
+    <meta name="theme-color" content="#0A1628">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind (shared) -->
+    <link rel="stylesheet" href="/shared/styles/output.css">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
+    
+    <style>
+        :root {
+            --gold: #C5A46E;
+            --deep-navy: #0A1628;
+            --charcoal: #111827;
+            --cream: #F8F5F0;
+        }
+        
+        * { font-family: 'Inter', system_ui, sans-serif; }
+        .display-serif { font-family: 'Playfair Display', Georgia, serif; letter-spacing: -0.025em; }
+        
+        .luxury-bg { background-color: var(--deep-navy); }
+        .luxury-surface { background-color: #0F1F3A; }
+        
+        .section { scroll-margin-top: 80px; }
+        
+        .nav-scrolled {
+            background-color: rgba(10, 22, 40, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        
+        .gold { color: var(--gold); }
+        .gold-bg { background-color: var(--gold); }
+        
+        .luxury-heading {
+            font-size: clamp(2.25rem, 5vw, 3.75rem);
+            line-height: 1.05;
+            font-weight: 700;
+        }
+        
+        .premium-card {
+            background: linear-gradient(145deg, #0F1F3A 0%, #0A1628 100%);
+            border: 1px solid rgba(197, 164, 110, 0.15);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+                        box-shadow 0.3s cubic-bezier(0.4, 0.0, 0.2, 1),
+                        border-color 0.3s;
+        }
+        
+        .premium-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.4);
+            border-color: rgba(197, 164, 110, 0.35);
+        }
+        
+        .feature-icon {
+            width: 52px;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 9999px;
+            background: rgba(197, 164, 110, 0.1);
+            color: var(--gold);
+            transition: all 0.3s ease;
+        }
+        
+        .premium-card:hover .feature-icon {
+            background: rgba(197, 164, 110, 0.2);
+            transform: scale(1.05);
+        }
+        
+        .nav-link {
+            color: rgba(248, 245, 240, 0.75);
+            transition: color 0.2s ease;
+        }
+        .nav-link:hover { color: #fff; }
+        
+        .teal-accent { color: #4ECDC4; }
+        
+        .hero-image {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            filter: saturate(0.95);
+        }
+        
+        .hero-overlay {
+            background: linear-gradient(
+                to right, 
+                rgba(10, 22, 40, 0.88) 0%, 
+                rgba(10, 22, 40, 0.75) 45%, 
+                rgba(10, 22, 40, 0.55) 65%
+            );
+        }
+        
+        .stat-number {
+            font-variant-numeric: tabular-nums;
+        }
+        
+        .elegant-divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(197,164,110,0.2), transparent);
+        }
+        
+        .price-card {
+            transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
+        }
+        
+        .price-card.featured {
+            border-color: var(--gold);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.3), 
+                        0 4px 6px -4px rgb(0 0 0 / 0.3);
+            position: relative;
+        }
+        
+        .price-card.featured::before {
+            content: "MOST POPULAR";
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gold);
+            color: #0A1628;
+            font-size: 10px;
+            letter-spacing: 1px;
+            font-weight: 600;
+            padding: 1px 14px;
+            border-radius: 999px;
+        }
+        
+        .module-pill {
+            background: rgba(197, 164, 110, 0.08);
+            border: 1px solid rgba(197, 164, 110, 0.2);
+            color: #C5A46E;
+            padding: 6px 14px;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        
+        .module-pill:hover {
+            background: rgba(197, 164, 110, 0.15);
+            border-color: rgba(197, 164, 110, 0.4);
+        }
+        
+        .guest-phone {
+            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.5),
+                        0 0 0 1px rgba(197,164,110,0.2);
+            border-radius: 3rem;
+        }
+        
+        .section-title {
+            font-size: clamp(1.85rem, 4vw, 2.65rem);
+            line-height: 1.1;
+        }
+    </style>
+</head>
+<body class="bg-[#0A1628] text-[#F8F5F0] antialiased">
+    
+    <!-- Premium Fixed Navigation -->
+    <nav id="nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <div class="flex items-center gap-3">
+                    <div class="flex items-center gap-2.5">
+                        <div class="w-9 h-9 rounded-xl bg-[#4ECDC4] flex items-center justify-center">
+                            <span class="text-[#0A1628] font-bold text-2xl tracking-[-1.5px]">G</span>
+                        </div>
+                        <div>
+                            <span class="font-semibold text-2xl tracking-[-0.5px]">GoSnel</span>
+                            <span class="text-xs text-[#C5A46E] font-medium tracking-[2px] block -mt-1">HOTELS</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Desktop Nav -->
+                <div class="hidden md:flex items-center gap-x-10 text-sm font-medium">
+                    <a href="#guests" class="nav-link">For Guests</a>
+                    <a href="#management" class="nav-link">For Management</a>
+                    <a href="#why" class="nav-link">Why GoSnel</a>
+                    <a href="#pricing" class="nav-link">Pricing</a>
+                </div>
+                
+                <div class="flex items-center gap-4">
+                    <!-- Language -->
+                    <button id="langToggle"
+                            class="hidden sm:flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-medium border border-white/20 hover:border-white/40 transition">
+                        <span>EN</span>
+                        <span class="text-white/40">|</span>
+                        <span class="text-[#C5A46E]">عربي</span>
+                    </button>
+                    
+                    <!-- Primary CTA -->
+                    <a href="https://wa.me/971542503729?text=Hello%2C%20I%20would%20like%20to%20request%20a%20private%20demo%20of%20the%20GoSnel%20Digital%20Concierge%20for%20my%20hotel.%20Property%3A%20"
+                       class="inline-flex items-center gap-2 bg-white text-[#0A1628] hover:bg-[#C5A46E] hover:text-[#0A1628] px-6 py-2.5 rounded-2xl text-sm font-semibold transition-all active:scale-[0.985]">
+                        <span class="hidden sm:inline">Request Private Demo</span>
+                        <span class="sm:hidden">Demo</span>
+                    </a>
+                    
+                    <!-- Mobile menu -->
+                    <button class="md:hidden p-2" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">
+                        <i data-lucide="menu" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden md:hidden fixed inset-x-0 top-20 bg-[#0A1628] border-t border-white/10 z-50">
+        <div class="px-6 py-8 flex flex-col gap-y-5 text-lg font-medium">
+            <a href="#guests" class="nav-link">For Guests</a>
+            <a href="#management" class="nav-link">For Management</a>
+            <a href="#why" class="nav-link">Why GoSnel</a>
+            <a href="#pricing" class="nav-link">Pricing</a>
+            <a href="https://wa.me/971542503729?text=Hello%2C%20I%20would%20like%20to%20request%20a%20private%20demo%20of%20the%20GoSnel%20Digital%20Concierge%20for%20my%20hotel.%20Property%3A%20"
+               class="mt-4 bg-white text-[#0A1628] text-center py-3.5 rounded-2xl font-semibold">Request Private Demo</a>
+        </div>
+    </div>
+    
+    <!-- Hero -->
+    <section class="relative min-h-[100dvh] flex items-center pt-20 overflow-hidden">
+        <div class="hero-image" style="background-image: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1920&auto=format&fit=crop')"></div>
+        <div class="hero-overlay absolute inset-0"></div>
+        
+        <div class="relative z-10 max-w-5xl mx-auto px-6 lg:px-8 pb-16 pt-12 md:pt-8">
+            <div class="max-w-3xl">
+                <!-- Badge -->
+                <div class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 backdrop-blur-xl px-4 py-1 mb-6">
+                    <div class="w-1.5 h-1.5 rounded-full bg-[#4ECDC4] animate-pulse"></div>
+                    <span class="text-xs tracking-[1.5px] font-medium text-white/80">NOW AVAILABLE FOR LUXURY &amp; BOUTIQUE HOTELS IN THE UAE</span>
+                </div>
+                
+                <h1 class="luxury-heading display-serif text-white leading-none tracking-tighter mb-6">
+                    Turn Every Guest Room<br>
+                    Into a Digital Concierge
+                </h1>
+                
+                <p class="max-w-xl text-xl md:text-2xl text-white/80 font-light tracking-[-0.2px] mb-10">
+                    Reduce reception workload, improve guest satisfaction, and unlock new revenue opportunities through a fully branded hotel guest platform.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row items-start gap-4">
+                    <a href="https://wa.me/971542503729?text=Hello%2C%20I%20would%20like%20to%20request%20a%20private%20demo%20of%20the%20GoSnel%20Digital%20Concierge%20for%20my%20hotel.%20Property%3A%20"
+                       class="group inline-flex items-center justify-center gap-3 bg-[#4ECDC4] hover:bg-[#3DB8B0] text-[#0A1628] font-semibold text-lg px-9 py-[18px] rounded-2xl transition-all active:scale-[0.985]">
+                        Request a Private Demo
+                        <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-0.5 transition"></i>
+                    </a>
+                    
+                    <a href="#guests" 
+                       class="inline-flex items-center justify-center gap-3 border border-white/30 hover:bg-white/5 text-white font-medium px-8 py-[18px] rounded-2xl transition">
+                        See what guests experience
+                    </a>
+                </div>
+                
+                <div class="mt-8 flex items-center gap-4 text-sm text-white/50">
+                    <div class="flex -space-x-2">
+                        <div class="w-7 h-7 bg-white/80 rounded-full border border-[#0A1628]"></div>
+                        <div class="w-7 h-7 bg-white/70 rounded-full border border-[#0A1628]"></div>
+                        <div class="w-7 h-7 bg-white/60 rounded-full border border-[#0A1628]"></div>
+                    </div>
+                    <span>Trusted by leading properties across the UAE</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-1 text-white/40 text-xs tracking-widest">
+            SCROLL TO EXPLORE
+            <i data-lucide="chevron-down" class="w-4 h-4"></i>
+        </div>
+    </section>
+    
+    <!-- Trust bar -->
+    <div class="border-b border-white/10 bg-[#0F1F3A]">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex flex-wrap items-center justify-center gap-x-10 gap-y-3 text-xs uppercase tracking-[2px] text-white/40">
+            <div>5-STAR &amp; BOUTIQUE HOTELS</div>
+            <div>37+ LANGUAGES</div>
+            <div>WHITE-LABEL &amp; FULLY BRANDED</div>
+            <div>ZERO APP DEVELOPMENT</div>
+            <div>INSTANT ROOM ACTIVATION</div>
+        </div>
+    </div>
+    
+    <!-- What Guests Can Do -->
+    <section id="guests" class="section max-w-7xl mx-auto px-6 lg:px-8 pt-20 pb-16">
+        <div class="max-w-2xl mb-12">
+            <span class="uppercase tracking-[3px] text-xs font-medium text-[#C5A46E]">EXCEPTIONAL GUEST EXPERIENCE</span>
+            <h2 class="section-title display-serif mt-3 tracking-tighter">What Guests Can Do</h2>
+            <p class="mt-4 text-lg text-white/70">Everything they need — right from their phone, in their own language.</p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Card 1 -->
+            <div class="premium-card rounded-3xl p-8 flex flex-col">
+                <div class="feature-icon mb-7">
+                    <i data-lucide="bell" class="w-6 h-6"></i>
+                </div>
+                <h3 class="text-xl font-semibold tracking-tight mb-3">Request Hotel Services Instantly</h3>
+                <p class="text-white/70 leading-relaxed">Towels, housekeeping, taxi requests, maintenance, spa bookings, and more — all from their phone in their preferred language.</p>
+            </div>
+            
+            <div class="premium-card rounded-3xl p-8 flex flex-col">
+                <div class="feature-icon mb-7">
+                    <i data-lucide="utensils-crossed" class="w-6 h-6"></i>
+                </div>
+                <h3 class="text-xl font-semibold tracking-tight mb-3">Explore Dining Options</h3>
+                <p class="text-white/70 leading-relaxed">Browse hotel menus, discover nearby restaurants, and place requests quickly. Powered by intelligent recommendations.</p>
+            </div>
+            
+            <div class="premium-card rounded-3xl p-8 flex flex-col">
+                <div class="feature-icon mb-7">
+                    <i data-lucide="map-pin" class="w-6 h-6"></i>
+                </div>
+                <h3 class="text-xl font-semibold tracking-tight mb-3">Discover the Local Area</h3>
+                <p class="text-white/70 leading-relaxed">Help guests find attractions, activities, and useful information during their stay — curated for your property.</p>
+            </div>
+            
+            <div class="premium-card rounded-3xl p-8 flex flex-col">
+                <div class="feature-icon mb-7">
+                    <i data-lucide="message-square" class="w-6 h-6"></i>
+                </div>
+                <h3 class="text-xl font-semibold tracking-tight mb-3">Leave Feedback</h3>
+                <p class="text-white/70 leading-relaxed">Collect thoughtful guest feedback before they leave the property and continuously improve service quality.</p>
+            </div>
+        </div>
+        
+        <!-- Guest Phone Mock -->
+        <div class="mt-12 lg:mt-16 grid lg:grid-cols-12 gap-8 items-center bg-[#0F1F3A] rounded-3xl p-8 lg:p-12 border border-white/10">
+            <div class="lg:col-span-5">
+                <div class="text-[#C5A46E] text-sm tracking-[2px] font-medium mb-3">GUEST EXPERIENCE</div>
+                <h3 class="display-serif text-3xl tracking-tighter">Beautiful. Branded.<br>Effortless.</h3>
+                <p class="mt-4 text-white/70 max-w-sm">Guests simply scan the QR code in their room. No downloads. No friction. Instant access to everything your hotel offers.</p>
+            </div>
+            
+            <div class="lg:col-span-7 flex justify-center">
+                <div class="guest-phone bg-[#111827] p-2.5 w-full max-w-[280px] shadow-2xl">
+                    <div class="bg-[#0A1628] rounded-[2.25rem] overflow-hidden border border-white/10">
+                        <!-- Simulated phone header -->
+                        <div class="h-11 bg-black/40 flex items-center justify-center">
+                            <div class="w-24 h-5 bg-white/10 rounded-full"></div>
+                        </div>
+                        
+                        <div class="px-5 pt-6 pb-8 space-y-5 text-sm">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <div class="text-[#C5A46E] text-[10px] tracking-widest">GOOD MORNING, MS. AL-MANSOURI</div>
+                                    <div class="text-xl font-semibold text-white tracking-tight">The St. Regis Dubai</div>
+                                </div>
+                                <div class="w-9 h-9 bg-white/10 rounded-2xl flex items-center justify-center">
+                                    <i data-lucide="user" class="w-4 h-4"></i>
+                                </div>
+                            </div>
+                            
+                            <div class="space-y-2.5 pt-2">
+                                <div class="flex items-center gap-3 rounded-2xl bg-white/5 p-3">
+                                    <i data-lucide="bell" class="w-5 h-5 text-[#4ECDC4]"></i>
+                                    <div class="flex-1 text-white">Housekeeping • 11:42am</div>
+                                    <span class="text-[10px] text-emerald-400">IN PROGRESS</span>
+                                </div>
+                                <div class="flex items-center gap-3 rounded-2xl bg-white/5 p-3">
+                                    <i data-lucide="utensils-crossed" class="w-5 h-5 text-[#4ECDC4]"></i>
+                                    <div class="flex-1">Breakfast in Villa • Tomorrow 8:30</div>
+                                </div>
+                                <div class="flex items-center gap-3 rounded-2xl bg-white/5 p-3">
+                                    <i data-lucide="car" class="w-5 h-5 text-[#4ECDC4]"></i>
+                                    <div class="flex-1">Airport transfer booked</div>
+                                </div>
+                            </div>
+                            
+                            <div class="pt-2">
+                                <button onclick="alert('This is a live preview of the branded guest interface. In production it matches your exact branding.')"
+                                        class="w-full py-3 rounded-2xl bg-[#4ECDC4] text-[#0A1628] text-sm font-semibold tracking-tight">Request New Service</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- What Hotel Management Gets -->
+    <section id="management" class="section bg-[#0F1F3A] py-16 border-y border-white/10">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="max-w-2xl mb-12">
+                <span class="uppercase tracking-[3px] text-xs font-medium text-[#C5A46E]">OPERATIONS &amp; INSIGHT</span>
+                <h2 class="section-title display-serif mt-3 tracking-tighter">What Hotel Management Gets</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="luxury-surface rounded-3xl p-8 border border-white/10">
+                    <div class="w-10 h-10 mb-6 rounded-2xl bg-white/5 flex items-center justify-center">
+                        <i data-lucide="layout-dashboard" class="w-5 h-5 text-[#4ECDC4]"></i>
+                    </div>
+                    <h3 class="font-semibold text-xl mb-3">Guest Activity Dashboard</h3>
+                    <p class="text-white/70 text-[15px]">Monitor active rooms, guest engagement, service requests, and usage trends in real time.</p>
+                </div>
+                
+                <div class="luxury-surface rounded-3xl p-8 border border-white/10">
+                    <div class="w-10 h-10 mb-6 rounded-2xl bg-white/5 flex items-center justify-center">
+                        <i data-lucide="list-checks" class="w-5 h-5 text-[#4ECDC4]"></i>
+                    </div>
+                    <h3 class="font-semibold text-xl mb-3">Request Tracking</h3>
+                    <p class="text-white/70 text-[15px]">Receive and manage every guest request through a clean, centralized workflow your team will love.</p>
+                </div>
+                
+                <div class="luxury-surface rounded-3xl p-8 border border-white/10">
+                    <div class="w-10 h-10 mb-6 rounded-2xl bg-white/5 flex items-center justify-center">
+                        <i data-lucide="languages" class="w-5 h-5 text-[#4ECDC4]"></i>
+                    </div>
+                    <h3 class="font-semibold text-xl mb-3">Multi-Language Experience</h3>
+                    <p class="text-white/70 text-[15px]">Serve international guests in 37+ languages automatically. No extra work for your staff.</p>
+                </div>
+                
+                <div class="luxury-surface rounded-3xl p-8 border border-white/10">
+                    <div class="w-10 h-10 mb-6 rounded-2xl bg-white/5 flex items-center justify-center">
+                        <i data-lucide="palette" class="w-5 h-5 text-[#4ECDC4]"></i>
+                    </div>
+                    <h3 class="font-semibold text-xl mb-3">Fully Branded Experience</h3>
+                    <p class="text-white/70 text-[15px]">Your logo. Your colors. Your domain. Your hotel. Your guests never feel like they left your world.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Why Hotels Use GoSnel -->
+    <section id="why" class="section max-w-7xl mx-auto px-6 lg:px-8 py-20">
+        <div class="grid lg:grid-cols-12 gap-x-12 gap-y-10 items-center">
+            <div class="lg:col-span-5">
+                <span class="text-[#C5A46E] text-sm tracking-[3px] font-medium">THE DIFFERENCE</span>
+                <h2 class="display-serif text-4xl lg:text-[42px] leading-none tracking-tighter mt-4">Why Leading Hotels<br>Choose GoSnel</h2>
+                <p class="mt-5 text-lg text-white/70 max-w-sm">A modern guest experience platform designed specifically for luxury and upscale properties that refuse to compromise on service or brand.</p>
+            </div>
+            
+            <div class="lg:col-span-7">
+                <div class="grid sm:grid-cols-2 gap-x-8 gap-y-7 text-[15px]">
+                    <div class="flex gap-4">
+                        <i data-lucide="check" class="mt-0.5 w-5 h-5 flex-shrink-0 text-[#4ECDC4]"></i>
+                        <div><span class="font-medium text-white">Reduce repetitive calls to reception</span> — free your team to deliver memorable service.</div>
+                    </div>
+                    <div class="flex gap-4">
+                        <i data-lucide="check" class="mt-0.5 w-5 h-5 flex-shrink-0 text-[#4ECDC4]"></i>
+                        <div><span class="font-medium text-white">Improve guest satisfaction</span> — guests feel heard and cared for, instantly.</div>
+                    </div>
+                    <div class="flex gap-4">
+                        <i data-lucide="check" class="mt-0.5 w-5 h-5 flex-shrink-0 text-[#4ECDC4]"></i>
+                        <div><span class="font-medium text-white">Increase visibility of hotel services</span> — every amenity and upsell opportunity is one tap away.</div>
+                    </div>
+                    <div class="flex gap-4">
+                        <i data-lucide="check" class="mt-0.5 w-5 h-5 flex-shrink-0 text-[#4ECDC4]"></i>
+                        <div><span class="font-medium text-white">Support international guests</span> — automatic translation across 37+ languages.</div>
+                    </div>
+                    <div class="flex gap-4">
+                        <i data-lucide="check" class="mt-0.5 w-5 h-5 flex-shrink-0 text-[#4ECDC4]"></i>
+                        <div><span class="font-medium text-white">Launch without developing a mobile app</span> — go live in days, not months.</div>
+                    </div>
+                    <div class="flex gap-4">
+                        <i data-lucide="check" class="mt-0.5 w-5 h-5 flex-shrink-0 text-[#4ECDC4]"></i>
+                        <div><span class="font-medium text-white">Track guest engagement in real time</span> — data that actually helps improve operations.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Pricing -->
+    <section id="pricing" class="section border-t border-white/10 bg-[#0F1F3A] py-20">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="text-[#C5A46E] text-xs tracking-[3.5px] font-semibold">SIMPLE. TRANSPARENT. SCALABLE.</span>
+                <h2 class="display-serif text-4xl lg:text-5xl tracking-tighter mt-3">Pricing</h2>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-6 max-w-5xl mx-auto">
+                <!-- Setup -->
+                <div class="price-card luxury-surface rounded-3xl p-9 lg:p-10 border border-white/10">
+                    <div>
+                        <div class="uppercase text-xs tracking-[2px] text-[#C5A46E] font-medium">One-time</div>
+                        <div class="flex items-baseline gap-1 mt-1">
+                            <span class="text-6xl font-semibold tracking-tighter">AED 4,999</span>
+                        </div>
+                        <div class="font-medium text-lg mt-0.5">Setup &amp; Launch Package</div>
+                    </div>
+                    
+                    <div class="elegant-divider my-8"></div>
+                    
+                    <ul class="space-y-4 text-sm">
+                        <li class="flex gap-3 items-start"><i data-lucide="check" class="w-4 h-4 mt-0.5 text-[#4ECDC4] flex-shrink-0"></i> <span>Complete white-label branding</span></li>
+                        <li class="flex gap-3 items-start"><i data-lucide="check" class="w-4 h-4 mt-0.5 text-[#4ECDC4] flex-shrink-0"></i> <span>QR code room setup &amp; activation</span></li>
+                        <li class="flex gap-3 items-start"><i data-lucide="check" class="w-4 h-4 mt-0.5 text-[#4ECDC4] flex-shrink-0"></i> <span>Staff onboarding &amp; training</span></li>
+                        <li class="flex gap-3 items-start"><i data-lucide="check" class="w-4 h-4 mt-0.5 text-[#4ECDC4] flex-shrink-0"></i> <span>Full hotel configuration</span></li>
+                        <li class="flex gap-3 items-start"><i data-lucide="check" class="w-4 h-4 mt-0.5 text-[#4ECDC4] flex-shrink-0"></i> <span>Launch support &amp; first month included</span></li>
+                    </ul>
+                </div>
+                
+                <!-- Monthly -->
+                <div class="price-card featured luxury-surface rounded-3xl p-9 lg:p-10 border-2 border-[#C5A46E]">
+                    <div>
+                        <div class="uppercase text-xs tracking-[2px] text-[#C5A46E] font-medium">Monthly</div>
+                        <div class="flex items-baseline gap-1 mt-1">
+                            <span class="text-6xl font-semibold tracking-tighter">AED 15</span>
+                            <span class="text-white/60">/ room / month</span>
+                        </div>
+                        <div class="font-medium text-lg">Flexible subscription</div>
+                        <div class="text-xs text-white/50 mt-1">Minimum monthly billing: AED 499</div>
+                    </div>
+                    
+                    <div class="elegant-divider my-8"></div>
+                    
+                    <div class="text-sm text-white/80 leading-relaxed">
+                        Scale effortlessly. Pay only for the rooms you activate. Perfect for boutique hotels and large resorts alike.
+                    </div>
+                    
+                    <a href="https://wa.me/971542503729?text=Hello%2C%20I%20would%20like%20to%20request%20a%20private%20demo%20of%20the%20GoSnel%20Digital%20Concierge%20for%20my%20hotel.%20Property%3A%20"
+                       class="mt-8 block w-full text-center bg-[#4ECDC4] hover:bg-[#3DB8B0] py-4 rounded-2xl text-[#0A1628] font-semibold transition">
+                        Start Your Setup
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Optional Modules -->
+            <div class="max-w-5xl mx-auto mt-14">
+                <div class="text-center mb-7">
+                    <div class="text-[#C5A46E] text-xs tracking-[3px] font-medium">GROW AT YOUR OWN PACE</div>
+                    <div class="font-medium text-lg mt-1">Optional Growth Modules</div>
+                </div>
+                
+                <div class="flex flex-wrap justify-center gap-3">
+                    <div class="module-pill">Revenue Booster Pack</div>
+                    <div class="module-pill">Advanced Analytics</div>
+                    <div class="module-pill">AI Concierge</div>
+                    <div class="module-pill">Digital Promotions Network</div>
+                    <div class="module-pill">Partner Restaurants</div>
+                    <div class="module-pill">VIP &amp; Special Requests</div>
+                </div>
+                <p class="text-center text-xs text-white/50 mt-4 tracking-wider">Activate only when needed. No long-term commitments.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Final CTA -->
+    <section class="max-w-5xl mx-auto px-6 py-20 text-center">
+        <div class="inline-flex items-center gap-2 text-[#C5A46E] text-xs tracking-[3.5px] font-semibold mb-4">EXPERIENCE IT YOURSELF</div>
+        
+        <h2 class="display-serif text-4xl lg:text-[46px] tracking-tighter leading-none max-w-3xl mx-auto">
+            See your hotel branding<br>live within minutes.
+        </h2>
+        
+        <p class="mt-5 text-xl text-white/70 max-w-md mx-auto">We’ll set up a fully branded private demo of your property in under 10 minutes.</p>
+        
+        <div class="mt-9">
+            <a href="https://wa.me/971542503729?text=Hello%2C%20I%20would%20like%20to%20request%20a%20private%20demo%20of%20the%20GoSnel%20Digital%20Concierge%20for%20my%20hotel.%20Property%3A%20"
+               class="inline-flex items-center gap-3 bg-white text-[#0A1628] hover:bg-[#C5A46E] font-semibold px-10 py-4 text-lg rounded-2xl transition active:scale-[0.985]">
+                Request a Private Demo
+                <i data-lucide="message-circle" class="w-5 h-5"></i>
+            </a>
+        </div>
+        
+        <div class="mt-5 text-xs text-white/50">Or call +971 54 250 3729 • Available for properties in the UAE &amp; GCC</div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="border-t border-white/10 bg-[#070F1C] py-14 text-sm">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 grid md:grid-cols-12 gap-y-10">
+            <div class="md:col-span-5">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-xl bg-[#4ECDC4] flex items-center justify-center">
+                        <span class="text-[#0A1628] font-bold text-[21px] tracking-tighter">G</span>
+                    </div>
+                    <span class="font-semibold tracking-tight">GoSnel</span>
+                </div>
+                <p class="mt-4 max-w-sm text-white/50 leading-relaxed">
+                    The intelligent platform powering exceptional guest experiences and streamlined operations for the region’s finest hotels.
+                </p>
+            </div>
+            
+            <div class="md:col-span-3 text-white/60">
+                <div class="font-medium text-white mb-3">Platform</div>
+                <div class="space-y-[9px]">
+                    <div>Digital Concierge</div>
+                    <div>Guest Dashboard</div>
+                    <div>Staff Operations</div>
+                    <div>Multi-Language</div>
+                </div>
+            </div>
+            
+            <div class="md:col-span-4">
+                <div class="font-medium text-white mb-3">Get in touch</div>
+                <a href="https://wa.me/971542503729?text=Hello%2C%20I%27m%20interested%20in%20the%20GoSnel%20Digital%20Concierge" class="block hover:text-white transition">WhatsApp: +971 54 250 3729</a>
+                <a href="mailto:hotels@gosnel.com" class="block mt-1 hover:text-white transition">hotels@gosnel.com</a>
+                
+                <div class="mt-8 text-[11px] text-white/40 tracking-wider">
+                    © 2026 GoSnel. All rights reserved.<br>
+                    Dubai, United Arab Emirates
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Initialize Lucide icons
+        function initIcons() {
+            if (window.lucide) {
+                window.lucide.createIcons();
+            }
+        }
+        
+        // Elegant scroll nav
+        function initNav() {
+            const nav = document.getElementById('nav');
+            let lastScroll = 0;
+            
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 40) {
+                    nav.classList.add('nav-scrolled');
+                } else {
+                    nav.classList.remove('nav-scrolled');
+                }
+            }, { passive: true });
+        }
+        
+        // Language toggle (placeholder — can be expanded to full bilingual like partner page)
+        function initLanguageToggle() {
+            const toggle = document.getElementById('langToggle');
+            if (!toggle) return;
+            
+            let isArabic = false;
+            
+            toggle.addEventListener('click', () => {
+                isArabic = !isArabic;
+                document.documentElement.dir = isArabic ? 'rtl' : 'ltr';
+                document.documentElement.lang = isArabic ? 'ar' : 'en';
+                
+                toggle.innerHTML = isArabic 
+                    ? `<span>عربي</span><span class="text-white/40">|</span><span class="text-[#C5A46E]">EN</span>` 
+                    : `<span>EN</span><span class="text-white/40">|</span><span class="text-[#C5A46E]">عربي</span>`;
+                
+                // In real implementation, this would swap all text content
+                if (isArabic) {
+                    alert("Arabic version: Full bilingual support available in production (same structure as partner pages).");
+                }
+            });
+        }
+        
+        // Smooth anchor scrolling
+        function initSmoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        e.preventDefault();
+                        const offset = 80;
+                        const bodyRect = document.body.getBoundingClientRect().top;
+                        const elementPosition = target.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition - bodyRect - offset;
+                        
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                        
+                        // close mobile menu if open
+                        document.getElementById('mobileMenu')?.classList.add('hidden');
+                    }
+                });
+            });
+        }
+        
+        // Demo hint on phone mock
+        function initPhoneDemo() {
+            // Already has inline onclick for the mock button
+        }
+        
+        // Boot
+        function init() {
+            initIcons();
+            initNav();
+            initLanguageToggle();
+            initSmoothScroll();
+            initPhoneDemo();
+            
+            // Optional: subtle entrance animation for cards
+            const cards = document.querySelectorAll('.premium-card, .luxury-surface');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        }, index * 40);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(12px)';
+                card.style.transition = 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)';
+                observer.observe(card);
+            });
+        }
+        
+        window.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
