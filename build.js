@@ -152,6 +152,17 @@ const buildPages = () => {
     console.log("✅ Copied sitemap.xml from deployment/");
   }
 
+  // Copy additional subdomain sitemaps (hotels, etc.)
+  const extraSitemaps = ["hotels-sitemap.xml"];
+  extraSitemaps.forEach(sitemapName => {
+    const extraPath = path.join(__dirname, "deployment", sitemapName);
+    const distExtraPath = path.join(distDir, sitemapName);
+    if (fs.existsSync(extraPath)) {
+      fs.copyFileSync(extraPath, distExtraPath);
+      console.log(`✅ Copied ${sitemapName} from deployment/`);
+    }
+  });
+
   // Copy subdirectory static pages with include processing
   // تم إضافة careers و restaurants هنا ليتم نقل المجلدات للنسخة النهائية
   const subdomains = ['user', 'vendor', 'partner-app', 'drivers', 'promo', 'footer', 'careers', 'restaurants', 'maps', 'hotels'];

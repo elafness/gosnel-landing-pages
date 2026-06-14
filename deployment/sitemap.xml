@@ -48,12 +48,24 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- Hotels Digital Concierge -->
+  <!-- Hotels Digital Concierge - Main Domain -->
   <url>
     <loc>https://gosnel.com/hotels/</loc>
     <lastmod>2026-06-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en-ae" href="https://gosnel.com/hotels/" />
+    <xhtml:link rel="alternate" hreflang="ar-ae" href="https://gosnel.com/ar/hotels/" />
+  </url>
+
+  <!-- Hotels Digital Concierge - Dedicated Subdomain -->
+  <url>
+    <loc>https://hotels.gosnel.com/</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en-ae" href="https://hotels.gosnel.com/" />
+    <xhtml:link rel="alternate" hreflang="ar-ae" href="https://hotels.gosnel.com/ar/" />
   </url>
 
   <url>

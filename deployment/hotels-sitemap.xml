@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <!-- Hotels Subdomain Homepage -->
+  <url>
+    <loc>https://hotels.gosnel.com/</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en-ae" href="https://hotels.gosnel.com/" />
+    <xhtml:link rel="alternate" hreflang="ar-ae" href="https://hotels.gosnel.com/ar/" />
+  </url>
+
+  <!-- Main Domain Hotels Path (for cross-linking) -->
+  <url>
+    <loc>https://gosnel.com/hotels/</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en-ae" href="https://gosnel.com/hotels/" />
+    <xhtml:link rel="alternate" hreflang="ar-ae" href="https://gosnel.com/ar/hotels/" />
+  </url>
+
+  <!-- Future sub-pages for Hotels platform (examples) -->
+  <!-- Uncomment and add as you create new pages under src/hotels/ -->
+
+  <!--
+  <url>
+    <loc>https://hotels.gosnel.com/features/</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://hotels.gosnel.com/pricing/</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  -->
+
+  <!-- Link back to main site -->
+  <url>
+    <loc>https://gosnel.com/</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+</urlset>

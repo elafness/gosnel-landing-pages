@@ -14,6 +14,17 @@ maps.gosnel.com/admin /maps/admin.html 200
 maps.gosnel.com/* /maps/:splat 200
 
 # ============================================
+# HOTELS SUBDOMAIN (hotels.gosnel.com)
+# Digital Concierge Platform
+# ============================================
+https://hotels.gosnel.com/ /hotels/index.html 200
+https://hotels.gosnel.com/* /hotels/:splat 200
+http://hotels.gosnel.com/ /hotels/index.html 200
+http://hotels.gosnel.com/* /hotels/:splat 200
+hotels.gosnel.com/ /hotels/index.html 200
+hotels.gosnel.com/* /hotels/:splat 200
+
+# ============================================
 # CAREERS SUBDOMAIN (careers.gosnel.com)
 # ============================================
 https://careers.gosnel.com/* /careers/:splat 200
@@ -68,5 +79,6 @@ https://user.gosnel.com/faq /faq.html 200
 /vendor-sitemap.xml /vendor-sitemap.xml 200
 /drivers-sitemap.xml /drivers-sitemap.xml 200
 /promo-sitemap.xml /promo-sitemap.xml 200
+/hotels-sitemap.xml /hotels-sitemap.xml 200
 /robots.txt /robots.txt 200
 
