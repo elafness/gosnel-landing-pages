@@ -15,14 +15,12 @@ maps.gosnel.com/* /maps/:splat 200
 
 # ============================================
 # HOTELS SUBDOMAIN (hotels.gosnel.com)
-# Digital Concierge Platform
+# Digital Concierge Platform - 301 Redirect for Multi-App Root
 # ============================================
-https://hotels.gosnel.com/ /hotels/index.html 200
-https://hotels.gosnel.com/* /hotels/:splat 200
-http://hotels.gosnel.com/ /hotels/index.html 200
-http://hotels.gosnel.com/* /hotels/:splat 200
-hotels.gosnel.com/ /hotels/index.html 200
-hotels.gosnel.com/* /hotels/:splat 200
+https://hotels.gosnel.com/ https://gosnel.com/hotels/ 301
+https://hotels.gosnel.com/* https://gosnel.com/hotels/:splat 301
+http://hotels.gosnel.com/ https://gosnel.com/hotels/ 301
+http://hotels.gosnel.com/* https://gosnel.com/hotels/:splat 301
 
 # ============================================
 # CAREERS SUBDOMAIN (careers.gosnel.com)
