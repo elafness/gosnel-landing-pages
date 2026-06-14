@@ -46,7 +46,7 @@ const buildPages = () => {
     { subdomain: "promo", filename: "src/promo/promo-landing.html" },
     { subdomain: "restaurants", filename: "src/restaurants/index.html" },
     { subdomain: "maps", filename: "src/maps/index.html" },
-    { subdomain: "hotels", filename: "src/hotels/index.html" }
+    { subdomain: "hotels", filename: "src/hotels/hotel-landing.html" }
   ];
 
   landingPages.forEach(({ subdomain, filename }) => {
@@ -95,7 +95,7 @@ const buildPages = () => {
 
   // Create index.html files in subdirectories that redirect to the main landing pages
   landingPages.forEach(({ subdomain, filename }) => {
-    const srcPath = path.join(srcDir, filename);
+    const srcPath = path.join(__dirname, filename);
     const distSubdomainDir = path.join(distDir, subdomain);
     const distIndexPath = path.join(distSubdomainDir, 'index.html');
 
