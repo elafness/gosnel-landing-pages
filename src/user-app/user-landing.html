@@ -1007,34 +1007,3 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </script>
 </body>
 </html>
-<!-- Footer (shared) -->
-<!--#include file="shared/components/footer.html" -->
-
-    <!-- Scripts -->
-    <script>
-        // Set current year
-        document.getElementById('year').textContent = new Date().getFullYear();
-        
-        // Initialize Lucide icons
-        document.addEventListener('DOMContentLoaded', function() {
-            lucide.createIcons();
-            
-            // Header scroll effect
-            const header = document.getElementById('main-header');
-            const headerTitle = document.getElementById('header-title');
-            
-            window.addEventListener('scroll', function() {
-                if (window.scrollY > 20) {
-                    header.classList.add('header-scrolled');
-                    headerTitle.classList.remove('text-white');
-                    headerTitle.classList.add('text-gray-900');
-                } else {
-                    header.classList.remove('header-scrolled');
-                    headerTitle.classList.add('text-white');
-                    headerTitle.classList.remove('text-gray-900');
-                }
-            });
-        });
-    </script>
-</body>
-</html>
