@@ -213,7 +213,7 @@
             <div class="flex items-center justify-between h-20">
                 <!-- Logo -->
                 <a href="/" class="flex items-center gap-3">
-                    <img src="/shared/assets/images/GoSnelLogo.png" alt="GoSnel" class="h-9 w-auto">
+                    <img src="/shared/assets/images/gosnelLogoTransparate.png" alt="GoSnel" class="h-9 w-auto">
                     <span class="text-xs font-medium text-[#C5A46E] tracking-[2.5px] -ml-1 mt-1">HOTELS</span>
                 </a>
                 
@@ -729,10 +729,8 @@
                     ? `<span>عربي</span><span class="text-white/40">|</span><span class="text-[#C5A46E]">EN</span>` 
                     : `<span>EN</span><span class="text-white/40">|</span><span class="text-[#C5A46E]">عربي</span>`;
                 
-                // In real implementation, this would swap all text content
-                if (isArabic) {
-                    alert("Arabic version: Full bilingual support available in production (same structure as partner pages).");
-                }
+                // Note: Full content translation (like partner pages) can be added later.
+                // Currently only switches document direction and language for future bilingual support.
             });
         }
         
