@@ -70,31 +70,13 @@
         </div>
     </section>
 
-    <section class="max-w-7xl mx-auto px-4 pt-16">
-        <a href="/careers/sales-partner.html" class="block group rounded-3xl overflow-hidden border border-teal-100 bg-gradient-to-br from-[#4ECDC4] to-[#1A9A93] p-6 md:p-8 shadow-lg hover:shadow-xl transition">
-            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                <div class="text-slate-900">
-                    <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider bg-white/30 px-3 py-1 rounded-full mb-3">
-                        <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Featured · Remote
-                    </span>
-                    <h2 class="text-2xl md:text-3xl font-extrabold mb-2">Remote Sales Partner</h2>
-                    <p class="text-slate-800/90 max-w-xl">Visit restaurants, register them on GoSnel, earn commission on every customer order. Free training. Apply in minutes.</p>
-                </div>
-                <span class="inline-flex items-center justify-center gap-2 self-start md:self-center px-6 py-3 rounded-xl bg-slate-900 text-white font-bold group-hover:bg-slate-800 transition">
-                    View role &amp; apply
-                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                </span>
-            </div>
-        </a>
-    </section>
-
     <section id="jobs" class="max-w-7xl mx-auto px-4 py-24">
         <div id="jobs-list-view">
             <div class="flex items-center justify-between mb-12">
                 <h2 class="text-3xl font-bold flex items-center text-slate-900" data-translate="openPositions">
                     <i data-lucide="briefcase" class="me-3 text-brand w-8 h-8"></i> Open Positions.
                 </h2>
-                <span class="bg-brand/10 text-brand-hover px-4 py-1 rounded-full font-bold text-sm">2 Roles</span>
+                <span id="roles-count" class="bg-brand/10 text-brand-hover px-4 py-1 rounded-full font-bold text-sm">3 Roles</span>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -146,6 +128,19 @@
                 applyLabel: "To Apply - Answer These Questions via WhatsApp:",
                 
                 jobs: [
+                    {
+                        title: "Remote Sales Partner",
+                        type: "Commission-Based",
+                        loc: "Remote · Worldwide",
+                        shortDesc: "Visit restaurants near you, register them on GoSnel, earn commission on every customer meal order, and track earnings in your partner dashboard. Free training included.",
+                        externalUrl: "/careers/sales-partner.html",
+                        income: [],
+                        hours: null,
+                        tasks: [],
+                        reqs: [],
+                        trial: null,
+                        applyQuestions: []
+                    },
                     { 
                         title: "Phone Sales Coordinator", type: "Commission-Based", loc: "United Arab Emirates | Saudi Arabia (Evening)", 
                         shortDesc: "GoSnel is looking for a Phone Sales Coordinator in UAE or SA to join our evening team, promoting our tech services to restaurants (AI System + WhatsApp).",
@@ -232,6 +227,19 @@
                 applyLabel: "للتقديم - أرسلي إجابات الأسئلة التالية عبر واتساب:",
 
                 jobs: [
+                    {
+                        title: "شريك مبيعات عن بُعد",
+                        type: "نظام عمولة",
+                        loc: "عن بُعد · عالمي",
+                        shortDesc: "زُر المطاعم قربك، سجّلها على جوسنل، واحصل على عمولة من كل طلب عميل. تتبّع أرباحك من لوحة الشريك. تدريب مجاني.",
+                        externalUrl: "/careers/sales-partner.html",
+                        income: [],
+                        hours: null,
+                        tasks: [],
+                        reqs: [],
+                        trial: null,
+                        applyQuestions: []
+                    },
                     { 
                         title: "منسقة مبيعات هاتفية", type: "نظام عمولة", loc: "الامارات (مسائي)", 
                         shortDesc: " جوسنل نبحث عن منسقة مبيعات هاتفية من سكان  للانضمام إلى فريقنا المسائي، للترويج لخدماتنا التقنية للمطاعم (نظام ذكاء اصطناعي + واتساب).",
@@ -310,21 +318,37 @@
             
             const currentJobs = translations[currentLang].jobs;
             const btnText = translations[currentLang].viewDetails;
+            const rolesEl = document.getElementById('roles-count');
+            if (rolesEl) {
+                rolesEl.textContent = currentLang === 'ar'
+                    ? `${currentJobs.length} وظائف`
+                    : `${currentJobs.length} Roles`;
+            }
 
             currentJobs.forEach((job, index) => {
                 const card = document.createElement('div');
-                card.className = "bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full group cursor-pointer";
-                card.onclick = () => openModal(index);
+                const isExternal = !!job.externalUrl;
+                card.className = "bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full group cursor-pointer"
+                    + (isExternal ? " ring-1 ring-[#4ECDC4]/40" : "");
+                card.onclick = () => {
+                    if (job.externalUrl) {
+                        window.location.href = job.externalUrl;
+                        return;
+                    }
+                    openModal(index);
+                };
                 
                 card.innerHTML = `
-                    <div class="flex gap-2 mb-4">
+                    <div class="flex gap-2 mb-4 flex-wrap">
                         <span class="px-3 py-1 rounded-md bg-blue-50 text-blue-700 text-xs font-bold uppercase tracking-wider">${job.type}</span>
                         <span class="px-3 py-1 rounded-md bg-emerald-50 text-emerald-700 text-xs font-bold uppercase tracking-wider">${job.loc}</span>
+                        ${isExternal ? '<span class="px-3 py-1 rounded-md bg-[#4ECDC4]/20 text-[#0f766e] text-xs font-bold uppercase tracking-wider">Featured</span>' : ''}
                     </div>
                     <h3 class="text-xl font-bold mb-3 text-slate-900 group-hover:text-brand transition-colors">${job.title}</h3>
                     <p class="text-slate-500 mb-6 text-sm flex-grow">${job.shortDesc}</p>
                     <div class="pt-4 border-t border-slate-100 mt-auto flex items-center justify-between text-brand font-semibold text-sm">
-                        ${btnText} <i data-lucide="arrow-${currentLang === 'en' ? 'right' : 'left'}" class="w-4 h-4"></i>
+                        ${isExternal ? (currentLang === 'ar' ? 'عرض الوظيفة والتقديم' : 'View role & apply') : btnText}
+                        <i data-lucide="arrow-${currentLang === 'en' ? 'right' : 'left'}" class="w-4 h-4"></i>
                     </div>
                 `;
                 container.appendChild(card);
@@ -394,6 +418,12 @@
         function showJobDetail(jobIndex) {
             const job = translations[currentLang].jobs[jobIndex];
             const t = translations[currentLang];
+
+            // Dedicated landing pages (e.g. Sales Partner)
+            if (job.externalUrl) {
+                window.location.href = job.externalUrl;
+                return;
+            }
             
             // Hide jobs list, show job detail
             document.getElementById('jobs-list-view').classList.add('hidden');
