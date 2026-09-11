@@ -1,0 +1,149 @@
+<!--
+  Simple marketing profit calculator for SP / RP job pages.
+  Set before include:
+    window.GOSNEL_PROFIT_CALC = { role: 'sp' | 'rp', applyUrl: '...' }
+-->
+<section id="earn-estimate" class="rounded-3xl border border-teal-100 bg-gradient-to-br from-brand-soft to-white p-6 sm:p-8 shadow-sm">
+  <div class="flex items-start gap-3 mb-2">
+    <span class="inline-flex items-center justify-center w-10 h-10 rounded-2xl bg-brand text-slate-900 shrink-0">
+      <i data-lucide="calculator" class="w-5 h-5"></i>
+    </span>
+    <div>
+      <h2 class="text-2xl font-black text-slate-900">Estimate your profit</h2>
+      <p class="text-sm text-slate-600 mt-1">Try the numbers. Example only — change them to see your potential.</p>
+    </div>
+  </div>
+
+  <div class="mt-5 grid sm:grid-cols-3 gap-3">
+    <label class="block">
+      <span class="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wide text-slate-500 mb-1.5">
+        <i data-lucide="circle-dollar-sign" class="w-3.5 h-3.5"></i>
+        Meal Price
+      </span>
+      <input
+        id="pc-meal"
+        type="number"
+        min="0"
+        step="1"
+        value="25"
+        class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-base font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-brand"
+      />
+    </label>
+    <label class="block">
+      <span class="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wide text-slate-500 mb-1.5">
+        <i data-lucide="clipboard-list" class="w-3.5 h-3.5"></i>
+        Orders Per Day
+      </span>
+      <input
+        id="pc-orders"
+        type="number"
+        min="0"
+        step="1"
+        value="10"
+        class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-base font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-brand"
+      />
+    </label>
+    <label class="block">
+      <span class="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wide text-slate-500 mb-1.5">
+        <i data-lucide="store" class="w-3.5 h-3.5"></i>
+        Active Restaurants
+      </span>
+      <input
+        id="pc-restaurants"
+        type="number"
+        min="0"
+        step="1"
+        value="16"
+        class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-base font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-brand"
+      />
+    </label>
+  </div>
+
+  <div class="mt-5 rounded-2xl bg-white border border-teal-100 p-5 text-center">
+    <p id="pc-result" class="text-slate-700 text-sm sm:text-base leading-relaxed"></p>
+    <p id="pc-profit" class="mt-3 text-2xl sm:text-3xl font-black text-brand-dark"></p>
+  </div>
+
+  <div class="mt-5 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between">
+    <p class="text-xs text-slate-500">Estimate only. Real earnings depend on real orders.</p>
+    <a
+      id="pc-apply"
+      href="#"
+      class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900 text-white font-bold text-sm hover:bg-slate-800 transition"
+    >
+      Apply now
+      <i data-lucide="arrow-right" class="w-4 h-4"></i>
+    </a>
+  </div>
+</section>
+
+<script>
+(function () {
+  var cfg = window.GOSNEL_PROFIT_CALC || {};
+  var role = cfg.role === 'rp' ? 'rp' : 'sp';
+  var applyUrl = cfg.applyUrl || (role === 'rp'
+    ? 'https://admin.gosnel.com/apply?track=recruiter'
+    : 'https://admin.gosnel.com/apply?track=field_sales');
+
+  var FEE = 0.15;
+  var SP_MAX = 0.25;
+  var RP_MAX = 0.15;
+
+  var mealEl = document.getElementById('pc-meal');
+  var ordersEl = document.getElementById('pc-orders');
+  var restEl = document.getElementById('pc-restaurants');
+  var resultEl = document.getElementById('pc-result');
+  var profitEl = document.getElementById('pc-profit');
+  var applyEl = document.getElementById('pc-apply');
+
+  if (applyEl) applyEl.href = applyUrl;
+
+  function num(el, fallback) {
+    var n = Number(el && el.value);
+    return isFinite(n) && n >= 0 ? n : fallback;
+  }
+
+  function money(n) {
+    try {
+      return new Intl.NumberFormat(undefined, {
+        style: 'currency',
+        currency: 'USD',
+        maximumFractionDigits: 0
+      }).format(n);
+    } catch (e) {
+      return '$' + Math.round(n).toLocaleString();
+    }
+  }
+
+  function calc() {
+    var meal = num(mealEl, 25);
+    var perDay = num(ordersEl, 10);
+    var restaurants = Math.floor(num(restEl, 16));
+    var perMonth = perDay * 30;
+    var volume = restaurants * perMonth * meal;
+    var fee = volume * FEE;
+    var youEarn = role === 'rp'
+      ? fee * (1 - SP_MAX) * RP_MAX
+      : fee * SP_MAX;
+
+    if (resultEl) {
+      resultEl.innerHTML =
+        '<strong>' + perDay + ' orders per day</strong> → ' +
+        '<strong>' + perMonth + ' orders per month</strong>' +
+        ' · meal price ' + money(meal) +
+        ' · ' + restaurants + ' restaurants';
+    }
+    if (profitEl) {
+      profitEl.textContent = 'Your profit: ' + money(youEarn) + ' / month';
+    }
+  }
+
+  ['input', 'change'].forEach(function (evt) {
+    [mealEl, ordersEl, restEl].forEach(function (el) {
+      if (el) el.addEventListener(evt, calc);
+    });
+  });
+
+  calc();
+})();
+</script>
