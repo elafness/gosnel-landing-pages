@@ -1,7 +1,7 @@
 <!--
-  Simple marketing profit calculator for SP / RP job pages.
+  Simple marketing profit calculator for SP / RP / MR job pages.
   Set before include:
-    window.GOSNEL_PROFIT_CALC = { role: 'sp' | 'rp', applyUrl: '...' }
+    window.GOSNEL_PROFIT_CALC = { role: 'sp' | 'rp' | 'mr', applyUrl: '...' }
 -->
 <section id="earn-estimate" class="rounded-3xl border border-teal-100 bg-gradient-to-br from-brand-soft to-white p-6 sm:p-8 shadow-sm">
   <div class="flex items-start gap-3 mb-2">
@@ -81,14 +81,17 @@
 <script>
 (function () {
   var cfg = window.GOSNEL_PROFIT_CALC || {};
-  var role = cfg.role === 'rp' ? 'rp' : 'sp';
-  var applyUrl = cfg.applyUrl || (role === 'rp'
-    ? 'https://admin.gosnel.com/apply?track=recruiter'
-    : 'https://admin.gosnel.com/apply?track=field_sales');
+  var role = cfg.role === 'rp' ? 'rp' : (cfg.role === 'mr' ? 'mr' : 'sp');
+  var applyUrl = cfg.applyUrl || (
+    role === 'mr' ? 'https://admin.gosnel.com/apply?track=master_recruiter'
+    : role === 'rp' ? 'https://admin.gosnel.com/apply?track=recruiter'
+    : 'https://admin.gosnel.com/apply?track=field_sales'
+  );
 
   var FEE = 0.15;
   var SP_MAX = 0.25;
   var RP_MAX = 0.15;
+  var MR_MAX = 0.075;
 
   var mealEl = document.getElementById('pc-meal');
   var ordersEl = document.getElementById('pc-orders');
@@ -101,7 +104,9 @@
 
   if (applyEl) applyEl.href = applyUrl;
   if (subtitleEl) {
-    subtitleEl.textContent = role === 'rp'
+    subtitleEl.textContent = role === 'mr'
+      ? 'See how recruiting Recruiter Partners can earn you residual profit. Change the numbers to match your plan.'
+      : role === 'rp'
       ? 'See how recruiting Field Sales Partners can earn you residual profit. Change the numbers to match your plan.'
       : 'See how registering restaurants can earn you commission. Change the numbers to match your plan.';
   }
@@ -135,12 +140,23 @@
     var totalOrdersMonth = restaurants * perMonth;
     var volume = totalOrdersMonth * meal;
     var fee = volume * FEE;
-    var youEarn = role === 'rp'
+    var youEarn = role === 'mr'
+      ? fee * (1 - SP_MAX) * MR_MAX
+      : role === 'rp'
       ? fee * (1 - SP_MAX) * RP_MAX
       : fee * SP_MAX;
 
     if (resultEl) {
-      if (role === 'rp') {
+      if (role === 'mr') {
+        resultEl.innerHTML =
+          'If Recruiter Partners you invite build teams that register <strong>' + restaurants + ' ' +
+          plural(restaurants, 'restaurant', 'restaurants') + '</strong>, and every restaurant gets ' +
+          '<strong>' + perDay + ' ' + plural(perDay, 'order', 'orders') + ' per day</strong> at ' +
+          '<strong>' + money(meal) + ' meal price</strong>, that is ' +
+          '<strong>' + perMonth + ' orders per month</strong> from each restaurant ' +
+          '(about <strong>' + totalOrdersMonth.toLocaleString() + ' orders / month</strong> in total). ' +
+          'Your estimated residual profit at the max Master Recruiter rate (7.5%) would be:';
+      } else if (role === 'rp') {
         resultEl.innerHTML =
           'If Field Sales Partners you invite register <strong>' + restaurants + ' ' +
           plural(restaurants, 'restaurant', 'restaurants') + '</strong>, and every restaurant gets ' +
@@ -164,7 +180,9 @@
       profitEl.textContent = money(youEarn) + ' / month';
     }
     if (ctaLineEl) {
-      ctaLineEl.textContent = role === 'rp'
+      ctaLineEl.textContent = role === 'mr'
+        ? 'Ready to recruit Recruiters? Apply and get your invite link.'
+        : role === 'rp'
         ? 'Ready to start recruiting? Apply and get your invite link.'
         : 'Ready to start? Apply, finish training, and register your first restaurants.';
     }
