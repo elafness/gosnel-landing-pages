@@ -25,6 +25,13 @@ http://hotels.gosnel.com/* https://gosnel.com/hotels/:splat 301
 # ============================================
 # CAREERS SUBDOMAIN (careers.gosnel.com)
 # ============================================
+# Master Recruiter role removed — send old URLs to careers index
+/careers/master-recruiter /careers/ 301
+/careers/master-recruiter/ /careers/ 301
+/careers/master-recruiter.html /careers/ 301
+https://careers.gosnel.com/master-recruiter /careers/ 301
+https://careers.gosnel.com/master-recruiter/ /careers/ 301
+https://careers.gosnel.com/master-recruiter.html /careers/ 301
 https://careers.gosnel.com/* /careers/:splat 200
 https://careers.gosnel.com/ /careers/ 200
 

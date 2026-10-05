@@ -172,6 +172,10 @@ const buildPages = () => {
     const distSubdomainDir = path.join(distDir, subdomain);
 
     if (fs.existsSync(srcSubdomainDir)) {
+      // Wipe dest first so deleted source files (e.g. retired career pages) do not linger in dist
+      if (fs.existsSync(distSubdomainDir)) {
+        fs.rmSync(distSubdomainDir, { recursive: true, force: true });
+      }
       // Recursive copy function with HTML processing
       const copyDirectoryRecursive = (src, dest) => {
         if (!fs.existsSync(dest)) {
