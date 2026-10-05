@@ -1,7 +1,7 @@
 <!--
-  Simple marketing profit calculator for SP / RP / MR job pages.
+  Simple marketing profit calculator for SP / HSP / RP job pages.
   Set before include:
-    window.GOSNEL_PROFIT_CALC = { role: 'sp' | 'rp' | 'mr', applyUrl: '...' }
+    window.GOSNEL_PROFIT_CALC = { role: 'sp' | 'hsp' | 'rp', applyUrl: '...' }
 -->
 <section id="earn-estimate" class="rounded-3xl border border-teal-100 bg-gradient-to-br from-brand-soft to-white p-6 sm:p-8 shadow-sm">
   <div class="flex items-start gap-3 mb-2">
@@ -14,11 +14,17 @@
     </div>
   </div>
 
+  <div id="pc-role-toggle" class="mt-4 hidden flex flex-wrap gap-2">
+    <button type="button" data-pc-role="sp" class="pc-role-btn px-3 py-1.5 rounded-full text-xs font-bold border border-slate-200 bg-white text-slate-700 hover:border-brand">SP · 30%</button>
+    <button type="button" data-pc-role="hsp" class="pc-role-btn px-3 py-1.5 rounded-full text-xs font-bold border border-slate-200 bg-white text-slate-700 hover:border-brand">HSP · 30%</button>
+    <button type="button" data-pc-role="rp" class="pc-role-btn px-3 py-1.5 rounded-full text-xs font-bold border border-slate-200 bg-white text-slate-700 hover:border-brand">RP · 15% residual</button>
+  </div>
+
   <div class="mt-5 grid sm:grid-cols-3 gap-3">
     <label class="block">
       <span class="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wide text-slate-500 mb-1.5">
         <i data-lucide="circle-dollar-sign" class="w-3.5 h-3.5"></i>
-        Meal Price
+        <span id="pc-meal-label">Meal Price</span>
       </span>
       <input
         id="pc-meal"
@@ -32,7 +38,7 @@
     <label class="block">
       <span class="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wide text-slate-500 mb-1.5">
         <i data-lucide="clipboard-list" class="w-3.5 h-3.5"></i>
-        Orders Per Day
+        <span id="pc-orders-label">Orders Per Day</span>
       </span>
       <input
         id="pc-orders"
@@ -46,7 +52,7 @@
     <label class="block">
       <span class="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wide text-slate-500 mb-1.5">
         <i data-lucide="store" class="w-3.5 h-3.5"></i>
-        Active Restaurants
+        <span id="pc-units-label">Active Restaurants</span>
       </span>
       <input
         id="pc-restaurants"
@@ -66,7 +72,7 @@
   </div>
 
   <div class="mt-5 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between">
-    <p class="text-xs text-slate-500">Example only. Real earnings depend on real restaurants and real orders.</p>
+    <p class="text-xs text-slate-500">Example only. Flat rates: SP/HSP 30% of GoSnel fee · RP 15% of fee after SP/HSP share. Real earnings depend on real activity.</p>
     <a
       id="pc-apply"
       href="#"
@@ -81,17 +87,19 @@
 <script>
 (function () {
   var cfg = window.GOSNEL_PROFIT_CALC || {};
-  var role = cfg.role === 'rp' ? 'rp' : (cfg.role === 'mr' ? 'mr' : 'sp');
-  var applyUrl = cfg.applyUrl || (
-    role === 'mr' ? 'https://admin.gosnel.com/apply?track=master_recruiter'
-    : role === 'rp' ? 'https://admin.gosnel.com/apply?track=recruiter'
-    : 'https://admin.gosnel.com/apply?track=field_sales'
-  );
+  var role = cfg.role === 'rp' ? 'rp' : (cfg.role === 'hsp' ? 'hsp' : 'sp');
+  var showToggle = !!cfg.showToggle;
+  var applyUrls = {
+    sp: 'https://admin.gosnel.com/apply?track=field_sales',
+    hsp: 'https://admin.gosnel.com/apply?track=hotel_sales',
+    rp: 'https://admin.gosnel.com/apply?track=recruiter'
+  };
+  var applyUrl = cfg.applyUrl || applyUrls[role] || applyUrls.sp;
 
+  // Flat commission model (no Silver / Gold / Platinum)
   var FEE = 0.15;
-  var SP_MAX = 0.25;
-  var RP_MAX = 0.15;
-  var MR_MAX = 0.075;
+  var SP_HSP_SHARE = 0.30;
+  var RP_RESIDUAL = 0.15;
 
   var mealEl = document.getElementById('pc-meal');
   var ordersEl = document.getElementById('pc-orders');
@@ -101,14 +109,72 @@
   var ctaLineEl = document.getElementById('pc-cta-line');
   var subtitleEl = document.getElementById('pc-subtitle');
   var applyEl = document.getElementById('pc-apply');
+  var mealLabelEl = document.getElementById('pc-meal-label');
+  var ordersLabelEl = document.getElementById('pc-orders-label');
+  var unitsLabelEl = document.getElementById('pc-units-label');
+  var toggleEl = document.getElementById('pc-role-toggle');
 
-  if (applyEl) applyEl.href = applyUrl;
-  if (subtitleEl) {
-    subtitleEl.textContent = role === 'mr'
-      ? 'See how recruiting Recruiter Partners can earn you residual profit. Change the numbers to match your plan.'
-      : role === 'rp'
-      ? 'See how recruiting Field Sales Partners can earn you residual profit. Change the numbers to match your plan.'
-      : 'See how registering restaurants can earn you commission. Change the numbers to match your plan.';
+  function setApply() {
+    applyUrl = cfg.applyUrl || applyUrls[role] || applyUrls.sp;
+    if (applyEl) applyEl.href = applyUrl;
+  }
+
+  function setLabels() {
+    if (subtitleEl) {
+      subtitleEl.textContent = role === 'rp'
+        ? 'See how recruiting SP and HSP partners can earn you a flat 15% residual. Change the numbers to match your plan.'
+        : role === 'hsp'
+        ? 'See how registering hotels can earn you a flat 30% of GoSnel hotel fees. Change the numbers to match your plan.'
+        : 'See how registering restaurants can earn you a flat 30% of GoSnel’s fee. Change the numbers to match your plan.';
+    }
+    if (mealLabelEl) mealLabelEl.textContent = role === 'hsp' ? 'Fee / Month (AED)' : 'Meal Price';
+    if (ordersLabelEl) ordersLabelEl.textContent = role === 'hsp' ? 'Months' : 'Orders Per Day';
+    if (unitsLabelEl) {
+      unitsLabelEl.textContent = role === 'hsp' ? 'Active Hotels' : 'Active Restaurants';
+    }
+    if (role === 'hsp') {
+      if (mealEl && (!mealEl.dataset.touched)) mealEl.value = '15';
+      if (ordersEl && (!ordersEl.dataset.touched)) ordersEl.value = '1';
+      if (restEl && (!restEl.dataset.touched)) restEl.value = '5';
+    } else if (!mealEl.dataset.touched && !ordersEl.dataset.touched && !restEl.dataset.touched) {
+      if (mealEl) mealEl.value = '25';
+      if (ordersEl) ordersEl.value = '10';
+      if (restEl) restEl.value = '16';
+    }
+  }
+
+  function paintToggle() {
+    if (!toggleEl) return;
+    if (showToggle) {
+      toggleEl.classList.remove('hidden');
+      toggleEl.classList.add('flex');
+    }
+    Array.prototype.forEach.call(toggleEl.querySelectorAll('.pc-role-btn'), function (btn) {
+      var active = btn.getAttribute('data-pc-role') === role;
+      btn.classList.toggle('bg-brand', active);
+      btn.classList.toggle('text-slate-900', active);
+      btn.classList.toggle('border-brand', active);
+      btn.classList.toggle('bg-white', !active);
+      btn.classList.toggle('text-slate-700', !active);
+    });
+  }
+
+  setApply();
+  setLabels();
+  paintToggle();
+
+  if (toggleEl) {
+    toggleEl.addEventListener('click', function (e) {
+      var btn = e.target.closest('[data-pc-role]');
+      if (!btn) return;
+      role = btn.getAttribute('data-pc-role');
+      if (role !== 'sp' && role !== 'hsp' && role !== 'rp') return;
+      cfg.applyUrl = null;
+      setApply();
+      setLabels();
+      paintToggle();
+      calc();
+    });
   }
 
   function num(el, fallback) {
@@ -120,11 +186,11 @@
     try {
       return new Intl.NumberFormat(undefined, {
         style: 'currency',
-        currency: 'USD',
+        currency: role === 'hsp' ? 'AED' : 'USD',
         maximumFractionDigits: 0
       }).format(n);
     } catch (e) {
-      return '$' + Math.round(n).toLocaleString();
+      return (role === 'hsp' ? 'AED ' : '$') + Math.round(n).toLocaleString();
     }
   }
 
@@ -133,38 +199,49 @@
   }
 
   function calc() {
-    var meal = num(mealEl, 25);
-    var perDay = num(ordersEl, 10);
-    var restaurants = Math.floor(num(restEl, 16));
-    var perMonth = perDay * 30;
-    var totalOrdersMonth = restaurants * perMonth;
-    var volume = totalOrdersMonth * meal;
-    var fee = volume * FEE;
-    var youEarn = role === 'mr'
-      ? fee * (1 - SP_MAX) * MR_MAX
-      : role === 'rp'
-      ? fee * (1 - SP_MAX) * RP_MAX
-      : fee * SP_MAX;
+    var meal = num(mealEl, role === 'hsp' ? 15 : 25);
+    var perDay = num(ordersEl, role === 'hsp' ? 1 : 10);
+    var restaurants = Math.floor(num(restEl, role === 'hsp' ? 5 : 16));
+    var fee;
+    var youEarn;
+    var perMonth;
+    var totalOrdersMonth;
+    var volume;
+
+    if (role === 'hsp') {
+      // Simple hotel example: monthly fee × hotels × months × flat 30%
+      var months = Math.max(1, Math.floor(perDay));
+      fee = meal * restaurants * months;
+      youEarn = fee * SP_HSP_SHARE;
+    } else {
+      perMonth = perDay * 30;
+      totalOrdersMonth = restaurants * perMonth;
+      volume = totalOrdersMonth * meal;
+      fee = volume * FEE;
+      youEarn = role === 'rp'
+        ? fee * (1 - SP_HSP_SHARE) * RP_RESIDUAL
+        : fee * SP_HSP_SHARE;
+    }
 
     if (resultEl) {
-      if (role === 'mr') {
+      if (role === 'hsp') {
+        var monthsTxt = Math.max(1, Math.floor(perDay));
         resultEl.innerHTML =
-          'If Recruiter Partners you invite build teams that register <strong>' + restaurants + ' ' +
-          plural(restaurants, 'restaurant', 'restaurants') + '</strong>, and every restaurant gets ' +
-          '<strong>' + perDay + ' ' + plural(perDay, 'order', 'orders') + ' per day</strong> at ' +
-          '<strong>' + money(meal) + ' meal price</strong>, that is ' +
-          '<strong>' + perMonth + ' orders per month</strong> from each restaurant ' +
-          '(about <strong>' + totalOrdersMonth.toLocaleString() + ' orders / month</strong> in total). ' +
-          'Your estimated residual profit at the max Master Recruiter rate (7.5%) would be:';
+          'If you register <strong>' + restaurants + ' ' +
+          plural(restaurants, 'hotel', 'hotels') + '</strong>, and each pays GoSnel about ' +
+          '<strong>' + money(meal) + ' / month</strong> in fees' +
+          (monthsTxt > 1 ? (' over <strong>' + monthsTxt + ' months</strong>') : '') +
+          ', your estimated profit at the flat <strong>30%</strong> HSP rate would be' +
+          (monthsTxt > 1 ? ':' : ' <strong>per month</strong>:');
       } else if (role === 'rp') {
         resultEl.innerHTML =
-          'If Field Sales Partners you invite register <strong>' + restaurants + ' ' +
+          'If Field Sales or Hotel Sales Partners you invite register <strong>' + restaurants + ' ' +
           plural(restaurants, 'restaurant', 'restaurants') + '</strong>, and every restaurant gets ' +
           '<strong>' + perDay + ' ' + plural(perDay, 'order', 'orders') + ' per day</strong> at ' +
           '<strong>' + money(meal) + ' meal price</strong>, that is ' +
           '<strong>' + perMonth + ' orders per month</strong> from each restaurant ' +
           '(about <strong>' + totalOrdersMonth.toLocaleString() + ' orders / month</strong> in total). ' +
-          'Your estimated residual profit at the max rate would be:';
+          'After their flat 30% share, your estimated residual at <strong>15%</strong> of GoSnel net would be:';
       } else {
         resultEl.innerHTML =
           'If you register <strong>' + restaurants + ' ' +
@@ -173,24 +250,33 @@
           '<strong>' + money(meal) + ' meal price</strong>, that is ' +
           '<strong>' + perMonth + ' orders per month</strong> from each restaurant ' +
           '(about <strong>' + totalOrdersMonth.toLocaleString() + ' orders / month</strong> in total). ' +
-          'Your estimated profit at the max rate would be:';
+          'Your estimated profit at the flat <strong>30%</strong> SP rate would be:';
       }
     }
     if (profitEl) {
-      profitEl.textContent = money(youEarn) + ' / month';
+      if (role === 'hsp' && Math.max(1, Math.floor(perDay)) > 1) {
+        profitEl.textContent = money(youEarn) + ' total';
+      } else {
+        profitEl.textContent = money(youEarn) + ' / month';
+      }
     }
     if (ctaLineEl) {
-      ctaLineEl.textContent = role === 'mr'
-        ? 'Ready to recruit Recruiters? Apply and get your invite link.'
-        : role === 'rp'
-        ? 'Ready to start recruiting? Apply and get your invite link.'
+      ctaLineEl.textContent = role === 'rp'
+        ? 'Ready to start recruiting SP and HSP? Apply and get your invite link.'
+        : role === 'hsp'
+        ? 'Ready to start? Apply, finish training, and register your first hotels.'
         : 'Ready to start? Apply, finish training, and register your first restaurants.';
     }
   }
 
   ['input', 'change'].forEach(function (evt) {
     [mealEl, ordersEl, restEl].forEach(function (el) {
-      if (el) el.addEventListener(evt, calc);
+      if (el) {
+        el.addEventListener(evt, function () {
+          el.dataset.touched = '1';
+          calc();
+        });
+      }
     });
   });
 
