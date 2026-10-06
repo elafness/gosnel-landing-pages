@@ -129,27 +129,23 @@
       subtitleEl.textContent = role === 'rp'
         ? 'See how recruiting Restaurant and Hotel Sales Partners can earn you a flat 15% residual. Change the numbers to match your plan.'
         : role === 'hsp'
-        ? 'See how registering hotels can earn you a flat 30% of GoSnel hotel fees. Change the numbers to match your plan.'
+        ? 'See how registering hotels can earn you a flat 30% of GoSnel’s fee on guest orders. Change the numbers to match your plan.'
         : role === 'lsp'
         ? 'See how registering local shops can earn you a flat 30% of GoSnel’s fee. Change the numbers to match your plan.'
         : 'See how registering restaurants can earn you a flat 30% of GoSnel’s fee. Change the numbers to match your plan.';
     }
     if (mealLabelEl) {
       mealLabelEl.textContent =
-        role === 'hsp' ? 'Fee / Month (AED)' :
-        role === 'lsp' ? 'Order Value' : 'Meal Price';
+        role === 'hsp' || role === 'lsp' ? 'Order Value' : 'Meal Price';
     }
-    if (ordersLabelEl) ordersLabelEl.textContent = role === 'hsp' ? 'Months' : 'Orders Per Day';
+    if (ordersLabelEl) ordersLabelEl.textContent = 'Orders Per Day';
     if (unitsLabelEl) {
       unitsLabelEl.textContent =
         role === 'hsp' ? 'Active Hotels' :
         role === 'lsp' ? 'Active Local Partners' : 'Active Restaurants';
     }
-    if (role === 'hsp') {
-      if (mealEl && (!mealEl.dataset.touched)) mealEl.value = '15';
-      if (ordersEl && (!ordersEl.dataset.touched)) ordersEl.value = '1';
-      if (restEl && (!restEl.dataset.touched)) restEl.value = '5';
-    } else if (role === 'lsp') {
+    // HSP uses the same order-value model as LSP (both depend on guest/customer order value)
+    if (role === 'hsp' || role === 'lsp') {
       if (mealEl && (!mealEl.dataset.touched)) mealEl.value = '40';
       if (ordersEl && (!ordersEl.dataset.touched)) ordersEl.value = '5';
       if (restEl && (!restEl.dataset.touched)) restEl.value = '12';
@@ -203,11 +199,11 @@
     try {
       return new Intl.NumberFormat(undefined, {
         style: 'currency',
-        currency: role === 'hsp' ? 'AED' : 'USD',
+        currency: 'USD',
         maximumFractionDigits: 0
       }).format(n);
     } catch (e) {
-      return (role === 'hsp' ? 'AED ' : '$') + Math.round(n).toLocaleString();
+      return '$' + Math.round(n).toLocaleString();
     }
   }
 
@@ -216,40 +212,30 @@
   }
 
   function calc() {
-    var meal = num(mealEl, role === 'hsp' ? 15 : role === 'lsp' ? 40 : 25);
-    var perDay = num(ordersEl, role === 'hsp' ? 1 : role === 'lsp' ? 5 : 10);
-    var restaurants = Math.floor(num(restEl, role === 'hsp' ? 5 : role === 'lsp' ? 12 : 16));
-    var fee;
-    var youEarn;
-    var perMonth;
-    var totalOrdersMonth;
-    var volume;
-
-    if (role === 'hsp') {
-      // Simple hotel example: monthly fee × hotels × months × flat 30%
-      var months = Math.max(1, Math.floor(perDay));
-      fee = meal * restaurants * months;
-      youEarn = fee * SP_HSP_SHARE;
-    } else {
-      perMonth = perDay * 30;
-      totalOrdersMonth = restaurants * perMonth;
-      volume = totalOrdersMonth * meal;
-      fee = volume * FEE;
-      youEarn = role === 'rp'
-        ? fee * (1 - SP_HSP_SHARE) * RP_RESIDUAL
-        : fee * SP_HSP_SHARE;
-    }
+    var orderDefault = (role === 'hsp' || role === 'lsp') ? 40 : 25;
+    var perDayDefault = (role === 'hsp' || role === 'lsp') ? 5 : 10;
+    var unitsDefault = (role === 'hsp' || role === 'lsp') ? 12 : 16;
+    var meal = num(mealEl, orderDefault);
+    var perDay = num(ordersEl, perDayDefault);
+    var restaurants = Math.floor(num(restEl, unitsDefault));
+    var perMonth = perDay * 30;
+    var totalOrdersMonth = restaurants * perMonth;
+    var volume = totalOrdersMonth * meal;
+    var fee = volume * FEE;
+    var youEarn = role === 'rp'
+      ? fee * (1 - SP_HSP_SHARE) * RP_RESIDUAL
+      : fee * SP_HSP_SHARE;
 
     if (resultEl) {
       if (role === 'hsp') {
-        var monthsTxt = Math.max(1, Math.floor(perDay));
         resultEl.innerHTML =
           'If you register <strong>' + restaurants + ' ' +
-          plural(restaurants, 'hotel', 'hotels') + '</strong>, and each pays GoSnel about ' +
-          '<strong>' + money(meal) + ' / month</strong> in fees' +
-          (monthsTxt > 1 ? (' over <strong>' + monthsTxt + ' months</strong>') : '') +
-          ', your estimated profit at the flat <strong>30%</strong> Hotel Sales Partner rate would be' +
-          (monthsTxt > 1 ? ':' : ' <strong>per month</strong>:');
+          plural(restaurants, 'hotel', 'hotels') + '</strong>, and every hotel drives ' +
+          '<strong>' + perDay + ' ' + plural(perDay, 'guest order', 'guest orders') + ' per day</strong> at ' +
+          '<strong>' + money(meal) + ' order value</strong>, that is ' +
+          '<strong>' + perMonth + ' orders per month</strong> from each hotel ' +
+          '(about <strong>' + totalOrdersMonth.toLocaleString() + ' orders / month</strong> in total). ' +
+          'Your estimated profit at the flat <strong>30%</strong> Hotel Sales Partner rate (12 months) would be:';
       } else if (role === 'rp') {
         resultEl.innerHTML =
           'If Restaurant or Hotel Sales Partners you invite register <strong>' + restaurants + ' ' +
@@ -267,7 +253,7 @@
           '<strong>' + money(meal) + ' order value</strong>, that is ' +
           '<strong>' + perMonth + ' orders per month</strong> from each partner ' +
           '(about <strong>' + totalOrdersMonth.toLocaleString() + ' orders / month</strong> in total). ' +
-          'Your estimated profit at the flat <strong>30%</strong> Local Sales Partner rate would be:';
+          'Your estimated profit at the flat <strong>30%</strong> Local Sales Partner rate (12 months) would be:';
       } else {
         resultEl.innerHTML =
           'If you register <strong>' + restaurants + ' ' +
@@ -280,11 +266,7 @@
       }
     }
     if (profitEl) {
-      if (role === 'hsp' && Math.max(1, Math.floor(perDay)) > 1) {
-        profitEl.textContent = money(youEarn) + ' total';
-      } else {
-        profitEl.textContent = money(youEarn) + ' / month';
-      }
+      profitEl.textContent = money(youEarn) + ' / month';
     }
     if (ctaLineEl) {
       ctaLineEl.textContent = role === 'rp'
