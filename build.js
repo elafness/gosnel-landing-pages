@@ -93,38 +93,6 @@ const buildPages = () => {
     }
   });
 
-  // Create index.html files in subdirectories that redirect to the main landing pages
-  landingPages.forEach(({ subdomain, filename }) => {
-    const srcPath = path.join(__dirname, filename);
-    const distSubdomainDir = path.join(distDir, subdomain);
-    const distIndexPath = path.join(distSubdomainDir, 'index.html');
-
-    if (fs.existsSync(srcPath)) {
-      // Ensure subdomain directory exists
-      if (!fs.existsSync(distSubdomainDir)) {
-        fs.mkdirSync(distSubdomainDir, { recursive: true });
-      }
-
-      // Copy landing page content as index.html in subdirectory
-      let htmlContent = fs.readFileSync(srcPath, "utf8");
-      const subFileDir = path.dirname(srcPath);
-      htmlContent = processIncludes(htmlContent, subFileDir);
-      
-      // Fix CSS paths for subdirectory access
-      htmlContent = htmlContent.replace(
-        /\.\.\/\.\.\/dist\/output\.css/g,
-        "/output.css"
-      );
-      htmlContent = htmlContent.replace(
-        /href="\/output\.css"/g,
-        'href="/output.css"'
-      );
-      
-      fs.writeFileSync(distIndexPath, htmlContent);
-      console.log(`✅ Created ${subdomain}/index.html`);
-    }
-  });
-
   // Copy root index.html for routing
   const rootIndexPath = path.join(srcDir, "index.html");
   const distRootIndexPath = path.join(distDir, "index.html");
@@ -220,6 +188,28 @@ const buildPages = () => {
   });
   
   console.log("✅ Copied subdirectory pages (including careers & restaurants)");
+
+  // Write landing pages as subdomain/index.html AFTER the wipe+copy above.
+  // Earlier builds wrote hotels/index.html then wiped dist/hotels and skipped
+  // *-landing.html, leaving /hotels empty so Cloudflare fell back to the food homepage.
+  landingPages.forEach(({ subdomain, filename }) => {
+    const srcPath = path.join(__dirname, filename);
+    const distSubdomainDir = path.join(distDir, subdomain);
+    const distIndexPath = path.join(distSubdomainDir, "index.html");
+
+    if (!fs.existsSync(srcPath)) return;
+
+    if (!fs.existsSync(distSubdomainDir)) {
+      fs.mkdirSync(distSubdomainDir, { recursive: true });
+    }
+
+    let htmlContent = fs.readFileSync(srcPath, "utf8");
+    htmlContent = processIncludes(htmlContent, path.dirname(srcPath));
+    htmlContent = htmlContent.replace(/\.\.\/\.\.\/dist\/output\.css/g, "/output.css");
+    htmlContent = htmlContent.replace(/href="\/output\.css"/g, 'href="/output.css"');
+    fs.writeFileSync(distIndexPath, htmlContent);
+    console.log(`✅ Created ${subdomain}/index.html`);
+  });
 
   // Create /partner/ directory with partner pages (clean URLs)
   const partnerDir = path.join(distDir, 'partner');
