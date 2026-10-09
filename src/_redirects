@@ -12,6 +12,10 @@ https://careers.gosnel.com/* /careers/:splat 200
 /careers/ /careers/index.html 200
 /careers/sales-partner /careers/sales-partner.html 200
 /careers/field-sales-recruiter /careers/field-sales-recruiter.html 200
+/careers/task-taker-partner /careers/field-project-manager.html 301
+/careers/task-taker-partner/ /careers/field-project-manager.html 301
+/careers/task-taker-partner.html /careers/field-project-manager.html 301
+/careers/field-project-manager /careers/field-project-manager.html 200
 /careers/* /careers/:splat 200
 
 # ============================================
