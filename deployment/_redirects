@@ -33,13 +33,15 @@ https://careers.gosnel.com/master-recruiter /careers/ 301
 https://careers.gosnel.com/master-recruiter/ /careers/ 301
 https://careers.gosnel.com/master-recruiter.html /careers/ 301
 # Task Taker Partner renamed to Field Project Manager
+# Do NOT add a 200 rewrite to .html here — Cloudflare pretty URLs already
+# serve field-project-manager.html at /careers/field-project-manager; a rewrite
+# to .html fights the .html→pretty 308 and causes an infinite redirect loop.
 /careers/task-taker-partner /careers/field-project-manager 301
 /careers/task-taker-partner/ /careers/field-project-manager 301
-/careers/task-taker-partner.html /careers/field-project-manager.html 301
-/careers/field-project-manager /careers/field-project-manager.html 200
+/careers/task-taker-partner.html /careers/field-project-manager 301
 https://careers.gosnel.com/task-taker-partner /careers/field-project-manager 301
 https://careers.gosnel.com/task-taker-partner/ /careers/field-project-manager 301
-https://careers.gosnel.com/task-taker-partner.html /careers/field-project-manager.html 301
+https://careers.gosnel.com/task-taker-partner.html /careers/field-project-manager 301
 https://careers.gosnel.com/* /careers/:splat 200
 https://careers.gosnel.com/ /careers/ 200
 
