@@ -9,7 +9,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>GoSnel Partners | Local services for towers</title>
-    <meta name="description" content="Partner with GoSnel to serve residents in nearby towers — grocery, pharmacy, meals, water, laundry, and more. In-app orders on the GoSnel platform.">
+    <meta name="description" content="Partner with GoSnel to serve residents in nearby towers — grocery, pharmacy, meals, water, laundry, and more. Apply on this page.">
     <meta name="robots" content="index, follow, max-image-preview:large">
     <link rel="canonical" href="https://gosnel.com/partner/">
     <meta name="theme-color" content="#4ECDC4">
@@ -17,8 +17,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <meta property="og:url" content="https://gosnel.com/partner/">
     <meta property="og:site_name" content="GoSnel">
     <meta property="og:title" content="GoSnel Partners | Local services for towers">
-    <meta property="og:description" content="Reach residents around your shop. Grocery, pharmacy, meals, and more — orders stay on the GoSnel platform.">
-    <meta property="og:image" content="https://gosnel.com/shared/assets/images/gosnel-logo-rebrand.png">
+    <meta property="og:description" content="Reach residents around your shop. Grocery, pharmacy, meals, and more — apply to become a GoSnel partner.">
+    <meta property="og:image" content="https://gosnel.com/shared/assets/images/GoSnelLogoText.png">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="GoSnel Partners | Local services for towers">
     <meta name="twitter:description" content="Join as a local partner and serve towers near you.">
@@ -34,6 +34,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       .btn-brand { background: var(--brand); color: #0f2f2e; }
       .btn-brand:hover { filter: brightness(0.95); }
       .card { border: 1px solid #dcebe7; background: #fff; border-radius: 1.25rem; }
+      .field { width: 100%; border: 1px solid #dcebe7; border-radius: 0.9rem; padding: 0.8rem 1rem; background: #fff; }
+      .field:focus { outline: 2px solid rgba(78,205,196,0.45); border-color: #4ECDC4; }
     </style>
 </head>
 <body class="antialiased">
@@ -42,7 +44,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <header class="sticky top-0 z-50 border-b border-[#dcebe7] bg-white/95 backdrop-blur">
       <div class="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
         <a href="/partner/" class="flex items-center gap-2.5">
-          <img src="/shared/assets/images/gosnel-logo-rebrand.png" alt="GoSnel" class="h-10 w-10 rounded-xl object-contain">
+          <img src="/shared/assets/images/GoSnelLogoText.png" alt="GoSnel" class="h-10 w-10 rounded-full object-contain">
           <div class="leading-tight">
             <div class="text-lg font-extrabold tracking-tight">GoSnel Partners</div>
             <div class="hidden text-[11px] font-semibold text-[#5f7d7a] sm:block">Local services for towers</div>
@@ -55,8 +57,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <a href="/" class="hover:text-[#163c3b]">For residents</a>
         </nav>
         <div class="flex items-center gap-2">
-          <a href="https://auth.gosnel.com" class="hidden rounded-xl px-3 py-2 text-sm font-bold text-[#5f7d7a] hover:text-[#163c3b] sm:inline">Partner login</a>
-          <a href="https://auth.gosnel.com" class="btn-brand rounded-xl px-4 py-2.5 text-sm font-extrabold shadow-sm">Apply / Sign in</a>
+          <a href="#apply" class="btn-brand rounded-xl px-4 py-2.5 text-sm font-extrabold shadow-sm">Become a partner</a>
           <button id="menuBtn" class="grid h-10 w-10 place-items-center rounded-xl border border-[#dcebe7] md:hidden" aria-label="Menu">
             <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h12M4 10h12M4 14h12"/></svg>
           </button>
@@ -67,14 +68,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <a href="#why">Why partner</a>
           <a href="#who">Who can join</a>
           <a href="#how">How it works</a>
+          <a href="#apply">Become a partner</a>
           <a href="/">For residents</a>
-          <a href="https://auth.gosnel.com">Partner login</a>
         </div>
       </div>
     </header>
 
     <main>
-      <!-- Hero -->
       <section class="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-2 lg:items-center lg:py-20">
         <div>
           <p class="mb-3 text-xs font-extrabold uppercase tracking-[0.18em] text-[#4ECDC4]">Partner program</p>
@@ -82,17 +82,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             Serve residents in towers near your shop
           </h1>
           <p class="mt-4 max-w-xl text-base leading-relaxed text-[#5f7d7a] sm:text-lg">
-            GoSnel is for local services — not only restaurants. Grocery, pharmacy, water, laundry, meals, and more can reach nearby buildings through one platform. Residents send requests in the app; you manage them in your partner portal.
+            GoSnel is for local services — not only restaurants. Grocery, pharmacy, water, laundry, meals, and more can reach nearby buildings through one platform. Residents send requests in the app; you manage them with GoSnel.
           </p>
-          <div class="mt-8 flex flex-wrap gap-3">
-            <a href="https://auth.gosnel.com" class="btn-brand inline-flex rounded-2xl px-5 py-3.5 text-sm font-extrabold shadow">Become a partner</a>
-            <a href="https://local.gosnel.com" class="inline-flex rounded-2xl border border-[#dcebe7] bg-white px-5 py-3.5 text-sm font-extrabold hover:bg-[#f3faf9]">Local Partners portal</a>
+          <div class="mt-8">
+            <a href="#apply" class="btn-brand inline-flex rounded-2xl px-5 py-3.5 text-sm font-extrabold shadow">Become a partner</a>
           </div>
         </div>
         <div class="overflow-hidden rounded-[1.75rem] border border-[#dcebe7] shadow-lg">
           <img
-            src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?auto=format&fit=crop&w=1200&q=80"
-            alt="Local shop partner"
+            src="/shared/assets/images/marketing_services.webp"
+            alt="GoSnel partner local services"
             class="aspect-[4/3] w-full object-cover sm:aspect-[5/4]"
             width="1200"
             height="900"
@@ -100,7 +99,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </div>
       </section>
 
-      <!-- Why -->
       <section id="why" class="bg-[#f3faf9] py-16 sm:py-20">
         <div class="mx-auto max-w-6xl px-4 sm:px-6">
           <div class="mx-auto max-w-2xl text-center">
@@ -114,15 +112,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             </div>
             <div class="card p-6">
               <h3 class="font-extrabold">In-app orders</h3>
-              <p class="mt-2 text-sm text-[#5f7d7a]">Receive and manage requests on the GoSnel platform. No need to chase chats for every order.</p>
+              <p class="mt-2 text-sm text-[#5f7d7a]">Receive and manage requests on the GoSnel platform with a clear order channel.</p>
             </div>
             <div class="card p-6">
               <h3 class="font-extrabold">One brand, many services</h3>
               <p class="mt-2 text-sm text-[#5f7d7a]">Residents open one app for meals and everyday local needs — you join as the right category.</p>
             </div>
             <div class="card p-6">
-              <h3 class="font-extrabold">Partner portals</h3>
-              <p class="mt-2 text-sm text-[#5f7d7a]">Use Local Partners or restaurant vendor tools to run your shop inbox and settings.</p>
+              <h3 class="font-extrabold">Simple onboarding</h3>
+              <p class="mt-2 text-sm text-[#5f7d7a]">Apply below. Our team reviews and helps you get set up for your area.</p>
             </div>
             <div class="card p-6">
               <h3 class="font-extrabold">Privacy-minded flow</h3>
@@ -136,7 +134,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </div>
       </section>
 
-      <!-- Who -->
       <section id="who" class="py-16 sm:py-20">
         <div class="mx-auto max-w-6xl px-4 sm:px-6">
           <div class="mx-auto max-w-2xl text-center">
@@ -145,128 +142,198 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           </div>
           <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             <article class="card overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=800&q=80" alt="Grocery" class="h-36 w-full object-cover" loading="lazy">
-              <div class="p-5"><h3 class="font-extrabold">Grocery & minimart</h3><p class="mt-1 text-sm text-[#5f7d7a]">Daily essentials for residents nearby.</p></div>
+              <img src="/shared/assets/images/marketing_services.webp" alt="Grocery" class="h-36 w-full object-cover" loading="lazy">
+              <div class="p-5"><h3 class="font-extrabold">Grocery &amp; minimart</h3><p class="mt-1 text-sm text-[#5f7d7a]">Daily essentials for residents nearby.</p></div>
             </article>
             <article class="card overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?auto=format&fit=crop&w=800&q=80" alt="Pharmacy" class="h-36 w-full object-cover" loading="lazy">
+              <img src="/shared/assets/images/Advanced_analytic_dashboard.webp" alt="Pharmacy" class="h-36 w-full object-cover" loading="lazy">
               <div class="p-5"><h3 class="font-extrabold">Pharmacy</h3><p class="mt-1 text-sm text-[#5f7d7a]">Serve quick resident requests in your area.</p></div>
             </article>
             <article class="card overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80" alt="Meals" class="h-36 w-full object-cover" loading="lazy">
-              <div class="p-5"><h3 class="font-extrabold">Restaurants & kitchens</h3><p class="mt-1 text-sm text-[#5f7d7a]">Meals as one local category — same platform as other services.</p></div>
+              <img src="/shared/assets/images/signupImageWeb.webp" alt="Meals" class="h-36 w-full object-cover" loading="lazy">
+              <div class="p-5"><h3 class="font-extrabold">Restaurants &amp; kitchens</h3><p class="mt-1 text-sm text-[#5f7d7a]">Meals as one local category — same platform as other services.</p></div>
             </article>
             <article class="card overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1548839140-29a749e1cf4d?auto=format&fit=crop&w=800&q=80" alt="Water" class="h-36 w-full object-cover" loading="lazy">
-              <div class="p-5"><h3 class="font-extrabold">Water & supplies</h3><p class="mt-1 text-sm text-[#5f7d7a]">Repeat deliveries for tower households.</p></div>
+              <img src="/shared/assets/images/driversLandingpage.webp" alt="Water" class="h-36 w-full object-cover" loading="lazy">
+              <div class="p-5"><h3 class="font-extrabold">Water &amp; supplies</h3><p class="mt-1 text-sm text-[#5f7d7a]">Repeat deliveries for tower households.</p></div>
             </article>
             <article class="card overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1517677208171-0bc6725a75ba?auto=format&fit=crop&w=800&q=80" alt="Laundry" class="h-36 w-full object-cover" loading="lazy">
-              <div class="p-5"><h3 class="font-extrabold">Laundry & home services</h3><p class="mt-1 text-sm text-[#5f7d7a]">Practical services that fit building life.</p></div>
+              <img src="/shared/assets/images/delivery_services.webp" alt="Laundry and home services" class="h-36 w-full object-cover" loading="lazy">
+              <div class="p-5"><h3 class="font-extrabold">Laundry &amp; home services</h3><p class="mt-1 text-sm text-[#5f7d7a]">Practical services that fit building life.</p></div>
             </article>
             <article class="card overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=800&q=80" alt="More local shops" class="h-36 w-full object-cover" loading="lazy">
-              <div class="p-5"><h3 class="font-extrabold">More local shops</h3><p class="mt-1 text-sm text-[#5f7d7a]">If you serve a tower radius, talk to us about joining.</p></div>
+              <img src="/shared/assets/images/signupImageWeb1.webp" alt="More local shops" class="h-36 w-full object-cover" loading="lazy">
+              <div class="p-5"><h3 class="font-extrabold">More local shops</h3><p class="mt-1 text-sm text-[#5f7d7a]">If you serve a tower radius, apply below and tell us your category.</p></div>
             </article>
           </div>
         </div>
       </section>
 
-      <!-- How -->
       <section id="how" class="border-y border-[#dcebe7] bg-[#163c3b] py-16 text-white sm:py-20">
         <div class="mx-auto max-w-6xl px-4 sm:px-6">
           <div class="mx-auto max-w-2xl text-center">
             <h2 class="text-3xl font-black tracking-tight sm:text-4xl">How it works</h2>
-            <p class="mt-3 text-[#b7d4d0]">A simple path from apply to live orders.</p>
+            <p class="mt-3 text-[#b7d4d0]">A simple path from apply to live requests.</p>
           </div>
           <div class="mt-10 grid gap-5 md:grid-cols-3">
             <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
               <div class="mb-4 grid h-10 w-10 place-items-center rounded-full bg-[#4ECDC4] text-sm font-black text-[#0f2f2e]">1</div>
               <h3 class="font-extrabold">Apply</h3>
-              <p class="mt-2 text-sm text-[#b7d4d0]">Sign in at the GoSnel auth hub and start your partner application.</p>
+              <p class="mt-2 text-sm text-[#b7d4d0]">Fill the partner form on this page. We receive it by email.</p>
             </div>
             <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
               <div class="mb-4 grid h-10 w-10 place-items-center rounded-full bg-[#4ECDC4] text-sm font-black text-[#0f2f2e]">2</div>
-              <h3 class="font-extrabold">Set your shop</h3>
-              <p class="mt-2 text-sm text-[#b7d4d0]">Add your category, coverage, and how residents can request from you.</p>
+              <h3 class="font-extrabold">We review</h3>
+              <p class="mt-2 text-sm text-[#b7d4d0]">Our team checks your category, area, and fit for nearby towers.</p>
             </div>
             <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
               <div class="mb-4 grid h-10 w-10 place-items-center rounded-full bg-[#4ECDC4] text-sm font-black text-[#0f2f2e]">3</div>
-              <h3 class="font-extrabold">Receive requests</h3>
-              <p class="mt-2 text-sm text-[#b7d4d0]">Handle orders in your partner portal — Local Partners or vendor tools.</p>
+              <h3 class="font-extrabold">Go live</h3>
+              <p class="mt-2 text-sm text-[#b7d4d0]">Get set up to receive resident requests through GoSnel.</p>
             </div>
           </div>
-          <div class="mt-10 flex flex-wrap justify-center gap-3">
-            <a href="https://auth.gosnel.com" class="btn-brand rounded-2xl px-5 py-3.5 text-sm font-extrabold">Apply / Sign in</a>
-            <a href="https://partner.gosnel.com" class="rounded-2xl border border-white/20 px-5 py-3.5 text-sm font-extrabold text-white hover:bg-white/10">Restaurant vendor portal</a>
-            <a href="https://local.gosnel.com" class="rounded-2xl border border-white/20 px-5 py-3.5 text-sm font-extrabold text-white hover:bg-white/10">Local Partners</a>
+          <div class="mt-10 flex justify-center">
+            <a href="#apply" class="btn-brand rounded-2xl px-5 py-3.5 text-sm font-extrabold">Become a partner</a>
           </div>
         </div>
       </section>
 
-      <!-- Note -->
-      <section class="py-14">
-        <div class="mx-auto max-w-3xl px-4 text-center sm:px-6">
-          <h2 class="text-2xl font-black">Clear for partners</h2>
-          <p class="mt-3 text-[#5f7d7a]">
-            This page is about joining GoSnel as a <strong>local services</strong> partner.
-            Detailed commercials and onboarding steps are shared after you apply — we keep this landing simple on purpose.
-          </p>
-        </div>
-      </section>
+      <section id="apply" class="scroll-mt-24 bg-[#f3faf9] py-16 sm:py-20">
+        <div class="mx-auto max-w-3xl px-4 sm:px-6">
+          <div class="text-center">
+            <h2 class="text-3xl font-black tracking-tight sm:text-4xl">Become a partner</h2>
+            <p class="mt-3 text-[#5f7d7a]">Send your details — we’ll reply from the GoSnel team.</p>
+          </div>
 
-      <!-- CTA -->
-      <section class="bg-[#f3faf9] py-16">
-        <div class="mx-auto max-w-6xl px-4 text-center sm:px-6">
-          <h2 class="text-3xl font-black">Ready to serve nearby towers?</h2>
-          <p class="mx-auto mt-3 max-w-xl text-[#5f7d7a]">Start with partner sign-in / apply. We’ll help you set the right category and portal.</p>
-          <a href="https://auth.gosnel.com" class="btn-brand mt-8 inline-flex rounded-2xl px-6 py-3.5 text-sm font-extrabold shadow">Become a partner</a>
+          <form
+            id="partner-apply-form"
+            class="card mt-10 space-y-4 p-5 sm:p-8"
+            action="https://formsubmit.co/ajax/info@gosnel.com"
+            method="POST"
+          >
+            <input type="hidden" name="_subject" value="GoSnel Partner Application">
+            <input type="hidden" name="_cc" value="elafness@gmail.com">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="text" name="_honey" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+            <div class="grid gap-4 sm:grid-cols-2">
+              <div>
+                <label class="mb-1.5 block text-sm font-bold" for="full_name">Full name *</label>
+                <input class="field" id="full_name" name="full_name" type="text" required placeholder="Your name">
+              </div>
+              <div>
+                <label class="mb-1.5 block text-sm font-bold" for="business_name">Business name *</label>
+                <input class="field" id="business_name" name="business_name" type="text" required placeholder="Shop / brand name">
+              </div>
+            </div>
+
+            <div class="grid gap-4 sm:grid-cols-2">
+              <div>
+                <label class="mb-1.5 block text-sm font-bold" for="email">Email *</label>
+                <input class="field" id="email" name="email" type="email" required placeholder="you@business.com">
+              </div>
+              <div>
+                <label class="mb-1.5 block text-sm font-bold" for="phone">Phone / WhatsApp *</label>
+                <input class="field" id="phone" name="phone" type="tel" required placeholder="+971...">
+              </div>
+            </div>
+
+            <div class="grid gap-4 sm:grid-cols-2">
+              <div>
+                <label class="mb-1.5 block text-sm font-bold" for="category">Category *</label>
+                <select class="field" id="category" name="category" required>
+                  <option value="">Select category</option>
+                  <option>Grocery / Minimart</option>
+                  <option>Pharmacy</option>
+                  <option>Restaurant / Kitchen</option>
+                  <option>Water &amp; supplies</option>
+                  <option>Laundry &amp; home services</option>
+                  <option>Other local service</option>
+                </select>
+              </div>
+              <div>
+                <label class="mb-1.5 block text-sm font-bold" for="city">City / area *</label>
+                <input class="field" id="city" name="city" type="text" required placeholder="e.g. Dubai Marina">
+              </div>
+            </div>
+
+            <div>
+              <label class="mb-1.5 block text-sm font-bold" for="message">Tell us about your shop</label>
+              <textarea class="field min-h-[120px]" id="message" name="message" placeholder="What you sell, delivery radius, towers nearby…"></textarea>
+            </div>
+
+            <button id="partner-submit" type="submit" class="btn-brand w-full rounded-2xl px-5 py-3.5 text-sm font-extrabold shadow disabled:opacity-60">
+              Submit application
+            </button>
+            <p id="partner-form-status" class="text-center text-sm font-semibold text-[#5f7d7a]" role="status" aria-live="polite"></p>
+            <p class="text-center text-xs text-[#789693]">Submitted to info@gosnel.com (CC: elafness@gmail.com).</p>
+          </form>
         </div>
       </section>
     </main>
 
-    <footer class="border-t border-[#dcebe7] bg-white py-12">
-      <div class="mx-auto grid max-w-6xl gap-8 px-4 sm:grid-cols-2 sm:px-6 lg:grid-cols-4">
-        <div>
-          <div class="flex items-center gap-2">
-            <img src="/shared/assets/images/gosnel-logo-rebrand.png" alt="" class="h-9 w-9 rounded-lg">
-            <span class="font-extrabold">GoSnel Partners</span>
-          </div>
-          <p class="mt-3 text-sm text-[#5f7d7a]">Local services for towers — grocery, pharmacy, meals, and more.</p>
-        </div>
-        <div>
-          <h4 class="text-xs font-extrabold uppercase tracking-wide text-[#4ECDC4]">Partner</h4>
-          <div class="mt-3 space-y-2 text-sm font-semibold text-[#5f7d7a]">
-            <a class="block hover:text-[#163c3b]" href="https://auth.gosnel.com">Apply / Sign in</a>
-            <a class="block hover:text-[#163c3b]" href="https://local.gosnel.com">Local Partners</a>
-            <a class="block hover:text-[#163c3b]" href="https://partner.gosnel.com">Vendor portal</a>
-          </div>
-        </div>
-        <div>
-          <h4 class="text-xs font-extrabold uppercase tracking-wide text-[#4ECDC4]">Residents</h4>
-          <div class="mt-3 space-y-2 text-sm font-semibold text-[#5f7d7a]">
-            <a class="block hover:text-[#163c3b]" href="/">GoSnel home</a>
-            <a class="block hover:text-[#163c3b]" href="https://user.gosnel.com">Open app</a>
-          </div>
-        </div>
-        <div>
-          <h4 class="text-xs font-extrabold uppercase tracking-wide text-[#4ECDC4]">Company</h4>
-          <div class="mt-3 space-y-2 text-sm font-semibold text-[#5f7d7a]">
-            <a class="block hover:text-[#163c3b]" href="/hotels/">Hotels</a>
-            <a class="block hover:text-[#163c3b]" href="/careers/">Careers</a>
-            <a class="block hover:text-[#163c3b]" href="/contact">Contact</a>
-            <a class="block hover:text-[#163c3b]" href="/legal">Privacy & Terms</a>
-          </div>
-        </div>
-      </div>
-      <p class="mx-auto mt-10 max-w-6xl px-4 text-xs text-[#789693] sm:px-6">© <span id="y"></span> GoSnel. All rights reserved.</p>
-    </footer>
+    <!--#include file="shared/components/footer.html" -->
 
     <script>
-      document.getElementById('y').textContent = new Date().getFullYear();
       document.getElementById('menuBtn').addEventListener('click', function () {
         document.getElementById('mobileMenu').classList.toggle('hidden');
       });
+
+      (function () {
+        var form = document.getElementById('partner-apply-form');
+        var statusEl = document.getElementById('partner-form-status');
+        var btn = document.getElementById('partner-submit');
+        if (!form) return;
+
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          statusEl.textContent = 'Sending…';
+          btn.disabled = true;
+
+          var data = new FormData(form);
+          fetch(form.action, {
+            method: 'POST',
+            body: data,
+            headers: { 'Accept': 'application/json' }
+          }).then(function (res) {
+            if (!res.ok) throw new Error('send_failed');
+            return res.json().catch(function () { return {}; });
+          }).then(function () {
+            statusEl.textContent = 'Thanks — your partner application was sent. We will reply soon.';
+            statusEl.className = 'text-center text-sm font-semibold text-[#16857b]';
+            form.reset();
+          }).catch(function () {
+            // Fallback: open mail client to both addresses
+            var name = document.getElementById('full_name').value;
+            var business = document.getElementById('business_name').value;
+            var email = document.getElementById('email').value;
+            var phone = document.getElementById('phone').value;
+            var category = document.getElementById('category').value;
+            var city = document.getElementById('city').value;
+            var message = document.getElementById('message').value;
+            var body = [
+              'GoSnel Partner Application',
+              '',
+              'Name: ' + name,
+              'Business: ' + business,
+              'Email: ' + email,
+              'Phone: ' + phone,
+              'Category: ' + category,
+              'City/Area: ' + city,
+              '',
+              message
+            ].join('\\n');
+            window.location.href = 'mailto:info@gosnel.com,elafness@gmail.com?subject=' +
+              encodeURIComponent('GoSnel Partner Application — ' + business) +
+              '&body=' + encodeURIComponent(body);
+            statusEl.textContent = 'Opening your email app so we still receive your application.';
+            statusEl.className = 'text-center text-sm font-semibold text-[#5f7d7a]';
+          }).finally(function () {
+            btn.disabled = false;
+          });
+        });
+      })();
     </script>
 </body>
 </html>
