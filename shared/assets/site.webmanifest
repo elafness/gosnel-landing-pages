@@ -1,7 +1,7 @@
 {
-  "name": "GoSnel - Meal Discovery & AI Food Ordering",
+  "name": "GoSnel",
   "short_name": "GoSnel",
-  "description": "Discover your next meal with GoSnel's AI-powered food ordering platform",
+  "description": "Local services for your building — meals, shops, and neighbors.",
   "start_url": "/",
   "scope": "/",
   "icons": [
@@ -28,10 +28,10 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#14b8a6",
-  "background_color": "#0f172a",
+  "theme_color": "#4ECDC4",
+  "background_color": "#ffffff",
   "display": "standalone",
   "orientation": "portrait-primary",
-  "categories": ["food", "shopping", "lifestyle"],
+  "categories": ["lifestyle", "shopping", "food"],
   "lang": "en"
 }
