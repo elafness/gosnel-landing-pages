@@ -33,10 +33,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       body { color: var(--ink); background: #fbfdfc; }
       .btn-brand { background: var(--brand); color: #123d3b; }
       .btn-brand:hover { filter: brightness(0.96); }
-      .store-btn { background: #111827; }
-      .store-btn:hover { background: #1f2937; }
-      .icon-svc { display: grid; place-items: center; width: 3rem; height: 3rem; border-radius: 1rem; }
-      .icon-svc svg { width: 1.35rem; height: 1.35rem; stroke-width: 2; }
+      .icon-svc {
+        display: grid;
+        place-items: center;
+        width: 4.25rem;
+        height: 4.25rem;
+        border-radius: 1.25rem;
+        overflow: hidden;
+        background: #eaf8f5;
+      }
+      .icon-svc img { width: 100%; height: 100%; object-fit: cover; }
+      .how-art {
+        flex-shrink: 0;
+        width: 4.5rem;
+        height: 4.5rem;
+        border-radius: 1.25rem;
+        overflow: hidden;
+        background: #eaf8f5;
+        box-shadow: 0 8px 18px rgba(31, 91, 84, 0.08);
+      }
+      .how-art img { width: 100%; height: 100%; object-fit: cover; }
       .hero-title { font-size: clamp(2.5rem, 7vw, 4.75rem); line-height: 0.98; letter-spacing: -0.06em; }
       .header-scrolled { border-bottom: 1px solid #dcebe7; background: rgba(255,255,255,0.92); backdrop-filter: blur(16px); box-shadow: 0 1px 0 rgba(22,60,59,0.04); }
     </style>
@@ -57,8 +73,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <a href="/partner/" class="transition hover:text-[#1a8f87]">Partners</a>
         </nav>
         <div class="hidden items-center gap-3 lg:flex">
-          <a href="#download" class="px-4 py-2.5 text-sm font-bold text-[#37716d]">Download</a>
-          <a href="https://user.gosnel.com" class="btn-brand rounded-full px-5 py-3 text-sm font-extrabold shadow-[0_8px_18px_rgba(78,205,196,0.25)] transition hover:-translate-y-0.5">Open app</a>
+          <a href="https://user.gosnel.com/install" class="btn-brand rounded-full px-5 py-3 text-sm font-extrabold shadow-[0_8px_18px_rgba(78,205,196,0.25)] transition hover:-translate-y-0.5">Download app</a>
         </div>
         <button id="menuBtn" class="grid size-10 place-items-center rounded-xl border border-[#dbeae7] bg-white/80 text-[#3d716d] lg:hidden" aria-label="Open menu" aria-expanded="false">
           <svg id="menuIconOpen" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h12M4 10h12M4 14h12"/></svg>
@@ -71,8 +86,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <a href="#how-it-works" data-close-menu>How it works</a>
           <a href="#community" data-close-menu>For communities</a>
           <a href="/partner/" data-close-menu>Partners</a>
-          <a href="#download" data-close-menu>Download</a>
-          <a href="https://user.gosnel.com" class="btn-brand rounded-full px-5 py-3 text-center" data-close-menu>Open app</a>
+          <a href="https://user.gosnel.com/install" class="btn-brand rounded-full px-5 py-3 text-center" data-close-menu>Download app</a>
         </div>
       </nav>
     </header>
@@ -89,8 +103,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             GoSnel connects you with nearby grocery, pharmacy, laundry, water, and more, all from the comfort of your building.
           </p>
           <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-            <a href="https://user.gosnel.com" class="btn-brand inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-extrabold shadow-[0_12px_25px_rgba(78,205,196,0.25)] transition hover:-translate-y-1">
-              Explore local services
+            <a href="https://user.gosnel.com/install" class="btn-brand inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-extrabold shadow-[0_12px_25px_rgba(78,205,196,0.25)] transition hover:-translate-y-1">
+              Download app
               <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h10M11 6l6 6-6 6"/></svg>
             </a>
             <a href="#how-it-works" class="inline-flex items-center justify-center gap-2 rounded-full border border-[#d2e5e1] bg-white px-6 py-3.5 text-sm font-extrabold text-[#356460] transition hover:border-[#4ecdc4]">
@@ -139,22 +153,30 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           </div>
           <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <article class="group rounded-[1.6rem] border border-[#dcece9] bg-white p-5 transition hover:-translate-y-1 hover:shadow-[0_18px_35px_rgba(31,91,84,0.09)]">
-              <div class="icon-svc bg-[#dff7f3] text-[#20978f]"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M5 7h14l-1 12H6L5 7z"/><path d="M8 7V5a4 4 0 0 1 8 0v2"/></svg></div>
+              <div class="icon-svc">
+                <img src="/shared/assets/images/landing-art/grocery.webp" alt="" width="68" height="68" loading="lazy">
+              </div>
               <h3 class="mt-7 text-lg font-extrabold text-[#244d49]">Grocery</h3>
               <p class="mt-2 text-sm leading-6 text-[#789490]">Everyday essentials from shops around your building.</p>
             </article>
             <article class="group rounded-[1.6rem] border border-[#dcece9] bg-white p-5 transition hover:-translate-y-1 hover:shadow-[0_18px_35px_rgba(31,91,84,0.09)]">
-              <div class="icon-svc bg-[#e6efff] text-[#648bd1]"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M10.5 2v4M13.5 2v4"/><path d="M8 8h8l-.5 12h-7L8 8z"/><path d="M10 12h4"/></svg></div>
+              <div class="icon-svc">
+                <img src="/shared/assets/images/landing-art/pharmacy.webp" alt="" width="68" height="68" loading="lazy">
+              </div>
               <h3 class="mt-7 text-lg font-extrabold text-[#244d49]">Pharmacy</h3>
               <p class="mt-2 text-sm leading-6 text-[#789490]">Quick requests from trusted pharmacies nearby.</p>
             </article>
             <article class="group rounded-[1.6rem] border border-[#dcece9] bg-white p-5 transition hover:-translate-y-1 hover:shadow-[0_18px_35px_rgba(31,91,84,0.09)]">
-              <div class="icon-svc bg-[#f0e9ff] text-[#9171c9]"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/></svg></div>
+              <div class="icon-svc">
+                <img src="/shared/assets/images/landing-art/laundry.webp" alt="" width="68" height="68" loading="lazy">
+              </div>
               <h3 class="mt-7 text-lg font-extrabold text-[#244d49]">Laundry</h3>
               <p class="mt-2 text-sm leading-6 text-[#789490]">Pickup and drop-off that fits your routine.</p>
             </article>
             <article class="group rounded-[1.6rem] border border-[#dcece9] bg-white p-5 transition hover:-translate-y-1 hover:shadow-[0_18px_35px_rgba(31,91,84,0.09)]">
-              <div class="icon-svc bg-[#fff3d9] text-[#bc8a2e]"><svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 2v6"/><path d="M7 8c0 5 2.5 8 5 12 2.5-4 5-7 5-12"/><path d="M7 8h10"/></svg></div>
+              <div class="icon-svc">
+                <img src="/shared/assets/images/landing-art/water.webp" alt="" width="68" height="68" loading="lazy">
+              </div>
               <h3 class="mt-7 text-lg font-extrabold text-[#244d49]">Water &amp; supplies</h3>
               <p class="mt-2 text-sm leading-6 text-[#789490]">Refills and household needs, delivered locally.</p>
             </article>
@@ -167,27 +189,36 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <div>
             <p class="text-xs font-extrabold uppercase tracking-[0.22em] text-[#39aaa2]">Simple by design</p>
             <h2 class="mt-4 text-4xl font-extrabold tracking-[-0.06em] text-[#163f3d] sm:text-5xl">From request<br>to doorstep.</h2>
-            <p class="mt-5 max-w-sm text-base leading-7 text-[#6d8582]">No deep setup. Just open the app, choose what you need, and let local partners take it from there.</p>
+            <p class="mt-5 max-w-sm text-base leading-7 text-[#6d8582]">No deep setup. Just download the app, choose what you need, and let local partners take it from there.</p>
           </div>
           <div class="grid gap-4">
-            <div class="flex gap-5 rounded-[1.6rem] border border-[#e0eeeb] bg-white p-5 sm:p-6">
-              <span class="text-sm font-extrabold text-[#4ecdc4]">01</span>
-              <div>
-                <h3 class="text-lg font-extrabold text-[#244d49]">Start from your building</h3>
+            <div class="flex gap-4 rounded-[1.6rem] border border-[#e0eeeb] bg-white p-4 sm:gap-5 sm:p-6">
+              <div class="how-art">
+                <img src="/shared/assets/images/landing-art/how-step-building.webp" alt="" width="72" height="72" loading="lazy">
+              </div>
+              <div class="min-w-0">
+                <p class="text-sm font-extrabold text-[#4ecdc4]">01</p>
+                <h3 class="mt-1 text-lg font-extrabold text-[#244d49]">Start from your building</h3>
                 <p class="mt-2 max-w-lg text-sm leading-6 text-[#789490]">Open GoSnel and see services available in your local radius.</p>
               </div>
             </div>
-            <div class="flex gap-5 rounded-[1.6rem] border border-[#e0eeeb] bg-white p-5 sm:p-6">
-              <span class="text-sm font-extrabold text-[#4ecdc4]">02</span>
-              <div>
-                <h3 class="text-lg font-extrabold text-[#244d49]">Choose what you need</h3>
+            <div class="flex gap-4 rounded-[1.6rem] border border-[#e0eeeb] bg-white p-4 sm:gap-5 sm:p-6">
+              <div class="how-art">
+                <img src="/shared/assets/images/landing-art/how-step-choose.webp" alt="" width="72" height="72" loading="lazy">
+              </div>
+              <div class="min-w-0">
+                <p class="text-sm font-extrabold text-[#4ecdc4]">02</p>
+                <h3 class="mt-1 text-lg font-extrabold text-[#244d49]">Choose what you need</h3>
                 <p class="mt-2 max-w-lg text-sm leading-6 text-[#789490]">Pick a category, browse nearby partners, and send a clear request.</p>
               </div>
             </div>
-            <div class="flex gap-5 rounded-[1.6rem] border border-[#e0eeeb] bg-white p-5 sm:p-6">
-              <span class="text-sm font-extrabold text-[#4ecdc4]">03</span>
-              <div>
-                <h3 class="text-lg font-extrabold text-[#244d49]">Receive it at home</h3>
+            <div class="flex gap-4 rounded-[1.6rem] border border-[#e0eeeb] bg-white p-4 sm:gap-5 sm:p-6">
+              <div class="how-art">
+                <img src="/shared/assets/images/landing-art/how-step-door.webp" alt="" width="72" height="72" loading="lazy">
+              </div>
+              <div class="min-w-0">
+                <p class="text-sm font-extrabold text-[#4ecdc4]">03</p>
+                <h3 class="mt-1 text-lg font-extrabold text-[#244d49]">Receive it at home</h3>
                 <p class="mt-2 max-w-lg text-sm leading-6 text-[#789490]">Track updates and get your order delivered to your door.</p>
               </div>
             </div>
@@ -195,45 +226,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </div>
       </section>
 
-      <section id="community" class="mx-5 mb-20 overflow-hidden rounded-[2rem] bg-[#123e3c] px-6 py-12 text-white sm:mx-8 sm:px-10 lg:mx-auto lg:mb-16 lg:max-w-7xl lg:px-16 lg:py-16">
+      <section id="community" class="mx-5 mb-20 overflow-hidden rounded-[2rem] bg-[#123e3c] px-6 py-12 text-white sm:mx-8 sm:px-10 lg:mx-auto lg:mb-24 lg:max-w-7xl lg:px-16 lg:py-16">
         <div class="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
           <div>
             <p class="text-xs font-extrabold uppercase tracking-[0.22em] text-[#8ce5dc]">Made for local living</p>
             <h2 class="mt-4 max-w-2xl text-4xl font-extrabold tracking-[-0.06em] sm:text-5xl">Your building has a neighbourhood.</h2>
             <p class="mt-5 max-w-xl text-base leading-7 text-[#b5d4d0]">GoSnel helps residents discover trusted services nearby, while giving local businesses a better way to reach the communities they serve.</p>
+            <a href="https://user.gosnel.com/install" class="btn-brand mt-8 inline-flex items-center gap-2 rounded-full px-6 py-3.5 text-sm font-extrabold text-[#123d3b] shadow-[0_12px_25px_rgba(78,205,196,0.25)] transition hover:-translate-y-0.5">
+              Download app
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h10M11 6l6 6-6 6"/></svg>
+            </a>
           </div>
-          <div class="flex size-28 items-center justify-center rounded-full border border-[#4ecdc4]/40 bg-[#215753] text-[#8ce5dc] sm:size-36">
-            <svg width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 20a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM32 20a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/><path d="M8 36c0-4 3.5-7 8-7s8 3 8 7M24 36c0-4 3.5-7 8-7s8 3 8 7"/></svg>
+          <div class="flex size-28 items-center justify-center overflow-hidden rounded-full border border-[#4ecdc4]/40 bg-[#215753] sm:size-36">
+            <img src="/shared/assets/images/landing-art/how-step-building.webp" alt="" class="size-full object-cover opacity-95" width="144" height="144" loading="lazy">
           </div>
         </div>
-      </section>
-
-      <section id="download" class="px-5 pb-16 text-center sm:px-8 lg:pb-20">
-        <p class="text-xs font-extrabold uppercase tracking-[0.22em] text-[#39aaa2]">Get the app</p>
-        <h2 class="mx-auto mt-4 max-w-2xl text-4xl font-extrabold tracking-[-0.06em] text-[#163f3d] sm:text-5xl">Ready for local life?</h2>
-        <p class="mx-auto mt-4 max-w-lg text-base leading-7 text-[#6d8582]">Open GoSnel and find what you need around your building. Available on iOS, Android, Huawei, and ChatGPT.</p>
-        <div class="mx-auto mt-8 flex max-w-3xl flex-wrap justify-center gap-3">
-          <a href="https://apps.apple.com/ae/app/gosnel/id6767580532" target="_blank" rel="noopener noreferrer" class="store-btn inline-flex items-center gap-2 rounded-xl px-4 py-3 text-white transition hover:scale-[1.02]">
-            <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/apps_store_images/Apple_-removebg-preview.png" alt="" class="h-7 w-7 object-contain" width="28" height="28" loading="lazy">
-            <span class="text-left"><span class="block text-[10px] text-white/70">GET IT ON</span><span class="block text-sm font-bold">App Store</span></span>
-          </a>
-          <a href="https://play.google.com/store/apps/details?id=com.gosnel.user&amp;pcampaignid=web_share" target="_blank" rel="noopener noreferrer" class="store-btn inline-flex items-center gap-2 rounded-xl px-4 py-3 text-white transition hover:scale-[1.02]">
-            <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/apps_store_images/googlePlayStore-removebg-preview.png" alt="" class="h-7 w-7 object-contain" width="28" height="28" loading="lazy">
-            <span class="text-left"><span class="block text-[10px] text-white/70">GET IT ON</span><span class="block text-sm font-bold">Google Play</span></span>
-          </a>
-          <a href="https://appgallery.huawei.com/app/C117476197" target="_blank" rel="noopener noreferrer" class="store-btn inline-flex items-center gap-2 rounded-xl px-4 py-3 text-white transition hover:scale-[1.02]">
-            <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/apps_store_images/HuaweiApp-removebg-preview.png" alt="" class="h-7 w-7 object-contain" width="28" height="28" loading="lazy">
-            <span class="text-left"><span class="block text-[10px] text-white/70">GET IT ON</span><span class="block text-sm font-bold">AppGallery</span></span>
-          </a>
-          <a href="https://chatgpt.com/apps/gosnel/asdk_app_69620b176f8481919c2ca068ff04f298?show_chat_button=true" target="_blank" rel="noopener noreferrer" class="store-btn inline-flex items-center gap-2 rounded-xl px-4 py-3 text-white transition hover:scale-[1.02]">
-            <img src="https://pub-0d4798289dad4074a3236450ba640652.r2.dev/chatGPT-icon.png" alt="" class="h-7 w-7 object-contain" width="28" height="28" loading="lazy">
-            <span class="text-left"><span class="block text-[10px] text-white/70">ALSO ON</span><span class="block text-sm font-bold">ChatGPT</span></span>
-          </a>
-        </div>
-        <a href="https://user.gosnel.com" class="btn-brand mt-7 inline-flex items-center gap-2 rounded-full px-7 py-4 text-sm font-extrabold shadow-[0_12px_25px_rgba(78,205,196,0.25)]">
-          Open in browser
-          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h10M11 6l6 6-6 6"/></svg>
-        </a>
       </section>
     </main>
 
