@@ -71,6 +71,13 @@ https://user.gosnel.com/faq /faq.html 200
 # Note: Cloudflare Pages automatically serves .html files without extension
 # Only adding specific rewrites where needed
 
+# Retired driver recruiting landing — stop ranking above home in Google
+/drivers https://gosnel.com/ 301
+/drivers/ https://gosnel.com/ 301
+/drivers/* https://gosnel.com/ 301
+/index-drivers.html https://gosnel.com/ 301
+/drivers-sitemap.xml https://gosnel.com/sitemap.xml 301
+
 /about-us /about.html 200
 /contacts /contact.html 200
 /contacts/ /contact.html 200

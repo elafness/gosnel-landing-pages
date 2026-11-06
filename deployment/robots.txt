@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
+Disallow: /apps/
+Disallow: /_*
+Disallow: /drivers
+Disallow: /drivers/
 
 Sitemap: https://gosnel.com/sitemap.xml
