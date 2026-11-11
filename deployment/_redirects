@@ -60,6 +60,23 @@ https://user.gosnel.com/about /about.html 200
 https://user.gosnel.com/faq /faq.html 200
 
 # ============================================
+# LEGAL / PRIVACY CANONICAL (gosnel.com)
+# Pretty paths → /legal (Privacy + Terms + Cookies)
+# ============================================
+/privacy /legal 301
+/privacy/ /legal 301
+/privacy-policy /legal 301
+/privacy-policy/ /legal 301
+/terms /legal 301
+/terms/ /legal 301
+/terms-of-service /legal 301
+/terms-of-service/ /legal 301
+/cookies /legal 301
+/cookies/ /legal 301
+/cookie-policy /legal 301
+/cookie-policy/ /legal 301
+
+# ============================================
 # SHARED RESOURCES (SERVE DIRECTLY)
 # ============================================
 /shared/* /shared/:splat 200
