@@ -220,6 +220,8 @@ const buildPages = () => {
   const partnerPages = [
     { src: 'partner-app/features/partner-landing.html', dest: 'index.html' },
     { src: 'partner-app/features/partner-landing.html', dest: 'landing.html' },
+    // Retired page: tiny HTML redirect (overwrites cached dist) + _redirects 301
+    { src: 'partner-app/features/how-it-works.html', dest: 'how-it-works.html' },
     { src: 'partner-app/features/why-partner.html', dest: 'why-partner.html' },
     { src: 'partner-app/features/pricing.html', dest: 'pricing.html' },
     { src: 'partner-app/features/guidelines.html', dest: 'guidelines.html' },
@@ -229,14 +231,7 @@ const buildPages = () => {
     { src: 'partner-app/pdf.html', dest: 'pdf.html' }
   ];
   
-    // Drop retired partner how-it-works page if a previous dist left it behind
-  const retiredPartnerHow = path.join(partnerDir, 'how-it-works.html');
-  if (fs.existsSync(retiredPartnerHow)) {
-    fs.unlinkSync(retiredPartnerHow);
-    console.log('✅ Removed retired /partner/how-it-works.html');
-  }
-
-  partnerPages.forEach(({ src, dest }) => {
+    partnerPages.forEach(({ src, dest }) => {
     const srcPath = path.join(srcDir, src);
     const distPath = path.join(partnerDir, dest);
     
