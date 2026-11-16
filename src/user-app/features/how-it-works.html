@@ -1,250 +1,172 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>How It Works - GoSnel</title>
-    <link rel="icon" type="image/x-icon" href="/shared/assets/favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="/shared/assets/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/shared/assets/favicon-16x16.png">
-    <link rel="icon" type="image/svg+xml" href="/shared/assets/favicon-circular.svg">
-    <meta name="description" content="How GoSnel works - Step-by-step guide to ordering with AI">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>How It Works | GoSnel</title>
+    <meta name="description" content="From request to doorstep in three steps. Download GoSnel, choose local services near your building, and get grocery, pharmacy, laundry, water, and more delivered.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://gosnel.com/how-it-works">
+    <meta name="theme-color" content="#4ECDC4">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://gosnel.com/how-it-works">
+    <meta property="og:site_name" content="GoSnel">
+    <meta property="og:title" content="How It Works | GoSnel">
+    <meta property="og:description" content="Simple by design. From request to doorstep with local partners near your building.">
+    <meta property="og:image" content="https://gosnel.com/shared/assets/images/gosnel-logo-rebrand.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="How It Works | GoSnel">
+    <meta name="twitter:description" content="Download the app, choose what you need, receive it at home.">
+    <link rel="icon" type="image/png" href="/shared/assets/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="/shared/assets/favicon.svg">
+    <link rel="shortcut icon" href="/shared/assets/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/shared/assets/apple-touch-icon.png">
+    <link rel="manifest" href="/shared/assets/site.webmanifest">
     <link rel="stylesheet" href="/shared/styles/output.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        * { font-family: 'Inter', system-ui, sans-serif; }
-        .gradient-dark { background: linear-gradient(180deg, #222b38 0%, #1a2129 100%); }
-        .text-gradient-teal {
-            background: linear-gradient(90deg, #4ECDC4, #1A9A93);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .gradient-teal { background: linear-gradient(135deg, #4ECDC4, #1A9A93); }
-        .step-circle { box-shadow: 0 8px 20px rgba(78, 205, 196, 0.3); }
+      :root { --brand: #4ECDC4; --ink: #163c3b; --muted: #6d8582; }
+      body { color: var(--ink); background: #fbfdfc; }
+      .btn-brand { background: var(--brand); color: #123d3b; }
+      .btn-brand:hover { filter: brightness(0.96); }
+      .how-art {
+        flex-shrink: 0;
+        width: 4.5rem;
+        height: 4.5rem;
+        border-radius: 1.25rem;
+        overflow: hidden;
+        background: #eaf8f5;
+        box-shadow: 0 8px 18px rgba(31, 91, 84, 0.08);
+      }
+      .how-art img { width: 100%; height: 100%; object-fit: cover; }
+      .icon-svc {
+        display: grid;
+        place-items: center;
+        width: 4.25rem;
+        height: 4.25rem;
+        border-radius: 1.25rem;
+        overflow: hidden;
+        background: #eaf8f5;
+      }
+      .icon-svc img { width: 100%; height: 100%; object-fit: cover; }
     </style>
 </head>
-<body class="bg-white text-black min-h-screen">
-    <!-- Header -->
-    <!--#include file="../components/header.html" -->
+<body class="antialiased">
+    <header class="fixed inset-x-0 top-0 z-40 border-b border-[#dcebe7] bg-white/90 backdrop-blur">
+      <div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8 lg:px-10">
+        <a href="/" class="flex items-center gap-2.5">
+          <img src="/shared/assets/images/gosnel-logo-rebrand.png" alt="GoSnel" class="h-10 w-10 rounded-[14px] object-contain" width="40" height="40">
+          <span class="text-[19px] font-extrabold tracking-[-0.06em]">GoSnel</span>
+        </a>
+        <nav class="hidden items-center gap-8 text-sm font-semibold text-[#66817e] lg:flex">
+          <a href="/" class="transition hover:text-[#1a8f87]">Home</a>
+          <a href="/how-it-works" class="text-[#1a8f87]">How it works</a>
+          <a href="/partner/" class="transition hover:text-[#1a8f87]">Partners</a>
+          <a href="/about" class="transition hover:text-[#1a8f87]">About</a>
+        </nav>
+        <a href="https://user.gosnel.com/install" class="btn-brand hidden rounded-full px-5 py-3 text-sm font-extrabold shadow-sm lg:inline-flex">Download app</a>
+        <a href="https://user.gosnel.com/install" class="btn-brand rounded-full px-4 py-2.5 text-sm font-extrabold lg:hidden">Download</a>
+      </div>
+    </header>
 
-    <!-- Content -->
-    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div class="text-center mb-12">
-            <h1 class="text-4xl font-bold text-gradient-teal mb-4">How GoSnel Works</h1>
-            <p class="text-xl text-gray-900 max-w-3xl mx-auto">Ordering food with AI has never been easier. Here's how it works in 4 simple steps.</p>
+    <main class="pt-28 pb-20">
+      <section class="mx-auto max-w-4xl px-5 text-center sm:px-8">
+        <p class="mb-4 text-xs font-extrabold uppercase tracking-[0.24em] text-[#39aaa2]">Simple by design</p>
+        <h1 class="text-4xl font-extrabold tracking-[-0.06em] text-[#123e3c] sm:text-5xl">From request<br>to doorstep.</h1>
+        <p class="mx-auto mt-6 max-w-2xl text-lg leading-8 text-[#6d8582]">
+          No deep setup. Download the app, choose what you need near your building, and let local partners deliver.
+        </p>
+      </section>
+
+      <section class="mx-auto mt-16 max-w-5xl px-5 sm:px-8">
+        <div class="grid gap-4">
+          <div class="flex gap-4 rounded-[1.6rem] border border-[#e0eeeb] bg-white p-4 sm:gap-5 sm:p-6">
+            <div class="how-art">
+              <img src="/shared/assets/images/landing-art/how-step-building.webp" alt="" width="72" height="72" loading="lazy">
+            </div>
+            <div class="min-w-0">
+              <p class="text-sm font-extrabold text-[#4ecdc4]">01</p>
+              <h2 class="mt-1 text-xl font-extrabold text-[#244d49]">Start from your building</h2>
+              <p class="mt-2 max-w-2xl text-sm leading-6 text-[#789490] sm:text-base">
+                Open GoSnel and see services available in your local radius. The app is built around towers and communities, so you see partners that can actually serve your door.
+              </p>
+            </div>
+          </div>
+          <div class="flex gap-4 rounded-[1.6rem] border border-[#e0eeeb] bg-white p-4 sm:gap-5 sm:p-6">
+            <div class="how-art">
+              <img src="/shared/assets/images/landing-art/how-step-choose.webp" alt="" width="72" height="72" loading="lazy">
+            </div>
+            <div class="min-w-0">
+              <p class="text-sm font-extrabold text-[#4ecdc4]">02</p>
+              <h2 class="mt-1 text-xl font-extrabold text-[#244d49]">Choose what you need</h2>
+              <p class="mt-2 max-w-2xl text-sm leading-6 text-[#789490] sm:text-base">
+                Pick a category, browse nearby partners, and send a clear request. Grocery, pharmacy, laundry, water, meals, and more live in one place.
+              </p>
+            </div>
+          </div>
+          <div class="flex gap-4 rounded-[1.6rem] border border-[#e0eeeb] bg-white p-4 sm:gap-5 sm:p-6">
+            <div class="how-art">
+              <img src="/shared/assets/images/landing-art/how-step-door.webp" alt="" width="72" height="72" loading="lazy">
+            </div>
+            <div class="min-w-0">
+              <p class="text-sm font-extrabold text-[#4ecdc4]">03</p>
+              <h2 class="mt-1 text-xl font-extrabold text-[#244d49]">Receive it at home</h2>
+              <p class="mt-2 max-w-2xl text-sm leading-6 text-[#789490] sm:text-base">
+                Track updates as your local partner prepares and delivers. Cheap, fresh and local, fast to your door.
+              </p>
+            </div>
+          </div>
         </div>
+      </section>
 
-        <!-- Steps -->
-        <div class="space-y-16">
-            <!-- Step 1 -->
-            <div class="flex flex-col lg:flex-row items-center gap-12">
-                <div class="lg:w-1/2">
-                    <div class="flex items-center gap-4 mb-6">
-                        <div class="w-16 h-16 rounded-full gradient-teal flex items-center justify-center text-black font-bold text-2xl step-circle">1</div>
-                        <h2 class="text-2xl font-bold text-black">Start a Conversation</h2>
-                    </div>
-                    <p class="text-gray-900 text-lg leading-relaxed mb-6">
-                        Simply tell our AI what you're in the mood for. You can say things like "I want something spicy and under 30 AED" 
-                        or "Surprise me with a healthy lunch." Our AI understands natural language in 100+ languages.
-                    </p>
-                    <div class="bg-white rounded-lg p-4">
-                        <p class="text-sm text-gray-800 mb-2">Example messages:</p>
-                        <ul class="text-sm text-gray-900 space-y-1">
-                            <li>• "I'm craving pizza but something different"</li>
-                            <li>• "Healthy meal for 2 people, budget 50 AED"</li>
-                            <li>• "أريد أكل صحي ولذيذ" (Arabic)</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="lg:w-1/2">
-                    <div class="bg-white rounded-2xl p-8 shadow-2xl">
-                        <div class="space-y-4">
-                            <div class="flex justify-end">
-                                <div class="bg-teal-600 text-black rounded-lg px-4 py-2 max-w-xs">
-                                    I'm feeling hungry but want something healthy and under 25 AED
-                                </div>
-                            </div>
-                            <div class="flex justify-start">
-                                <div class="bg-gray-100 text-gray-900 rounded-lg px-4 py-2 max-w-xs">
-                                    Great! I found some perfect options for you. How about a Mediterranean bowl with grilled chicken, quinoa, and fresh vegetables from "Healthy Bites"? It's 22 AED and has great reviews!
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Step 2 -->
-            <div class="flex flex-col lg:flex-row-reverse items-center gap-12">
-                <div class="lg:w-1/2">
-                    <div class="flex items-center gap-4 mb-6">
-                        <div class="w-16 h-16 rounded-full gradient-teal flex items-center justify-center text-black font-bold text-2xl step-circle">2</div>
-                        <h2 class="text-2xl font-bold text-black">Get AI Recommendations</h2>
-                    </div>
-                    <p class="text-gray-900 text-lg leading-relaxed mb-6">
-                        Our AI analyzes your preferences, budget, dietary requirements, and location to suggest the perfect meals from 
-                        trusted local restaurants. Each recommendation comes with details about ingredients, price, and estimated delivery time.
-                    </p>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div class="bg-teal-500/20 rounded-lg p-4">
-                            <h3 class="font-semibold text-teal-600 mb-2">Smart Matching</h3>
-                            <p class="text-sm text-gray-900">AI considers your taste, budget, and dietary needs</p>
-                        </div>
-                        <div class="bg-teal-500/20 rounded-lg p-4">
-                            <h3 class="font-semibold text-teal-600 mb-2">Local Focus</h3>
-                            <p class="text-sm text-gray-900">Only shows restaurants that deliver to your area</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="lg:w-1/2">
-                    <div class="bg-white rounded-2xl p-6 shadow-2xl">
-                        <h3 class="text-black font-semibold mb-4">🍽️ Recommended for You</h3>
-                        <div class="space-y-4">
-                            <div class="flex items-center gap-3 p-3 bg-white rounded-lg">
-                                <div class="w-12 h-12 bg-orange-500 rounded-lg flex items-center justify-center text-black font-bold">MB</div>
-                                <div>
-                                    <p class="text-black font-medium">Mediterranean Bowl</p>
-                                    <p class="text-gray-800 text-sm">Healthy Bites • 22 AED • 25 min</p>
-                                </div>
-                                <div class="text-yellow-400 text-sm ml-auto">★ 4.8</div>
-                            </div>
-                            <div class="flex items-center gap-3 p-3 bg-white rounded-lg">
-                                <div class="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center text-black font-bold">GS</div>
-                                <div>
-                                    <p class="text-black font-medium">Grilled Salmon</p>
-                                    <p class="text-gray-800 text-sm">Ocean Fresh • 24 AED • 30 min</p>
-                                </div>
-                                <div class="text-yellow-400 text-sm ml-auto">★ 4.9</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Step 3 -->
-            <div class="flex flex-col lg:flex-row items-center gap-12">
-                <div class="lg:w-1/2">
-                    <div class="flex items-center gap-4 mb-6">
-                        <div class="w-16 h-16 rounded-full gradient-teal flex items-center justify-center text-black font-bold text-2xl step-circle">3</div>
-                        <h2 class="text-2xl font-bold text-black">Customize & Order</h2>
-                    </div>
-                    <p class="text-gray-900 text-lg leading-relaxed mb-6">
-                        Choose your preferred option and customize it if needed. Our AI handles all the communication with the restaurant, 
-                        payment processing, and order confirmation. You just sit back and relax!
-                    </p>
-                    <ul class="space-y-3">
-                        <li class="flex items-center gap-3">
-                            <svg class="w-5 h-5 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span class="text-gray-900">Modify ingredients or portions</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <svg class="w-5 h-5 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span class="text-gray-900">Choose delivery time</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <svg class="w-5 h-5 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                            </svg>
-                            <span class="text-gray-900">Secure payment processing</span>
-                        </li>
-                    </ul>
-                </div>
-                <div class="lg:w-1/2">
-                    <div class="bg-white rounded-2xl p-6 shadow-2xl">
-                        <h3 class="text-black font-semibold mb-4">Order Details</h3>
-                        <div class="space-y-4">
-                            <div class="flex justify-between items-center">
-                                <span class="text-gray-900">Mediterranean Bowl</span>
-                                <span class="text-black">22 AED</span>
-                            </div>
-                            <div class="text-sm text-gray-800">
-                                <p>• Extra hummus (+2 AED)</p>
-                                <p>• No olives</p>
-                                <p>• Delivery: Today 7:30 PM</p>
-                            </div>
-                            <hr class="border-gray-300">
-                            <div class="flex justify-between items-center font-semibold">
-                                <span class="text-black">Total</span>
-                                <span class="text-teal-600">24 AED</span>
-                            </div>
-                            <button class="w-full bg-teal-600 text-black py-3 rounded-lg font-semibold">
-                                Confirm Order
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Step 4 -->
-            <div class="flex flex-col lg:flex-row-reverse items-center gap-12">
-                <div class="lg:w-1/2">
-                    <div class="flex items-center gap-4 mb-6">
-                        <div class="w-16 h-16 rounded-full gradient-teal flex items-center justify-center text-black font-bold text-2xl step-circle">4</div>
-                        <h2 class="text-2xl font-bold text-black">Track & Enjoy</h2>
-                    </div>
-                    <p class="text-gray-900 text-lg leading-relaxed mb-6">
-                        Track your order in real-time and get updates directly in the chat. From kitchen to your door, 
-                        you'll know exactly when your delicious meal will arrive. Rate your experience to help our AI learn your preferences!
-                    </p>
-                    <div class="bg-gradient-to-r from-teal-500/20 to-teal-600/10 rounded-lg p-6">
-                        <h3 class="font-semibold text-teal-600 mb-2">Pro Tip</h3>
-                        <p class="text-gray-900 text-sm">The more you use GoSnel, the better it gets at understanding your taste preferences and suggesting perfect meals!</p>
-                    </div>
-                </div>
-                <div class="lg:w-1/2">
-                    <div class="bg-white rounded-2xl p-6 shadow-2xl">
-                        <h3 class="text-black font-semibold mb-4">Order Tracking</h3>
-                        <div class="space-y-4">
-                            <div class="flex items-center gap-3">
-                                <div class="w-3 h-3 bg-green-500 rounded-full"></div>
-                                <div>
-                                    <p class="text-black text-sm">Order Confirmed</p>
-                                    <p class="text-gray-800 text-xs">6:45 PM</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <div class="w-3 h-3 bg-green-500 rounded-full"></div>
-                                <div>
-                                    <p class="text-black text-sm">Preparing Your Food</p>
-                                    <p class="text-gray-800 text-xs">6:50 PM</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <div class="w-3 h-3 bg-teal-500 rounded-full animate-pulse"></div>
-                                <div>
-                                    <p class="text-black text-sm">Out for Delivery</p>
-                                    <p class="text-gray-800 text-xs">ETA: 7:30 PM</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center gap-3 opacity-50">
-                                <div class="w-3 h-3 bg-white0 rounded-full"></div>
-                                <div>
-                                    <p class="text-gray-800 text-sm">Delivered</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <section class="mx-auto mt-20 max-w-6xl px-5 sm:px-8">
+        <div class="mx-auto max-w-2xl text-center">
+          <p class="text-xs font-extrabold uppercase tracking-[0.22em] text-[#39aaa2]">More than a delivery app</p>
+          <h2 class="mt-4 text-3xl font-extrabold tracking-[-0.04em] text-[#163f3d] sm:text-4xl">Local services for your building</h2>
         </div>
-
-        <!-- CTA Section -->
-        <div class="text-center mt-16 p-8 bg-gradient-to-r from-teal-500/20 to-teal-600/10 rounded-2xl">
-            <h2 class="text-2xl font-bold text-black mb-4">Ready to Try GoSnel?</h2>
-            <p class="text-gray-900 mb-6">Join thousands of satisfied customers who've discovered a better way to order food.</p>
-            <a href="https://gosnel.com/user/signup" class="inline-block px-8 py-3 bg-teal-600 text-black font-semibold rounded-lg hover:bg-teal-700 transition">
-                Start Ordering Now
-            </a>
+        <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <article class="rounded-[1.6rem] border border-[#dcece9] bg-white p-5">
+            <div class="icon-svc">
+              <img src="/shared/assets/images/landing-art/grocery.webp" alt="" width="68" height="68" loading="lazy">
+            </div>
+            <h3 class="mt-6 text-lg font-extrabold text-[#244d49]">Grocery</h3>
+            <p class="mt-2 text-sm leading-6 text-[#789490]">Everyday essentials from shops around your building.</p>
+          </article>
+          <article class="rounded-[1.6rem] border border-[#dcece9] bg-white p-5">
+            <div class="icon-svc">
+              <img src="/shared/assets/images/landing-art/pharmacy.webp" alt="" width="68" height="68" loading="lazy">
+            </div>
+            <h3 class="mt-6 text-lg font-extrabold text-[#244d49]">Pharmacy</h3>
+            <p class="mt-2 text-sm leading-6 text-[#789490]">Quick requests from trusted pharmacies nearby.</p>
+          </article>
+          <article class="rounded-[1.6rem] border border-[#dcece9] bg-white p-5">
+            <div class="icon-svc">
+              <img src="/shared/assets/images/landing-art/laundry.webp" alt="" width="68" height="68" loading="lazy">
+            </div>
+            <h3 class="mt-6 text-lg font-extrabold text-[#244d49]">Laundry</h3>
+            <p class="mt-2 text-sm leading-6 text-[#789490]">Pickup and drop-off that fits your routine.</p>
+          </article>
+          <article class="rounded-[1.6rem] border border-[#dcece9] bg-white p-5">
+            <div class="icon-svc">
+              <img src="/shared/assets/images/landing-art/water.webp" alt="" width="68" height="68" loading="lazy">
+            </div>
+            <h3 class="mt-6 text-lg font-extrabold text-[#244d49]">Water and supplies</h3>
+            <p class="mt-2 text-sm leading-6 text-[#789490]">Refills and household needs, delivered locally.</p>
+          </article>
         </div>
+      </section>
+
+      <section class="mx-5 mt-16 overflow-hidden rounded-[2rem] bg-[#123e3c] px-6 py-12 text-center text-white sm:mx-8 sm:px-10 lg:mx-auto lg:max-w-6xl">
+        <p class="text-xs font-extrabold uppercase tracking-[0.22em] text-[#8ce5dc]">Life, simplified</p>
+        <h2 class="mt-4 text-3xl font-extrabold tracking-[-0.04em] sm:text-4xl">Ready to try GoSnel?</h2>
+        <p class="mx-auto mt-4 max-w-xl text-base leading-7 text-[#b5d4d0]">
+          Download the app and start from your building in a few taps.
+        </p>
+        <a href="https://user.gosnel.com/install" class="btn-brand mt-8 inline-flex items-center gap-2 rounded-full px-6 py-3.5 text-sm font-extrabold text-[#123d3b] shadow-[0_12px_25px_rgba(78,205,196,0.25)]">
+          Download app
+        </a>
+      </section>
     </main>
 
-    <!--#include file="../components/footer.html" -->
+    <!--#include file="shared/components/footer.html" -->
 </body>
 </html>

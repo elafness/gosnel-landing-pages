@@ -121,3 +121,7 @@ https://user.gosnel.com/faq /faq.html 200
 /hotels-sitemap.xml /hotels-sitemap.xml 200
 /robots.txt /robots.txt 200
 
+# Retired partner how-it-works
+/partner/how-it-works /partner/ 301
+/partner/how-it-works/ /partner/ 301
+/partner/how-it-works.html /partner/ 301

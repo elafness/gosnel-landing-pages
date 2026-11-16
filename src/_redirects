@@ -41,6 +41,11 @@ https://restaurants.gosnel.com/* https://gosnel.com/partner/ 301
 /contacts /contact.html 200
 /contacts/ /contact.html 200
 
+# Retired partner how-it-works page (content lives on /partner/#how)
+/partner/how-it-works /partner/ 301
+/partner/how-it-works/ /partner/ 301
+/partner/how-it-works.html /partner/ 301
+
 # Blog Rewrites
 /blog/ai-food-recommendations-uae /user-blog-ai-food-recommendations-uae.html 200
 /blog/restaurant-technology-trends-2026 /user-blog-restaurant-technology-trends-2026.html 200

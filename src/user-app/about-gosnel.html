@@ -1,33 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About GoSnel | Our Story and Mission | GoSnel Food Platform UAE</title>
-    
-    <!-- RealFaviconGenerator Recommended Favicon System -->
-    <link rel="icon" type="image/png" href="/shared/assets/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="/shared/assets/favicon-circular.svg" />
-    <link rel="shortcut icon" href="/shared/assets/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/shared/assets/apple-touch-icon.png" />
-    <link rel="manifest" href="/shared/assets/site.webmanifest" />
-    <meta name="theme-color" content="#14b8a6">
-    
-    <!-- SEO Meta Tags for Brand Clarity -->
-    <meta name="description" content="Discover GoSnel's journey to transform food discovery in the UAE. Learn about our mission to make finding delicious meals effortless and personalized.">
-    <meta name="keywords" content="About GoSnel, GoSnel story, UAE food discovery, personalized food recommendations, AI food platform">
-    
-    <!-- Open Graph -->
-    <meta property="og:title" content="About GoSnel | Our Story and Mission">
-    <meta property="og:description" content="Discover GoSnel's journey to transform food discovery in the UAE.">
-    <meta property="og:url" content="https://gosnel.com/about-gosnel">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>About GoSnel | Life, simplified</title>
+    <meta name="description" content="GoSnel brings cheap, fresh and local services to your building: grocery, pharmacy, laundry, water, meals, and more. Life, simplified.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://gosnel.com/about">
+    <meta name="theme-color" content="#4ECDC4">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://gosnel.com/shared/assets/about-gosnel-og.jpg">
-    
-    <link rel="canonical" href="https://gosnel.com/about-gosnel">
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Schema.org for AboutPage -->
+    <meta property="og:url" content="https://gosnel.com/about">
+    <meta property="og:site_name" content="GoSnel">
+    <meta property="og:title" content="About GoSnel | Life, simplified">
+    <meta property="og:description" content="Local services for towers and buildings across the UAE. Cheap, fresh and local. Fast to Your Door.">
+    <meta property="og:image" content="https://gosnel.com/shared/assets/images/gosnel-logo-rebrand.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="About GoSnel | Life, simplified">
+    <meta name="twitter:description" content="Local services for your building. Life, simplified.">
+    <link rel="icon" type="image/png" href="/shared/assets/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="/shared/assets/favicon.svg">
+    <link rel="shortcut icon" href="/shared/assets/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/shared/assets/apple-touch-icon.png">
+    <link rel="manifest" href="/shared/assets/site.webmanifest">
+    <link rel="stylesheet" href="/shared/styles/output.css">
+    <style>
+      :root { --brand: #4ECDC4; --ink: #163c3b; --muted: #6d8582; }
+      body { color: var(--ink); background: #fbfdfc; }
+      .btn-brand { background: var(--brand); color: #123d3b; }
+      .btn-brand:hover { filter: brightness(0.96); }
+      .header-scrolled { border-bottom: 1px solid #dcebe7; background: rgba(255,255,255,0.92); backdrop-filter: blur(16px); }
+    </style>
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -35,160 +37,129 @@
         "mainEntity": {
             "@type": "Organization",
             "name": "GoSnel",
-            "description": "GoSnel is transforming how people in the UAE discover and enjoy food through intelligent, personalized recommendations.",
-            "foundingDate": "2024",
-            "industry": ["Food Technology", "Artificial Intelligence"],
-            "areaServed": {
-                "@type": "Country",
-                "name": "United Arab Emirates"
-            }
+            "description": "GoSnel connects residents in towers and buildings with nearby local services: grocery, pharmacy, laundry, water, meals, and more.",
+            "url": "https://gosnel.com/",
+            "slogan": "Life, simplified",
+            "areaServed": { "@type": "Country", "name": "United Arab Emirates" }
         }
     }
     </script>
 </head>
-<body class="bg-gray-50 font-sans">
-    <div class="min-h-screen">
-        <!-- Header -->
-        <header class="bg-white shadow-sm">
-            <div class="container mx-auto px-6 py-4">
-                <div class="flex justify-between items-center">
-                    <div class="text-2xl font-bold text-teal-600">
-                        <a href="/">GoSnel</a>
-                    </div>
-                    <nav class="space-x-6">
-                        <a href="/" class="text-gray-600 hover:text-teal-600">Home</a>
-                        <a href="/blog/" class="text-gray-600 hover:text-teal-600">Blog</a>
-                        <a href="/about-gosnel" class="text-teal-600 font-medium">About GoSnel</a>
-                    </nav>
-                </div>
-            </div>
-        </header>
+<body class="antialiased">
+    <header id="siteHeader" class="fixed inset-x-0 top-0 z-40 bg-white/90 backdrop-blur">
+      <div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8 lg:px-10">
+        <a href="/" class="flex items-center gap-2.5">
+          <img src="/shared/assets/images/gosnel-logo-rebrand.png" alt="GoSnel" class="h-10 w-10 rounded-[14px] object-contain" width="40" height="40">
+          <span class="text-[19px] font-extrabold tracking-[-0.06em]">GoSnel</span>
+        </a>
+        <nav class="hidden items-center gap-8 text-sm font-semibold text-[#66817e] lg:flex">
+          <a href="/" class="transition hover:text-[#1a8f87]">Home</a>
+          <a href="/how-it-works" class="transition hover:text-[#1a8f87]">How it works</a>
+          <a href="/partner/" class="transition hover:text-[#1a8f87]">Partners</a>
+          <a href="/about" class="text-[#1a8f87]">About</a>
+        </nav>
+        <a href="https://user.gosnel.com/install" class="btn-brand hidden rounded-full px-5 py-3 text-sm font-extrabold shadow-sm lg:inline-flex">Download app</a>
+        <a href="https://user.gosnel.com/install" class="btn-brand rounded-full px-4 py-2.5 text-sm font-extrabold lg:hidden">Download</a>
+      </div>
+    </header>
 
-        <!-- Main Content -->
-        <main class="container mx-auto px-6 py-12">
-            <!-- Hero Section -->
-            <div class="text-center mb-16">
-                <h1 class="text-5xl font-bold text-gray-900 mb-6">About GoSnel</h1>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-                    We're on a mission to transform how people in the UAE discover and enjoy food. 
-                    Every meal should be effortless, personalized, and absolutely delicious.
-                </p>
-            </div>
+    <main class="pt-28 pb-20">
+      <section class="mx-auto max-w-4xl px-5 text-center sm:px-8">
+        <p class="mb-4 text-xs font-extrabold uppercase tracking-[0.24em] text-[#39aaa2]">Life, simplified</p>
+        <h1 class="text-4xl font-extrabold tracking-[-0.06em] text-[#123e3c] sm:text-5xl">About GoSnel</h1>
+        <p class="mx-auto mt-6 max-w-2xl text-lg leading-8 text-[#6d8582]">
+          Cheap, fresh and local. Fast to Your Door. GoSnel brings everyday services to residents in towers and buildings across the UAE.
+        </p>
+      </section>
 
-            <!-- Our Journey -->
-            <div class="grid md:grid-cols-2 gap-12 mb-16">
-                <div>
-                    <h2 class="text-3xl font-bold text-gray-900 mb-6">Our Story</h2>
-                    <p class="text-gray-600 mb-4">
-                        It started with a simple frustration we all share - staring at endless restaurant 
-                        options, feeling overwhelmed, and still not knowing what to eat.
-                    </p>
-                    <p class="text-gray-600 mb-4">
-                        In the vibrant food scene of Dubai and Abu Dhabi, choice should be a joy, 
-                        not a burden. That's why we created GoSnel - to bring the joy back to food discovery.
-                    </p>
-                    <p class="text-gray-600">
-                        We believe technology should make life simpler, not more complicated. 
-                        Our AI learns what you love to make every meal recommendation feel like 
-                        advice from a trusted friend who knows your taste perfectly.
-                    </p>
-                </div>
-                <div class="bg-gradient-to-br from-teal-50 to-blue-50 rounded-lg p-8">
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">What We Stand For</h3>
-                    <div class="space-y-4">
-                        <div class="flex items-start gap-3">
-                            <div>
-                                <h4 class="font-bold text-gray-900">Love for Food</h4>
-                                <p class="text-gray-600 text-sm">We're passionate about connecting people with meals they'll truly enjoy</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-3">
-                            <div>
-                                <h4 class="font-bold text-gray-900">Speed & Simplicity</h4>
-                                <p class="text-gray-600 text-sm">Getting great food recommendations shouldn't take forever</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-3">
-                            <div>
-                                <h4 class="font-bold text-gray-900">UAE at Heart</h4>
-                                <p class="text-gray-600 text-sm">Built by locals who understand the UAE's incredible food culture</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <section class="mx-auto mt-16 max-w-6xl px-5 sm:px-8">
+        <div class="grid gap-10 lg:grid-cols-2 lg:items-start">
+          <div>
+            <h2 class="text-3xl font-extrabold tracking-[-0.04em] text-[#163f3d]">Our story</h2>
+            <p class="mt-5 text-base leading-7 text-[#6d8582]">
+              Building life should feel simple. Residents need grocery, pharmacy, laundry, water, meals, and other local help without juggling five apps or long waits.
+            </p>
+            <p class="mt-4 text-base leading-7 text-[#6d8582]">
+              GoSnel connects each building with trusted shops nearby. You open one app, send a clear request, and local partners take it from there to your door.
+            </p>
+            <p class="mt-4 text-base leading-7 text-[#6d8582]">
+              We are building for communities first: towers, compounds, and the neighbourhood shops that already serve them.
+            </p>
+          </div>
+          <div class="rounded-[1.6rem] border border-[#dcece9] bg-[#f3faf9] p-8">
+            <h3 class="text-xl font-extrabold text-[#163f3d]">What we stand for</h3>
+            <ul class="mt-6 space-y-5">
+              <li>
+                <p class="font-extrabold text-[#244d49]">Local by design</p>
+                <p class="mt-1 text-sm leading-6 text-[#6d8582]">Nearby partners for the buildings they already know.</p>
+              </li>
+              <li>
+                <p class="font-extrabold text-[#244d49]">Simple for residents</p>
+                <p class="mt-1 text-sm leading-6 text-[#6d8582]">One place for everyday needs, from request to doorstep.</p>
+              </li>
+              <li>
+                <p class="font-extrabold text-[#244d49]">Built for the UAE</p>
+                <p class="mt-1 text-sm leading-6 text-[#6d8582]">Made for how people live in towers and compounds here.</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
 
-            <!-- Mission & Vision -->
-            <div class="grid md:grid-cols-2 gap-12 mb-16">
-                <div class="bg-gradient-to-br from-teal-50 to-teal-100 rounded-lg p-8">
-                    <h3 class="text-2xl font-bold text-teal-800 mb-4">Our Mission</h3>
-                    <p class="text-teal-700">
-                        To make food discovery in the UAE effortless and joyful. We want to eliminate 
-                        decision fatigue and help everyone find meals they'll genuinely love, every single time.
-                    </p>
-                </div>
-                <div class="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-lg p-8">
-                    <h3 class="text-2xl font-bold text-blue-800 mb-4">Our Vision</h3>
-                    <p class="text-blue-700">
-                        To become every UAE resident's trusted food companion - the friend who always 
-                        knows exactly what you're craving and where to find it.
-                    </p>
-                </div>
-            </div>
+      <section class="mx-auto mt-16 grid max-w-6xl gap-6 px-5 sm:px-8 md:grid-cols-2">
+        <div class="rounded-[1.6rem] bg-[#123e3c] p-8 text-white">
+          <h2 class="text-2xl font-extrabold">Mission</h2>
+          <p class="mt-4 leading-7 text-[#b5d4d0]">
+            Make local living easier: connect residents with fresh, affordable services from shops around their building.
+          </p>
+        </div>
+        <div class="rounded-[1.6rem] border border-[#dcece9] bg-white p-8">
+          <h2 class="text-2xl font-extrabold text-[#163f3d]">Vision</h2>
+          <p class="mt-4 leading-7 text-[#6d8582]">
+            Every building has a clear neighbourhood on GoSnel, where residents and local partners grow together.
+          </p>
+        </div>
+      </section>
 
-            <!-- What Makes GoSnel Special -->
-            <div class="mb-16">
-                <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">What Makes GoSnel Special</h2>
-                <div class="grid md:grid-cols-3 gap-8">
-                    <div class="text-center group hover:scale-105 transition-transform duration-300">
-                        <div class="bg-gradient-to-br from-teal-100 to-teal-200 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4 shadow-lg group-hover:shadow-xl transition-shadow">
-                            <span class="text-3xl">🧠</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Smart & Personal</h3>
-                        <p class="text-gray-600">Learns your preferences to suggest meals you'll actually love</p>
-                    </div>
-                    <div class="text-center group hover:scale-105 transition-transform duration-300">
-                        <div class="bg-gradient-to-br from-orange-100 to-yellow-200 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4 shadow-lg group-hover:shadow-xl transition-shadow">
-                            <span class="text-3xl">⚡</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Lightning Fast</h3>
-                        <p class="text-gray-600">Perfect meal suggestions in seconds, not frustrating minutes</p>
-                    </div>
-                    <div class="text-center group hover:scale-105 transition-transform duration-300">
-                        <div class="bg-gradient-to-br from-purple-100 to-pink-200 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4 shadow-lg group-hover:shadow-xl transition-shadow">
-                            <span class="text-3xl">🇦🇪</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Made for the UAE</h3>
-                        <p class="text-gray-600">Built by locals who understand our diverse food culture</p>
-                    </div>
-                </div>
+      <section class="mx-auto mt-16 max-w-6xl px-5 sm:px-8">
+        <h2 class="text-center text-3xl font-extrabold tracking-[-0.04em] text-[#163f3d]">What makes GoSnel different</h2>
+        <div class="mt-10 grid gap-5 sm:grid-cols-3">
+          <article class="rounded-[1.6rem] border border-[#dcece9] bg-white p-6">
+            <div class="mb-5 overflow-hidden rounded-2xl bg-[#eaf8f5]">
+              <img src="/shared/assets/images/landing-art/how-step-building.webp" alt="" class="h-24 w-full object-cover" width="320" height="96" loading="lazy">
             </div>
-
-            <!-- Our Promise -->
-            <div class="bg-gradient-to-r from-teal-500 to-blue-500 rounded-2xl p-12 text-white text-center">
-                <h2 class="text-3xl font-bold mb-4">Our Promise to You</h2>
-                <p class="text-xl max-w-3xl mx-auto mb-6">
-                    Every recommendation is crafted with care, every suggestion aims to delight, 
-                    and every interaction feels like getting advice from a friend who truly gets you.
-                </p>
-                <div class="flex flex-wrap justify-center gap-6 mt-8">
-                    <div class="flex items-center gap-2 bg-white/20 px-4 py-2 rounded-full">
-                        <span>🌟</span>
-                        <span>No more decision stress</span>
-                    </div>
-                    <div class="flex items-center gap-2 bg-white/20 px-4 py-2 rounded-full">
-                        <span>🍽️</span>
-                        <span>Meals you'll actually enjoy</span>
-                    </div>
-                    <div class="flex items-center gap-2 bg-white/20 px-4 py-2 rounded-full">
-                        <span>⏱️</span>
-                        <span>Fast, friendly service</span>
-                    </div>
-                </div>
+            <h3 class="text-lg font-extrabold text-[#244d49]">Built for buildings</h3>
+            <p class="mt-2 text-sm leading-6 text-[#789490]">Services are organised around where you live, not a city-wide maze.</p>
+          </article>
+          <article class="rounded-[1.6rem] border border-[#dcece9] bg-white p-6">
+            <div class="mb-5 overflow-hidden rounded-2xl bg-[#eaf8f5]">
+              <img src="/shared/assets/images/landing-art/grocery.webp" alt="" class="h-24 w-full object-cover" width="320" height="96" loading="lazy">
             </div>
-        </main>
+            <h3 class="text-lg font-extrabold text-[#244d49]">More than meals</h3>
+            <p class="mt-2 text-sm leading-6 text-[#789490]">Grocery, pharmacy, laundry, water, meals, and more in one local network.</p>
+          </article>
+          <article class="rounded-[1.6rem] border border-[#dcece9] bg-white p-6">
+            <div class="mb-5 overflow-hidden rounded-2xl bg-[#eaf8f5]">
+              <img src="/shared/assets/images/landing-art/how-step-door.webp" alt="" class="h-24 w-full object-cover" width="320" height="96" loading="lazy">
+            </div>
+            <h3 class="text-lg font-extrabold text-[#244d49]">Fast to your door</h3>
+            <p class="mt-2 text-sm leading-6 text-[#789490]">Clear requests, local fulfilment, and updates until delivery.</p>
+          </article>
+        </div>
+      </section>
 
-        <!--#include file="../shared/components/footer.html" -->
-    </div>
+      <section class="mx-5 mt-16 overflow-hidden rounded-[2rem] bg-[#123e3c] px-6 py-12 text-center text-white sm:mx-8 sm:px-10 lg:mx-auto lg:max-w-6xl">
+        <p class="text-xs font-extrabold uppercase tracking-[0.22em] text-[#8ce5dc]">Our promise</p>
+        <h2 class="mt-4 text-3xl font-extrabold tracking-[-0.04em] sm:text-4xl">Life, simplified</h2>
+        <p class="mx-auto mt-4 max-w-2xl text-base leading-7 text-[#b5d4d0]">
+          Fair local partners, clear requests, and everyday services that fit how you already live.
+        </p>
+        <a href="https://user.gosnel.com/install" class="btn-brand mt-8 inline-flex items-center gap-2 rounded-full px-6 py-3.5 text-sm font-extrabold text-[#123d3b] shadow-[0_12px_25px_rgba(78,205,196,0.25)]">
+          Download app
+        </a>
+      </section>
+    </main>
+
+    <!--#include file="shared/components/footer.html" -->
 </body>
 </html>
