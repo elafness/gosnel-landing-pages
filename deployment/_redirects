@@ -100,6 +100,13 @@ https://user.gosnel.com/faq /faq.html 200
 /contacts/ /contact.html 200
 /partner /partner/index.html 200
 /partner/ /partner/index.html 200
+# Retired partner pages (must be above /partner/* splat)
+/partner/how-it-works /partner/ 301
+/partner/how-it-works/ /partner/ 301
+/partner/how-it-works.html /partner/ 301
+/partner/insights /partner/ 301
+/partner/insights/ /partner/ 301
+/partner/insights.html /partner/ 301
 /partner/* /partner/:splat 200
 /blog/* /apps/user-app/blog/:splat 200
 
@@ -121,7 +128,3 @@ https://user.gosnel.com/faq /faq.html 200
 /hotels-sitemap.xml /hotels-sitemap.xml 200
 /robots.txt /robots.txt 200
 
-# Retired partner how-it-works
-/partner/how-it-works /partner/ 301
-/partner/how-it-works/ /partner/ 301
-/partner/how-it-works.html /partner/ 301
