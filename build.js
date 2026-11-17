@@ -220,15 +220,13 @@ const buildPages = () => {
   const partnerPages = [
     { src: 'partner-app/features/partner-landing.html', dest: 'index.html' },
     { src: 'partner-app/features/partner-landing.html', dest: 'landing.html' },
-    // Retired page: tiny HTML redirect (overwrites cached dist) + _redirects 301
+    // Retired pages: tiny HTML redirects (overwrite cached dist) + _redirects 301
     { src: 'partner-app/features/how-it-works.html', dest: 'how-it-works.html' },
-    { src: 'partner-app/features/why-partner.html', dest: 'why-partner.html' },
-    { src: 'partner-app/features/pricing.html', dest: 'pricing.html' },
-    { src: 'partner-app/features/guidelines.html', dest: 'guidelines.html' },
     { src: 'partner-app/features/insights.html', dest: 'insights.html' },
+    { src: 'partner-app/features/pricing.html', dest: 'pricing.html' },
     { src: 'partner-app/features/investor-pitch.html', dest: 'investors.html' },
-    { src: 'partner-app/instructions.html', dest: 'instructions.html' },
-    { src: 'partner-app/pdf.html', dest: 'pdf.html' }
+    { src: 'partner-app/features/why-partner.html', dest: 'why-partner.html' },
+    { src: 'partner-app/features/guidelines.html', dest: 'guidelines.html' },
   ];
   
     partnerPages.forEach(({ src, dest }) => {
@@ -259,12 +257,14 @@ const buildPages = () => {
   const userPages = [
     { src: 'user-app/user-landing.html', dest: 'index.html' },
     { src: 'user-app/features/how-it-works.html', dest: 'how-it-works.html' },
-    { src: 'user-app/food.html', dest: 'food.html' },
     { src: 'user-app/about-gosnel.html', dest: 'about.html' },
     { src: 'user-app/blog.html', dest: 'blog.html' },
     { src: 'user-app/new-faq.html', dest: 'faq.html' },
+    { src: 'user-app/contact.html', dest: 'contact.html' },
+    // Retired pages: redirect stubs
+    { src: 'user-app/food.html', dest: 'food.html' },
     { src: 'user-app/account-soon.html', dest: 'account-soon.html' },
-    { src: 'user-app/contact.html', dest: 'contact.html' }
+    { src: 'user-app/news.html', dest: 'news.html' },
   ];
   
   userPages.forEach(({ src, dest }) => {
@@ -386,21 +386,12 @@ const buildPages = () => {
     console.log("✅ Copied _headers file from deployment/");
   }
 
-  // Create localhost development files for 404-free routing
-  const localhostFiles = [
-    { src: "vendor-why-partner.html", dest: "why-partner.html" },
-    { src: "vendor-guidelines.html", dest: "guidelines.html" },
-    { src: "vendor-insights.html", dest: "insights.html" }
-  ];
-
-  localhostFiles.forEach(({ src, dest }) => {
-    const srcPath = path.join(distDir, src);
-    const destPath = path.join(distDir, dest);
-    if (fs.existsSync(srcPath)) {
-      fs.copyFileSync(srcPath, destPath);
-    }
-  });
-  console.log("✅ Created localhost development files");
+  // Drop stale root pricing.html from older builds (live pricing is /partner/pricing stub only)
+  const staleRootPricing = path.join(distDir, 'pricing.html');
+  if (fs.existsSync(staleRootPricing)) {
+    fs.unlinkSync(staleRootPricing);
+    console.log('✅ Removed retired /pricing.html');
+  }
 
   // Copy app directories to dist for deployment with include processing
   // Copy partner-app

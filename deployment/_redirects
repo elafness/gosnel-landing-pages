@@ -98,6 +98,20 @@ https://user.gosnel.com/faq /faq.html 200
 /about-us /about.html 200
 /contacts /contact.html 200
 /contacts/ /contact.html 200
+
+# Retired marketing pages (Wave 2)
+/food / 301
+/food/ / 301
+/food.html / 301
+/pricing /partner/#apply 301
+/pricing/ /partner/#apply 301
+/pricing.html /partner/#apply 301
+/news /blog 301
+/news/ /blog 301
+/news.html /blog 301
+/account-soon https://user.gosnel.com/install 301
+/account-soon/ https://user.gosnel.com/install 301
+/account-soon.html https://user.gosnel.com/install 301
 /partner /partner/index.html 200
 /partner/ /partner/index.html 200
 # Retired partner pages (must be above /partner/* splat)
@@ -107,6 +121,12 @@ https://user.gosnel.com/faq /faq.html 200
 /partner/insights /partner/ 301
 /partner/insights/ /partner/ 301
 /partner/insights.html /partner/ 301
+/partner/pricing /partner/#apply 301
+/partner/pricing/ /partner/#apply 301
+/partner/pricing.html /partner/#apply 301
+/partner/investors /partner/ 301
+/partner/investors/ /partner/ 301
+/partner/investors.html /partner/ 301
 /partner/* /partner/:splat 200
 /blog/* /apps/user-app/blog/:splat 200
 

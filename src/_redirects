@@ -48,8 +48,28 @@ https://restaurants.gosnel.com/* https://gosnel.com/partner/ 301
 /partner/insights /partner/ 301
 /partner/insights/ /partner/ 301
 /partner/insights.html /partner/ 301
+/partner/pricing /partner/#apply 301
+/partner/pricing/ /partner/#apply 301
+/partner/pricing.html /partner/#apply 301
+/partner/investors /partner/ 301
+/partner/investors/ /partner/ 301
+/partner/investors.html /partner/ 301
 
 # Blog Rewrites
 /blog/ai-food-recommendations-uae /user-blog-ai-food-recommendations-uae.html 200
 /blog/restaurant-technology-trends-2026 /user-blog-restaurant-technology-trends-2026.html 200
 /blog/uae-food-delivery-evolution /user-blog-uae-food-delivery-evolution.html 200
+
+# Retired marketing pages (Wave 2)
+/food / 301
+/food/ / 301
+/food.html / 301
+/pricing /partner/#apply 301
+/pricing/ /partner/#apply 301
+/pricing.html /partner/#apply 301
+/news /blog 301
+/news/ /blog 301
+/news.html /blog 301
+/account-soon https://user.gosnel.com/install 301
+/account-soon/ https://user.gosnel.com/install 301
+/account-soon.html https://user.gosnel.com/install 301
