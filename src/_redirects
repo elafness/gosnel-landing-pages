@@ -10,11 +10,28 @@ https://careers.gosnel.com/* /careers/:splat 200
 # ============================================
 /careers  /careers/index.html 200
 /careers/ /careers/index.html 200
-/careers/sales-partner /careers/sales-partner.html 200
-/careers/field-sales-recruiter /careers/field-sales-recruiter.html 200
-/careers/task-taker-partner /careers/field-project-manager 301
-/careers/task-taker-partner/ /careers/field-project-manager 301
-/careers/task-taker-partner.html /careers/field-project-manager 301
+# Field-partner careers closed — send old role URLs to careers home
+/careers/sales-partner /careers/ 301
+/careers/sales-partner/ /careers/ 301
+/careers/sales-partner.html /careers/ 301
+/careers/local-sales-partner /careers/ 301
+/careers/local-sales-partner/ /careers/ 301
+/careers/local-sales-partner.html /careers/ 301
+/careers/hotel-sales-partner /careers/ 301
+/careers/hotel-sales-partner/ /careers/ 301
+/careers/hotel-sales-partner.html /careers/ 301
+/careers/agency-partner /careers/ 301
+/careers/agency-partner/ /careers/ 301
+/careers/agency-partner.html /careers/ 301
+/careers/field-sales-recruiter /careers/ 301
+/careers/field-sales-recruiter/ /careers/ 301
+/careers/field-sales-recruiter.html /careers/ 301
+/careers/field-project-manager /careers/ 301
+/careers/field-project-manager/ /careers/ 301
+/careers/field-project-manager.html /careers/ 301
+/careers/task-taker-partner /careers/ 301
+/careers/task-taker-partner/ /careers/ 301
+/careers/task-taker-partner.html /careers/ 301
 /careers/* /careers/:splat 200
 
 # ============================================

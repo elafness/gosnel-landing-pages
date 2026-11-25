@@ -1,58 +1,41 @@
-# Cloudflare Pages Redirects - Clean Multi-App Architecture
-
 # ============================================
-# MAPS SUBDOMAIN (maps.gosnel.com) - MUST BE FIRST
+# 1. CAREERS SUBDOMAIN (إجبار التوجيه للمجلد)
 # ============================================
-https://maps.gosnel.com/ /maps/index.html 200
-https://maps.gosnel.com/admin /maps/admin.html 200
-https://maps.gosnel.com/* /maps/:splat 200
-http://maps.gosnel.com/ /maps/index.html 200
-http://maps.gosnel.com/admin /maps/admin.html 200
-http://maps.gosnel.com/* /maps/:splat 200
-maps.gosnel.com/ /maps/index.html 200
-maps.gosnel.com/admin /maps/admin.html 200
-maps.gosnel.com/* /maps/:splat 200
-
-# ============================================
-# HOTELS SUBDOMAIN (hotels.gosnel.com)
-# Digital Concierge Platform - 301 Redirect for Multi-App Root
-# ============================================
-https://hotels.gosnel.com/ https://gosnel.com/hotels/ 301
-https://hotels.gosnel.com/* https://gosnel.com/hotels/:splat 301
-http://hotels.gosnel.com/ https://gosnel.com/hotels/ 301
-http://hotels.gosnel.com/* https://gosnel.com/hotels/:splat 301
-
-# ============================================
-# CAREERS SUBDOMAIN (careers.gosnel.com)
-# ============================================
-# Master Recruiter role removed — send old URLs to careers index
-/careers/master-recruiter /careers/ 301
-/careers/master-recruiter/ /careers/ 301
-/careers/master-recruiter.html /careers/ 301
-https://careers.gosnel.com/master-recruiter /careers/ 301
-https://careers.gosnel.com/master-recruiter/ /careers/ 301
-https://careers.gosnel.com/master-recruiter.html /careers/ 301
-# Task Taker Partner renamed to Field Project Manager
-# Do NOT add a 200 rewrite to .html here — Cloudflare pretty URLs already
-# serve field-project-manager.html at /careers/field-project-manager; a rewrite
-# to .html fights the .html→pretty 308 and causes an infinite redirect loop.
-/careers/task-taker-partner /careers/field-project-manager 301
-/careers/task-taker-partner/ /careers/field-project-manager 301
-/careers/task-taker-partner.html /careers/field-project-manager 301
-https://careers.gosnel.com/task-taker-partner /careers/field-project-manager 301
-https://careers.gosnel.com/task-taker-partner/ /careers/field-project-manager 301
-https://careers.gosnel.com/task-taker-partner.html /careers/field-project-manager 301
+# أي طلب يأتي لـ careers.gosnel.com يذهب لمجلد careers داخلياً
+https://careers.gosnel.com/ /careers/index.html 200
 https://careers.gosnel.com/* /careers/:splat 200
-https://careers.gosnel.com/ /careers/ 200
 
 # ============================================
-# RESTAURANTS SUBDOMAIN (restaurants.gosnel.com)
+# 2. MAIN DOMAIN PATHS (gosnel.com/careers)
 # ============================================
-https://restaurants.gosnel.com/* https://gosnel.com/partner/ 301
-https://restaurants.gosnel.com/ https://gosnel.com/partner/ 301
+/careers  /careers/index.html 200
+/careers/ /careers/index.html 200
+# Field-partner careers closed — send old role URLs to careers home
+/careers/sales-partner /careers/ 301
+/careers/sales-partner/ /careers/ 301
+/careers/sales-partner.html /careers/ 301
+/careers/local-sales-partner /careers/ 301
+/careers/local-sales-partner/ /careers/ 301
+/careers/local-sales-partner.html /careers/ 301
+/careers/hotel-sales-partner /careers/ 301
+/careers/hotel-sales-partner/ /careers/ 301
+/careers/hotel-sales-partner.html /careers/ 301
+/careers/agency-partner /careers/ 301
+/careers/agency-partner/ /careers/ 301
+/careers/agency-partner.html /careers/ 301
+/careers/field-sales-recruiter /careers/ 301
+/careers/field-sales-recruiter/ /careers/ 301
+/careers/field-sales-recruiter.html /careers/ 301
+/careers/field-project-manager /careers/ 301
+/careers/field-project-manager/ /careers/ 301
+/careers/field-project-manager.html /careers/ 301
+/careers/task-taker-partner /careers/ 301
+/careers/task-taker-partner/ /careers/ 301
+/careers/task-taker-partner.html /careers/ 301
+/careers/* /careers/:splat 200
 
 # ============================================
-# USER SUBDOMAIN (user.gosnel.com)
+# 3. USER SUBDOMAIN (user.gosnel.com)
 # ============================================
 # Shared pages that work on both main domain and user subdomain
 https://user.gosnel.com/legal /legal.html 200
@@ -60,44 +43,39 @@ https://user.gosnel.com/about /about.html 200
 https://user.gosnel.com/faq /faq.html 200
 
 # ============================================
-# LEGAL / PRIVACY CANONICAL (gosnel.com)
-# Pretty paths → /legal (Privacy + Terms + Cookies)
+# 4. MAPS SUBDOMAIN (maps.gosnel.com)
 # ============================================
-/privacy /legal 301
-/privacy/ /legal 301
-/privacy-policy /legal 301
-/privacy-policy/ /legal 301
-/terms /legal 301
-/terms/ /legal 301
-/terms-of-service /legal 301
-/terms-of-service/ /legal 301
-/cookies /legal 301
-/cookies/ /legal 301
-/cookie-policy /legal 301
-/cookie-policy/ /legal 301
+https://maps.gosnel.com/ /maps/index.html 200
+https://maps.gosnel.com/admin /maps/admin.html 200
+https://maps.gosnel.com/* /maps/:splat 200
 
 # ============================================
-# SHARED RESOURCES (SERVE DIRECTLY)
+# 5. RESTAURANTS & OTHERS
 # ============================================
-/shared/* /shared/:splat 200
-/assets/* /shared/assets/:splat 200
-
-# ============================================
-# MAIN DOMAIN ROUTING (gosnel.com)
-# ============================================
-# Note: Cloudflare Pages automatically serves .html files without extension
-# Only adding specific rewrites where needed
-
-# Retired driver recruiting landing — stop ranking above home in Google
-/drivers https://gosnel.com/ 301
-/drivers/ https://gosnel.com/ 301
-/drivers/* https://gosnel.com/ 301
-/index-drivers.html https://gosnel.com/ 301
-/drivers-sitemap.xml https://gosnel.com/sitemap.xml 301
-
+https://restaurants.gosnel.com/* https://gosnel.com/partner/ 301
+/vendor/* /partner/:splat 301
 /about-us /about.html 200
 /contacts /contact.html 200
 /contacts/ /contact.html 200
+
+# Retired partner pages
+/partner/how-it-works /partner/ 301
+/partner/how-it-works/ /partner/ 301
+/partner/how-it-works.html /partner/ 301
+/partner/insights /partner/ 301
+/partner/insights/ /partner/ 301
+/partner/insights.html /partner/ 301
+/partner/pricing /partner/#apply 301
+/partner/pricing/ /partner/#apply 301
+/partner/pricing.html /partner/#apply 301
+/partner/investors /partner/ 301
+/partner/investors/ /partner/ 301
+/partner/investors.html /partner/ 301
+
+# Blog Rewrites
+/blog/ai-food-recommendations-uae /user-blog-ai-food-recommendations-uae.html 200
+/blog/restaurant-technology-trends-2026 /user-blog-restaurant-technology-trends-2026.html 200
+/blog/uae-food-delivery-evolution /user-blog-uae-food-delivery-evolution.html 200
 
 # Retired marketing pages (Wave 2)
 /food / 301
@@ -112,39 +90,3 @@ https://user.gosnel.com/faq /faq.html 200
 /account-soon https://user.gosnel.com/install 301
 /account-soon/ https://user.gosnel.com/install 301
 /account-soon.html https://user.gosnel.com/install 301
-/partner /partner/index.html 200
-/partner/ /partner/index.html 200
-# Retired partner pages (must be above /partner/* splat)
-/partner/how-it-works /partner/ 301
-/partner/how-it-works/ /partner/ 301
-/partner/how-it-works.html /partner/ 301
-/partner/insights /partner/ 301
-/partner/insights/ /partner/ 301
-/partner/insights.html /partner/ 301
-/partner/pricing /partner/#apply 301
-/partner/pricing/ /partner/#apply 301
-/partner/pricing.html /partner/#apply 301
-/partner/investors /partner/ 301
-/partner/investors/ /partner/ 301
-/partner/investors.html /partner/ 301
-/partner/* /partner/:splat 200
-/blog/* /apps/user-app/blog/:splat 200
-
-# ============================================
-# HOTELS / DIGITAL CONCIERGE (gosnel.com/hotels)
-# ============================================
-/hotels /hotels/index.html 200
-/hotels/ /hotels/index.html 200
-/hotels/* /hotels/:splat 200
-
-# ============================================
-# SITEMAPS (SERVE DIRECTLY)
-# ============================================
-/sitemap.xml /sitemap.xml 200
-/user-sitemap.xml /user-sitemap.xml 200
-/vendor-sitemap.xml /vendor-sitemap.xml 200
-/drivers-sitemap.xml /drivers-sitemap.xml 200
-/promo-sitemap.xml /promo-sitemap.xml 200
-/hotels-sitemap.xml /hotels-sitemap.xml 200
-/robots.txt /robots.txt 200
-
